@@ -7,7 +7,7 @@ ReAct 与 Logic-LM 主模型复现。仓库记录 benchmark、配置、脚本、
 ## 目录
 
 - `upstream/`：官方代码和 benchmark，固定 commit；克隆请加 `--recurse-submodules`。
-- `scripts/`：ReAct 主模型执行、Logic-LM 生成及求解重放、审计脚本。
+- `scripts/`：ReAct 主模型执行、Logic-LM 逻辑程序生成、CoT 回退生成、求解评测与 self-refinement、审计脚本。
 - `configs/`：从作者 notebook 提取的 ReAct 主模型定义，不执行其他 baseline。
 - `results/`：实际运行的逐样本记录与汇总，作者缓存重放和 API 输出分开。
 - `logs/`：运行、依赖及环境检查日志。
@@ -21,6 +21,7 @@ ReAct 与 Logic-LM 主模型复现。仓库记录 benchmark、配置、脚本、
 uv venv .venv --python 3.11
 uv pip install --python .venv/bin/python -r requirements.lock.txt
 export PATH="$PWD/.venv/bin:$PATH"
+scripts/build_prover9.sh
 ```
 
 密钥通过环境变量提供；参考 `.env.example`，不要提交配置密钥。提供替代模型时，结果必须标为替代底座，不与原模型表格混写。
@@ -33,20 +34,29 @@ export PATH="$PWD/.venv/bin:$PATH"
 .venv/bin/python scripts/run_react.py --task fever --model text-davinci-002 --limit 500
 ```
 
-`--api-mode chat` 仅用于兼容替代服务，不属于原 Completion 接口设置。ALFWorld/WebShop 入口也已提供，但各自环境必须另行验收。
+作者 ReAct 代码用 `text-davinci-002` Completion。若 API 服务要求 Chat 接口，可指定 `--api-mode chat`，并将结果标记为替代接口/底座复现；实际服务模型以 `--model` 记录，原作者模型标签以 `--reference-model` 记录。ALFWorld/WebShop 入口也已提供，但各自环境必须另行验收。
 
 ## Logic-LM
 
 ```bash
 .venv/bin/python scripts/replay_logic.py --dataset ProntoQA
-.venv/bin/python scripts/run_logic.py --dataset ProntoQA --model gpt-4
+.venv/bin/python scripts/run_logic.py --dataset ProntoQA --split test --model gpt-4
+.venv/bin/python scripts/run_logic_cot.py --dataset ProntoQA --split test --model gpt-4
+.venv/bin/python scripts/run_logic_inference.py --dataset ProntoQA --split test --model gpt-4 \
+  --programs results/<逻辑程序文件>.json --cot results/<CoT回退文件>.json
+.venv/bin/python scripts/run_logic_refinement.py --dataset AR-LSAT --split test --model gpt-4 \
+  --programs results/<首轮程序文件>.json
 ```
 
-第二条生成新的程序文件，随后按脚本输出的路径执行求解。首条只重放作者缓存，不能标成重新调用 GPT-4。
+生成新的逻辑程序后，生成对应 CoT 预测，并调用作者求解器；求解失败时逐样本采用对应 CoT 答案。self-refinement 按作者方案只运行 AR-LSAT 与 FOLIO，默认最多三轮，每轮对失败程序重新调用模型。生成、回退、推理和修正脚本都保留官方数据、提示模板、stop、温度与 token 设置。首条只重放作者缓存，不能标成重新调用 GPT-4。
+
+FOLIO 所用 Prover9 编译产物置于被忽略的 `.local/Prover9`，不会改动官方子模块内源文件或二进制。
+
+替代 API 的设置示例：`OPENAI_BASE_URL` 与 `OPENAI_API_KEY` 在本机环境变量中设置；`--api-model <服务商模型ID>` 指定实际调用模型，`--model gpt-4` 保留 Logic-LM 作者模型标签与 GPT-4 专用提示选择。实际模型不同于参考模型时，结果必须标记为替代底座复现。API 密钥不进入参数、不写日志。
 
 ## 已知限制
 
-论文环境包含已变化的模型接口、网页与旧求解器依赖。当前本机 Prover9 需原生编译，作者附带 Linux 二进制不能直接运行。所有环境失败保留日志。详细结果见 `docs/当前结果.md`，每项结果写明真实完成范围。
+论文原用模型已从 OpenAI API 下线，端到端 API 运行尚未开始。ReAct 的 Wikipedia 与 WebShop 网络端点目前不可达。Logic-LM 推理与 self-refinement 流程脚本已补全，待接入 API 后执行全量；作者缓存重放见 `docs/当前结果.md`，不视为模型生成复现。所有环境失败保留日志，每项结果写明真实完成范围。
 
 ## 文献
 

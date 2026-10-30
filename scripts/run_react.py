@@ -2,7 +2,7 @@
 import argparse,ast,json,os,sys,time,random
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--task',choices=['hotpotqa','fever','alfworld','webshop'],required=True);p.add_argument('--model',default='text-davinci-002');p.add_argument('--api-mode',choices=['completion','chat'],default='completion');p.add_argument('--limit',type=int,default=500);p.add_argument('--prepare-only',action='store_true');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--task',choices=['hotpotqa','fever','alfworld','webshop'],required=True);p.add_argument('--model',default='text-davinci-002',help='API 实际模型 ID');p.add_argument('--reference-model',default='text-davinci-002',help='作者代码中的参考模型');p.add_argument('--api-mode',choices=['completion','chat'],default='completion');p.add_argument('--limit',type=int,default=500);p.add_argument('--prepare-only',action='store_true');a=p.parse_args()
 u=ROOT/'upstream/ReAct';name={'fever':'FEVER','webshop':'WebShop'}.get(a.task,a.task);nb=json.loads((u/f'{name}.ipynb').read_text())
 # Keep author definitions and environment setup; remove top-level evaluation loops/calls.
 nodes=[]
@@ -28,7 +28,7 @@ def llm(prompt,stop=['\n']):
   try:
    if a.api_mode=='completion':r=openai.Completion.create(prompt=prompt,**kw);out=r['choices'][0]['text']
    else:r=openai.ChatCompletion.create(messages=[{'role':'user','content':prompt}],**kw);out=r['choices'][0]['message']['content']
-   with (run/'api.jsonl').open('a') as f:f.write(json.dumps({'prompt':prompt,'stop':stop,'response':r},ensure_ascii=False)+'\n')
+   with (run/'api.jsonl').open('a') as f:f.write(json.dumps({'prompt':prompt,'stop':stop,'response':r,'reference_model':a.reference_model,'api_model':a.model,'api_mode':a.api_mode},ensure_ascii=False)+'\n')
    return out
   except Exception:
    if attempt==2:raise
@@ -50,5 +50,5 @@ else:
    if name.startswith(k):
     prompt='Interact with a household to solve a task. Here are two examples.\n'+ns['d'][f'react_{v}_1']+ns['d'][f'react_{v}_0']+'\nHere is the task.\n';vals.append(ns['alfworld_run'](prompt,ob=ob));break
  result={'n':len(vals),'success_rate':sum(vals)/len(vals),'rewards':vals}
-result.update(task=a.task,model=a.model,api_mode=a.api_mode,mode='end_to_end' if a.model=='text-davinci-002' and a.api_mode=='completion' else 'substitute_backbone_not_exact_reproduction')
+result.update(task=a.task,model=a.model,reference_model=a.reference_model,api_mode=a.api_mode,mode='end_to_end' if a.model=='text-davinci-002' and a.reference_model=='text-davinci-002' and a.api_mode=='completion' else 'substitute_backbone_not_exact_reproduction')
 (run/'summary.json').write_text(json.dumps(result,indent=2));print(json.dumps(result))
