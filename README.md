@@ -21,6 +21,7 @@ ReAct 与 Logic-LM 主模型复现。仓库记录 benchmark、配置、脚本、
 uv venv .venv --python 3.11
 uv pip install --python .venv/bin/python -r requirements.lock.txt
 export PATH="$PWD/.venv/bin:$PATH"
+bash scripts/apply_runtime_patches.sh
 scripts/build_prover9.sh
 ```
 
@@ -35,6 +36,23 @@ scripts/build_prover9.sh
 ```
 
 作者 ReAct 代码用 `text-davinci-002` Completion。若 API 服务要求 Chat 接口，可指定 `--api-mode chat`，并将结果标记为替代接口/底座复现；实际服务模型以 `--model` 记录，原作者模型标签以 `--reference-model` 记录。ALFWorld/WebShop 入口也已提供，但各自环境必须另行验收。
+
+Wikipedia 保留作者 HTML 搜索和段落解析，仅增加 User-Agent、30 秒超时及 HTTP 错误检查。`scripts/check_react_wikipedia.py` 可在不使用模型 API 的情况下检查 Search、Lookup、Finish 和两个任务的评分接口。
+
+WebShop 使用官方 Princeton-NLP/WebShop 本地 HTML 服务，沿用 ReAct 的页面解析和动作函数：
+
+```bash
+bash scripts/setup_webshop.sh
+export JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+.local/webshop-venv/bin/python scripts/start_webshop.py
+# 在另一终端验收；不调用模型 API：
+.venv/bin/python scripts/check_react_webshop.py
+export REACT_WEBSHOP_URL=http://127.0.0.1:3000
+```
+
+完整商品文件约 5.48 GB，属性文件约 186 MB；使用固定版本公开镜像并验证 SHA256，详见 `manifests/webshop-data.json`。大型数据、检索索引和独立运行环境位于 `.local/`，不提交 GitHub。`--demo` 仅检查 1,000 商品环境，不用于论文主实验。默认本机服务只监听 `127.0.0.1`。
+
+两个作者子模块固定在公开可拉取的原始 commit；兼容性改动存为 `patches/`，使用 `apply_runtime_patches.sh` 幂等应用，避免子模块指向未发布的本地 commit。
 
 ## Logic-LM
 

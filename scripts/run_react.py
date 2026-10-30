@@ -34,6 +34,8 @@ def llm(prompt,stop=['\n']):
    if attempt==2:raise
    time.sleep(2**attempt)
 os.chdir(u);sys.path.insert(0,str(u));ns={'llm':llm,'requests':requests};exec(compile(source,str(u/f'{name}.ipynb'),'exec'),ns)
+if a.task=='webshop':
+ ns['WEBSHOP_URL']=os.getenv('REACT_WEBSHOP_URL','http://127.0.0.1:3000').rstrip('/')
 if a.task in ['hotpotqa','fever']:
  idxs=list(range(len(ns['env'].data)));random.Random(233).shuffle(idxs);vals=[]
  for idx in idxs[:a.limit]:
@@ -51,4 +53,5 @@ else:
     prompt='Interact with a household to solve a task. Here are two examples.\n'+ns['d'][f'react_{v}_1']+ns['d'][f'react_{v}_0']+'\nHere is the task.\n';vals.append(ns['alfworld_run'](prompt,ob=ob));break
  result={'n':len(vals),'success_rate':sum(vals)/len(vals),'rewards':vals}
 result.update(task=a.task,model=a.model,reference_model=a.reference_model,api_mode=a.api_mode,mode='end_to_end' if a.model=='text-davinci-002' and a.reference_model=='text-davinci-002' and a.api_mode=='completion' else 'substitute_backbone_not_exact_reproduction')
+if a.task=='webshop':result['webshop_url']=ns['WEBSHOP_URL']
 (run/'summary.json').write_text(json.dumps(result,indent=2));print(json.dumps(result))

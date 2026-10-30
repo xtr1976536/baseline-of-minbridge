@@ -1,0 +1,35 @@
+diff --git a/wikienv.py b/wikienv.py
+index d26b3e9..4af0d6a 100644
+--- a/wikienv.py
++++ b/wikienv.py
+@@ -1,10 +1,19 @@
+ import ast
+ import json
+ import time
++import os
+ import gym
+ import requests
+ from bs4 import BeautifulSoup
+ 
++# Wikimedia blocks requests without an identifying User-Agent.  This keeps the
++# original HTML search/parser protocol while making the request reproducible
++# and configurable for restricted networks.
++WIKI_USER_AGENT = os.environ.get(
++  "REACT_WIKIPEDIA_USER_AGENT",
++  "MinBridge-ReAct/1.0 (research; contact repository owner)"
++)
++
+ # import wikipedia
+ 
+ def clean_str(p):
+@@ -99,7 +108,9 @@ class WikiEnv(gym.Env):
+     entity_ = entity.replace(" ", "+")
+     search_url = f"https://en.wikipedia.org/w/index.php?search={entity_}"
+     old_time = time.time()
+-    response_text = requests.get(search_url).text
++    response = requests.get(search_url, headers={"User-Agent": WIKI_USER_AGENT}, timeout=30)
++    response.raise_for_status()
++    response_text = response.text
+     self.search_time += time.time() - old_time
+     self.num_searches += 1
+     soup = BeautifulSoup(response_text, features="html.parser")

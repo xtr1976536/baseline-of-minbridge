@@ -1,0 +1,35 @@
+diff --git a/.gitignore b/.gitignore
+index cb313ef..ffd7b1f 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -16,6 +16,10 @@ models/__pycache__/
+ baselines/results/
+ models/symbolic_solvers/pyke_solver/.cache_program
+ models/symbolic_solvers/z3_solver/.cache_program
++models/symbolic_solvers/Prover9/**/*.o
++models/symbolic_solvers/Prover9/**/*.a
++models/compiled_krb/
++models/__init__.py
+ 
+ # Distribution / packaging
+ .Python
+diff --git a/models/symbolic_solvers/fol_solver/prover9_solver.py b/models/symbolic_solvers/fol_solver/prover9_solver.py
+index 1259e35..1318850 100644
+--- a/models/symbolic_solvers/fol_solver/prover9_solver.py
++++ b/models/symbolic_solvers/fol_solver/prover9_solver.py
+@@ -6,7 +6,7 @@ from .Formula import FOL_Formula
+ 
+ # set the path to the prover9 executable
+ # os.environ['PROVER9'] = '../Prover9/bin'
+-os.environ['PROVER9'] = './models/symbolic_solvers/Prover9/bin'
++os.environ['PROVER9'] = os.environ.get('PROVER9_BIN', './models/symbolic_solvers/Prover9/bin')
+ 
+ class FOL_Prover9_Program:
+     def __init__(self, logic_program:str, dataset_name = 'FOLIO') -> None:
+@@ -194,4 +194,4 @@ if __name__ == "__main__":
+     
+     prover9_program = FOL_Prover9_Program(logic_program)
+     answer, error_message = prover9_program.execute_program()
+-    print(answer)
+\ No newline at end of file
++    print(answer)

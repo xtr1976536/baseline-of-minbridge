@@ -12,6 +12,8 @@ p.add_argument('--cot', type=Path, required=True, help='作者 CoT 回退答案 
 p.add_argument('--tag', default='main')
 a = p.parse_args()
 u = ROOT/'upstream/Logic-LLM'
+a.programs=a.programs.resolve();a.cot=a.cot.resolve()
+os.chdir(u)
 sys.path.insert(0,str(u/'models'))
 os.environ['PATH'] = str(ROOT/'.venv/bin') + os.pathsep + os.environ.get('PATH','')
 prover9_env=ROOT/'.local/prover9.env'

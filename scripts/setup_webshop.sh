@@ -12,5 +12,16 @@ fi
 git -C "$TARGET" fetch --depth 1 origin "$COMMIT"
 git -C "$TARGET" checkout --detach "$COMMIT"
 printf 'WebShop source: %s\nCommit: %s\n' "$TARGET" "$COMMIT"
-printf '%s\n' 'The official setup downloads product data and builds the local search index.'
-printf '%s\n' 'Run: cd .local/WebShop && ./setup_arm.sh -d small (Apple Silicon) or ./setup.sh -d small.'
+uv venv "$ROOT/.local/webshop-venv" --python 3.11 --allow-existing
+uv pip install --python "$ROOT/.local/webshop-venv/bin/python" --no-deps -r "$ROOT/configs/webshop-requirements.lock.txt"
+"$ROOT/.local/webshop-venv/bin/python" "$ROOT/scripts/download_webshop_data.py"
+if [[ -z "${JAVA_HOME:-}" && -d /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home ]]; then
+  export JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+fi
+"$ROOT/.local/webshop-venv/bin/python" "$ROOT/scripts/build_webshop_index.py"
+cd "$TARGET/search_engine"
+"$ROOT/.local/webshop-venv/bin/python" -m pyserini.index.lucene \
+  --collection JsonCollection --input resources --index indexes \
+  --generator DefaultLuceneDocumentGenerator --threads 1 \
+  --storePositions --storeDocvectors --storeRaw
+printf '%s\n' '完整 WebShop 数据及索引已准备。使用 scripts/start_webshop.py 启动本机服务。'
