@@ -1,5 +1,5 @@
 """重放作者公开的 GPT-4 逻辑程序，不调用模型 API。"""
-import argparse,json,os,sys,time,random,traceback
+import argparse,json,os,sys,time,random,traceback,shutil
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('--dataset',required=True,choices=['LogicalDeduction','AR-LSAT','FOLIO','ProntoQA','ProofWriter']);p.add_argument('--limit',type=int);p.add_argument('--programs',type=Path);p.add_argument('--tag',default='author-replay');a=p.parse_args()
@@ -16,6 +16,10 @@ rows=json.loads((a.programs.resolve() if a.programs else u/f'outputs/logic_progr
 rng=random.Random(0);out=ROOT/f'results/logic-lm-{a.dataset}-{a.tag}.jsonl';correct=errors=0;t=time.time()
 with out.open('w') as f:
  for i,e in enumerate(rows):
+  if a.dataset in ['ProntoQA','ProofWriter']:
+   shutil.rmtree(u/'models/compiled_krb',ignore_errors=True)
+   for mod in list(sys.modules):
+    if mod=='compiled_krb' or mod.startswith('compiled_krb.'):sys.modules.pop(mod,None)
   pred=None;status='success';err=''
   try:
    s=Solver(e['raw_logic_programs'][0].strip(),a.dataset)
