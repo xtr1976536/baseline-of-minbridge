@@ -1,0 +1,12 @@
+{
+ "status": "deferred_by_user_to_Kaggle; configuration only, no trained model",
+ "paper": "https://arxiv.org/abs/2605.31064",
+ "base_models": ["Qwen/Qwen2.5-1.5B-Instruct", "Qwen/Qwen2.5-3B-Instruct", "Qwen/Qwen2.5-7B-Instruct"],
+ "datasets": {"training": ["FinQA/train", "ConvFinQA/train"], "evaluation": ["FinQA/dev", "FinQA/test", "ConvFinQA/dev"]},
+ "data_construction": {"positive_negative_ratio": "1:2", "consensus_teachers": ["GPT-5.2 High", "Gemini-3 Pro", "Claude-4.5 Opus"], "stages": ["heterogeneous consensus mining", "hard-negative injection", "consistency filtering"]},
+ "sft": {"epochs": 3, "learning_rate": 0.000005, "batch_size": 64, "decision_token_weight": 2.0},
+ "grpo": {"epochs": 3, "learning_rate": 0.000001, "group_size": 16, "rewards": ["format", "retrieval F1", "executability", "accuracy", "consistency penalty"]},
+ "primary_metric": "Execution Accuracy, 1% tolerance",
+ "excluded": ["ablations", "RQ2 paradigm comparison", "RQ3 auditability study", "RQ5 sensitivity", "production online A/B deployment"],
+ "unresolved": ["official constructed training corpus/checkpoints not located", "teacher endpoint availability", "GPU capacity", "complete training implementation", "paper does not specify all optimizer/sequence-length/KL settings"]
+}
