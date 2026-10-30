@@ -13,7 +13,7 @@
 - 严格要求图谱连接，不允许官方代码在连接失败后无图谱降级运行。
 - 所有修复均在scripts/apply_gbfr_fixes.py中运行时应用，保留上游固定commit不变。
 
-验证：scripts/check_gbfr_core.py的路由、别名与缓存检查通过；--limit 9拒绝；scripts/check_dcrc.py仍通过。
+验证：scripts/check_gbfr_core.py的路由、别名与缓存检查通过；--limit 9拒绝。
 
 ## 完整静态检查发现的核心差异：尚未解决，禁止正式运行
 
