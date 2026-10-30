@@ -1,6 +1,7 @@
 """Run only GBFR over four full public-release datasets, resumably."""
 import json,os,subprocess,sys,time
 from pathlib import Path
+raise SystemExit('Full suite disabled by user on 2026-10-30. Finish audit and bounded checks first.')
 R=Path(__file__).resolve().parents[1]
 os.environ.update(json.loads((R/'.runtime/graph-env.json').read_text()))
 for dataset in ['FinQA','TAT-QA','FinanceReasoning','CFBenchmark']:
