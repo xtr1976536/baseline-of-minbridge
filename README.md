@@ -54,3 +54,7 @@ export PATH="$PWD/.venv/bin:$PATH"
 - Logic-LM，Findings of EMNLP 2023：https://aclanthology.org/2023.findings-emnlp.248/
 - 官方 ReAct：https://github.com/ysymyth/ReAct
 - 官方 Logic-LM：https://github.com/teacherpeterpan/Logic-LLM
+
+## 大型环境数据
+
+ALFWorld 已在本机通过 `alfworld-download` 下载；134 个 unseen 游戏已完成 reset 检查。数据安装在 ALFWorld 自身缓存目录，不将数百 MB 环境资源直接镜像到 GitHub；克隆后运行相同下载命令，并核对日志中的版本和任务数。
