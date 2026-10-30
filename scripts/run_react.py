@@ -20,20 +20,20 @@ source=ast.unparse(ast.Module(body=nodes,type_ignores=[]));(ROOT/f'configs/react
 if a.prepare_only:print('已导出作者主模型定义，未请求 API。');sys.exit()
 if not os.getenv('OPENAI_API_KEY'):raise SystemExit('缺少 OPENAI_API_KEY；请先配置环境变量。')
 import openai,requests
+from api_compat import generate
 openai.api_key=os.environ['OPENAI_API_KEY'];openai.api_base=os.getenv('OPENAI_BASE_URL','https://api.openai.com/v1')
 run=ROOT/'results'/f'react-{a.task}-{a.model.replace("/","_")}-{int(time.time())}';run.mkdir()
 def llm(prompt,stop=['\n']):
  kw=dict(model=a.model,temperature=0,max_tokens=100,top_p=1,stop=stop,request_timeout=90)
  for attempt in range(3):
   try:
-   if a.api_mode=='completion':r=openai.Completion.create(prompt=prompt,**kw);out=r['choices'][0]['text']
-   else:r=openai.ChatCompletion.create(messages=[{'role':'user','content':prompt}],**kw);out=r['choices'][0]['message']['content']
+   out,r,_,_=generate(prompt,a.reference_model,a.model,a.api_mode,100,0,stop,90)
    with (run/'api.jsonl').open('a') as f:f.write(json.dumps({'prompt':prompt,'stop':stop,'response':r,'reference_model':a.reference_model,'api_model':a.model,'api_mode':a.api_mode},ensure_ascii=False)+'\n')
    return out
   except Exception:
    if attempt==2:raise
    time.sleep(2**attempt)
-os.chdir(u);sys.path.insert(0,str(u));ns={'llm':llm,'requests':requests};exec(compile(source,str(u/f'{name}.ipynb'),'exec'),ns)
+os.chdir(u);sys.path.insert(0,str(u));ns={'llm':llm,'requests':requests,'sys':sys};exec(compile(source,str(u/f'{name}.ipynb'),'exec'),ns)
 if a.task=='webshop':
  ns['WEBSHOP_URL']=os.getenv('REACT_WEBSHOP_URL','http://127.0.0.1:3000').rstrip('/')
 if a.task in ['hotpotqa','fever']:

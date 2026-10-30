@@ -14,6 +14,7 @@ p.add_argument('--api-style', choices=['auto','completion','chat'], default='aut
 p.add_argument('--limit', type=int)
 p.add_argument('--max-tokens', type=int, default=1024)
 p.add_argument('--split', choices=['dev','test'], default='dev')
+p.add_argument('--resume',type=Path,help='继续已有运行目录；只生成缺失 ID')
 a = p.parse_args()
 if not os.getenv('OPENAI_API_KEY'):
     raise SystemExit('缺少 OPENAI_API_KEY；未发出请求。')
@@ -32,10 +33,14 @@ rows = baseline.load_raw_dataset(a.split)
 rows = rows[:a.limit] if a.limit else rows
 examples = baseline.load_in_context_examples()
 run = ROOT/'results'/f'logic-cot-{a.dataset}-{a.split}-{(a.api_model or a.model).replace("/", "_")}-{int(time.time())}'
-run.mkdir(parents=True)
-predictions = []
+run=a.resume.resolve() if a.resume else run
+run.mkdir(parents=True,exist_ok=bool(a.resume))
+predictions = json.loads((run/'cot.json').read_text()) if (run/'cot.json').exists() else []
+done={r['id'] for r in predictions}
+if len(done)!=len(predictions) or done-set(r['id'] for r in rows):raise SystemExit('续跑文件 ID 重复或与数据不匹配')
 api_log = (run/'api.jsonl').open('a')
 for e in rows:
+    if e['id'] in done:continue
     prompt = baseline.prompt_creator(examples, e)
     raw, response, style, wire_model = generate(prompt, a.model, a.api_model, a.api_style,
         a.max_tokens, 0.0, '------', 120)
@@ -46,7 +51,7 @@ for e in rows:
     api_log.write(json.dumps({'id':e['id'],'prompt':prompt,'response':response,
             'reference_model':a.model,'api_model':wire_model,'api_style':style},ensure_ascii=False)+'\n')
     api_log.flush()
-    (run/'cot.json').write_text(json.dumps(predictions,ensure_ascii=False,indent=2))
+    tmp=run/'cot.json.tmp';tmp.write_text(json.dumps(predictions,ensure_ascii=False,indent=2));tmp.replace(run/'cot.json')
 api_log.close()
 (run/'run.json').write_text(json.dumps({'dataset':a.dataset,'split':a.split,'n_requested':len(rows),
     'purpose':'Logic-LM solver-failure fallback; official CoT prompt/examples',

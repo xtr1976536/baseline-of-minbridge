@@ -19,7 +19,9 @@ for d in ['ProntoQA','ProofWriter','LogicalDeduction','FOLIO','AR-LSAT']:
  try:
   common=['--dataset',d,'--model','gpt-4','--api-model','deepseek-flash','--api-style','chat']
   call(d+'-generate',['scripts/run_logic.py',*common]);program=newest(f'results/logic-{d}-dev-deepseek-flash-*/programs.json')
-  call(d+'-cot',['scripts/run_logic_cot.py',*common]);cot=newest(f'results/logic-cot-{d}-dev-deepseek-flash-*/cot.json')
+  cached=list(ROOT.glob(f'results/logic-cot-{d}-dev-deepseek-flash-*/cot.json'))
+  resume=['--resume',str(max(cached,key=lambda p:p.stat().st_mtime).parent)] if cached else []
+  call(d+'-cot',['scripts/run_logic_cot.py',*common,*resume]);cot=newest(f'results/logic-cot-{d}-dev-deepseek-flash-*/cot.json')
   call(d+'-inference',['scripts/run_logic_inference.py','--dataset',d,'--split','dev','--programs',str(program),'--cot',str(cot),'--tag','deepseek-flash-main'])
   if d in ['FOLIO','AR-LSAT']:
    call(d+'-refine',['scripts/run_logic_refinement.py',*common,'--split','dev','--programs',str(program),'--tag','deepseek-flash'])

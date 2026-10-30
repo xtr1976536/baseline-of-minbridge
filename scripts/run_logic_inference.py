@@ -24,7 +24,7 @@ from symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Program
 from symbolic_solvers.pyke_solver.pyke_solver import Pyke_Program
 from symbolic_solvers.csp_solver.csp_solver import CSP_Program
 from symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
-from evaluation import full_evaluation
+from evaluation import evaluate_QA
 
 solver_map = {'FOLIO':FOL_Prover9_Program,'ProntoQA':Pyke_Program,'ProofWriter':Pyke_Program,
               'LogicalDeduction':CSP_Program,'AR-LSAT':LSAT_Z3_Program}
@@ -59,7 +59,14 @@ for i,e in enumerate(rows):
             status = 'execution error'
             pred = backup.get_backup_answer(e['id'])
         else:
-            pred = program.answer_mapping(value)
+            try:
+                pred = program.answer_mapping(value)
+                if pred is None:
+                    raise ValueError('Author answer mapper returned no option')
+            except (AttributeError,ValueError,TypeError,KeyError,IndexError) as ex:
+                status = 'mapping error'
+                error = f'{type(ex).__name__}: {ex}'
+                pred = backup.get_backup_answer(e['id'])
     if status != 'success':
         errors += 1
     results.append({'id':e['id'],'context':e['context'],'question':e['question'],
@@ -68,10 +75,14 @@ for i,e in enumerate(rows):
     if (i+1)%25 == 0:
         out.write_text(json.dumps(results,ensure_ascii=False,indent=2))
 out.write_text(json.dumps(results,ensure_ascii=False,indent=2))
-full_evaluation(str(out))
+executable=[r for r in results if r['flag']=='success']
 summary={'dataset':a.dataset,'split':a.split,'reference_model':a.model,'n':len(results),
          'solver_failures_with_cot_fallback':errors,'seconds':time.time()-t0,
          'cot_fallback':'used per sample ID for all non-success solver statuses',
          'programs_file':str(a.programs),'cot_fallback_file':str(a.cot),'result_file':str(out)}
+summary.update(accuracy=evaluate_QA(results) if results else None,
+               executable_rate=len(executable)/len(results) if results else None,
+               executable_accuracy=evaluate_QA(executable) if executable else None,
+               protocol_note='Author evaluator for nonempty sets; undefined executable accuracy is null. Mapping failures use CoT and are explicitly recorded as a compatibility extension.')
 out.with_name(out.stem+'-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
 print(json.dumps(summary,ensure_ascii=False))

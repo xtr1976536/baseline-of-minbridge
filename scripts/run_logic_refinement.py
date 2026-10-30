@@ -20,6 +20,7 @@ a=p.parse_args()
 if not os.getenv('OPENAI_API_KEY'):
     raise SystemExit('缺少 OPENAI_API_KEY；未发出请求。')
 u=ROOT/'upstream/Logic-LLM'
+a.programs=a.programs.resolve()
 os.chdir(u)
 sys.path.insert(0,str(u/'models'))
 os.environ['PATH']=str(ROOT/'.venv/bin')+os.pathsep+os.environ.get('PATH','')

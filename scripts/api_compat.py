@@ -4,10 +4,29 @@ import time
 
 def retry_call(fn, **kwargs):
     import openai
+    import requests
     for attempt in range(8):
-        try:return fn(**kwargs)
+        try:
+            if 'deepseek.com' in openai.api_base:
+                payload=dict(kwargs);timeout=payload.pop('request_timeout',120)
+                response=requests.post(openai.api_base.rstrip('/')+'/chat/completions',
+                    headers={'Authorization':'Bearer '+openai.api_key},json=payload,timeout=timeout)
+                if response.status_code in (429,500,502,503,504):
+                    raise openai.error.ServiceUnavailableError('Temporary model service failure')
+                response.raise_for_status()
+                data=response.json()
+                if not isinstance(data,dict) or not data.get('choices'):
+                    raise openai.error.ServiceUnavailableError('Empty or malformed API response')
+                if not isinstance(data['choices'],list) or not isinstance(data['choices'][0],dict):
+                    raise openai.error.ServiceUnavailableError('Malformed choices')
+                message=data['choices'][0].get('message') or {}
+                if not isinstance(message.get('content'),str) or not message['content'].strip():
+                    raise openai.error.ServiceUnavailableError('Missing model output in API response')
+                return data
+            return fn(**kwargs)
         except (openai.error.ServiceUnavailableError,openai.error.RateLimitError,
-                openai.error.Timeout,openai.error.APIConnectionError):
+                openai.error.Timeout,openai.error.APIConnectionError,
+                requests.exceptions.Timeout,requests.exceptions.ConnectionError,ValueError):
             if attempt==7:raise
             time.sleep(min(2**attempt,30))
 
