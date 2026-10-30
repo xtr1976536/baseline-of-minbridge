@@ -1,0 +1,1258 @@
+              L OGIC -LM: Empowering Large Language Models with
+                 Symbolic Solvers for Faithful Logical Reasoning
+
+           Liangming Pan              Alon Albalak             Xinyi Wang           William Yang Wang
+                         University of California, Santa Barbara
+        {liangmingpan, alon_albalak, xinyi_wang, wangwilliamyang}@ucsb.edu
+
+
+                       Abstract
+                                                                          Problem              Goal
+    Large Language Models (LLMs) have shown
+    human-like reasoning abilities but still strug-
+    gle with complex logical problems. This pa-                                     Problem               Symbolic
+    per introduces a novel framework, L OGIC -                                      Formulator           Formulation
+    LM, which integrates LLMs with symbolic
+    solvers to improve logical problem-solving.
+    Our method first utilizes LLMs to translate                   Self-
+    a natural language problem into a symbolic                   Refine             Symbolic              Symbolic
+    formulation. Afterward, a deterministic sym-                                    Reasoner               Result
+    bolic solver performs inference on the for-
+    mulated problem. We also introduce a self-
+    refinement module, which utilizes the symbolic                                  Result
+    solver’s error messages to revise symbolic for-                                                         Answer
+                                                                                    Interpreter
+    malizations. We demonstrate L OGIC -LM’s ef-
+    fectiveness on five logical reasoning datasets:
+                                                                 Figure 1: Overview of our L OGIC -LM framework.
+    ProofWriter, PrOntoQA, FOLIO, LogicalDe-
+    duction, and AR-LSAT. On average, L OGIC -
+    LM achieves a significant performance boost
+                                                                  Despite the advances of LLMs, they still strug-
+    of 39.2% over using LLM alone with standard                gle with complex logical reasoning problems (Liu
+    prompting and 18.4% over LLM with chain-of-                et al., 2023b). Recent studies (Golovneva et al.,
+    thought prompting. Our findings suggest that               2023; Ribeiro et al., 2023b; Lyu et al., 2023) found
+    L OGIC -LM, by combining LLMs with sym-                    that LLMs occasionally make unfaithful reason-
+    bolic logic, offers a promising avenue for faith-          ing, i.e., the derived conclusion does not follow
+    ful logical reasoning. 1                                   the previously generated reasoning chain. While
+                                                               chain-of-thought may imitate human reasoning pro-
+1   Introduction
+                                                               cesses, the fundamental nature of LLMs remains
+Logical reasoning is a cognitive process that in-              that of black-box probabilistic models, lacking a
+volves using evidence, arguments, and logic to ar-             mechanism to guarantee the faithfulness of reason-
+rive at conclusions or make judgments (Huang and               ing (Shanahan, 2022). In contrast, symbolic infer-
+Chang, 2023). It plays a central role in intelligent           ence engines, such as expert systems (Metaxiotis
+systems for problem-solving, decision-making, and              et al., 2002), are faithful and transparent because
+critical thinking. Recently, large language models             the reasoning is based on symbolic-represented
+(LLMs) (Brown et al., 2020; Ouyang et al., 2022a;              knowledge and follows well-defined inference rules
+OpenAI, 2023) have exhibited emergent ability to               that adhere to logical principles. The main obsta-
+“reason” like human (Wei et al., 2022a). When                  cle is how to accurately translate a problem into
+prompted with step-wise explanations of reasoning              symbolic representations, considering the inherent
+(“chain of thoughts”), or a simple prompt “Let’s               ambiguity and flexibility of natural language. This
+think step by step.”, these models are able to an-             is precisely where LLMs excel, making LLMs a
+swer questions with explicit reasoning steps (Wei              promising complement to symbolic solvers.
+et al., 2022b; Kojima et al., 2022).                              This drives our exploration of neuro-symbolic
+   1
+     Code and data are publicly available at https://github.   methods that integrate LLMs with symbolic reason-
+com/teacherpeterpan/Logic-LLM.                                 ing. As illustrated in Figure 1, we present L OGIC -
+                                                          3806
+                Findings of the Association for Computational Linguistics: EMNLP 2023, pages 3806–3824
+                         December 6-10, 2023 ©2023 Association for Computational Linguistics
+LM, a novel framework that decomposes a logical          (§ 4.3). Finally, by analyzing the impact of self-
+reasoning problem into three stages: Problem For-        refinement, we highlight the effectiveness of incre-
+mulation, Symbolic Reasoning, and Result Inter-          mentally revising symbolic formalizations when
+pretation. During problem formulation, an LLM            interacting with the symbolic solver (§ 4.4).
+converts the natural language description of the
+problem into an appropriate symbolic formulation,        2   Related Work
+identifying key entities, facts, and rules present       Language Models for Logical Reasoning. Re-
+in the problem statement. Subsequently, at the           cent works in adapting LLMs for logical reasoning
+symbolic reasoning stage, a deterministic symbolic       tasks can be broadly categorized into two groups:
+solver performs inference on the symbolic formula-       1) fine-tuning approaches that optimize LLMs’ rea-
+tion. Lastly, a result interpreter explains the output   soning ability through fine-tuning or training spe-
+and maps it to the correct answer. By incorporating      cialized modules (Clark et al., 2020; Tafjord et al.,
+LLMs with symbolic solvers, we can exploit the           2022; Yang et al., 2022), and 2) in-context learning
+robust natural language understanding capabilities       approaches that design special prompts to elicit
+of LLMs to precisely represent the problem using         LLMs’ step-by-step reasoning capabilities. Typical
+symbolic representations, while also taking advan-       methods include chain-of-thought prompting (Wei
+tage of the logical faithfulness and transparency        et al., 2022b; Wang et al., 2023) that generates ex-
+offered by symbolic solvers. To improve the accu-        planations before the final answer and the least-to-
+racy of the symbolic parsing, we also incorporate        most prompting (Zhou et al., 2023) that breaks the
+the idea of self-refinement to iteratively revise the    problem down into simpler components that can
+generated logical form using the error messages          be solved individually. Both the above approaches
+from the symbolic solver as feedback.                    perform reasoning directly over natural language
+   We showcase the adaptability and effective-           (NL), providing greater flexibility than symbolic-
+ness of L OGIC -LM on five logical reasoning             based reasoning. However, the intrinsic complexity
+datasets: ProofWriter (Tafjord et al., 2021), PrOn-      and ambiguity of NL also bring undesired issues
+toQA (Saparov and He, 2023), FOLIO (Han et al.,          such as unfaithful reasoning and hallucinations.
+2022), AR-LSAT (Zhong et al., 2022), and the Log-           Different from prior works, we use symbolic
+icalDeduction dataset from BigBench (Srivastava          language as the basic unit of reasoning. This effec-
+et al., 2022). These datasets cover a wide range of      tively transfers the burden of executing complex,
+logical reasoning problems, including:                   precise reasoning from LLMs to more reliable, in-
+   • Deductive Reasoning problems                        terpretable external symbolic solvers. Simultane-
+   • First-Order Logic (FOL) reasoning problems          ously, we leverage the strong in-context learning
+   • Constraint Satisfaction Problems (CSP)              ability of LLMs to formulate the NL-based prob-
+   • Analytical Reasoning (AR) problems                  lem into suitable symbolic representations, thus
+                                                         maintaining the benefit of flexibility.
+We integrate four types of symbolic inference tools
+                                                            Although prior works (Mao et al., 2019; Gupta
+tailored to these problems: 1) logic programming
+                                                         et al., 2020; Manhaeve et al., 2021; Cai et al., 2021;
+engine that supports deductive reasoning through
+                                                         Tian et al., 2022; Pryor et al., 2023) also propose
+forward/backward chaining; 2) FOL inference en-
+                                                         neuro-symbolic methods to combine neural net-
+gine that derives new conclusions based on FOL
+                                                         works with symbolic reasoning, these methods suf-
+rules and facts, 3) constraint optimization engine
+                                                         fer from limitations such as hand-crafted or spe-
+that provides solvers for CSP over finite domains,
+                                                         cialized module designs that are not easily gen-
+and 4) boolean satisfiability problem (SAT) solver
+                                                         eralizable, or brittleness due to the difficulty of
+that solves analytical reasoning problems.
+                                                         optimization. In contrast, we propose a more gen-
+   Our evaluations show that the strategy of inte-
+                                                         eralizable framework that integrates modern LLMs
+grating LLMs with symbolic solvers performs sig-
+                                                         with symbolic logic without the need for training
+nificantly better than purely relying on LLMs for
+                                                         or designing complex problem-specific modules.
+logical reasoning, with an average improvement
+of 39.2% over the standard prompting and 18.4%           Tool-augmented Language Models. Language
+over the chain-of-thought prompting (§ 4.1). We          models have inherent limitations such as the inabil-
+also find that L OGIC -LM becomes increasingly ef-       ity to access up-to-date information, take actions,
+fective as the required reasoning depth increases        or perform precise mathematical reasoning. To
+                                                     3807
+   Metals conduct electricity.                                      No giant language model could have bad performance.                                  In an antique car show, there are three vehicles: a tractor,
+   Insulators do not conduct electricity.                           If a language model has good performance, it is used by some researchers.            a convertible, and a minivan. The tractor is the second-
+   If something is made of iron, then it is metal.                  A work used by some researchers should be popular.                                   newest. The minivan is newer than the convertible.
+   Nails are made of iron.                                          If BERT is a giant language model, then the same for GPT3.
+                                                                    BERT is a giant language model.                                                       Which of the following is true?
+                                                                                                                                                          A) The tractor is the oldest.
+   Is the following statement true, false, or                                                                                                             B) The convertible is the oldest.
+                                                                    Is the following statement true, false, or unknown? GPT3 is popular.
+   unknown? Nails cannot conduct electricity.                                                                                                             C) The minivan is the oldest.
+
+
+
+
+                                                                                          Problem Formulator
+
+
+  Rules:                                                       Facts:                                                                                    Domain:                        Variables:
+  • Metal 𝑥, True → ConductElectricity 𝑥, True                 • ¬(∃𝑥(LanguageModel 𝑥 ∧ Giant 𝑥 ∧ ¬GoodPerformance(𝑥)))                                  1: oldest                      tractor ∈ [1, 2, 3]
+  • MadeOfIron 𝑥, True → Metal(𝑥, True)                        • ∀𝑥(LanguageModel 𝑥 ∧ GoodPerformance 𝑥 → UsedbySomeReseachers(𝑥))                       3: newest                      minivan ∈ [1, 2, 3]
+  Facts:                                                       • ∀𝑥 UsedbySomeResearchers 𝑥 → Popular 𝑥                                                                                 convertible ∈ [1, 2, 3]
+  • MadeOfIron Nails, True                                     • LanguageModel bert ∧ 𝐺𝑖𝑎𝑛𝑡 bert → LanguageModel gpt3 ∧ Giant gpt3                       Constraints:
+  • ConductElectricity Insulator, False                        • Language bert                                                                           tractor == 2
+  Query:                                                       • Giant bert                                                                              minivan > convertible
+  • ConductElectricity Nail, False                             Query: Polular gpt3                                                                       AllDifferentConstraint(tractor, minivan, convertible)
+
+
+
+
+            Symbolic                                                                      First-order Logic Prover                              Constraint Optimization                        SMT Solver
+                                                 Logic Programming
+            Reasoner
+
+
+            Result
+                                                 ConductElectricity Nail, True                   Entailment                 {convertible: 1, tractor: 2, minivan: 3}
+            Interpreter
+
+                                                     The statement “Nails cannot           The statement “GPT3
+                  Answer                             conduct electricity” is false.         is popular” is true.
+                                                                                                                                 A) The convertible is the oldest.
+
+
+
+Figure 2: Overview of our L OGIC -LM model, which consists of three modules: (1) Problem Formulator generates
+a symbolic representation for the input problem with LLMs via in-context learning (2) Symbolic Reasoner performs
+logical inference on the formulated problem, and (3) Result Interpreter interprets the symbolic answer.
+
+address this, recent work has begun to augment lan-                                                            et al., 2022; He-Yueya et al., 2023; Jiang et al.,
+guage models with access to external tools and re-                                                             2023). These works demonstrate the proficiency
+sources, such as the information retriever (Nakano                                                             of LLMs in translating a considerable fraction of
+et al., 2021; Shi et al., 2023; Lazaridou et al.,                                                              mathematical problems into formal specifications
+2022), calculator (Cobbe et al., 2021), code in-                                                               defined in tools like SymPy (Meurer et al., 2017),
+terpreter (Wang et al., 2022), planner (Liu et al.,                                                            Isabelle/HOL (Paulson, 1994), and Lean (de Moura
+2023a), and other pre-trained models (Shen et al.,                                                             et al., 2015). Mathematical reasoning can be con-
+2023). Recent works (Gao et al., 2023; Chen et al.,                                                            sidered a specialized subset of logical reasoning,
+2022) have achieved improved performance on                                                                    primarily focused on numeric deductions. Due to
+arithmetic reasoning tasks by generating Python                                                                this numeric specificity, mathematical problems are
+programs that specify the reasoning procedure as                                                               often more readily translatable to symbolic forms.
+chained commands in the order of execution. How-                                                               In contrast, logical reasoning covers a wider array
+ever, this idea has not been extended to logical                                                               of problem types, often requiring a deeper under-
+reasoning problems, primarily due to the challenge                                                             standing of world knowledge and commonsense
+of representing their highly “non-linear” reasoning                                                            for effective parsing into symbolic forms. Despite
+procedure (e.g., hypothesizing, case-by-case analy-                                                            plenty of works studying mathematical reasoning,
+sis, and the process of elimination) with functional                                                           our work pioneers in extending the concept of auto-
+programming. Our work provides a novel way                                                                     formalization to a broader range of logical reason-
+to solve this within the framework of augmented                                                                ing tasks with modern LLMs.
+LLMs. Instead of parsing the problem-solving pro-
+cedure as programs, we only describe the problem                                                               3        L OGIC -LM
+with symbolic language using LLMs and then of-
+fload the reasoning to external symbolic solvers.                                                              As shown in Figure 2, the inputs of our model are
+                                                                                                               a logical reasoning problem P described in natural
+Auto-Formalization. The concept of convert-                                                                    language, along with a goal G in the form of a
+ing natural language into symbolic representations                                                             multiple-choice or free-form question. L OGIC -LM
+has been widely adopted in auto-formalization for                                                              then follows a problem formulation-and-reasoning
+mathematical reasoning (Wu et al., 2022; Drori                                                                 paradigm to solve the problem.
+                                                                                                      3808
+   In the Problem Formulation stage, we prompt an       Logic Programming (LP) Language. Deduc-
+LLM to translate the problem and the goal into a        tive reasoning typically starts from known facts and
+task-specific symbolic language. In the Symbolic        rules, and iteratively makes new inferences until the
+Reasoning stage, we call a deterministic symbolic       goal statement can be proved or disproved (Poole
+solver, e.g., a logic programming engine, to ob-        and Mackworth, 2010). The Prolog logic pro-
+tain a symbolic-represented answer. Finally, an         gramming language (Clocksin and Mellish, 2003;
+LLM- or rule-based Result Interpreter is respon-        Körner et al., 2022) is arguably the most prominent
+sible for translating the answer back to natural        symbolic language to describe deductive reasoning
+language. Using this approach, the reasoning is         problems. We adopt its grammar to represent a
+guaranteed to be faithful as long as the problem        problem as facts, rules, and queries.
+formulation is correct since the answer A is the        • Facts: a fact F is a simple statement with a
+result of executing deterministic algorithms (e.g.,     predicate and a set of arguments, formulated as
+forward/backward-chaining) embedded within the          P (a1 , · · · , an ), where P is the predicate name and
+symbolic reasoner. Compared to previous methods         each argument ai can be a variable, entity, num-
+based on chain-of-thought, our framework reduces        ber, or bool. For example, Age(Peter, 31) means
+the burden of LLMs by shifting their focus from         “Peter’s age is 31”, and MadeOfIron(Nails, True)
+“solving the problem by reasoning step-by-step” to      represents the fact “Nails are made of iron”.
+“representing the problem in symbolic language”.
+                                                        • Rules: rules are written in the form of clauses:
+                                                        F1 ∧· · ·∧Fm → Fm+1 ∧· · ·∧Fn , where each Fi is
+3.1 Problem Formulator                                  a fact and the rule means “if the facts F1 , · · · , Fm
+Intuitively, LLMs may struggle with directly solv-      are true, then the facts Fm+1 · · · Fn are also true.”
+ing complex reasoning problems. However, they           • Queries: a query Q is simply another fact re-
+have demonstrated a notable ability to comprehend       quired to be proved based on known facts and rules.
+textual inputs and translate them into formal pro-
+                                                        First-Order Logic (FOL). While the logic pro-
+grams, such as mathematical equations (He-Yueya
+                                                        gramming language efficiently represents common
+et al., 2023) or Python codes (Gao et al., 2023). We
+                                                        deductive reasoning problems, it may fail to rep-
+posit that this capability to formulate problems into
+                                                        resent more complex first-order logic (FOL) prob-
+different languages can be extended to symbolic
+                                                        lems. To address this, we also include the FOL
+languages as well. We leverage the few-shot gener-
+                                                        grammar (Enderton, 2001) in Appendix A. A prob-
+alization ability of LLMs to achieve this. By pro-
+                                                        lem is then parsed into a list of FOL formulas,
+viding the LLM with detailed instructions about the
+                                                        which are divided into Premises (the known in-
+grammar of the symbolic language, alongside a few
+                                                        formation from the problem) and Conclusion (the
+demonstrations as in-context examples, we observe
+                                                        unknown formula to be proved). An example sen-
+that LLMs, like InstructGPT (Ouyang et al., 2022b)
+                                                        tence and its FOL formula are given in Table 1.
+and GPT-4 (OpenAI, 2023), can effectively follow
+the instructions to identify key entities, facts, and   Constraint Satisfaction (CSP). Constraint sat-
+rules present in the problem statement, and then        isfaction problems (CSPs) (Kumar, 1992) aims
+translate these elements into symbolic language         to find the value assignment of a set of objects
+following our defined grammar.                          that satisfy a number of constraints. A CSP
+   Specifically, we use four different symbolic for-    is often defined as a triple (X, D, C), where
+mulations to cover four common types of logical         X = {x1 , · · · , xn } is a set of variables, D =
+reasoning problems: deductive reasoning, first-         {D1 , · · · , Dn } is a set of their respective domains
+order logic reasoning, constraint satisfaction prob-    of values, and C = {C1 , · · · , Cm } is a set of con-
+lem, and analytical reasoning. These formula-           straints. Each variable xi can take on the values
+tions provide a foundation for translating natu-        in the nonempty domain Di . Every constraint Cj
+ral language-based problem statements. By defin-        is a pair ⟨tj , Rj ⟩, where tj ⊂ X is a subset of k
+ing additional problem-specific formulations, our       variables and Rj is a k-ary relation on the corre-
+framework retains the flexibility to accommodate a      sponding subset of domains Dj . We use the above
+wider range of reasoning tasks. Next, we will delve     syntax to define a CSP problem as variables, do-
+into the grammar of each symbolic formulation.          mains, and constraints. An example is given in
+Examples of each problem type are in Figure 2.          both Figure 2 and Table 1.
+                                                    3809
+                                                                Example
+  Problem       Formulation                                                                                 Solver          Dataset
+                                       NL Sentence                        Symbolic Formulation
+                              If the circuit is complete and        Complete(Circuit, True)∧
+  Deductive                                                                                                               ProntoQA,
+                    LP        the circuit has the light bulb        Has(Circuit, LightBulb)                  Pyke
+  Reasoning                                                                                                               ProofWriter
+                              then the light bulb is glowing.       → Glowing(LightBulb, True)
+ First-Order                   A Czech person wrote a book        ∃x2 ∃x1 (Czech(x1 ) ∧ Author(x2 , x1 )
+                   FOL                                                                                      Prover9         FOLIO
+    Logic                      in 1946.                           ∧Book(x2 ) ∧ Publish(x2 , 1946))
+                              On a shelf, there are five books.      blue_book ∈ {1, 2, 3, 4, 5}
+ Constraint                                                                                                 python-
+                   CSP        The blue book is to the right          yellow_book ∈ {1, 2, 3, 4, 5}                      LogicalDeduction
+ Satisfaction                                                                                              constraint
+                              of the yellow book.                    blue_book > yellow_book
+                                                                  repairs(Xena, radios) ∧
+  Analytical                   Xena and exactly three other
+                   SAT                                            Count([t:technicians], t ̸= Xena            Z3           AR-LSAT
+  Reasoning                    technicians repair radios
+                                                                  ∧ repairs(t, radios))) == 3)
+
+Table 1: A summary of the symbolic formulations (with examples) and symbolic solvers we use for the five datasets
+in our study, representing four different types of logical reasoning problems.
+
+
+Boolean Satisfiability (SAT) Formulation. SAT                          FOL Prover. We use Prover92 as the FOL in-
+is the problem of deciding if there is an assignment                   ference engine. Prover9 is an automated theorem
+to the variables of a Boolean formula such that                        prover that supports first-order logic and equational
+the formula is satisfied. Many analytical reasoning                    logic. It initially converts FOL statements to con-
+problems can be formulated as SAT problems. We                         junctive normal form (CNF) and then performs
+adopt the grammar defined in Ye et al. (2023) to                       resolution (Robinson, 1965) on the CNF to deduce
+formulate an SAT problem P as (Φ, T , Q), where                        whether a conclusion is true, false, or unknown.
+Φ is a set of constraints defined under the theory T ,
+                                                                       CSP Solver. Solving a CSP is to find value as-
+and Q is the query of interest.
+                                                                       signments for all variables that satisfy all given
+   Table 1 summarizes the four types of logical                        constraints. Commonly used algorithms for this
+reasoning problems, their typical datasets, and the                    task include backtracking, constraint propagation,
+symbolic formulation used to represent each type of                    and local search variants. To this end, we incor-
+problem. We also give an example of a natural lan-                     porate the python-constraint3 package which
+guage statement with its corresponding symbolic                        offers solvers for CSPs over finite domains.
+formulation for each type. Appendix C shows the
+full prompts we use for the problem formulator.                        SAT Solver. For solving SAT problems, we use
+To teach LLMs to better align each statement with                      the Z3 theorem prover (de Moura and Bjørner,
+its corresponding symbolic form, we use the for-                       2008), a satisfiability modulo theories (SMT)
+mat SYMBOLIC _ FORMULA ::: NL_ STATEMENT                               solver developed by Microsoft4 . The SMT solver
+in in-context examples to enable better grounding.                     provides algorithms to determine whether a set of
+                                                                       mathematical formulas is satisfiable. It generalizes
+3.2 Symbolic Reasoner                                                  the SAT problems to more complex formulas in-
+After the problem formulator parses the problem                        volving real numbers, integers, and various data
+P and the goal G into symbolic representations                         structures such as lists, arrays, bit vectors, and
+P̂ and Ĝ, we call a deterministic external solver                     strings. A lot of real-world analytical reasoning
+depending on the task, to obtain the answer A. Ta-                     problems can be represented as problems of solv-
+ble 1 summarizes the symbolic solvers we use for                       ing a system of equations.
+each type of logical reasoning problem.
+                                                                       3.3     Self-Refiner
+LP System. For deductive reasoning, we incor-                          For complex problems, generating the correct log-
+porate the Pyke expert system (Frederiksen, 2008),                     ical form may become challenging for LLMs. To
+which makes inferences based on the logic pro-                         address this, we introduce a self-refinement mod-
+gramming language. In response to a query, Pyke                        ule that learns to modify inaccurate logical for-
+first creates a knowledge base, populating it with                         2
+                                                                            https://www.cs.unm.edu/~mccune/prover9/
+known facts and rules. Subsequently, it applies                            3
+                                                                            https://github.com/python-constraint/
+forward- and backward-chaining algorithms to in-                       python-constraint
+fer new facts and substantiate the goal.                                  4
+                                                                            https://github.com/Z3Prover/z3
+
+                                                                  3810
+mulations using the error messages from the sym-         each part requiring 0, ≤ 1, ≤ 2, ≤ 3, and ≤ 5 hops
+bolic reasoner as feedback. Recent works (Chen           of reasoning, respectively. We evaluate the hardest
+et al., 2023; Madaan et al., 2023) have adopted sim-     depth-5 subset. To reduce overall experimentation
+ilar ideas to improve code generation, by teaching       costs, we randomly sample 600 examples in the
+LLMs to debug their predicted programs via few-          test set and ensure a balanced label distribution.
+shot demonstrations. Here we extend this idea to            FOLIO (Han et al., 2022) is a challenging
+refine generated logic representations. If the sym-      expert-written dataset for logical reasoning. The
+bolic solver returns an execution error, we instruct     problems are mostly aligned with real-world knowl-
+the LLM to refine the incorrect logical form, by         edge and use highly natural wordings, and the ques-
+prompting it with the erroneous logic form, the          tions require complex first-order logic reasoning to
+solver’s error message, and a set of demonstrations      solve. We use the entire FOLIO test set for evalua-
+showing common error cases (e.g., a free variable        tion, consisting of 204 examples.
+is not bounded to any quantifier in FOL) and their          LogicalDeduction is a challenging logical rea-
+remedies. We run this process iteratively until ei-      soning task from the BigBench (Srivastava et al.,
+ther no error messages are returned, or the maxi-        2022) collaborative benchmark. The problems are
+mum number of allowable revisions is reached.            mostly about deducing the order of a sequence of
+                                                         objects from a minimal set of conditions. We use
+3.4 Result Interpreter                                   the full test set consisting of 300 examples.
+Finally, the result interpreter translates the results      AR-LSAT (Zhong et al., 2022) is a dataset that
+returned from the symbolic solver back to a natural      collects all analytical logic reasoning questions
+language answer. For certain problems, this can          from the Law School Admission Test from 1991 to
+be achieved through predefined rules; for example,       2016. We use the test set which has 231 multiple-
+mapping Entailment to true. However, this pro-           choice questions. AR-LSAT is particularly chal-
+cess can be more complex for CSPs, e.g., translat-       lenging, with state-of-the-art models only achiev-
+ing {convertible: 1, tractor: 2, minivan: 3} to “the     ing performance slightly better than random guess-
+convertible is the oldest.”. To handle these varying     ing (Liang et al., 2022; Ribeiro et al., 2023a).
+levels of complexity, we designed both rule-based           We convert all examples into a standard multiple-
+and LLM-based result interpreters. Details of the        choice format, comprising a problem statement, a
+result interpreter are given in Appendix D.              question, and potential answers, as shown in Fig-
+                                                         ure 2. We also select 1-5 examples from the train-
+4   Experiments                                          ing set of each dataset as in-context examples. De-
+                                                         tailed data statistics are in Appendix B.
+Datasets. We evaluate L OGIC -LM on five com-
+mon logical reasoning datasets, as follows.              Baselines. We compare our model against two
+   PrOntoQA (Saparov and He, 2023) is a recent           baselines that depend solely on LLMs for logical
+synthetic dataset created to analyze the capacity of     reasoning: 1) Standard LLMs, which leverage in-
+LLMs for deductive reasoning. We use the hardest         context learning to directly answer the question;
+fictional characters version of the dataset, based on    and 2) Chain-of-Thought (CoT) (Wei et al., 2022b),
+the results in Saparov and He (2023). Each version       which adopts a step-by-step problem-solving ap-
+is divided into different subsets depending on the       proach, generating explanations before providing
+number of reasoning hops required. We use the            the final answer. We separately evaluate the set-
+hardest 5-hop subset for evaluation. Each question       tings that ChatGPT (gpt-3.5-turbo), GPT-3.5
+in PrOntoQA aims to validate a new fact’s veracity,      (text-davinci-003) (Ouyang et al., 2022a) and
+such as “True or false: Alex is not shy.”.               GPT-4 (gpt-4) (OpenAI, 2023) serve as the under-
+   ProofWriter (Tafjord et al., 2021) is another         lying LLMs for all models. To ensure fair com-
+commonly used dataset for deductive logical rea-         parisons, we use the same in-context examples for
+soning. Compared with PrOntoQA, the problems             all models. For reproducible results, we set the
+are expressed in a more naturalistic language form.      temperature to 0 and select the response with the
+We use the open-world assumption (OWA) subset            highest probability from LLMs. Since all examples
+in which each example is a (problem, goal) pair          are formed as multiple-choice questions, we eval-
+and the label is one of {PROVED, DISPROVED,              uate model performance based on the accuracy of
+UNKNOWN}. The dataset is divided into five parts,        selecting the correct answer.
+                                                     3811
+                      ChatGPT (gpt-3.5-turbo)       GPT-3.5 (text-davinci-003)                    GPT-4 (gpt-4)
+      Dataset
+                    Standard CoT Logic-LM         Standard CoT Logic-LM                    Standard CoT Logic-LM
+    PrOntoQA          47.40    67.80    61.00       51.80         83.00        85.00          77.40        98.79         83.20
+    ProofWriter       35.50    49.17    58.33       36.16         48.33        71.45          52.67        68.11         79.66
+      FOLIO           45.09    57.35    62.74       54.60         57.84        61.27          69.11        70.58         78.92
+ LogicalDeduction     40.00    42.33    65.67       41.33         48.33        62.00          71.33        75.25         87.63
+     AR-LSAT          20.34    17.31    26.41       22.51         22.51        25.54          33.33        35.06         43.04
+
+Table 2: Accuracy of standard promoting (Standard), chain-of-thought promoting (CoT), and our method (L OGIC -
+LM, without self-refinement) on five reasoning datasets. The best results within each base LLM are highlighted.
+
+
+4.1 Main Results                                            Dataset       SR
+                                                                                         GPT-3.5                    GPT-4
+                                                                                Exe_Rate       Exe_Acc      Exe_Rate      Exe_Acc
+We report the results of L OGIC -LM (without self-                        −     99.4%          84.9         100.0%        83.2
+                                                            ProntoQA
+refinement) and baselines in Table 2. For L OGIC -                        +     100.0% ↑0.6    85.0 ↑0.1    100.0%        83.2
+LM, a symbolic solver does not return an answer                           −     87.3%          73.6         99.0%         79.6
+                                                            ProofWriter
+when there are grammar errors in the symbolic                             +     95.6% ↑8.3     74.1 ↑0.5    99.0%         79.6
+
+formulation. For these un-executable cases, we              FOLIO
+                                                                          −     66.7%          61.8         79.9%         80.4
+                                                                          +     84.3% ↑17.6    64.3 ↑2.5    85.8% ↑5.9    79.9 ↓0.5
+fall back on using chain-of-thought to predict the
+                                                            Logical       −     100.0%         62.0         100.0%        87.6
+answer. We have three major observations.                   Deduction     +     100.0%         62.0         100.0%        87.6
+   1. Logic-LM significantly outperforms stan-                            −     11.3%          57.7         32.6%         60.0
+                                                            AR-LSAT
+dard LLMs and CoT across all datasets. With GPT-                          +     21.8% ↑10.5    60.3 ↑2.6    39.8% ↑7.2    58.8 ↓1.2
+
+3.5, our method outperforms standard LLM on all
+                                                         Table 3: Analysis of accuracy and execution status of
+datasets, with an average improvement of 39.2%.          L OGIC -LM. We present the percentage of executable
+This highlights the benefit of combining LLMs            logical formulations (Exe_Rate) together with the accu-
+with external symbolic solvers for logical reason-       racy of the execution (Exe_Acc). SR represents before
+ing. L OGIC -LM also improves CoT by a large mar-        (−) and after (+) self-refinement.
+gin of 18.4% on average, showing that offloading
+the reasoning to symbolic solvers greatly improves
+faithfulness compared with pure language-based           that CoT emulates human forward-chain reasoning:
+reasoning with CoT.                                      beginning with known facts and sequentially de-
+   2. GPT-4 outperforms GPT-3.5 by a large margin        riving new conclusions until the goal is met. This
+of 48.46% on average for the standard prompting.         reasoning style aligns well with problems in the
+This aligns with the assertion that the main en-         PrOntoQA and ProofWriter datasets. However,
+hancement of GPT-4 lies in its ability to carry out      FOL and CSP problems often necessitate more
+complex reasoning (OpenAI, 2023). Although this          sophisticated reasoning strategies that are “non-
+may indicate that the logical reasoning capability       linear” compared to standard forward-chain rea-
+can be boosted by scaling up the LLM, we observe         soning. These include hypothesizing, conditioning,
+that GPT-4 still makes numerous unfaithful reason-       recursive inference, and the process of elimina-
+ing errors. By delegating the reasoning to symbolic      tion. Compared to CoT, the integration of symbolic
+solvers, our method can further improve GPT-4            solvers is better suited to these reasoning styles,
+by an average of 24.98% and 10.44% for standard          hence yielding a more marked improvement on FO-
+prompting and CoT prompting, respectively.               LIO (+21.85%), LogicalDeduction (+45.67%), and
+                                                         AR-LSAT (+24.14%).
+   3. While integrating CoT generally enhances
+LLM performance, we find its benefits compara-
+                                                            4.2       Effectiveness of Problem Formulator
+tively less substantial or even negative on FOLIO,
+LogicalDeduction, and AR-LSAT, with a modest             We then evaluate how well LLM can translate a
+improvement of 11.75%, 9.41%, and -3.2%, re-             given problem into the symbolic formulation used
+spectively. On the contrary, the benefits of CoT         by each symbolic solver. In Table 3, we report the
+on ProntoQA and ProofWriter are 51.59% and               percentage of symbolic formulations that are exe-
+33.82%, respectively. A plausible explanation is         cutable by the corresponding symbolic solver for
+                                                    3812
+ Accuracy      Standard      CoT        Logic-LM                                  CoT (GPT-3.5)     Logic-LM (GPT-3.5)
+                                                                 Accuracy
+  90                                                                              CoT (GPT-4)       Logic-LM (GPT-4)
+       81.7                                                          85
+               77.3
+  80                        73.6                                            78.92          78.43
+                                                                                                   79.9        79.41
+                                          71.3     71.1              80
+  70 76.3      73.6
+                                                                     75
+  60 57.7      52.6
+                            65.3
+                                                                                                                     70.58
+                                          59.4                       70
+                            47.3
+  50                                                                                               64.56       63.84
+                                                    51               65     61.27          62.25
+                                          38.3
+  40                                               33.5              60
+                                                                                                                     57.87
+  30                                                                 55
+        0       1            2             3        5             Rounds      0              1      2            3
+                      Reasoning Depth
+                                                                 GPT-3.5    66.7%          79.4%   82.4%       84.3%
+                                                                   GPT-4    79.9%          85.3%   85.3%       85.8%
+Figure 3: Accuracy of different models for increasing
+size of reasoning depth on the ProofWriter dataset.
+                                                             Figure 4: The accuracy for different rounds of self-
+                                                             refinement, with the corresponding executable rates.
+each dataset (Exe_Rate). Generally, LLM demon-
+strates high proficiency in transcribing problems            ple, L OGIC -LM outperforms CoT by 7.1%, 5.0%,
+into symbolic formats, evidenced by its near 100%            12.7%, 20.0%, and 39.4% on depth-0, depth-1,
+Exe_Rate on ProntoQA, ProofWriter, and Logi-                 depth-2, depth-4, and depth-5 problems, respec-
+calDeduction. However, the high performance on               tively. In L OGIC -LM, multi-step logical reasoning
+these datasets is somewhat anticipated, given that           is delegated to external symbolic solvers, thereby
+their problems are mostly synthetically generated,           transitioning the challenge of LLM from problem-
+limiting language variability. When it comes to              solving to problem representation. Ideally, the com-
+datasets comprising real-world, expertly crafted             plexity of formally representing a problem state-
+problems, such as FOLIO and AR-LSAT, GPT-                    ment in logical form should remain relatively con-
+4’s performance is notably less promising, with              stant, regardless of whether the questions require
+Exe_Rate scores of 79.9% and 32.6% respectively.             simple or complex reasoning. The trends in Fig-
+This discrepancy underscores the inherent chal-              ure 3 validate this assumption. The performance of
+lenges associated with converting real-world prob-           Standard and CoT declines precipitously with the
+lems into their logical equivalents.                         escalation of problem complexity. However, this
+   Exe_Rate only reflects the grammar correctness            trend is less prominent for L OGIC -LM, indicating
+of the logical form. We also report the accuracy             that the robust reasoning capabilities provided by
+of the executable samples (Exe_Acc) to measure               external solvers substantially mitigate performance
+the semantic correctness. We find that logical               degradation for complex reasoning problems.
+forms generated by GPT-4 generally achieve high
+Exe_Acc, even for the most challenging AR-LSAT               4.4      Impact of Self-Refinement
+dataset. Such performance accentuates the poten-             In Table 3, we find that self-refinement is effective
+tial of symbolic solvers in bolstering the model’s           in fixing the in-executable symbolic formulations,
+logical reasoning prowess, contingent on the pre-            increasing the Exe_Rate by 5.01 on average. For
+cise translation of problems into symbolic forms.            an in-depth analysis, we then evaluate the accu-
+                                                             racy and Exe_Rate across different rounds of self-
+4.3 Robustness of Reasoning                                  refinement on FOLIO, namely, 0 (no refinement),
+Incorporating symbolic solvers also leads to more            1, 2, and 3 rounds. The results are in Figure 4.
+robust reasoning. To illustrate this, we report                 We find that as the rounds of self-refinement in-
+the performance of L OGIC -LM and baselines for              crease, the percentage of executable formulations
+questions of varying complexity levels. We ran-              consistently increases, leading to an enhancement
+domly selected 300 examples from each subset                 in the final performance. This suggests that self-
+of ProofWriter, ensuring a balanced label distri-            refinement serves as an effective tool in aiding the
+bution. The problems in these subsets require 0,             LLM to accurately frame the problem. However,
+<=1, <=2, <=3, and <=5 hops of reasoning, respec-            the accuracy tends to stagnate in subsequent rounds,
+tively. The results, shown in Figure 3, indicate             even though the Exe_Rate continues to increase.
+that L OGIC -LM becomes increasingly effective as            This can be attributed to the type of feedback re-
+the required reasoning depth increases. For exam-            ceived by the self-refiner, which is the error mes-
+                                                          3813
+ Problem: "Stranger Things" is a popular Netflix show. If a Netflix show is popular, Karen will binge-watch it.
+           If and only if Karen binge-watches a Netflix show, she will download it. Karen does not download "Black Mirror".
+           "Black Mirror" is a Netflix show. If Karen binge-watches a Netflix show, she will share it to Lisa.
+ Question: Is the following statement true, false, or uncertain? "Black Mirror" is popular.
+            (A) True                (B) False            (C) Uncertain
+ Generated symbolic Formulations:
+     Predicates:
+         NetflixShow(x) # x is a Netflix show.
+         Popular(x) # x is popular.
+         BingeWatch(x, y) # x binge-watches y.
+         Download(x, y) # x downloads y.
+         Share(x, y, z) # x shares y to z.
+     Premises:
+         NetflixShow(strangerThings) ∧ Popular(strangerThings) # "Stranger Things" is a popular Netflix show.
+         ∀x (NetflixShow(x) ∧ Popular(x) → BingeWatch(karen, x)) # If a Netflix show is popular, Karen will binge-watch it.
+         ∀x (NetflixShow(x) ∧ BingeWatch(karen, x) ↔ Download(karen, x)) # If and only if Karen … , she will download it.
+         NetflixShow(blackMirror) ∧ ¬Download(karen, blackMirror) # Karen does not … "Black Mirror" is a Netflix show.
+         ∀x (NetflixShow(x) ∧ BingeWatch(karen, x) → Share(karen, x, lisa)) # If Karen … , she will share it to Lisa.
+     Conclusion:
+         Popular(blackMirror) # "Black Mirror" is popular.
+ Predicted answer: B
+
+
+    Figure 5: An example of the generated symbolic representation and the predicted answer by L OGIC -LM.
+
+
+sage from the symbolic solver. This feedback aids                expressions accurately. In this case, the model fails
+in converting “invalid” symbolic representations                 to distinguish between the meanings of “below”
+into valid ones. However, a valid symbolic repre-                and “above”, resulting in an incorrect constraint
+sentation does not necessarily equate to a “correct”             Dan > Eve. Example 4 exemplifies GPT-4’s chal-
+problem formulation that accurately represents the               lenge with fully grasping the rules of FOL gram-
+problem. This issue could be tackled by enhanc-                  mar, evidenced by the invalid generated formula:
+ing the self-refiner to incorporate feedback beyond              Rating(subway, y) ∧ y > 9. These error cases
+the error message, e.g., a reward signal from an                 underscore that transforming problems into logi-
+additional module evaluating the accuracy of a gen-              cal forms remains a challenging task for modern
+erated symbolic form. We leave this as a promising               LLMs, due to the intricacies of FOL formulation,
+direction for future exploration.                                the innate flexibility of natural language, and the
+                                                                 complexity of global problem comprehension.
+4.5 Case Study
+In Figure 5, we show an example of the symbolic                  5    Conclusion and Future Work
+representations generated by GPT-4, together with
+the predicted answer. In general, L OGIC -LM has                 In this work, we propose a novel approach to ad-
+demonstrated a potent capacity to interpret com-                 dress logical reasoning problems by combining
+plex problems into symbolic forms. Nonetheless,                  large language models with symbolic solvers. We
+there remain certain difficulties in accurately un-              introduce Logic-LM, one instantiation of such a
+derstanding the semantics of the problem.                        framework, and demonstrate how it significantly
+   We further analyze some error cases in Fig-                   improves performance over pure LLMs and chain-
+ure 6 of Appendix E. Example 1 shows a case                      of-thought prompting techniques.
+where GPT-4 generates an incorrect FOL represen-                    While Logic-LM has proven to be a capable sys-
+tation, stemming from its inability to define ap-                tem, it can be further improved with extension to
+propriate predicates. Here, instead of creating the              more flexible and powerful logic systems. For ex-
+predicate EasternWildTurkey, the model gener-                    ample, statistical relational learning (SRL) systems
+ates a constant, WildTurkey(eastern), in which                   such as Markov logic networks (Richardson and
+WildTurkey is the predicate and eastern is the                   Domingos, 2006) and probabilistic soft logic (Bach
+constant. While this representation is valid in iso-             et al., 2017) have demonstrated great promise in
+lation, it does not interact well with subsequent                reasoning under uncertainty and integration with
+constants. This inconsistency is a recurring issue               our framework would enable even more adaptive
+in GPT-4’s symbolic form generation, illustrating                problem-solving capabilities. Additionally, our
+that the model sometimes struggles to maintain an                method can be extended to reasoning problems
+overarching understanding of the problem when                    requiring commonsense, which remains a signifi-
+forming logical symbols. Example 3 highlights a                  cant challenge as they often require reasoning over
+case where GPT-4 struggles to interpret specific                 complex and ambiguous rules.
+                                                            3814
+Limitations                                                 and probabilistic soft logic. Journal of Machine
+                                                            Learning Research (JMLR), 18(1):1–67.
+We identify two main limitations of L OGIC -LM.
+First, L OGIC -LM relies on translating reasoning        Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie
+                                                           Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind
+problems into logical formats that can be tackled by       Neelakantan, Pranav Shyam, Girish Sastry, Amanda
+symbolic solvers. As a consequence, the model’s            Askell, Sandhini Agarwal, Ariel Herbert-Voss,
+applicability is inherently bounded by the expres-         Gretchen Krueger, Tom Henighan, Rewon Child,
+siveness of the symbolic solver, for example, not all      Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu,
+                                                           Clemens Winter, Christopher Hesse, Mark Chen, Eric
+problems can be easily encoded in first-order logic.       Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess,
+Nevertheless, this limitation can be mitigated by          Jack Clark, Christopher Berner, Sam McCandlish,
+integrating a more diverse set of symbolic solvers.        Alec Radford, Ilya Sutskever, and Dario Amodei.
+The flexible design of L OGIC -LM facilitates this         2020. Language models are few-shot learners. In
+                                                           Proceedings of the Annual Conference on Neural
+integration. The wide range of reasoning tasks that        Information Processing Systems (NeurIPS).
+we can instantiate our L OGIC -LM framework on
+shows its general applicability.                         Le-Wen Cai, Wang-Zhou Dai, Yu-Xuan Huang, Yu-
+   Second, L OGIC -LM depends on in-context                Feng Li, Stephen H. Muggleton, and Yuan Jiang.
+                                                           2021. Abductive learning with ground knowledge
+learning coupled with self-refinement to convert           base. In Proceedings of the 30th International Joint
+a natural language (NL) problem into the symbolic          Conference on Artificial Intelligence (IJCAI), pages
+representation. While this method has proven to            1815–1821.
+be effective, it may face difficulties when dealing
+                                                         Wenhu Chen, Xueguang Ma, Xinyi Wang, and
+with logical representations with intricate grammar       William W. Cohen. 2022. Program of thoughts
+structures, such as probabilistic soft logic. This        prompting: Disentangling computation from rea-
+arises from the difficulty in conveying complex           soning for numerical reasoning tasks.   CoRR,
+grammatical rules to the language model through           abs/2211.12588.
+a limited number of demonstrations within a con-         Xinyun Chen, Maxwell Lin, Nathanael Schärli, and
+strained context size. As a potential solution, future     Denny Zhou. 2023. Teaching large language models
+works could explore the development of specialized         to self-debug. CoRR, abs/2304.05128.
+modules to enhance the mapping between NL and            Peter Clark, Oyvind Tafjord, and Kyle Richardson. 2020.
+symbolic language, e.g., fine-tuning LLMs with             Transformers as soft reasoners over language. In Pro-
+synthetic data generated via symbolic solvers.             ceedings of the 29th International Joint Conference
+                                                           on Artificial Intelligence (IJCAI), pages 3882–3890.
+Ethics Statement                                         William F Clocksin and Christopher S Mellish. 2003.
+                                                          Programming in PROLOG. Springer Science & Busi-
+The use of large language models requires a signifi-       ness Media.
+cant amount of energy for computation for training,
+which contributes to global warming (Strubell et al.,    Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian,
+2019). Our work performs few-shot in-context               Jacob Hilton, Reiichiro Nakano, Christopher Hesse,
+                                                           and John Schulman. 2021. Training verifiers to solve
+learning instead of training models from scratch, so       math word problems. CoRR, abs/2110.14168.
+the energy footprint of our work is less. The large
+language models whose API we use for inference,          Leonardo Mendonça de Moura and Nikolaj S. Bjørner.
+especially GPT-4, consume significant energy.              2008. Z3: an efficient SMT solver. In Proceedings of
+                                                           the 14th International Conference of Tools and Algo-
+                                                           rithms for the Construction and Analysis of Systems
+Acknowledgements                                           (TACAS), volume 4963 of Lecture Notes in Computer
+                                                           Science, pages 337–340.
+This work was supported by the National Science
+Foundation Award #2048122. The views expressed           Leonardo Mendonça de Moura, Soonho Kong, Jeremy
+are those of the authors and do not reflect the offi-      Avigad, Floris van Doorn, and Jakob von Raumer.
+                                                           2015. The lean theorem prover (system description).
+cial policy or position of the US government.              In Proceedings of the 25th International Conference
+                                                           on Automated Deduction (ICAD), volume 9195 of
+                                                           Lecture Notes in Computer Science, pages 378–388.
+References
+                                                         Iddo Drori, Sarah Zhang, Reece Shuttleworth, Leonard
+Stephen Bach, Matthias Broecheler, Bert Huang, and         Tang, Albert Lu, Elizabeth Ke, Kevin Liu, Linda
+   Lise Getoor. 2017. Hinge-loss markov random fields       Chen, Sunny Tran, Newman Cheng, et al. 2022. A
+
+                                                     3815
+  neural network solves, explains, and generates uni-    Philipp Körner, Michael Leuschel, João Barbosa,
+  versity math problems by program synthesis and few-      Vítor Santos Costa, Verónica Dahl, Manuel V.
+  shot learning at human level. Proceedings of the Na-     Hermenegildo, José F. Morales, Jan Wielemaker,
+  tional Academy of Sciences, 119(32):e2123433119.         Daniel Diaz, and Salvador Abreu. 2022. Fifty years
+                                                           of prolog and beyond. Theory Pract. Log. Program.,
+Herbert B Enderton. 2001. A mathematical introduction      22(6):776–858.
+  to logic. Elsevier.
+                                                         Vipin Kumar. 1992.        Algorithms for constraint-
+Bruce Frederiksen. 2008. Applying expert system tech-
+                                                           satisfaction problems: A survey. AI Mag., 13(1):32–
+  nology to code reuse with pyke. PyCon: Chicago.
+                                                           44.
+Luyu Gao, Aman Madaan, Shuyan Zhou, Uri Alon,
+  Pengfei Liu, Yiming Yang, Jamie Callan, and Gra-       Angeliki Lazaridou, Elena Gribovskaya, Wojciech
+  ham Neubig. 2023. PAL: program-aided language            Stokowiec, and Nikolai Grigorev. 2022. Internet-
+  models. In Proceedings of the International Con-         augmented language models through few-shot
+  ference on Machine Learning (ICML), volume 202,          prompting for open-domain question answering.
+  pages 10764–10799.                                       CoRR, abs/2203.05115.
+
+Olga Golovneva, Moya Chen, Spencer Poff, Martin          Percy Liang, Rishi Bommasani, Tony Lee, Dimitris
+  Corredor, Luke Zettlemoyer, Maryam Fazel-Zarandi,        Tsipras, Dilara Soylu, Michihiro Yasunaga, Yian
+  and Asli Celikyilmaz. 2023. ROSCOE: A suite of           Zhang, Deepak Narayanan, Yuhuai Wu, Ananya Ku-
+  metrics for scoring step-by-step reasoning. In Pro-      mar, Benjamin Newman, Binhang Yuan, Bobby Yan,
+  ceedings of the 11th International Conference on         Ce Zhang, Christian Cosgrove, Christopher D. Man-
+  Learning Representations (ICLR).                         ning, Christopher Ré, Diana Acosta-Navas, Drew A.
+                                                           Hudson, Eric Zelikman, Esin Durmus, Faisal Ladhak,
+Nitish Gupta, Kevin Lin, Dan Roth, Sameer Singh, and       Frieda Rong, Hongyu Ren, Huaxiu Yao, Jue Wang,
+  Matt Gardner. 2020. Neural module networks for           Keshav Santhanam, Laurel J. Orr, Lucia Zheng, Mert
+  reasoning over text. In Proceedings of the 8th In-       Yüksekgönül, Mirac Suzgun, Nathan Kim, Neel
+  ternational Conference on Learning Representations       Guha, Niladri S. Chatterji, Omar Khattab, Peter
+  (ICLR).                                                  Henderson, Qian Huang, Ryan Chi, Sang Michael
+Simeng Han, Hailey Schoelkopf, Yilun Zhao, Zhenting        Xie, Shibani Santurkar, Surya Ganguli, Tatsunori
+  Qi, Martin Riddell, Luke Benson, Lucy Sun, Eka-          Hashimoto, Thomas Icard, Tianyi Zhang, Vishrav
+  terina Zubova, Yujie Qiao, Matthew Burtell, David        Chaudhary, William Wang, Xuechen Li, Yifan Mai,
+  Peng, Jonathan Fan, Yixin Liu, Brian Wong, Mal-          Yuhui Zhang, and Yuta Koreeda. 2022. Holistic eval-
+  colm Sailor, Ansong Ni, Linyong Nan, Jungo Kasai,        uation of language models. CoRR, abs/2211.09110.
+  Tao Yu, Rui Zhang, Shafiq R. Joty, Alexander R. Fab-
+  bri, Wojciech Kryscinski, Xi Victoria Lin, Caiming     Bo Liu, Yuqian Jiang, Xiaohan Zhang, Qiang Liu, Shiqi
+  Xiong, and Dragomir Radev. 2022. FOLIO: natu-            Zhang, Joydeep Biswas, and Peter Stone. 2023a.
+  ral language reasoning with first-order logic. CoRR,     LLM+P: empowering large language models with op-
+  abs/2209.00840.                                          timal planning proficiency. CoRR, abs/2304.11477.
+
+Joy He-Yueya, Gabriel Poesia, Rose E Wang, and           Hanmeng Liu, Ruoxi Ning, Zhiyang Teng, Jian Liu, Qiji
+  Noah D Goodman. 2023. Solving math word prob-            Zhou, and Yue Zhang. 2023b. Evaluating the logi-
+  lems by combining language models with symbolic          cal reasoning ability of chatgpt and GPT-4. CoRR,
+  solvers. CoRR, abs/2304.09102.                           abs/2304.03439.
+Jie Huang and Kevin Chen-Chuan Chang. 2023. To-          Qing Lyu, Shreya Havaldar, Adam Stein, Li Zhang,
+   wards reasoning in large language models: A survey.     Delip Rao, Eric Wong, Marianna Apidianaki, and
+   In Findings of the 61st Annual Meeting of the Asso-     Chris Callison-Burch. 2023. Faithful chain-of-
+   ciation for Computational Linguistics (ACL), pages      thought reasoning. CoRR, abs/2301.13379.
+   1049–1065.
+Albert Qiaochu Jiang, Sean Welleck, Jin Peng Zhou,       Aman Madaan, Niket Tandon, Prakhar Gupta, Skyler
+  Timothée Lacroix, Jiacheng Liu, Wenda Li, Mateja        Hallinan, Luyu Gao, Sarah Wiegreffe, Uri Alon,
+  Jamnik, Guillaume Lample, and Yuhuai Wu. 2023.          Nouha Dziri, Shrimai Prabhumoye, Yiming Yang,
+  Draft, sketch, and prove: Guiding formal theorem        Sean Welleck, Bodhisattwa Prasad Majumder,
+  provers with informal proofs. In Proceedings of the     Shashank Gupta, Amir Yazdanbakhsh, and Peter
+  11th International Conference on Learning Represen-     Clark. 2023. Self-refine: Iterative refinement with
+  tations (ICLR).                                         self-feedback. CoRR, abs/2303.17651.
+
+Takeshi Kojima, Shixiang Shane Gu, Machel Reid, Yu-      Robin Manhaeve, Sebastijan Dumancic, Angelika Kim-
+  taka Matsuo, and Yusuke Iwasawa. 2022. Large lan-        mig, Thomas Demeester, and Luc De Raedt. 2021.
+  guage models are zero-shot reasoners. In Proceed-        Neural probabilistic logic programming in deep-
+  ings of the Annual Conference on Neural Information      problog. The Journal of Artificial Intelligence (AIJ),
+  Processing Systems (NeurIPS).                            298:103504.
+
+                                                     3816
+Jiayuan Mao, Chuang Gan, Pushmeet Kohli, Joshua B.         Connor Pryor, Charles Dickens, Eriq Augustine, Alon
+   Tenenbaum, and Jiajun Wu. 2019. The neuro-                Albalak, William Yang Wang, and Lise Getoor. 2023.
+   symbolic concept learner: Interpreting scenes, words,     Neupsl: Neural probabilistic soft logic. In Proceed-
+   and sentences from natural supervision. In Proceed-       ings of the 32nd International Joint Conference on
+   ings of the 7th International Conference on Learning      Artificial Intelligence (IJCAI), pages 4145–4153.
+   Representations (ICLR).
+                                                           Danilo Neves Ribeiro, Shen Wang, Xiaofei Ma,
+Kostas S. Metaxiotis, Dimitris Askounis, and John E.         Henghui Zhu, Rui Dong, Deguang Kong, Juli-
+  Psarras. 2002. Expert systems in production planning       ette Burger, Anjelica Ramos, Zhiheng Huang,
+  and scheduling: A state-of-the-art survey. Journal of      William Yang Wang, George Karypis, Bing Xiang,
+  Intelligent Manufacturing, 13(4):253–260.                  and Dan Roth. 2023a. STREET: A multi-task struc-
+                                                             tured reasoning and explanation benchmark. In Pro-
+Aaron Meurer, Christopher P. Smith, Mateusz Pa-              ceedings of the Eleventh International Conference on
+  procki, Ondrej Certík, Sergey B. Kirpichev, Matthew        Learning Representations (ICLR).
+  Rocklin, Amit Kumar, Sergiu Ivanov, Jason Keith
+  Moore, Sartaj Singh, Thilina Rathnayake, Sean Vig,       Danilo Neves Ribeiro, Shen Wang, Xiaofei Ma, Henry
+  Brian E. Granger, Richard P. Muller, Francesco             Zhu, Rui Dong, Deguang Kong, Juliette Burger, An-
+  Bonazzi, Harsh Gupta, Shivam Vats, Fredrik Johans-         jelica Ramos, William Yang Wang, Zhiheng Huang,
+  son, Fabian Pedregosa, Matthew J. Curry, Andy R.           George Karypis, Bing Xiang, and Dan Roth. 2023b.
+  Terrel, Stepán Roucka, Ashutosh Saboo, Isuru Fer-          STREET: A multi-task structured reasoning and ex-
+  nando, Sumith Kulal, Robert Cimrman, and An-               planation benchmark. In Proceedings of the 11th
+  thony M. Scopatz. 2017. Sympy: symbolic com-               International Conference on Learning Representa-
+  puting in python. PeerJ Computer Science, 3:e103.          tions (ICLR).
+Reiichiro Nakano, Jacob Hilton, Suchir Balaji, Jeff Wu,    Matthew Richardson and Pedro M. Domingos. 2006.
+  Long Ouyang, Christina Kim, Christopher Hesse,            Markov logic networks. Machine Learning, 62(1-
+  Shantanu Jain, Vineet Kosaraju, William Saunders,         2):107–136.
+  Xu Jiang, Karl Cobbe, Tyna Eloundou, Gretchen
+  Krueger, Kevin Button, Matthew Knight, Benjamin          John Alan Robinson. 1965. A machine-oriented logic
+  Chess, and John Schulman. 2021. Webgpt: Browser-           based on the resolution principle. The Journal of the
+  assisted question-answering with human feedback.           ACM (JACM), 12(1):23–41.
+  CoRR, abs/2112.09332.
+                                                           Abulhair Saparov and He He. 2023. Language models
+OpenAI. 2023. GPT-4 technical report.            CoRR,       are greedy reasoners: A systematic formal analysis
+  abs/2303.08774.                                            of chain-of-thought. In Proceedings of the 11th In-
+Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida,            ternational Conference on Learning Representations
+  Carroll L. Wainwright, Pamela Mishkin, Chong               (ICLR).
+  Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray,
+  John Schulman, Jacob Hilton, Fraser Kelton, Luke         Murray Shanahan. 2022. Talking about large language
+  Miller, Maddie Simens, Amanda Askell, Peter Welin-        models. CoRR, abs/2212.03551.
+  der, Paul F. Christiano, Jan Leike, and Ryan Lowe.
+                                                           Yongliang Shen, Kaitao Song, Xu Tan, Dongsheng Li,
+  2022a. Training language models to follow instruc-
+                                                             Weiming Lu, and Yueting Zhuang. 2023. Hugging-
+  tions with human feedback. In Proceedings of the
+                                                             gpt: Solving AI tasks with chatgpt and its friends in
+  Annual Conference on Neural Information Process-
+                                                             huggingface. CoRR, abs/2303.17580.
+  ing Systems (NeurIPS).
+Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida,          Weijia Shi, Sewon Min, Michihiro Yasunaga, Minjoon
+  Carroll L. Wainwright, Pamela Mishkin, Chong               Seo, Rich James, Mike Lewis, Luke Zettlemoyer, and
+  Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray,        Wen-tau Yih. 2023. REPLUG: retrieval-augmented
+  John Schulman, Jacob Hilton, Fraser Kelton, Luke           black-box language models. CoRR, abs/2301.12652.
+  Miller, Maddie Simens, Amanda Askell, Peter Welin-
+                                                           Aarohi Srivastava, Abhinav Rastogi, Abhishek Rao,
+  der, Paul F. Christiano, Jan Leike, and Ryan Lowe.
+                                                             Abu Awal Md Shoeb, Abubakar Abid, Adam
+  2022b. Training language models to follow instruc-
+                                                             Fisch, Adam R. Brown, Adam Santoro, Aditya
+  tions with human feedback. In Proceedings of the
+                                                             Gupta, Adrià Garriga-Alonso, Agnieszka Kluska,
+  Annual Conference on Neural Information Process-
+                                                             Aitor Lewkowycz, Akshat Agarwal, Alethea Power,
+  ing Systems (NeurIPS.
+                                                             Alex Ray, Alex Warstadt, Alexander W. Kocurek,
+Lawrence C. Paulson. 1994. Isabelle - A Generic The-         Ali Safaya, Ali Tazarv, Alice Xiang, Alicia Par-
+  orem Prover (with a contribution by T. Nipkow),            rish, Allen Nie, Aman Hussain, Amanda Askell,
+  volume 828 of Lecture Notes in Computer Science.           Amanda Dsouza, Ameet Rahane, Anantharaman S.
+  Springer.                                                  Iyer, Anders Andreassen, Andrea Santilli, Andreas
+                                                             Stuhlmüller, Andrew M. Dai, Andrew La, Andrew K.
+David Poole and Alan K. Mackworth. 2010. Artificial          Lampinen, Andy Zou, Angela Jiang, Angelica Chen,
+  Intelligence - Foundations of Computational Agents.        Anh Vuong, Animesh Gupta, Anna Gottardi, Anto-
+  Cambridge University Press.                                nio Norelli, Anu Venkatesh, Arash Gholamidavoodi,
+
+                                                       3817
+  Arfa Tabassum, Arul Menezes, Arun Kirubarajan,               Empirical Methods in Natural Language Processing
+  Asher Mullokandov, Ashish Sabharwal, Austin Her-             (EMNLP), pages 89–105.
+  rick, Avia Efrat, Aykut Erdem, Ayla Karakas, and
+  et al. 2022. Beyond the imitation game: Quantifying       Xi Ye, Qiaochu Chen, Isil Dillig, and Greg Durrett.
+  and extrapolating the capabilities of language models.      2023. Satisfiability-aided language models using
+  CoRR, abs/2206.04615.                                       declarative prompting. In Proceedings of the An-
+                                                              nual Conference on Neural Information Processing
+Emma Strubell, Ananya Ganesh, and Andrew McCal-               Systems (NeurIPS).
+  lum. 2019. Energy and policy considerations for
+  deep learning in NLP. In Proceedings of the 57th          Wanjun Zhong, Siyuan Wang, Duyu Tang, Zenan Xu,
+  Annual Meeting of the Association for Computational        Daya Guo, Yining Chen, Jiahai Wang, Jian Yin, Ming
+  Linguistics (ACL), pages 3645–3650.                        Zhou, and Nan Duan. 2022. Analytical reasoning of
+                                                             text. In Findings of the 2022 Conference of the North
+Oyvind Tafjord, Bhavana Dalvi, and Peter Clark. 2021.        American Chapter of the Association for Computa-
+  Proofwriter: Generating implications, proofs, and          tional Linguistics: Human Language Technologies
+  abductive statements over natural language. In Find-       (NAACL-HLT), pages 2306–2319.
+  ings of the 59th Annual Meeting of the Association for
+  Computational Linguistics (ACL), pages 3621–3634.         Denny Zhou, Nathanael Schärli, Le Hou, Jason Wei,
+                                                              Nathan Scales, Xuezhi Wang, Dale Schuurmans,
+Oyvind Tafjord, Bhavana Dalvi Mishra, and Peter Clark.        Claire Cui, Olivier Bousquet, Quoc V. Le, and Ed H.
+  2022. Entailer: Answering questions with faithful           Chi. 2023. Least-to-most prompting enables complex
+  and truthful chains of reasoning. In Proceedings            reasoning in large language models. In Proceedings
+  of the 2022 Conference on Empirical Methods in              of the 11th International Conference on Learning
+  Natural Language Processing (EMNLP), pages 2078–            Representations (ICLR).
+  2093.
+Jidong Tian, Yitian Li, Wenqing Chen, Liqiang Xiao,
+   Hao He, and Yaohui Jin. 2022. Weakly supervised
+   neural symbolic learning for cognitive tasks. In Pro-
+   ceedings of 36th Conference on Artificial Intelligence
+   (AAAI), pages 5888–5896.
+Xingyao Wang, Sha Li, and Heng Ji. 2022. Code4struct:
+  Code generation for few-shot structured prediction
+  from natural language. CoRR, abs/2210.12810.
+Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc V.
+  Le, Ed H. Chi, Sharan Narang, Aakanksha Chowd-
+  hery, and Denny Zhou. 2023. Self-consistency im-
+  proves chain of thought reasoning in language mod-
+  els. In Proceedings of the 11th International Confer-
+  ence on Learning Representations (ICLR).
+Jason Wei, Yi Tay, Rishi Bommasani, Colin Raffel,
+   Barret Zoph, Sebastian Borgeaud, Dani Yogatama,
+   Maarten Bosma, Denny Zhou, Donald Metzler, Ed H.
+   Chi, Tatsunori Hashimoto, Oriol Vinyals, Percy
+   Liang, Jeff Dean, and William Fedus. 2022a. Emer-
+   gent abilities of large language models. Transactions
+   on Machine Learning Research, 2022.
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten
+   Bosma, Ed H. Chi, Quoc Le, and Denny Zhou. 2022b.
+   Chain of thought prompting elicits reasoning in large
+   language models. CoRR, abs/2201.11903.
+Yuhuai Wu, Albert Qiaochu Jiang, Wenda Li, Markus N.
+  Rabe, Charles Staats, Mateja Jamnik, and Christian
+  Szegedy. 2022. Autoformalization with large lan-
+  guage models. In Proceedings of the Annual Con-
+  ference on Neural Information Processing Systems
+  (NeurIPS).
+Kaiyu Yang, Jia Deng, and Danqi Chen. 2022. Gen-
+  erating natural language proofs with verifier-guided
+  search. In Proceedings of the 2022 Conference on
+
+                                                        3818
+A     Syntax for First-order Logic (FOL)                           C.1     PrOntoQA Prompts
+                                                                   Standard In-Context Learning
+        Name                     FOL Notation                      Context: Jompuses are not shy . Jompuses are yumpuses .
+                                                                   (· · · more context here · · · )
+                                                                   Zumpuses are rompuses . Max is a yumpus .
+        Constant                 lowercase letters
+                                                                   Question: Is the following statement true or false ?
+        Variable                 x, y, z, · · ·                    Max is sour .
+
+        Atom                     P (a1 , · · · , an )              Options:
+                                                                   A) True
+                                                                   B) False
+        Negation                 ¬P
+                                                                   The correct option is : B
+                                 P1 ∧ P2
+        Conjunction
+                                 P1 ∧, · · · , ∧Pn                     Chain-of-Thought Prompting
+                                 P1 ∨ P2                           Task Description: Given a problem statement as
+        Disjunction                                                contexts , the task is to answer a logical reasoning
+                                 P1 ∨, · · · , ∨Pn                 question .
+        Implication              P1 → P2                           Context: Jompuses are not shy . Jompuses are yumpuses .
+                                                                   (· · · more context here · · · )
+        Equivalence              P1 ↔ P2                           Zumpuses are rompuses . Max is a yumpus .
+
+        Existential Quantifier   ∃xP (x, · · · )                   Question: Is the following statement true or false ?
+                                                                   Max is sour .
+        Universal Quantifier     ∀xP (x, · · · )                   Options:
+                                                                   A) True
+                                                                   B) False
+          Table 4: First-Order Logic Grammar.
+                                                                   Reasoning: Max is a yumpus . Each yumpus is a dumpus .
+                                                                   (· · · more reasoning here · · · )
+                                                                   Tumpuses are not sour . So Max is not sour .
+B     Dataset Statistics                                           The correct option is : B
+
+
+    Dataset            Reasoning      Test Size         #Opts          Logic-LM
+    PrOntoQA           Deductive        500               2        Task Description: You are given a problem description
+                                                                   and a question . The task is to :
+    ProofWriter        Deductive        600               3        1) define all the predicates in the problem
+                                                                   2) parse the problem into logic rules based on
+    FOLIO                FOL            204               3        the defined predicates
+    LogicalDeduction     CSP            300             3,5,7      3) write all the facts mentioned in the problem
+                                                                   4) parse the question into the logic form
+    AR-LSAT               AR            230               5
+                                                                   Context: Each jompus is fruity .
+                                                                   (· · · more context here · · · )
+ Table 5: Statistics of the logical reasoning datasets.            Rompuses are zumpuses . Alex is a tumpus .
+
+                                                                   Question: True or false : Alex is not shy .
+
+                                                                   Predicates:
+C     Prompt Examples                                              Jompus (\ $x , bool ) ::: Does x belong to Jompus ?
+                                                                   (· · · more predicates here · · · )
+                                                                   Zumpus (\ $x , bool ) ::: Does x belong to Zumpus ?
+In this section we provide examples of the prompts
+used for each dataset and method. Prompts for stan-                Facts:
+                                                                   Tumpuses ( Alex , True )
+dard in-context learning contain 2 demonstrations
+                                                                   Rules:
+consisting of 3 parts each: a context, a question,                 Jompus ($x , True ) >>> Fruity ($x , True )
+                                                                   (· · · more rules here · · · )
+and options. Prompts for chain-of-thought prompt-                  Dumpus (\ $x , True ) >>> Rompus (\ $x , True )
+ing contain 2 demonstrations consisting of 5 parts
+                                                                   Query:
+each: a task description, a context, a question, op-               Shy ( Alex , False )
+tions, and a chain of reasoning. Prompts for Logic-
+LM contain 2 demonstrations with 5 parts each: a
+task description, a context, a question, options, and
+a domain-specific symbolic program. For brevity,
+we show only a single demonstration for each set-
+ting in the following sections.
+
+
+
+
+                                                                3819
+C.2 ProofWriter Prompts                                       Logic-LM
+Standard In-Context Learning                              Task Description: You are given a problem description
+                                                          and a question . The task is to :
+Context: The cow is blue . The cow is round .             1) define all the predicates in the problem
+(· · · more context here · · · )                          2) parse the problem into logic rules based on
+If the cow is cold and the cow visits the lion then       the defined predicates
+the lion sees the squirrel .                              3) write all the facts mentioned in the problem
+                                                          4) parse the question into the logic form
+Question: Based on the above information , is the
+following statement true , false , or unknown ?           Context: Anne is quiet . Erin is furry .
+The tiger is not young .                                  (· · · more context here · · · )
+                                                          All red people are young .
+Options:
+A ) True                                                  Question: Based on the above information , is the
+B ) False                                                 following statement true , false , or unknown ?
+C ) Unknown                                               Anne is white .
+
+The correct option is : B                                 Predicates:
+                                                          Quiet ($x , bool ) ::: Is x quiet ?
+                                                          Furry ($x , bool ) ::: Is x furry ?
+  Chain-of-Thought Prompting                              (· · · more predicates here · · · )
+                                                          White ($x , bool ) ::: Is x white ?
+Task Description: Given a problem statement as            Young ($x , bool ) ::: Is x young ?
+contexts , the task is to answer a logical reasoning
+question .                                                Facts:
+                                                          Quite ( Anne , True ) ::: Anne is quiet .
+Context: The cow is blue . The cow is round .             (· · · more facts here · · · )
+(· · · more context here · · · )                          White ( Harry , True ) ::: Harry is white .
+If the cow is cold and the cow visits the lion then
+the lion sees the squirrel .                              Rules:
+                                                          Young ($x , True ) >>> Furry ($x , True ) ::: Young people
+Question: Based on the above information , is the                  are furry .
+following statement true , false , or unknown ?           (· · · more rules here · · · )
+The tiger is not young .                                  Red ($x , True ) >>> Young ($x , True ) ::: All red people
+                                                                   are young .
+Options:
+A ) True                                                  Query:
+B ) False                                                 White ( Anne , True ) ::: Anne is white
+C ) Unknown
+
+Reasoning: The tiger likes the cow .
+The tiger likes the squirrel .
+(· · · more reasoning here · · · )
+If something is nice and it sees the tiger then
+it is young . So the tiger is young .
+
+The correct option is : B
+
+
+
+
+                                                       3820
+C.3 FOLIO Prompts                                               Logic-LM
+Standard In-Context Learning                                Task Description: Given a problem description and a
+                                                                  question . The task is to parse the problem and
+Context: All people who regularly drink coffee are                the question into first - order logic formulas .
+dependent on caffeine .                                           The grammar of the first - order logic formula is
+(· · · more context here · · · )                                   defined as follows :
+If Rina is not a person dependent on caffeine and           1) logical conjunction : expr1 ∧ expr2
+a student , then Rina is either a person dependent          2) logical disjunction : expr1 ∨ expr2
+on caffeine and a student , or neither a person             3) logical exclusive disjunction : expr1 ⊕ expr2
+dependent on caffeine nor a student .                       4) logical negation : ¬expr1
+                                                            5) expr1 implies expr2 : expr1 → expr2
+Question: Based on the above information , is the           6) expr1 if and only if expr2 : expr1 ↔ expr2
+following statement true , false , or uncertain ? Rina      7) logical universal quantification : ∀ x
+is a person who jokes about being addicted to               8) logical existential quantification : ∃ x
+caffeine or unaware that caffeine is a drug .               Output format : logic form ::: description
+
+Options:                                                    Context: All people who regularly drink coffee are
+A ) True                                                    dependent on caffeine .
+B ) False                                                   (· · · more context here · · · )
+C ) Uncertain                                               If Rina is not a person dependent on caffeine and a
+                                                            student , then Rina is either a person dependent
+The correct option is : A                                   on caffeine and a student , or neither a person
+                                                            dependent on caffeine nor a student .
+
+  Chain-of-Thought Prompting                                Question: Based on the above information , is the
+                                                            following statement true , false , or uncertain ?
+Task Description: Given a problem statement as              Rina is either a person who jokes about being
+contexts , the task is to answer a logical reasoning        addicted to caffeine or is unaware that caffeine
+question .                                                  is a drug .
+
+Context: The Blake McFall Company Building is a             Predicates:
+commercial warehouse listed on the National Register        Dependent (x) ::: x is a person dependent on caffeine
+of Historic Places .                                        (· · · more predicates here · · · )
+(· · · more context here · · · )                            Student (x) ::: x is a student
+John works at the Emmet Building .
+                                                            Premises:
+Question: Based on the above information , is the           ∀x ( Drinks ( x) → Dependent (x)) ::: All people who
+following statement true , false , or uncertain ?                   regularly drink coffee are dependent on
+The Blake McFall Company Building is located in                     caffeine .
+Portland , Oregon .                                         (· · · more premises here · · · )
+                                                            ∀x ( Jokes (x ) → ¬Unaware (x )) ::: No one who jokes
+Options:                                                            about being addicted to caffeine is unaware
+A ) True                                                            that caffeine is a drug .
+B ) False
+C ) Uncertain                                               Conclusion:
+                                                            Jokes ( rina ) ⊕ Unaware ( rina ) ::: Rina is either a
+Reasoning: The Blake McFall Company Building is                   person who jokes about being addicted to
+another name for the Emmet Building .                             caffeine or is unaware that caffeine is a drug .
+(· · · more reasoning here · · · )
+Therefore , the Blake McFall Company Building is
+located in Portland , Oregon .
+
+The correct option is : A
+
+
+
+
+                                                         3821
+C.4 LogicalDeduction Prompts                                  Logic-LM
+Standard In-Context Learning                              Task Description: You are given a problem description .
+                                                          The task is to parse the problem as a constraint
+Context: The following paragraphs each describe a         satisfaction problem , defining the domain ,
+set of seven objects arranged in a fixed order .          variables , and contraints .
+(· · · more context here · · · )
+Eve finished below Ada . Rob finished below Joe .         Context: The following paragraphs each describe a
+                                                          set of three objects arranged in a fixed order .
+Question: Which of the following is true ?                (· · · more context here · · · )
+                                                          The minivan is newer than the convertible .
+Options:
+A ) Ana finished   third .                                Question: Which of the following is true ?
+B ) Eve finished   third .
+C ) Ada finished   third .                                Options:
+D ) Dan finished   third .                                A) The station wagon is the second - newest .
+E ) Rob finished   third .                                B) The convertible is the second - newest .
+F ) Amy finished   third .                                C) The minivan is the second - newest .
+G ) Joe finished   third .
+                                                          Domain:
+The correct option is : A                                 1: oldest
+                                                          3: newest
+
+  Chain-of-Thought Prompting                              Variables:
+                                                          station \ _wagon [ IN ] [1 , 2, 3]
+Task Description: Given a problem statement as            convertible [ IN ] [1 , 2, 3]
+contexts , the task is to answer a logical reasoning      minivan [ IN ] [1 , 2, 3]
+question .
+                                                          Constraints:
+Context: The following paragraphs each describe a         station \ _wagon == 1 ::: The station wagon is the
+set of five objects arranged in a fixed order .                 oldest .
+(· · · more context here · · · )                          minivan > convertible ::: The minivan is newer than
+The raven is the third from the left .                          the convertible .
+                                                          AllDifferentConstraint ([ station \ _wagon , convertible ,
+Question: Which of the following is true ?                       minivan ]) ::: All vehicles have different
+                                                                values .
+Options:
+A ) The quail is the rightmost .                          Query:
+B ) The owl is the rightmost .                            A) station \ _wagon == 2 ::: The station wagon is the
+C ) The raven is the rightmost .                                second - newest .
+D ) The falcon is the rightmost .                         B) convertible == 2 ::: The convertible is the
+E ) The robin is the rightmost .                                second - newest .
+                                                          C) minivan == 2 ::: The minivan is the second - newest
+Reasoning: The owl is the leftmost . This means owl             .
+is not the rightmost .
+(· · · more reasoning here · · · )
+This means raven is also not the rightmost . So ,
+the answer is : A) The quail is the rightmost .
+
+The correct option is : A
+
+
+
+
+                                                       3822
+C.5 AR-LSAT Prompts                                                Logic-LM
+Standard In-Context Learning                                   Task Description: You are given a problem description .
+                                                               The task is to parse the problem as a constraint
+Context: During a single week , from Monday through            satisfaction problem , defining the domain ,
+      Friday , tours will be conducted of a company 's         variables , and contraints .
+      three divisions : Operations , Production , and
+      Sales . Exactly five tours will be conducted             Context: A travel magazine has hired six interns -
+      that week , one each day . (· · · more context here            Farber , Gombarick , Hall , Jackson , Kanze , and
+      · · · ) If the Operations division is toured on                Lha - to assist in covering three stories :
+      Thursday , then the Production division is                     Romania , Spain , and Tuscany . (· · · more context here
+      toured on Friday .                                             · · · ) Jackson is assigned to Tuscany . Kanze is
+                                                                     not assigned to Spain .
+Question: Which one of the following CANNOT be true
+      of the week 's tour schedule ?                           Question: Which one of the following interns CANNOT
+                                                                     be assigned to Tuscany ?
+Options:
+A ) The division that is toured   on Monday is also            Options:
+      toured on Tuesday .                                      (A) Farber
+B ) The division that is toured   on Monday is also            (B) Gombarick
+      toured on Friday .                                       (C) Hall
+C ) The division that is toured   on Tuesday is also           (D) Kanze
+      toured on Thursday .                                     (E) Lha
+D ) The division that is toured   on Wednesday is also
+      toured on Friday .                                       Declarations:
+E ) The division that is toured   on Thursday is also          stories = EnumSort ([ Romania , Spain , Tuscany ])
+      toured on Friday .                                       assistants = EnumSort ([ photographer , writer ])
+                                                               (· · · more declarations here · · · )
+The correct option is : C                                      trained = Function ([ interns ] -> [ assistants ])
+
+                                                               Constraints:
+  Chain-of-Thought Prompting                                   trained ( Gombarick ) == trained ( Lha ) ::: Gombarick and
+                                                                        Lha will be trained in the same field
+Task Description: Given a problem statement as                 trained ( Farber ) != trained ( Kanze ) ::: Farber and
+contexts , the task is to answer a logical reasoning                   Kanze will be trained in different fields
+question .                                                     (· · · more contraints here · · · )
+                                                               assigned ( Jackson ) == Tuscany ::: Jackson is assigned
+Context: During a single week , from Monday through                     to Tuscany
+      Friday , tours will be conducted of a company 's         assigned ( Kanze ) != Spain ::: Kanze is not assigned
+      three divisions : Operations , Production , and                  to Spain
+      Sales . Exactly five tours will be conducted
+      that week , one each day . (· · · more context here      Options:
+      · · · ) If the Operations division is toured on          is_unsat ( assigned ( Farber ) == Tuscany ) ::: (A)
+      Thursday , then the Production division is               is_unsat ( assigned ( Gombarick ) == Tuscany ) ::: (B )
+      toured on Friday .                                       is_unsat ( assigned ( Hall ) == Tuscany ) ::: (C)
+                                                               is_unsat ( assigned ( Kanze ) == Tuscany ) ::: (D)
+Question: Which one of the following CANNOT be true            is_unsat ( assigned ( Lha ) == Tuscany ) ::: (E)
+      of the week 's tour schedule ?
+
+Options:
+A ) The division that is toured
+      toured on Tuesday .
+                                  on Monday is also            D    Result Interpreter Implementation
+B ) The division that is toured   on Monday is also
+      toured on Friday .                                       For PrOntoQA and ProofWriter, the Pyke logic
+C ) The division that is toured   on Tuesday is also
+      toured on Thursday .                                     programming engine returns the inferred value
+D ) The division that is toured
+      toured on Friday .
+                                  on Wednesday is also         of the variable in the query or Unknown if the
+E ) The division that is toured   on Thursday is also          variable cannot be determined. For example, for
+      toured on Friday .
+                                                               the query ConductElectricity(Nail, x), Pyke
+Reasoning: Since Thursday and Friday already have
+tours planned , only Monday , Tuesday and Wednesday
+                                                               may return x =True. By comparing with the goal
+tours need to be determined .                                  statement ConductElectricity(Nail, False),
+(· · · more reasoning here · · · )
+A different division is toured on Thursday .                   we can know that goal to be proved is False.
+Therefore , the final answer is C.
+                                                               For FOLIO, the FOL inference engine directly re-
+The correct option is : C                                      turns the veracity label of the goal as ENTAILMENT,
+                                                               CONTRADICTION, and CONTINGENT, which can be
+                                                               mapped to True, False, and Unknown, respectively.
+                                                               For LogicalDeduction, the solver returns all the
+                                                               possible value assignments in an array. We write
+                                                               rules to parse each option into the corresponding
+                                                               value and check it is in the generated array. For AR-
+                                                               LSAT, we attempt to separately prove each option
+                                                               to find the correct answer.
+
+                                                               E    Example Generations of L OGIC -LM
+
+
+                                                            3823
+ Example 1
+ Problem: There are six types of wild turkeys: Eastern wild turkey, Osceola wild turkey, Gould's wild turkey, Merriam's wild turkey, Rio Grande
+ wild turkey, and Ocellated wild turkey. Tom is not an Eastern wild turkey. Tom is not an Osceola wild turkey. Tom is also not a Gould's wild
+ turkey, or a Merriam's wild turkey, or a Rio Grande wild turkey. Tom is a wild turkey.
+ Question: Based on the above information, is the following statement true, false, or uncertain? Tom is an Ocellated wild turkey.
+ (A) True                (B) False            (C) Uncertain
+
+ Predicted logic programs:
+     Premises:
+     WildTurkey(eastern) ∧ WildTurkey(osceola) ∧ WildTurkey(gould) ∧ WildTurkey(merriams) ∧ WildTurkey(rio_grande) ∧ WildTurkey(ocellated)
+     → ∀x (WildTurkey(x) → (OcellatedWildTurkey(x) ∨ EasternWildTurkey(x) ∨ OsceolaWildTurkey(x) ∨ GouldsWildTurkey(x) ∨ MerriamsWildTurkey(x)
+     ∨ RioGrandeWildTurkey(x)))
+     WildTurkey(tom) ∧ ¬EasternWildTurkey(tom) ∧ ¬OsceolaWildTurkey(tom) ∧ ¬GouldsWildTurkey(tom) ∧ ¬MerriamsWildTurkey(tom) ∧
+     ¬RioGrandeWildTurkey(tom)
+     Conclusion:
+     OcellatedWildTurkey(tom)
+ Predicted answer: C → A
+
+
+ Example 2
+ Problem: A Japanese game company created the game the Legend of Zelda. All games in the Top 10 list are made by Japanese game companies. If a
+ game sells more than one million copies, then it will be selected into the Top 10 list. The Legend of Zelda sold more than one million copies.
+ Question: Based on the above information, is the following statement true, false, or uncertain? The Legend of Zelda is in the Top 10 list.
+ (A) True                (B) False            (C) Uncertain
+
+ Predicted logic programs:
+     Premises:
+     JapaneseGameCompany(legend_of_zelda)
+     ∀x (Top10List(x) → JapaneseGameCompany(x))
+     ∀x (SellMoreThanOneMillionCopies(x) → Top10List(x))
+     SellMoreThanOneMillionCopies(legend_of_zelda)
+     Conclusion:
+     Top10List(legend_of_zelda)
+ Predicted answer: A
+
+ Example 3
+ Problem: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within
+ each paragraph. In a golf tournament, there were five golfers: Rob, Eve, Eli, Amy, and Dan. Dan finished second. Amy finished below Eve. Dan
+ finished above Eve. Amy finished above Eli.
+ Question: Which of the following is true?
+ (A) Rob finished third    (B) Eve finished third   (C) Eli finished third   (D) Amy finished third    (E) Dan finished third
+
+ Predicted logic programs:
+     Domain:                   Variables:                             Constraints:
+     1: first                  Rob [IN] [1, 2, 3, 4, 5]               Dan == 2
+     5: last                   Eve [IN] [1, 2, 3, 4, 5]               Amy > Eve
+                               Eli [IN] [1, 2, 3, 4, 5]               Dan > Eve → Dan < Eve
+                               Amy [IN] [1, 2, 3, 4, 5]               Amy < Eli
+                               Dan [IN] [1, 2, 3, 4, 5]               AllDifferentConstraint([Rob, Eve, Eli, Amy, Dan])
+    Query:
+    (A) Rob == 3       (B) Eve == 3   (C) Eli == 3    (D) Amy == 3   (E) Dan == 3
+ Predicted answer: E    → B
+
+ Example 4
+ Problem: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews. All restaurants with
+ a rating greater than 9 are listed in Yelp’s recommendations. Some restaurants that do not provide take-out service receive many negative
+ reviews. All restaurants that are popular among local residents have ratings greater than 9. Subway has a rating greater than 9 or is popular
+ among local residents.
+ Question: Based on the above information, is the following statement true, false, or uncertain? Subway provides take-out service and does not
+ receive many negative reviews.
+ (A) True                (B) False            (C) Uncertain
+
+ Predicted logic programs:
+     Premises:
+     ∀x (Listed(x) → ¬NegativeReviews(x))
+     ∀x (Rating(x, y) ∧ y > 9 → Listed(x)) → ∀x (GreaterThanNine(x) → Listed(x))
+     ∃x (¬TakeOut(x) ∧ NegativeReviews(x))
+     ∀x (Popular(x) → (Rating(x, y) ∧ y > 9)) → ∀x (Popular(x) → GreaterThanNine(x))
+     Rating(subway, y) ∧ y > 9 ∨ Popular(subway) → GreaterThanNine(subway) ∨ Popular(subway)
+     Conclusion:
+     TakeOut(subway) ∧ ¬NegativeReviews(subway)
+ Predicted answer: C → A
+
+
+
+Figure 6: Examples of generated symbolic representations and predicted answers. The incorrect segment(s) and
+their correspondence in the problem are marked in red, and the correct revisions are marked in green.
+
+
+
+
+                                                                      3824
+

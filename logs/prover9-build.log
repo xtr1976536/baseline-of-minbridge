@@ -1,0 +1,467 @@
+cd ladr         && /Library/Developer/CommandLineTools/usr/bin/make lib
+/Library/Developer/CommandLineTools/usr/bin/make libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o order.o order.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clock.o clock.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o nonport.o nonport.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o fatal.o fatal.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o ibuffer.o ibuffer.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o memory.o memory.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o hash.o hash.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o string.o string.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o strbuf.o strbuf.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o glist.o glist.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o options.o options.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o symbols.o symbols.c
+symbols.c:478:10: warning: taking the absolute value of unsigned type 'unsigned int' has no effect [-Wabsolute-value]
+  478 |   return abs(x) % SYM_TAB_SIZE;
+      |          ^
+symbols.c:478:10: note: remove the call to 'abs' since unsigned values cannot be negative
+  478 |   return abs(x) % SYM_TAB_SIZE;
+      |          ^~~
+symbols.c:1304:7: warning: variable 'sn' set but not used [-Wunused-but-set-variable]
+ 1304 |   int sn;
+      |       ^
+2 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o avltree.o avltree.c
+avltree.c:658:21: warning: cast to smaller integer type 'int' from 'void *' [-Wvoid-pointer-to-int-cast]
+  658 |     printf("%4d\n", (int) p->item);
+      |                     ^~~~~~~~~~~~~
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o term.o term.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o termflag.o termflag.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o listterm.o listterm.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o tlist.o tlist.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o flatterm.o flatterm.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o multiset.o multiset.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o termorder.o termorder.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o parse.o parse.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o accanon.o accanon.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o unify.o unify.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o fpalist.o fpalist.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o fpa.o fpa.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o discrim.o discrim.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o discrimb.o discrimb.c
+discrimb.c:487:7: warning: function 'check_flat2' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+  487 | Flat2 check_flat2(Flat2 f)
+      |       ^~~~~~~~~~~
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o discrimw.o discrimw.c
+discrimw.c:146:6: warning: function 'check_flat' is not needed and will not be emitted [-Wunneeded-internal-declaration]
+  146 | Flat check_flat(Flat f)
+      |      ^~~~~~~~~~
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o dioph.o dioph.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o btu.o btu.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o btm.o btm.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o mindex.o mindex.c
+mindex.c:650:11: warning: variable 'tr' set but not used [-Wunused-but-set-variable]
+  650 |     Trail tr;
+      |           ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o basic.o basic.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o attrib.o attrib.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o formula.o formula.c
+formula.c:711:25: warning: implicit conversion from enumeration type 'Ftype' to different enumeration type 'BOOL' [-Wimplicit-enum-enum-cast]
+  711 |   case AND_FORM: return OR_FORM;
+      |                  ~~~~~~ ^~~~~~~
+formula.c:712:24: warning: implicit conversion from enumeration type 'Ftype' to different enumeration type 'BOOL' [-Wimplicit-enum-enum-cast]
+  712 |   case OR_FORM: return AND_FORM;
+      |                 ~~~~~~ ^~~~~~~~
+formula.c:713:25: warning: implicit conversion from enumeration type 'Ftype' to different enumeration type 'BOOL' [-Wimplicit-enum-enum-cast]
+  713 |   case ALL_FORM: return EXISTS_FORM;
+      |                  ~~~~~~ ^~~~~~~~~~~
+formula.c:714:28: warning: implicit conversion from enumeration type 'Ftype' to different enumeration type 'BOOL' [-Wimplicit-enum-enum-cast]
+  714 |   case EXISTS_FORM: return ALL_FORM;
+      |                     ~~~~~~ ^~~~~~~~
+formula.c:736:13: warning: implicit conversion from enumeration type 'BOOL' to different enumeration type 'Ftype' [-Wimplicit-enum-enum-cast]
+  736 |   f->type = dual_type(f->type);
+      |           ~ ^~~~~~~~~~~~~~~~~~
+formula.c:1002:34: warning: implicit conversion from enumeration type 'BOOL' to different enumeration type 'Ftype' [-Wimplicit-enum-enum-cast]
+ 1002 |       Formula g = formula_get(1, dual_type(h->type));
+      |                   ~~~~~~~~~~~    ^~~~~~~~~~~~~~~~~~
+formula.c:1010:41: warning: implicit conversion from enumeration type 'BOOL' to different enumeration type 'Ftype' [-Wimplicit-enum-enum-cast]
+ 1010 |       Formula g = formula_get(h->arity, dual_type(h->type));
+      |                   ~~~~~~~~~~~           ^~~~~~~~~~~~~~~~~~
+7 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o definitions.o definitions.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o literals.o literals.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o topform.o topform.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clist.o clist.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clauseid.o clauseid.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clauses.o clauses.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o just.o just.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o cnf.o cnf.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clausify.o clausify.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o parautil.o parautil.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o pindex.o pindex.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o compress.o compress.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o maximal.o maximal.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o lindex.o lindex.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o weight.o weight.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o weight2.o weight2.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o int_code.o int_code.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o features.o features.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o di_tree.o di_tree.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o fastparse.o fastparse.c
+fastparse.c:186:23: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  186 |       fprintf(stderr, s);
+      |                       ^
+fastparse.c:186:23: note: treat the string as an argument to avoid this
+  186 |       fprintf(stderr, s);
+      |                       ^
+      |                       "%s", 
+fastparse.c:187:23: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  187 |       fprintf(stdout, s);
+      |                       ^
+fastparse.c:187:23: note: treat the string as an argument to avoid this
+  187 |       fprintf(stdout, s);
+      |                       ^
+      |                       "%s", 
+2 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o random.o random.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o subsume.o subsume.c
+subsume.c:346:7: warning: variable 'n' set but not used [-Wunused-but-set-variable]
+  346 |   int n = 0;
+      |       ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clause_misc.o clause_misc.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clause_eval.o clause_eval.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o complex.o complex.c
+complex.c:155:7: warning: variable 'c' set but not used [-Wunused-but-set-variable]
+  155 |   int c = 1;
+      |       ^
+complex.c:275:8: warning: variable 'dummy' set but not used [-Wunused-but-set-variable]
+  275 |   BOOL dummy;
+      |        ^
+2 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o dollar.o dollar.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o flatdemod.o flatdemod.c
+flatdemod.c:158:15: warning: variable 'dd' set but not used [-Wunused-but-set-variable]
+  158 |       Discrim dd = NULL;
+      |               ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o demod.o demod.c
+demod.c:376:8: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+  376 |   Term result;
+      |        ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clash.o clash.c
+clash.c:221:43: warning: variable 'n' is uninitialized when used here [-Wuninitialized]
+  221 |   for (p = first; p != NULL; p = p->next, n++) {
+      |                                           ^
+clash.c:218:8: note: initialize the variable 'n' to silence this warning
+  218 |   int n;
+      |        ^
+      |         = 0
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o resolve.o resolve.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o paramod.o paramod.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o backdemod.o backdemod.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o hints.o hints.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o ac_redun.o ac_redun.c
+ac_redun.c:200:5: warning: use of bitwise '|' with boolean operands [-Wbitwise-instead-of-logical]
+  200 |           ((term_ident(a,d) && term_ident(b,e) && term_ident(c,f)) |
+      |           ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  201 |            (term_ident(a,d) && term_ident(b,f) && term_ident(c,e)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  202 |            (term_ident(a,e) && term_ident(b,d) && term_ident(c,f)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                    ||
+  203 |            (term_ident(a,f) && term_ident(b,d) && term_ident(c,e))
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  204 |            )
+      |            ~
+ac_redun.c:200:5: note: cast one or both operands to int to silence this warning
+ac_redun.c:200:5: warning: use of bitwise '|' with boolean operands [-Wbitwise-instead-of-logical]
+  200 |           ((term_ident(a,d) && term_ident(b,e) && term_ident(c,f)) |
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  201 |            (term_ident(a,d) && term_ident(b,f) && term_ident(c,e)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                    ||
+  202 |            (term_ident(a,e) && term_ident(b,d) && term_ident(c,f)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ac_redun.c:200:5: note: cast one or both operands to int to silence this warning
+ac_redun.c:200:5: warning: use of bitwise '|' with boolean operands [-Wbitwise-instead-of-logical]
+  200 |           ((term_ident(a,d) && term_ident(b,e) && term_ident(c,f)) |
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                    ||
+  201 |            (term_ident(a,d) && term_ident(b,f) && term_ident(c,e)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ac_redun.c:200:5: note: cast one or both operands to int to silence this warning
+ac_redun.c:252:5: warning: use of bitwise '|' with boolean operands [-Wbitwise-instead-of-logical]
+  252 |           ((term_ident(d,b) && term_ident(e,a) && term_ident(f,c)) |
+      |           ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  253 |            (term_ident(d,b) && term_ident(e,c) && term_ident(f,a)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  254 |            (term_ident(d,c) && term_ident(e,a) && term_ident(f,b)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                    ||
+  255 |            (term_ident(d,c) && term_ident(e,b) && term_ident(f,a))))
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ac_redun.c:252:5: note: cast one or both operands to int to silence this warning
+ac_redun.c:252:5: warning: use of bitwise '|' with boolean operands [-Wbitwise-instead-of-logical]
+  252 |           ((term_ident(d,b) && term_ident(e,a) && term_ident(f,c)) |
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  253 |            (term_ident(d,b) && term_ident(e,c) && term_ident(f,a)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                    ||
+  254 |            (term_ident(d,c) && term_ident(e,a) && term_ident(f,b)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ac_redun.c:252:5: note: cast one or both operands to int to silence this warning
+ac_redun.c:252:5: warning: use of bitwise '|' with boolean operands [-Wbitwise-instead-of-logical]
+  252 |           ((term_ident(d,b) && term_ident(e,a) && term_ident(f,c)) |
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                    ||
+  253 |            (term_ident(d,b) && term_ident(e,c) && term_ident(f,a)) |
+      |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ac_redun.c:252:5: note: cast one or both operands to int to silence this warning
+6 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o xproofs.o xproofs.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o ivy.o ivy.c
+ivy.c:633:14: warning: variable 'l1i' set but not used [-Wunused-but-set-variable]
+  633 |     Literals l1i, l2i, lit;
+      |              ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o interp.o interp.c
+interp.c:358:10: warning: variable 'rc' set but not used [-Wunused-but-set-variable]
+  358 |   int i, rc;
+      |          ^
+interp.c:2238:10: warning: implicit conversion from enumeration type 'BOOL' to different enumeration type 'Ordertype' [-Wimplicit-enum-enum-cast]
+ 2238 |   return TRUE;
+      |   ~~~~~~ ^~~~
+2 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o std_options.o std_options.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o banner.o banner.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o ioutil.o ioutil.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o tptp_trans.o tptp_trans.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o top_input.o top_input.c
+ar rs libladr.a order.o clock.o nonport.o fatal.o ibuffer.o memory.o hash.o string.o strbuf.o glist.o options.o symbols.o avltree.o term.o termflag.o listterm.o tlist.o flatterm.o multiset.o termorder.o parse.o accanon.o unify.o fpalist.o fpa.o discrim.o discrimb.o discrimw.o dioph.o btu.o btm.o mindex.o basic.o attrib.o formula.o definitions.o literals.o topform.o clist.o clauseid.o clauses.o just.o cnf.o clausify.o parautil.o pindex.o compress.o maximal.o lindex.o weight.o weight2.o int_code.o features.o di_tree.o fastparse.o random.o subsume.o clause_misc.o clause_eval.o complex.o dollar.o flatdemod.o demod.o clash.o resolve.o paramod.o backdemod.o hints.o ac_redun.o xproofs.o ivy.o interp.o std_options.o banner.o ioutil.o tptp_trans.o top_input.o
+ar: creating archive libladr.a
+cd mace4.src    && /Library/Developer/CommandLineTools/usr/bin/make all
+cd ../ladr && /Library/Developer/CommandLineTools/usr/bin/make libladr.a
+make[2]: `libladr.a' is up to date.
+/Library/Developer/CommandLineTools/usr/bin/make clean
+/bin/rm -f *.o
+/Library/Developer/CommandLineTools/usr/bin/make libmace4.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o estack.o estack.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o util.o util.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o print.o print.c
+print.c:114:13: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  114 |             printf(s2);
+      |                    ^~
+print.c:114:13: note: treat the string as an argument to avoid this
+  114 |             printf(s2);
+      |                    ^
+      |                    "%s", 
+print.c:119:15: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  119 |               printf(s3);
+      |                      ^~
+print.c:119:15: note: treat the string as an argument to avoid this
+  119 |               printf(s3);
+      |                      ^
+      |                      "%s", 
+print.c:137:11: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  137 |           printf(s2);
+      |                  ^~
+print.c:137:11: note: treat the string as an argument to avoid this
+  137 |           printf(s2);
+      |                  ^
+      |                  "%s", 
+print.c:145:15: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  145 |               printf(s3);
+      |                      ^~
+print.c:145:15: note: treat the string as an argument to avoid this
+  145 |               printf(s3);
+      |                      ^
+      |                      "%s", 
+4 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o syms.o syms.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o ground.o ground.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o arithmetic.o arithmetic.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o select.o select.c
+select.c:236:5: warning: a function definition without a prototype is deprecated in all versions of C and is not supported in C23 [-Wdeprecated-non-prototype]
+  236 | int select_concentric_band(min_id, max_id, max_constrained)
+      |     ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o propagate.o propagate.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o mstate.o mstate.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o negpropindex.o negpropindex.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o negprop.o negprop.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o ordercells.o ordercells.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o commandline.o commandline.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o msearch.o msearch.c
+msearch.c:850:5: warning: a function definition without a prototype is deprecated in all versions of C and is not supported in C23 [-Wdeprecated-non-prototype]
+  850 | int next_domain_size(n)
+      |     ^
+1 warning generated.
+ar rs libmace4.a estack.o util.o print.o syms.o ground.o arithmetic.o select.o propagate.o mstate.o negpropindex.o negprop.o ordercells.o commandline.o msearch.o
+ar: creating archive libmace4.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o mace4.o mace4.c
+mace4.c:36:7: warning: variable 'id' set but not used [-Wunused-but-set-variable]
+   36 |   int id;
+      |       ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o mace4 mace4.o libmace4.a ../ladr/libladr.a
+/bin/mv mace4 ../bin
+cd provers.src  && /Library/Developer/CommandLineTools/usr/bin/make all
+cd ../ladr && /Library/Developer/CommandLineTools/usr/bin/make libladr
+/Library/Developer/CommandLineTools/usr/bin/make libladr.a
+make[3]: `libladr.a' is up to date.
+/Library/Developer/CommandLineTools/usr/bin/make clean
+/bin/rm -f *.o
+cd ../mace4.src && /Library/Developer/CommandLineTools/usr/bin/make libmace4
+/Library/Developer/CommandLineTools/usr/bin/make libmace4.a
+make[3]: `libmace4.a' is up to date.
+/Library/Developer/CommandLineTools/usr/bin/make clean
+/bin/rm -f *.o
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o prover9.o prover9.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o index_lits.o index_lits.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o forward_subsume.o forward_subsume.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o demodulate.o demodulate.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o pred_elim.o pred_elim.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o unfold.o unfold.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o semantics.o semantics.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o giv_select.o giv_select.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o white_black.o white_black.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o actions.o actions.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o search.o search.c
+search.c:2785:9: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+ 2785 |     int i = str_to_sn("flip_matches_hint", 0);
+      |         ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o utilities.o utilities.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o provers.o provers.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o foffer.o foffer.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -lm -o prover9 prover9.o index_lits.o forward_subsume.o demodulate.o pred_elim.o unfold.o semantics.o giv_select.o white_black.o actions.o search.o utilities.o provers.o foffer.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o fof-prover9.o fof-prover9.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -lm -o fof-prover9 fof-prover9.o index_lits.o forward_subsume.o demodulate.o pred_elim.o unfold.o semantics.o giv_select.o white_black.o actions.o search.o utilities.o provers.o foffer.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o autosketches4.o autosketches4.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -lm -o autosketches4 autosketches4.o index_lits.o forward_subsume.o demodulate.o pred_elim.o unfold.o semantics.o giv_select.o white_black.o actions.o search.o utilities.o provers.o foffer.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o newauto.o newauto.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -lm -o newauto newauto.o index_lits.o forward_subsume.o demodulate.o pred_elim.o unfold.o semantics.o giv_select.o white_black.o actions.o search.o utilities.o provers.o foffer.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o newsax.o newsax.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -lm -o newsax newsax.o index_lits.o forward_subsume.o demodulate.o pred_elim.o unfold.o semantics.o giv_select.o white_black.o actions.o search.o utilities.o provers.o foffer.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o ladr_to_tptp.o ladr_to_tptp.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -lm -o ladr_to_tptp ladr_to_tptp.o index_lits.o forward_subsume.o demodulate.o pred_elim.o unfold.o semantics.o giv_select.o white_black.o actions.o search.o utilities.o provers.o foffer.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o tptp_to_ladr.o tptp_to_ladr.c
+tptp_to_ladr.c:84:7: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   84 |   int i;
+      |       ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -lm -o tptp_to_ladr tptp_to_ladr.o index_lits.o forward_subsume.o demodulate.o pred_elim.o unfold.o semantics.o giv_select.o white_black.o actions.o search.o utilities.o provers.o foffer.o ../ladr/libladr.a
+/bin/cp -p prover9 fof-prover9 autosketches4 newauto newsax ladr_to_tptp tptp_to_ladr ../bin
+/bin/rm -f *.o
+cd apps.src     && /Library/Developer/CommandLineTools/usr/bin/make all
+cd ../ladr && /Library/Developer/CommandLineTools/usr/bin/make libladr.a
+make[2]: `libladr.a' is up to date.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o latfilter.o latfilter.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o latfilter latfilter.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o olfilter.o olfilter.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o olfilter olfilter.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clausefilter.o clausefilter.c
+clausefilter.c:109:7: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+  109 |   int i;
+      |       ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o clausefilter clausefilter.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o idfilter.o idfilter.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o idfilter idfilter.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o renamer.o renamer.c
+renamer.c:54:9: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   54 |     int i;
+      |         ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o renamer renamer.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o unfast.o unfast.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o unfast unfast.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o clausetester.o clausetester.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o clausetester clausetester.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o rewriter.o rewriter.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o rewriter rewriter.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o isofilter0.o isofilter0.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o isofilter0 isofilter0.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o isofilter.o isofilter.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o isofilter isofilter.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o isofilter2.o isofilter2.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o isofilter2 isofilter2.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o dprofiles.o dprofiles.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o dprofiles dprofiles.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o interpfilter.o interpfilter.c
+interpfilter.c:66:7: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   66 |   int i;
+      |       ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o interpfilter interpfilter.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o upper-covers.o upper-covers.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o upper-covers upper-covers.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o miniscope.o miniscope.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o miniscope miniscope.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o interpformat.o interpformat.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o interpformat interpformat.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o prooftrans.o prooftrans.c
+prooftrans.c:222:7: warning: variable 'rc' set but not used [-Wunused-but-set-variable]
+  222 |   int rc, n, number_of_proofs;
+      |       ^
+prooftrans.c:225:32: warning: variable 'props_attr' set but not used [-Wunused-but-set-variable]
+  225 |   int label_attr, answer_attr, props_attr;
+      |                                ^
+2 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o prooftrans prooftrans.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o mirror-flip.o mirror-flip.c
+mirror-flip.c:129:7: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+  129 |   int i;
+      |       ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o mirror-flip mirror-flip.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o perm3.o perm3.c
+perm3.c:120:7: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+  120 |   int i;
+      |       ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o perm3 perm3.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o sigtest.o sigtest.c
+sigtest.c:33:7: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   33 |   int i;
+      |       ^
+sigtest.c:35:7: warning: variable 'checked' set but not used [-Wunused-but-set-variable]
+   35 |   int checked = 0;
+      |       ^
+2 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o sigtest sigtest.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o directproof.o directproof.c
+directproof.c:642:7: warning: variable 'rc' set but not used [-Wunused-but-set-variable]
+  642 |   int rc, n, number_of_proofs;
+      |       ^
+directproof.c:645:7: warning: variable 'label_attr' set but not used [-Wunused-but-set-variable]
+  645 |   int label_attr, answer_attr, props_attr;
+      |       ^
+directproof.c:645:32: warning: variable 'props_attr' set but not used [-Wunused-but-set-variable]
+  645 |   int label_attr, answer_attr, props_attr;
+      |                                ^
+3 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o directproof directproof.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o test_clause_eval.o test_clause_eval.c
+test_clause_eval.c:31:7: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   31 |   int i;
+      |       ^
+1 warning generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o test_clause_eval test_clause_eval.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o test_complex.o test_complex.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o test_complex test_complex.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o complex.o complex.c
+complex.c:79:8: warning: variable 'dummy' set but not used [-Wunused-but-set-variable]
+   79 |   BOOL dummy;
+      |        ^
+complex.c:126:12: warning: variable 'd' set but not used [-Wunused-but-set-variable]
+  126 |     double d;
+      |            ^
+2 warnings generated.
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o complex complex.o ../ladr/libladr.a
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall   -c -o gen_trc_defs.o gen_trc_defs.c
+cc -std=gnu89 -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=incompatible-function-pointer-types  -O -Wall -o gen_trc_defs gen_trc_defs.o ../ladr/libladr.a
+/bin/mv latfilter olfilter clausefilter idfilter renamer unfast clausetester rewriter isofilter0 isofilter isofilter2 dprofiles interpfilter upper-covers miniscope interpformat prooftrans mirror-flip perm3 sigtest directproof test_clause_eval test_complex complex gen_trc_defs ../bin
+/bin/rm -f *.o latfilter olfilter clausefilter idfilter renamer unfast clausetester rewriter isofilter0 isofilter isofilter2 dprofiles interpfilter upper-covers miniscope interpformat prooftrans mirror-flip perm3 sigtest directproof test_clause_eval test_complex complex gen_trc_defs
+/bin/cp -p utilities/* bin
+
+**** Now try 'make test1'. ****
+
