@@ -3,6 +3,7 @@ import argparse,json,os,sys,time,random,traceback,shutil
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('--dataset',required=True,choices=['LogicalDeduction','AR-LSAT','FOLIO','ProntoQA','ProofWriter']);p.add_argument('--limit',type=int);p.add_argument('--programs',type=Path);p.add_argument('--tag',default='author-replay');a=p.parse_args()
+if a.programs:a.programs=a.programs.resolve()
 u=ROOT/'upstream/Logic-LLM';os.chdir(u);sys.path.insert(0,str(u/'models'))
 if a.dataset=='LogicalDeduction':
  from symbolic_solvers.csp_solver.csp_solver import CSP_Program as Solver

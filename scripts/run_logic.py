@@ -8,7 +8,7 @@ u=ROOT/'upstream/Logic-LLM';os.chdir(u);sys.path.insert(0,str(u/'models'));os.en
 from api_compat import generate
 from logic_program import LogicProgramGenerator
 from types import SimpleNamespace
-args=SimpleNamespace(data_path=str(u/'data'),dataset_name=a.dataset,split='dev',model_name=a.model,save_path='',api_key=os.environ['OPENAI_API_KEY'],stop_words=None,max_new_tokens=a.max_tokens)
+args=SimpleNamespace(data_path=str(u/'data'),dataset_name=a.dataset,split=a.split,model_name=a.model,save_path='',api_key=os.environ['OPENAI_API_KEY'],stop_words=None,max_new_tokens=a.max_tokens)
 g=LogicProgramGenerator(args);rows=g.load_raw_dataset(a.split);rows=rows[:a.limit] if a.limit else rows
 prompt_path=u/'models'/'prompts'/('AR-LSAT-long.txt' if a.dataset=='AR-LSAT' and a.model=='gpt-4' else f'{a.dataset}.txt')
 g.prompt_template=prompt_path.read_text()
