@@ -1,6 +1,6 @@
 # MinBridge：推理模型复现与评估
 
-本仓库保存相互隔离的论文复现代码、逐样本输出与评测证据。当前 **Logic-LM 主实验、PoT 金融三数据集主实验均已完成**；ReAct 保留现有实现与独立进度记录；GBFR 保留并暂停正式全量，继续核心一致性核查。训练型拒答实验暂不纳入当前阶段。
+本仓库保存相互隔离的论文复现代码、逐样本输出与评测证据。当前 **Logic-LM 主实验、PoT 金融三数据集主实验均已完成**；ReAct 的 HotpotQA 500题验证已完成（EM49.20%、F1 64.90%），其余通用任务不继续全量；GBFR 保留并暂停正式全量，继续核心一致性核查。训练型拒答实验暂不纳入当前阶段。
 
 Self-Refine 已建立[独立复现目录](reproductions/self-refine/README.md)，GSM8K 1319题全量运行中；3题流程验收通过，其他六任务尚未完成。其[范围审计](reproductions/self-refine/docs/主实验范围审计.md)区分论文最终答案与官方脚本累计成功口径。
 
@@ -10,7 +10,7 @@ Self-Refine 已建立[独立复现目录](reproductions/self-refine/README.md)�
 | --- | --- | --- |
 | Logic-LM | 五数据集全量主实验完成 | 下方完整结果；[最终实验](experiments/final/)与[报告](reports/) |
 | PoT | 金融三数据集全量完成，作者评分脚本复核通过 | [代码与使用](reproductions/pot/README.md)、[三数据集结果](reproductions/pot/results/金融主实验汇总_20261102.md) |
-| ReAct | 独立工作流，状态以该任务记录为准 | [作者子模块](upstream/ReAct)、[文档](docs/) |
+| ReAct | HotpotQA 500题完成；EM49.20%、F1 64.90%；不宣称金融任务或论文全部实验已验证 | [最终代码与说明](docs/react/README.md)、[实验与日志](experiments/react/hotpotqa/) |
 | GBFR | 保留；全量暂停，核心审计 NOT_READY | [GBFR说明](reproductions/gbfr/README.md) |
 
 ## PoT：金融主实验最终结果

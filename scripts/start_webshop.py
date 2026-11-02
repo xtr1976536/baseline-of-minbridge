@@ -7,6 +7,9 @@ p=argparse.ArgumentParser()
 p.add_argument('--demo',action='store_true',help='仅调试 1,000 商品；禁止报告为论文主实验')
 p.add_argument('--port',type=int,default=3000)
 a=p.parse_args()
+# On the validated Apple Silicon setup, Pyserini needs JAVA_HOME before import.
+java=Path('/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home')
+if not os.getenv('JAVA_HOME') and java.is_dir():os.environ['JAVA_HOME']=str(java)
 u=ROOT/'.local/WebShop'
 os.chdir(u);sys.path.insert(0,str(u))
 from webshop_runtime import configure_products
