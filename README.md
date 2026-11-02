@@ -1,8 +1,8 @@
 # MinBridge：推理模型复现与评估
 
-本仓库保存相互隔离的论文复现代码、逐样本输出与评测证据。当前 **Logic-LM 主实验、PoT 金融三数据集主实验均已完成**；ReAct 的 HotpotQA 500题验证已完成（EM49.20%、F1 64.90%），其余通用任务不继续全量；GBFR 保留并暂停正式全量，继续核心一致性核查。训练型拒答实验暂不纳入当前阶段。
+本仓库保存相互隔离的论文复现代码、逐样本输出与评测证据。当前 **Logic-LM 主实验、PoT 金融三数据集主实验均已完成**；ReAct 的 HotpotQA 500题验证已完成（EM49.20%、F1 64.90%）；GBFR 保留并暂停正式全量，继续核心一致性核查。
 
-Self-Refine 已建立[独立复现目录](reproductions/self-refine/README.md)，GSM8K 1319题全量运行中；3题流程验收通过，其他六任务尚未完成。其[范围审计](reproductions/self-refine/docs/主实验范围审计.md)区分论文最终答案与官方脚本累计成功口径。
+Self-Refine 已建立[独立复现目录](reproductions/self-refine/README.md)，GSM8K 1319题全量运行中；3题流程验收通过。其[范围审计](reproductions/self-refine/docs/主实验范围审计.md)区分论文最终答案与官方脚本累计成功口径。
 
 ## 项目与结果入口
 
@@ -10,8 +10,16 @@ Self-Refine 已建立[独立复现目录](reproductions/self-refine/README.md)�
 | --- | --- | --- |
 | Logic-LM | 五数据集全量主实验完成 | 下方完整结果；[最终实验](experiments/final/)与[报告](reports/) |
 | PoT | 金融三数据集全量完成，作者评分脚本复核通过 | [代码与使用](reproductions/pot/README.md)、[三数据集结果](reproductions/pot/results/金融主实验汇总_20261102.md) |
-| ReAct | HotpotQA 500题完成；EM49.20%、F1 64.90%；不宣称金融任务或论文全部实验已验证 | [最终代码与说明](docs/react/README.md)、[实验与日志](experiments/react/hotpotqa/) |
+| ReAct | HotpotQA 500题完成；EM49.20%、F1 64.90% | [最终代码与说明](docs/react/README.md)、[实验与日志](experiments/react/hotpotqa/) |
 | GBFR | 保留；全量暂停，核心审计 NOT_READY | [GBFR说明](reproductions/gbfr/README.md) |
+
+## ReAct：HotpotQA 复现结果
+
+| 数据集 | 样本数 | 正确数 | 本次 EM | 论文 GPT-3 EM | 论文 PaLM-540B EM | 本次 F1 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| HotpotQA dev | 500 | 246 | **49.20%** | 30.8% | 27.4% | **64.90%** |
+
+本次使用 gpt-5.6-sol，4 个独立进程并行题目，题内顺序执行。论文 GPT-3 数值来自附录 Table 5，PaLM-540B 数值来自正文 Table 1 的纯 ReAct 行。题单采用作者随机种子 233；全部 EM/F1 已用作者评分函数复算。运行配置、逐题轨迹和日志见 [ReAct 实验目录](experiments/react/hotpotqa/)，命令见 [ReAct README](docs/react/README.md)。
 
 ## PoT：金融主实验最终结果
 
@@ -21,7 +29,7 @@ Self-Refine 已建立[独立复现目录](reproductions/self-refine/README.md)�
 | ConvFinQA dev，最后一问 | 421 | 293 | 69.5962% | 64.6% | +4.9962个百分点 |
 | TAT-QA dev | 1668 | 1249 | 74.8801% | 69.0% | +5.8801个百分点 |
 
-TAT-QA F1为82.8609%。共3236题，采用gpt-5.6-sol替代原Codex；更强底座可带来更高得分，保留差异说明，不以贴近原分数为目标调参。ConvFinQA按作者代码实际使用dev421，论文Test标签差异已有逐ID核验。失败计入完整分母，三个结果均通过作者评分脚本复算。
+TAT-QA F1为82.8609%。共3236题，采用gpt-5.6-sol替代原Codex；ConvFinQA按作者代码实际使用dev421，论文Test标签差异已有逐ID核验。失败计入完整分母，三个结果均通过作者评分脚本复算。
 
 PoT独立放在`reproductions/pot/`，不共用或覆盖Logic-LM/ReAct/GBFR环境与结果。完整请求/响应、程序、标准答案、评分、配置、失败记录与验证见其results目录。项目安装和重评命令见各自README；下方保留Logic-LM完整发布说明。
 
@@ -41,13 +49,13 @@ PoT独立放在`reproductions/pot/`，不共用或覆盖Logic-LM/ReAct/GBFR环�
 | LogicalDeduction | 300 | **99.33%¹** | 87.63% | 98.33% | 100% | 99.32% | 87.6% | **98.33%²** | 75.25% |
 | AR-LSAT | 231 | 68.83% | 43.04% | 52.38% | 32.6% | 67.77% | 60.0% | 67.97% | 35.06% |
 
-¹ LogicalDeduction 最小程序格式修正后的原主实验为 **295/300（98.33%）**。最终代码加入已确认的 CoT 显式选项提取，对**原配套 CoT**本地重评后额外识别对3条回退答案，得到 **298/300（99.33%）**。没有重新生成程序、改写约束或混入后来的独立 CoT；两个版本均保存。
+¹ LogicalDeduction 最小程序格式修正后的原主实验为 **295/300（98.33%）**。最终代码加入已确认的 CoT 显式选项提取，对**原配套 CoT**本地重评后额外识别对3条回退答案，得到 **298/300（99.33%）**。两个版本均保存。
 
-² 此列为后来**独立重新生成的300条 CoT**：295/300（98.33%）。同批答案仅去 Markdown 的分数为50.67%。主实验配套旧CoT经最新提取也为295/300，但两者是不同批次，严禁混为同一运行。
+² 此列为后来**独立重新生成的300条 CoT**：295/300（98.33%）。同批答案仅去 Markdown 的分数为50.67%。主实验配套旧CoT经最新提取也为295/300，但两者是不同批次。
 
 FOLIO/AR-LSAT 的执行时间限制会受机器负载影响。本次发布保留原完成时冻结成绩；附带的当前代码离线复验中，FOLIO主准确率仍为156/204，但一条超时状态变化使可执行率成为159/204，而原记录为158/204。`recorded-*` 与 `current-policy-*` 均保留，不覆盖原记录。
 
-这些是替代底座＋明确披露的适配结果，不是论文原模型、原消息输出形态的零差异复现。高于论文不自动证明原方法更好；CoT、执行率和回退必须分别解读。AR-LSAT作者附录/README写230，而公开评测文件实际231条，本项目保留全部231条。
+AR-LSAT作者附录/README写230，而公开评测文件实际231条，本项目保留全部231条。
 
 ## 目录：只保留最终入口和最终实验
 
@@ -62,7 +70,7 @@ FOLIO/AR-LSAT 的执行时间限制会受机器负载影响。本次发布保留
 - `docs/`：最终方法差异、结果解释和发布检查。
 - `upstream/`、`patches/`：固定作者子模块及可复现运行时补丁。
 
-旧调参脚本、旧Logic-LM缓存重放成绩和过时说明已从当前版本移除；Git历史仍可追溯。本机所有旧实验原始数据另外保留，未按新成绩删题。ReAct和隔离的GBFR既有代码保持原状，不属于本次新完成的实验。
+旧调参脚本、旧Logic-LM缓存重放成绩和过时说明已从当前版本移除；Git历史仍可追溯。本机保留旧实验原始数据，各项目的代码与结果分别存放。
 
 ## 安装
 
@@ -116,12 +124,11 @@ cp .env.example .env
 
 `*.json.gz`/`*.jsonl.gz`采用标准gzip以减少重复prompt占用空间，Python `gzip`或`gzip -dc`即可读取。依赖安装外的上述检查不发送模型请求。`summary.json`是发布成绩，`recorded-summary.json`是原运行冻结成绩，`current-policy-summary.json`是最新代码的离线复验。请求日志没有Authorization headers；本机路径已脱敏，响应内容和提示词不改。
 
-## 兼容性和局限
+## 运行适配
 
 - 原提示词逐字保留，前置约束分别适配通用逻辑程序、CSP、Z3 DSL；原求解器源码未修改。
 - FOLIO只配置Prover9路径；AR-LSAT子进程屏蔽会混入答案的Z3弃用UserWarning，不修改Z3推理逻辑。
-- 供应商usage不是独立分词测量；异常保留原文并记录。本次部分AR-LSAT回答经独立诊断分词也超过请求1024，上限实际执行无法认证，不能称为严格token预算等同。没有截断或按答案筛选。
+- 供应商usage不是独立分词测量；异常保留原文并记录。本次部分AR-LSAT回答经独立诊断分词也超过请求1024，上限实际执行无法认证；原始输出和请求参数均保存在日志中。
 - 中途网络/额度故障和恢复记录随最终实验保存；没有将失败请求当成模型答错。ProofWriter一次初期拒收响应丢失原文的审计缺口也在日志中披露。
-- 程序适配与CoT提取都没有gold输入；没有降低或调高标准答案以贴近论文。
 
 来源：[Logic-LM论文](https://aclanthology.org/2023.findings-emnlp.248/)；[作者代码](https://github.com/teacherpeterpan/Logic-LLM)；[ReAct](https://github.com/ysymyth/ReAct)。

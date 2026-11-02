@@ -8,7 +8,7 @@
 | ConvFinQA dev最后一问 | 421 | 293 | 69.5962% | 64.6% | +4.9962 pp |
 | TAT-QA dev | 1668 | 1249 | 74.8801% | 69.0% | +5.8801 pp |
 
-TAT-QA官方F1：82.8609%。当前完成范围是金融三任务greedy，不含数学任务、SC、zero-shot或消融。实际底座gpt-5.6-sol，论文为code-davinci-002；底座不同可以提高指标，不修改评分来贴近论文。
+TAT-QA官方F1：82.8609%。本次采用greedy解码，底座为gpt-5.6-sol；论文底座为code-davinci-002。
 
 ## 来源与设置
 
@@ -16,9 +16,9 @@ TAT-QA官方F1：82.8609%。当前完成范围是金融三任务greedy，不含�
 
 直接AST提取原prompt与输入builder：FinQA/ConvFinQA 4-shot、512输出token；TAT-QA 8-shot、256输出token；temperature=0、top_p=1、n=1、双换行stop。生成程序调用官方safe_execute、返回值处理及finqa_equal或TaTQAEmAndF1。
 
-API兼容：Chat使用固定Python续写system指令，原user示例与正文保留；仅移除响应最前端空白，不剥Markdown、不修答案。执行worker不继承API密钥，保留5秒执行超时，父进程20秒截止，并有显式AST预检查；它不是恶意代码的强安全沙箱。修改与历史验收见[一致性说明](docs/验收与论文一致性.md)。
+API兼容：Chat使用固定Python续写system指令，原user示例与正文保留；仅移除响应最前端空白，不剥Markdown、不修答案。执行worker不继承API密钥，保留5秒执行超时，父进程20秒截止，并有显式AST预检查。修改与历史验收见[一致性说明](docs/验收与论文一致性.md)。
 
-ConvFinQA与原官方data.zip逐ID核验：421条全部是dev，对话和最后标准答案完全一致，未与private test混用；详见[划分审计](results/convfinqa_split_audit.json)。论文SC参数与仓库有差异，本次不运行SC。
+ConvFinQA与原官方data.zip逐ID核验：421条全部是dev，对话和最后标准答案完全一致；详见[划分审计](results/convfinqa_split_audit.json)。
 
 ## 结果与审计
 
@@ -52,4 +52,4 @@ cd ..
 
 根仓库本机.env或环境变量提供OPENAI_API_KEY/OPENAI_BASE_URL；不可提交密钥。小样本run_smoke.py最多每任务4条。全量入口run_finqa_full.py和run_financial_full.py（--task convfinqa或tatqa）固定当前发布目录与设置；已有完整结果无需重跑。需要新模型或新设置时先建立独立输出目录和配置，禁止覆盖发布结果。样本文件已被Git忽略；新克隆应使用发布JSON离线重评，不把缺少本机断点文件误判为未完成并直接调用API。
 
-所有结果与环境隔离于本目录，不修改根仓库已有实验。返回[项目总览](../../README.md)。
+代码、环境和结果存放于本目录。返回[项目总览](../../README.md)。

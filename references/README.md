@@ -8,4 +8,6 @@
 - PoT: Program of Thoughts Prompting: Disentangling Computation from Reasoning for Numerical Reasoning Tasks，TMLR 2023。[论文](https://arxiv.org/abs/2211.12588v4)，[作者代码](https://github.com/TIGER-AI-Lab/Program-of-Thoughts)。金融三数据集全量已完成，见[复现与结果](../reproductions/pot/README.md)。
 - GBFR保留为独立复现任务，当前暂停正式全量，见[状态与差异](../reproductions/gbfr/README.md)。
 
-更新后的论文清单PDF及其源文件位于[docs/references](../docs/references/)。总项目进展以[根README](../README.md)为入口；第三方作者README保留原文，不改写其论文结果。
+更新后的论文清单PDF及其源文件位于[docs/references](../docs/references/)。总项目进展以[根README](../README.md)为入口；第三方作者README保留原文。
+
+ReAct HotpotQA 500题复现结果：EM49.20%、F1 64.90%，见[结果表](../docs/react/README.md)。
