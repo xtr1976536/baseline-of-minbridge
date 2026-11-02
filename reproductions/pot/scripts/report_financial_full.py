@@ -23,6 +23,7 @@ def main():
     pred=r.get('pred_answer',['']);scale=r.get('pred_scale','')
     individual=TaTQAEmAndF1();individual(example,prediction=pred,pred_scale=scale)
     em,f1,*_=individual.get_overall_metric();assert abs(em-r['correct'])<1e-12
+    r['canonical_f1']=f1
     if abs(f1-r.get('f1',0))>1e-12:roundtrip_differences.append({'index':i,'in_memory_f1':r.get('f1',0),'official_json_f1':f1})
     metric(example,prediction=pred,pred_scale=scale)
     record={**example,'generated':[r.get('code','')],'pred_answer':pred,'pred_scale':scale}
@@ -43,7 +44,7 @@ def main():
  failures=collections.Counter()
  for r in rows:
   category=data[r['index']].get('answer_type','binary' if isinstance(r['gold'],str) else 'number')
-  c=categories[category];c['n']+=1;c['correct']+=r['correct'];c['f1_sum']+=r.get('f1',0)
+  c=categories[category];c['n']+=1;c['correct']+=r['correct'];c['f1_sum']+=r.get('canonical_f1',r.get('f1',0))
   if r['status']=='run_error':failures['run_error']+=1
   elif r['execution']['status']!='executed':failures[r['execution'].get('error','no_ans').split(':')[0]]+=1
   elif not r['correct']:failures['executed_wrong_answer']+=1
