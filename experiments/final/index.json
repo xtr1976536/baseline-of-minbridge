@@ -1,0 +1,48 @@
+{
+  "release": "2026-11-02",
+  "author_commit": "d29f1e5e7203e8826cb9c41ba3003e43dc0b9d34",
+  "semantics": "recorded = frozen historical score; current-policy = offline replay with latest code. Paired and standalone CoT are distinct runs.",
+  "datasets": {
+    "ProofWriter": {
+      "path": "experiments/final/ProofWriter",
+      "n": 600,
+      "source_run_id": "proofwriter-full-1793542998249517000",
+      "main_cot": "paired original CoT; LogicalDeduction uses latest extraction only during current-policy replay",
+      "data_sha256": "e792b54981065c91d4aecc908be17ce9a730f2327548e6fa36717ef01e472240"
+    },
+    "ProntoQA": {
+      "path": "experiments/final/ProntoQA",
+      "n": 500,
+      "source_run_id": "logic-final-ProntoQA-1793594917189717000",
+      "main_cot": "paired original CoT; LogicalDeduction uses latest extraction only during current-policy replay",
+      "data_sha256": "2d2e9d0adbef05cd66b51d11516b8fb3d3fb2cbc1664867d1123a000f7b11a5f"
+    },
+    "FOLIO": {
+      "path": "experiments/final/FOLIO",
+      "n": 204,
+      "source_run_id": "logic-final-FOLIO-1793594917189562000",
+      "main_cot": "paired original CoT; LogicalDeduction uses latest extraction only during current-policy replay",
+      "data_sha256": "f1752092c95adaf535da03552f8e633fa031ebd90b27a9f780c5427ca1d14ccb"
+    },
+    "LogicalDeduction": {
+      "path": "experiments/final/LogicalDeduction",
+      "n": 300,
+      "source_run_id": "logic-final-LogicalDeduction-1793606303378768000",
+      "main_cot": "paired original CoT; LogicalDeduction uses latest extraction only during current-policy replay",
+      "data_sha256": "554992a3189224d0b631c1ac674d301defa5fef5f1837b93258db35aeb67d898",
+      "standalone_cot": {
+        "path": "experiments/final/LogicalDeduction/standalone-cot",
+        "source_run_id": "ld-cot-full-1793610979503058000",
+        "n": 300,
+        "note": "Separate fresh CoT-only run; not swapped into main paired answers."
+      }
+    },
+    "AR-LSAT": {
+      "path": "experiments/final/AR-LSAT",
+      "n": 231,
+      "source_run_id": "logic-final-AR-LSAT-1793594917189562000",
+      "main_cot": "paired original CoT; LogicalDeduction uses latest extraction only during current-policy replay",
+      "data_sha256": "1a083863793a5e8de45495ee72d8923a4cca0cf90abd87926fe9e32daceee286"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-"""Author solvers only. Markdown-only CoT cleanup is mandatory; raw scores retained."""
+"""Author solvers only; declared dataset-specific surface cleanup, raw scores retained."""
 import argparse
 import collections
 import json
@@ -36,17 +36,31 @@ def evaluate(dataset, programs, cot, expected):
     validate_rows(programs, expected)
     validate_rows(cot, expected)
     lookup = {row['id']: row for row in cot}
+    source = {row['id']: row for row in expected}
+    def processed_cot(row):
+        if dataset == 'LogicalDeduction':
+            from logical_deduction_cot import extract_ld_cot
+            raw = row.get('raw_output', raw_cot_answer(row))
+            return extract_ld_cot(raw, len(source[row['id']]['options']))['predicted_answer']
+        return strip_markdown(raw_cot_answer(row))
     solver = load_author_solver(dataset)
     from evaluation import evaluate_QA
     results = []
     for ex in programs:
         raw_backup = raw_cot_answer(lookup[ex['id']])
-        backup = strip_markdown(raw_backup)
+        backup = processed_cot(lookup[ex['id']])
         status, error, prediction = 'success', '', None
         if dataset in ('ProntoQA', 'ProofWriter'):
             reset_pyke()
+        logic = ex['raw_logic_programs'][0].strip()
+        label_changes = 0
+        heading_changes = 0
+        if dataset == 'LogicalDeduction':
+            from logical_deduction_compat import normalize_csp_surface
+            logic, edits = normalize_csp_surface(logic)
+            label_changes, heading_changes = edits['label_edits'], edits['heading_edits']
         try:
-            program = solver(ex['raw_logic_programs'][0].strip(), dataset)
+            program = solver(logic, dataset)
             if not program.flag:
                 status = 'parsing error'
             else:
@@ -61,32 +75,36 @@ def evaluate(dataset, programs, cot, expected):
             status, error = 'runtime exception', type(err).__name__ + ': ' + str(err)
         if status != 'success':
             prediction = backup
-        results.append({'id': ex['id'], 'answer': ex['answer'], 'flag': status,
+        results.append({'normalized_csp_program': logic if dataset == 'LogicalDeduction' else None, 'id': ex['id'], 'answer': ex['answer'], 'flag': status,
                         'predicted_answer': prediction,
                         'raw_predicted_answer': raw_backup if status != 'success' else prediction,
-                        'error_message': error, 'fallback_source': 'CoT' if status != 'success' else None})
+                        'layout_heading_edits': heading_changes, 'query_labels_normalized': label_changes, 'error_message': error, 'fallback_source': 'CoT' if status != 'success' else None})
     if dataset in ('ProntoQA', 'ProofWriter'):
         reset_pyke()
     executable = [row for row in results if row['flag'] == 'success']
     raw_results = [dict(row, predicted_answer=row['raw_predicted_answer']) for row in results]
-    cot_normalized = [dict(row, predicted_answer=strip_markdown(raw_cot_answer(row))) for row in cot]
+    cot_normalized = [dict(row, predicted_answer=processed_cot(row)) for row in cot]
     cot_raw = [dict(row, predicted_answer=raw_cot_answer(row)) for row in cot]
     n = len(results)
     summary = {'dataset': dataset, 'n': n, 'interpreter': 'author-code', 'self_refinement': False,
-               'answer_processing': 'mandatory Markdown-only cleanup for CoT; author evaluate_QA unchanged',
+               'answer_processing': ('Markdown cleanup plus conservative explicit CoT option extraction for LogicalDeduction; author evaluate_QA unchanged' if dataset == 'LogicalDeduction' else 'mandatory Markdown-only cleanup for CoT; author evaluate_QA unchanged'),
                'accuracy': evaluate_QA(results), 'correct': round(evaluate_QA(results) * n),
                'raw_author_accuracy_without_cleanup': evaluate_QA(raw_results),
                'executable_rate': len(executable) / n,
                'executable_accuracy': evaluate_QA(executable) if executable else None,
                'executable': len(executable), 'fallback_count': n - len(executable),
+               'cot_markdown_only_accuracy': evaluate_QA([dict(row, predicted_answer=strip_markdown(raw_cot_answer(row))) for row in cot]),
                'cot_accuracy': evaluate_QA(cot_normalized), 'cot_correct': round(evaluate_QA(cot_normalized) * n),
                'cot_raw_author_accuracy_without_cleanup': evaluate_QA(cot_raw),
                'status_counts': dict(collections.Counter(row['flag'] for row in results)),
                'paper_gpt4_reference': PAPER[dataset],
-               'differences': ['substitute model', '26-word format prefix; original examples unchanged',
+               'differences': ['substitute model', 'dataset format prefix; original examples unchanged',
+                               *(['LogicalDeduction surface-only section layout and Query punctuation normalization before unchanged author parser'] if dataset == 'LogicalDeduction' else []),
                                'mandatory Markdown cleanup; raw metrics preserved',
+                               *(['LogicalDeduction CoT explicit-option-v1; abstain on ambiguity, no semantic inference'] if dataset == 'LogicalDeduction' else []),
                                'mapping/runtime failures explicitly recorded and backed up; not hidden'],
                'errors': [row for row in results if not evaluate_QA([row])]}
+    summary['logical_deduction_compatibility'] = ({'kind': 'surface only: inline section headers and Query label punctuation', 'samples_changed': sum(r['query_labels_normalized'] > 0 for r in results), 'labels_changed': sum(r['query_labels_normalized'] for r in results), 'layout_samples_changed': sum(r['layout_heading_edits'] > 0 for r in results)} if dataset == 'LogicalDeduction' else None)
     summary['breakdown'] = {}
     for label in sorted({row['answer'] for row in results}):
         subset = [row for row in results if row['answer'] == label]
@@ -164,6 +182,10 @@ def main():
     prover_env = ROOT / '.local/prover9.env'
     if prover_env.exists():
         os.environ['PROVER9_BIN'] = prover_env.read_text().strip().split('=', 1)[1]
+    # Author AR-LSAT launches a child Python process; this host Z3 build emits
+    # a deprecation UserWarning on stdout, which otherwise becomes choice 0.
+    if args.dataset == 'AR-LSAT':
+        os.environ.setdefault('PYTHONWARNINGS', 'ignore::UserWarning')
     os.chdir(UPSTREAM)
     try:
         results, summary = evaluate(args.dataset, programs, cot, data)
@@ -178,12 +200,12 @@ def main():
     paper = summary['paper_gpt4_reference']
     lines = ['# Logic-LM 最终配置评估', '', f'数据集：{args.dataset}；样本：{len(data)}；解释器：作者原版；无 self-refinement。', '',
              '| 指标 | 本次 | 论文 GPT-4 |', '|---|---:|---:|']
-    for key, title in [('accuracy', '总体准确率'), ('executable_rate', '可执行率'), ('executable_accuracy', '可执行样本准确率'), ('cot_accuracy', '独立 CoT（先去 Markdown）')]:
+    for key, title in [('accuracy', '总体准确率'), ('executable_rate', '可执行率'), ('executable_accuracy', '可执行样本准确率'), ('cot_accuracy', '配套 CoT（按本数据集最终提取规则）')]:
         value = summary[key]
         lines.append(f'| {title} | ' + ('未定义' if value is None else f'{value:.2%}') + f' | {paper[key]:.2%} |')
     lines += ['', f'CoT 未去 Markdown 的作者原评分：{summary["cot_raw_author_accuracy_without_cleanup"]:.2%}。',
               f'回退样本：{summary["fallback_count"]}。清理仅移除显示标记，不根据答案或推理内容猜选项。',
-              '', '保留作者提示词正文/示例和求解器，仅添加固定格式约束并做 Markdown 答案清理；不是底座以外零差异的严格复现。']
+              '', '保留作者提示词正文/示例和求解器；格式约束、LogicalDeduction表面适配和CoT显式选项提取均单列披露，不是底座以外零差异的严格复现。']
     (output / 'report.md').write_text('\n'.join(lines) + '\n')
     print(json.dumps({key: summary[key] for key in ('dataset', 'n', 'accuracy', 'executable_rate', 'executable_accuracy', 'cot_accuracy', 'fallback_count')}, ensure_ascii=False))
 

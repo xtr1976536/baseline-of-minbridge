@@ -1,0 +1,144 @@
+{
+  "dataset": "LogicalDeduction",
+  "n": 300,
+  "interpreter": "author-code",
+  "self_refinement": false,
+  "answer_processing": "mandatory Markdown-only cleanup for CoT; author evaluate_QA unchanged",
+  "accuracy": 0.9833333333333333,
+  "correct": 295,
+  "raw_author_accuracy_without_cleanup": 0.9833333333333333,
+  "executable_rate": 0.9833333333333333,
+  "executable_accuracy": 0.9932203389830508,
+  "executable": 295,
+  "fallback_count": 5,
+  "cot_accuracy": 0.44666666666666666,
+  "cot_correct": 134,
+  "cot_raw_author_accuracy_without_cleanup": 0.22,
+  "status_counts": {
+    "success": 295,
+    "mapping error": 2,
+    "execution error": 1,
+    "parsing error": 1,
+    "runtime exception": 1
+  },
+  "paper_gpt4_reference": {
+    "accuracy": 0.8763,
+    "executable_rate": 1.0,
+    "executable_accuracy": 0.876,
+    "cot_accuracy": 0.7525
+  },
+  "differences": [
+    "substitute model",
+    "dataset format prefix; original examples unchanged",
+    "LogicalDeduction surface-only section layout and Query punctuation normalization before unchanged author parser",
+    "mandatory Markdown cleanup; raw metrics preserved",
+    "mapping/runtime failures explicitly recorded and backed up; not hidden"
+  ],
+  "errors": [
+    {
+      "normalized_csp_program": "Domain:\n1: oldest\n5: newest\nVariables:\ntruck [IN] [1, 2, 3, 4, 5]\nmotorcycle [IN] [1, 2, 3, 4, 5]\nlimousine [IN] [1, 2, 3, 4, 5]\nstation_wagon [IN] [1, 2, 3, 4, 5]\nsedan [IN] [1, 2, 3, 4, 5]\nConstraints:\nlimousine > truck ::: The limousine is older than the truck.\nsedan > motorcycle ::: The sedan is newer than the motorcycle.\nstation_wagon == 1 ::: The station wagon is the oldest.\nlimousine > sedan ::: The limousine is newer than the sedan.\nAllDifferentConstraint([truck, motorcycle, limousine, station_wagon, sedan]) ::: All vehicles have different values.\nQuery:\nA) truck == 2 ::: The truck is the second-oldest.\nB) motorcycle == 2 ::: The motorcycle is the second-oldest.\nC) limousine == 2 ::: The limousine is the second-oldest.\nD) station_wagon == 2 ::: The station wagon is the second-oldest.\nE) sedan == 2 ::: The sedan is the second-oldest.",
+      "id": "logical_deduction_21",
+      "answer": "B",
+      "flag": "mapping error",
+      "predicted_answer": "The station wagon is the oldest. The motorcycle is older than the sedan, which is older than the limousine, and the limousine is older than the truck. So the order from oldest to newest is: station wagon, motorcycle, sedan, limousine, truck.\n\nB) The motorcycle is the second-oldest.",
+      "raw_predicted_answer": "The station wagon is the oldest. The motorcycle is older than the sedan, which is older than the limousine, and the limousine is older than the truck. So the order from oldest to newest is: station wagon, motorcycle, sedan, limousine, truck.\n\n**B) The motorcycle is the second-oldest.**",
+      "layout_heading_edits": 0,
+      "query_labels_normalized": 0,
+      "error_message": "Author mapper returned no option",
+      "fallback_source": "CoT"
+    },
+    {
+      "normalized_csp_program": "Domain:\n1: oldest\n7: newest\nVariables:\nconvertible [IN] [1, 2, 3, 4, 5, 6, 7]\nlimousine [IN] [1, 2, 3, 4, 5, 6, 7]\nhatchback [IN] [1, 2, 3, 4, 5, 6, 7]\nbus [IN] [1, 2, 3, 4, 5, 6, 7]\nstation_wagon [IN] [1, 2, 3, 4, 5, 6, 7]\ntractor [IN] [1, 2, 3, 4, 5, 6, 7]\nminivan [IN] [1, 2, 3, 4, 5, 6, 7]\nConstraints:\nstation_wagon == 4 ::: The station wagon is the fourth-newest.\nhatchback < bus ::: The hatchback is older than the bus.\nhatchback == 6 ::: The hatchback is the second-newest.\nminivan > limousine ::: The minivan is newer than the limousine.\nconvertible < limousine ::: The convertible is older than the limousine.\ntractor == 2 ::: The tractor is the second-oldest.\nAllDifferentConstraint([convertible, limousine, hatchback, bus, station_wagon, tractor, minivan]) ::: All vehicles have different values.\nQuery:\nA) convertible == 3 ::: The convertible is the third-newest.\nB) limousine == 3 ::: The limousine is the third-newest.\nC) hatchback == 3 ::: The hatchback is the third-newest.\nD) bus == 3 ::: The bus is the third-newest.\nE) station_wagon == 3 ::: The station wagon is the third-newest.\nF) tractor == 3 ::: The tractor is the third-newest.\nG) minivan == 3 ::: The minivan is the third-newest.",
+      "id": "logical_deduction_115",
+      "answer": "G",
+      "flag": "success",
+      "predicted_answer": "B",
+      "raw_predicted_answer": "B",
+      "layout_heading_edits": 0,
+      "query_labels_normalized": 0,
+      "error_message": "",
+      "fallback_source": null
+    },
+    {
+      "normalized_csp_program": "Domain: 1: first\nDomain: 7: last\nVariables: Dan [IN] [1, 2, 3, 4, 5, 6, 7]\nVariables: Eve [IN] [1, 2, 3, 4, 5, 6, 7]\nVariables: Mya [IN] [1, 2, 3, 4, 5, 6, 7]\nVariables: Amy [IN] [1, 2, 3, 4, 5, 6, 7]\nVariables: Rob [IN] [1, 2, 3, 4, 5, 6, 7]\nVariables: Ada [IN] [1, 2, 3, 4, 5, 6, 7]\nVariables: Joe [IN] [1, 2, 3, 4, 5, 6, 7]\nConstraints: Amy == 3 ::: Amy finished third.\nConstraints: Joe == 7 ::: Joe finished last.\nConstraints: Mya < Dan ::: Mya finished above Dan.\nConstraints: Eve == 4 ::: Eve finished fourth.\nConstraints: Amy < Rob ::: Amy finished above Rob.\nConstraints: Ada == 5 ::: Ada finished third-to-last.\nConstraints: AllDifferentConstraint([Dan, Eve, Mya, Amy, Rob, Ada, Joe]) ::: All golfers have different finishing positions.\nQuery: A) Dan == 5 ::: Dan finished third-to-last.\nQuery: B) Eve == 5 ::: Eve finished third-to-last.\nQuery: C) Mya == 5 ::: Mya finished third-to-last.\nQuery: D) Amy == 5 ::: Amy finished third-to-last.\nQuery: E) Rob == 5 ::: Rob finished third-to-last.\nQuery: F) Ada == 5 ::: Ada finished third-to-last.\nQuery: G) Joe == 5 ::: Joe finished third-to-last.",
+      "id": "logical_deduction_200",
+      "answer": "F",
+      "flag": "parsing error",
+      "predicted_answer": "Ada finished third-to-last, so the correct option is F) Ada finished third-to-last.",
+      "raw_predicted_answer": "Ada finished third-to-last, so the correct option is **F) Ada finished third-to-last.**",
+      "layout_heading_edits": 0,
+      "query_labels_normalized": 0,
+      "error_message": "",
+      "fallback_source": "CoT"
+    },
+    {
+      "normalized_csp_program": "Domain:\n1: oldest\n3: newest\nVariables:\nhatchback [IN] [1, 2, 3]\nlimousine [IN] [1, 2, 3]\nstation_wagon [IN] [1, 2, 3]\nConstraints:\nstation_wagon > hatchback ::: The station wagon is older than the hatchback.\nhatchback == 2 ::: The hatchback is the second-newest.\nAllDifferentConstraint([hatchback, limousine, station_wagon]) ::: All vehicles have different values.\nQuery:\nA) hatchback == 1 ::: The hatchback is the oldest.\nB) limousine == 1 ::: The limousine is the oldest.\nC) station_wagon == 1 ::: The station wagon is the oldest.",
+      "id": "logical_deduction_255",
+      "answer": "C",
+      "flag": "success",
+      "predicted_answer": "B",
+      "raw_predicted_answer": "B",
+      "layout_heading_edits": 0,
+      "query_labels_normalized": 0,
+      "error_message": "",
+      "fallback_source": null
+    },
+    {
+      "normalized_csp_program": "Domain:\n1 = leftmost, 3 = rightmost\nVariables:\nblue_jay ∈ [1, 2, 3]\ncardinal ∈ [1, 2, 3]\nquail ∈ [1, 2, 3]\nConstraints:\ncardinal > quail\nquail > blue_jay\nAllDifferentConstraint([blue_jay, cardinal, quail])\nQuery:\nA) blue_jay == 1\nB) cardinal == 1\nC) quail == 1",
+      "id": "logical_deduction_286",
+      "answer": "A",
+      "flag": "runtime exception",
+      "predicted_answer": "The blue jay is left of the quail, and the quail is left of the cardinal. Therefore, the blue jay is leftmost.\n\nA) The blue jay is the leftmost.",
+      "raw_predicted_answer": "The blue jay is left of the quail, and the quail is left of the cardinal. Therefore, the blue jay is leftmost.\n\n**A) The blue jay is the leftmost.**",
+      "layout_heading_edits": 16,
+      "query_labels_normalized": 0,
+      "error_message": "ValueError: not enough values to unpack (expected 2, got 1)",
+      "fallback_source": "CoT"
+    }
+  ],
+  "logical_deduction_compatibility": {
+    "kind": "surface only: inline section headers and Query label punctuation",
+    "samples_changed": 20,
+    "labels_changed": 126,
+    "layout_samples_changed": 17
+  },
+  "breakdown": {
+    "A": {
+      "n": 64,
+      "accuracy": 0.984375
+    },
+    "B": {
+      "n": 60,
+      "accuracy": 0.9833333333333333
+    },
+    "C": {
+      "n": 62,
+      "accuracy": 0.9838709677419355
+    },
+    "D": {
+      "n": 31,
+      "accuracy": 1.0
+    },
+    "E": {
+      "n": 45,
+      "accuracy": 1.0
+    },
+    "F": {
+      "n": 21,
+      "accuracy": 0.9523809523809523
+    },
+    "G": {
+      "n": 17,
+      "accuracy": 0.9411764705882353
+    }
+  },
+  "requests_verified": {
+    "program": 300,
+    "cot": 300
+  },
+  "provider_usage_warnings": [],
+  "source_programs": "<WORKSPACE>/results/logic-final-LogicalDeduction-1793606303378768000/program/programs.json",
+  "source_cot": "<WORKSPACE>/results/logic-final-LogicalDeduction-1793606303378768000/cot/cot.json",
+  "evaluation_scope": "full_author_dataset",
+  "source_note": "fresh final run"
+}

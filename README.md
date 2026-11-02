@@ -1,19 +1,39 @@
-# MinBridge Baselines
+# MinBridge：Logic-LM 最终复现
 
-Logic-LM 与 ReAct 复现仓库。作者代码以固定 Git 子模块保存，原始许可证保留。**最终 Logic-LM 配置已经确定：作者原解释器 + 原始程序 prompt 前置 26 词格式约束 + CoT 答案去 Markdown 后交给作者评分器。** 不使用本项目曾试验的查询修复解释器。
+五个数据集的全量主实验及 LogicalDeduction 独立 CoT 全量实验已完成。底座为服务商声明的 `gpt-5.6-sol`，参考论文为 Logic-LM（GPT-4、Table 2，无 self-refinement）。**作者原求解器与评分器保持不变；数据集格式约束和 LogicalDeduction 的小兼容处理均公开记录。**
 
-## 已完成结果
+## 最终结果
 
-ProofWriter 完整 600 题已重新生成并完成评测，无 self-refinement：
+| 数据集 | 样本 | 主准确率 | 论文 | 可执行率 | 论文 | Exe_Acc | 论文 | CoT | 论文 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| ProofWriter | 600 | 79.83% | 79.66% | 100% | 99.0% | 79.83% | 79.6% | 68.67% | 68.11% |
+| ProntoQA | 500 | 99.40% | 83.20% | 100% | 100% | 99.40% | 83.2% | 83.60% | 98.79% |
+| FOLIO | 204 | 76.47% | 78.92% | 77.45% | 79.9% | 79.75% | 80.4% | 66.18% | 70.58% |
+| LogicalDeduction | 300 | **99.33%¹** | 87.63% | 98.33% | 100% | 99.32% | 87.6% | **98.33%²** | 75.25% |
+| AR-LSAT | 231 | 68.83% | 43.04% | 52.38% | 32.6% | 67.77% | 60.0% | 67.97% | 35.06% |
 
-| 指标 | 本次 GPT-5.6 替代底座 | 论文 GPT-4 |
-|---|---:|---:|
-| 总体准确率 | 79.83%（479/600） | 79.66% |
-| 程序可执行率 | 100%（600/600） | 99.0% |
-| 可执行样本准确率 | 79.83% | 79.6% |
-| 独立 CoT 准确率（本次先去 Markdown） | 68.67%（412/600） | 68.11% |
+¹ LogicalDeduction 最小程序格式修正后的原主实验为 **295/300（98.33%）**。最终代码加入已确认的 CoT 显式选项提取，对**原配套 CoT**本地重评后额外识别对3条回退答案，得到 **298/300（99.33%）**。没有重新生成程序、改写约束或混入后来的独立 CoT；两个版本均保存。
 
-本轮没有使用 CoT 回退。未去 Markdown 的 CoT 原评分为 35%，两种分数都保留。Markdown 清理属于明确披露的格式兼容处理；不根据推理内容猜答案。结果见 `reports/proofwriter-final-summary.json` 和逐题 `reports/proofwriter-final-predictions.json`。不是“除了底座外零改动”的严格复现，也不据此宣称其他四数据集已经验证成功。
+² 此列为后来**独立重新生成的300条 CoT**：295/300（98.33%）。同批答案仅去 Markdown 的分数为50.67%。主实验配套旧CoT经最新提取也为295/300，但两者是不同批次，严禁混为同一运行。
+
+FOLIO/AR-LSAT 的执行时间限制会受机器负载影响。本次发布保留原完成时冻结成绩；附带的当前代码离线复验中，FOLIO主准确率仍为156/204，但一条超时状态变化使可执行率成为159/204，而原记录为158/204。`recorded-*` 与 `current-policy-*` 均保留，不覆盖原记录。
+
+这些是替代底座＋明确披露的适配结果，不是论文原模型、原消息输出形态的零差异复现。高于论文不自动证明原方法更好；CoT、执行率和回退必须分别解读。AR-LSAT作者附录/README写230，而公开评测文件实际231条，本项目保留全部231条。
+
+## 目录：只保留最终入口和最终实验
+
+- `scripts/run_logic_experiment.py`：五数据集新主实验，程序＋配套CoT，各自记录，4并发，原子断点。
+- `scripts/evaluate_logic_experiment.py`：作者求解器、回退、作者评分器；原始/适配分数都保留。
+- `scripts/run_ld_cot_full.py`：仅LogicalDeduction独立300条CoT，不生成程序。
+- `scripts/logical_deduction_compat.py`：只整理段落标题布局和 `(A)`→`A)`；不改语句、数值和顺序；不从多个程序中挑一个。
+- `scripts/logical_deduction_cot.py`：仅该数据集的明确选项提取；多个候选、越界或无显式选项时弃权，绝不读取gold推断答案。
+- `configs/prompts/`：三个数据集类别的额外格式约束；作者正文/示例不改。
+- **`experiments/final/`**：五个主实验及LD独立CoT的原始输出、压缩请求/响应、运行配置、日志、逐题预测、冻结指标和当前代码重评。`index.json` 指定唯一最终版本。
+- `reports/`：汇总表、3970条请求完整性核验、SHA256清单及两轮验收日志。
+- `docs/`：最终方法差异、结果解释和发布检查。
+- `upstream/`、`patches/`：固定作者子模块及可复现运行时补丁。
+
+旧调参脚本、旧Logic-LM缓存重放成绩和过时说明已从当前版本移除；Git历史仍可追溯。本机所有旧实验原始数据另外保留，未按新成绩删题。ReAct和隔离的GBFR既有代码保持原状，不属于本次新完成的实验。
 
 ## 安装
 
@@ -24,64 +44,55 @@ uv venv .venv --python 3.11
 uv pip install --python .venv/bin/python -r requirements.lock.txt
 export PATH="$PWD/.venv/bin:$PATH"
 bash scripts/apply_runtime_patches.sh
-bash scripts/build_prover9.sh   # FOLIO 需要；需系统 C 编译器
+bash scripts/build_prover9.sh  # FOLIO需要本机C编译器
 cp .env.example .env
-# 在本机填写 OPENAI_API_KEY 和 OPENAI_BASE_URL，不提交 .env。
+# 在本机填写密钥和端点。已有环境变量优先于.env；密钥不得提交。
 ```
 
-环境变量优先于本机 `.env`。密钥不进入命令参数、Git 或 API 日志；请求仅保存提示词和非敏感参数。供应商 usage 与请求预算的差异记为警告，保留原文，不按用量统计丢弃答案或反复生成。`tiktoken` 为可选诊断工具，并不决定评分。
+并发只用于模型生成；本地作者求解器使用固定缓存文件，**不要同时评测同一个数据集的两个运行**。有网络失败时停止派发、保存已经返回的在途结果，显式续跑只补缺失项。
 
-## 最终主实验入口
+## 运行新实验（会调用付费API）
 
 ```bash
-# 先冻结 5 道题配置，不调用 API
-.venv/bin/python scripts/run_logic_experiment.py --dataset FOLIO --limit 5 --prepare-only
+# 不调用API，只保存一份小样本配置
+.venv/bin/python scripts/run_logic_experiment.py --dataset FOLIO --limit 10 --prepare-only
 
-# 全新小规模测试：作者原 dev.json；程序和 CoT 均新生成
-.venv/bin/python scripts/run_logic_experiment.py --dataset ProntoQA --limit 10
-.venv/bin/python scripts/run_logic_experiment.py --dataset FOLIO --limit 10
-.venv/bin/python scripts/run_logic_experiment.py --dataset LogicalDeduction --limit 10
-.venv/bin/python scripts/run_logic_experiment.py --dataset AR-LSAT --limit 10
+# 全量；默认gpt-5.6-sol、单条user消息、温度0、top_p=1、max_tokens=1024、stop=------
+.venv/bin/python scripts/run_logic_experiment.py --dataset LogicalDeduction --workers 4
+# 其他选择：ProofWriter / ProntoQA / FOLIO / AR-LSAT；加--limit 10可小测
 
-# 完整数据：省略 --limit。默认模型 gpt-5.6-sol，最多 4 并发
-.venv/bin/python scripts/run_logic_experiment.py --dataset ProofWriter
+# 续跑必须使用同一个数据集、模型和样本选择；不自动复用“最新缓存”
+.venv/bin/python scripts/run_logic_experiment.py --dataset LogicalDeduction \
+  --resume results/<本次运行目录> --workers 4
 
-# 显式断点续跑：模型、数据选择和源文件指纹必须相同
-.venv/bin/python scripts/run_logic_experiment.py --dataset FOLIO --limit 10 \
-  --resume results/<该次运行目录> --workers 1
-
-# 已完成最终运行的本地重评测，不调用模型
-.venv/bin/python scripts/evaluate_logic_experiment.py --run results/<该次运行目录>
+# 仅LogicalDeduction独立CoT
+.venv/bin/python scripts/run_ld_cot_full.py
+.venv/bin/python scripts/run_ld_cot_full.py --resume results/<该次CoT目录>
 ```
 
-程序始终使用作者各数据集模板，AR-LSAT 用 GPT-4 对应的 `AR-LSAT-long.txt`；只统一前置下面这段原封不动的约束，不增加新示例或改作者逻辑内容：
+主表实验不做self-refinement，不因答错或格式失败而再次生成。模型成功求解但答错仍采用作者答案；只有失败时按ID回退到对应CoT。LogicalDeduction显式提取只是后处理，不改CoT prompt和推理过程；其余数据集只做Markdown清理。
 
-> For the final problem, output only the plain-text logic program, following the example's exact headings and syntax. No Markdown, blank lines within sections, or additional explanation.
-
-CoT prompt 不改。先按作者 `The correct option is:` 分割，再去掉加粗、反引号、围栏、标题/列表等显示标记，最后使用原作者 `evaluate_QA`。不能将自然语言中任意 A/B/C 当答案，也不根据 gold 修正输出。程序成功执行即使用求解器结果，答错也不回退；仅解析、执行或映射失败才使用同 ID 的清理后 CoT。额外的异常回退会明确记录。
-
-无 self-refinement 的主表是当前唯一主实验；不自动进入其他任务或运行付费重试纠错。
-
-## 输出、审计与两轮检查
-
-每次运行创建新目录；不自动读“最新缓存”。每条记录原子保存请求和输出，避免中断时只保存一半；失败停止派发，保存其他在途成功响应，显式续跑只补缺失 ID。目录包括 `run.json`、`program/records/`、`cot/records/`、原始响应快照、`summary.json`、`predictions.json`、`report.md`。程序运行期间 records 是断点真源；聚合快照在阶段结束时写出。
+## 不调用API的检查和重评
 
 ```bash
+# 核对3970个发布请求、样本、原始响应、提取结果和分数，以及敏感信息
+.venv/bin/python scripts/verify_final_release.py
+# 重新调用本地作者求解器，结果写.local，不覆盖发布成绩
+.venv/bin/python scripts/replay_final_release.py --dataset LogicalDeduction
+# 测试和作者源码一致性检查
 .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python -m unittest discover -s scripts -p 'test_*offline.py' -v
 .venv/bin/python scripts/audit_core_protocol.py
 ```
 
-发布的两轮检查见 `docs/final-release-checks.md`。下一步先在本机对其余四数据集小规模测试，再决定全量；本次整理未发起新的付费生成，也没有设置自动定时任务。
+`*.json.gz`/`*.jsonl.gz`采用标准gzip以减少重复prompt占用空间，Python `gzip`或`gzip -dc`即可读取。依赖安装外的上述检查不发送模型请求。`summary.json`是发布成绩，`recorded-summary.json`是原运行冻结成绩，`current-policy-summary.json`是最新代码的离线复验。请求日志没有Authorization headers；本机路径已脱敏，响应内容和提示词不改。
 
-## 历史与其他工作
+## 兼容性和局限
 
-旧的多版本 Logic-LM 生成/推理/修复入口、长格式约束与探索性解释器已从当前代码树移除，Git 历史可追溯。本机旧脚本另存于仓库外的历史目录，实验原始响应/日志仍留在本机，默认不上传。不要从历史文件推断当前状态。
+- 原提示词逐字保留，前置约束分别适配通用逻辑程序、CSP、Z3 DSL；原求解器源码未修改。
+- FOLIO只配置Prover9路径；AR-LSAT子进程屏蔽会混入答案的Z3弃用UserWarning，不修改Z3推理逻辑。
+- 供应商usage不是独立分词测量；异常保留原文并记录。本次部分AR-LSAT回答经独立诊断分词也超过请求1024，上限实际执行无法认证，不能称为严格token预算等同。没有截断或按答案筛选。
+- 中途网络/额度故障和恢复记录随最终实验保存；没有将失败请求当成模型答错。ProofWriter一次初期拒收响应丢失原文的审计缺口也在日志中披露。
+- 程序适配与CoT提取都没有gold输入；没有降低或调高标准答案以贴近论文。
 
-ReAct 入口 `scripts/run_react.py`、环境脚本与 GBFR 独立工作保持原样，未混入本次 Logic-LM 最终发布；对应数据准备见既有文档。它们的历史结果不代表本次已完成端到端复现。
-
-## 来源
-
-- Logic-LM，Findings of EMNLP 2023：https://aclanthology.org/2023.findings-emnlp.248/
-- 作者代码：https://github.com/teacherpeterpan/Logic-LLM
-- ReAct：https://github.com/ysymyth/ReAct
+来源：[Logic-LM论文](https://aclanthology.org/2023.findings-emnlp.248/)；[作者代码](https://github.com/teacherpeterpan/Logic-LLM)；[ReAct](https://github.com/ysymyth/ReAct)。

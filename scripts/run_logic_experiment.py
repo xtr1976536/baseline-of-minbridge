@@ -11,7 +11,7 @@ from pathlib import Path
 
 from api_compat import generate
 from logic_final import (ROOT, UPSTREAM, DATASETS, FORMAT_FILE, atomic_json, digest,
-                         prompt_files, build_prompt, cot_answer, validate_rows, check_runtime)
+                         prompt_files, build_prompt, cot_answer, validate_rows, check_runtime, format_constraint)
 
 
 def load_environment():
@@ -30,12 +30,14 @@ def config(dataset, split, rows, model):
             'sample_ids': [row['id'] for row in rows], 'model': model, 'reference_model': 'gpt-4',
             'temperature': 0., 'top_p': 1., 'max_tokens': 1024, 'stop': '------',
             'api_style': 'chat', 'interpreter': 'author-code', 'self_refinement': False,
-            'cot_postprocessing': 'markdown-only-then-author-evaluator',
-            'format_constraint': FORMAT_FILE.read_text().strip(),
+            'cot_postprocessing': 'ld-explicit-option-v1' if dataset == 'LogicalDeduction' else 'markdown-only-then-author-evaluator',
+            'format_constraint': format_constraint(dataset),
             'author_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=UPSTREAM, text=True).strip(),
             'source_hashes': {str(p.relative_to(ROOT)): digest(p) for p in
-                (program, cot, FORMAT_FILE, UPSTREAM / f'data/{dataset}/{split}.json',
+                (program, cot, FORMAT_FILE, *( [ROOT / f'configs/prompts/{dataset}-format-minimal.txt'] if dataset in ('LogicalDeduction','AR-LSAT') else []),
+                 UPSTREAM / f'data/{dataset}/{split}.json',
                  ROOT / 'scripts/logic_final.py', ROOT / 'scripts/evaluate_logic_experiment.py',
+                 *([ROOT / 'scripts/logical_deduction_compat.py', ROOT / 'scripts/logical_deduction_cot.py'] if dataset == 'LogicalDeduction' else []),
                  UPSTREAM / 'models/evaluation.py')},
             'endpoint_sha256': hashlib.sha256(os.environ.get('OPENAI_BASE_URL', 'https://api.openai.com/v1').encode()).hexdigest()}
 
@@ -125,8 +127,12 @@ def main():
         prompt = build_prompt(args.dataset, stage, row)
         started = time.time()
         raw, response, style, model = generate(prompt, 'gpt-4', args.model, 'chat', 1024, 0., '------', 120)
+        answer_fields = cot_answer(raw)
+        if stage == 'cot' and args.dataset == 'LogicalDeduction':
+            from logical_deduction_cot import extract_ld_cot
+            answer_fields = extract_ld_cot(raw, len(row['options']))
         result = ({**row, 'raw_logic_programs': [raw]} if stage == 'program' else
-                  {'id': row['id'], 'question': row['question'], 'answer': row['answer'], **cot_answer(raw)})
+                  {'id': row['id'], 'question': row['question'], 'answer': row['answer'], **answer_fields})
         return {'dataset': args.dataset, 'stage': stage, 'row': result,
                 'log': {'id': row['id'], 'prompt': prompt, 'response': response,
                         'api_style': style, 'api_model': model, 'seconds': time.time() - started}}

@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 sys.path.insert(0, str(ROOT / 'upstream/Logic-LLM/models'))
 from logic_final import (UPSTREAM, DATASETS, FORMAT_FILE, build_prompt, strip_markdown,
-                         cot_answer, validate_rows)
+                         cot_answer, validate_rows, format_constraint)
 from evaluate_logic_experiment import evaluate, load_author_solver
 from run_logic_experiment import read_records, record_path, snapshots
 
@@ -46,7 +46,7 @@ class FidelityTests(unittest.TestCase):
             baseline=object.__new__(mod.GPT3_Reasoning_Graph_Baseline)
             for row in (rows[0],rows[len(rows)//2],rows[-1]):
                 expected=getattr(generator,methods[dataset])(row)
-                self.assertEqual(build_prompt(dataset,'program',row),FORMAT_FILE.read_text().strip()+'\n\n'+expected)
+                self.assertEqual(build_prompt(dataset,'program',row),format_constraint(dataset)+'\n\n'+expected)
                 self.assertEqual(build_prompt(dataset,'cot',row),baseline.prompt_LSAT(cot.read_text(),row))
     def test_author_files_unchanged(self):
         for rel in ['models/symbolic_solvers/pyke_solver/pyke_solver.py','models/symbolic_solvers/csp_solver/csp_solver.py','models/symbolic_solvers/z3_solver/sat_problem_solver.py','models/evaluation.py','models/backup_answer_generation.py']:
@@ -57,7 +57,18 @@ class FidelityTests(unittest.TestCase):
             self.assertEqual(load_author_solver(dataset).__name__,name)
             self.assertTrue(load_author_solver(dataset).__module__.startswith('symbolic_solvers.'))
     def test_constraint_exactly_the_approved_text(self):
-        self.assertEqual(FORMAT_FILE.read_text().strip(),"For the final problem, output only the plain-text logic program, following the example's exact headings and syntax. No Markdown, blank lines within sections, or additional explanation.")
+        self.assertEqual(format_constraint('ProofWriter'),"For the final problem, output only the plain-text logic program, following the example's exact headings and syntax. No Markdown, blank lines within sections, or additional explanation.")
+        ld=format_constraint('LogicalDeduction')
+        self.assertIn('Domain:',ld)
+        self.assertIn('Variables:',ld)
+        self.assertIn('Constraints:',ld)
+        self.assertIn('Query:',ld)
+        self.assertIn('A), B)',ld)
+        self.assertNotIn('(A)',ld)
+        ar=format_constraint('AR-LSAT')
+        self.assertIn('# Declarations, # Constraints, and # Options',ar)
+        self.assertIn('one sort per disjoint universe',ar)
+        self.assertIn('helper functions',ar)
 
 class FallbackTests(unittest.TestCase):
     def test_parse_failure_uses_markdown_cleaned_cot(self):

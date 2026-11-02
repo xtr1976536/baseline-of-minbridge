@@ -1,0 +1,108 @@
+{
+  "dataset": "LogicalDeduction",
+  "n": 300,
+  "interpreter": "author-code",
+  "self_refinement": false,
+  "answer_processing": "Markdown cleanup plus conservative explicit CoT option extraction for LogicalDeduction; author evaluate_QA unchanged",
+  "accuracy": 0.9933333333333333,
+  "correct": 298,
+  "raw_author_accuracy_without_cleanup": 0.9833333333333333,
+  "executable_rate": 0.9833333333333333,
+  "executable_accuracy": 0.9932203389830508,
+  "executable": 295,
+  "fallback_count": 5,
+  "cot_markdown_only_accuracy": 0.44666666666666666,
+  "cot_accuracy": 0.9833333333333333,
+  "cot_correct": 295,
+  "cot_raw_author_accuracy_without_cleanup": 0.22,
+  "status_counts": {
+    "success": 295,
+    "mapping error": 2,
+    "execution error": 1,
+    "parsing error": 1,
+    "runtime exception": 1
+  },
+  "paper_gpt4_reference": {
+    "accuracy": 0.8763,
+    "executable_rate": 1.0,
+    "executable_accuracy": 0.876,
+    "cot_accuracy": 0.7525
+  },
+  "differences": [
+    "substitute model",
+    "dataset format prefix; original examples unchanged",
+    "LogicalDeduction surface-only section layout and Query punctuation normalization before unchanged author parser",
+    "mandatory Markdown cleanup; raw metrics preserved",
+    "LogicalDeduction CoT explicit-option-v1; abstain on ambiguity, no semantic inference",
+    "mapping/runtime failures explicitly recorded and backed up; not hidden"
+  ],
+  "errors": [
+    {
+      "normalized_csp_program": "Domain:\n1: oldest\n7: newest\nVariables:\nconvertible [IN] [1, 2, 3, 4, 5, 6, 7]\nlimousine [IN] [1, 2, 3, 4, 5, 6, 7]\nhatchback [IN] [1, 2, 3, 4, 5, 6, 7]\nbus [IN] [1, 2, 3, 4, 5, 6, 7]\nstation_wagon [IN] [1, 2, 3, 4, 5, 6, 7]\ntractor [IN] [1, 2, 3, 4, 5, 6, 7]\nminivan [IN] [1, 2, 3, 4, 5, 6, 7]\nConstraints:\nstation_wagon == 4 ::: The station wagon is the fourth-newest.\nhatchback < bus ::: The hatchback is older than the bus.\nhatchback == 6 ::: The hatchback is the second-newest.\nminivan > limousine ::: The minivan is newer than the limousine.\nconvertible < limousine ::: The convertible is older than the limousine.\ntractor == 2 ::: The tractor is the second-oldest.\nAllDifferentConstraint([convertible, limousine, hatchback, bus, station_wagon, tractor, minivan]) ::: All vehicles have different values.\nQuery:\nA) convertible == 3 ::: The convertible is the third-newest.\nB) limousine == 3 ::: The limousine is the third-newest.\nC) hatchback == 3 ::: The hatchback is the third-newest.\nD) bus == 3 ::: The bus is the third-newest.\nE) station_wagon == 3 ::: The station wagon is the third-newest.\nF) tractor == 3 ::: The tractor is the third-newest.\nG) minivan == 3 ::: The minivan is the third-newest.",
+      "id": "logical_deduction_115",
+      "answer": "G",
+      "flag": "success",
+      "predicted_answer": "B",
+      "raw_predicted_answer": "B",
+      "layout_heading_edits": 0,
+      "query_labels_normalized": 0,
+      "error_message": "",
+      "fallback_source": null
+    },
+    {
+      "normalized_csp_program": "Domain:\n1: oldest\n3: newest\nVariables:\nhatchback [IN] [1, 2, 3]\nlimousine [IN] [1, 2, 3]\nstation_wagon [IN] [1, 2, 3]\nConstraints:\nstation_wagon > hatchback ::: The station wagon is older than the hatchback.\nhatchback == 2 ::: The hatchback is the second-newest.\nAllDifferentConstraint([hatchback, limousine, station_wagon]) ::: All vehicles have different values.\nQuery:\nA) hatchback == 1 ::: The hatchback is the oldest.\nB) limousine == 1 ::: The limousine is the oldest.\nC) station_wagon == 1 ::: The station wagon is the oldest.",
+      "id": "logical_deduction_255",
+      "answer": "C",
+      "flag": "success",
+      "predicted_answer": "B",
+      "raw_predicted_answer": "B",
+      "layout_heading_edits": 0,
+      "query_labels_normalized": 0,
+      "error_message": "",
+      "fallback_source": null
+    }
+  ],
+  "logical_deduction_compatibility": {
+    "kind": "surface only: inline section headers and Query label punctuation",
+    "samples_changed": 20,
+    "labels_changed": 126,
+    "layout_samples_changed": 17
+  },
+  "breakdown": {
+    "A": {
+      "n": 64,
+      "accuracy": 1.0
+    },
+    "B": {
+      "n": 60,
+      "accuracy": 1.0
+    },
+    "C": {
+      "n": 62,
+      "accuracy": 0.9838709677419355
+    },
+    "D": {
+      "n": 31,
+      "accuracy": 1.0
+    },
+    "E": {
+      "n": 45,
+      "accuracy": 1.0
+    },
+    "F": {
+      "n": 21,
+      "accuracy": 1.0
+    },
+    "G": {
+      "n": 17,
+      "accuracy": 0.9411764705882353
+    }
+  },
+  "requests_verified": {},
+  "provider_usage_warnings": [],
+  "source_programs": "<WORKSPACE>/results/logic-final-LogicalDeduction-1793606303378768000/program/programs.json",
+  "source_cot": "<WORKSPACE>/results/logic-final-LogicalDeduction-1793606303378768000/cot/cot.json",
+  "evaluation_scope": "full_author_dataset",
+  "source_note": "offline replay of existing outputs; no new API calls",
+  "release_basis": "latest CoT extraction applied offline to original paired answers; no program regeneration"
+}

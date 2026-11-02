@@ -8,6 +8,8 @@ ROOT = Path(__file__).resolve().parents[1]
 UPSTREAM = ROOT / 'upstream/Logic-LLM'
 DATASETS = ('ProntoQA', 'ProofWriter', 'FOLIO', 'LogicalDeduction', 'AR-LSAT')
 FORMAT_FILE = ROOT / 'configs/prompts/logic-format-minimal.txt'
+LOGICAL_DEDUCTION_FORMAT_FILE = ROOT / 'configs/prompts/LogicalDeduction-format-minimal.txt'
+AR_LSAT_FORMAT_FILE = ROOT / 'configs/prompts/AR-LSAT-format-minimal.txt'
 PAPER = {
     'ProntoQA': {'accuracy': .832, 'executable_rate': 1., 'executable_accuracy': .832, 'cot_accuracy': .9879},
     'ProofWriter': {'accuracy': .7966, 'executable_rate': .99, 'executable_accuracy': .796, 'cot_accuracy': .6811},
@@ -36,6 +38,10 @@ def cot_answer(raw):
             'predicted_reasoning': raw.split('The correct option is:')[0].strip(), 'raw_output': raw}
 
 
+def format_constraint(dataset):
+    path = {'LogicalDeduction': LOGICAL_DEDUCTION_FORMAT_FILE, 'AR-LSAT': AR_LSAT_FORMAT_FILE}.get(dataset, FORMAT_FILE)
+    return path.read_text().strip()
+
 def prompt_files(dataset):
     name = 'AR-LSAT-long' if dataset == 'AR-LSAT' else dataset
     return (UPSTREAM / f'models/prompts/{name}.txt',
@@ -49,7 +55,7 @@ def build_prompt(dataset, stage, row):
         if dataset in ('LogicalDeduction', 'AR-LSAT'):
             choices = '\n'.join(f'({choice.strip()}' for choice in row['options']).strip()
             text = text.replace('[[CHOICES]]', choices)
-        return FORMAT_FILE.read_text().strip() + '\n\n' + text
+        return format_constraint(dataset) + '\n\n' + text
     if stage != 'cot':
         raise ValueError(stage)
     return (cot.read_text().replace('[[CONTEXT]]', row['context'].strip())

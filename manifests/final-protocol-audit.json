@@ -131,9 +131,29 @@
       "detail": "author code unchanged"
     },
     {
-      "check": "approved format prefix",
+      "check": "ProofWriter format prefix",
       "pass": true,
       "detail": "For the final problem, output only the plain-text logic program, following the example's exact headings and syntax. No Markdown, blank lines within sections, or additional explanation."
+    },
+    {
+      "check": "LogicalDeduction parser labels",
+      "pass": true,
+      "detail": "For the final problem only, output exactly one plain-text CSP program; do not repeat the examples. Use Domain:, Variables:, Constraints:, Query:, one statement per line, and option labels A), B), etc. No Markdown or explanations."
+    },
+    {
+      "check": "LogicalDeduction prefix source fingerprint",
+      "pass": true,
+      "detail": "configs/prompts/LogicalDeduction-format-minimal.txt"
+    },
+    {
+      "check": "AR-LSAT minimal translator-compatible format",
+      "pass": true,
+      "detail": "Output only the plain-text Z3 program using the exact # Declarations, # Constraints, and # Options sections shown in the examples. Use one sort per disjoint universe; represent overlapping groups as Boolean predicates over the base sort, and use only the examples' helper functions."
+    },
+    {
+      "check": "AR-LSAT prefix source fingerprint",
+      "pass": true,
+      "detail": "configs/prompts/AR-LSAT-format-minimal.txt"
     },
     {
       "check": "author interpreters only",
@@ -148,8 +168,8 @@
   ],
   "all_pass": true,
   "limitations": [
-    "26-word prefix and Markdown cleanup are declared compatibility changes.",
-    "Other datasets have not completed fresh full end-to-end runs.",
+    "Dataset format prefixes, LogicalDeduction surface normalization and CoT extraction are declared compatibility changes.",
+    "Five full main runs and one LD standalone CoT complete. Recorded vs current-policy replay separated; resource timeouts may vary.",
     "AR-LSAT paper appendix/README says 230; released dataset has 231.",
     "Prover9 runtime path patch only; no inference-logic edits."
   ]

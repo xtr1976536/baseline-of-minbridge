@@ -1,0 +1,101 @@
+{
+  "n": 300,
+  "correct": 295,
+  "accuracy": 0.9833333333333333,
+  "markdown_only_correct": 152,
+  "markdown_only_accuracy": 0.5066666666666667,
+  "paper_gpt4_cot": 0.7525,
+  "extraction_reasons": {
+    "unique_explicit_option": 251,
+    "no_explicit_option": 3,
+    "author_delimiter": 46
+  },
+  "requests_verified": 300,
+  "errors": [
+    {
+      "id": "logical_deduction_9",
+      "question": "Which of the following is true?",
+      "answer": "A",
+      "raw_predicted_answer": "The brown book, orange book, and black book are fixed in positions 1, 2, and 3, respectively. Since the purple book is left of the black book, it must be in position 1 or 2; those are already occupied, so the statements are inconsistent. No option can be determined from this context as written.",
+      "predicted_answer": "",
+      "predicted_reasoning": "The brown book, orange book, and black book are fixed in positions 1, 2, and 3, respectively. Since the purple book is left of the black book, it must be in position 1 or 2; those are already occupied, so the statements are inconsistent. No option can be determined from this context as written.",
+      "raw_output": "The brown book, orange book, and black book are fixed in positions 1, 2, and 3, respectively. Since the purple book is left of the black book, it must be in position 1 or 2; those are already occupied, so the statements are inconsistent. No option can be determined from this context as written.",
+      "markdown_only_predicted_answer": "The brown book, orange book, and black book are fixed in positions 1, 2, and 3, respectively. Since the purple book is left of the black book, it must be in position 1 or 2; those are already occupied, so the statements are inconsistent. No option can be determined from this context as written.",
+      "cot_extraction": {
+        "policy": "ld-explicit-option-v1",
+        "reason": "no_explicit_option",
+        "candidates": [],
+        "option_count": 5
+      }
+    },
+    {
+      "id": "logical_deduction_59",
+      "question": "Which of the following is true?",
+      "answer": "E",
+      "raw_predicted_answer": "A) The cantaloupes are the third-most expensive.",
+      "predicted_answer": "A",
+      "predicted_reasoning": "Reasoning:\nThe oranges are the second-most expensive, so they cannot be third. The mangoes are second-cheapest, so they cannot be third. The kiwis are less expensive than the mangoes, placing them below the mangoes. The peaches are less expensive than the oranges, so they are also below the oranges. The remaining fruit must be the cantaloupes, so they are third-most expensive.",
+      "raw_output": "Reasoning:\nThe oranges are the second-most expensive, so they cannot be third. The mangoes are second-cheapest, so they cannot be third. The kiwis are less expensive than the mangoes, placing them below the mangoes. The peaches are less expensive than the oranges, so they are also below the oranges. The remaining fruit must be the cantaloupes, so they are third-most expensive.\n\nThe correct option is: A) The cantaloupes are the third-most expensive.",
+      "markdown_only_predicted_answer": "A) The cantaloupes are the third-most expensive.",
+      "cot_extraction": {
+        "policy": "ld-explicit-option-v1",
+        "reason": "author_delimiter",
+        "candidates": [
+          "A"
+        ],
+        "option_count": 5
+      }
+    },
+    {
+      "id": "logical_deduction_97",
+      "question": "Which of the following is true?",
+      "answer": "E",
+      "raw_predicted_answer": "The brown book is second from the left. The red book must be to its left, so the red book is leftmost. The yellow book is to the right of the orange book and to the left of the blue book. With the first two positions occupied by the red and brown books, the remaining order is orange, yellow, blue. Therefore, the yellow book is fourth from the left.\n\nNone of the options is true.",
+      "predicted_answer": "",
+      "predicted_reasoning": "The brown book is second from the left. The red book must be to its left, so the red book is leftmost. The yellow book is to the right of the orange book and to the left of the blue book. With the first two positions occupied by the red and brown books, the remaining order is orange, yellow, blue. Therefore, the yellow book is fourth from the left.\n\nNone of the options is true.",
+      "raw_output": "The brown book is second from the left. The red book must be to its left, so the red book is leftmost. The yellow book is to the right of the orange book and to the left of the blue book. With the first two positions occupied by the red and brown books, the remaining order is orange, yellow, blue. Therefore, the yellow book is fourth from the left.\n\nNone of the options is true.",
+      "markdown_only_predicted_answer": "The brown book is second from the left. The red book must be to its left, so the red book is leftmost. The yellow book is to the right of the orange book and to the left of the blue book. With the first two positions occupied by the red and brown books, the remaining order is orange, yellow, blue. Therefore, the yellow book is fourth from the left.\n\nNone of the options is true.",
+      "cot_extraction": {
+        "policy": "ld-explicit-option-v1",
+        "reason": "no_explicit_option",
+        "candidates": [],
+        "option_count": 5
+      }
+    },
+    {
+      "id": "logical_deduction_133",
+      "question": "Which of the following is true?",
+      "answer": "G",
+      "raw_predicted_answer": "The hummingbird must be in position 1 because it is left of the robin in position 3, and position 2 is occupied by the blue jay. The raven, quail, and falcon occupy positions 4, 6, and 7 in that order, since the raven is left of the quail and the falcon is right of the quail.\n\nSo the raven is fourth from the left: **G**.",
+      "predicted_answer": "",
+      "predicted_reasoning": "The hummingbird must be in position 1 because it is left of the robin in position 3, and position 2 is occupied by the blue jay. The raven, quail, and falcon occupy positions 4, 6, and 7 in that order, since the raven is left of the quail and the falcon is right of the quail.\n\nSo the raven is fourth from the left: **G**.",
+      "raw_output": "The hummingbird must be in position 1 because it is left of the robin in position 3, and position 2 is occupied by the blue jay. The raven, quail, and falcon occupy positions 4, 6, and 7 in that order, since the raven is left of the quail and the falcon is right of the quail.\n\nSo the raven is fourth from the left: **G**.",
+      "markdown_only_predicted_answer": "The hummingbird must be in position 1 because it is left of the robin in position 3, and position 2 is occupied by the blue jay. The raven, quail, and falcon occupy positions 4, 6, and 7 in that order, since the raven is left of the quail and the falcon is right of the quail.\n\nSo the raven is fourth from the left: G.",
+      "cot_extraction": {
+        "policy": "ld-explicit-option-v1",
+        "reason": "no_explicit_option",
+        "candidates": [],
+        "option_count": 7
+      }
+    },
+    {
+      "id": "logical_deduction_228",
+      "question": "Which of the following is true?",
+      "answer": "E",
+      "raw_predicted_answer": "The convertible and tractor must occupy the two positions newer than the hatchback, other than the sedan’s position: the convertible is third-newest and the tractor is newest. That leaves the three oldest positions for the limousine, motorcycle, and truck. Since the limousine is older than the motorcycle, which is older than the truck, the limousine is second-oldest.\n\n**Answer: D) The limousine is the second-oldest.**",
+      "predicted_answer": "D",
+      "predicted_reasoning": "The convertible and tractor must occupy the two positions newer than the hatchback, other than the sedan’s position: the convertible is third-newest and the tractor is newest. That leaves the three oldest positions for the limousine, motorcycle, and truck. Since the limousine is older than the motorcycle, which is older than the truck, the limousine is second-oldest.\n\n**Answer: D) The limousine is the second-oldest.**",
+      "raw_output": "The convertible and tractor must occupy the two positions newer than the hatchback, other than the sedan’s position: the convertible is third-newest and the tractor is newest. That leaves the three oldest positions for the limousine, motorcycle, and truck. Since the limousine is older than the motorcycle, which is older than the truck, the limousine is second-oldest.\n\n**Answer: D) The limousine is the second-oldest.**",
+      "markdown_only_predicted_answer": "The convertible and tractor must occupy the two positions newer than the hatchback, other than the sedan’s position: the convertible is third-newest and the tractor is newest. That leaves the three oldest positions for the limousine, motorcycle, and truck. Since the limousine is older than the motorcycle, which is older than the truck, the limousine is second-oldest.\n\nAnswer: D) The limousine is the second-oldest.",
+      "cot_extraction": {
+        "policy": "ld-explicit-option-v1",
+        "reason": "unique_explicit_option",
+        "candidates": [
+          "D"
+        ],
+        "option_count": 7
+      }
+    }
+  ],
+  "note": "Fresh CoT-only run; explicit option extraction is disclosed compatibility change; other results unchanged."
+}
