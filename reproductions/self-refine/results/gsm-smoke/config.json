@@ -1,0 +1,32 @@
+{
+  "actual_model": "gpt-5.6-sol",
+  "source_commit": "9a206d41e5d2d0c241bb441f41eeadb945afaa55",
+  "expected": 3,
+  "max_attempts": 4,
+  "initial_temperature": 0.7,
+  "feedback_temperature": 0.7,
+  "choice": "paper temperature0.7 takes precedence over CLI initial default0.0",
+  "manifest": {
+    "src/utils.py": "8c89d51373374b963ebe69319456a557ff782a3f49881c0649a2e677361d6c96",
+    "src/gsm/run.py": "7b381b420a2e7b5471def9c8893d22534b22a9260dc5c1225148a1efdac8c604",
+    "src/gsm/task_init.py": "b8a8e1f30716f9c9ad639ddd3db45f118e7ae2ee72329ba445b0bfbd802a5d4d",
+    "src/gsm/feedback.py": "ff5d7035147b92630f44f276f4531e2ec5ab4157089c057b7948889ecd9f0806",
+    "src/gsm/gsm_selfref_eval.py": "8a661d40af9201629aa3b181db1f7b9494b9358d9f087aa4c1cf8b097e055675",
+    "data/tasks/gsm/gsm.jsonl": "1ad9f97f4842ea06c1a06d5e4c4815da97d311ba94ec96f8c436def5d269927c",
+    "data/prompt/gsm/init.txt": "926be6c12ec82aced16abd7f4918f3cf5f3417dcd9accb101b7b8a100d05c271",
+    "data/prompt/gsm/feedback.txt": "0516d5e54d6aad0d303a967f7d17b7580447d4ea175ce669e7e2f386b0c5a4e0"
+  },
+  "workers": 4,
+  "mode": "smoke",
+  "api_adaptation": "single user message; original prompts and stops; no added system instruction",
+  "metrics": [
+    "initial",
+    "final_output",
+    "official_cumulative_any_correct"
+  ],
+  "code_sha256": {
+    "protocol.py": "a4a75573acd67159c0fa1250cffb0a1889704a9a64854051add16639da1fa378",
+    "run_gsm.py": "bd19e93024764119a7d42b6537a40491c085236dc6df3175a53b467ea392f57f",
+    "execute_worker.py": "835564d5c222bd000079cc3ad76911caf426d79e4b7188476a12b2af7dcaf482"
+  }
+}
