@@ -33,3 +33,18 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/run_gsm.py --full --workers 8
 根仓库.env/环境变量提供OPENAI_API_KEY和OPENAI_BASE_URL；不得提交密钥。results保存原提示、响应、程序、每轮评分及配置。官方loop打印prompt的本地log被Git忽略；发布JSON保留调用证据。
 
 早期gsm-smoke为本接入NameError的离线失败（未发API）；gsm-smoke-v2原prompt未适配Chat导致自然语言及parse失败；gsm-smoke-v3为显式格式适配验收，保留各版本而不混合计分。官方upstream README不改写。
+
+## 完整发布与离线验收
+
+最终结果以 `results/gsm-full-final-20261102/` 为准：`predictions.jsonl.gz`包含1319题的模型请求/响应、反馈历史、原始程序、执行返回与评分；`scores.jsonl`供快速分析；`transport_failure_records.jsonl.gz`保留22题最初失败；配置、验证、SHA256及报告随附。
+
+`archive/initial_full_run_run_gsm.py`和`archive/resume_run_run_gsm.py`为初次全量和接口续跑的确切源码，SHA256与config吻合，仅作历史审计。当前入口为scripts/run_gsm.py。vendor锁定原作者版本，依赖为requirements.lock.txt。
+
+```bash
+# 均不请求API
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/check_protocol.py
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/summarize_gsm.py --output gsm-full-final-20261102
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/validate_release.py
+```
+
+两轮发布检查见docs/release-checks/。不重复上传本机samples/traces、虚拟环境和终端日志：重要调用已汇入压缩轨迹。其余六任务未完成；最终准确率96.1334%，不能以累计97.9530%替代。
