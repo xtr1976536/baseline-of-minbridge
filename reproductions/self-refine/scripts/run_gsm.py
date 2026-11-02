@@ -8,20 +8,39 @@ LOCK=threading.Lock()
 def write(p,data):
  tmp=p.with_suffix('.tmp');tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2));tmp.replace(p)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--limit',type=int,default=3);p.add_argument('--full',action='store_true');p.add_argument('--workers',type=int,default=4);p.add_argument('--output',default='gsm-smoke');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--limit',type=int,default=3);p.add_argument('--full',action='store_true');p.add_argument('--workers',type=int,default=4);p.add_argument('--output',default='gsm-smoke');p.add_argument('--resume-from');a=p.parse_args()
  rows=[json.loads(s) for s in (VENDOR/'data/tasks/gsm/gsm.jsonl').read_text().splitlines()];assert len(rows)==1319
  if not a.full:rows=rows[:a.limit]
  out=ROOT/'results'/a.output;out.mkdir(parents=True,exist_ok=True);(out/'samples').mkdir(exist_ok=True);(out/'traces').mkdir(exist_ok=True)
  env={**dotenv_values(ROOT.parents[1]/'.env'),**os.environ}
- config={'actual_model':'gpt-5.6-sol','source_commit':subprocess.check_output(['git','-C',str(VENDOR),'rev-parse','HEAD'],text=True).strip(),'expected':len(rows),'max_attempts':4,'initial_temperature':0.7,'feedback_temperature':0.7,'choice':'paper temperature0.7 takes precedence over CLI initial default0.0','manifest':manifest(),'workers':a.workers,'mode':'full GSM only' if a.full else 'smoke','api_adaptation':'Chat continuation system instructions; original user prompt and stop tokens unchanged','metrics':['initial','final_output','official_cumulative_any_correct'],'code_sha256':{f:hashlib.sha256((ROOT/'scripts'/f).read_bytes()).hexdigest() for f in ['protocol.py','run_gsm.py','execute_worker.py']}}
+ config={'resume_from':a.resume_from,'actual_model':'gpt-5.6-sol','source_commit':subprocess.check_output(['git','-C',str(VENDOR),'rev-parse','HEAD'],text=True).strip(),'expected':len(rows),'max_attempts':4,'initial_temperature':0.7,'feedback_temperature':0.7,'choice':'paper temperature0.7 takes precedence over CLI initial default0.0','manifest':manifest(),'workers':a.workers,'mode':'full GSM only' if a.full else 'smoke','api_adaptation':'Chat continuation system instructions; original user prompt and stop tokens unchanged','metrics':['initial','final_output','official_cumulative_any_correct'],'code_sha256':{f:hashlib.sha256((ROOT/'scripts'/f).read_bytes()).hexdigest() for f in ['protocol.py','run_gsm.py','execute_worker.py']}}
  if (out/'config.json').exists() and json.loads((out/'config.json').read_text())!=config:raise RuntimeError('Config mismatch')
  write(out/'config.json',config);done={int(f.stem):json.loads(f.read_text()) for f in (out/'samples').glob('*.json')}
+ previous={}
+ if a.resume_from:
+  source=ROOT/'results'/a.resume_from
+  previous={r['index']:r for r in map(json.loads,(source/'predictions.jsonl').read_text().splitlines())}
+  source_config=json.loads((source/'config.json').read_text())
+  for key in ['actual_model','source_commit','manifest','max_attempts','initial_temperature','feedback_temperature','api_adaptation']:assert source_config[key]==config[key],key
+  for i,r in previous.items():
+   if r['status']=='generated' and i not in done:done[i]=r;write(out/'samples'/f'{i:04d}.json',r)
  def run(i):
   traces=[];start=time.time();record={'index':i,'input':rows[i]['input'],'target':rows[i]['target'],'api':traces}
   def call(prompt,engine,max_tokens,stop_token,temperature):
    system=('Continue the examples by returning only Python code defining solution(). Preserve the question as a docstring inside solution(), as in the examples. No Markdown fences or prose.' if not traces else 'Continue the examples with feedback comments followed by the complete revised Python def solution(): function. Always include the function, even if feedback says it is correct. No Markdown fences. Do not introduce outside information.')
    request={'model':'gpt-5.6-sol','messages':[{'role':'system','content':system},{'role':'user','content':prompt}],'temperature':temperature,'max_tokens':max_tokens,'stop':stop_token}
    trace={'stage':'init' if not traces else 'feedback_refine','request':request,'attempts':[]};traces.append(trace)
+   prior=previous.get(i,{}).get('api',[])
+   stage_index=len(traces)-1
+   if stage_index<len(prior):
+    old=prior[stage_index];assert old['request']==request,'Replay request mismatch'
+    for attempt_record in old['attempts']:
+     raw=attempt_record.get('response',{})
+     choices=raw.get('choices') or []
+     if choices and choices[0].get('message',{}).get('content'):
+      trace.update(attempts=old['attempts'],reused_successful_response=True)
+      write(out/'traces'/f'{i:04d}.json',traces)
+      return choices[0]['message']['content']
    for attempt in range(3):
     try:
      response=requests.post(env['OPENAI_BASE_URL'].rstrip('/')+'/chat/completions',headers={'Authorization':'Bearer '+env['OPENAI_API_KEY']},json=request,timeout=(20,180));trace['attempts'].append({'http_status':response.status_code})

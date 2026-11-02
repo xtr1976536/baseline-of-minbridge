@@ -3,7 +3,9 @@ import argparse,collections,json
 from pathlib import Path
 from protocol import ROOT,check_corr
 p=argparse.ArgumentParser();p.add_argument('--output',required=True);a=p.parse_args();out=ROOT/'results'/a.output
-rows=[json.loads(s) for s in (out/'predictions.jsonl').read_text().splitlines()]
+import gzip
+source=(out/'predictions.jsonl').read_text() if (out/'predictions.jsonl').exists() else gzip.open(out/'predictions.jsonl.gz','rt').read()
+rows=[json.loads(s) for s in source.splitlines()]
 for r in rows:
  for e in r['evaluations']:
   assert e['correct']==(bool(check_corr(e['value'],r['target'])) if e.get('value') is not None else False)
