@@ -1,0 +1,44 @@
+\documentclass[UTF8,fontset=none,11pt,a4paper]{ctexart}
+\usepackage[margin=22mm,top=20mm,bottom=20mm]{geometry}
+\usepackage{fontspec,xcolor,enumitem}
+\setmainfont{Times New Roman}
+\setCJKmainfont{Songti SC}[BoldFont={Heiti SC}]
+\setCJKsansfont{PingFang SC}
+\definecolor{linkblue}{HTML}{205B86}
+\usepackage[colorlinks=true,urlcolor=linkblue,linkcolor=linkblue,pdftitle={Reference of minbridge}]{hyperref}
+\usepackage{bookmark}
+\pagestyle{plain}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}
+\linespread{1.12}
+\ctexset{section={format=\large\sffamily\bfseries,beforeskip=13pt,afterskip=8pt},subsection={format=\normalsize\sffamily\bfseries,beforeskip=10pt,afterskip=6pt}}
+\newcommand{\remarkbox}[1]{\par\vspace{8pt}\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\small\textbf{Remark.} #1}}\par}
+
+\begin{document}\begin{center}{\LARGE\bfseries Reference of minbridge}\end{center}
+\section{常见 baseline}
+\textbf{Self-Refine}\quad 2023 · NeurIPS\par
+{\small\href{https://arxiv.org/abs/2303.17651}{\nolinkurl{https://arxiv.org/abs/2303.17651}}}\par\vspace{8pt}
+\textbf{Program of Thoughts（PoT）}\quad 2023 · TMLR\par
+{\small\href{https://arxiv.org/abs/2211.12588}{\nolinkurl{https://arxiv.org/abs/2211.12588}}}\par\vspace{8pt}
+\textbf{ReAct}\quad 2023 · ICLR\par
+{\small\href{https://arxiv.org/abs/2210.03629}{\nolinkurl{https://arxiv.org/abs/2210.03629}}}\par\vspace{8pt}
+\textbf{Logic-LM}\quad 2023 · Findings of EMNLP\quad\textbf{（已复现完成）}\par
+{\small\href{https://aclanthology.org/2023.findings-emnlp.248/}{\nolinkurl{https://aclanthology.org/2023.findings-emnlp.248/}}}\par\vspace{8pt}
+\textbf{复现结果与代码：}\par
+{\small\href{https://github.com/xtr1976536/baseline-of-minbridge}{\nolinkurl{https://github.com/xtr1976536/baseline-of-minbridge}}}\par
+\remarkbox{这些工作作为常见推理基线，其中 PoT 通过程序执行完成数值计算。复现代码与结果汇总于上述仓库；Logic-LM 已复现完成，其余方法按各自进度更新。}
+\section{金融数值推理与验证方法}
+\textbf{GBFR}\quad 2026 · ACL\par
+{\small\href{https://aclanthology.org/2026.acl-long.1273/}{\nolinkurl{https://aclanthology.org/2026.acl-long.1273/}}}\par\vspace{8pt}
+\textbf{VeriFin}\quad 2026 · arXiv 预印本\par
+{\small\href{https://arxiv.org/abs/2608.10213}{\nolinkurl{https://arxiv.org/abs/2608.10213}}}\par\vspace{8pt}
+\textbf{FinanceReasoning（函数知识增强设置）}\quad 2025 · ACL\par
+{\small\href{https://aclanthology.org/2025.acl-long.766/}{\nolinkurl{https://aclanthology.org/2025.acl-long.766/}}}\par\vspace{8pt}
+\remarkbox{保留 GBFR；这些工作关注金融数值推理、知识增强或结果验证。FinanceReasoning 以基准与评测框架为主，此处选取其函数知识增强设置。}
+\section{拒答相关方法}
+\subsection{带拒答提示的推理模型（推理时／不改参数）}
+\textbf{I-CALM}\quad 2026 · arXiv 预印本\par
+{\small\href{https://arxiv.org/abs/2604.03904}{\nolinkurl{https://arxiv.org/abs/2604.03904}}}\par\vspace{8pt}
+\textbf{Decomposed Prompting（DBA）}\quad 2026 · Findings of ACL\par
+{\small\href{https://aclanthology.org/2026.findings-acl.1829/}{\nolinkurl{https://aclanthology.org/2026.findings-acl.1829/}}}\par\vspace{8pt}
+\remarkbox{本阶段只考虑推理时拒答方法；拒答微调与强化学习留待后续实验，暂不列入本清单。}
+\end{document}
