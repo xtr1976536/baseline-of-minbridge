@@ -1,0 +1,36 @@
+{
+  "dataset": "tatqa",
+  "expected": 1668,
+  "mode": "few-shot greedy",
+  "actual_model": "gpt-5.6-sol",
+  "paper_model": "code-davinci-002",
+  "workers": 8,
+  "protocol": {
+    "script": "run_tatqa.py",
+    "script_sha256": "aa8a169513cb54376b7c9b0a43c71188bd8f8f5a5791eae8a4d46a828fd5235a",
+    "data": "tatqa_dev.json",
+    "data_sha256": "cb4925f90ecbed9637e92bec732bb841a93b42b3fa2ab5a08e31fd9b816b85c7",
+    "count": 1668,
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "top_p": 1,
+    "stop": [
+      "\n\n"
+    ],
+    "n": 1
+  },
+  "system": "Complete the Python program requested by the final example. Return only executable Python statements assigning ans (and units when the examples use units). No Markdown fences or prose. Do not repeat the examples.",
+  "runtime_sha256": {
+    "run_financial_full.py": "10ca93af549a6943598aa2fb0955a440db8468558397dfda6d44ffbc34c7cde4",
+    "protocol.py": "e0d09453cf7c870f497afa049690eb0555f461e2ba2338f4a914068a39733729",
+    "execute_worker.py": "954d46afb958246ba631f172dba31a1b3f2c684731603e73a835f848aca6e090"
+  },
+  "source_commit": "850399c3eff8c37458a9d642c4a98df287f50f3a",
+  "paper_reference_accuracy_percent": 69.0,
+  "adaptations": [
+    "Chat completion with fixed Python continuation instruction",
+    "leading boundary whitespace only; raw saved",
+    "same official execution/postprocess/score",
+    "finite transport retries only; no answer repair"
+  ]
+}

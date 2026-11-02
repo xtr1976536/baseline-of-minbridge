@@ -1,0 +1,15 @@
+{
+  "initial_workers_per_dataset": 16,
+  "initial_total_workers": 32,
+  "resume_workers": 8,
+  "scheduling": "one dataset at a time after incident",
+  "retry_policy": "retry only requests without valid model generation; never retry scored wrong answers",
+  "initial_failed_requests": 427,
+  "error_categories": {
+    "ValueError: Nonretryable HTTP 403": 409,
+    "RuntimeError: Temporary HTTP 429": 18
+  },
+  "cause": "Concurrent HTTP429 followed by HTTP403; short generation probe subsequently HTTP200; likely transient concurrency/service rejection, exact provider cause unconfirmed",
+  "late_http524_without_generation": 1,
+  "late_http524_retried_only_after_main_run": true
+}
