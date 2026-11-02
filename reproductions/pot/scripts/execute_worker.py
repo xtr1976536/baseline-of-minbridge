@@ -5,8 +5,10 @@ sys.path.insert(0,str(VENDOR))
 from tool import safe_execute,floatify_ans
 r=json.load(sys.stdin);code=r['code']
 try:
- guard(code)
+ raw_code=code
+ code=code.lstrip()  # Chat boundary whitespace only; preserve internal indentation.
  if r['task'] in ['finqa','convfinqa']:code=code.replace('&','_')
+ guard(code)
  ans=safe_execute(code,keys=['ans','units'] if r['task']=='tatqa' else None)
  if r['task']=='finqa':ans=floatify_ans(ans)
  elif r['task']=='convfinqa' and ans is not None:
@@ -15,5 +17,5 @@ try:
    ans=Counter(ans.values()).most_common(1)[0][0]
   elif isinstance(ans,(list,tuple)):ans=float(ans[0])
   else:ans=float(ans)
- print(json.dumps({'value':ans,'status':'executed' if ans is not None else 'execution_failed'},default=str))
+ print(json.dumps({'value':ans,'status':'executed' if ans is not None else 'execution_failed','executed_code':code,'leading_whitespace_removed':raw_code!=raw_code.lstrip()},default=str))
 except Exception as e:print(json.dumps({'value':None,'status':'rejected_or_failed','error':type(e).__name__+': '+str(e)}))

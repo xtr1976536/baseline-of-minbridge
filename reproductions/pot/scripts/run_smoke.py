@@ -1,5 +1,5 @@
 """Bounded greedy PoT API checks. Official prompts, execution and scoring; alternate backbone."""
-import argparse,ast,json,os,subprocess,sys,time
+import argparse,ast,json,os,subprocess,sys,time,hashlib
 from pathlib import Path
 sys.dont_write_bytecode=True
 from protocol import ROOT,VENDOR,official
@@ -10,11 +10,11 @@ from dotenv import dotenv_values
 import requests
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--model',default='gpt-5.6-sol');p.add_argument('--per-task',type=int,default=1);p.add_argument('--output',default='smoke-greedy');a=p.parse_args()
- if not 1<=a.per_task<=2:p.error('Only 1..2 samples per financial task during acceptance')
+ p=argparse.ArgumentParser();p.add_argument('--model',default='gpt-5.6-sol');p.add_argument('--per-task',type=int,default=1);p.add_argument('--stratified',action='store_true');p.add_argument('--output',default='smoke-greedy');a=p.parse_args()
+ if not 1<=a.per_task<=4:p.error('Only 1..4 samples per task during acceptance')
  config_env={**dotenv_values(ROOT.parents[1]/'.env'),**os.environ}
  out=ROOT/'results'/a.output;out.mkdir(parents=True,exist_ok=True)
- config={'actual_model':a.model,'reference_model':'code-davinci-002','mode':'few-shot greedy alternative-backbone smoke','per_task':a.per_task,'source_commit':subprocess.check_output(['git','-C',str(VENDOR),'rev-parse','HEAD'],text=True).strip(),'tasks':{t:official(t)[3] for t in ['finqa','convfinqa','tatqa']},'adaptations':['Completion -> Chat with explicit Python-continuation system instruction; original user prompt unchanged','no logprobs: unused for n=1','API finite retries; failures retained','preflight guard + separate worker/timeout; raw program unchanged']}
+ config={'actual_model':a.model,'reference_model':'code-davinci-002','mode':'few-shot greedy alternative-backbone smoke','per_task':a.per_task,'stratified':a.stratified,'runtime_sha256':{f:hashlib.sha256((ROOT/'scripts'/f).read_bytes()).hexdigest() for f in ['run_smoke.py','protocol.py','execute_worker.py']},'source_commit':subprocess.check_output(['git','-C',str(VENDOR),'rev-parse','HEAD'],text=True).strip(),'tasks':{t:official(t)[3] for t in ['finqa','convfinqa','tatqa']},'adaptations':['Completion -> Chat with explicit Python-continuation system instruction; original user prompt unchanged','no logprobs: unused for n=1','API finite retries; failures retained','leading whitespace stripped only; internal indentation preserved; raw retained','preflight guard + separate worker/timeout']}
  if (out/'config.json').exists() and json.loads((out/'config.json').read_text())!=config:raise RuntimeError('Config mismatch')
  (out/'config.json').write_text(json.dumps(config,indent=2))
  done={}
@@ -22,7 +22,15 @@ def main():
   done={r['id']:r for r in map(json.loads,(out/'predictions.jsonl').read_text().splitlines())}
  for task in config['tasks']:
   demo,builder,rows,meta=official(task)
-  for i,example in enumerate(rows[:a.per_task]):
+  selected=list(range(a.per_task))
+  if a.stratified:
+   selected=[];categories=set()
+   for i,example in enumerate(rows):
+    category=example.get('answer_type') if task=='tatqa' else ('boolean' if isinstance(example['answer'],str) else 'percent' if '/' in str(example.get('program',example.get('programs',''))) else 'number')
+    if category not in categories:selected.append(i);categories.add(category)
+    if len(selected)>=a.per_task:break
+  for i in selected:
+   example=rows[i]
    ident=f'{task}:{i}'
    if ident in done:continue
    prompt=demo+'\n\n'+builder(example)
@@ -38,7 +46,7 @@ def main():
     code=raw['choices'][0]['message']['content']
     if not isinstance(code,str) or not code.strip():raise ValueError('Empty model response')
     record.update(code=code,finish_reason=raw['choices'][0].get('finish_reason'))
-    # No fence stripping or prompt changes: flag incompatible output explicitly.
+    # No fence stripping or algorithmic repair; worker only removes leading boundary whitespace.
     child=subprocess.run([sys.executable,str(ROOT/'scripts/execute_worker.py')],input=json.dumps({'task':task,'code':code}),text=True,capture_output=True,timeout=20,cwd='/tmp',env={'PATH':os.environ.get('PATH',''),'PYTHONDONTWRITEBYTECODE':'1','OPENBLAS_NUM_THREADS':'1'})
     if child.returncode:raise RuntimeError('Execution worker failed: '+child.stderr[-300:])
     execution=json.loads(child.stdout.strip());record['execution']=execution
@@ -56,6 +64,7 @@ def main():
      if task=='finqa' and isinstance(value,bool):value='yes' if value else 'no'
      record.update(executed=value,correct=finqa_equal(value,example['answer'],False))
     record['status']='scored'
+    record['execution_failed']=execution['status']!='executed'
    except Exception as e:record.update(status='run_error',correct=False,error=type(e).__name__+': '+str(e))
    record['seconds']=time.time()-start
    with (out/'predictions.jsonl').open('a') as f:f.write(json.dumps(record,ensure_ascii=False)+'\n')
