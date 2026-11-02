@@ -53,3 +53,7 @@ GBFR `scripts/run_gbfr.py` 在图谱未满足要求时主动停止，避免官�
 ## 首条端到端验收
 
 `results/gbfr-finqa-smoke/`：FinQA首条公开样本，gpt-5.6-sol，5次真实API调用，成功输出94.0。见逐样本gold与预测和API原始记录；仅1条，不能推断总体准确率。`scripts/run_gbfr_suite.py` 已禁用；已有21条修正前诊断预测保存在results中。修复与核查完成前不恢复全量，最终评分仍需口径对齐。
+
+## 仓库其他已完成实验
+
+[PoT金融三任务](../pot/README.md)已完成全量并通过作者评分复算；[Logic-LM及项目总览](../../README.md)保留既有结果。此状态更新不代表GBFR全量已完成，GBFR继续保留并维持上述暂停限制。

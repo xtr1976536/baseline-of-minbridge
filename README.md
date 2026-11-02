@@ -1,4 +1,31 @@
-# MinBridge：Logic-LM 最终复现
+# MinBridge：推理模型复现与评估
+
+本仓库保存相互隔离的论文复现代码、逐样本输出与评测证据。当前 **Logic-LM 主实验、PoT 金融三数据集主实验均已完成**；ReAct 保留现有实现与独立进度记录；GBFR 保留并暂停正式全量，继续核心一致性核查。训练型拒答实验暂不纳入当前阶段。
+
+## 项目与结果入口
+
+| 项目 | 当前状态 | 入口 |
+| --- | --- | --- |
+| Logic-LM | 五数据集全量主实验完成 | 下方完整结果；[最终实验](experiments/final/)与[报告](reports/) |
+| PoT | 金融三数据集全量完成，作者评分脚本复核通过 | [代码与使用](reproductions/pot/README.md)、[三数据集结果](reproductions/pot/results/金融主实验汇总_20261102.md) |
+| ReAct | 独立工作流，状态以该任务记录为准 | [作者子模块](upstream/ReAct)、[文档](docs/) |
+| GBFR | 保留；全量暂停，核心审计 NOT_READY | [GBFR说明](reproductions/gbfr/README.md) |
+
+## PoT：金融主实验最终结果
+
+| 数据集 | 样本数 | 正确数 | 本次准确率/EM | 论文Table 2 greedy | 差值 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| FinQA test | 1147 | 857 | 74.7167% | 64.5% | +10.2167个百分点 |
+| ConvFinQA dev，最后一问 | 421 | 293 | 69.5962% | 64.6% | +4.9962个百分点 |
+| TAT-QA dev | 1668 | 1249 | 74.8801% | 69.0% | +5.8801个百分点 |
+
+TAT-QA F1为82.8609%。共3236题，采用gpt-5.6-sol替代原Codex；更强底座可带来更高得分，保留差异说明，不以贴近原分数为目标调参。ConvFinQA按作者代码实际使用dev421，论文Test标签差异已有逐ID核验。失败计入完整分母，三个结果均通过作者评分脚本复算。
+
+PoT独立放在`reproductions/pot/`，不共用或覆盖Logic-LM/ReAct/GBFR环境与结果。完整请求/响应、程序、标准答案、评分、配置、失败记录与验证见其results目录。项目安装和重评命令见各自README；下方保留Logic-LM完整发布说明。
+
+---
+
+# Logic-LM：已完成的主实验
 
 五个数据集的全量主实验及 LogicalDeduction 独立 CoT 全量实验已完成。底座为服务商声明的 `gpt-5.6-sol`，参考论文为 Logic-LM（GPT-4、Table 2，无 self-refinement）。**作者原求解器与评分器保持不变；数据集格式约束和 LogicalDeduction 的小兼容处理均公开记录。**
 

@@ -1,39 +1,36 @@
-> **金融三数据集全量均已完成：FinQA 857/1147（74.7167%）；ConvFinQA 293/421（69.5962%）；TAT-QA 1249/1668（EM74.8801%，F1 82.8609%）。作者评分脚本复核通过。详见[金融主实验汇总](results/金融主实验汇总_20261102.md)。下方早期状态为历史记录。**
+# PoT：金融主模型复现已完成
 
-> **FinQA全量已完成（2026-11-02）：857/1147，74.7167%；作者评分脚本复算一致。16并发，11.85分钟，0运行错误，11程序执行失败，0截断。论文PoT-Codex greedy为64.5%，本次替代底座高10.2167个百分点。完整记录见[结果报告](results/finqa-full-greedy-20261102/结果报告.md)。ConvFinQA/TAT-QA全量未启动。**
+已完成FinQA、ConvFinQA、TAT-QA共3236题的few-shot greedy全量主实验，逐样本ID/gold核对和作者评分脚本复算均通过。[三数据集报告](results/金融主实验汇总_20261102.md)与[机器可读汇总](results/financial-main-summary-20261102.json)。
 
-> **2026-11-02更新：接口、执行和评分核查已完成，ConvFinQA已逐ID证实为官方dev421（与论文Test标签不同）。9条多题型API验收已完成，全量未启动。当前设置与限制见[验收与论文一致性](docs/验收与论文一致性.md)，以下早期记录保留供追溯。**
+| 数据集 | 样本数 | 正确 | 准确率/EM | 论文 | 差值 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| FinQA test | 1147 | 857 | 74.7167% | 64.5% | +10.2167 pp |
+| ConvFinQA dev最后一问 | 421 | 293 | 69.5962% | 64.6% | +4.9962 pp |
+| TAT-QA dev | 1668 | 1249 | 74.8801% | 69.0% | +5.8801 pp |
 
-# PoT 主模型复现准备
+TAT-QA官方F1：82.8609%。当前完成范围是金融三任务greedy，不含数学任务、SC、zero-shot或消融。实际底座gpt-5.6-sol，论文为code-davinci-002；底座不同可以提高指标，不修改评分来贴近论文。
 
-官方论文：Program of Thoughts Prompting: Disentangling Computation from Reasoning for Numerical Reasoning Tasks，TMLR 2023，https://arxiv.org/abs/2211.12588v4 。官方代码 https://github.com/TIGER-AI-Lab/Program-of-Thoughts ，submodule固定850399c3eff8c37458a9d642c4a98df287f50f3a。
+## 来源与设置
 
-## 当前范围
+[论文TMLR 2023](https://arxiv.org/abs/2211.12588v4)；[作者代码](https://github.com/TIGER-AI-Lab/Program-of-Thoughts)，固定commit `850399c3eff8c37458a9d642c4a98df287f50f3a`，保留于vendor子模块。
 
-先金融三任务：FinQA、ConvFinQA、TAT-QA，few-shot greedy（单条程序）。不训练模型，不运行其他baseline、消融或SC参数扫。当前只允许每任务1..4条验收；没有全量入口。PoT原论文还含数学任务，当前金融设置通过不等于整篇8任务主表复现。
+直接AST提取原prompt与输入builder：FinQA/ConvFinQA 4-shot、512输出token；TAT-QA 8-shot、256输出token；temperature=0、top_p=1、n=1、双换行stop。生成程序调用官方safe_execute、返回值处理及finqa_equal或TaTQAEmAndF1。
 
-实际底座gpt-5.6-sol，作者参考code-davinci-002；属于替代底座复现。不得用相同模型名称或原论文得分掩盖底座变化。
+API兼容：Chat使用固定Python续写system指令，原user示例与正文保留；仅移除响应最前端空白，不剥Markdown、不修答案。执行worker不继承API密钥，保留5秒执行超时，父进程20秒截止，并有显式AST预检查；它不是恶意代码的强安全沙箱。修改与历史验收见[一致性说明](docs/验收与论文一致性.md)。
 
-## 核心流程
+ConvFinQA与原官方data.zip逐ID核验：421条全部是dev，对话和最后标准答案完全一致，未与private test混用；详见[划分审计](results/convfinqa_split_audit.json)。论文SC参数与仓库有差异，本次不运行SC。
 
-scripts/protocol.py使用Python AST提取原run_finqa.py/run_convfinqa.py/run_tatqa.py的完整few-shot字符串和create_reader_request_processed函数，不执行其argparse/main/无限重试。原文空白、拼写（TAT-QA的Quesetion）均保留。FinQA/ConvFinQA4-shot、512输出token；TAT-QA8-shot、256token；temperature=0、top_p=1、n=1、stop双换行，沿用官方。
+## 结果与审计
 
-生成代码不剥离Markdown、不进行答案修复；仅移除响应最前端的边界空白，内部缩进保留。FinQA/ConvFinQA沿用官方&替换、safe_execute、返回值处理和finqa_equal；TAT-QA取ans/units，沿用官方TaTQAEmAndF1。safe_execute在独立子进程中执行、保留原5秒timeout，父进程20秒截止；子进程不继承API密钥。增加AST预检查拒绝明显文件/网络/动态执行调用。该预检查是兼容防护，不是恶意程序的强隔离沙箱，若出现被拦截结果要单独报告，不能算作普通算法错误。
+- [FinQA完整结果](results/finqa-full-greedy-20261102/)：16并发，857正确，11程序执行失败，0最终运行错误、0截断。
+- [ConvFinQA完整结果](results/convfinqa-full-greedy-20261102/)：293正确，6程序失败，0最终运行错误、0截断。
+- [TAT-QA完整结果](results/tatqa-full-greedy-20261102/)：1249正确，2程序失败，0最终运行错误、0截断。
 
-API仅3次上限重试，逐样本失败不丢弃。每次保存prompt/请求参数、原响应及usage、原始代码、执行结果、标准答案、评分、错误和耗时。配置含上游commit与输入SHA256；不同设置不能混写输出目录。
+各目录包含config、summary、validation、official_format.jsonl、official_scorer.txt、predictions.jsonl、分析与报告。原始模型请求/响应和代码保留于predictions；本机samples断点文件不重复上传。初期smoke与acceptance-v2是历史诊断，不与全量混用。
 
-## 已确认的一致性边界
+ConvFinQA/TAT-QA最初同时并发触发429/403，随后单数据集8并发补齐未生成请求；TAT-QA另补齐1次524。只有传输失败重试，已答错或程序失败不重新生成。传输记录压缩归档，详见各目录transport_incident.json。TAT第835题内存tuple与JSON list导致F1差异，最终以发布JSON和作者评分脚本的82.8609%为准，EM不变，审计见score_serialization_audit.json。
 
-- FinQA公开finqa_test.json：1147题；TAT-QA tatqa_dev.json：1668题。
-- ConvFinQA官方脚本读取convfinqa_dev.json：421段对话，评价最后一问；论文Table1标Test421；另有convfinqa_test_turn.json共1521问但不含answer。必须继续与原ConvFinQA数据核对id，不能将dev和test混称。
-- 论文最终Table2 greedy参考：FinQA64.5%、ConvFinQA64.6%、TAT-QA69.0%。README另有不同得分，不混用为唯一论文目标。
-- 论文SC为temperature0.4/K40，当前仓库为0.5/K30；本阶段不跑SC。
-- 作者FinQA/ConvFinQA脚本虽接受start/end，却未实际切片；TAT-QA使用[start:end]，默认end=-1会漏掉最后题。新入口使用明确小样本切片，不重演这些数据覆盖错误。
-- parse_api_result使用logprobs排序；greedy只有1条，无排序差异，当前省略logprobs。若扩展SC，必须再审计排序对平票的影响，不能直接沿用本适配。
-- Chat不是Completion续写：第一次仅传原prompt，出现代码围栏或自然语言输出，执行失败，记录保留在results/smoke-greedy。第二设置增加Python续写system指令（原user prompt未改），存为独立结果smoke-chat-continuation。该指令是明确的接口适配，不能称prompt完全无变化。
-- 新脚本最初误将TAT评分get_overall_metric四个返回值解包为两个，已修正；旧失败记录原样保留，不能把它算成模型错误。
-
-## 使用
+## 安装与离线检查
 
 ```bash
 git submodule update --init reproductions/pot/vendor
@@ -41,17 +38,18 @@ cd reproductions/pot
 python3.12 -m venv .venv
 .venv/bin/pip install -r requirements.lock.txt
 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/check_protocol.py
-PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/run_smoke.py --per-task 1 --output smoke-chat-continuation
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/check_scoring_parity.py
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/validate_finqa_full.py
+# 直接用作者评分脚本检查发布文件（不调用API）
+cd vendor/outputs
+../../.venv/bin/python compute_score.py --inputs ../../results/finqa-full-greedy-20261102/official_format.jsonl
+../../.venv/bin/python compute_score.py --inputs ../../results/convfinqa-full-greedy-20261102/official_format.jsonl
+cd ..
+../.venv/bin/python compute_score_tatqa.py --inputs ../results/tatqa-full-greedy-20261102/official_format.jsonl
 ```
 
-根仓库.env提供OPENAI_API_KEY/OPENAI_BASE_URL；不修改旧实验环境。results/protocol_audit.json包含提示词提取、数据分母、0/False、超时、除零与预检查的验证结果。
+## 新生成入口（调用付费API）
 
-尚需：核实ConvFinQA真实split映射，验证更多题型（数字/百分比/布尔/表格span/计数）与作者评分逐样本一致性，确认原stop与token预算在替代模型上能否完整输出，再决定主实验范围。不以3条样本报告完整准确率。
+根仓库本机.env或环境变量提供OPENAI_API_KEY/OPENAI_BASE_URL；不可提交密钥。小样本run_smoke.py最多每任务4条。全量入口run_finqa_full.py和run_financial_full.py（--task convfinqa或tatqa）固定当前发布目录与设置；已有完整结果无需重跑。需要新模型或新设置时先建立独立输出目录和配置，禁止覆盖发布结果。样本文件已被Git忽略；新克隆应使用发布JSON离线重评，不把缺少本机断点文件误判为未完成并直接调用API。
 
-## 2026-11-02 首轮实测
-
-共6次真实API请求（两种接口设置各3题），未全量。第一设置只有原prompt：FinQA/TAT-QA返回代码围栏、ConvFinQA直接自然语言，原执行失败；同时发现并修正新脚本TAT评分四返回值解包问题。
-
-第二设置在system层明确要求Python续写：FinQA首题94.0，对应gold94.0；ConvFinQA首题1.424025457438345，对应gold1.42403，均通过官方比较器。TAT-QA首题程序首行多1空格，原样执行失败；独立results/whitespace_replay.json对同一响应仅lstrip后可执行，作者指标EM=0、F1=0.98（答案漏词），不是正确样本，也不是新请求。早期run_smoke.py保持原样执行；更新版本显式启用边界空白规整，在新acceptance-v2目录验证，旧结果未修改。
-
-离线检查通过：3任务原prompt提取与样本数、0/False、除零/超时、危险调用拒绝。单题成功只说明生成-执行-评分链路可用，不证明整体准确率。
+所有结果与环境隔离于本目录，不修改根仓库已有实验。返回[项目总览](../../README.md)。
