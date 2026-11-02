@@ -2,9 +2,23 @@
 
 # Self-Refine复现
 
-当前阶段：先复现GSM8K数学推理主实验，再逐项解决其余六任务的材料/评测依赖。范围审计见[主实验范围](docs/主实验范围审计.md)。
+当前阶段：GSM8K数学推理主实验全量已完成并完成两轮发布检查；其余六任务的材料/评测依赖尚未全部验收。范围审计见[主实验范围](docs/主实验范围审计.md)。
 
 [官方论文](https://arxiv.org/abs/2303.17651)；[官方代码](https://github.com/madaan/self-refine)，vendor固定commit9a206d41e5d2d0c241bb441f41eeadb945afaa55。与PoT/Logic-LM/GBFR环境与结果隔离。
+
+## 最终结果与发布入口
+
+| 指标 | 正确数 | 准确率 |
+| --- | ---: | ---: |
+| 初始答案 | 1270/1319 | 96.2851% |
+| 最终答案 | 1268/1319 | 96.1334% |
+| 累计曾正确 | 1292/1319 | 97.9530% |
+
+改对21题，改错23题，最终净少对2题。22题传输失败已按阶段补齐，成功阶段未重新生成。最终0生成/解析错误。参考论文GPT-4主表为92.9%→93.1%，本次统一gpt-5.6-sol，比较同次初始与最终表现。
+
+- [最终结果与全部证据](results/gsm-full-final-20261102/)：报告、配置、逐题评分与压缩原响应。
+- [第一轮发布检查](docs/release-checks/round1.json)、[第二轮干净导出检查](docs/release-checks/round2.json)、[发布清单](docs/release-checks/publication_manifest.json)。
+- [返回仓库总览](../../README.md)；[PoT金融结果](../pot/README.md)；[ReAct结果](../../docs/react/README.md)。
 
 ## GSM方法
 

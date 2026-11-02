@@ -11,3 +11,7 @@
 更新后的论文清单PDF及其源文件位于[docs/references](../docs/references/)。总项目进展以[根README](../README.md)为入口；第三方作者README保留原文。
 
 ReAct HotpotQA 500题复现结果：EM49.20%、F1 64.90%，见[结果表](../docs/react/README.md)。
+
+## Self-Refine
+
+Self-Refine: Iterative Refinement with Self-Feedback，NeurIPS2023。[正式论文](https://proceedings.neurips.cc/paper_files/paper/2023/file/91edff07232fb1b55a505a9e9f6c0ff3-Paper-Conference.pdf)；[作者代码](https://github.com/madaan/self-refine)。本项目已完成GSM8K 1319题替代底座主实验，初始96.2851%、最终96.1334%，累计曾正确97.9530%单独报告；不将累计指标当最终准确率。其余六任务未完成。见[方法与结果](../reproductions/self-refine/README.md)及[两轮检查](../reproductions/self-refine/docs/release-checks/)。

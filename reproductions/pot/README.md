@@ -53,3 +53,7 @@ cd ..
 根仓库本机.env或环境变量提供OPENAI_API_KEY/OPENAI_BASE_URL；不可提交密钥。小样本run_smoke.py最多每任务4条。全量入口run_finqa_full.py和run_financial_full.py（--task convfinqa或tatqa）固定当前发布目录与设置；已有完整结果无需重跑。需要新模型或新设置时先建立独立输出目录和配置，禁止覆盖发布结果。样本文件已被Git忽略；新克隆应使用发布JSON离线重评，不把缺少本机断点文件误判为未完成并直接调用API。
 
 代码、环境和结果存放于本目录。返回[项目总览](../../README.md)。
+
+## 同仓库Self-Refine进展
+
+[Self-Refine独立复现](../self-refine/README.md)的GSM8K 1319题全量已完成：初始96.2851%、最终96.1334%，改对21题、改错23题；两轮发布检查通过。累计曾正确97.9530%单独报告，其余六任务未完成。相关原始轨迹、评分和配置保存在Self-Refine独立目录，本项目现有结果保持不变。

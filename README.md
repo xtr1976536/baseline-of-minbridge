@@ -1,8 +1,8 @@
 # MinBridge：推理模型复现与评估
 
-本仓库保存相互隔离的论文复现代码、逐样本输出与评测证据。当前 **Logic-LM 主实验、PoT 金融三数据集主实验均已完成**；ReAct 的 HotpotQA 500题验证已完成（EM49.20%、F1 64.90%）；GBFR 保留并暂停正式全量，继续核心一致性核查。
+本仓库保存相互隔离的论文复现代码、逐样本输出与评测证据。当前 **Logic-LM 主实验、PoT 金融三数据集主实验、Self-Refine GSM8K主实验均已完成**；ReAct 的 HotpotQA 500题验证已完成（EM49.20%、F1 64.90%）；GBFR 保留并暂停正式全量，继续核心一致性核查。
 
-Self-Refine 已建立[独立复现目录](reproductions/self-refine/README.md)，GSM8K 1319题全量运行中；3题流程验收通过。其[范围审计](reproductions/self-refine/docs/主实验范围审计.md)区分论文最终答案与官方脚本累计成功口径。
+Self-Refine 的 GSM8K 1319题主实验已完成：初始96.2851%，最终96.1334%；自反馈改对21题、改错23题，净少对2题。[完整结果](reproductions/self-refine/results/gsm-full-final-20261102/结果报告.md)及[两轮发布检查](reproductions/self-refine/docs/release-checks/)已上传。其余六任务尚未完成。
 
 ## 项目与结果入口
 
@@ -10,8 +10,21 @@ Self-Refine 已建立[独立复现目录](reproductions/self-refine/README.md)�
 | --- | --- | --- |
 | Logic-LM | 五数据集全量主实验完成 | 下方完整结果；[最终实验](experiments/final/)与[报告](reports/) |
 | PoT | 金融三数据集全量完成，作者评分脚本复核通过 | [代码与使用](reproductions/pot/README.md)、[三数据集结果](reproductions/pot/results/金融主实验汇总_20261102.md) |
+| Self-Refine | GSM8K 1319题完成；最终96.1334% | [代码与说明](reproductions/self-refine/README.md)、[结果报告](reproductions/self-refine/results/gsm-full-final-20261102/结果报告.md) |
 | ReAct | HotpotQA 500题完成；EM49.20%、F1 64.90% | [最终代码与说明](docs/react/README.md)、[实验与日志](experiments/react/hotpotqa/) |
 | GBFR | 保留；全量暂停，核心审计 NOT_READY | [GBFR说明](reproductions/gbfr/README.md) |
+
+## Self-Refine：GSM8K主实验最终结果
+
+| 指标 | 正确数 | 比例 |
+| --- | ---: | ---: |
+| 初始答案 | 1270/1319 | 96.2851% |
+| 最终答案（主指标） | 1268/1319 | 96.1334% |
+| 作者脚本累计曾正确 | 1292/1319 | 97.9530% |
+
+自反馈改对21题、改错23题，净下降0.1516个百分点；累计曾正确不是最终答案准确率。底座gpt-5.6-sol；论文GPT-4行92.9%→93.1%。22题HTTP403失败阶段已补齐，1297题首轮成功轨迹保持不变，28个已成功阶段响应复用。最终0未解决生成/解析错误；两轮发布检查通过。范围为GSM8K数学推理，不包含其余六任务或金融适配评估。
+
+[原始压缩轨迹、逐题评分与配置](reproductions/self-refine/results/gsm-full-final-20261102/) · [方法和运行入口](reproductions/self-refine/README.md)。
 
 ## ReAct：HotpotQA 复现结果
 
