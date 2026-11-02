@@ -1,0 +1,36 @@
+{
+  "dataset": "FinQA",
+  "expected": 1147,
+  "mode": "few-shot greedy",
+  "actual_model": "gpt-5.6-sol",
+  "paper_model": "code-davinci-002",
+  "workers": 16,
+  "protocol": {
+    "script": "run_finqa.py",
+    "script_sha256": "f52431a082eea50bd433195bec5025184208cf5cfcb1b70a08bc4d74260cb086",
+    "data": "finqa_test.json",
+    "data_sha256": "980067b831651f8b4e7607f1fb2dc83a057e4d96fbc1e655387cc6fab4d8f52f",
+    "count": 1147,
+    "max_tokens": 512,
+    "temperature": 0.0,
+    "top_p": 1,
+    "stop": [
+      "\n\n"
+    ],
+    "n": 1
+  },
+  "system": "Complete the Python program requested by the final example. Return only executable Python statements assigning ans (and units when the examples use units). No Markdown fences or prose. Do not repeat the examples.",
+  "runtime_sha256": {
+    "run_finqa_full.py": "a3a543d2610f53573c61d5ea524999cbc30b2357c89cc59151c81ea6558be159",
+    "protocol.py": "e0d09453cf7c870f497afa049690eb0555f461e2ba2338f4a914068a39733729",
+    "execute_worker.py": "954d46afb958246ba631f172dba31a1b3f2c684731603e73a835f848aca6e090"
+  },
+  "source_commit": "850399c3eff8c37458a9d642c4a98df287f50f3a",
+  "paper_reference_accuracy_percent": 64.5,
+  "adaptations": [
+    "Chat completion with fixed Python continuation instruction",
+    "leading boundary whitespace only; raw saved",
+    "same official execution/postprocess/score",
+    "finite transport retries only; no answer repair"
+  ]
+}
