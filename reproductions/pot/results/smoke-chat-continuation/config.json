@@ -1,0 +1,57 @@
+{
+  "actual_model": "gpt-5.6-sol",
+  "reference_model": "code-davinci-002",
+  "mode": "few-shot greedy alternative-backbone smoke",
+  "per_task": 1,
+  "source_commit": "850399c3eff8c37458a9d642c4a98df287f50f3a",
+  "tasks": {
+    "finqa": {
+      "script": "run_finqa.py",
+      "script_sha256": "f52431a082eea50bd433195bec5025184208cf5cfcb1b70a08bc4d74260cb086",
+      "data": "finqa_test.json",
+      "data_sha256": "980067b831651f8b4e7607f1fb2dc83a057e4d96fbc1e655387cc6fab4d8f52f",
+      "count": 1147,
+      "max_tokens": 512,
+      "temperature": 0.0,
+      "top_p": 1,
+      "stop": [
+        "\n\n"
+      ],
+      "n": 1
+    },
+    "convfinqa": {
+      "script": "run_convfinqa.py",
+      "script_sha256": "b3cc099c63f6aef7cca2b08ae010c2996f0e3ac68b59d6b4c46b39732d2ab0bf",
+      "data": "convfinqa_dev.json",
+      "data_sha256": "26405f057a200c05475a6ef387e33c658c29fa8ea75476dfb2797f18a55459ee",
+      "count": 421,
+      "max_tokens": 512,
+      "temperature": 0.0,
+      "top_p": 1,
+      "stop": [
+        "\n\n"
+      ],
+      "n": 1
+    },
+    "tatqa": {
+      "script": "run_tatqa.py",
+      "script_sha256": "aa8a169513cb54376b7c9b0a43c71188bd8f8f5a5791eae8a4d46a828fd5235a",
+      "data": "tatqa_dev.json",
+      "data_sha256": "cb4925f90ecbed9637e92bec732bb841a93b42b3fa2ab5a08e31fd9b816b85c7",
+      "count": 1668,
+      "max_tokens": 256,
+      "temperature": 0.0,
+      "top_p": 1,
+      "stop": [
+        "\n\n"
+      ],
+      "n": 1
+    }
+  },
+  "adaptations": [
+    "Completion -> Chat with explicit Python-continuation system instruction; original user prompt unchanged",
+    "no logprobs: unused for n=1",
+    "API finite retries; failures retained",
+    "preflight guard + separate worker/timeout; raw program unchanged"
+  ]
+}
