@@ -62,3 +62,7 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/validate_release.py
 ```
 
 两轮发布检查见docs/release-checks/。不重复上传本机samples/traces、虚拟环境和终端日志：重要调用已汇入压缩轨迹。其余六任务未完成；最终准确率96.1334%，不能以累计97.9530%替代。
+
+## 最终代码一致性结论
+
+[2026-11-03审计](docs/最终代码一致性审计.md)通过：全部1319题/6014次保存调用经作者原loop离线重建，user提示、历史、解析、停止轮数完全吻合。结论为核心方法与GSM8K主实验的替代底座复现成功；接口与执行环境适配仍按报告披露。检查脚本为scripts/audit_saved_loop.py，不调用API。
