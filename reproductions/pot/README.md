@@ -24,16 +24,6 @@ API兼容：Chat使用固定Python续写system指令，原user示例与正文保
 
 ConvFinQA与原官方data.zip逐ID核验：421条全部是dev，对话和最后标准答案完全一致；详见[划分审计](results/convfinqa_split_audit.json)。
 
-## 5. 代码、实验和日志
-
-- [FinQA完整结果](results/finqa-full-greedy-20261102/)：16并发，857正确，11程序执行失败，0最终运行错误、0截断。
-- [ConvFinQA完整结果](results/convfinqa-full-greedy-20261102/)：293正确，6程序失败，0最终运行错误、0截断。
-- [TAT-QA完整结果](results/tatqa-full-greedy-20261102/)：1249正确，2程序失败，0最终运行错误、0截断。
-
-各目录包含config、summary、validation、official_format.jsonl、official_scorer.txt、predictions.jsonl、分析与报告。原始模型请求/响应和代码保留于predictions；本机samples断点文件不重复上传。初期smoke与acceptance-v2是历史诊断，不与全量混用。
-
-ConvFinQA/TAT-QA最初同时并发触发429/403，随后单数据集8并发补齐未生成请求；TAT-QA另补齐1次524。只有传输失败重试，已答错或程序失败不重新生成。传输记录压缩归档，详见各目录transport_incident.json。TAT第835题内存tuple与JSON list导致F1差异，最终以发布JSON和作者评分脚本的82.8609%为准，EM不变，审计见score_serialization_audit.json。
-
 ## 4. 安装与运行
 
 ```bash
@@ -51,6 +41,16 @@ cd vendor/outputs
 cd ..
 ../.venv/bin/python compute_score_tatqa.py --inputs ../results/tatqa-full-greedy-20261102/official_format.jsonl
 ```
+
+## 5. 代码、实验和日志
+
+- [FinQA完整结果](results/finqa-full-greedy-20261102/)：16并发，857正确，11程序执行失败，0最终运行错误、0截断。
+- [ConvFinQA完整结果](results/convfinqa-full-greedy-20261102/)：293正确，6程序失败，0最终运行错误、0截断。
+- [TAT-QA完整结果](results/tatqa-full-greedy-20261102/)：1249正确，2程序失败，0最终运行错误、0截断。
+
+各目录包含config、summary、validation、official_format.jsonl、official_scorer.txt、predictions.jsonl、分析与报告。原始模型请求/响应和代码保留于predictions；本机samples断点文件不重复上传。初期smoke与acceptance-v2是历史诊断，不与全量混用。
+
+ConvFinQA/TAT-QA最初同时并发触发429/403，随后单数据集8并发补齐未生成请求；TAT-QA另补齐1次524。只有传输失败重试，已答错或程序失败不重新生成。传输记录压缩归档，详见各目录transport_incident.json。TAT第835题内存tuple与JSON list导致F1差异，最终以发布JSON和作者评分脚本的82.8609%为准，EM不变，审计见score_serialization_audit.json。
 
 ## 6. 离线验证与新运行
 

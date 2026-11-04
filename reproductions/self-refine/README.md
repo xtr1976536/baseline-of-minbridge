@@ -28,7 +28,7 @@
 
 底座统一gpt-5.6-sol；原user prompt不改。Chat的system指令要求Python续写及反馈与函数格式。
 
-## 评分
+### 评分
 
 初始答案准确率、最终答案准确率、作者evaluator的累计any-correct口径分别记录。数值比较来自原check_corr。执行worker隔离临时状态，不继承API密钥，保留错误与全量分母。
 
@@ -68,3 +68,5 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/validate_release.py
 ## 6. 离线验证
 
 [2026-11-03审计](docs/最终代码一致性审计.md)通过：全部1319题/6014次保存调用经作者原loop离线重建，user提示、历史、解析、停止轮数完全吻合。结论为核心方法与GSM8K主实验的替代底座复现成功；接口与执行环境适配仍按报告披露。检查脚本为scripts/audit_saved_loop.py，不调用API。
+
+发布清单说明：`publication_manifest.json`核对当前Self-Refine文件（不含清单自身所在的检查目录，避免自引用）；`publication_manifest_56aa1ee_historical.json`保留当时发布版本，已去重文件仅在该历史清单中出现。
