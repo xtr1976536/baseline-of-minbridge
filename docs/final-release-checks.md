@@ -20,7 +20,7 @@
 - 发布包的LogicalDeduction 300题和ProofWriter 600题在干净副本用作者求解器重评，核对主指标；不发送API请求。其余数据集的发布预测/响应及指标已全量校验，避免因重复长时间Prover9超时误将环境变化冒充新实验。
 - 代码编译、Git空白检查、候选文件的敏感信息扫描通过。推送后核对远端SHA和最终树中的新旧文件。
 
-具体命令输出位于reports/checks/；哈希清单位于reports/SHA256SUMS.json。所有旧主结果和调参文档从当前工作树替换，Git历史与本机归档仍保留。ReAct/GBFR的无关工作未包含在本次Logic-LM验收结论中。
+具体命令输出位于reports/checks/；哈希清单位于reports/SHA256SUMS.json。所有旧主结果和调参文档从当前工作树替换，Git历史与本机归档仍保留。ReAct的无关工作未包含在本次Logic-LM验收结论中。
 
 ## 不可隐藏的局限
 

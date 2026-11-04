@@ -1,6 +1,10 @@
 # PoT：金融主模型复现已完成
 
+## 1. 复现范围与状态
+
 已完成FinQA、ConvFinQA、TAT-QA共3236题的few-shot greedy全量主实验，逐样本ID/gold核对和作者评分脚本复算均通过。[三数据集报告](results/金融主实验汇总_20261102.md)与[机器可读汇总](results/financial-main-summary-20261102.json)。
+
+## 2. 复现结果
 
 | 数据集 | 样本数 | 正确 | 准确率/EM | 论文 | 差值 |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -10,7 +14,7 @@
 
 TAT-QA官方F1：82.8609%。本次采用greedy解码，底座为gpt-5.6-sol；论文底座为code-davinci-002。
 
-## 来源与设置
+## 3. 方法与适配
 
 [论文TMLR 2023](https://arxiv.org/abs/2211.12588v4)；[作者代码](https://github.com/TIGER-AI-Lab/Program-of-Thoughts)，固定commit `850399c3eff8c37458a9d642c4a98df287f50f3a`，保留于vendor子模块。
 
@@ -20,7 +24,7 @@ API兼容：Chat使用固定Python续写system指令，原user示例与正文保
 
 ConvFinQA与原官方data.zip逐ID核验：421条全部是dev，对话和最后标准答案完全一致；详见[划分审计](results/convfinqa_split_audit.json)。
 
-## 结果与审计
+## 5. 代码、实验和日志
 
 - [FinQA完整结果](results/finqa-full-greedy-20261102/)：16并发，857正确，11程序执行失败，0最终运行错误、0截断。
 - [ConvFinQA完整结果](results/convfinqa-full-greedy-20261102/)：293正确，6程序失败，0最终运行错误、0截断。
@@ -30,7 +34,7 @@ ConvFinQA与原官方data.zip逐ID核验：421条全部是dev，对话和最后�
 
 ConvFinQA/TAT-QA最初同时并发触发429/403，随后单数据集8并发补齐未生成请求；TAT-QA另补齐1次524。只有传输失败重试，已答错或程序失败不重新生成。传输记录压缩归档，详见各目录transport_incident.json。TAT第835题内存tuple与JSON list导致F1差异，最终以发布JSON和作者评分脚本的82.8609%为准，EM不变，审计见score_serialization_audit.json。
 
-## 安装与离线检查
+## 4. 安装与运行
 
 ```bash
 git submodule update --init reproductions/pot/vendor
@@ -48,12 +52,8 @@ cd ..
 ../.venv/bin/python compute_score_tatqa.py --inputs ../results/tatqa-full-greedy-20261102/official_format.jsonl
 ```
 
-## 新生成入口（调用付费API）
+## 6. 离线验证与新运行
 
 根仓库本机.env或环境变量提供OPENAI_API_KEY/OPENAI_BASE_URL；不可提交密钥。小样本run_smoke.py最多每任务4条。全量入口run_finqa_full.py和run_financial_full.py（--task convfinqa或tatqa）固定当前发布目录与设置；已有完整结果无需重跑。需要新模型或新设置时先建立独立输出目录和配置，禁止覆盖发布结果。样本文件已被Git忽略；新克隆应使用发布JSON离线重评，不把缺少本机断点文件误判为未完成并直接调用API。
 
 代码、环境和结果存放于本目录。返回[项目总览](../../README.md)。
-
-## 同仓库Self-Refine进展
-
-[Self-Refine独立复现](../self-refine/README.md)的GSM8K 1319题全量已完成：初始96.2851%、最终96.1334%，改对21题、改错23题；两轮发布检查通过。累计曾正确97.9530%单独报告，其余六任务未完成。相关原始轨迹、评分和配置保存在Self-Refine独立目录，本项目现有结果保持不变。

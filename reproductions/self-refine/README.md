@@ -2,11 +2,13 @@
 
 # Self-Refine复现
 
+## 1. 复现范围与状态
+
 当前阶段：GSM8K数学推理主实验全量已完成并完成两轮发布检查；其余六任务的材料/评测依赖尚未全部验收。范围审计见[主实验范围](docs/主实验范围审计.md)。
 
-[官方论文](https://arxiv.org/abs/2303.17651)；[官方代码](https://github.com/madaan/self-refine)，vendor固定commit9a206d41e5d2d0c241bb441f41eeadb945afaa55。与PoT/Logic-LM/GBFR环境与结果隔离。
+[官方论文](https://arxiv.org/abs/2303.17651)；[官方代码](https://github.com/madaan/self-refine)，vendor固定commit9a206d41e5d2d0c241bb441f41eeadb945afaa55。与PoT/Logic-LM环境与结果隔离。
 
-## 最终结果与发布入口
+## 2. 复现结果
 
 | 指标 | 正确数 | 准确率 |
 | --- | ---: | ---: |
@@ -20,7 +22,7 @@
 - [第一轮发布检查](docs/release-checks/round1.json)、[第二轮干净导出检查](docs/release-checks/round2.json)、[发布清单](docs/release-checks/publication_manifest.json)。
 - [返回仓库总览](../../README.md)；[PoT金融结果](../pot/README.md)；[ReAct结果](../../docs/react/README.md)。
 
-## GSM方法
+## 3. 方法与适配
 
 使用AST加载原Prompt、GSMInit、GSMFeedback与iterative_gsm，保留原方法体及历史更新；替换API transport并去除原整题解析失败自动重试装饰器。初始300token、反馈600token；正文temperature0.7优先于CLI初始默认0；最多4轮，模型反馈出现it is correct提前结束。反馈与改写在同一次调用中返回。
 
@@ -30,7 +32,7 @@
 
 初始答案准确率、最终答案准确率、作者evaluator的累计any-correct口径分别记录。数值比较来自原check_corr。执行worker隔离临时状态，不继承API密钥，保留错误与全量分母。
 
-## 安装与运行
+## 4. 安装与运行
 
 ```bash
 git submodule update --init reproductions/self-refine/vendor
@@ -48,7 +50,7 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/run_gsm.py --full --workers 8
 
 早期gsm-smoke为本接入NameError的离线失败（未发API）；gsm-smoke-v2原prompt未适配Chat导致自然语言及parse失败；gsm-smoke-v3为显式格式适配验收，保留各版本而不混合计分。官方upstream README不改写。
 
-## 完整发布与离线验收
+## 5. 代码、实验和日志
 
 最终结果以 `results/gsm-full-final-20261102/` 为准：`predictions.jsonl.gz`包含1319题的模型请求/响应、反馈历史、原始程序、执行返回与评分；`scores.jsonl`供快速分析；`transport_failure_records.jsonl.gz`保留22题最初失败；配置、验证、SHA256及报告随附。
 
@@ -63,6 +65,6 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/validate_release.py
 
 两轮发布检查见docs/release-checks/。不重复上传本机samples/traces、虚拟环境和终端日志：重要调用已汇入压缩轨迹。其余六任务未完成；最终准确率96.1334%，不能以累计97.9530%替代。
 
-## 最终代码一致性结论
+## 6. 离线验证
 
 [2026-11-03审计](docs/最终代码一致性审计.md)通过：全部1319题/6014次保存调用经作者原loop离线重建，user提示、历史、解析、停止轮数完全吻合。结论为核心方法与GSM8K主实验的替代底座复现成功；接口与执行环境适配仍按报告披露。检查脚本为scripts/audit_saved_loop.py，不调用API。
