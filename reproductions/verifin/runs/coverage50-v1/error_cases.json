@@ -1,0 +1,829 @@
+[
+  {
+    "id": "financebench_id_04672",
+    "question": "Assume that you are a public equities analyst. Answer the following question by primarily using information that is shown in the balance sheet: what is the year end FY2018 net PPNE for 3M? Answer in USD billions.",
+    "reference": {
+      "answer": "$8.70",
+      "unit": null
+    },
+    "claim": "8.738",
+    "unit": "USD billions",
+    "status": "VERIFIED",
+    "expected": "4369/500",
+    "authority": {
+      "children": [
+        {
+          "concept": "us-gaap:PropertyPlantAndEquipmentGross",
+          "weight": "1"
+        },
+        {
+          "concept": "us-gaap:AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment",
+          "weight": "-1"
+        }
+      ],
+      "equation": "(1 * child_0) + (-1 * child_1)",
+      "kind": "filing_calculation_linkbase",
+      "parent": "us-gaap:PropertyPlantAndEquipmentNet",
+      "source_id": "http://www.mmm.com/role/StatementConsolidatedBalanceSheet",
+      "source_sha256": "df376e826c66158584f128d2896108eeef2f822cb33f164961864d022c5bf5a6"
+    },
+    "bindings": [
+      {
+        "accession": "0001558370-19-000470",
+        "concept": "us-gaap:PropertyPlantAndEquipmentGross",
+        "decimals": "-6",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "",
+          "instant": "2018-12-31",
+          "start_date": ""
+        },
+        "presentation_labels_provenance": null,
+        "role": "child_0",
+        "source_fact_id": "xml_element_13331",
+        "source_sha256": "029c8c30855ab8fc0a760cea74aa21cf5f4e77ec5aadc3ebc807bde39462b2ae",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/66740/000155837019000470/mmm-20181231.xml",
+        "unit": "USD billions",
+        "value": "24.873000000"
+      },
+      {
+        "accession": "0001558370-19-000470",
+        "concept": "us-gaap:AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment",
+        "decimals": "-6",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "",
+          "instant": "2018-12-31",
+          "start_date": ""
+        },
+        "presentation_labels_provenance": null,
+        "role": "child_1",
+        "source_fact_id": "xml_element_11608",
+        "source_sha256": "029c8c30855ab8fc0a760cea74aa21cf5f4e77ec5aadc3ebc807bde39462b2ae",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/66740/000155837019000470/mmm-20181231.xml",
+        "unit": "USD billions",
+        "value": "16.135000000"
+      }
+    ]
+  },
+  {
+    "id": "financebench_id_03882",
+    "question": "What is Amcor's year end FY2020 net AR (in USD millions)? Address the question by adopting the perspective of a financial analyst who can only use the details shown within the balance sheet.",
+    "reference": {
+      "answer": "$1616.00",
+      "unit": null
+    },
+    "claim": "1615.9",
+    "unit": "USD millions",
+    "status": "VERIFIED",
+    "expected": "16159/10",
+    "authority": {
+      "cash_sign_normalization": null,
+      "checked_question_subdefinitions": [],
+      "equation": "receivables",
+      "kind": "curated_metric_registry",
+      "question_composition": null,
+      "role_map": {
+        "receivables": "receivables"
+      },
+      "source_id": "direct_net_accounts_receivable",
+      "source_refs": [
+        {
+          "title": "FASB US GAAP Financial Reporting Taxonomy",
+          "url": "https://xbrl.fasb.org/us-gaap/2025/"
+        },
+        {
+          "title": "IFRS Accounting Taxonomy 2025",
+          "url": "https://www.ifrs.org/issued-standards/ifrs-taxonomy/ifrs-accounting-taxonomy-2025/"
+        },
+        {
+          "title": "FinanceBench dataset metric definition",
+          "url": "https://github.com/patronus-ai/financebench"
+        }
+      ],
+      "template": "receivables"
+    },
+    "bindings": [
+      {
+        "accession": "0001748790-20-000025",
+        "concept": "us-gaap:AccountsReceivableNetCurrent",
+        "decimals": "-5",
+        "method": "concept_registry",
+        "period": {
+          "dimensions": [],
+          "end_date": "",
+          "instant": "2020-06-30",
+          "start_date": ""
+        },
+        "presentation_labels_provenance": {
+          "sha256": "0446a3650ed33b08c5a0d6d891f643f3cb1fa084fa956aebd8f4e9cae689cc74",
+          "url": "https://www.sec.gov/Archives/edgar/data/1748790/000174879020000025/amcr-20200630.htm"
+        },
+        "role": "receivables",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOjIzMDY3NDYxNjZkMTRmOWE4MTU2YzFkNTI2YmIxZDc1L3NlYzoyMzA2NzQ2MTY2ZDE0ZjlhODE1NmMxZDUyNmJiMWQ3NV84NS9mcmFnOmI0MTZkZjZlMjI0MzQ2YWE5YjRiYjU1YWJkNmMzN2M2L3RhYmxlOmI2MDA1MTI1MWEwZjRjZmVhOWI3ZmEzOTQzZGZiODM3L3RhYmxlcmFuZ2U6YjYwMDUxMjUxYTBmNGNmZWE5YjdmYTM5NDNkZmI4MzdfNC0yLTEtMS0w_a7f031fe-2c59-4ac7-8a5a-5cdcc288d43f",
+        "source_sha256": "1e5aa76713415dcd748213e197dd80f8f8b23c570dd6e7b4a0e473e66ca644e1",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1748790/000174879020000025/amcr-20200630_htm.xml",
+        "unit": "USD millions",
+        "value": "1615.900000"
+      }
+    ]
+  },
+  {
+    "id": "financebench_id_07661",
+    "question": "Using the cash flow statement, answer the following question to the best of your abilities: how much did Block (formerly known as Square) generate in cash flow from operating activities in FY2020? Answer in USD millions.",
+    "reference": {
+      "answer": "$382.00",
+      "unit": null
+    },
+    "claim": "381.603",
+    "unit": "USD millions",
+    "status": "VERIFIED",
+    "expected": "381603/1000",
+    "authority": {
+      "children": [
+        {
+          "concept": "sq:IncreaseDecreaseinCustomerFunds",
+          "weight": "-1.0"
+        },
+        {
+          "concept": "sq:NoncashInterestandOtherExpense",
+          "weight": "1.0"
+        },
+        {
+          "concept": "sq:IncreaseDecreaseinAccruedTransactionCosts",
+          "weight": "-1.0"
+        },
+        {
+          "concept": "sq:NoncashLeaseRelatedCosts",
+          "weight": "1.0"
+        },
+        {
+          "concept": "us-gaap:IncreaseDecreaseInMortgageLoansHeldForSale",
+          "weight": "-1.0"
+        },
+        {
+          "concept": "us-gaap:GainsLossesOnExtinguishmentOfDebt",
+          "weight": "-1.0"
+        },
+        {
+          "concept": "us-gaap:DisposalGroupNotDiscontinuedOperationGainLossOnDisposal",
+          "weight": "-1.0"
+        },
+        {
+          "concept": "us-gaap:NetIncomeLoss",
+          "weight": "1.0"
+        },
+        {
+          "concept": "us-gaap:IncreaseDecreaseInPayablesToCustomers",
+          "weight": "1.0"
+        },
+        {
+          "concept": "us-gaap:EquitySecuritiesFvNiGainLoss",
+          "weight": "-1.0"
+        },
+        {
+          "concept": "us-gaap:DepreciationDepletionAndAmortization",
+          "weight": "1.0"
+        },
+        {
+          "concept": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+          "weight": "1.0"
+        },
+        {
+          "concept": "us-gaap:IncreaseDecreaseInOtherOperatingCapitalNet",
+          "weight": "-1.0"
+        },
+        {
+          "concept": "us-gaap:DeferredIncomeTaxExpenseBenefit",
+          "weight": "1.0"
+        },
+        {
+          "concept": "sq:IncreaseDecreaseinSettlementAssets",
+          "weight": "-1.0"
+        },
+        {
+          "concept": "sq:IncreaseDecreaseinSettlementLiabilitiesCurrent",
+          "weight": "1.0"
+        },
+        {
+          "concept": "sq:IssuanceOfReplacementStockAwardsInAcquisition",
+          "weight": "1.0"
+        },
+        {
+          "concept": "us-gaap:ShareBasedCompensation",
+          "weight": "1.0"
+        },
+        {
+          "concept": "us-gaap:IncreaseDecreaseInLoansHeldForSale",
+          "weight": "-1.0"
+        }
+      ],
+      "equation": "(-1.0 * child_0) + (1.0 * child_1) + (-1.0 * child_2) + (1.0 * child_3) + (-1.0 * child_4) + (-1.0 * child_5) + (-1.0 * child_6) + (1.0 * child_7) + (1.0 * child_8) + (-1.0 * child_9) + (1.0 * child_10) + (1.0 * child_11) + (-1.0 * child_12) + (1.0 * child_13) + (-1.0 * child_14) + (1.0 * child_15) + (1.0 * child_16) + (1.0 * child_17) + (-1.0 * child_18)",
+      "kind": "filing_calculation_linkbase",
+      "parent": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "source_id": "http://squareup.com/role/CONSOLIDATEDSTATEMENTSOFCASHFLOWS",
+      "source_sha256": "9d6b418f7244c891f77fa1eb6bcaacc87e222663d849aa22d91e5ec80e1044e2"
+    },
+    "bindings": [
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "sq:IncreaseDecreaseinCustomerFunds",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_0",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMjAtMS0xLTEtMA_28319ce6-51ce-4522-9316-b018c0090959",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "1151.536000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "sq:NoncashInterestandOtherExpense",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_1",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfNi0xLTEtMS0w_7585f45e-8725-412f-86dd-f81e55293668",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "76.129000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "sq:IncreaseDecreaseinAccruedTransactionCosts",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_2",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMjgtMS0xLTEtMA_ac2074ae-66ee-4bef-87f2-9b567112fbbc",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "73.613000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "sq:NoncashLeaseRelatedCosts",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_3",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfOC0xLTEtMS0w_06dbf3fd-52a3-4840-a677-56c7a9c55094",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "70.253000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:IncreaseDecreaseInMortgageLoansHeldForSale",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_4",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMjItMS0xLTEtMA_cc09619d-de04-4874-93c0-8fa83c79ab90",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "-1505.406000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:GainsLossesOnExtinguishmentOfDebt",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_5",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfNy0xLTEtMS0w_8f8e3139-47cc-4676-ad86-98cbb85c4e56",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "-6.651000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:DisposalGroupNotDiscontinuedOperationGainLossOnDisposal",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_6",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV84Mi9mcmFnOjg5NzJhMmI0MmMxZTRhZGRiMDYzY2ViM2I4YWNiOWJkL3RhYmxlOjFjNWRmNTkyN2I0NzQ2YmFhNDMyMTFlMmQwYjcwZWFjL3RhYmxlcmFuZ2U6MWM1ZGY1OTI3YjQ3NDZiYWE0MzIxMWUyZDBiNzBlYWNfMjUtMS0xLTEtMA_4d7c179d-e0bf-4931-b5c6-fda52a58df96",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "0.000000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:NetIncomeLoss",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_7",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV84Mi9mcmFnOjg5NzJhMmI0MmMxZTRhZGRiMDYzY2ViM2I4YWNiOWJkL3RhYmxlOjFjNWRmNTkyN2I0NzQ2YmFhNDMyMTFlMmQwYjcwZWFjL3RhYmxlcmFuZ2U6MWM1ZGY1OTI3YjQ3NDZiYWE0MzIxMWUyZDBiNzBlYWNfMzAtMS0xLTEtMA_3d093866-3f28-4858-b80c-8ea008e87b71",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "213.105000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:IncreaseDecreaseInPayablesToCustomers",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_8",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMjYtMS0xLTEtMA_7da54400-b9a4-4383-b400-3f659bbfe46e",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "1733.138000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:EquitySecuritiesFvNiGainLoss",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_9",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMTItMS0xLTEtMA_61584841-9eb1-44ef-a65e-66ae80fcd355",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "295.297000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:DepreciationDepletionAndAmortization",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_10",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfNS0xLTEtMS0w_3e1beced-c598-4226-a676-e4ed199ac373",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "84.212000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_11",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV84Mi9mcmFnOjg5NzJhMmI0MmMxZTRhZGRiMDYzY2ViM2I4YWNiOWJkL3RhYmxlOjFjNWRmNTkyN2I0NzQ2YmFhNDMyMTFlMmQwYjcwZWFjL3RhYmxlcmFuZ2U6MWM1ZGY1OTI3YjQ3NDZiYWE0MzIxMWUyZDBiNzBlYWNfMjAtMS0xLTEtMA_4ba05fca-88f7-44c0-998b-9191da3b6b9c",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "177.670000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:IncreaseDecreaseInOtherOperatingCapitalNet",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_12",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMjktMS0xLTEtMA_7821e7bd-7320-44d4-bf53-ba395fb2614e",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "186.819000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:DeferredIncomeTaxExpenseBenefit",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_13",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMTUtMS0xLTEtMA_081ea125-7be2-40da-af17-37fccd7b726a",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "-8.016000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "sq:IncreaseDecreaseinSettlementAssets",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_14",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMTktMS0xLTEtMA_8079d24f-0d83-44d0-96ae-1c31edcff7dd",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "473.871000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "sq:IncreaseDecreaseinSettlementLiabilitiesCurrent",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_15",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMjctMS0xLTEtMA_3da58eaf-0189-4c0a-b72f-8f84e72bbc61",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "143.528000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "sq:IssuanceOfReplacementStockAwardsInAcquisition",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_16",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMTAtMS0xLTEtMA_0c29bf3a-2653-4f96-be60-4f21c82beb1d",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "0.000000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:ShareBasedCompensation",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_17",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfOS0xLTEtMS0w_122c1948-9d9a-4325-95f5-b01b775402e1",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "397.800000"
+      },
+      {
+        "accession": "0001512673-21-000008",
+        "concept": "us-gaap:IncreaseDecreaseInLoansHeldForSale",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-12-31",
+          "instant": "",
+          "start_date": "2020-01-01"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "71d9c271f5a469d3f8ad833fad2984eccbcaf55c2ab1ac96e149c85a1def77da",
+          "url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231.htm"
+        },
+        "role": "child_18",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmUwMWRkNTk1ZDA1YTQyN2M5YmE4NGFiNTlmOWU4NTg5L3NlYzplMDFkZDU5NWQwNWE0MjdjOWJhODRhYjU5ZjllODU4OV85MS9mcmFnOjk4OTkzYjAwODMzYjQwOTBhYTI4N2VjNGZhYTgyNmE3L3RhYmxlOmVkNzM1ZWQ2OWMzZTQ5ZDZhYjlhZGNiODRiY2MzYzg2L3RhYmxlcmFuZ2U6ZWQ3MzVlZDY5YzNlNDlkNmFiOWFkY2I4NGJjYzNjODZfMjEtMS0xLTEtMA_da9591c1-e3fd-4f46-899a-e6c7bb49d002",
+        "source_sha256": "1e9e6a3ab6030d6348fa3e5b19382b006911c621566634871a8e8746aa3105f0",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1512673/000151267321000008/sq-20201231_htm.xml",
+        "unit": "USD millions",
+        "value": "1837.137000"
+      }
+    ]
+  },
+  {
+    "id": "financebench_id_04854",
+    "question": "According to the information provided in the statement of cash flows, what is the FY2020 free cash flow (FCF) for General Mills? FCF here is defined as: (cash from operations - capex). Answer in USD millions.",
+    "reference": {
+      "answer": "$3215.00",
+      "unit": null
+    },
+    "claim": "3215.4",
+    "unit": "USD millions",
+    "status": "VERIFIED",
+    "expected": "16077/5",
+    "authority": {
+      "equation": "(operating_cash_flow - capex)",
+      "kind": "question_definition",
+      "question": "According to the information provided in the statement of cash flows, what is the FY2020 free cash flow (FCF) for General Mills? FCF here is defined as: (cash from operations - capex). Answer in USD millions.",
+      "source_id": "explicit_question_equation"
+    },
+    "bindings": [
+      {
+        "accession": "0001193125-20-186469",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "decimals": "-5",
+        "method": "concept_registry",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-05-31",
+          "instant": "",
+          "start_date": "2019-05-27"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "081521a64e8f58532a7a545f8c30e151323fa197cbe74e80a94ad0b7a5ae71fb",
+          "url": "https://www.sec.gov/Archives/edgar/data/40704/000119312520186469/d89717d10k.htm"
+        },
+        "role": "operating_cash_flow",
+        "source_fact_id": "ID_1496",
+        "source_sha256": "7182b54b54b2b2e1e92c12eb3f9bf30783d788dc70090b82f4681a4f8835f40a",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/40704/000119312520186469/d89717d10k_htm.xml",
+        "unit": "USD millions",
+        "value": "3676.200000"
+      },
+      {
+        "accession": "0001193125-20-186469",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "decimals": "-5",
+        "method": "concept_registry",
+        "period": {
+          "dimensions": [],
+          "end_date": "2020-05-31",
+          "instant": "",
+          "start_date": "2019-05-27"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "081521a64e8f58532a7a545f8c30e151323fa197cbe74e80a94ad0b7a5ae71fb",
+          "url": "https://www.sec.gov/Archives/edgar/data/40704/000119312520186469/d89717d10k.htm"
+        },
+        "role": "capex",
+        "source_fact_id": "ID_1497",
+        "source_sha256": "7182b54b54b2b2e1e92c12eb3f9bf30783d788dc70090b82f4681a4f8835f40a",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/40704/000119312520186469/d89717d10k_htm.xml",
+        "unit": "USD millions",
+        "value": "460.800000"
+      }
+    ]
+  },
+  {
+    "id": "financebench_id_03282",
+    "question": "What is Netflix's year end FY2017 total current liabilities (in USD millions)? Base your judgments on the information provided primarily in the balance sheet.",
+    "reference": {
+      "answer": "$5466.00",
+      "unit": null
+    },
+    "claim": "5466.312",
+    "unit": "USD millions",
+    "status": "VERIFIED",
+    "expected": "683289/125",
+    "authority": {
+      "children": [
+        {
+          "concept": "nflx:ContentLiabilitiesCurrent",
+          "weight": "1"
+        },
+        {
+          "concept": "us-gaap:AccountsPayableCurrent",
+          "weight": "1"
+        },
+        {
+          "concept": "us-gaap:AccruedLiabilitiesCurrent",
+          "weight": "1"
+        },
+        {
+          "concept": "us-gaap:DeferredRevenueCurrent",
+          "weight": "1"
+        }
+      ],
+      "equation": "(1 * child_0) + (1 * child_1) + (1 * child_2) + (1 * child_3)",
+      "kind": "filing_calculation_linkbase",
+      "parent": "us-gaap:LiabilitiesCurrent",
+      "source_id": "http://www.netflix.com/role/ConsolidatedBalanceSheets",
+      "source_sha256": "22ca00e25012aac641e7fda747773c5e946333e9e76d11bb0d4c8c00a7a593b9"
+    },
+    "bindings": [
+      {
+        "accession": "0001065280-18-000069",
+        "concept": "nflx:ContentLiabilitiesCurrent",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "",
+          "instant": "2017-12-31",
+          "start_date": ""
+        },
+        "presentation_labels_provenance": null,
+        "role": "child_0",
+        "source_fact_id": "Fact-293C759EEB849D09436AC18F509CB529",
+        "source_sha256": "953fab4d7b038d6677a406ba42dc9dc8cec6718330f6182d12b42f335d3b4eca",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528018000069/nflx-20171231.xml",
+        "unit": "USD millions",
+        "value": "4173.041000"
+      },
+      {
+        "accession": "0001065280-18-000069",
+        "concept": "us-gaap:AccountsPayableCurrent",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "",
+          "instant": "2017-12-31",
+          "start_date": ""
+        },
+        "presentation_labels_provenance": null,
+        "role": "child_1",
+        "source_fact_id": "Fact-44290B06FF827EDF59C6C18F509BDDB2",
+        "source_sha256": "953fab4d7b038d6677a406ba42dc9dc8cec6718330f6182d12b42f335d3b4eca",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528018000069/nflx-20171231.xml",
+        "unit": "USD millions",
+        "value": "359.555000"
+      },
+      {
+        "accession": "0001065280-18-000069",
+        "concept": "us-gaap:AccruedLiabilitiesCurrent",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "",
+          "instant": "2017-12-31",
+          "start_date": ""
+        },
+        "presentation_labels_provenance": null,
+        "role": "child_2",
+        "source_fact_id": "Fact-7784DC8305BBF5439CE3C18F509C37FB",
+        "source_sha256": "953fab4d7b038d6677a406ba42dc9dc8cec6718330f6182d12b42f335d3b4eca",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528018000069/nflx-20171231.xml",
+        "unit": "USD millions",
+        "value": "315.094000"
+      },
+      {
+        "accession": "0001065280-18-000069",
+        "concept": "us-gaap:DeferredRevenueCurrent",
+        "decimals": "-3",
+        "method": "linkbase_concept",
+        "period": {
+          "dimensions": [],
+          "end_date": "",
+          "instant": "2017-12-31",
+          "start_date": ""
+        },
+        "presentation_labels_provenance": null,
+        "role": "child_3",
+        "source_fact_id": "Fact-03EA8A7DF89C0F703A30C18F509FE39F",
+        "source_sha256": "953fab4d7b038d6677a406ba42dc9dc8cec6718330f6182d12b42f335d3b4eca",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528018000069/nflx-20171231.xml",
+        "unit": "USD millions",
+        "value": "618.622000"
+      }
+    ]
+  }
+]

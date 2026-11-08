@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2125",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function determines whether an incentive stock option (ISO) share sale qualifies for favorable long-term capital gains treatment by verifying that the holding period exceeds one year from exercise and two years from grant, using the grant date, exercise date, and sale date as inputs and returning a Boolean result?",
+        "usage": {
+          "prompt_tokens": 5063,
+          "completion_tokens": 61,
+          "total_tokens": 5124
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 13841,
+          "completion_tokens": 85,
+          "total_tokens": 13926,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 67
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    from datetime import datetime\n\n    grant_date = datetime.strptime(\"2021-01-15\", \"%Y-%m-%d\")\n    exercise_date = datetime.strptime(\"2022-02-20\", \"%Y-%m-%d\")\n    sale_date = datetime.strptime(\"2023-05-05\", \"%Y-%m-%d\")\n\n    # Do math calculation to get the answer\n    held_more_than_one_year = (sale_date - exercise_date).days > 365\n    held_more_than_two_years = (sale_date - grant_date).days > 730\n    answer = held_more_than_one_year and held_more_than_two_years\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5093,
+          "completion_tokens": 225,
+          "total_tokens": 5318,
+          "prompt_tokens_details": {
+            "cached_tokens": 4864
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 61
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-365",
+        "score": 2.313857078552246,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2521",
+        "score": 1.9831057786941528,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-364",
+        "score": 1.7619779109954834,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2518",
+        "score": 1.6671489477157593,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-366",
+        "score": 1.6348801851272583,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2188",
+        "score": 1.6340023279190063,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2382",
+        "score": 1.6240689754486084,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2763",
+        "score": 1.5840978622436523,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.5811036825180054,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2766",
+        "score": 1.5670030117034912,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2978",
+        "score": 1.5606615543365479,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1887",
+        "score": 1.5412282943725586,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.5186710357666016,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2762",
+        "score": 1.5139853954315186,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-796",
+        "score": 1.5097923278808594,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2381",
+        "score": 1.4925875663757324,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2977",
+        "score": 1.4894587993621826,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2767",
+        "score": 1.4875560998916626,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-363",
+        "score": 1.4841580390930176,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.474900722503662,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-603",
+        "score": 1.473907232284546,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3084",
+        "score": 1.4725453853607178,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2392",
+        "score": 1.4693706035614014,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1626",
+        "score": 1.46427321434021,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2375",
+        "score": 1.4623982906341553,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2658",
+        "score": 1.4575634002685547,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.4562911987304688,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-379",
+        "score": 1.451674461364746,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-352",
+        "score": 1.450880527496338,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1030",
+        "score": 1.448480248451233,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-365"
+    ],
+    "status": "ok",
+    "answer": true,
+    "code": "def solution():\n    # Define variables name and value\n    from datetime import datetime\n\n    grant_date = datetime.strptime(\"2021-01-15\", \"%Y-%m-%d\")\n    exercise_date = datetime.strptime(\"2022-02-20\", \"%Y-%m-%d\")\n    sale_date = datetime.strptime(\"2023-05-05\", \"%Y-%m-%d\")\n\n    # Do math calculation to get the answer\n    held_more_than_one_year = (sale_date - exercise_date).days > 365\n    held_more_than_two_years = (sale_date - grant_date).days > 730\n    answer = held_more_than_one_year and held_more_than_two_years\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "2f66039248cf821a043d8bcf32695705095f495805322ea33b43299fc92ac2af"
+}

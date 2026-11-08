@@ -1,0 +1,211 @@
+{
+  "record": {
+    "question_id": "test-2006",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates and minimizes the degree of operating leverage across production levels using unit contribution margin, fixed production costs, and a specified capacity limit, returning the production level in units rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 4984,
+          "completion_tokens": 44,
+          "total_tokens": 5028
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C04\",\"C16\"]}",
+        "usage": {
+          "prompt_tokens": 12674,
+          "completion_tokens": 419,
+          "total_tokens": 13093,
+          "completion_tokens_details": {
+            "reasoning_tokens": 398
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    unit_contribution_margin = 20\n    fixed_production_costs = 500000\n    maximum_production_units = 300000\n\n    # Do math calculation to get the answer\n    contribution_margin = maximum_production_units * unit_contribution_margin\n    dol = contribution_margin / (contribution_margin - fixed_production_costs)\n\n    # DOL decreases as production increases, so it is least at the maximum level\n    answer = float(maximum_production_units)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5326,
+          "completion_tokens": 302,
+          "total_tokens": 5628,
+          "completion_tokens_details": {
+            "reasoning_tokens": 173
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1682",
+        "score": 1.985295057296753,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1681",
+        "score": 1.9428212642669678,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1680",
+        "score": 1.9383434057235718,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-574",
+        "score": 1.9051917791366577,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1676",
+        "score": 1.8319754600524902,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1679",
+        "score": 1.824310302734375,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-573",
+        "score": 1.7603029012680054,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-769",
+        "score": 1.754601001739502,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1675",
+        "score": 1.7382268905639648,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-829",
+        "score": 1.7037142515182495,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1678",
+        "score": 1.6948940753936768,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-767",
+        "score": 1.6936957836151123,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2121",
+        "score": 1.6798540353775024,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-164",
+        "score": 1.6759014129638672,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-211",
+        "score": 1.6692798137664795,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-3041",
+        "score": 1.6661522388458252,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-539",
+        "score": 1.6511536836624146,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1677",
+        "score": 1.6497772932052612,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-180",
+        "score": 1.647619605064392,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-428",
+        "score": 1.6424728631973267,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1183",
+        "score": 1.6306637525558472,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1371",
+        "score": 1.6272156238555908,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-208",
+        "score": 1.6267759799957275,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3049",
+        "score": 1.6265671253204346,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-768",
+        "score": 1.6219139099121094,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-179",
+        "score": 1.6210927963256836,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1198",
+        "score": 1.6194819211959839,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1186",
+        "score": 1.6013290882110596,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-3035",
+        "score": 1.5974349975585938,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-833",
+        "score": 1.5963486433029175,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-574",
+      "article-3041"
+    ],
+    "status": "ok",
+    "answer": 300000.0,
+    "code": "def solution():\n    # Define variables name and value\n    unit_contribution_margin = 20\n    fixed_production_costs = 500000\n    maximum_production_units = 300000\n\n    # Do math calculation to get the answer\n    contribution_margin = maximum_production_units * unit_contribution_margin\n    dol = contribution_margin / (contribution_margin - fixed_production_costs)\n\n    # DOL decreases as production increases, so it is least at the maximum level\n    answer = float(maximum_production_units)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "2de8dbc2beab39505e37101ba125f9428bae3a116164a71c3e64c8e50b185435"
+}

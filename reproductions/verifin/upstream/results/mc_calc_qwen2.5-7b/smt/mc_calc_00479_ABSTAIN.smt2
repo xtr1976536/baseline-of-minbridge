@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:marketable_securities_current_fy2023,accounts_receivable_net_current_fy2023)

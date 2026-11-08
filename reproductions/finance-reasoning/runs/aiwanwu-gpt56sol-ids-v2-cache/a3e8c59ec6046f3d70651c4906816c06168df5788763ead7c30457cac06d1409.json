@@ -1,0 +1,21 @@
+{
+  "identity": "a3e8c59ec6046f3d70651c4906816c06168df5788763ead7c30457cac06d1409",
+  "response_digest": "1239798065dac15d1d2470583f225b1696f05c2d92b77bb14a187077b803fcc9",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    claim_amounts = [150000]\n    claim_paid_dates = [\"year_end\"]\n    claim_settlement_expenses = [30000]\n    reinsurance_paid_claims = [70000]\n    reinsurance_paid_expenses = [10000]\n    discount_rate = 0.05\n\n    # Do math calculation to get the answer\n    net_claim_liability = claim_amounts[0] - reinsurance_paid_claims[0]\n    net_expense_liability = (\n        claim_settlement_expenses[0] - reinsurance_paid_expenses[0]\n    )\n    total_net_liability = net_claim_liability + net_expense_liability\n\n    ibnr_reserve = total_net_liability / (1 + discount_rate)\n\n    # Return the answer rounded to the nearest dollar\n    return round(ibnr_reserve)\n```",
+    "usage": {
+      "prompt_tokens": 5548,
+      "completion_tokens": 305,
+      "total_tokens": 5853,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 111
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "record": {
+    "question_id": "test-2126",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the first-order (lag-1) sample autocorrelation of a chronological series of periodic stock returns by comparing each return with the immediately preceding period, and returns the result rounded to four decimal places?",
+        "usage": {
+          "prompt_tokens": 5063,
+          "completion_tokens": 46,
+          "total_tokens": 5109,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 13835,
+          "completion_tokens": 16,
+          "total_tokens": 13851,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    returns = [5, 3, 8, 2, 7, 3, 6, 4, 5, 7, 6, 4]\n    lag = 1\n\n    # Do math calculation to get the answer\n    mean_return = sum(returns) / len(returns)\n    numerator = sum(\n        (returns[i] - mean_return) * (returns[i - lag] - mean_return)\n        for i in range(lag, len(returns))\n    )\n    denominator = sum((value - mean_return) ** 2 for value in returns)\n    autocorrelation = numerator / denominator if denominator != 0 else 0\n    answer = round(autocorrelation, 4)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5075,
+          "completion_tokens": 403,
+          "total_tokens": 5478,
+          "completion_tokens_details": {
+            "reasoning_tokens": 220
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2378",
+        "score": 1.817577838897705,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.584317922592163,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2565",
+        "score": 1.5818471908569336,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1055",
+        "score": 1.5634315013885498,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.5492610931396484,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.5459202527999878,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-200",
+        "score": 1.5421533584594727,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2098",
+        "score": 1.5380631685256958,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.5344743728637695,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2410",
+        "score": 1.5331251621246338,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2809",
+        "score": 1.528266429901123,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1593",
+        "score": 1.5277390480041504,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2379",
+        "score": 1.522374153137207,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2375",
+        "score": 1.5065197944641113,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-140",
+        "score": 1.5024369955062866,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.4964033365249634,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.495826244354248,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.4955670833587646,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.4946482181549072,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1151",
+        "score": 1.4904685020446777,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-266",
+        "score": 1.4900882244110107,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.4895706176757812,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1925",
+        "score": 1.4869208335876465,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2783",
+        "score": 1.4847733974456787,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.4841469526290894,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1060",
+        "score": 1.4832932949066162,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.482726812362671,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-468",
+        "score": 1.4806978702545166,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.477198600769043,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2881",
+        "score": 1.4749125242233276,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2378"
+    ],
+    "status": "ok",
+    "answer": -0.7105,
+    "code": "def solution():\n    # Define variables name and value\n    returns = [5, 3, 8, 2, 7, 3, 6, 4, 5, 7, 6, 4]\n    lag = 1\n\n    # Do math calculation to get the answer\n    mean_return = sum(returns) / len(returns)\n    numerator = sum(\n        (returns[i] - mean_return) * (returns[i - lag] - mean_return)\n        for i in range(lag, len(returns))\n    )\n    denominator = sum((value - mean_return) ** 2 for value in returns)\n    autocorrelation = numerator / denominator if denominator != 0 else 0\n    answer = round(autocorrelation, 4)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "dacca4a07881b9ebe81059d7fe3fd82f81d706fd5b2234296c8685ffebcf0984"
+}

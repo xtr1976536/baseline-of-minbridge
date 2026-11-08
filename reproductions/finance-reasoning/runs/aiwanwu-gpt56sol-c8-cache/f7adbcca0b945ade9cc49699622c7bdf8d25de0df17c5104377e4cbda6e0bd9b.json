@@ -1,0 +1,21 @@
+{
+  "identity": "f7adbcca0b945ade9cc49699622c7bdf8d25de0df17c5104377e4cbda6e0bd9b",
+  "response_digest": "40ba802ae38fd29095ac58c2705331015601e6fc4de67622225fc6d56dc94315",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_returns = [0.04, -0.02, 0.03, 0.05, -0.01]\n    market_returns = [0.03, -0.01, 0.04, 0.02, 0.00]\n\n    stock_mean = sum(stock_returns) / len(stock_returns)\n    market_mean = sum(market_returns) / len(market_returns)\n\n    # Do math calculation to get the answer\n    covariance = sum(\n        (stock - stock_mean) * (market - market_mean)\n        for stock, market in zip(stock_returns, market_returns)\n    )\n\n    market_variance = sum(\n        (market - market_mean) ** 2\n        for market in market_returns\n    )\n\n    beta = covariance / market_variance\n    answer = round(beta, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5644,
+      "completion_tokens": 328,
+      "total_tokens": 5972,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 123
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

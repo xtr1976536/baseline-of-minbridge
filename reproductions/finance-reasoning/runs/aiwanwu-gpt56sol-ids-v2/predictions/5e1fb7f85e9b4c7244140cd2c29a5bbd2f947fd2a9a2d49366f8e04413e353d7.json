@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2017",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates taxable income for an employee stock purchase plan (ESPP) sale by determining the ordinary-income component of the discount and gain when shares are sold before the required two-year holding period, using share quantity, purchase price, discounted purchase price, sale price, and holding period as inputs, with the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5035,
+          "completion_tokens": 72,
+          "total_tokens": 5107,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C01\",\"C08\"]}",
+        "usage": {
+          "prompt_tokens": 13332,
+          "completion_tokens": 22,
+          "total_tokens": 13354
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    purchase_price = 40\n    sale_price = 55\n    shares = 200\n    discount = 0.15\n    holding_period = 1.5\n\n    # Do math calculation to get the answer\n    discounted_purchase_price = purchase_price * (1 - discount)\n    total_gain = (sale_price - discounted_purchase_price) * shares\n\n    if holding_period >= 2:\n        taxable_income = discount * purchase_price * shares\n    else:\n        taxable_income = total_gain\n\n    # return answer\n    return round(taxable_income)\n```",
+        "usage": {
+          "prompt_tokens": 5564,
+          "completion_tokens": 245,
+          "total_tokens": 5809,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 107
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2766",
+        "score": 2.1068098545074463,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2767",
+        "score": 2.0856881141662598,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2765",
+        "score": 2.0673165321350098,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2764",
+        "score": 1.799394130706787,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2763",
+        "score": 1.7698860168457031,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2761",
+        "score": 1.7187023162841797,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2762",
+        "score": 1.6824164390563965,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1402",
+        "score": 1.6788458824157715,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.6777913570404053,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2558",
+        "score": 1.6660237312316895,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2727",
+        "score": 1.6649630069732666,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-746",
+        "score": 1.6613531112670898,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2977",
+        "score": 1.6592565774917603,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1494",
+        "score": 1.6499630212783813,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2242",
+        "score": 1.6470468044281006,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2726",
+        "score": 1.6433119773864746,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2642",
+        "score": 1.640799641609192,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.6406526565551758,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2722",
+        "score": 1.6403383016586304,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.6384718418121338,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1318",
+        "score": 1.6370460987091064,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1327",
+        "score": 1.6350092887878418,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2706",
+        "score": 1.633209228515625,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1324",
+        "score": 1.6323106288909912,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2705",
+        "score": 1.6304519176483154,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2282",
+        "score": 1.628912091255188,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2519",
+        "score": 1.6227285861968994,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.6214406490325928,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-3047",
+        "score": 1.6204886436462402,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.6173558235168457,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2766",
+      "article-2767",
+      "article-1402"
+    ],
+    "status": "ok",
+    "answer": 4200,
+    "code": "def solution():\n    # Define variables name and value\n    purchase_price = 40\n    sale_price = 55\n    shares = 200\n    discount = 0.15\n    holding_period = 1.5\n\n    # Do math calculation to get the answer\n    discounted_purchase_price = purchase_price * (1 - discount)\n    total_gain = (sale_price - discounted_purchase_price) * shares\n\n    if holding_period >= 2:\n        taxable_income = discount * purchase_price * shares\n    else:\n        taxable_income = total_gain\n\n    # return answer\n    return round(taxable_income)\n"
+  },
+  "digest": "d5694f4a3d5926783a0a590eb84928f38f4bdbd051df64f731eb085b53140f90"
+}

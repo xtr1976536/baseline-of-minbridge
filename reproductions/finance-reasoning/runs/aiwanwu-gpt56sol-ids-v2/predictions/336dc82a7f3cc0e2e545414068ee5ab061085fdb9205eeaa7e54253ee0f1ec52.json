@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2116",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the implied forward interest rate for a multi-year borrowing period beginning in the future from annual spot rates, using compound discount factors and returning the result as a percentage rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4996,
+          "completion_tokens": 44,
+          "total_tokens": 5040
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 13913,
+          "completion_tokens": 19,
+          "total_tokens": 13932,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    two_year_spot_rate = 0.025\n    four_year_spot_rate = 0.055\n    start_year = 2\n    end_year = 4\n\n    # Calculate the two-year forward rate starting two years from now\n    forward_rate = (\n        ((1 + four_year_spot_rate) ** end_year)\n        / ((1 + two_year_spot_rate) ** start_year)\n    ) ** (1 / (end_year - start_year)) - 1\n\n    # Return the percentage rounded to three decimal places\n    answer = round(forward_rate * 100, 3)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5352,
+          "completion_tokens": 285,
+          "total_tokens": 5637,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 132
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-357",
+        "score": 1.8719030618667603,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.8484163284301758,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-616",
+        "score": 1.7731918096542358,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1509",
+        "score": 1.7717211246490479,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.7145071029663086,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.6873561143875122,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.6753698587417603,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.6741855144500732,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.6723932027816772,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.6697161197662354,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-980",
+        "score": 1.668265461921692,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.6666369438171387,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.6641265153884888,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.654822826385498,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.6524407863616943,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-293",
+        "score": 1.6483508348464966,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.6450297832489014,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2965",
+        "score": 1.6444084644317627,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1727",
+        "score": 1.6314072608947754,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2315",
+        "score": 1.6303400993347168,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-298",
+        "score": 1.6267626285552979,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.6232094764709473,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-450",
+        "score": 1.6223957538604736,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2002",
+        "score": 1.6168979406356812,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2941",
+        "score": 1.6150119304656982,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-138",
+        "score": 1.6102310419082642,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-431",
+        "score": 1.608820915222168,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2005",
+        "score": 1.6074631214141846,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2317",
+        "score": 1.6067721843719482,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1430",
+        "score": 1.6064485311508179,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1429",
+      "article-616"
+    ],
+    "status": "ok",
+    "answer": 8.588,
+    "code": "def solution():\n    # Define variables name and value\n    two_year_spot_rate = 0.025\n    four_year_spot_rate = 0.055\n    start_year = 2\n    end_year = 4\n\n    # Calculate the two-year forward rate starting two years from now\n    forward_rate = (\n        ((1 + four_year_spot_rate) ** end_year)\n        / ((1 + two_year_spot_rate) ** start_year)\n    ) ** (1 / (end_year - start_year)) - 1\n\n    # Return the percentage rounded to three decimal places\n    answer = round(forward_rate * 100, 3)\n    return answer\n"
+  },
+  "digest": "2a7e13746e65aab90f19a1511f8eb9f30abbbc3a5eaafff4286bae303cb52d4e"
+}

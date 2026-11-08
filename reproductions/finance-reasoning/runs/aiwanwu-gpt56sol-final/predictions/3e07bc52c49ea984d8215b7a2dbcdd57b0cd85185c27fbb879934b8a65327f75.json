@@ -1,0 +1,192 @@
+{
+  "record": {
+    "question_id": "test-2093",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the cumulative On-Balance Volume (OBV) time series from ordered daily closing prices and trading volumes, adding volume on price increases, subtracting volume on price decreases, and returning the OBV for the fifth day in thousands of shares?",
+        "usage": {
+          "prompt_tokens": 5043,
+          "completion_tokens": 115,
+          "total_tokens": 5158,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 58
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14419,
+          "completion_tokens": 260,
+          "total_tokens": 14679,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 163
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 151, 153, 154]\n    volumes = [200, 220, 210, 230, 240]\n\n    # Do math calculation to get the answer\n    obv = [0]\n    for i in range(1, len(closing_prices)):\n        if closing_prices[i] > closing_prices[i - 1]:\n            obv.append(obv[-1] + volumes[i])\n        elif closing_prices[i] < closing_prices[i - 1]:\n            obv.append(obv[-1] - volumes[i])\n        else:\n            obv.append(obv[-1])\n\n    answer = obv[-1]\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5413,
+          "completion_tokens": 209,
+          "total_tokens": 5622,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 38
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-3014",
+        "score": 2.380018949508667
+      },
+      {
+        "function_id": "article-853",
+        "score": 2.132847547531128
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.8237797021865845
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.798264980316162
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.780690312385559
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.7538912296295166
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.7238141298294067
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.7032599449157715
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.6838083267211914
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.6640149354934692
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6506567001342773
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.6427253484725952
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6320691108703613
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.62458336353302
+      },
+      {
+        "function_id": "article-2107",
+        "score": 1.6184608936309814
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.6130809783935547
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.593169927597046
+      },
+      {
+        "function_id": "article-1624",
+        "score": 1.5912672281265259
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5891547203063965
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.587071418762207
+      },
+      {
+        "function_id": "article-491",
+        "score": 1.5792526006698608
+      },
+      {
+        "function_id": "article-2017",
+        "score": 1.576805591583252
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.5750148296356201
+      },
+      {
+        "function_id": "article-3022",
+        "score": 1.5702202320098877
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.5693542957305908
+      },
+      {
+        "function_id": "article-340",
+        "score": 1.5671569108963013
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.5664098262786865
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.5657494068145752
+      },
+      {
+        "function_id": "article-2404",
+        "score": 1.5645205974578857
+      },
+      {
+        "function_id": "article-2279",
+        "score": 1.5588582754135132
+      }
+    ],
+    "selected_ids": [
+      "article-3014",
+      "article-853"
+    ],
+    "status": "ok",
+    "answer": 480,
+    "code": "def solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 151, 153, 154]\n    volumes = [200, 220, 210, 230, 240]\n\n    # Do math calculation to get the answer\n    obv = [0]\n    for i in range(1, len(closing_prices)):\n        if closing_prices[i] > closing_prices[i - 1]:\n            obv.append(obv[-1] + volumes[i])\n        elif closing_prices[i] < closing_prices[i - 1]:\n            obv.append(obv[-1] - volumes[i])\n        else:\n            obv.append(obv[-1])\n\n    answer = obv[-1]\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "b5db6c7f75b6c2cf09dce0ba2cf781a6d3bc77a9469e67f0c3f30f8cdb9e39da"
+}

@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2034",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function estimates expected annual equity market return using the Grinold–Kroner model with unchanged shares outstanding, combining expected dividend/income yield, expected inflation, expected real earnings growth, and the expected change in the market P/E ratio, with percentage output rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5222,
+          "completion_tokens": 145,
+          "total_tokens": 5367,
+          "completion_tokens_details": {
+            "reasoning_tokens": 81
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C27\",\"C30\"]}",
+        "usage": {
+          "prompt_tokens": 14018,
+          "completion_tokens": 537,
+          "total_tokens": 14555,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    expected_inflation = 2.3\n    expected_real_earnings_growth = 5.0\n    expected_income_return = 2.4\n    current_pe = 14.5\n    expected_pe = 14.0\n\n    # Do math calculation to get the answer\n    pe_change = (expected_pe / current_pe - 1) * 100\n    expected_equity_return = (\n        expected_income_return\n        + expected_inflation\n        + expected_real_earnings_growth\n        + pe_change\n    )\n    answer = round(expected_equity_return, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5473,
+          "completion_tokens": 418,
+          "total_tokens": 5891,
+          "completion_tokens_details": {
+            "reasoning_tokens": 261
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2797",
+        "score": 1.8535743951797485,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2798",
+        "score": 1.713062047958374,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1151",
+        "score": 1.6920422315597534,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1758",
+        "score": 1.6717078685760498,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1756",
+        "score": 1.6374666690826416,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1328",
+        "score": 1.6213901042938232,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.615527868270874,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.5955822467803955,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.5902552604675293,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1511",
+        "score": 1.586247205734253,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.5855973958969116,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2146",
+        "score": 1.5833802223205566,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1260",
+        "score": 1.5790956020355225,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-272",
+        "score": 1.5779083967208862,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1787",
+        "score": 1.5752086639404297,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.569711685180664,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.5650601387023926,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1755",
+        "score": 1.5611391067504883,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-921",
+        "score": 1.5603302717208862,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-505",
+        "score": 1.557154893875122,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.5556790828704834,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-714",
+        "score": 1.553626537322998,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.5534344911575317,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.5514540672302246,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1541",
+        "score": 1.5502992868423462,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1318",
+        "score": 1.5482416152954102,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-245",
+        "score": 1.54820716381073,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-493",
+        "score": 1.5476195812225342,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1324",
+        "score": 1.5460549592971802,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-605",
+        "score": 1.545230746269226,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-245",
+      "article-605"
+    ],
+    "status": "ok",
+    "answer": 6.252,
+    "code": "def solution():\n    # Define variables name and value\n    expected_inflation = 2.3\n    expected_real_earnings_growth = 5.0\n    expected_income_return = 2.4\n    current_pe = 14.5\n    expected_pe = 14.0\n\n    # Do math calculation to get the answer\n    pe_change = (expected_pe / current_pe - 1) * 100\n    expected_equity_return = (\n        expected_income_return\n        + expected_inflation\n        + expected_real_earnings_growth\n        + pe_change\n    )\n    answer = round(expected_equity_return, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "131e078a099df590f737ae3bfae3d428e3a826e5a46f74969721962046d9ee07"
+}

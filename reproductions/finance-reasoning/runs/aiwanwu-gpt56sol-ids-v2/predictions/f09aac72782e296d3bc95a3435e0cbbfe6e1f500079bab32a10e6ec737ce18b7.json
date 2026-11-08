@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2234",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the combined monthly payments for two fixed-rate amortizing mortgages with different principal amounts, annual interest rates, and loan terms, using monthly compounding and excluding the down payment, and returns the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5056,
+          "completion_tokens": 51,
+          "total_tokens": 5107,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C22\",\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 16907,
+          "completion_tokens": 22,
+          "total_tokens": 16929,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    home_price = 500_000\n    first_principal = home_price * 0.80\n    second_principal = home_price * 0.10\n\n    first_rate = 0.035 / 12\n    first_payments = 30 * 12\n    first_monthly_payment = (\n        first_principal * first_rate\n        / (1 - (1 + first_rate) ** -first_payments)\n    )\n\n    second_rate = 0.06 / 12\n    second_payments = 15 * 12\n    second_monthly_payment = (\n        second_principal * second_rate\n        / (1 - (1 + second_rate) ** -second_payments)\n    )\n\n    answer = round(first_monthly_payment + second_monthly_payment)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 6181,
+          "completion_tokens": 275,
+          "total_tokens": 6456,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 95
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1069",
+        "score": 1.8352477550506592,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.8302404880523682,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.8248186111450195,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.8234333992004395,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.8210406303405762,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.8022934198379517,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.7962987422943115,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.7884540557861328,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.7852163314819336,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.7782559394836426,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.776750087738037,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.7753686904907227,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.77475905418396,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.7729681730270386,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.7718713283538818,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2497",
+        "score": 1.768933653831482,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.7582008838653564,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.7548503875732422,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.7534751892089844,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.748292326927185,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.7420015335083008,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.7305399179458618,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.7246252298355103,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-299",
+        "score": 1.7163043022155762,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-582",
+        "score": 1.7147549390792847,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.711038589477539,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-438",
+        "score": 1.709274411201477,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.7078721523284912,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1480",
+        "score": 1.7072542905807495,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.703031063079834,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1069",
+      "article-581",
+      "article-999"
+    ],
+    "status": "ok",
+    "answer": 2218,
+    "code": "def solution():\n    home_price = 500_000\n    first_principal = home_price * 0.80\n    second_principal = home_price * 0.10\n\n    first_rate = 0.035 / 12\n    first_payments = 30 * 12\n    first_monthly_payment = (\n        first_principal * first_rate\n        / (1 - (1 + first_rate) ** -first_payments)\n    )\n\n    second_rate = 0.06 / 12\n    second_payments = 15 * 12\n    second_monthly_payment = (\n        second_principal * second_rate\n        / (1 - (1 + second_rate) ** -second_payments)\n    )\n\n    answer = round(first_monthly_payment + second_monthly_payment)\n    return answer\n"
+  },
+  "digest": "7caf7edf0bfd7089e67c282a9ad9cecbffbb75c5371c955347c9af32ac52bef7"
+}

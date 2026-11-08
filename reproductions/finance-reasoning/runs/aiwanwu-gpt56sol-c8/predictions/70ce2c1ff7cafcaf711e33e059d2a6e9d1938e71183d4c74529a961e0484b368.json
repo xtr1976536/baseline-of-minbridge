@@ -1,0 +1,186 @@
+{
+  "record": {
+    "question_id": "test-2053",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annualized forward interest rate for a future multi-year period using two zero-coupon bond spot rates, specifically deriving the forward rate from an earlier maturity to a later maturity with annual compounding and returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5044,
+          "completion_tokens": 58,
+          "total_tokens": 5102,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14898,
+          "completion_tokens": 613,
+          "total_tokens": 15511,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    spot_rate_short = 0.025\n    spot_rate_long = 0.035\n    period_short = 2\n    period_long = 5\n\n    # Calculate the annualized forward rate for the 3-year period\n    forward_rate = (\n        ((1 + spot_rate_long) ** period_long\n         / (1 + spot_rate_short) ** period_short)\n        ** (1 / (period_long - period_short))\n        - 1\n    )\n\n    # Convert to a percentage and round to two decimal places\n    answer = round(forward_rate * 100, 2)\n\n    # Return the answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5400,
+          "completion_tokens": 309,
+          "total_tokens": 5709,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 156
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1953",
+        "score": 1.7986571788787842
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.7839386463165283
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.7789357900619507
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.774371862411499
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.768910527229309
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.7651747465133667
+      },
+      {
+        "function_id": "article-616",
+        "score": 1.7560031414031982
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.7473384141921997
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.7446805238723755
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.7436362504959106
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.7349742650985718
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7304936647415161
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.7295043468475342
+      },
+      {
+        "function_id": "article-1490",
+        "score": 1.713666558265686
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.709395408630371
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.7041189670562744
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.7021743059158325
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.700727939605713
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.6924693584442139
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.681848406791687
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.6816412210464478
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.6711359024047852
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.6702830791473389
+      },
+      {
+        "function_id": "article-2002",
+        "score": 1.6700446605682373
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.6686509847640991
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.6677801609039307
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.664416790008545
+      },
+      {
+        "function_id": "article-2829",
+        "score": 1.6641161441802979
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.6641062498092651
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.6612045764923096
+      }
+    ],
+    "selected_ids": [
+      "article-616",
+      "article-1429"
+    ],
+    "status": "ok",
+    "answer": 4.17,
+    "code": "def solution():\n    # Define variables\n    spot_rate_short = 0.025\n    spot_rate_long = 0.035\n    period_short = 2\n    period_long = 5\n\n    # Calculate the annualized forward rate for the 3-year period\n    forward_rate = (\n        ((1 + spot_rate_long) ** period_long\n         / (1 + spot_rate_short) ** period_short)\n        ** (1 / (period_long - period_short))\n        - 1\n    )\n\n    # Convert to a percentage and round to two decimal places\n    answer = round(forward_rate * 100, 2)\n\n    # Return the answer\n    return answer\n"
+  },
+  "digest": "20ae12b729190dd5cee0336d5273ea6f75fc7617289a8167f6c8ec2cefe0ad7b"
+}

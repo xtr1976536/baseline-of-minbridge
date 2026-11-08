@@ -1,0 +1,189 @@
+{
+  "record": {
+    "question_id": "test-2142",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the binomial probability of exactly \\(k\\) successes in \\(n\\) independent Bernoulli trials with a fixed success probability \\(p\\), returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5044,
+          "completion_tokens": 49,
+          "total_tokens": 5093,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15267,
+          "completion_tokens": 277,
+          "total_tokens": 15544,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 180
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    trials = 200\n    success_probability = 0.05\n    successes = 10\n\n    # Calculate the exact binomial probability and convert it to a percentage\n    from math import comb\n\n    probability = (\n        comb(trials, successes)\n        * (success_probability ** successes)\n        * ((1 - success_probability) ** (trials - successes))\n    )\n    answer = round(probability * 100, 2)\n\n    # Return the answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5350,
+          "completion_tokens": 480,
+          "total_tokens": 5830,
+          "prompt_tokens_details": {
+            "cached_tokens": 5120
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 361
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1740",
+        "score": 1.9705703258514404
+      },
+      {
+        "function_id": "article-725",
+        "score": 1.8591424226760864
+      },
+      {
+        "function_id": "article-726",
+        "score": 1.5869932174682617
+      },
+      {
+        "function_id": "article-147",
+        "score": 1.5375148057937622
+      },
+      {
+        "function_id": "article-2039",
+        "score": 1.525495171546936
+      },
+      {
+        "function_id": "article-2276",
+        "score": 1.500152826309204
+      },
+      {
+        "function_id": "article-2277",
+        "score": 1.4801537990570068
+      },
+      {
+        "function_id": "article-1742",
+        "score": 1.4645423889160156
+      },
+      {
+        "function_id": "article-702",
+        "score": 1.449134349822998
+      },
+      {
+        "function_id": "article-5",
+        "score": 1.4430584907531738
+      },
+      {
+        "function_id": "article-2422",
+        "score": 1.4241328239440918
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.417370319366455
+      },
+      {
+        "function_id": "article-2421",
+        "score": 1.4170184135437012
+      },
+      {
+        "function_id": "article-6",
+        "score": 1.4105536937713623
+      },
+      {
+        "function_id": "article-2832",
+        "score": 1.4064900875091553
+      },
+      {
+        "function_id": "article-1143",
+        "score": 1.4041528701782227
+      },
+      {
+        "function_id": "article-2539",
+        "score": 1.3836910724639893
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.380143642425537
+      },
+      {
+        "function_id": "article-1988",
+        "score": 1.3767753839492798
+      },
+      {
+        "function_id": "article-1016",
+        "score": 1.3754435777664185
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.3635332584381104
+      },
+      {
+        "function_id": "article-500",
+        "score": 1.3628077507019043
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.3576714992523193
+      },
+      {
+        "function_id": "article-2564",
+        "score": 1.3559538125991821
+      },
+      {
+        "function_id": "article-514",
+        "score": 1.3530850410461426
+      },
+      {
+        "function_id": "article-4",
+        "score": 1.352388858795166
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.3483161926269531
+      },
+      {
+        "function_id": "article-727",
+        "score": 1.3453717231750488
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.3426508903503418
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.3395228385925293
+      }
+    ],
+    "selected_ids": [
+      "article-1740",
+      "article-725"
+    ],
+    "status": "ok",
+    "answer": 12.84,
+    "code": "def solution():\n    # Define variables\n    trials = 200\n    success_probability = 0.05\n    successes = 10\n\n    # Calculate the exact binomial probability and convert it to a percentage\n    from math import comb\n\n    probability = (\n        comb(trials, successes)\n        * (success_probability ** successes)\n        * ((1 - success_probability) ** (trials - successes))\n    )\n    answer = round(probability * 100, 2)\n\n    # Return the answer\n    return answer\n"
+  },
+  "digest": "73847f780d089bdb0eebbca0d1d2eeb586cee14a41ec387cfe8d585ce8338b1a"
+}

@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2228",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the one-year total return on a leveraged stock investment, incorporating initial and final share prices, per-share purchase commission, dividends, leverage ratio, and annual call money interest, and returns the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5024,
+          "completion_tokens": 54,
+          "total_tokens": 5078,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 13463,
+          "completion_tokens": 471,
+          "total_tokens": 13934,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 447
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    purchase_price = 50.00\n    shares = 100\n    commission_per_share = 0.05\n    leverage_ratio = 2.0\n    call_money_rate = 0.06\n    ending_price = 70.00\n    dividend_per_share = 0.50\n\n    # Do math calculation to get the answer\n    stock_cost = purchase_price * shares\n    commission = commission_per_share * shares\n    initial_equity = stock_cost / leverage_ratio + commission\n    borrowed_amount = stock_cost - stock_cost / leverage_ratio\n    interest = borrowed_amount * call_money_rate\n    ending_value = ending_price * shares\n    dividends = dividend_per_share * shares\n    net_profit = ending_value + dividends - stock_cost - commission - interest\n    total_return = net_profit / initial_equity * 100\n\n    # return answer\n    return round(total_return, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5418,
+          "completion_tokens": 464,
+          "total_tokens": 5882,
+          "completion_tokens_details": {
+            "reasoning_tokens": 254
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-477",
+        "score": 1.7283101081848145,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1918",
+        "score": 1.71675705909729,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.712444543838501,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.7105166912078857,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.708626389503479,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6874747276306152,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2898",
+        "score": 1.6819846630096436,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1922",
+        "score": 1.673094630241394,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.6717382669448853,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.6695969104766846,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2798",
+        "score": 1.6680519580841064,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.6598999500274658,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.6596225500106812,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.6553617715835571,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.6536775827407837,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1608",
+        "score": 1.6523019075393677,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1541",
+        "score": 1.6506098508834839,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6407703161239624,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.6395494937896729,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1787",
+        "score": 1.6385647058486938,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-126",
+        "score": 1.6375367641448975,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2320",
+        "score": 1.6373908519744873,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2268",
+        "score": 1.636487603187561,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1103",
+        "score": 1.6363245248794556,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2004",
+        "score": 1.6342366933822632,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.6332309246063232,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1609",
+        "score": 1.632964849472046,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2214",
+        "score": 1.6323368549346924,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1183",
+        "score": 1.6310069561004639,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2127",
+        "score": 1.628638505935669,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-477",
+      "article-1918",
+      "article-1919"
+    ],
+    "status": "ok",
+    "answer": 75.65,
+    "code": "def solution():\n    # Define variables name and value\n    purchase_price = 50.00\n    shares = 100\n    commission_per_share = 0.05\n    leverage_ratio = 2.0\n    call_money_rate = 0.06\n    ending_price = 70.00\n    dividend_per_share = 0.50\n\n    # Do math calculation to get the answer\n    stock_cost = purchase_price * shares\n    commission = commission_per_share * shares\n    initial_equity = stock_cost / leverage_ratio + commission\n    borrowed_amount = stock_cost - stock_cost / leverage_ratio\n    interest = borrowed_amount * call_money_rate\n    ending_value = ending_price * shares\n    dividends = dividend_per_share * shares\n    net_profit = ending_value + dividends - stock_cost - commission - interest\n    total_return = net_profit / initial_equity * 100\n\n    # return answer\n    return round(total_return, 2)\n"
+  },
+  "digest": "fa39a09104c85d8d2ce3cbb3bd38792e59061523a922c952e43ea35c4a959a43"
+}

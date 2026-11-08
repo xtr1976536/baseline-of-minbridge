@@ -1,0 +1,1197 @@
+
+
+===== PDF PAGE 1 =====
+      Achieving Multi-Hop Calculation and Safe Abstention in Financial
+         Numerical Reasoning by Metric Graph Constrained LLMs
+
+                Aoyuan Jiang1 Liang Hong2* Haoxuan Liu3 Rui Wang4
+              1School of Information Management, Wuhan University, Wuhan, China
+                2School of Artificial Intelligence, Wuhan University, Wuhan, China
+       3Academy of Advanced Interdisciplinary Studies, Wuhan University, Wuhan, China
+  4School of Computer and Artificial Intelligence, Wuhan University of Technology, Wuhan, China
+          {jiangaoyuan, hong, penguin218}@whu.edu.cn, 339993@whut.edu.cn
+
+                   Abstract                     numerical reasoning in financial contexts requires
+                                                                       strict adherence to domain-specific knowledge and
+        Financial numerical reasoning demands rigor-                                                         multi-step computational logic, where even minor
+        ous adherence to domain-specific logic and pre-                                                    numerical deviations can invalidate the final infer-         cise evidence foundation. However, large lan-
+                                                  ence (Srivastava et al., 2024; Zhao et al., 2024;        guage models (LLMs) are prone to forced gen-
+         eration when confronting ambiguous evidence      Tang et al., 2025).
+        or complex recursive dependencies, often hal-
+         lucinating values to bridge information gaps.          Query: Compute Company A’s ROE growth rate in 2024 compared to 2023?
+       To address this, we propose graph-bounded fi-          ROE (Return on Equity) = Net Income / Average Equity = Net Income / ((Final Equity + Initial Equity)/2)
+        nancial reasoning (GBFR), a neuro-symbolic                  Annual Report                      Hallucinated Value
+       framework that imposes semantic and struc-                                                             Assume…      Total Equity 2023 (Begin) is $1900,
+                                                                                                     Income Statement                ROE_2024 = 500 / ((2500+2200)/2) = 0.213
+          tural constraints via a financial metric knowl-                                       Value               ROE_2023 = 420 / ((2200+1900)/2) = 0.205                                                                                                          Item
+        edge graph (FMKG). Unlike sequential genera-                                             (in millions)            ROE_Growth = (0.213-0.205) / 0.205 = 3.9%
+                                                                                                            Net Profit                                (a) Lack of Context Evidence
+         tion paradigms, our approach employs a paral-                        2024         $500               Multi-hop Calculation Error
+           lel graph-constrained reasoning algorithm that                        Net Profit        $420             We have ROE = Net Profit / Total Equity,
+                                                                                                          2023                …
+         orchestrates specialized operators to simultane-                                                          ROE_2024 = 500 / 2500= 0.2
+        ously explore heterogeneous derivation paths of                            Balance Sheet                   ROE_2023ROE_Growth= 420= (0.2-0.191)/ 2200= 0.191/ 0.2 = 4.5%
+       complex financial metrics. Through cross-path                        Item        (in Valuemillions)               (b) Lack of Explicit Formulas
+          verification, the framework aggregates only se-                          Total Equity                                   Correction                                                                                                                                 $2,500                The report lacks initial equity / average equity
+        mantically consistent results, ensuring reason-                     2024 (End)                                       for 2023, which makes it impossible to
+                                                                                                                              Total Equity                                      calculate the ROE growth rate as there is
+        ing is bounded by available context. Crucially,                     2023 (End)       $2,200                      insufficientquestion cannotcrucialbeevidence.answered.Therefore, this
+          this approach enables safe abstention by distin-                                                                                                                                                                           (c) Soft Abstention
+        guishing genuine data absence from retrieval
+          failure, thereby preventing ungrounded fabri-       Figure 1: Examples of two failure modes in LLM-
+         cation. To evaluate this capability, we further       based financial numerical reasoning.
+         construct counterfactual samples by perturbing
+          entities, times, and metrics to synthesize unan-       As illustrated in Figure 1, LLMs exhibit two
+        swerable scenarios. Empirical evaluations on                                       common failure modes in deterministic financial
+        standard benchmarks demonstrate that GBFR
+                                                    numerical reasoning. The first is the lack of clear         significantly outperforms state-of-the-art base-
+          lines.                                         contextual evidence. When context is incomplete,
+                                                        the model’s bias towards sequence completion of-
+   1  Introduction                                  ten overrides factual faithfulness, leading it to hal-
+                                                          lucinate plausible-looking numbers to fill the gap.
+    Large language models (LLMs) have demonstrated                                                         In Figure 1(a), the model hallucinates a value (e.g.,
+    strong language understanding and reasoning capa-                                                $1900) to force a completion. The second is the
+     bilities, achieving strong performance on financial                                                     lack of explicit calculation formulas. Without pre-
+    text processing tasks, such as question answering                                                             cise arithmetic definitions, LLMs fail to decompose
+   and sentiment analysis (Lee et al., 2025; Wang                                                           hierarchical metrics (e.g., ROE) and frequently ap-
+     et al., 2025a; Xing, 2025). However, extending                                                      ply incorrect formulas (e.g. ROE = Net Profit /
+    these capabilities from textual comprehension to                                                        Total Equity in Figure 1(b)), resulting in calcula-
+     financial numerical reasoning remains a non-trivial                                                           tion errors and reasoning drift during multi-hop
+    challenge. Unlike open-ended language generation,                                                           inference.
+        *Corresponding author.                                 Existing research addresses these issues by aug-
+                                           27575
+Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 27575–27595
+                                  July 2-7, 2026 ©2026 Association for Computational Linguistics
+
+===== PDF PAGE 2 =====
+menting LLMs with external knowledge or struc-    ysis, evidence seeking, problem decomposition,
+tured prompting (Srivastava et al., 2024). By lever-   and program execution, to explore heterogeneous
+aging diverse knowledge augmentation techniques    derivation paths for complex financial metrics. To
+like function retrieval and LLM-as-retrieval-judge    mitigate evidence ambiguity, the framework lever-
+(Tang et al., 2025), RAG-based frameworks incor-   ages parallel execution to handle heterogeneous
+porate financial formulas into prompts as explicit    evidence forms, including direct mentions, aliases,
+contextual knowledge, enabling models to seek   and derived values. This structured exploration
+evidence and follow logical rules. Concurrently,    further enables safe abstention: by verifying all
+reasoning capabilities are enhanced via chain-of-    potential logical paths, the system distinguishes
+thought (CoT), which elucidates intermediate steps    missing data from retrieval failure, thereby improv-
+(Wei et al., 2022), and program-of-thought (PoT),   ing inference faithfulness. To evaluate this absten-
+which executes generated programs for precise cal-    tion capability, we employ a multi-dimensional
+culation (Chen et al., 2022a; Khatuya et al., 2025).   counterfactual sample generation strategy that al-
+While integrating these paradigms improves per-    ters entities, times, and metrics in existing datasets
+formance, they operate primarily as soft semantic    to synthesize unanswerable scenarios. Experiments
+guidelines rather than hard symbolic constraints.   show that our framework achieves SOTA perfor-
+These approaches fall short of explicitly instructing   mance, with an average accuracy rate of 93.92%
+the model on which evidence should be verified and    across different datasets. Our code and data are
+how to structurally instantiate domain knowledge    publicly available1.
+into calculation, failing to guarantee adherence to     Our contributions are summarized as follows:
+the rigorous logic required for financial analysis.      • We  present  a  neuro-symbolic framework
+  Fundamentally, precise numerical reasoning re-   GBFR that leverages an FMKG to constrain
+mains challenging because it involves two core   LLM reasoning, ensuring rigorous adherence to
+difficulties. (1) Ambiguity of Evidence Bound-     domain-specific calculation logic.
+aries.  In real-world financial corpora, the con-    • We develop a parallel graph-constrained rea-
+cept of ’missing value’ is highly ambiguous:  it     soning algorithm that orchestrates specialized
+may be truly absent, expressed via domain aliases      operators  to simultaneously explore diverse
+(e.g., Net Profit for Net Income), or derivable from      derivation paths. By integrating cross-path verifi-
+other reported numbers. Consequently, determin-      cation, the method aggregates semantically con-
+ing when to abstain is often more challenging than       sistent results to guarantee inference faithfulness.
+answering. A system can only conclude a query is    • We enhance evaluation robustness by construct-
+’unanswerable’ after checking all possible calcula-     ing multi-dimensional counterfactual samples
+tion paths, alias mappings, and derivation depen-     from existing benchmarks to test safe abstention.
+dencies. (2) Structural Complexity of Reason-     Extensive experiments demonstrate the effective-
+ing. Financial indicators typically form intricate      ness of our framework, which achieves state-of-
+directed acyclic graphs (DAGs) with hierarchical      the-art performance across multiple datasets.
+dependencies, requiring multi-step recursive oper-
+ations. This presents a fundamental topological   2  Related Work
+challenge for Transformer-based LLMs, which are                                                    2.1  Finance Numerical Reasoning
+constrained by a sequential modeling paradigm.
+Such structural mismatch limits the model’s ability    Financial numerical reasoning requires models to
+to maintain global state tracking across deep de-   comprehend unstructured texts and perform precise
+pendency trees, resulting in omitted steps and error    calculations to derive metrics. Early approaches
+propagation during complex multi-hop reasoning.    primarily fine-tuned pre-trained language models
+  To address these challenges, we introduce graph-    to extract values and predict arithmetic operators,
+bounded financial reasoning (GBFR), a neuro-   as seen in benchmarks like FinQA (Chen et al.,
+symbolic framework that combines the semantic   2021) and ConvFinQA (Chen et al., 2022b). With
+generalization of LLMs with the structural con-   the advent of LLMs, the paradigm has shifted to-
+straints of a financial metric knowledge graph   wards in-context learning and CoT prompting (Wei
+(FMKG). Unlike sequential reasoning paradigms,    et al., 2022). To address the arithmetic limitations
+our parallel graph-constrained reasoning algorithm       1https://github.com/aolaoban/Graph-Bounded_
+orchestrates atomic operators, including query anal-   Financial_Reasoning
+                                       27576
+
+===== PDF PAGE 3 =====
+of LLMs, program-aided language models (Gao    ators over an FMKG to ensure arithmetic precision.
+et al., 2023) and PoT (Chen et al., 2022a; Khatuya
+et al., 2025) decouple reasoning from computation   3  Preliminaries
+by generating executable code instead of direct nu-                                                  This section formalizes the financial reasoning task,
+merical answers.                                                    presents the schema of FMKG, and describes the
+  Despite these advancements, financial numeri-                                                   construction of our adversarial benchmarks for
+cal reasoning remains a knowledge-intensive task                                                    evaluating the model’s safe abstention capability.
+that requires the rigorous application of explicit
+metric definitions and hierarchical calculation de-   3.1  Task Definition
+pendencies. While RAG-based approaches (Lewis
+                                              Given a financial document D and a query Q askinget al., 2020; George et al., 2025; Wang et al., 2025b)                                                        for a specific financial metric, the goal is to derive
+incorporate external knowledge, they exhibit a fun-
+                                                a grounded numeric answer y ∈R or a specificdamental limitation: they treat financial formulas
+                                                     abstention token ⊥.merely as unstructured semantic context rather than                                                 Unlike standard QA  tasks, we impose an
+strict symbolic constraints. Consequently, these                                                evidence-bounded constraint: the system must out-
+models fail to enforce logical validity during multi-                                                  put y if and only if there exists a valid derivation
+hop inference (Ren et al., 2025). Furthermore, cur-
+                                                 path grounded in D; otherwise, it must output ⊥rent systems are optimized for answer generation                                              whether due to missing values or ambiguous con-
+rather than safe abstention, leading to hallucina-                                                             text. Formally, the objective is to learn a function
+tions when evidence is ambiguous or missing (Wen
+                                             fθ(Q, D, G) →R ∪{⊥}, where G denotes theet al., 2025). Unlike these works, our GBFR frame-                                  FMKG.
+work introduces a graph-constrained search process
+to ensure that reasoning is strictly bounded by avail-   3.2  Financial Metric Knowledge Graph
+able evidence.                                                   Financial metrics exhibit inherent dependency
+2.2  Neuro-Symbolic Reasoning with LLMs       structures: a target metric is computed from other
+    and KGs                                        variables, and some formulas can be algebraically
+                                                  rearranged to solve for different variables. Such
+The integration of LLMs with knowledge graphs                                                interdependence can complicate dependency or-
+(KGs) aims to combine the semantic generalization                                                   dering and make recursive decomposition ambigu-
+ability of language models with the factual pre-                                                     ous. To make decomposition well-defined and im-
+cision of structured knowledge (Pan et al., 2024).                                              pose structural constraints on the reasoning pro-
+Existing neuro-symbolic frameworks generally fall                                                          cess, we construct the FMKG, formalized as a DAG
+into two categories: structure-augmented genera-
+                             =      Φ,tion and structure-guided reasoning. The former   G   (V, E,   A).                                                              • Nodes    The set of financial variables is par-retrieves KGs triples to augment the context of             (V):                                                          titioned into two disjoint subsets: atomic nodes
+LLM, mitigating factual hallucinations in open-                                                                representing irreducible fundamentaldomain QA (He et al., 2024). The latter employs      (Vatomic),                                                    concepts (e.g., Stock Price) that serve as terminal
+the graph structure to guide the reasoning process                                                           units in the dependency graph; and derived nodes
+itself. For instance, methods like graph-of-thought                                                                  representing complex metrics defined(Besta et al., 2024) and reasoning-on-graph ap-      (Vderived),                                             by calculation logic (e.g., ROE).
+proaches (Luo et al., 2024) model the inference                                                              • Edges   and Formulas (Φ): A directed edgepath as a traversal over the KG, enabling inter-            (E)                                                        (d, a)      signifies that node d structurally de-pretable multi-hop reasoning.                 ∈E                                               pends on node a (derived or atomic). To ac-
+  However, most existing neuro-symbolic systems                                          commodate the diverse calculation ways in fi-
+are designed for factual or commonsense reasoning                                                   nance, each derived node d               is asso-(Feng et al., 2023; Sun et al., 2023; Jin et al., 2024),                              ∈Vderived                                                       ciated with a set of candidate formulas Φ(d) =
+where dependencies are relational rather than com-
+                                                            d  ,                                                                 dputational. As a result, they lack the specialized      {(ϕ(k)                                                            S(k)                                                         )}Kdk=1, where each tuple represents
+mechanisms to handle the hierarchical calculation     a valid calculation path: ϕ(k)d  denotes a specific
+
+                                                                                     dlogic inherent in financial analysis. In contrast, our      deterministic function, and S(k)                                                   ⊆{a | (d, a) ∈
+GBFR framework treats reasoning as a recursive    E} denotes the corresponding subset of childcalculation process, orchestrating specialized oper-     nodes required for that path. A derived node
+                                       27577
+
+===== PDF PAGE 4 =====
+     Counterfactual
+                               Parallel Graph-Constrained Reasoning          Construction of FMKG   Sample Generation
+
+    Query: Compute Company A’s ROE                                  Identified Operator 𝑶𝒑: Growth Rate (%)    Constraints 𝓒𝒊:
+     growth rate in 2024 over 2023? The               𝑶𝑸𝑨:Query  Reasoning Type 𝓣: Comparative Reasoning  {Temporal: 2024 / 2023,
+      result is expressed as a percentage.                  Analysis   Operand Node 𝒗𝒊: ROE                        Entity: Company A }           Function   Financial   academic
+     adversarial perturbation                                                                                         Library Encyclopedias resources
+                                         Parallel          (ROE, {2024,                   (ROE, {2023,                    Extraction & Fusion
+           Entity : …Company B’s ROE…           Execute          Company A})                 Company A})
+          Metric : …Company A’s ROA…
+         Time : … 2023 over 2022 …                                       ⊥                ⊥                              Financial Metric
+                                                                                                                Knowledge Graph
+                                    𝑶𝑬𝑺:Evidence
+         Finance Report             Seeking       (Net Income,…)   (Avg. Equity,…)      (Net Income,…)  (Avg. Equity,…)
+                                                                                                                                𝚽(𝒗)  Formulas
+     The table summarizes key financial                                                                                              ROE      ROE = Net Profit
+       figures for the company A over 2023–                               $500      ⊥               $420      ⊥                                                                                 / Avg. Equity
+      2024 (in millions). Overall, net profit
+       increased by $80 million (about 19.0%)       𝑶𝑴𝑫:Metric
+       year over year, while total equity rose        Decomposition             (Initial Equity,…)  (Final Equity,…)     (Initial Equity,…)  (Final Equity,…)         Net           Avg.
+      by $300 million, …                                                                                                 Income         Equity
+        Year    Net Profit    Total Equity                                       $2200          $2500       ⊥            $2200
+                                                                                                              𝓐(𝒗)         2024      $500         $2,500          𝑶𝑷𝑬:Program
+         2023      $420         $2,200           Execution          0.213           $2350              ⊥                 Alias      Initial    Final
+                                                                                                                                                         Net Profit      Equity    Equity
+                                   Final Result:    Unanswerable due to missing initial equity / average equity for 2023.           Net Earnings
+      :Evidence       :Operand Nodes
+
+Figure 2: Overview of GBFR framework. The left panel illustrates the generation of counterfactual samples via
+adversarial perturbation. The right panel outlines the construction pipeline and topology of FMKG. The central panel
+details the parallel graph-constrained reasoning algorithm. By orchestrating four atomic operators (OQA, OES,
+OMD, OP E), the framework transforms unstructured queries into verifiable execution plans, enforcing explicit
+evidence boundaries to enable precise calculation or safe abstention (⊥) when evidence is missing.
+
+  v is considered resolved if and only if at least    3.3  Counterfactual Sample Generation
+  one candidate formula ϕ(k)d  can be successfully    Existing benchmarks suffer from a positive bias,
+  instantiated and computed.                    which encourages models to hallucinate answers
+• Alias  Mappings  (A):   To  resolve   se-   even when evidence is insufficient. To evaluate
+  mantic   ambiguity,   each   node   v    is    abstention performance of model, we employ a
+  mapped   to  a   set  of   linguistic   aliases    multi-dimensional counterfactual sample genera-
+  A(v) = {s1, s2, . . . } (e.g., A(Net Income) =    tion strategy on existing datasets.  Inspired by
+  {"Net profit", "Net Earnings"}), serving as the   NeoQA (Glockner et al., 2025), we adapt the char-
+  alignment bridge between symbolic nodes and    acterization of unanswerable questions to finan-
+  unstructured text spans in D.                          cial reasoning setting and categorize them into two
+  Scope and Construction. We construct the    types: (1) missingness, where the target metric or
+FMKG by synthesizing knowledge from estab-   a required operand is absent from the context (e.g.,
+lished function library (Tang et al., 2025) with   Target = A     but B is not provided), and (2)                               −Binformation retrieved from authoritative financial   mismatch, where related evidence exists but does
+encyclopedias (e.g., Wikipedia, Investopedia) and    not satisfy the query constraints, such as entity mis-
+unstructured academic resources. Through a rigor-   match (consolidated vs.  parent-only), temporal
+ous hybrid pipeline combining semantic clustering,   mismatch (FY2023 reported but FY2022 queried),
+LLM-assisted completion, and expert verification,   and metric mismatch (Adjusted EBITDA provided
+we curated a comprehensive network of financial   while standard EBITDA is required). Accordingly,
+indicators. Each derived metric has aliases, defini-   our counterfactual samples are designed as context-
+tion, formulas, and code implementations, while    related traps via perturbations to entities, time, and
+atomic metric only has aliases and definition. In to-   metrics:
+tal, the FMKG has 7521 total nodes, consisting of    • Entity Mutation: Replacing the target company
+3318 atomic metrics and 4203 derived metrics, and      entity in the query with an irrelevant competitor
+20152 dependency edges. Detailed construction     appearing in the corpus.
+protocols, quantitative validation, representative    • Temporal Shift: Altering the fiscal year or re-
+node examples, and a visualization of the subgraph      porting period (e.g., changing "2023" to "2022")
+topology are provided in Appendix A.               where the corresponding data is absent.
+                                                              • Metric Substitution: Swapping the requested
+                                                    metric with a semantically similar but distinct
+
+                                       27578
+
+===== PDF PAGE 5 =====
+  metric (e.g., ROE vs. ROA).                      answer, and (vi, Ci) denotes a sub-goal represent-  These perturbations create realistic traps, requir-   ing an operand node and its associated constraints.
+ing the model to verify query constraints and cor-   These constraints Ci are used to resolve ambiguity
+rectly abstain by outputting ⊥. More details are   and specify: (1) temporal scope, including the fis-provided in Appendix B.                              cal year, quarter, or specific timestamp (e.g., 2023
+                                            Q4, Dec 31); (2) entity scope, including the target
+4  Graph-Bounded Financial Reasoning                                                  corporate entity or subsidiary (e.g., Parent Com-
+In this section, we introduce GBFR, our neuro-   pany, Group); (3) meta-attributes, including the
+symbolic framework for financial reasoning. As    required currency, scale, and unit (e.g., USD, bil-
+illustrated in Figure 2, GBFR converts unstructured    lions, percentage). The prompt of OQA is shown
+financial queries into verifiable execution plans. At    in Appendix F.
+its core, the framework decomposes reasoning into   Evidence Seeking Operator (OES). A core chal-
+four specialized atomic operators, each correspond-   lenge in financial numerical reasoning is evidence
+ing to a distinct capability from intent analysis to    ambiguity:  metrics may appear under various
+program execution. These operators are dynami-    aliases or be entirely absent. In unstructured finan-
+cally orchestrated by a parallel graph-constrained    cial text, neither keyword matching nor semantic
+reasoning algorithm, which enforces structural con-    retrieval is sufficient to reliably resolve this ambigu-
+straints to bound the generation process within     ity. Therefore, OES is designed to identify support-
+available evidence.                                ing evidence from the context. Given structured
+                                                       constraints C, OES leverages the LLM’s semantic4.1  Atomic Operators                               capabilities together with alias mappings in FMKG
+Query Analysis Operator (OQA). Financial nu-    to locate supporting evidence. If the context does
+merical reasoning involves diverse reasoning pat-   not contain a value that satisfies C, we instruct the
+terns, ranging from simple arithmetic to domain-   model to return ⊥and report missing metrics. This
+specific multi-step derivations, and often involves    defines ⊥as an explicit state that triggers either
+fine-grained constraints on entities, time, and preci-   metric decomposition for derived nodes or path
+sion. To support executable downstream reasoning,   termination for atomic nodes.
+we define OQA as a symbolic execution planner     For a specific node v and constraints C, the op-
+that parses unstructured queries into structured log-    erator retrieves evidence from document D using
+ical forms. The resulting execution plan consists of    aliases A(v).
+the reasoning type, which governs the subsequent
+                                                                                                        (2)reasoning procedure; the function, which specifies         OES(v, C, D, A(v)) →val ∪{⊥}
+the final aggregation logic; the sub-goals, which
+                                                Here, val represents the verified numerical evi-define the evidence required for computation; and
+                                                 dence. Crucially, if the evidence is missing, am-the precision, which determines the output format
+                                                    biguous, or inconsistent with the constraints, the op-when needed. Within this plan, we categorize fi-
+                                                        erator returns the explicit abstention token   Thenancial queries into five reasoning types: direct                                    ⊥.                                             prompt template for       is shown in Appendix F.retrieval, arithmetic calculation (e.g., sum, differ-               OES                                            Metric Decomposition Operator       Com-ence), comparative reasoning (e.g., range, ratio),                             (OMD).                                                    plex financial metrics are often not reported directlystatistical aggregation (e.g., average, counting),
+                                            and must instead be derived from other variables.and temporal reasoning (e.g., calculating fiscal du-
+                                               Relying on the parametric knowledge of LLMs torations). Different reasoning types induce different
+                                                   plan such multi-step derivations can lead to logicalsub-goals and final aggregation operators. The full
+                                                     hallucinations and missing steps. To address this,mapping from reasoning types to symbolic seman-
+                                                          functions as a logical guide that transformstics is provided in Appendix C.            OMD                                                     the reasoning problem from unstructured text gen-
+  Given a document D and a query Q, the operator    eration into graph-structured symbolic search.
+maps the query to a specific reasoning category T      Given a derived node v, the operator accesses theand parses the required logic:
+                                               formula set Φ to retrieve all candidate derivation
+  OQA(D, Q) →(T , Op, {(vi, Ci)}Ni=0, P)   (1)    paths.
+  where Op denotes the identified function (e.g.,
+                                                Φ)                     k=1    (3)Average), P indicates the precision of the final     OMD(v,   →{(pathk, S(k)children)}K
+                                       27579
+
+===== PDF PAGE 6 =====
+ Algorithm 1: Parallel Graph-Constrained          for subsequent execution. Upward paths are used
+ Reasoning with Cross-Path Verification            only when a parent formula can be algebraically
+   Input  :Document  FMKG   Query Q               rearranged to solve for the target metric and the                 D,       G,
+  Output :Verified Answer y or Abstention ⊥              required variables are available in the context. In
+  // Phase 1: Semantic Analysis                    both cases, the resulting formula and evidence are
+ 1 (T , Op, Sgoals) ←OQA(Q);                        passed to       for executable code generation and 2 Vresults                                 OPE       ←∅;                                             final computation.
+  // Phase 2: Parallel Resolution of
+      Sub-goals                             Program Execution Operator (OPE). Even with
+ 3 parallel foreach (v, C) ∈Sgoals do                     correct reasoning, LLMs are prone to arithmetic
+ 4     val ←Resolve(v, C);                            hallucinations (e.g., calculation errors, unit mis-
+ 5        if val =⊥then 6         return                                 matches) when processing numerical tokens di-          ⊥
+ 7    Add val to Vresults;                                  rectly. To address this, OPE functions as a deter-                                                     ministic interpreter, translating the symbolic path
+  // Phase 3: Final Aggregation
+ 8 return Apply operator Op on Vresults;             ϕ and verified evidence {vali} into an executable                                               programs (e.g., Python). Formally, the execution is
+ 9 Function Resolve(v, C):                              defined as:
+10      vfinal = OES(v, C, D, A(v));11          if vfinal        =⊥& v ∈Vatomic then                                           val2, . . .               (4)12           return          ⊥                                 OPE(ϕ, {val1,        }) →y
+13        if vfinal ̸=⊥then                         The operator executes the program to yield the final14         return vfinal
+                                                            result y. If any input value in the set is   execution15      else                                                                ⊥,
+                                                        halts and ⊥is propagated. The prompt of OPE is16        Paths ←OMD(v, Φ) Vcandidates ←∅;                                          shown in Appendix F.          // Step A: Simultaneous Execution
+17          parallel foreach
+            (pathk,                do                4.2  Parallel Graph-Constrained Reasoning                     Cchildren) ∈Paths
+18           ChildV als ←∅;                         Algorithm
+19           isPathV alid ←true;20               parallel foreach u          do         While the atomic operators serve as the fundamen-                               ∈Cchildren
+21                 valu ←Resolve(u, C);                   tal execution units, the complexity of financial rea-
+22                          if valu =⊥then                    soning arises from the existence of multiple valid
+ 23                  isPathV alid ←false;                                                       derivation paths for a single target metric within the24              Add valu to ChildV als;
+                             FMKG (e.g., Earnings Before Interest and Taxes25                    if isPathV alid then
+26                 resk                           can be derived via revenue-based or profit-based           ←
+              OP E(pathk, ChildV als);           formulas). Relying on a single derivation path of-
+27              Add resk to Vcandidates;               ten leads to failure due to incomplete evidence. To
+          // Step B: Cross-Path Verification        address this issue, the parallel graph-constrained
+28              if                                       reasoning algorithm (as shown in Algorithm 1) is              Vcandidates ̸= ∅then
+29               vfinal ←Verify(Vcandidates);            proposed to orchestrate a comprehensive search for30             return vfinal
+                                                    the most evidence-supported solution. The com-
+31         return ⊥                                     plexity analysis and empirical cost of the algorithm
+                                                                 is presented in Appendix D.
+                                               However, obtaining a numerical result does not
+where each pathk contains a symbolic formula and    guarantee semantic correctness; different paths
+  children represents the set of operand nodes re-S(k)                                  may rely on spurious evidence alignments or pro-                                             duce numerically identical values under incor-quired to resolve v.
+                                                         rect contexts. To enforce faithfulness, we imple-  To ensure comprehensive coverage of feasible
+                                           ment a cross-path verification mechanism. Specif-derivation           paths,                               candidate                                          paths          OMD retrieves                                                              ically, V erify(Vcandidates) is realized as a single-from the FMKG                through                           bidirectional                                       search.                                                              It
+                                                           call LLM judge conditioned on an instantiatedprimarily performs downward traversal to obtain
+                                                       trace (the prompt is shown in Appendix F), in-decomposition paths through the child nodes of
+                                                 cluding the logical constraints (entity, time, andthe target metric, while also allowing limited up-
+                                            meta attributes), evidence-grounded variable bind-ward exploration over 1-hop parent nodes. Down-
+                                                   ings (name, value, evidence_snippet), the ap-ward paths provide direct decomposition formulas
+                                                      plied derivation path, and the resulting value. The
+                                       27580
+
+===== PDF PAGE 7 =====
+Table 1: Comparative results on financial numerical reasoning tasks. Metrics include Total Accuracy (Total
+Acc.) for overall performance and Abstention Accuracy (Abst. Acc.) for safety evaluation. Best results are
+highlighted in green.
+
+  Model          Methods           FinQA         TAT-QA      FinanceReasoning  CFBenchmark
+                                         Total    Abst.     Total    Abst.     Total    Abst.     Total    Abst.
+                                       Acc.     Acc.     Acc.     Acc.     Acc.     Acc.      Acc.     Acc.
+           PoT                       79.07    93.81    94.49    98.68    88.26    79.37     90.07    100.00
+         RAG                      79.80    89.69    93.70    94.70    88.57    77.30     88.08    100.00
+  GPT-5   LLM as Retri.              80.35    87.63    94.02    95.36    88.45    73.06     89.40    100.00
+             LLM-Instructed Retri.       79.53    88.66    94.25    96.03    88.26    74.03     90.73    100.00
+            ReAct                     78.56    90.72    92.99    96.03    83.09    73.54     80.13    100.00
+         GBFR                     84.98    98.80    95.75    96.69    98.26    100.00    96.69    100.00
+
+           PoT                       76.52    62.89    91.26    75.50    77.70    51.21     82.12    90.91
+         RAG                      73.07    49.48    90.47    72.85    73.89    38.83     77.48    54.55
+QWEN3-14B LLM as Retri.              74.34    50.52    88.90    68.87    74.19    39.08     82.12    63.64
+             LLM-Instructed Retri.       74.98    51.55    88.35    68.87    73.40    40.53     78.14    63.64
+            ReAct                     76.06    59.79    82.05    80.13    74.87    41.57     76.23    90.91
+         GBFR                     76.73    72.16    91.50    80.79    84.89    83.25     86.75    81.82
+
+
+judge outputs a VALID/INVALID decision with   we augmented the evaluation data by subjecting a
+a short justification. A candidate is considered in-   random 10% subset of samples from each dataset
+valid if its operands are not grounded in evidence, if    to our counterfactual sample generation strategy,
+the evidence violates the specified constraints, or if    thereby creating a composite benchmark of answer-
+the computation contains arithmetic errors or miss-   able and unanswerable queries.
+ing operands. The final answer is then determined      Baselines. We compare GBFR against four state-
+via consensus voting among the validated traces. If    of-the-art baselines: (1) PoT prompting (Wei et al.,
+no candidate passes, the system triggers safe absten-   2022; Chen et al., 2022a; Khatuya et al., 2025);
+tion, thereby distinguishing genuine data absence    (2) knowledge augmentation: Standard RAG, LLM
+from reasoning failure.                             as retrieval judge, LLM-instructed knowledge re-
+                                                              trieval (Lewis et al., 2020; Guan et al., 2024b; Tang
+5  Experiments                                      et al., 2025); (3) ReAct (Yao et al., 2023).  All
+                                                experiments employ GPT-5 (OpenAI, 2025) andOur evaluation is guided by the following four re-
+                                       Qwen3-14B (Yang et al., 2025) as the backbonesearch questions:
+                                               models. The LLM generates Python code, which• RQ1: How does GBFR compare against state-of-
+                                                               is then executed in the same sandboxed Python  the-art baselines in handling complex financial
+                                               environment to eliminate arithmetic errors.  numerical reasoning tasks?
+                                                  Evaluation metrics. To comprehensively assess• RQ2: How effectively can LLMs abstain from
+                                                 both reasoning performance and safety, we employ  answering unanswerable financial questions, and
+                                            two key metrics: (1) Total Accuracy (Total Acc.):  can our framework improve this capability?
+                                                This measures the overall performance on the en-• RQ3: What are the individual contributions of
+                                                                tire test set, encompassing both answerable and  the structural components to the overall perfor-
+                                                unanswerable queries. Unlike simple string match-  mance?
+                                                         ing, we employ a normalization-based comparison• RQ4: To what extent is the proposed framework
+                                                       to handle unit and precision variations. If a query  robust across different LLM backbones?
+                                                           explicitly dictates precision (e.g., "to three decimal
+5.1  Experimental Setup                            places"), we require an exact match at that resolu-
+Dataset. We evaluate GBFR on four standard fi-    tion (e.g., 0.213 does not match 0.214). If precision
+                                                                  is unspecified, we round both the executor’s outputnancial reasoning datasets: FinQA (Chen et al.,
+                                              and the ground-truth to the same decimal precision2021), TAT-QA (Zhu et al., 2021), FinanceReason-
+                                                  before comparison (e.g., 0.213 matches 0.21 aftering (Tang et al., 2025), and CFBenchmark (Lei
+                                               rounding to two decimal places). (2) Abstentionet al., 2023). To incorporate adversarial scenarios,
+
+                                       27581
+
+===== PDF PAGE 8 =====
+Accuracy (Abst. Acc.): This metric specifically                                               Original Acc           Rejection Acc
+
+                                                                                                                                                                                                              93.81assesses the model’s robustness against adversar-          100     89.90                      91.82             100
+ial inputs.  It is defined as the recall rate on the            80                                                                                                                                                     79.37                             80     77.64                      79.84
+unanswerable subset, calculating the proportion of       (%)
+
+                                                                                                                                                                                                                                         49.48invalid                                                                                               60                                             60       queries             where the model                                 correctly triggers                  Accuracy 40                                          35.68      40the designated               abstention                         token.
+  Detailed statistics of datasets, baseline imple-
+mentations are provided in Appendix E.                              20                                             20
+                                                                                                             0   abstention prompt     w/o abstention prompt   0   abstention prompt     w/o abstention prompt
+5.2  Main Result (RQ1)                                                                              (a) FinanceReasoning                                 (b) FinQA
+Table 1 reports the main results on four financial                                                     Figure 3: Comparison of model performance under
+numerical reasoning benchmarks. GBFR achieves    different prompt settings in counterfactual samples.
+the strongest overall performance across both to-
+tal accuracy and abstention accuracy, outperform-
+                                           model to distinguish unsupported queries from an-ing prompting-based, knowledge-augmented, and
+                                                 swerable ones.tool-augmented baselines under both GPT-5 and
+Qwen3-14B. With GPT-5, GBFR obtains the best      Retrieval noise undermines abstention. Ta-
+                                                      ble 1 shows that knowledge augmentation methodstotal accuracy on all four benchmarks. The largest
+                                            do not reliably improve abstention performance. In-gain is on FinanceReasoning, where it improves
+                                                       stead, retrieval can introduce noisy context that isover the strongest baseline by 9.69 points. The
+                                                    semantically related to the query but violates entity,same trend is observed with Qwen3-14B. In terms
+                                                   temporal, or metric constraints, thereby encourag-of abstention accuracy, GBFR delivers the best
+                                                  ing unsupported answering rather than rejection.or highly competitive results across benchmarks,
+                                                This effect is particularly clear for Qwen3-14B:showing that it improves both answer generation
+                                            on FinQA, abstention accuracy drops from 62.89%and reliable abstention. We have conducted signifi-
+                                                  with PoT to 49.48% with RAG, and on FinanceRea-cance testing using McNemar’s Chi-squared Test
+                                                   soning, it drops from 51.21% to 38.83%. Theseon the results. The performance improvements of
+                                                          results indicate that naive retrieval makes it harderGBFR over the best-performing baseline are sta-
+                                                        for the model to correctly abstain on unanswerabletistically significant on all four benchmarks (all
+                                                      questions.p-values < 0.01).
+  We obtain three main observations from these     Prompt-based abstention is unstable. Figure 3
+                                           shows that the abstention behavior of LLMs de-results. First, retrieval-based knowledge augmenta-
+                                               pends heavily on explicit abstention prompts. With-tion does not consistently improve reasoning per-
+                                                    out the abstention prompt, rejection accuracy dropsformance. In several cases, RAG and LLM-based
+                                                      sharply, from 79.37% to 35.68% on FinanceRea-retrieval underperform PoT, suggesting that un-
+                                                  soning and from 93.81% to 49.48% on FinQA. Thisstructured retrieval introduces semantically related
+                                                      indicates that abstention is not stably grounded inbut constraint-incompatible evidence. Second, al-
+                                                  evidence verification. Although adding the promptthough ReAct incorporates tool use, it still relies on
+                                              improves rejection accuracy, it also lowers accu-step-by-step interaction and lacks an explicit rea-
+                                                  racy on answerable questions, from 91.82% tosoning structure over metric dependencies. Third,
+                                         89.90% on FinanceReasoning and from 79.84%GBFR achieves the best results by grounding rea-
+                                                       to 77.64% on FinQA. This trade-off suggests thatsoning in FMKG-guided decomposition, explicit
+                                                  simple prompting improves abstention accuracy byevidence constraints, and verifiable execution paths
+                                                        steering the model toward refusal, but at the cost ofover all benchmarks.
+                                           making it overly conservative.
+5.3  Analysis on Abstention Capability (RQ2)    GBFR  enables more  reliable  abstention.
+To answer RQ2, we evaluate the ability of differ-   In contrast, GBFR makes abstention decisions
+ent methods to abstain from answering unanswer-   through evidence and reasoning paths rather than
+able financial questions using counterfactual sam-   prompt. As shown in Table 1, with Qwen3-14B,
+ples. These samples introduce semantically related  GBFR achieves 72.16% abstention accuracy on
+but constraint-incompatible evidence, requiring the   FinQA and 83.25% on FinanceReasoning. These
+                                                         results show that GBFR provides a more reliable
+
+                                       27582
+
+===== PDF PAGE 9 =====
+Table 2: Ablation study on GBFR. Numbers in parenthe-   V3.2)(DeepSeek-AI, 2024; GLM et al., 2024; Yang
+ses denote absolute drops compared to the full model.                                                            et al., 2025). As shown in Table 3, our framework
+                                                demonstrates stable performance on the dataset
+Variant                    Total Acc.      Abst. Acc.
+                                          FinQA. Despite a 47× reduction in model size,
+w/o evidence constraints   79.89 ( ↓5.09)   85.57 ( ↓13.23)    the lightweight Qwen3-14B retains 97.7% of the
+w/o graph decomposition   77.89 ( ↓7.09)    89.69 ( ↓9.11)    performance achieved by the massive DeepSeek-
+w/o program execution     81.48 ( ↓3.5)    94.85 ( ↓3.05)    V3.2 (76.73% vs.78.53%). This slight performance
+GBFR (full)                 84.98            98.8        degradation confirms that GBFR’s symbolic scaf-
+                                                   folding effectively compensates for the reduced
+                                                  reasoning capacity of smaller models, making it a
+mechanism for rejecting unanswerable financial                                                    viable solution for resource-constrained, privacy-
+queries.                                                        sensitive applications.
+5.4  Ablation Study (RQ3)                                                     Table 3: Performance comparison across open-source
+To confirm the contribution of each component in    models of varying sizes on FinQA.
+the GBFR framework, we evaluate three variants
+by replacing key modules on FinQA.                   Model            Size    Total Acc.   Abst. Acc.
+• w/o evidence constraints: Removes explicit con-       Deepseek V3.2  671B     78.53       82.47
+  straints (C) and aliases (A), forcing the model to     GLMQwen3-next4.6       355B80B      77.3477.43       76.8078.35
+  autonomously align evidence based on semantic       Qwen3-14B     14B      76.73       72.16
+  relevance within the context.
+• w/o graph decomposition: Removes recursive
+  decomposition of dependent sub-metrics, provid-   6  Conclusion
+  ing only the direct formula for the target metric
+                                                   In  this paper, we introduce GBFR, a neuro-  and its dependencies.
+                                                symbolic framework for addressing the challenges• w/o program execution:  Removes external
+                                                   of evidence ambiguity and structural complexity  Python executor, reverting to end-to-end textual
+                                                      in financial numerical reasoning. By integrating  computation in which arithmetic operations are
+                                                    the FMKG with a parallel graph-constrained rea-  performed directly by the LLMs.
+                                                 soning algorithm, our approach bridges the gap be-  As shown in Table 2, removing any component
+                                              tween flexible semantic understanding and rigorousleads to clear performance drops, confirming that
+                                          domain logic. Empirical evaluations demonstrateall modules are essential for the framework. The
+                                                         that GBFR significantly outperforms baselines onw/o evidence constraints variant suffers the most
+                                                      several complex numerical reasoning benchmarks.
+severe decline in abstention accuracy (↓13.23%),   Our analysis further shows that strict constraintwhich verifies that explicit boundary conditions are
+                                              grounding and cross-path verification effectivelyimportant for distinguishing genuine data absence
+                                                 reduce hallucinations. These findings highlight thefrom retrieval failure. Conversely, the w/o graph de-
+                                                importance of symbolic constraints in high-stakescomposition setting shows the most significant de-
+                                                        financial reasoning.
+cline in total accuracy (↓7.09%), underscoring theinstability of implicit linear reasoning in handling                                            Limitations
+complex, recursive dependencies without structural
+guidance. The w/o program execution variant re-   Despite the superior performance of GBFR in fi-
+sults in a consistent accuracy drop. This confirms    nancial numerical reasoning, we acknowledge two
+that offloading arithmetic tasks to a code interpreter   primary limitations. (1) Graph Dependency: The
+is necessary to avoid the calculation errors common    reasoning scope is bounded by FMKG coverage;
+in direct text generation.                            metrics absent from the FMKG trigger default ab-
+                                                        stention, requiring continuous updates for niche
+5.5  Model Robustness Analysis (RQ4)                                                        indicators.  (2) Token Overhead: While parallel
+To address data privacy requirements in finan-   execution optimizes latency, the multi-path explo-
+cial  scenarios, we  evaluate GBFR on open-    ration and cross-path verification incur higher token
+source LLMs suitable for local deployment, scal-   costs compared to PoT.
+ing from 14B (Qwen3)  to 671B (DeepSeek-
+
+                                       27583
+
+===== PDF PAGE 10 =====
+Acknowledgments                          Team GLM, Aohan Zeng, Bin Xu, Bowen Wang, Chen-
+                                                           hui Zhang, Da Yin, Diego Rojas, Guanyu Feng, Han-
+This work was supported by the National Nat-        lin Zhao, Hanyu Lai, Hao Yu, Hongning Wang, Jiadai
+ural Science Foundation of China (Grant No.      Sun, Jiajie Zhang, Jiale Cheng, Jiayi Gui, Jie Tang,
+                                                             Jing Zhang, Juanzi Li, and 37 others. 2024. Chatglm:72474163) and the Intelligent Computing Center of
+                                   A family of large language models from glm-130b to
+the National Cybersecurity Talent and Innovation                                                    glm-4 all tools. Preprint, arXiv:2406.12793.
+Base, Wuhan.
+                                      Max Glockner, Xiang Jiang, Leonardo FR Ribeiro,
+                                                         Iryna Gurevych, and Markus Dreyer. 2025. Neoqa:
+References                                          Evidence-based question answering with generated                                                news events.  In Findings of the Association for
+Maciej Besta, Nils Blach, Ales Kubicek, Robert Gersten-      Computational Linguistics: ACL 2025, pages 11842–
+   berger, Michal Podstawski, Lukas Gianinazzi, Joanna      11926.
+   Gajda, Tomasz Lehmann, Hubert Niewiadomski, Pi-
+   otr Nyczyk, and 1 others. 2024. Graph of thoughts:    Jian Guan, Wei Wu, Zujie Wen, Peng Xu, Hongning
+   Solving elaborate problems with large language mod-     Wang, and Minlie Huang. 2024a. Amor: A recipe
+   els. In Proceedings of the AAAI conference on artifi-       for building adaptable modular knowledge agents
+   cial intelligence, volume 38, pages 17682–17690.        through process feedback. In Advances in Neural
+                                                        Information Processing Systems, volume 37, pages
+Wenhu Chen,  Xueguang Ma,  Xinyi Wang,  and      126118–126148. Curran Associates, Inc.
+  William W Cohen. 2022a.  Program of thoughts
+   prompting: Disentangling computation from reason-    Jian Guan, Wei Wu, Peng Xu, Hongning Wang, Min-
+   ing for numerical reasoning tasks. arXiv preprint        lie Huang, and 1 others. 2024b. Amor: A recipe
+   arXiv:2211.12588.                                         for building adaptable modular knowledge agents
+                                                         through process feedback. Advances in Neural Infor-
+Zhiyu Chen, Wenhu Chen, Charese Smiley, Sameena      mation Processing Systems, 37:126118–126148.
+   Shah, Iana Borova, Dylan Langdon, Reema Moussa,
+                                                  Xiaoxin He, Yijun Tian, Yifei Sun, Nitesh Chawla,  Matt Beane, Ting-Hao Huang, Bryan R Routledge,
+                                              Thomas Laurent, Yann LeCun, Xavier Bresson, and  and 1 others. 2021. Finqa: A dataset of numerical
+                                                   Bryan Hooi. 2024. G-retriever: Retrieval-augmented   reasoning over financial data. In Proceedings of the
+                                                           generation for textual graph understanding and ques-  2021 Conference on Empirical Methods in Natural
+                                                              tion answering.  Advances in Neural Information  Language Processing, pages 3697–3711.
+                                                        Processing Systems, 37:132876–132907.
+Zhiyu Chen, Shiyang Li, Charese Smiley, Zhiqiang
+                                         Bowen Jin, Chulin Xie, Jiawei Zhang, Kashob Kumar  Ma, Sameena Shah, and William Yang Wang. 2022b.
+                                                      Roy, Yu Zhang, Zheng Li, Ruirui Li, Xianfeng Tang,   Convfinqa: Exploring the chain of numerical rea-
+                                                 Suhang Wang, Yu Meng, and 1 others. 2024. Graph   soning in conversational finance question answering.
+                                                           chain-of-thought: Augmenting large language mod-   In Proceedings of the 2022 Conference on Empiri-
+                                                                  els by reasoning on graphs. In Findings of the As-   cal Methods in Natural Language Processing, pages
+                                                            sociation for Computational Linguistics ACL 2024,  6279–6292.
+                                                      pages 163–184.
+DeepSeek-AI. 2024.  Deepseek-v3 technical report.
+                                                Subhendu Khatuya, Shashwat Naidu, Pawan Goyal, and   Preprint, arXiv:2412.19437.
+                                                     Niloy Ganguly. 2025. Program of thoughts for fi-
+Chao Feng, Xinyu Zhang, and Zichu Fei. 2023. Knowl-      nancial reasoning: Leveraging dynamic in-context
+  edge solver: Teaching llms to search for domain      examples and generative retrieval. In Proceedings
+  knowledge from knowledge graphs. arXiv preprint       of the 2025 Conference on Empirical Methods in
+   arXiv:2309.03118.                                    Natural Language Processing, pages 30994–31006.
+Luyu Gao, Aman Madaan, Shuyan Zhou, Uri Alon,   Jean Lee, Nicholas Stevens, and Soyeon Caren Han.
+   Pengfei Liu, Yiming Yang, Jamie Callan, and Gra-      2025. Large language models in finance (finllms).
+  ham Neubig. 2023.  Pal: Program-aided language      Neural Computing and Applications, pages 1–15.
+  models.  In International Conference on Machine
+                                               Yang Lei, Jiangtong Li, Dawei Cheng, Zhijun Ding, and   Learning, pages 10764–10799. PMLR.
+                                                   Changjun Jiang. 2023. Cfbenchmark: Chinese finan-
+Ryan George, Akshay Govind Srinivasan, Jayden Koshy        cial assistant benchmark for large language model.
+   Joe, Harshith MR, Hrushikesh Kant, Rahul Vimalka-      arXiv preprint arXiv:2311.05812.
+   nth, Sudharshan Suresh, and 1 others. 2025. Enhanc-                                                          Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio   ing financial rag with agentic ai and multi-hyde: A                                                              Petroni, Vladimir Karpukhin, Naman Goyal, Hein-   novel approach to knowledge retrieval and hallucina-                                                              rich Küttler, Mike Lewis, Wen-tau Yih, Tim Rock-   tion reduction. In Proceedings of The 10th Workshop                                                                   täschel, and 1 others. 2020. Retrieval-augmented gen-  on Financial Technology and Natural Language Pro-                                                               eration for knowledge-intensive nlp tasks. Advances   cessing, pages 19–32.                                                               in neural information processing systems, 33:9459–
+                                                       9474.
+                                       27584
+
+===== PDF PAGE 11 =====
+Xiaoxi Li, Guanting Dong, Jiajie Jin, Yuyao Zhang,   Xinyu  Wang,  Jijun  Chi,  Zhenghan  Tai,  Tung
+   Yujia Zhou, Yutao Zhu, Peitian Zhang, and Zhicheng     Sum Thomas Kwok, Hailin He, Zhuhong Li, Yuchen
+  Dou. 2025.  Search-o1: Agentic search-enhanced      Hua, Muzhi Li, Peng Lu, Suyucheng Wang, and 1 oth-
+   large reasoning models. Preprint, arXiv:2501.05366.        ers. 2025b. Finsage: A multi-aspect rag system for fi-
+                                                             nancial filings question answering. In Proceedings of
+L Luo, YF Li, G Haffari, and S Pan. 2024. Reasoning                                                             the 34th ACM International Conference on Informa-
+  on graphs: Faithful and interpretable large language                                                                tion and Knowledge Management, pages 6144–6152.
+  model reasoning. In ICLR 2024: The Twelfth Inter-
+   national Conference on Learning Representations.   Yuxin Wang, Qingxuan Sun, and Sicheng He. 2023.
+  ICLR.                                        M3e: Moka massive mixed embedding model.
+OpenAI. 2024. text-embedding-3-large.                 Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten
+                                                Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou,OpenAI. 2025. Gpt-5.                                                    and 1 others. 2022. Chain-of-thought prompting elic-
+Shirui Pan, Linhao Luo, Yufei Wang, Chen Chen, Ji-        its reasoning in large language models. Advances
+  apu Wang, and Xindong Wu. 2024. Unifying large       in neural information processing systems, 35:24824–
+  language models and knowledge graphs: A roadmap.      24837.
+  IEEE Transactions on Knowledge and Data Engi-
+                                                    Bingbing Wen, Jihan Yao, Shangbin Feng, Chenjun Xu,   neering, 36(7):3580–3599.
+                                                            Yulia Tsvetkov, Bill Howe, and Lucy Lu Wang. 2025.
+Ruiyang Ren, Yuhao Wang, Yingqi Qu, Wayne Xin     Know your limits: A survey of abstention in large
+  Zhao, Jing Liu, Hua Wu, Ji-Rong Wen, and Haifeng      language models. Transactions of the Association for
+  Wang. 2025.  Investigating the factual knowledge      Computational Linguistics, 13:529–556.
+  boundary of large language models with retrieval
+  augmentation.  In Proceedings of the 31st Inter-   Frank Xing. 2025. Designing heterogeneous llm agents
+   national Conference on Computational Linguistics,       for financial sentiment analysis. ACM Transactions
+  pages 3697–3715.                                 on Management Information Systems, 16(1):1–24.
+Pragya Srivastava, Manuj Malik, Vivek Gupta, Tanuja   An Yang, Anfeng Li, Baosong Yang, Beichen Zhang,
+  Ganu, and Dan Roth. 2024. Evaluating llms’ math-     Binyuan Hui, Bo Zheng, Bowen Yu, Chang Gao,
+   ematical reasoning in financial document question     Chengen Huang, Chenxu Lv, Chujie Zheng, Dayi-
+  answering. In Findings of the Association for Com-     heng Liu, Fan Zhou, Fei Huang, Feng Hu, Hao Ge,
+   putational Linguistics ACL 2024, pages 3853–3878.      Haoran Wei, Huan Lin, Jialong Tang, and 41 oth-
+                                                                    ers. 2025. Qwen3 technical report. arXiv preprint
+Jiashuo Sun, Chengjin Xu, Lumingyuan Tang, Saizhuo      arXiv:2505.09388.
+  Wang, Chen Lin, Yeyun Gong, Lionel M Ni, Heung-
+  Yeung Shum, and Jian Guo. 2023.   Think-on-   Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak
+   graph: Deep and responsible reasoning of large lan-      Shafran, Karthik R Narasimhan, and Yuan Cao. 2023.
+  guage model on knowledge graph. arXiv preprint       React: Synergizing reasoning and acting in language
+  arXiv:2307.07697.                                   models. In The Eleventh International Conference
+                                                 on Learning Representations.
+Zichen Tang, E Haihong, Ziyan Ma, Haoyang He, Ji-
+  acheng Liu, Zhongjun Yang, Zihua Rong, Rongjin Li,   Yilun Zhao, Hongjun Liu, Yitao Long, Rui Zhang,
+  Kun Ji, Qing Huang, and 1 others. 2025. Financerea-     Chen Zhao, and Arman Cohan. 2024. Financemath:
+   soning: Benchmarking financial numerical reasoning      Knowledge-intensive math reasoning in finance do-
+  more credible, comprehensive and challenging. In       mains. In Proceedings of the 62nd Annual Meeting of
+  Proceedings of the 63rd Annual Meeting of the As-      the Association for Computational Linguistics (Vol-
+   sociation for Computational Linguistics (Volume 1:     ume 1: Long Papers), pages 12841–12858.
+  Long Papers), pages 15721–15749.
+                                                 Fengbin Zhu, Wenqiang Lei, Youcheng Huang, Chao
+Prakhar Verma, Sukruta Prakash Midigeshi, Gaurav     Wang, Shuo Zhang, Jiancheng Lv, Fuli Feng, and
+   Sinha, Arno Solin, Nagarajan Natarajan, and Amit      Tat-Seng Chua. 2021. Tat-qa: A question answering
+  Sharma. 2025.  Plan*rag: Efficient test-time plan-     benchmark on a hybrid of tabular and textual content
+  ning for retrieval augmented generation. Preprint,       in finance. arXiv preprint arXiv:2105.07624.
+  arXiv:2410.20753.
+Xinyu  Wang,  Jijun  Chi,  Zhenghan  Tai,  Tung  A  The Detail of FMKG
+  Sum Thomas Kwok, Hailin He, Zhuhong Li, Yuchen
+                                            A.1  Graph Construction and Update  Hua, Muzhi Li, Peng Lu, Suyucheng Wang, Yihong
+  Wu, Huang Jerry, Jingrui Tian, Fengran Mo, Yufei   To ensure the coverage and accuracy of the Finan-
+   Cui, and Ling Zhou. 2025a. Finsage: A multi-aspect                                                            cial Metric Knowledge Graph (FMKG), we imple-
+   rag system for financial filings question answering.
+                                           ment a multi-stage construction pipeline involving   In Proceedings of the 34th ACM International Con-
+   ference on Information and Knowledge Management,   data acquisition, term disambiguation, and human-
+  page 6144–6152, New York, NY, USA. Association    in-the-loop validation.
+   for Computing Machinery.
+                                       27585
+
+===== PDF PAGE 12 =====
+                                                    the same financial concept. Validated clusters are   Metric Name: Cost of Sales
+                                                   then merged into canonical nodes, where the LLM   Aliases: Cost of Goods Sold, Cost of Products Sold,
+  COGS                                           automatically aggregates their associated aliases,
+                                                       calculation formulas, and Python code snippets into   Definition:
+   Cost of sales refers to the production cost of goods sold      a unified, standardized representation.
+   or the service cost of services provided, as well as other       Hybrid Validation Pipeline. To guarantee the   business costs of sales, including main business costs
+   and other business costs. It is a key item on the income       reliability of the graph, we employ a Human-LLM
+   statement used to measure the direct cost expenditures      Collaborative verification process: First, we uti-
+   in a company’s sales activities.                                                           lize GPT-5 to verify the extracted fields and auto-
+   Formula & Code Implementation:                  complete missing attributes, such as standardiz-
+   [Formula 1]                                       ing formula expressions and generating executable     Cost of Sales = Beginning Inventory + Purchases
+                                              Python code for derived nodes. Domain experts re-
+               −Ending Inventory                                             view the clustered nodes and LLM-generated con-   [Code 1]
+   def sales_cost_v1(beginning_inventory,             tent to correct errors and resolve edge cases in
+   purchase, ending_inventory):                    formula dependencies.
+        return beginning_inventory + purchase -
+   ending_inventory                            Update Workflow. GBFR is designed to be
+                                                   computationally closed yet semantically extensible.
+   [Formula 2]                                        Once a metric node and its formula are instanti-  Cost of Sales = Net Sales   (1          Profit Margin)               ×  −Gross   [Code 2]                                         ated in FMKG, subsequent reasoning can be exe-
+   def sales_cost_v2(net_sales, gross_profit_       cuted and verified through our four operators. To
+   margin):                                        support this extensibility, FMKG is maintained as        return net_sales * (1 - gross_profit_
+   margin)                                     an evolving asset, and its update follows a work-
+                                                  flow consistent with the construction process above.
+                                                         Specifically, when a new metric is introduced, we
+Figure 4: Example of Structured Metric Node: Cost of     first align it to an existing canonical node if it is se-
+Sales.                                                   mantically equivalent; otherwise, we create a new
+                                       .                                                 node. We then induce candidate formulas and pre-
+                                                        requisite dependencies from authoritative sources,
+  Data Acquisition. We adopt a multi-source strat-   including encyclopedic references, domain materi-
+egy to aggregate financial terminologies and calcu-    als, and LLM-extracted content. Finally, we cross-
+lation logic:                                          validate the induced definitions, formulas, aliases,
+• Function  Library:  We  incorporate  core   and code implementations across multiple sources,
+  schemas  from  existing  financial  reasoning   while uncertain cases are flagged for expert review
+  datasets FinanceReasoning (Tang et al., 2025)    before incorporation into the graph.
+  to establish a foundational taxonomy.
+                                            A.2  Rationale for the DAG Structure in• Encyclopedia Retrieval: Following Zhao et al.
+                               FMKG  (2024) and Tang et al. (2025), we crawl and parse
+  entries from authoritative online encyclopedias  A key design choice of FMKG is to maintain
+   (e.g., Wikipedia, Investopedia) to expand the set   a DAG structure.  This is necessary because fi-
+  of terminologies, aliases, and definitions.          nancial metrics are often linked by interdepen-
+• Unstructured Extraction: To cover long-tail    dent formulas: a derived metric may be computed
+  domain knowledge, we extract entities and cal-   from several variables, and the same formula may
+  culation rules from unstructured documents, in-   be algebraically rearranged to solve for one of
+  cluding financial textbooks and professional ex-   those variables. For instance, PV 01 = Price ×
+  amination materials (e.g., CFA/CPA prep books).   Modified Duration × c can also be rewritten
+  Term Disambiguation. The raw collection con-   as Modified Duration = PV 01/(Price × c).tains significant redundancy and ambiguity (e.g.,    If all such reversible relations were explicitly en-
+Net Income vs. Net Profit). To resolve this, we   coded as dependency edges, the graph would con-
+employ embedding-based semantic clustering to    tain directed cycles. This would invalidate topo-
+group synonymous terms. Subsequently, we lever-    logical ordering and make recursive decomposi-
+age LLM-based semantic verification to strictly as-    tion ill-defined. To avoid this issue, FMKG pre-
+sess whether terms within each cluster referred to    serves a one-way dependency hierarchy from foun-
+                                       27586
+
+===== PDF PAGE 13 =====
+Figure 5: A visualization of a subgraph extracted from the FMKG. The graph illustrates the dense hierarchical
+dependencies among financial indicators, where nodes represent specific metrics (e.g., Cost of Sales, Gross Profit)
+and directed edges denote the explicit calculation logic (vderived −−−−−−−−−−→vderived/vatomic).CALCULATED_BY
+
+dational variables to higher-order derived met-   A.4  Instance of FMKG
+rics.  Under this design, only the canonical de-                                         The constructed FMKG forms a dense network
+pendency direction is encoded in the graph (e.g.,                                                    of recursive calculation dependencies, structurally
+       CALCULATED_BY
+PV 01 −−−−−−−−−−−→Modified Duration in    partitioned into atomic nodes (irreducible funda-
+FMKG), while the reverse use of formulas is han-   mental items) and derived nodes (complex metrics).
+dled at search and execution time rather than stored    Figure 4 illustrates the schema of a representative
+as an additional graph edge.                        metric node along with its associated properties.
+                                           To present the complexity of financial reason-
+A.3 FMKG Statistics                                                         ing, Figure 5 visualizes a sampled subgraph of the
+To assess the quality of FMKG, we examine its   FMKG. The structure is characterized by high con-
+scale, formula diversity, structural complexity, and    nectivity and recursive depth. Pivotal nodes, such
+expert-validated correctness.  In terms of scale,   as Cost of Sales, act as the nexus between founda-
+FMKG contains 7,521 nodes, including 3,318    tional atomic nodes (e.g., Beginning Inventory Cost,
+atomic metrics and 4,203 derived metrics, con-   Purchases During the Period) and high-level com-
+nected by 20,152 dependency edges. To charac-   plex indicators (e.g., Gross Profit, Net Operating
+terize formula diversity, we measure the number of   Income). This logical polymorphism empirically
+valid formulas associated with each derived metric.   validates the necessity of our reasoning algorithm.
+On average, each derived metric has 1.63 formulas,   Furthermore, the graph exhibits deep hierarchical
+and 40.85% of derived metrics have multiple valid    dependencies, which confirms that linear PoT is of-
+derivation formulas. In terms of structural com-   ten insufficient, necessitating the explicit structural
+plexity, FMKG has an average in-degree of 1.6, an    guidance to accurately traverse these multi-hop cal-
+average out-degree of 2.3, and a maximum deriva-   culation paths.
+tion depth of 6, reflecting a complex multi-hop
+dependency structure. Finally, we conduct expert  B  The Generation Process of
+verification on 10% of the nodes. Two annotators       Counterfactual Sample
+independently assess node correctness, yielding a                                          To rigorously benchmark the safe abstention capa-
+Krippendorff’s α of 0.8231 and an acceptance rate                                                                   bility, we constructs a high-quality negative dataset
+of 90.1% without correction.                                                  derived from existing financial QA benchmarks.
+                                         Our construction pipeline consists of three main
+                                       27587
+
+===== PDF PAGE 14 =====
+stages: stratified dampling, LLM-based generation,    Table 4: Statistics of the datasets before and after coun-
+                                                              terfactual sample generation. The number of counter-and human verification.
+                                                            factual samples is controlled at approximately 10% of
+B.1  Sampling and Generation Pipeline            the original size after sampling and human filtering.
+To ensure the negative samples maintain the dis-                                                                                  Original  Counterfactual
+tribution characteristics of the original data while       Dataset          Samples     Samples      Total
+controlling the scale, we first perform random strat-      CFBenchmark       140          11        151
+ified sampling.  Specifically, we sample 10% of       FinanceReasoning    2,238         412        2,650
+the data instances from each of the four source      FinQA              1,002         97         1,099
+                                                  TAT-QA             1,119         151        1,270datasets.
+  These sampled instances are then evenly divided
+into three groups to undergo distinct adversarial  C  Detailed mechanisms of reasoning
+perturbations:                                     types
+• Temporal Shift: Modifying time constraints to
+                                                   Financial numerical reasoning involves multiple  periods absent in the context.
+                                               computation patterns, such as arithmetic compo-• Entity Mutation: Swapping the target financial
+                                                            sition, cross-entity or cross-time comparison, set-  entity with a distractor.
+                                                        level aggregation, and temporal computation (Sri-• Metric Substitution: Replacing the requested
+                                                   vastava et al., 2024). Different reasoning patterns  financial term with a semantically related but
+                                                           entail different evidence requirements, subsequent  unavailable metric.
+                                                   reasoning steps, and execution logic. Motivated by  We utilize LLM to automatically generate the
+                                                           this observation, we divide financial queries intoperturbed questions based on specific instructions
+                                                     the five reasoning types listed in Table 5. For eachfor each category, ensuring the linguistic fluency
+                                                      type, we provide a symbolic semantics describingof the generated queries.
+                                                                     its reasoning process and final aggregation logic.
+B.2  Human Verification
+                           D  Complexity and Empirical Cost ofSince automated generation may occasionally pro-
+                                           Algorithmduce logical loopholes (e.g., the answer remains
+inferable despite perturbation) or semantic errors,  We analyze the efficiency of GBFR from both theo-
+we introduce a human-in-the-loop verification pro-    retical and empirical perspectives. The theoretical
+cess.                                                  analysis is based on the FMKG structure under the
+  Annotators review the generated samples to en-   standard work–span model, where work measures
+sure:                                                 the total amount of computation and span captures
+                                                    the critical-path latency under ideal parallel exe-
+  1. The perturbed question is indeed unanswer-                                                      cution. We then complement this analysis with
+     able based on the provided context.                                                        quantitative measurements of path exploration and
+  2. The modification does not introduce grammat-   end-to-end token cost on the FinanceReasoning
+      ical errors that alter the original intent.         benchmark.
+                                     Work Complexity.  Let H denote the maxi-
+  3. The logic of the question remains consistent  mum depth of the Financial Metric Knowledge
+    with financial domain standards.             Graph (FMKG), B the maximum number of sub-
+                                                  metrics per derivation, and K the number of can-
+Samples that fail to meet these criteria are dis-                                                    didate derivation formulas for a metric.  In the
+carded to guarantee the reliability of the evaluation.                                               absence of structural constraints, recursively enu-
+B.3  Dataset Statistics                           merating all derivation paths yields an exponential
+                                                  worst-case complexity of O((K  B)H). In prac-Table 4 presents the statistics of the final dataset.                                                     ·                                                               tice, GBFR operates over an acyclic metric graphThe counterfactual samples account for approxi-
+                                             and restricts exploration to the query-relevant sub-mately 10% of the original volume, providing a
+                                                  graph. Each derived metric is resolved at mostchallenging subset for safety evaluation.
+                                             once and evaluates up to K candidate formulas.
+                                          Under this setting, the total work scales with the
+                                           number of visited derived nodes V ′ and is bounded
+                                       27588
+
+===== PDF PAGE 15 =====
+               Table 5: Five reasoning types of financial queries, with their symbolic semantics.
+
+ Reasoning Type          Reasoning Process                                  Final Aggregation Logic
+  Direct Retrieval            Retrieve a metric instance V that strictly satisfies con-  Result = V (arithmetic prohibited)
+                                  straints C directly from the context.
+ Arithmetic Calculation      Extract explicit operands {V1, V2, . . .} defined by arith-  Result =  Op(V1, V2, . . .), where
+                            metic relationships in the query, such as sum, difference,  Op ∈{+, −, ×, ÷}                             product, and division.
+ Comparative Reasoning    Extract distinct operand values Vtarget and Vbase via  Result =   Vtarget−VbaseVbase      (ratio) or
+                          dimension shifting, such as time shift (t vs. t −1) or   Vtarget −Vbase (range)                                entity shift (e1 vs. e2).
+  Statistical Aggregation     Perform batch retrieval of a value set V across a speci-  Result =  Mean(V), Sum(V), or
+                                fied dimension, such as all quarters in a fiscal year.     Count(V) Temporal Reasoning       Define temporal boundaries Tstart and Tend to capture  Result = ∆(Tend, Tstart) (duration)
+                                                                      ∆T  (normalization)                                  fiscal scope, and extract duration only when explicitly   or V × Scale                              requested.
+
+by: O       (1 + K)  , where the constant term  E  Experimental Setup Details       |V ′| ·accounts for evidence alignment and verification,
+                                                   In this section, we provide concise descriptionsand K corresponds to candidate formula evaluation.
+                                                   of the four financial datasets used to evaluate the  Span Complexity. GBFR executes independent
+                                                model’s performance across text and table modali-derivation paths in parallel and performs consensus-
+                                                                  ties.based verification. As a result, the overall latency is
+governed by the longest dependency chain. Along   E.1  Dataset Descriptions
+a critical path of depth H, each level invokes a con-
+                                    FinQA (Chen et al., 2021)is a large-scale datasetstant number of atomic operators—Evidence Seek-
+                                                     expert-annotated from financial reports. It contains
+ing, Metric Decomposition, Program Execution,
+                                               8,281 question-answering pairs accompanied by
+and Verification. The span complexity is therefore:
+                                                          explicit numerical reasoning processes, serving as
+                                                a benchmark for evaluating complex financial cal-O H · (TES + TMD + TPE + TVerify)  .
+  This parallel structure enables GBFR to miti-    culations.
+gate the latency growth typically induced by wide    TAT-QA (Zhu et al., 2021) addresses discrete
+branching, making the framework scalable for deep,   reasoning over hybrid financial data.  It requires
+multi-hop financial reasoning.                       parsing tabular data and associated text simultane-
+  Empirical Cost and Path Exploration. We fur-    ously. The dataset includes diverse question types
+ther analyze the practical efficiency of GBFR on   such as span extraction, arithmetic calculation, and
+the FinanceReasoning benchmark. The average    aggregation, testing the model’s ability to handle
+number of derivation paths explored per query is    structural heterogeneity.
+1.53, and only 4.26% of queries require more than     FinanceReasoning (Tang et al., 2025)comprises
+5 paths, indicating that empirical search remains    2,238 questions designed to evaluate the numerical
+limited. This is due to early pruning by metric    reasoning of Large Reasoning Models. Addressing
+constraints, which terminates a path as soon as a re-    limitations in complexity and accuracy found in
+quired atomic metric cannot be grounded in the con-    prior benchmarks, each sample features a hybrid
+text. In terms of end-to-end cost, GBFR consumes    context and a Python-formatted solution, providing
+7,281 tokens per query on average, corresponding    a reliable standard for assessing complex financial
+to $0.0669 per query under GPT-5 pricing. Com-   calculation tasks.
+pared with tool-augmented ReAct baselines, GBFR    CFBenchmark (Lei et al., 2023) is a compre-
+increases token usage by 78% but yields an abso-   hensive Chinese financial evaluation suite designed
+lute accuracy gain of 18%. In high-stakes financial    to assess Large Language Models across practi-
+settings, this additional cost may be an acceptable    cal applications.  It covers dimensions including
+trade-off for improved accuracy.                      financial natural language processing, numerical
+                                                        calculation, analysis, and compliance.
+
+
+
+                                       27589
+
+===== PDF PAGE 16 =====
+E.2  Data Selection and Preprocessing           search queries, thereby enhancing retrieval accu-
+                                                         racy. (Verma et al., 2025; Li et al., 2025)To construct a rigorous benchmark for numerical
+reasoning, we curate the experimental data through                                F  Prompta specific selection and filtering process.
+   First, regarding data sources, we utilize the   The prompts in GBFR are following:
+standard test.json split from FinQA and the
+tatqa_dataset_test_gold.json file from TAT-
+QA. For FinanceReasoning, the entire dataset is
+employed. In the case of CFBenchmark, we specifi-
+cally select the subset related to financial numerical
+calculations.
+  Second, to focus exclusively on numerical rea-
+soning capabilities, we exclude samples that re-
+quire non-numerical answers (e.g., questions where
+the ground truth is a text span or a string). As a re-
+sult, only samples involving numerical values and
+calculation steps are retained for the final evalua-
+tion set.
+
+E.3  Baseline Implementation Details
+To rigorously evaluate the contribution of our
+framework, we compare  it against the follow-
+ing state-of-the-art baselines. Regarding the em-
+bedding models, we employ text-embedding-3-
+large (OpenAI, 2024) for the FinanceReasoning,
+FinQA, and TAT-QA datasets.  Conversely, for
+the CFBenchmark dataset, we adopt the M3E-
+large (Wang et al., 2023) model to better handle
+Chinese contexts.
+Program-of-Thought (PoT): We prompt the LLM
+to generate Python programs to solve the query.
+This baseline tests the model’s intrinsic ability to
+perform reasoning and calculation.
+Knowledge Augmentation Strategies. Following
+Tang et al. (2025), we implement three variants of
+RAG:
+  Standard RAG: We utilize the input question to
+retrieve the description of Top-3 financial metrics
+based on cosine similarity. This serves as the lower-
+bound baseline for semantic retrieval.
+ LLM as Retrieval Judge: Addressing the low
+precision of raw retrieval, we adopt a re-ranking
+strategy. We first retrieve a larger candidate pool
+(Top-30) and then employ the LLM as a seman-
+tic discriminator to select the Top-3 most relevant
+metrics and their knowledge. (Guan et al., 2024a)
+  LLM-Instructed Knowledge Retrieval: To
+mitigate the misalignment between raw queries
+and hybrid contexts, we implement a query rewrit-
+ing strategy. A LLM summarizes the semantic
+information from the context to generate de-noised
+
+                                       27590
+
+===== PDF PAGE 17 =====
+ Question Analysis Prompt
+
+You are a "Question Analyst" in a financial reasoning assistant.
+Your job is to read a user question together with its provided context (text/tables),and turn
+    the question into a clean structured plan for later computation.
+You must:
+- Use BOTH the question and the context to decide what needs to be computed.
+- Extract only the required operand metrics as subgoals. Do not compute the final answer.
+- Fill constraints using evidence in the context whenever possible (e.g., company name, dates,
+    currency symbol, scale like "million", unit like "percentage").
+- If something is truly missing from both question and context, use "unknown" or null (do not
+    guess).
+Output MUST be a single valid JSON object with exactly these keys:
+{
+  "reasoning_type": ...,
+  "operator": ...,
+  "subgoals": [...],
+  "precision": ...
+}
+No markdown, no extra keys, no explanations.
+=== Reasoning Type (choose ONE) ===
+1) DirectRetrieval
+   - The answer is a single value that can be directly retrieved from context, no arithmetic.
+2) ArithmeticCalculation
+   - Basic arithmetic such as sum / difference / product / division.
+3) ComparativeReasoning
+   - Comparison logic across entities or periods such as ratio / change ratio / range / compare.
+4) StatisticalAggregation
+   - Aggregation over a set such as average / counting (including weighted average when implied)
+    .
+5) TemporalReasoning
+   - Time-span reasoning or temporal normalization (e.g., annualized return over a period).
+   - For TemporalReasoning, represent time using operands temporal_scope (start/end), rather
+    than adding a separate "duration" subgoal unless the question explicitly asks for duration
+    itself.
+=== Operator (choose ONE from this set) ===
+[sum, difference, product, division, ratio, change ratio, range, compare, average, time,
+    counting]
+=== Subgoals (very important) ===
+- subgoals ONLY include the numerical metrics/values that need to be retrieved (or later
+    computed by other operators).
+- Do NOT add helper items that are not required operands (e.g., do not add "duration" unless the
+     question asks for duration).
+- Each subgoal must be (metric, constraints).
+- constraints MUST include:
+  - temporal_scope: year/quarter/date-range if any
+  - entity_scope: company/group/subsidiary if any
+  - meta: {currency, scale, unit} (use context to fill; otherwise unknown)
+=== Precision ===
+- If the question specifies formatting, output it in "precision" (e.g., "nearest integer", "
+    percentage to two decimal places").
+- If not specified, use "unknown".
+=== Few-shot Examples ===
+{example}
+
+Query: {query}
+Context:
+{context}
+
+Return JSON only.
+
+
+
+
+
+                                     27591
+
+===== PDF PAGE 18 =====
+ Evidence Seeking Prompt
+
+You are an "Evidence Finder" for financial/numerical questions.
+You will receive a context (text/tables) and a list of variables to resolve. For each variable,
+    you must find the best evidence span in the given context and extract the numeric value.
+=== CRITICAL RULE: EXTRACTION ONLY, NO CALCULATION ===
+You are ONLY allowed to EXTRACT values that are EXPLICITLY WRITTEN in the context.
+You are ABSOLUTELY FORBIDDEN from:
+- Calculating or computing any value (e.g., subtracting, adding, multiplying numbers)
+- Deriving a value from other numbers in the context
+- Inferring a value that is not directly stated
+If a metric is asked but its value is NOT directly written in the context, you MUST put it in
+    missing_vars, even if you could theoretically calculate it from other available data.
+=== What counts as "directly written"? ===
+VALID (can extract):
+- "Gross Profit: $350,000": Gross Profit is directly written
+- "Net Sales ... $900,000": Net Sales is directly written
+- A table cell with header "Revenue" and value "1,000,000": Revenue is directly written
+INVALID (must mark as missing):
+- Context has "Revenue: $1,000,000" and "Cost: $600,000", but asks for "Gross Profit"
+  - Gross Profit is NOT directly written, even though you could calculate 1,000,000 - 600,000
+  - Put "Gross Profit" in missing_vars
+- Context has component values but not the aggregate
+  - The aggregate must go in missing_vars
+=== Strict Evidence-Bounded Rules ===
+- Use the context as the only source of truth.
+- If the context is in Chinese, you need to translate the terms into Chinese before searching.
+- The extracted value MUST appear with a label/header that matches (or is a clear alias of) the
+    requested metric.
+- You may use aliases/synonyms to search, but the extracted value MUST satisfy the given
+    constraints: temporal_scope, entity_scope, and meta attributes (currency/scale/unit) when
+    specified.
+- If you cannot find a value that matches the constraints, or the context is ambiguous/
+    conflicting, you must abstain: do NOT guess; put the variable name into missing_vars, and
+    do not include it in var_bindings.
+=== Confidence Definition ===
+- confidence is your subjective probability (0.0~1.0) that the extracted value is the correct
+    grounding for this variable under the constraints.
+=== Value Rule ===
+- Return the numeric value as written (do NOT apply scaling conversions like multiplying "
+    million").
+- Copy an evidence snippet from the context that contains the number and the minimal surrounding
+     label (include table row/column headers if needed).
+- The evidence snippet MUST show the metric name/label alongside the number.
+=== Notes Rule ===
+- If a metric is found using an alias (i.e., the context uses a different name than the metric
+    label), you MUST explain the alias mapping in notes.
+  Example: "Resolved Revenue via alias Net sales".
+- If any metric cannot be found or must be abstained, you MUST explain why in notes (e.g., "
+    Gross Profit not directly stated in context, only component values available").
+- If ALL extracted values are directly and explicitly matched (no alias needed) AND no variable
+    is missing, then notes MUST be null.
+=== Output Format ===
+Output MUST be valid JSON only, matching:
+{format}
+
+Before outputting, ask yourself:
+1. Does the metric have its OWN LABEL in the context?
+2. Is my "context" field showing a single "[Label]: [Value]" pair?
+3. Does the numeric value actually appear in the context?
+
+Context:
+
+
+{context}
+Variables to resolve:
+{var_list}
+Return JSON only. No markdown. No extra keys. ABSOLUTELY NO CALCULATIONS.
+
+
+                                     27592
+
+===== PDF PAGE 19 =====
+ Program Generation Prompt for indicator calculation
+
+You are a financial calculation code generation expert. Generate correct Python calculation code
+     based on the given financial metric formula.
+
+Code Requirements:
+1. Must define a `compute(vars)` function as the entry point
+2. `vars` is a dictionary containing all required variable values, with metric names as keys
+3. The function must return a dictionary containing "value" (calculation result) and "trace" (
+    intermediate variables)
+4. Do not use import statements
+5. Return None when handling division by zero errors
+
+Example:
+Input formula: Working Capital = Current Assets - Current Liabilities
+
+Output code:
+```python
+def compute(vars):
+    current_assets = vars["Current Assets"]
+    current_liabilities = vars["Current Liabilities"]
+    working_capital = current_assets - current_liabilities
+    return {
+        "value": working_capital,
+        "trace": {"Current Assets": current_assets, "Current Liabilities": current_liabilities}
+    }
+```
+
+Please generate calculation code for the following financial indicator:
+
+
+Indicator name: {indicator_name}
+Calculation formula: {formula_expr}
+Required variables: {required_vars}
+
+Please generate the complete compute(vars) function:
+
+
+
+
+
+                                     27593
+
+===== PDF PAGE 20 =====
+ Program Generation Prompt for solve problem
+
+You are a financial calculation code generation expert. Generate correct Python calculation code
+     for solving the given query and context based on the given information.
+
+You will receive the following information:
+- the query
+- the context (text/tables)
+- the reasoning type of query
+- evidences (each evidence includes metric name, constraints, value, and context snippet)
+- an optional concept explanation (what the metric means / how it is described in documents)
+- an optional metric formula
+- an optional output precision requirement
+
+Code Requirements:
+1. Must define a `compute(vars)` function as the entry point
+2. `vars` is a dictionary containing all required variable values, with metric names as keys
+3. The function must return a dictionary containing "value" (calculation result) and "trace" (
+    intermediate variables)
+4. No `import` statements. No file/network access, no eval/exec, no classes, no external
+    libraries.
+5. Return None when handling division by zero errors
+
+=== Reasoning Type Description ===
+1) DirectRetrieval
+   - The answer is a single value that can be directly retrieved from context, no arithmetic.
+2) ArithmeticCalculation
+   - Basic arithmetic such as sum / difference / product / division.
+3) ComparativeReasoning
+   - Comparison logic across entities or periods such as ratio / change ratio / range / compare.
+4) StatisticalAggregation
+   - Aggregation over a set such as average / counting (including weighted average when implied)
+    .
+5) TemporalReasoning
+   - Time-span reasoning or temporal normalization (e.g., annualized return over a period).
+   - For TemporalReasoning, represent time using operands temporal_scope (start/end), rather
+    than adding a separate "duration" subgoal unless the question explicitly asks for duration
+    itself.
+
+Please generate calculation code according to following information:
+Question: {query}
+Context: {context}
+Reasoning type: {reasoning_type}
+Evidences (IMPORTANT - use these exact variable names as keys in vars dict):
+{evidences}
+
+CRITICAL: The vars dict will contain keys exactly as shown in the evidences above (e.g., "v1", "
+    v2", etc.).
+You MUST use these exact keys to access values. For example: vars["v1"], vars["v2"], etc.
+DO NOT use metric names as keys - use the var_name (v1, v2, ...) as keys.
+
+Please generate the complete compute(vars) function:
+
+
+
+
+
+                                     27594
+
+===== PDF PAGE 21 =====
+ Path Validation Instruction
+
+You are a financial reasoning assistant.
+Your job is to verify multiple candidate reasoning paths produced by upstream operators. Each
+    path contains: (i) subgoals with constraints, (ii) evidence bindings/snippets, (iii)
+    computation trace, and (iv) a proposed final numeric result with meta (currency/scale/unit).
+
+
+GOAL
+- Decide whether the system can output a single final answer or must safely abstain.
+- This decision MUST be evidence-bounded: only accept an answer if it is verifiably supported by
+     the given evidence and consistent across valid paths.
+
+HARD RULES (do not violate)
+1) Do NOT introduce new evidence, new numbers, new assumptions, or new computation paths.
+2) Do NOT "fix" a path by guessing missing operands, units, time ranges, entities, aliases, or
+    scales.
+3) Do NOT average conflicting results. Do NOT pick a result simply because it "looks reasonable
+    ".
+4) If no single answer can be verified after exhausting the provided paths, output None.
+5) Treat "unknown" / null in constraints or meta as missing information, not something to guess.
+
+INPUT
+- question: the user question
+- context: the provided text/tables (may be partial)
+- candidate_paths: a list of objects, each containing:
+  - subgoals: list of (metric, constraints)
+  - evidence: variable bindings -> evidence snippets/spans
+  - computation: formulas/program + intermediate values
+
+VERIFICATION CHECKLIST (per path)
+A) Evidence grounding
+- Every operand used in computation must be traceable to an evidence snippet in this path.
+- Evidence must match constraints: temporal_scope, entity_scope, and meta (currency/scale/unit)
+    whenever specified.
+- If the path uses an alias mapping, it must be explicitly supported by evidence/metadata in the
+     path (not assumed).
+B) Constraint consistency
+- Reject the path if it violates temporal_scope (wrong year/quarter/date-range), entity_scope (
+    wrong company/group/subsidiary), or incompatible meta (currency/scale/unit).
+- Reject the path if it silently mixes scales (e.g., millions vs. thousands) or currencies
+    without an explicit conversion supported by evidence.
+C) Computation correctness
+- Check that intermediate steps follow the stated formulas/program.
+- If intermediate values do not follow from prior values, mark ARITHMETIC_ERROR.
+- If the computation requires a missing operand, mark MISSING_OPERAND (do not fill it).
+
+PATH VALIDITY
+- A path is VALID only if it passes A+B+C with no critical errors.
+- A path is INVALID if it has any of: MISSING_OPERAND, EVIDENCE_NOT_FOUND, CONSTRAINT_MISMATCH,
+    UNIT_MISMATCH, CURRENCY_MISMATCH, SCALE_MISMATCH, ARITHMETIC_ERROR, UNSUPPORTED_ALIAS.
+
+OUTPUT FORMAT
+{format}
+
+Question: {query}
+Context:
+{context}
+Candidate paths:
+{candidate_paths}
+
+
+
+
+
+                                     27595

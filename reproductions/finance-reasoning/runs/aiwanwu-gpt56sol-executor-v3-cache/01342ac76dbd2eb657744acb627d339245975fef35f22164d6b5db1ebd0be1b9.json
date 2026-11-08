@@ -1,0 +1,21 @@
+{
+  "identity": "01342ac76dbd2eb657744acb627d339245975fef35f22164d6b5db1ebd0be1b9",
+  "response_digest": "9664e1e315428b1d4515595e9f6133c61d3e394fe68590b2bea5f7d36fd9c3dd",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    risk_free_rate = 0.03\n    beta = 1.1\n    market_risk_premium = 0.05\n    dividend_year_1 = 1.13\n    dividend_year_2 = 1.22\n    long_term_growth_rate = 0.05\n\n    # Do math calculation to get the answer\n    cost_of_equity = risk_free_rate + beta * market_risk_premium\n    dividend_year_3 = dividend_year_2 * (1 + long_term_growth_rate)\n\n    terminal_value_year_2 = dividend_year_3 / (\n        cost_of_equity - long_term_growth_rate\n    )\n\n    present_value_dividend_year_1 = dividend_year_1 / (1 + cost_of_equity)\n    present_value_dividend_year_2 = dividend_year_2 / (1 + cost_of_equity) ** 2\n    present_value_terminal_value = terminal_value_year_2 / (1 + cost_of_equity) ** 2\n\n    answer = (\n        present_value_dividend_year_1\n        + present_value_dividend_year_2\n        + present_value_terminal_value\n    )\n\n    # return answer\n    return round(answer, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5585,
+      "completion_tokens": 390,
+      "total_tokens": 5975,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 116
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

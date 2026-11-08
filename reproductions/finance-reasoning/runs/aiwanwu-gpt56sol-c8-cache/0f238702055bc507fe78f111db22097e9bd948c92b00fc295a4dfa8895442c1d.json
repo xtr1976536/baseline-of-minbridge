@@ -1,0 +1,21 @@
+{
+  "identity": "0f238702055bc507fe78f111db22097e9bd948c92b00fc295a4dfa8895442c1d",
+  "response_digest": "a5071aed4b550ca34376f375a11088a1e36de9c6a98a9987ee4c8e45a248c0ab",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    credit_sales = 40000\n    cogs = 30000\n    accounts_receivable = 3000\n    beginning_inventory = 1500\n    ending_inventory = 2000\n    accounts_payable = 4000\n    period_days = 365\n\n    # Do math calculation to get the answer\n    average_inventory = (beginning_inventory + ending_inventory) / 2\n    dio = (average_inventory / cogs) * period_days\n    dso = (accounts_receivable / credit_sales) * period_days\n    dpo = (accounts_payable / cogs) * period_days\n\n    cash_conversion_cycle = dio + dso - dpo\n    answer = round(cash_conversion_cycle, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5441,
+      "completion_tokens": 295,
+      "total_tokens": 5736,
+      "prompt_tokens_details": {
+        "cached_tokens": 3674
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 111
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

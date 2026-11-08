@@ -1,0 +1,21 @@
+{
+  "identity": "1ace23ff93fb6b80018030069ea004c3e3bea81799bb039bed44d1e7275d89ae",
+  "response_digest": "cf32a922be2fe732c282c40566bbdeb4595e8fc41e565b465eaac7238c82a3fc",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_assets = 515.0\n    ending_assets = 602.5\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.20\n    hurdle_rate = 0.05\n    high_water_mark = 540.0\n\n    # Calculate the management fee based on end-of-year assets\n    management_fee = ending_assets * management_fee_rate\n    assets_after_management_fee = ending_assets - management_fee\n\n    # Calculate the hurdle value and use the higher applicable threshold\n    hurdle_value = initial_assets * (1 + hurdle_rate)\n    incentive_threshold = max(high_water_mark, hurdle_value)\n\n    # Calculate the incentive fee on profits above the threshold\n    incentive_profit = max(0.0, assets_after_management_fee - incentive_threshold)\n    incentive_fee = incentive_profit * incentive_fee_rate\n\n    # Calculate the investor's net return\n    net_assets = assets_after_management_fee - incentive_fee\n    net_return = (net_assets - initial_assets) / initial_assets\n\n    # Return the net return as a percentage, rounded to three decimal places\n    return round(net_return * 100, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5572,
+      "completion_tokens": 773,
+      "total_tokens": 6345,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

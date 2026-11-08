@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2233",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the maximum tax-deductible mortgage interest for a qualified secured home loan under post-2017 Tax Cuts and Jobs Act limits, using filing status (married filing jointly), mortgage origination date, and loan principal while applying the applicable IRS debt limitation?",
+        "usage": {
+          "prompt_tokens": 5015,
+          "completion_tokens": 58,
+          "total_tokens": 5073
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 15392,
+          "completion_tokens": 156,
+          "total_tokens": 15548,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 135
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    mortgage_amount = 850000\n    is_secured = True\n    loan_date = \"2018-01-10\"\n    filing_status = \"married_jointly\"\n\n    # Do math calculation to get the answer\n    deduction_limit = 750000  # TCJA limit for married filing jointly after 2017-12-15\n    deductible_interest = min(mortgage_amount, deduction_limit)\n\n    # return answer\n    return round(deductible_interest)\n```",
+        "usage": {
+          "prompt_tokens": 5821,
+          "completion_tokens": 214,
+          "total_tokens": 6035,
+          "completion_tokens_details": {
+            "reasoning_tokens": 95
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1073",
+        "score": 2.0366854667663574,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1824",
+        "score": 2.0090584754943848,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2341",
+        "score": 1.768700122833252,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1823",
+        "score": 1.69193696975708,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-895",
+        "score": 1.6593844890594482,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2162",
+        "score": 1.6574227809906006,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-989",
+        "score": 1.641274094581604,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-594",
+        "score": 1.6342717409133911,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2520",
+        "score": 1.6284215450286865,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3005",
+        "score": 1.6201441287994385,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2161",
+        "score": 1.6124440431594849,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1488",
+        "score": 1.610184907913208,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1811",
+        "score": 1.607381820678711,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1066",
+        "score": 1.6015894412994385,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.5954086780548096,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.5751675367355347,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2108",
+        "score": 1.570948839187622,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1481",
+        "score": 1.5626869201660156,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1065",
+        "score": 1.5610072612762451,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.5593717098236084,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1486",
+        "score": 1.557173252105713,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1089",
+        "score": 1.5559380054473877,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2016",
+        "score": 1.5520379543304443,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-993",
+        "score": 1.5515851974487305,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-522",
+        "score": 1.549330472946167,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-382",
+        "score": 1.548813819885254,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-981",
+        "score": 1.5482797622680664,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.5457332134246826,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1099",
+        "score": 1.5449590682983398,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-446",
+        "score": 1.542744755744934,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1073",
+      "article-1824"
+    ],
+    "status": "ok",
+    "answer": 750000,
+    "code": "def solution():\n    # Define variables name and value\n    mortgage_amount = 850000\n    is_secured = True\n    loan_date = \"2018-01-10\"\n    filing_status = \"married_jointly\"\n\n    # Do math calculation to get the answer\n    deduction_limit = 750000  # TCJA limit for married filing jointly after 2017-12-15\n    deductible_interest = min(mortgage_amount, deduction_limit)\n\n    # return answer\n    return round(deductible_interest)\n"
+  },
+  "digest": "0b5731560b58630f5602cdc6bb3b346766ff782c3277b050399e93193501c49e"
+}

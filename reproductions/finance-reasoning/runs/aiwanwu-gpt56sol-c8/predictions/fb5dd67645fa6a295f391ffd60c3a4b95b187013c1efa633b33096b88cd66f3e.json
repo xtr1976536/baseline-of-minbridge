@@ -1,0 +1,182 @@
+{
+  "record": {
+    "question_id": "test-2098",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates adjusted present value (APV) by adding the present value of interest tax shields from debt financing to an unlevered company or project value, using debt principal, fixed interest rate, financing term, and corporate tax rate, with the result rounded to the nearest currency unit?",
+        "usage": {
+          "prompt_tokens": 5054,
+          "completion_tokens": 62,
+          "total_tokens": 5116
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14130,
+          "completion_tokens": 570,
+          "total_tokens": 14700,
+          "completion_tokens_details": {
+            "reasoning_tokens": 473
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    unlevered_firm_value = 800000\n    tax_rate = 0.28\n    debt = 300000\n    interest_rate = 0.05\n    periods = 5\n\n    # Do math calculation to get the answer\n    annual_interest = debt * interest_rate\n    annual_tax_shield = annual_interest * tax_rate\n    pv_tax_shield = annual_tax_shield * (\n        1 - (1 / (1 + interest_rate) ** periods)\n    ) / interest_rate\n\n    apv = unlevered_firm_value + pv_tax_shield\n\n    # Return answer rounded to the nearest integer\n    return round(apv)\n```",
+        "usage": {
+          "prompt_tokens": 5094,
+          "completion_tokens": 224,
+          "total_tokens": 5318,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 63
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2286",
+        "score": 2.4571778774261475
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.8076530694961548
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.79792320728302
+      },
+      {
+        "function_id": "article-2944",
+        "score": 1.777392864227295
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.7763926982879639
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.7638185024261475
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.7572921514511108
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.7558143138885498
+      },
+      {
+        "function_id": "article-159",
+        "score": 1.7556781768798828
+      },
+      {
+        "function_id": "article-1507",
+        "score": 1.7346484661102295
+      },
+      {
+        "function_id": "article-2317",
+        "score": 1.7259800434112549
+      },
+      {
+        "function_id": "article-1310",
+        "score": 1.72568678855896
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.723311424255371
+      },
+      {
+        "function_id": "article-1537",
+        "score": 1.7170898914337158
+      },
+      {
+        "function_id": "article-2940",
+        "score": 1.7033251523971558
+      },
+      {
+        "function_id": "article-713",
+        "score": 1.7003473043441772
+      },
+      {
+        "function_id": "article-291",
+        "score": 1.6912264823913574
+      },
+      {
+        "function_id": "article-782",
+        "score": 1.6859923601150513
+      },
+      {
+        "function_id": "article-45",
+        "score": 1.685253381729126
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.684499979019165
+      },
+      {
+        "function_id": "article-1905",
+        "score": 1.6779742240905762
+      },
+      {
+        "function_id": "article-1206",
+        "score": 1.6749544143676758
+      },
+      {
+        "function_id": "article-1097",
+        "score": 1.6631839275360107
+      },
+      {
+        "function_id": "article-297",
+        "score": 1.6526246070861816
+      },
+      {
+        "function_id": "article-1641",
+        "score": 1.6523845195770264
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.6504547595977783
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.6500449180603027
+      },
+      {
+        "function_id": "article-187",
+        "score": 1.6479225158691406
+      },
+      {
+        "function_id": "article-2777",
+        "score": 1.6478166580200195
+      },
+      {
+        "function_id": "article-2015",
+        "score": 1.6465513706207275
+      }
+    ],
+    "selected_ids": [
+      "article-2286"
+    ],
+    "status": "ok",
+    "answer": 818184,
+    "code": "def solution():\n    # Define variables name and value\n    unlevered_firm_value = 800000\n    tax_rate = 0.28\n    debt = 300000\n    interest_rate = 0.05\n    periods = 5\n\n    # Do math calculation to get the answer\n    annual_interest = debt * interest_rate\n    annual_tax_shield = annual_interest * tax_rate\n    pv_tax_shield = annual_tax_shield * (\n        1 - (1 / (1 + interest_rate) ** periods)\n    ) / interest_rate\n\n    apv = unlevered_firm_value + pv_tax_shield\n\n    # Return answer rounded to the nearest integer\n    return round(apv)\n"
+  },
+  "digest": "293823556834b5e75dee8ec68be2dae81935cbde066ba9464c4fe243eb3d5bd2"
+}

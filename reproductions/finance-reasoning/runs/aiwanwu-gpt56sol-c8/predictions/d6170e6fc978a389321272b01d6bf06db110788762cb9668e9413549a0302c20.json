@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2195",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annualized after-tax post-liquidation return of an investment over multiple periods by compounding period-specific after-tax returns and applying a capital-gains tax rate to an embedded gain as a percentage of the ending portfolio value, with the result expressed to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5060,
+          "completion_tokens": 60,
+          "total_tokens": 5120,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS]",
+        "usage": {
+          "prompt_tokens": 14353,
+          "completion_tokens": 1113,
+          "total_tokens": 15466,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1016
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    annual_after_tax_returns = [0.09, 0.05, 0.08]\n    embedded_gain_rate = 0.10\n    capital_gains_tax_rate = 0.25\n    initial_value = 1.0\n    years = len(annual_after_tax_returns)\n\n    # Do math calculation to get the answer\n    closing_value = initial_value\n    for annual_return in annual_after_tax_returns:\n        closing_value *= 1 + annual_return\n\n    liquidation_tax = closing_value * embedded_gain_rate * capital_gains_tax_rate\n    post_liquidation_value = closing_value - liquidation_tax\n    annualized_post_liquidation_return = (\n        (post_liquidation_value / initial_value) ** (1 / years) - 1\n    )\n    answer = round(annualized_post_liquidation_return * 100, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5489,
+          "completion_tokens": 316,
+          "total_tokens": 5805,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 105
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2290",
+        "score": 1.8653901815414429
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.8313016891479492
+      },
+      {
+        "function_id": "article-1847",
+        "score": 1.8246394395828247
+      },
+      {
+        "function_id": "article-1477",
+        "score": 1.8034846782684326
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.8004839420318604
+      },
+      {
+        "function_id": "article-1838",
+        "score": 1.738632082939148
+      },
+      {
+        "function_id": "article-1103",
+        "score": 1.7370336055755615
+      },
+      {
+        "function_id": "article-2188",
+        "score": 1.733673095703125
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.7290254831314087
+      },
+      {
+        "function_id": "article-2331",
+        "score": 1.7212010622024536
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.7161310911178589
+      },
+      {
+        "function_id": "article-477",
+        "score": 1.7107880115509033
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.709131121635437
+      },
+      {
+        "function_id": "article-2810",
+        "score": 1.7052096128463745
+      },
+      {
+        "function_id": "article-3084",
+        "score": 1.6942431926727295
+      },
+      {
+        "function_id": "article-1465",
+        "score": 1.691401720046997
+      },
+      {
+        "function_id": "article-2190",
+        "score": 1.688056468963623
+      },
+      {
+        "function_id": "article-2327",
+        "score": 1.6863030195236206
+      },
+      {
+        "function_id": "article-569",
+        "score": 1.6845178604125977
+      },
+      {
+        "function_id": "article-194",
+        "score": 1.6808037757873535
+      },
+      {
+        "function_id": "article-484",
+        "score": 1.6790751218795776
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.6780674457550049
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.6765334606170654
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.6733698844909668
+      },
+      {
+        "function_id": "article-417",
+        "score": 1.6731836795806885
+      },
+      {
+        "function_id": "article-2319",
+        "score": 1.670011281967163
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.664596438407898
+      },
+      {
+        "function_id": "article-95",
+        "score": 1.6638681888580322
+      },
+      {
+        "function_id": "article-1461",
+        "score": 1.6634058952331543
+      },
+      {
+        "function_id": "article-1545",
+        "score": 1.6625357866287231
+      }
+    ],
+    "selected_ids": [
+      "article-1847",
+      "article-1477",
+      "article-2188"
+    ],
+    "status": "ok",
+    "answer": 6.418,
+    "code": "def solution():\n    # Define variables name and value\n    annual_after_tax_returns = [0.09, 0.05, 0.08]\n    embedded_gain_rate = 0.10\n    capital_gains_tax_rate = 0.25\n    initial_value = 1.0\n    years = len(annual_after_tax_returns)\n\n    # Do math calculation to get the answer\n    closing_value = initial_value\n    for annual_return in annual_after_tax_returns:\n        closing_value *= 1 + annual_return\n\n    liquidation_tax = closing_value * embedded_gain_rate * capital_gains_tax_rate\n    post_liquidation_value = closing_value - liquidation_tax\n    annualized_post_liquidation_return = (\n        (post_liquidation_value / initial_value) ** (1 / years) - 1\n    )\n    answer = round(annualized_post_liquidation_return * 100, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "25e9e15234a98988c3855f2afa3607b3fa1f07787e082a3b47d1c208face2fcc"
+}

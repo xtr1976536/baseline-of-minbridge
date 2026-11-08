@@ -1,0 +1,223 @@
+{
+  "record": {
+    "question_id": "test-2043",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the arithmetic average of annual rental expense values over a specified three-year period, using historical monetary amounts in millions and returning the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5643,
+          "completion_tokens": 38,
+          "total_tokens": 5681,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C20\"]}",
+        "usage": {
+          "prompt_tokens": 14645,
+          "completion_tokens": 162,
+          "total_tokens": 14807,
+          "prompt_tokens_details": {
+            "cached_tokens": 10125
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 144
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    rental_expenses = [54, 58, 54]  # 2002, 2001, and 2000, in millions\n    \n    # Do math calculation to get the answer\n    average_rental_expense = sum(rental_expenses) / len(rental_expenses)\n    \n    # return answer\n    return round(average_rental_expense, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5538,
+          "completion_tokens": 222,
+          "total_tokens": 5760,
+          "prompt_tokens_details": {
+            "cached_tokens": 3764
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 120
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2551",
+        "score": 1.658637285232544,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-569",
+        "score": 1.6433932781219482,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2247",
+        "score": 1.635451316833496,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1967",
+        "score": 1.6326370239257812,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1123",
+        "score": 1.632049322128296,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2250",
+        "score": 1.6299388408660889,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-3016",
+        "score": 1.6263949871063232,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2741",
+        "score": 1.6254425048828125,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2657",
+        "score": 1.6246992349624634,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2252",
+        "score": 1.621638536453247,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1704",
+        "score": 1.6177618503570557,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2549",
+        "score": 1.6138889789581299,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-3015",
+        "score": 1.6138026714324951,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1330",
+        "score": 1.60958993434906,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2550",
+        "score": 1.5977375507354736,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2083",
+        "score": 1.5936647653579712,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1700",
+        "score": 1.587289571762085,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-76",
+        "score": 1.586517095565796,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-72",
+        "score": 1.585623025894165,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.5809359550476074,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1701",
+        "score": 1.5777755975723267,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.5764007568359375,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1179",
+        "score": 1.5750184059143066,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2220",
+        "score": 1.5712785720825195,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.5704014301300049,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1122",
+        "score": 1.5699388980865479,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1706",
+        "score": 1.5677893161773682,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.5626931190490723,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2729",
+        "score": 1.5621168613433838,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1003",
+        "score": 1.5565001964569092,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2387"
+    ],
+    "status": "ok",
+    "answer": 55.333,
+    "code": "def solution():\n    # Define variables name and value\n    rental_expenses = [54, 58, 54]  # 2002, 2001, and 2000, in millions\n    \n    # Do math calculation to get the answer\n    average_rental_expense = sum(rental_expenses) / len(rental_expenses)\n    \n    # return answer\n    return round(average_rental_expense, 3)\n"
+  },
+  "digest": "85556646da66038fe66458063580160b22ee042dc41e625df49a48859118dde9"
+}

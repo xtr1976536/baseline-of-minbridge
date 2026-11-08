@@ -1,0 +1,21 @@
+{
+  "identity": "79c9d6a0b2a469ddba56877e8e5ad3727148ac3bb72be153b5930eb4df622e8f",
+  "response_digest": "e024ed41d54678be2962c78dc47159508bee499c011c23a13000c65352a1b480",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_a = [150, 152, 149, 153, 151]\n    stock_b = [45, 47, 44, 48, 46]\n\n    # Do math calculation to get the answer\n    n = len(stock_a)\n    sum_a = sum(stock_a)\n    sum_b = sum(stock_b)\n    sum_a_squared = sum(value ** 2 for value in stock_a)\n    sum_b_squared = sum(value ** 2 for value in stock_b)\n    sum_ab = sum(a * b for a, b in zip(stock_a, stock_b))\n\n    numerator = n * sum_ab - sum_a * sum_b\n    denominator = (\n        (n * sum_a_squared - sum_a ** 2)\n        * (n * sum_b_squared - sum_b ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 4)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 6009,
+      "completion_tokens": 269,
+      "total_tokens": 6278,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 44
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

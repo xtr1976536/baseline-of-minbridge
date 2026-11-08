@@ -1,0 +1,109 @@
+% General pipeline figure (overview): inputs -> two lanes -> Verification IR ->
+% autoformalizer LLM -> SMT -> solver -> verdict, with the two bounded repair loops.
+% Requires: \usepackage{tikz} + libraries below; \usepackage{amsmath, xcolor}.
+% Compile standalone by uncommenting the documentclass block.
+
+% \documentclass[tikz,border=6pt]{standalone}
+% \usepackage{amsmath,xcolor}
+% \begin{document}
+
+\usetikzlibrary{positioning,arrows.meta,fit,backgrounds}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small, >=Latex,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=5pt, minimum height=12mm, text width=24mm},
+  io/.style={box, fill=black!4, text width=18mm, minimum height=9mm},
+  claim/.style={box, fill=black!6, draw=black!45},
+  auth/.style={box, fill=teal!8, draw=teal!45!black},
+  ir/.style={box, fill=violet!6, draw=violet!45!black, align=left, font=\scriptsize, text width=30mm},
+  proc/.style={box, fill=blue!5, draw=blue!45!black},
+  smt/.style={box, fill=black!3, align=left, font=\ttfamily\scriptsize, text width=27mm},
+  flow/.style={-{Latex[length=5pt]}, thick, black!70},
+  repair/.style={-{Latex[length=5pt]}, thick, dashed, orange!75!black},
+  hdr/.style={font=\scriptsize\bfseries\sffamily, text=black!55},
+  lbl/.style={font=\scriptsize\itshape, text=black!55},
+]
+
+% ---------------- inputs ----------------
+\node[io] (q) {Question};
+\node[io, below=6mm of q] (f) {Filing\\\scriptsize (PDF + XBRL)};
+
+% ---------------- two lanes ----------------
+\node[claim, right=10mm of q, yshift=1mm, text width=20mm] (gen)
+  {\textbf{LLM} answer\\[1pt]\footnotesize claim $c$};
+\node[auth, right=10mm of f, yshift=-1mm, text width=27mm] (ground)
+  {ground from filing structure\\[1pt]\footnotesize formula + authoritative operands};
+
+\node[hdr, above=1mm of gen] {\textcolor{black!55}{untrusted}};
+\node[hdr, below=1mm of ground] {\textcolor{teal!45!black}{authoritative}};
+
+% ---------------- Verification IR ----------------
+\node[ir, right=10mm of gen, yshift=-9mm] (ir) {%
+\textbf{\sffamily Verification IR}\\[2pt]
+metric, formula\\
+facts: concept $\mapsto$ value\\
+claim $c$,\ \ tolerance $\tau$};
+
+% ---------------- autoformalizer LLM -> SMT ----------------
+\node[claim, right=9mm of ir, text width=24mm] (af)
+  {\textbf{Autoformalizer}\\\footnotesize LLM $\Rightarrow$ SMT-LIB};
+\node[smt, below=6mm of af] (smt) {%
+$\Phi:\ \lvert m^\star{-}c\rvert\le\tau$\\
+(check-sat)};
+
+% ---------------- solver ----------------
+\node[proc, right=9mm of af, text width=13mm, yshift=-5mm] (z3) {SMT solver\\\scriptsize (Z3)};
+
+% ---------------- verdicts ----------------
+\node[box, right=9mm of z3, text width=33mm, draw=black!35, fill=black!2, align=left] (verd) {%
+\textcolor{green!40!black}{\textbf{Verified}} \scriptsize sat\\[2pt]
+\textcolor{red!55!black}{\textbf{Violated}} \scriptsize unsat\ ($c^\star{=}m^\star$)\\[2pt]
+\textcolor{black!55}{\textbf{Abstain}} \scriptsize not grounded / error};
+
+% ---------------- main flow ----------------
+\draw[flow] (q) -- (gen);
+\draw[flow] (f) -- (ground);
+\draw[flow] (gen.east) to[out=0,in=160] (ir.north west);
+\draw[flow] (ground.east) to[out=0,in=200] (ir.south west);
+\draw[flow] (ir) -- (af);
+\draw[flow] (af) -- (smt.north);
+\draw[flow] (smt.east) to[out=0,in=200] (z3.west);
+\draw[flow] (af.east) to[out=0,in=160] (z3.west);
+\draw[flow] (z3) -- (verd);
+
+% ---------------- repair loops (bounded, re-verified) ----------------
+\draw[repair] (verd.north) to[out=90,in=90]
+  node[lbl, above, pos=0.5]{repair $\le 1$ on \textcolor{red!55!black}{Violated}: re-ask the answer LLM (diagnostic feedback), re-verify}
+  (gen.north);
+\draw[repair] (z3.south) to[out=-90,in=-90]
+  node[lbl, below, pos=0.5]{repair $\le 1$ on invalid SMT: re-run the autoformalizer, re-verify}
+  (af.south);
+
+% ---------------- inputs grouping ----------------
+\begin{scope}[on background layer]
+  \node[fit=(q)(f), rounded corners, draw=black!12, inner sep=5pt,
+        label={[hdr]above:INPUTS}] {};
+\end{scope}
+
+\end{tikzpicture}
+
+\caption{\textbf{Pipeline overview.} From a question and a filing, two
+independent lanes are formed: an \emph{untrusted} lane where the language model
+produces a claim $c$, and an \emph{authoritative} lane that grounds the check in
+the filing's structure (the formula and the operands bound to their authoritative
+values). The two are assembled into a typed \emph{Verification IR}
+$\{\text{metric},\ \text{formula},\ \text{facts}:\text{concept}\mapsto\text{value},\ c,\ \tau\}$,
+which an autoformalizer LLM compiles into an SMT proof obligation
+$\Phi:\lvert m^\star-c\rvert\le\tau$. A single Z3 pass decides the verdict:
+\textsc{sat}$\Rightarrow$\textsc{Verified}, \textsc{unsat}$\Rightarrow$\textsc{Violated}
+(returning the certified correction $c^\star=m^\star$), else \textsc{Abstain}.
+Neither LLM is trusted: only \textsc{sat}/\textsc{unsat} produce a verdict, and
+two bounded repair loops (dashed) each re-verify, so soundness is preserved. On
+\textsc{Violated} the answer model is re-asked once with diagnostic feedback; an
+unparseable encoding triggers one autoformalizer regeneration.}
+\label{fig:pipeline-overview}
+\end{figure*}
+
+% \end{document}

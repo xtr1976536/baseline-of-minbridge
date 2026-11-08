@@ -1,0 +1,189 @@
+{
+  "record": {
+    "question_id": "test-2116",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates a multi-year forward interest rate from annual spot rates using spot-rate discount-factor relationships, specifically the forward rate for a two-year period beginning two years from now, and returns the result as a percentage rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4996,
+          "completion_tokens": 52,
+          "total_tokens": 5048,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14326,
+          "completion_tokens": 376,
+          "total_tokens": 14702,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 279
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    spot_rate_short = 0.025  # 2-year spot rate\n    spot_rate_long = 0.055   # 4-year spot rate\n    period_short = 2\n    period_long = 4\n\n    # Do math calculation to get the answer\n    forward_rate = (\n        ((1 + spot_rate_long) ** period_long)\n        / ((1 + spot_rate_short) ** period_short)\n    ) ** (1 / (period_long - period_short)) - 1\n\n    answer = round(forward_rate * 100, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5352,
+          "completion_tokens": 214,
+          "total_tokens": 5566,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 65
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-616",
+        "score": 1.8464860916137695
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.7866103649139404
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.765161395072937
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.754251480102539
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.7534499168395996
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.7383352518081665
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.719135046005249
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.7173848152160645
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.7159727811813354
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.712140440940857
+      },
+      {
+        "function_id": "article-450",
+        "score": 1.698035478591919
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.690685749053955
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.6653716564178467
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.6605063676834106
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.6334182024002075
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.632939338684082
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.629260540008545
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.6187975406646729
+      },
+      {
+        "function_id": "article-296",
+        "score": 1.613383412361145
+      },
+      {
+        "function_id": "article-2941",
+        "score": 1.608804702758789
+      },
+      {
+        "function_id": "article-2005",
+        "score": 1.605271816253662
+      },
+      {
+        "function_id": "article-293",
+        "score": 1.597649097442627
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.5974717140197754
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.5931658744812012
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.5930299758911133
+      },
+      {
+        "function_id": "article-1733",
+        "score": 1.5918132066726685
+      },
+      {
+        "function_id": "article-1730",
+        "score": 1.5884730815887451
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.580075740814209
+      },
+      {
+        "function_id": "article-432",
+        "score": 1.5799498558044434
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.57710599899292
+      }
+    ],
+    "selected_ids": [
+      "article-616",
+      "article-1429"
+    ],
+    "status": "ok",
+    "answer": 8.588,
+    "code": "def solution():\n    # Define variables name and value\n    spot_rate_short = 0.025  # 2-year spot rate\n    spot_rate_long = 0.055   # 4-year spot rate\n    period_short = 2\n    period_long = 4\n\n    # Do math calculation to get the answer\n    forward_rate = (\n        ((1 + spot_rate_long) ** period_long)\n        / ((1 + spot_rate_short) ** period_short)\n    ) ** (1 / (period_long - period_short)) - 1\n\n    answer = round(forward_rate * 100, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "f7e732109fdfeb6ad0b50c73ff776590c845d61d4e410c9ef22a53fb923ea1b9"
+}

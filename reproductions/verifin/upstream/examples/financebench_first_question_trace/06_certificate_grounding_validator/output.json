@@ -1,0 +1,32 @@
+{
+  "evidence_bindings": [
+    {
+      "chunk_id": "corpus:3M_2018_10K:p60",
+      "column": "2018",
+      "evidence_assertion": "evidence_capital_expenditures_2018",
+      "name": "capital_expenditures_2018",
+      "period": "2018",
+      "row_label": "Purchases of property plant and equipment PP&E",
+      "source_quote": "Purchases of property, plant and equipment (PP&E) (1,577) (1,373) (1,420)",
+      "unit": "USD millions",
+      "value": 1577.0
+    }
+  ],
+  "validation_result": {
+    "answer_used_for_claim_support": "The verified capital expenditures is 1577 USD millions. Calculation: 1577.",
+    "checks_enforced_by_validator": [
+      "claim_has_unit",
+      "claimed_value_supported_by_answer",
+      "certificate_facts_match_formula_variables",
+      "fact_has_unit_source_quote_and_chunk_id",
+      "chunk_id_exists_in_retrieved_evidence",
+      "source_quote_supported_by_retrieved_chunk_text",
+      "fact_quantity_normalizes_under_source_scale",
+      "statement_context_matches_retrieval_plan"
+    ],
+    "enabled": true,
+    "reason": "",
+    "valid": true,
+    "validator": "verifiqa.formalization.certificate_validator.CertificateValidator.validate"
+  }
+}

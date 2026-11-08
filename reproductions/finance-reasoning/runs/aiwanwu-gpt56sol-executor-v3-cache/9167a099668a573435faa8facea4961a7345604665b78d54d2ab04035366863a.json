@@ -1,0 +1,21 @@
+{
+  "identity": "9167a099668a573435faa8facea4961a7345604665b78d54d2ab04035366863a",
+  "response_digest": "a3d6c26f307f5ed2c3fe77735e37293e4f97746fabfd176a94010e6e663149b9",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    weights = [0.40, 0.30, 0.30]\n    standard_deviations = [0.15, 0.20, 0.25]\n    covariance_matrix = [\n        [standard_deviations[0] ** 2, 0.02, 0.03],\n        [0.02, standard_deviations[1] ** 2, 0.04],\n        [0.03, 0.04, standard_deviations[2] ** 2],\n    ]\n\n    # Do math calculation to get the answer\n    portfolio_variance = 0.0\n    for i in range(len(weights)):\n        for j in range(len(weights)):\n            portfolio_variance += (\n                weights[i] * weights[j] * covariance_matrix[i][j]\n            )\n\n    portfolio_standard_deviation = portfolio_variance ** 0.5\n    answer = round(portfolio_standard_deviation * 100, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5850,
+      "completion_tokens": 399,
+      "total_tokens": 6249,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 166
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

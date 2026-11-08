@@ -1,0 +1,18 @@
+{
+  "identity": "b65255e61cb0c7f87c709b6fb62606ab04104710a0935a3584818e21b177e4af",
+  "response_digest": "617cb66765cd0786a9f68197ab8acdf57ffddf522a3864d7475e31c1ffd04f13",
+  "response": {
+    "content": "```python\ndef solution():\n    closing_prices = [150, 155, 153, 157, 160]\n    volumes = [1000, 1500, 1200, 1800, 2000]\n\n    obv = 0\n    for i in range(1, len(closing_prices)):\n        if closing_prices[i] > closing_prices[i - 1]:\n            obv += volumes[i]\n        elif closing_prices[i] < closing_prices[i - 1]:\n            obv -= volumes[i]\n\n    return obv\n```",
+    "usage": {
+      "prompt_tokens": 5440,
+      "completion_tokens": 168,
+      "total_tokens": 5608,
+      "completion_tokens_details": {
+        "reasoning_tokens": 46
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

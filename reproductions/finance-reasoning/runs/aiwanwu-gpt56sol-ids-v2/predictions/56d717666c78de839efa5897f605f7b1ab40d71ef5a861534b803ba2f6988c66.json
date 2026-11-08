@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2092",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Macaulay duration of a fixed-rate coupon bond by weighting each coupon and maturity face-value cash flow by its time to payment and discounting at the yield to maturity, for annual payments over a finite term, with the result expressed in years and rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5007,
+          "completion_tokens": 63,
+          "total_tokens": 5070,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14669,
+          "completion_tokens": 280,
+          "total_tokens": 14949,
+          "completion_tokens_details": {
+            "reasoning_tokens": 256
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    cash_flows = [50, 50, 50, 50, 1050]\n    discount_rate = 0.04\n\n    # Do math calculation to get the answer\n    present_values = [\n        cash_flow / ((1 + discount_rate) ** period)\n        for period, cash_flow in enumerate(cash_flows, 1)\n    ]\n    bond_price = sum(present_values)\n\n    macaulay_duration = sum(\n        period * present_value / bond_price\n        for period, present_value in enumerate(present_values, 1)\n    )\n\n    # Return answer rounded to two decimal places\n    return round(macaulay_duration, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5704,
+          "completion_tokens": 491,
+          "total_tokens": 6195,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 331
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-452",
+        "score": 2.2144386768341064,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-806",
+        "score": 2.1984572410583496,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1789",
+        "score": 2.1848225593566895,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-453",
+        "score": 2.162032127380371,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-733",
+        "score": 2.0921716690063477,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-926",
+        "score": 2.0646281242370605,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-454",
+        "score": 1.9729499816894531,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.920785665512085,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.857121229171753,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-503",
+        "score": 1.8438220024108887,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.83342444896698,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.830252766609192,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.826716423034668,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.8139162063598633,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.8095512390136719,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.8072127103805542,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.8047364950180054,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.7902886867523193,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1490",
+        "score": 1.7813845872879028,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.7753969430923462,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.768079400062561,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.7632099390029907,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.759159803390503,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2567",
+        "score": 1.7536042928695679,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7505159378051758,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.7453606128692627,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.7422354221343994,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.7399653196334839,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.7398817539215088,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7382291555404663,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-452",
+      "article-806",
+      "article-1789"
+    ],
+    "status": "ok",
+    "answer": 4.56,
+    "code": "def solution():\n    # Define variables name and value\n    cash_flows = [50, 50, 50, 50, 1050]\n    discount_rate = 0.04\n\n    # Do math calculation to get the answer\n    present_values = [\n        cash_flow / ((1 + discount_rate) ** period)\n        for period, cash_flow in enumerate(cash_flows, 1)\n    ]\n    bond_price = sum(present_values)\n\n    macaulay_duration = sum(\n        period * present_value / bond_price\n        for period, present_value in enumerate(present_values, 1)\n    )\n\n    # Return answer rounded to two decimal places\n    return round(macaulay_duration, 2)\n"
+  },
+  "digest": "becd4efcae033f51563b864988c4460439de838d2eb17851813154dcb8913d4f"
+}

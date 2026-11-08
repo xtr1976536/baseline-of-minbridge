@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2060",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function constructs a household economic balance sheet and calculates economic net worth by summing current financial and real assets, home equity or property value net of mortgage debt, and the present value of future earnings, then subtracting the present value of future consumption and planned obligations such as education costs and charitable bequests?",
+        "usage": {
+          "prompt_tokens": 5085,
+          "completion_tokens": 65,
+          "total_tokens": 5150,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 13506,
+          "completion_tokens": 142,
+          "total_tokens": 13648,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 118
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    stocks = 500000\n    fixed_income = 330000\n    house_value = 350000\n    present_value_earnings = 980000\n\n    mortgage = 175000\n    future_consumption = 870000\n    college_tuition = 150000\n    family_foundation = 600000\n\n    # Do math calculation to get the answer\n    total_economic_assets = (\n        stocks\n        + fixed_income\n        + house_value\n        + present_value_earnings\n    )\n\n    total_economic_liabilities = (\n        mortgage\n        + future_consumption\n        + college_tuition\n        + family_foundation\n    )\n\n    economic_net_worth = total_economic_assets - total_economic_liabilities\n\n    # Return the answer to a single decimal place\n    return round(economic_net_worth, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5540,
+          "completion_tokens": 286,
+          "total_tokens": 5826,
+          "completion_tokens_details": {
+            "reasoning_tokens": 86
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2437",
+        "score": 1.9464809894561768,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2955",
+        "score": 1.921628475189209,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1274",
+        "score": 1.8556047677993774,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1065",
+        "score": 1.820322871208191,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1808",
+        "score": 1.7959656715393066,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2239",
+        "score": 1.7860921621322632,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2738",
+        "score": 1.7843737602233887,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-97",
+        "score": 1.77485990524292,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-550",
+        "score": 1.7649742364883423,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2021",
+        "score": 1.7625964879989624,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2927",
+        "score": 1.7341406345367432,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1390",
+        "score": 1.7296608686447144,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2926",
+        "score": 1.7256207466125488,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2951",
+        "score": 1.717249870300293,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2363",
+        "score": 1.7144267559051514,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2904",
+        "score": 1.7136225700378418,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-161",
+        "score": 1.708088755607605,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2896",
+        "score": 1.692624568939209,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1170",
+        "score": 1.6881017684936523,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2371",
+        "score": 1.6866631507873535,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2570",
+        "score": 1.6829849481582642,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1982",
+        "score": 1.6793153285980225,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2944",
+        "score": 1.675146222114563,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2940",
+        "score": 1.6734228134155273,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-255",
+        "score": 1.6695683002471924,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2889",
+        "score": 1.666425108909607,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1124",
+        "score": 1.6649090051651,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2897",
+        "score": 1.6627681255340576,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1388",
+        "score": 1.6583669185638428,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2929",
+        "score": 1.6574820280075073,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2437",
+      "article-2955",
+      "article-1274"
+    ],
+    "status": "ok",
+    "answer": 365000,
+    "code": "def solution():\n    # Define variables name and value\n    stocks = 500000\n    fixed_income = 330000\n    house_value = 350000\n    present_value_earnings = 980000\n\n    mortgage = 175000\n    future_consumption = 870000\n    college_tuition = 150000\n    family_foundation = 600000\n\n    # Do math calculation to get the answer\n    total_economic_assets = (\n        stocks\n        + fixed_income\n        + house_value\n        + present_value_earnings\n    )\n\n    total_economic_liabilities = (\n        mortgage\n        + future_consumption\n        + college_tuition\n        + family_foundation\n    )\n\n    economic_net_worth = total_economic_assets - total_economic_liabilities\n\n    # Return the answer to a single decimal place\n    return round(economic_net_worth, 1)\n"
+  },
+  "digest": "6307e35e443981fb9fc81c3a722fa8c003e03a055fb6bc5c092a4c66dc277cc3"
+}

@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2079",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates total household employee (nanny) payroll tax liability by applying employee and employer Social Security and Medicare tax rates to total wages, adding federal unemployment tax on wages up to a specified wage base, excluding state taxes, and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5064,
+          "completion_tokens": 58,
+          "total_tokens": 5122,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 16078,
+          "completion_tokens": 376,
+          "total_tokens": 16454,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 355
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    wages = 25000\n    social_security_medicare_rate = 0.0765\n    employer_and_employee_shares = 2\n    futa_wage_base = 7000\n    futa_rate = 0.06\n    \n    # Do math calculation to get the answer\n    social_security_medicare_tax = (\n        wages * social_security_medicare_rate * employer_and_employee_shares\n    )\n    federal_unemployment_tax = min(wages, futa_wage_base) * futa_rate\n    total_tax = social_security_medicare_tax + federal_unemployment_tax\n    \n    # return answer\n    return round(total_tax)\n```",
+        "usage": {
+          "prompt_tokens": 5457,
+          "completion_tokens": 241,
+          "total_tokens": 5698,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 83
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2851",
+        "score": 2.231626510620117,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1259",
+        "score": 1.8198332786560059,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-532",
+        "score": 1.8080934286117554,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-529",
+        "score": 1.716696858406067,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1858",
+        "score": 1.7053964138031006,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1857",
+        "score": 1.6924370527267456,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.6897414922714233,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.6743773221969604,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2953",
+        "score": 1.6179813146591187,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1087",
+        "score": 1.6152304410934448,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-508",
+        "score": 1.5850818157196045,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-846",
+        "score": 1.5772655010223389,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2520",
+        "score": 1.5761127471923828,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1850",
+        "score": 1.5699018239974976,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2563",
+        "score": 1.5698162317276,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2484",
+        "score": 1.569197416305542,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.5674688816070557,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1813",
+        "score": 1.5651211738586426,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1852",
+        "score": 1.561854362487793,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2694",
+        "score": 1.554842472076416,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1819",
+        "score": 1.548418402671814,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.547614336013794,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1815",
+        "score": 1.5474090576171875,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-313",
+        "score": 1.5357052087783813,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1746",
+        "score": 1.5307319164276123,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1799",
+        "score": 1.5299851894378662,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1802",
+        "score": 1.5267162322998047,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3076",
+        "score": 1.5210402011871338,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2486",
+        "score": 1.517770767211914,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2274",
+        "score": 1.51481294631958,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2851",
+      "article-532"
+    ],
+    "status": "ok",
+    "answer": 4245,
+    "code": "def solution():\n    # Define variables name and value\n    wages = 25000\n    social_security_medicare_rate = 0.0765\n    employer_and_employee_shares = 2\n    futa_wage_base = 7000\n    futa_rate = 0.06\n    \n    # Do math calculation to get the answer\n    social_security_medicare_tax = (\n        wages * social_security_medicare_rate * employer_and_employee_shares\n    )\n    federal_unemployment_tax = min(wages, futa_wage_base) * futa_rate\n    total_tax = social_security_medicare_tax + federal_unemployment_tax\n    \n    # return answer\n    return round(total_tax)\n"
+  },
+  "digest": "b7291496157ae2a8948a39a4e12c96271dcc34f1ad20a82121024c3a60386ab4"
+}

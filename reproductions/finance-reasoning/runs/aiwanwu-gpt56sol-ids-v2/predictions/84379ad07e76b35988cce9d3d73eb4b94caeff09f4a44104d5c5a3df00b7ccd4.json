@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2178",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a company’s weighted average cost of capital by estimating the market value of semiannual coupon debt from face value, coupon rate, yield to maturity, and remaining term; calculating the cost of equity with the CAPM using beta, risk-free rate, and equity risk premium; applying the corporate tax shield to the cost of debt; and weighting debt and equity costs by their market values, returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5049,
+          "completion_tokens": 95,
+          "total_tokens": 5144,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C08\"]}",
+        "usage": {
+          "prompt_tokens": 14443,
+          "completion_tokens": 466,
+          "total_tokens": 14909,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 442
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    market_value_equity = 2_000_000\n    face_value_debt = 4_000_000\n    annual_coupon_rate = 0.08\n    yield_to_maturity = 0.09\n    years_to_maturity = 5\n    tax_rate = 0.25\n    risk_free_rate = 0.02\n    beta = 1.2\n    equity_risk_premium = 0.04\n\n    # Do math calculation to get the answer\n    semiannual_coupon = face_value_debt * annual_coupon_rate / 2\n    semiannual_yield = yield_to_maturity / 2\n    number_of_periods = years_to_maturity * 2\n\n    market_value_debt = (\n        semiannual_coupon\n        * (1 - (1 + semiannual_yield) ** -number_of_periods)\n        / semiannual_yield\n        + face_value_debt * (1 + semiannual_yield) ** -number_of_periods\n    )\n\n    cost_of_equity = risk_free_rate + beta * equity_risk_premium\n    equity_weight = market_value_equity / (market_value_equity + market_value_debt)\n    debt_weight = market_value_debt / (market_value_equity + market_value_debt)\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * yield_to_maturity * (1 - tax_rate)\n    )\n\n    # Return the WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5582,
+          "completion_tokens": 552,
+          "total_tokens": 6134,
+          "completion_tokens_details": {
+            "reasoning_tokens": 201
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-198",
+        "score": 2.005215883255005,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.9754666090011597,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2796",
+        "score": 1.929587721824646,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.9235420227050781,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.8742060661315918,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1643",
+        "score": 1.8678497076034546,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1512",
+        "score": 1.8615121841430664,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-189",
+        "score": 1.8595741987228394,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-43",
+        "score": 1.8545761108398438,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1592",
+        "score": 1.844296932220459,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2475",
+        "score": 1.8270536661148071,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-560",
+        "score": 1.820389747619629,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-874",
+        "score": 1.816880702972412,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2452",
+        "score": 1.8109171390533447,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2560",
+        "score": 1.8070718050003052,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2052",
+        "score": 1.7963926792144775,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1644",
+        "score": 1.7931104898452759,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2212",
+        "score": 1.7911441326141357,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1095",
+        "score": 1.7911149263381958,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.7875277996063232,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-388",
+        "score": 1.775266408920288,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-552",
+        "score": 1.7711915969848633,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-880",
+        "score": 1.7557382583618164,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.7551079988479614,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3052",
+        "score": 1.7533622980117798,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.751224160194397,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7508882284164429,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1641",
+        "score": 1.7504827976226807,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-559",
+        "score": 1.7498705387115479,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.7490317821502686,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-198",
+      "article-191",
+      "article-189"
+    ],
+    "status": "ok",
+    "answer": 6.77,
+    "code": "def solution():\n    # Define variables name and value\n    market_value_equity = 2_000_000\n    face_value_debt = 4_000_000\n    annual_coupon_rate = 0.08\n    yield_to_maturity = 0.09\n    years_to_maturity = 5\n    tax_rate = 0.25\n    risk_free_rate = 0.02\n    beta = 1.2\n    equity_risk_premium = 0.04\n\n    # Do math calculation to get the answer\n    semiannual_coupon = face_value_debt * annual_coupon_rate / 2\n    semiannual_yield = yield_to_maturity / 2\n    number_of_periods = years_to_maturity * 2\n\n    market_value_debt = (\n        semiannual_coupon\n        * (1 - (1 + semiannual_yield) ** -number_of_periods)\n        / semiannual_yield\n        + face_value_debt * (1 + semiannual_yield) ** -number_of_periods\n    )\n\n    cost_of_equity = risk_free_rate + beta * equity_risk_premium\n    equity_weight = market_value_equity / (market_value_equity + market_value_debt)\n    debt_weight = market_value_debt / (market_value_equity + market_value_debt)\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * yield_to_maturity * (1 - tax_rate)\n    )\n\n    # Return the WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n"
+  },
+  "digest": "060d0e67949209bebe5f3e8cc3026077c10e9d1862dd6f23a6f530d0736b5089"
+}

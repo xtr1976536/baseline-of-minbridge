@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2173",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates annual Free Cash Flow to Equity (FCFE) from net income, depreciation, changes in noncash working capital, capital expenditures derived from gross fixed assets, and net borrowing derived from changes in short-term and long-term debt, using two consecutive years of financial statements and returning the result in millions?",
+        "usage": {
+          "prompt_tokens": 5313,
+          "completion_tokens": 66,
+          "total_tokens": 5379,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 14278,
+          "completion_tokens": 679,
+          "total_tokens": 14957,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 655
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 875.0\n    depreciation = 400.0\n\n    gross_fixed_assets_2018 = 5000.0\n    gross_fixed_assets_2017 = 4250.0\n\n    accounts_receivable_2018 = 800.0\n    inventories_2018 = 850.0\n    accounts_payable_2018 = 400.0\n    accrued_expenses_2018 = 120.0\n\n    accounts_receivable_2017 = 750.0\n    inventories_2017 = 720.0\n    accounts_payable_2017 = 300.0\n    accrued_expenses_2017 = 90.0\n\n    notes_payable_2018 = 550.0\n    notes_payable_2017 = 500.0\n    long_term_debt_2018 = 1500.0\n    long_term_debt_2017 = 1400.0\n\n    # Calculate capital expenditures\n    capital_expenditures = (\n        gross_fixed_assets_2018 - gross_fixed_assets_2017 + depreciation\n    )\n\n    # Calculate the change in non-cash net working capital\n    net_working_capital_2018 = (\n        accounts_receivable_2018\n        + inventories_2018\n        - accounts_payable_2018\n        - accrued_expenses_2018\n    )\n    net_working_capital_2017 = (\n        accounts_receivable_2017\n        + inventories_2017\n        - accounts_payable_2017\n        - accrued_expenses_2017\n    )\n    change_in_net_working_capital = (\n        net_working_capital_2018 - net_working_capital_2017\n    )\n\n    # Calculate net debt issued\n    net_debt_issued = (\n        notes_payable_2018\n        - notes_payable_2017\n        + long_term_debt_2018\n        - long_term_debt_2017\n    )\n\n    # Calculate FCFE in millions\n    fcfe = (\n        net_income\n        + depreciation\n        - capital_expenditures\n        - change_in_net_working_capital\n        + net_debt_issued\n    )\n\n    # return answer\n    return round(fcfe, 1)\n```",
+        "usage": {
+          "prompt_tokens": 6064,
+          "completion_tokens": 660,
+          "total_tokens": 6724,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 154
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-51",
+        "score": 2.292116641998291,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-625",
+        "score": 2.2795372009277344,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-623",
+        "score": 2.247710943222046,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-622",
+        "score": 2.1053380966186523,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-270",
+        "score": 2.094466209411621,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-629",
+        "score": 2.0916078090667725,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1665",
+        "score": 2.0876028537750244,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-624",
+        "score": 2.045745372772217,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-627",
+        "score": 2.0455050468444824,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-628",
+        "score": 2.0385046005249023,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-626",
+        "score": 2.0102787017822266,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2130",
+        "score": 1.9807554483413696,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1329",
+        "score": 1.9430830478668213,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2053",
+        "score": 1.9100754261016846,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-89",
+        "score": 1.892230749130249,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-52",
+        "score": 1.8202894926071167,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-87",
+        "score": 1.8067564964294434,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.7956013679504395,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1275",
+        "score": 1.7824114561080933,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-3027",
+        "score": 1.7560498714447021,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2890",
+        "score": 1.7414777278900146,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3026",
+        "score": 1.7383954524993896,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2700",
+        "score": 1.7364611625671387,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-90",
+        "score": 1.7329689264297485,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-407",
+        "score": 1.7305502891540527,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2738",
+        "score": 1.7179360389709473,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-91",
+        "score": 1.7104988098144531,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1721",
+        "score": 1.7098169326782227,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-247",
+        "score": 1.7076503038406372,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-3030",
+        "score": 1.6986767053604126,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-51",
+      "article-625",
+      "article-622"
+    ],
+    "status": "ok",
+    "answer": 225.0,
+    "code": "def solution():\n    # Define variables name and value\n    net_income = 875.0\n    depreciation = 400.0\n\n    gross_fixed_assets_2018 = 5000.0\n    gross_fixed_assets_2017 = 4250.0\n\n    accounts_receivable_2018 = 800.0\n    inventories_2018 = 850.0\n    accounts_payable_2018 = 400.0\n    accrued_expenses_2018 = 120.0\n\n    accounts_receivable_2017 = 750.0\n    inventories_2017 = 720.0\n    accounts_payable_2017 = 300.0\n    accrued_expenses_2017 = 90.0\n\n    notes_payable_2018 = 550.0\n    notes_payable_2017 = 500.0\n    long_term_debt_2018 = 1500.0\n    long_term_debt_2017 = 1400.0\n\n    # Calculate capital expenditures\n    capital_expenditures = (\n        gross_fixed_assets_2018 - gross_fixed_assets_2017 + depreciation\n    )\n\n    # Calculate the change in non-cash net working capital\n    net_working_capital_2018 = (\n        accounts_receivable_2018\n        + inventories_2018\n        - accounts_payable_2018\n        - accrued_expenses_2018\n    )\n    net_working_capital_2017 = (\n        accounts_receivable_2017\n        + inventories_2017\n        - accounts_payable_2017\n        - accrued_expenses_2017\n    )\n    change_in_net_working_capital = (\n        net_working_capital_2018 - net_working_capital_2017\n    )\n\n    # Calculate net debt issued\n    net_debt_issued = (\n        notes_payable_2018\n        - notes_payable_2017\n        + long_term_debt_2018\n        - long_term_debt_2017\n    )\n\n    # Calculate FCFE in millions\n    fcfe = (\n        net_income\n        + depreciation\n        - capital_expenditures\n        - change_in_net_working_capital\n        + net_debt_issued\n    )\n\n    # return answer\n    return round(fcfe, 1)\n"
+  },
+  "digest": "a3c4d68b0298cd34c281da03701cc385fedf7378f69f8090726748de108289f8"
+}

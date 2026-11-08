@@ -1,0 +1,21 @@
+{
+  "identity": "bb4cf494bc5551157e8eef52210f702320dbdf83b2d2980ebb42e293393dce20",
+  "response_digest": "56858c2c179c1ad037df84a73f555b29e4b6929f91ce6be41400a383dba15873",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 5_000_000\n    coupon_rate = 0.025\n    market_rate = 0.03\n    years = 3\n\n    # Do math calculation to get the answer\n    annual_coupon = face_value * coupon_rate\n    bond_value = sum(\n        annual_coupon / ((1 + market_rate) ** period)\n        for period in range(1, years + 1)\n    )\n    bond_value += face_value / ((1 + market_rate) ** years)\n\n    # return answer\n    return round(bond_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5744,
+      "completion_tokens": 399,
+      "total_tokens": 6143,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 258
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

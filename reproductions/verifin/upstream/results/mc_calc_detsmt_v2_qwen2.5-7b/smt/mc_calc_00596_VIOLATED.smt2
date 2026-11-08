@@ -1,0 +1,53 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_operating_income_loss_fy2023 Real)
+(declare-const gain_loss_on_sale_of_business_fy2023 Real)
+(declare-const gross_profit_fy2023 Real)
+(declare-const impairment_of_intangible_assets_excluding_goodwill_fy2023 Real)
+(declare-const selling_general_and_administrative_expense_fy2023 Real)
+
+(assert (! (= gain_loss_on_sale_of_business_fy2023 0) :named evidence_gain_loss_on_sale_of_business_fy2023))
+(assert (! (= gross_profit_fy2023 49590) :named evidence_gross_profit_fy2023))
+(assert (! (= impairment_of_intangible_assets_excluding_goodwill_fy2023 927) :named evidence_impairment_of_intangible_assets_excluding_goodwill_fy2023))
+(assert (! (= selling_general_and_administrative_expense_fy2023 36677) :named evidence_selling_general_and_administrative_expense_fy2023))
+
+(assert (! (= computed_operating_income_loss_fy2023 (+ gross_profit_fy2023 (* (- 1) selling_general_and_administrative_expense_fy2023) (* (- 1) impairment_of_intangible_assets_excluding_goodwill_fy2023) gain_loss_on_sale_of_business_fy2023)) :named formula_operating_income_loss_fy2023))
+
+(assert (! (<= (- computed_operating_income_loss_fy2023 11512) 11.512) :named claim_upper))
+(assert (! (<= (- 11512 computed_operating_income_loss_fy2023) 11.512) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_01_01_2023_12_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_GainLossOnSaleOfBusiness_duration_2023_01_01_2023_12_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_GrossProfit_duration_2023_01_01_2023_12_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_ImpairmentOfIntangibleAssetsExcludingGoodwill_duration_2023_01_01_2023_12_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_01_01_2023_12_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_Revenues_duration_2023_01_01_2023_12_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_01_01_2023_12_30_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_01_01_2023_12_30_unit_USD_dims_none 41881) :named evidence_xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_01_01_2023_12_30_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_01_01_2023_12_30_unit_USD_dims_none 11986) :named evidence_xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_01_01_2023_12_30_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_Revenues_duration_2023_01_01_2023_12_30_unit_USD_dims_none 91471) :named evidence_xbrl_fact_us_gaap_Revenues_duration_2023_01_01_2023_12_30_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= gross_profit_fy2023 xbrl_fact_us_gaap_GrossProfit_duration_2023_01_01_2023_12_30_unit_USD_dims_none) :named xbrl_bind_gross_profit_fy2023_edgar_2023_12_30_0000077476_24_000008))
+(assert (! (= xbrl_fact_us_gaap_GrossProfit_duration_2023_01_01_2023_12_30_unit_USD_dims_none 49590) :named xbrl_instance_gross_profit_fy2023))
+(assert (! (= selling_general_and_administrative_expense_fy2023 xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_01_01_2023_12_30_unit_USD_dims_none) :named xbrl_bind_selling_general_and_administrative_expense_fy2023_edgar_2023_12_30_0000077476_24_000008))
+(assert (! (= xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_01_01_2023_12_30_unit_USD_dims_none 36677) :named xbrl_instance_selling_general_and_administrative_expense_fy2023))
+(assert (! (= impairment_of_intangible_assets_excluding_goodwill_fy2023 xbrl_fact_us_gaap_ImpairmentOfIntangibleAssetsExcludingGoodwill_duration_2023_01_01_2023_12_30_unit_USD_dims_none) :named xbrl_bind_impairment_of_intangible_assets_excluding_goodwill_fy2023_edgar_2023_12_30_0000077476_24_000008))
+(assert (! (= xbrl_fact_us_gaap_ImpairmentOfIntangibleAssetsExcludingGoodwill_duration_2023_01_01_2023_12_30_unit_USD_dims_none 927) :named xbrl_instance_impairment_of_intangible_assets_excluding_goodwill_fy2023))
+(assert (! (= gain_loss_on_sale_of_business_fy2023 xbrl_fact_us_gaap_GainLossOnSaleOfBusiness_duration_2023_01_01_2023_12_30_unit_USD_dims_none) :named xbrl_bind_gain_loss_on_sale_of_business_fy2023_edgar_2023_12_30_0000077476_24_000008))
+(assert (! (= xbrl_fact_us_gaap_GainLossOnSaleOfBusiness_duration_2023_01_01_2023_12_30_unit_USD_dims_none 0) :named xbrl_instance_gain_loss_on_sale_of_business_fy2023))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_GrossProfit_duration_2023_01_01_2023_12_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_Revenues_duration_2023_01_01_2023_12_30_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_01_01_2023_12_30_unit_USD_dims_none))) 1.5) :named xbrl_calc_1_177463439_GrossProfit_c_1_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_GrossProfit_duration_2023_01_01_2023_12_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_Revenues_duration_2023_01_01_2023_12_30_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_01_01_2023_12_30_unit_USD_dims_none))) (- 1.5)) :named xbrl_calc_1_177463439_GrossProfit_c_1_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_01_01_2023_12_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_GrossProfit_duration_2023_01_01_2023_12_30_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_01_01_2023_12_30_unit_USD_dims_none) (* -1 xbrl_fact_us_gaap_ImpairmentOfIntangibleAssetsExcludingGoodwill_duration_2023_01_01_2023_12_30_unit_USD_dims_none) xbrl_fact_us_gaap_GainLossOnSaleOfBusiness_duration_2023_01_01_2023_12_30_unit_USD_dims_none)) 2.5) :named xbrl_calc_4_177463439_OperatingIncomeLoss_c_1_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_01_01_2023_12_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_GrossProfit_duration_2023_01_01_2023_12_30_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_01_01_2023_12_30_unit_USD_dims_none) (* -1 xbrl_fact_us_gaap_ImpairmentOfIntangibleAssetsExcludingGoodwill_duration_2023_01_01_2023_12_30_unit_USD_dims_none) xbrl_fact_us_gaap_GainLossOnSaleOfBusiness_duration_2023_01_01_2023_12_30_unit_USD_dims_none)) (- 2.5)) :named xbrl_calc_4_177463439_OperatingIncomeLoss_c_1_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

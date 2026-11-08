@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2003",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Rule of 78 rebate of unearned interest for a precomputed installment loan, using the principal, total scheduled payments, payment amount, original term, and number of payments made before early payoff, and returns the remaining unearned finance charge rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5039,
+          "completion_tokens": 110,
+          "total_tokens": 5149,
+          "completion_tokens_details": {
+            "reasoning_tokens": 47
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL]",
+        "usage": {
+          "prompt_tokens": 15500,
+          "completion_tokens": 695,
+          "total_tokens": 16195,
+          "completion_tokens_details": {
+            "reasoning_tokens": 598
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    original_loan_amount = 15000\n    monthly_payment = 700\n    original_payments = 24\n    payments_made = 10\n    remaining_payments = original_payments - payments_made\n\n    # Do math calculation to get the answer\n    total_finance_charge = (original_payments * monthly_payment) - original_loan_amount\n    unearned_interest = total_finance_charge * (\n        remaining_payments * (remaining_payments + 1)\n    ) / (original_payments * (original_payments + 1))\n    answer = round(unearned_interest)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5746,
+          "completion_tokens": 222,
+          "total_tokens": 5968,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 68
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2027",
+        "score": 2.2494287490844727
+      },
+      {
+        "function_id": "article-2026",
+        "score": 1.9884164333343506
+      },
+      {
+        "function_id": "article-2059",
+        "score": 1.8243931531906128
+      },
+      {
+        "function_id": "article-1613",
+        "score": 1.7356011867523193
+      },
+      {
+        "function_id": "article-2598",
+        "score": 1.6862503290176392
+      },
+      {
+        "function_id": "article-2786",
+        "score": 1.6696991920471191
+      },
+      {
+        "function_id": "article-2785",
+        "score": 1.6536191701889038
+      },
+      {
+        "function_id": "article-78",
+        "score": 1.648602843284607
+      },
+      {
+        "function_id": "article-1430",
+        "score": 1.6461217403411865
+      },
+      {
+        "function_id": "article-486",
+        "score": 1.6380972862243652
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.6351606845855713
+      },
+      {
+        "function_id": "article-2152",
+        "score": 1.634336233139038
+      },
+      {
+        "function_id": "article-292",
+        "score": 1.6317542791366577
+      },
+      {
+        "function_id": "article-1308",
+        "score": 1.631620168685913
+      },
+      {
+        "function_id": "article-2273",
+        "score": 1.6251221895217896
+      },
+      {
+        "function_id": "article-2597",
+        "score": 1.6240966320037842
+      },
+      {
+        "function_id": "article-138",
+        "score": 1.6235005855560303
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.6186410188674927
+      },
+      {
+        "function_id": "article-2599",
+        "score": 1.6153805255889893
+      },
+      {
+        "function_id": "article-2153",
+        "score": 1.6149506568908691
+      },
+      {
+        "function_id": "article-150",
+        "score": 1.613933801651001
+      },
+      {
+        "function_id": "article-979",
+        "score": 1.6139020919799805
+      },
+      {
+        "function_id": "article-1623",
+        "score": 1.6132758855819702
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.6077983379364014
+      },
+      {
+        "function_id": "article-1470",
+        "score": 1.6074628829956055
+      },
+      {
+        "function_id": "article-1504",
+        "score": 1.6061064004898071
+      },
+      {
+        "function_id": "article-1824",
+        "score": 1.6028165817260742
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.6008703708648682
+      },
+      {
+        "function_id": "article-1343",
+        "score": 1.6005163192749023
+      },
+      {
+        "function_id": "article-1503",
+        "score": 1.6001088619232178
+      }
+    ],
+    "selected_ids": [
+      "article-2027",
+      "article-2026",
+      "article-1613"
+    ],
+    "status": "ok",
+    "answer": 630,
+    "code": "def solution():\n    # Define variables name and value\n    original_loan_amount = 15000\n    monthly_payment = 700\n    original_payments = 24\n    payments_made = 10\n    remaining_payments = original_payments - payments_made\n\n    # Do math calculation to get the answer\n    total_finance_charge = (original_payments * monthly_payment) - original_loan_amount\n    unearned_interest = total_finance_charge * (\n        remaining_payments * (remaining_payments + 1)\n    ) / (original_payments * (original_payments + 1))\n    answer = round(unearned_interest)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "639c7299f801d36f6a48237fc1f68efc86458fabad41c093b5c083a00d1c1abf"
+}

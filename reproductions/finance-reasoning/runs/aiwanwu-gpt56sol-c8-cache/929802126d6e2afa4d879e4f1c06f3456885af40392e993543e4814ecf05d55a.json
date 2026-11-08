@@ -1,0 +1,21 @@
+{
+  "identity": "929802126d6e2afa4d879e4f1c06f3456885af40392e993543e4814ecf05d55a",
+  "response_digest": "b12081a1a42e23e70d7f1edd104f3f9d63ef0eef8ed5b93a040a3e595088ea1b",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    net_worth = 1_200_000\n    residency_factor = 0.9\n\n    tax_free_threshold = 500_000\n    second_threshold = 1_000_000\n    second_rate = 0.02\n    top_rate = 0.04\n\n    # Do math calculation to get the answer\n    second_bracket_tax = (second_threshold - tax_free_threshold) * second_rate\n    top_bracket_tax = (net_worth - second_threshold) * top_rate\n    total_tax = second_bracket_tax + top_bracket_tax\n    adjusted_tax = total_tax * residency_factor\n\n    # return answer\n    return round(adjusted_tax)\n```",
+    "usage": {
+      "prompt_tokens": 5268,
+      "completion_tokens": 247,
+      "total_tokens": 5515,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 83
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

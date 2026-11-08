@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2217",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the holding period return for a multi-year investment fund with varying annual contributions and annual returns, accounting for the timing and weighting of cash flows, and returns the result as a percentage rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5020,
+          "completion_tokens": 48,
+          "total_tokens": 5068,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C03\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 13399,
+          "completion_tokens": 239,
+          "total_tokens": 13638,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 215
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    investments = [500, 600, 1000]\n    returns = [0.12, 0.05, 0.01]\n\n    # Do math calculation to get the answer\n    total_investment = sum(investments)\n    total_return = sum(investment * rate for investment, rate in zip(investments, returns))\n    holding_period_return = (total_return / total_investment) * 100\n\n    # return answer\n    return round(holding_period_return, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5439,
+          "completion_tokens": 296,
+          "total_tokens": 5735,
+          "completion_tokens_details": {
+            "reasoning_tokens": 167
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1063",
+        "score": 1.8937318325042725,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1062",
+        "score": 1.8691225051879883,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-477",
+        "score": 1.8288383483886719,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1061",
+        "score": 1.8051249980926514,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1907",
+        "score": 1.7974365949630737,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1064",
+        "score": 1.7651273012161255,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-9",
+        "score": 1.7603702545166016,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.7481627464294434,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1465",
+        "score": 1.7230134010314941,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.719146728515625,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.697879433631897,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.680033564567566,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.6552696228027344,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.6331779956817627,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1733",
+        "score": 1.6311404705047607,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.6304088830947876,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2327",
+        "score": 1.6239268779754639,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2",
+        "score": 1.6237341165542603,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1608",
+        "score": 1.6217454671859741,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1918",
+        "score": 1.6208820343017578,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.6205276250839233,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6120905876159668,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.610633134841919,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2331",
+        "score": 1.6093075275421143,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1533",
+        "score": 1.598606824874878,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-140",
+        "score": 1.5939862728118896,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.5912284851074219,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1920",
+        "score": 1.5900158882141113,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1609",
+        "score": 1.5898370742797852,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-266",
+        "score": 1.5890812873840332,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1062",
+      "article-477",
+      "article-1061"
+    ],
+    "status": "ok",
+    "answer": 4.762,
+    "code": "def solution():\n    # Define variables name and value\n    investments = [500, 600, 1000]\n    returns = [0.12, 0.05, 0.01]\n\n    # Do math calculation to get the answer\n    total_investment = sum(investments)\n    total_return = sum(investment * rate for investment, rate in zip(investments, returns))\n    holding_period_return = (total_return / total_investment) * 100\n\n    # return answer\n    return round(holding_period_return, 3)\n"
+  },
+  "digest": "6db191805e10991320e0e3e9297c3e7240e143611b436623fe44da2fa88033fd"
+}

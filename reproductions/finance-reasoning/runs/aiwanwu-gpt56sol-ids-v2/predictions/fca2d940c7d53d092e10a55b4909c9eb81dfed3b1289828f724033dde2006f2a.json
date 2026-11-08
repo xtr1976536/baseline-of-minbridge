@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2055",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the present value of an insurance IBNR reserve by combining expected claim amounts and settlement expenses, subtracting capped reinsurance recoveries for claims and expenses, applying a fixed annual discount rate from the incurred or valuation date, and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5085,
+          "completion_tokens": 105,
+          "total_tokens": 5190,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 43
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14302,
+          "completion_tokens": 389,
+          "total_tokens": 14691,
+          "completion_tokens_details": {
+            "reasoning_tokens": 368
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    claim_amounts = [150000]\n    claim_paid_dates = [\"year_end\"]\n    claim_settlement_expenses = [30000]\n    reinsurance_paid_claims = [70000]\n    reinsurance_paid_expenses = [10000]\n    discount_rate = 0.05\n\n    # Do math calculation to get the answer\n    net_claim_liability = claim_amounts[0] - reinsurance_paid_claims[0]\n    net_expense_liability = (\n        claim_settlement_expenses[0] - reinsurance_paid_expenses[0]\n    )\n    total_net_liability = net_claim_liability + net_expense_liability\n\n    ibnr_reserve = total_net_liability / (1 + discount_rate)\n\n    # Return the answer rounded to the nearest dollar\n    return round(ibnr_reserve)\n```",
+        "usage": {
+          "prompt_tokens": 5548,
+          "completion_tokens": 305,
+          "total_tokens": 5853,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 111
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-391",
+        "score": 2.3583269119262695,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2831",
+        "score": 2.203798770904541,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2205",
+        "score": 2.055168628692627,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-335",
+        "score": 1.8247711658477783,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-10",
+        "score": 1.792243242263794,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3079",
+        "score": 1.776796579360962,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2542",
+        "score": 1.7722315788269043,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2939",
+        "score": 1.756400465965271,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-11",
+        "score": 1.7531604766845703,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2830",
+        "score": 1.7426917552947998,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2541",
+        "score": 1.710198163986206,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2814",
+        "score": 1.7097537517547607,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1992",
+        "score": 1.7006440162658691,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1192",
+        "score": 1.693886160850525,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-3008",
+        "score": 1.6926909685134888,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-354",
+        "score": 1.6732693910598755,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1993",
+        "score": 1.672701358795166,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2201",
+        "score": 1.6699753999710083,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.6680996417999268,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1397",
+        "score": 1.654982089996338,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-923",
+        "score": 1.6509425640106201,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2206",
+        "score": 1.648207664489746,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2935",
+        "score": 1.6405494213104248,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2938",
+        "score": 1.6403052806854248,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2540",
+        "score": 1.6274981498718262,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1810",
+        "score": 1.627155065536499,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2937",
+        "score": 1.6247105598449707,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1567",
+        "score": 1.6235629320144653,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2247",
+        "score": 1.6235437393188477,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-572",
+        "score": 1.620624303817749,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-391",
+      "article-2205"
+    ],
+    "status": "ok",
+    "answer": 95238,
+    "code": "def solution():\n    # Define variables name and value\n    claim_amounts = [150000]\n    claim_paid_dates = [\"year_end\"]\n    claim_settlement_expenses = [30000]\n    reinsurance_paid_claims = [70000]\n    reinsurance_paid_expenses = [10000]\n    discount_rate = 0.05\n\n    # Do math calculation to get the answer\n    net_claim_liability = claim_amounts[0] - reinsurance_paid_claims[0]\n    net_expense_liability = (\n        claim_settlement_expenses[0] - reinsurance_paid_expenses[0]\n    )\n    total_net_liability = net_claim_liability + net_expense_liability\n\n    ibnr_reserve = total_net_liability / (1 + discount_rate)\n\n    # Return the answer rounded to the nearest dollar\n    return round(ibnr_reserve)\n"
+  },
+  "digest": "8e8c542732945e0f41c75457927e275c66ccc713794d182cfe9444e93176d599"
+}

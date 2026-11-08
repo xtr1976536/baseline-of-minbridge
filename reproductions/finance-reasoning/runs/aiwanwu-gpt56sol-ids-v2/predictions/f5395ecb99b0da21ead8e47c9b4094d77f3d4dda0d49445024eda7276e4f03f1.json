@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2206",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function computes the two-sample equal-variance (pooled) t-statistic for comparing the means of two independent financial return samples, given each sample’s mean, variance, and equal sample size or observation count, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5042,
+          "completion_tokens": 58,
+          "total_tokens": 5100,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 13820,
+          "completion_tokens": 98,
+          "total_tokens": 13918,
+          "completion_tokens_details": {
+            "reasoning_tokens": 80
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    mean_1 = 8\n    mean_2 = 6\n    var_1 = 4\n    var_2 = 3\n    n1 = 5\n    n2 = 5\n\n    # Calculate pooled variance according to the provided function\n    pooled_variance = (\n        ((n1 - 1) * var_1 ** 2) +\n        ((n2 - 1) * var_2 ** 2)\n    ) / (n1 + n2 - 2)\n\n    # Calculate the equal variance t-value\n    t_value = (mean_1 - mean_2) / (\n        pooled_variance * (1 / n1 + 1 / n2)\n    ) ** 0.5\n\n    # Return the t-value rounded to two decimal places\n    return round(t_value, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5150,
+          "completion_tokens": 380,
+          "total_tokens": 5530,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 183
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1797",
+        "score": 1.6868762969970703,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1798",
+        "score": 1.5405842065811157,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1794",
+        "score": 1.5190163850784302,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1988",
+        "score": 1.5034399032592773,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1294",
+        "score": 1.4955480098724365,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1796",
+        "score": 1.4718929529190063,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1143",
+        "score": 1.4460492134094238,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-192",
+        "score": 1.4455580711364746,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-967",
+        "score": 1.4353431463241577,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-301",
+        "score": 1.4270521402359009,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-968",
+        "score": 1.4226958751678467,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.4164055585861206,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-106",
+        "score": 1.4150375127792358,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2553",
+        "score": 1.4138059616088867,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.4117012023925781,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1142",
+        "score": 1.4110795259475708,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-971",
+        "score": 1.4106872081756592,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2601",
+        "score": 1.4038302898406982,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1145",
+        "score": 1.3990068435668945,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.3990046977996826,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.3860812187194824,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2036",
+        "score": 1.3852777481079102,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-726",
+        "score": 1.381887435913086,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2669",
+        "score": 1.3807604312896729,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.3798036575317383,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2685",
+        "score": 1.378327488899231,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2667",
+        "score": 1.3767374753952026,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1795",
+        "score": 1.3749637603759766,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-773",
+        "score": 1.372329592704773,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2421",
+        "score": 1.3712576627731323,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1797"
+    ],
+    "status": "ok",
+    "answer": 0.89,
+    "code": "def solution():\n    # Define variables\n    mean_1 = 8\n    mean_2 = 6\n    var_1 = 4\n    var_2 = 3\n    n1 = 5\n    n2 = 5\n\n    # Calculate pooled variance according to the provided function\n    pooled_variance = (\n        ((n1 - 1) * var_1 ** 2) +\n        ((n2 - 1) * var_2 ** 2)\n    ) / (n1 + n2 - 2)\n\n    # Calculate the equal variance t-value\n    t_value = (mean_1 - mean_2) / (\n        pooled_variance * (1 / n1 + 1 / n2)\n    ) ** 0.5\n\n    # Return the t-value rounded to two decimal places\n    return round(t_value, 2)\n"
+  },
+  "digest": "2583386606c88158635227934040e68160bc689fd9f33ededa7706e50087a227"
+}

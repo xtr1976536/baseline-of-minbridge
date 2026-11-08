@@ -1,0 +1,21 @@
+{
+  "identity": "c0095876b14c6ba2230977382e5adab4dc85e61eabb3c2ecb40181cdb0caa76a",
+  "response_digest": "7e5e2ca1007db7834f5927df7f71d721a8913d6129ef0bfe9106f8ec1bfcbf4f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    from math import comb\n\n    interested_recipients = 200\n    applicants = 10\n    application_probability = 0.05\n\n    # Calculate the binomial probability and convert it to a percentage\n    probability = (\n        comb(interested_recipients, applicants)\n        * application_probability**applicants\n        * (1 - application_probability) ** (interested_recipients - applicants)\n    )\n    answer = round(probability * 100, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5350,
+      "completion_tokens": 194,
+      "total_tokens": 5544,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 64
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

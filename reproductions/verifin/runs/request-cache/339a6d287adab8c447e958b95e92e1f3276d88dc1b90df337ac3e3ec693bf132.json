@@ -1,0 +1,28 @@
+{
+  "request_hash": "339a6d287adab8c447e958b95e92e1f3276d88dc1b90df337ac3e3ec693bf132",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is Amazon's FY2017 days payable outstanding (DPO)? DPO is defined as: 365 * (average accounts payable between FY2016 and FY2017) / (FY2017 COGS + change in inventory between FY2016 and FY2017). Round your answer to two decimal places. Address the question by using the line items and information shown within the balance sheet and the P&L statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"days_payable_outstanding\",\n  \"facts\": [\n    {\n      \"name\": \"accounts_payable_fy2016\",\n      \"aliases\": [\"Accounts payable\", \"Accounts payable, net\"],\n      \"period\": \"FY2016 year-end\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"accounts_payable_fy2017\",\n      \"aliases\": [\"Accounts payable\", \"Accounts payable, net\"],\n      \"period\": \"FY2017 year-end\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"inventory_fy2016\",\n      \"aliases\": [\"Inventories\", \"Inventory\", \"Inventories, net\"],\n      \"period\": \"FY2016 year-end\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"inventory_fy2017\",\n      \"aliases\": [\"Inventories\", \"Inventory\", \"Inventories, net\"],\n      \"period\": \"FY2017 year-end\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"cost_of_goods_sold_fy2017\",\n      \"aliases\": [\"Cost of sales\", \"Cost of goods sold\", \"COGS\"],\n      \"period\": \"FY2017\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Compute average accounts payable as (FY2016 accounts payable + FY2017 accounts payable) / 2 and the inventory change as FY2017 inventory minus FY2016 inventory, then apply 365 * average accounts payable / (FY2017 COGS + inventory change) and round to two decimal places.\"\n}",
+  "usage": {
+    "prompt_tokens": 4765,
+    "completion_tokens": 349,
+    "total_tokens": 5114,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    }
+  },
+  "response_id": "resp_01823768b83949b9016aedb10cebc887d08e010b2aeba34e15",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

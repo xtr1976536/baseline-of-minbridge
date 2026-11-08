@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2022",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates Weighted Average Cost of Capital (WACC) using market-value weights for equity and debt, pre-tax cost of debt, cost of equity, and the corporate tax rate to apply the tax shield on debt, returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5089,
+          "completion_tokens": 60,
+          "total_tokens": 5149,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15371,
+          "completion_tokens": 1110,
+          "total_tokens": 16481,
+          "prompt_tokens_details": {
+            "cached_tokens": 10663
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1013
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    equity_market_value = 15_000_000\n    debt_market_value = 5_000_000\n    cost_of_equity = 0.12\n    cost_of_debt = 0.05\n    tax_rate = 0.25\n\n    # Do math calculation to get the answer\n    total_value = equity_market_value + debt_market_value\n    equity_weight = equity_market_value / total_value\n    debt_weight = debt_market_value / total_value\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * after_tax_cost_of_debt\n    )\n\n    # Return answer as a percentage to two decimal places\n    answer = round(wacc * 100, 2)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5918,
+          "completion_tokens": 249,
+          "total_tokens": 6167,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 53
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-189",
+        "score": 2.268475294113159
+      },
+      {
+        "function_id": "article-2452",
+        "score": 2.2241122722625732
+      },
+      {
+        "function_id": "article-560",
+        "score": 2.1398792266845703
+      },
+      {
+        "function_id": "article-1644",
+        "score": 2.1317219734191895
+      },
+      {
+        "function_id": "article-1095",
+        "score": 2.122875690460205
+      },
+      {
+        "function_id": "article-3052",
+        "score": 2.072768211364746
+      },
+      {
+        "function_id": "article-561",
+        "score": 2.0686707496643066
+      },
+      {
+        "function_id": "article-46",
+        "score": 1.9414830207824707
+      },
+      {
+        "function_id": "article-2453",
+        "score": 1.8889645338058472
+      },
+      {
+        "function_id": "article-1096",
+        "score": 1.8104958534240723
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.7711787223815918
+      },
+      {
+        "function_id": "article-2700",
+        "score": 1.770930528640747
+      },
+      {
+        "function_id": "article-1641",
+        "score": 1.744049072265625
+      },
+      {
+        "function_id": "article-199",
+        "score": 1.7391252517700195
+      },
+      {
+        "function_id": "article-552",
+        "score": 1.693894624710083
+      },
+      {
+        "function_id": "article-190",
+        "score": 1.6813054084777832
+      },
+      {
+        "function_id": "article-2454",
+        "score": 1.6755640506744385
+      },
+      {
+        "function_id": "article-388",
+        "score": 1.6728436946868896
+      },
+      {
+        "function_id": "article-2455",
+        "score": 1.6681195497512817
+      },
+      {
+        "function_id": "article-3125",
+        "score": 1.661535620689392
+      },
+      {
+        "function_id": "article-559",
+        "score": 1.6599974632263184
+      },
+      {
+        "function_id": "article-2120",
+        "score": 1.6582961082458496
+      },
+      {
+        "function_id": "article-1911",
+        "score": 1.6576740741729736
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.6576242446899414
+      },
+      {
+        "function_id": "article-41",
+        "score": 1.6536921262741089
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.6506636142730713
+      },
+      {
+        "function_id": "article-558",
+        "score": 1.6500550508499146
+      },
+      {
+        "function_id": "article-194",
+        "score": 1.6467937231063843
+      },
+      {
+        "function_id": "article-1643",
+        "score": 1.6466004848480225
+      },
+      {
+        "function_id": "article-195",
+        "score": 1.6426483392715454
+      }
+    ],
+    "selected_ids": [
+      "article-189",
+      "article-2452",
+      "article-560"
+    ],
+    "status": "ok",
+    "answer": 9.94,
+    "code": "def solution():\n    # Define variables name and value\n    equity_market_value = 15_000_000\n    debt_market_value = 5_000_000\n    cost_of_equity = 0.12\n    cost_of_debt = 0.05\n    tax_rate = 0.25\n\n    # Do math calculation to get the answer\n    total_value = equity_market_value + debt_market_value\n    equity_weight = equity_market_value / total_value\n    debt_weight = debt_market_value / total_value\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * after_tax_cost_of_debt\n    )\n\n    # Return answer as a percentage to two decimal places\n    answer = round(wacc * 100, 2)\n    return answer\n"
+  },
+  "digest": "a47e8736c9971b3d13b5feb6b2f4c5907a82c9fb3fe91c9cdb67ef5486a10fe5"
+}

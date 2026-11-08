@@ -1,0 +1,21 @@
+{
+  "identity": "980ac17d0607a466beb49b01f02df35ecc42a3670376e8e8992d163ad8fa4f59",
+  "response_digest": "787e12f83c0b7d76aa669fc173fbbf93b7f9581f024bfe863900734304089b24",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    par_value = 100\n    five_year_par_rate = 0.0437\n    annual_coupon = par_value * five_year_par_rate\n    earlier_spot_rates = [0.025, 0.030, 0.035, 0.040]\n\n    # Do math calculation to get the answer\n    present_value_earlier_coupons = sum(\n        annual_coupon / (1 + spot_rate) ** year\n        for year, spot_rate in enumerate(earlier_spot_rates, start=1)\n    )\n    final_cash_flow = par_value + annual_coupon\n    five_year_spot_rate = (\n        final_cash_flow / (par_value - present_value_earlier_coupons)\n    ) ** (1 / 5) - 1\n    answer = round(five_year_spot_rate * 100, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 4757,
+      "completion_tokens": 309,
+      "total_tokens": 5066,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 99
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

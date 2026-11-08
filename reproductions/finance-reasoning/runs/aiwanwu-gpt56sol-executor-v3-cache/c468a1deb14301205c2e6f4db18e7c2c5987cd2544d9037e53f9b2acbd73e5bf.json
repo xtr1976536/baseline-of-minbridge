@@ -1,0 +1,21 @@
+{
+  "identity": "c468a1deb14301205c2e6f4db18e7c2c5987cd2544d9037e53f9b2acbd73e5bf",
+  "response_digest": "2947ae5bc318ebb7ed52e6584fbbb7c86a88b2bb8670543c12664566ca2b00ca",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    shares_outstanding = 1_200_000\n    stock_price = 10.00\n    face_value_of_existing_bonds = 10_000_000\n    coupon_rate = 0.08\n    years_to_maturity = 5\n    semiannual_periods = years_to_maturity * 2\n    bond_yield = 0.1365\n    new_funding = 7_500_000\n    bond_issue_threshold = 2_500_000\n    new_stock_price = 10.00\n    risk_free_rate = 0.03\n    beta = 2.2\n    market_return = 0.10\n    tax_rate = 0.30\n\n    # Calculate the market value of existing equity\n    market_value_of_equity = shares_outstanding * stock_price\n\n    # Calculate the market value of existing bonds\n    semiannual_coupon = face_value_of_existing_bonds * coupon_rate / 2\n    semiannual_yield = bond_yield / 2\n\n    bond_annuity_factor = (\n        1 - (1 + semiannual_yield) ** (-semiannual_periods)\n    ) / semiannual_yield\n\n    market_value_of_debt = (\n        semiannual_coupon * bond_annuity_factor\n        + face_value_of_existing_bonds\n        * (1 + semiannual_yield) ** (-semiannual_periods)\n    )\n\n    # Determine target capital structure proportions\n    total_market_value = market_value_of_equity + market_value_of_debt\n    equity_proportion = market_value_of_equity / total_market_value\n    debt_proportion = market_value_of_debt / total_market_value\n\n    # Calculate the amount of new debt required under the target structure\n    new_debt = new_funding * debt_proportion\n\n    # The new debt exceeds $2.5 million, so the entire issuance costs 16%\n    if new_debt <= bond_issue_threshold:\n        cost_of_debt = bond_yield\n    else:\n        cost_of_debt = 0.16\n\n    # Calculate the cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * (market_return - risk_free_rate)\n\n    # Calculate WACC\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n    wacc = (\n        equity_proportion * cost_of_equity\n        + debt_proportion * after_tax_cost_of_debt\n    )\n\n    # Return the answer as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5661,
+      "completion_tokens": 1035,
+      "total_tokens": 6696,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 475
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

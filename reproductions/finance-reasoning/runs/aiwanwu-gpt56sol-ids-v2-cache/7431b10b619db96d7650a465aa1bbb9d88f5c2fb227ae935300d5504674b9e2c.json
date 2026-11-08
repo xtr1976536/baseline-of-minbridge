@@ -1,0 +1,21 @@
+{
+  "identity": "7431b10b619db96d7650a465aa1bbb9d88f5c2fb227ae935300d5504674b9e2c",
+  "response_digest": "55c338b72a166d303bd4f2ed526db80bbbb7f29de43109e144b9e6b60ff62f3c",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 300000\n    annual_interest_rate = 0.045\n    years = 30\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = years * 12\n\n    monthly_payment = (\n        principal\n        * monthly_interest_rate\n        * (1 + monthly_interest_rate) ** number_of_payments\n        / ((1 + monthly_interest_rate) ** number_of_payments - 1)\n    )\n\n    total_cost = monthly_payment * number_of_payments\n\n    # Return the total mortgage cost rounded to the nearest dollar\n    return round(total_cost)\n```",
+    "usage": {
+      "prompt_tokens": 5672,
+      "completion_tokens": 194,
+      "total_tokens": 5866,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 37
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

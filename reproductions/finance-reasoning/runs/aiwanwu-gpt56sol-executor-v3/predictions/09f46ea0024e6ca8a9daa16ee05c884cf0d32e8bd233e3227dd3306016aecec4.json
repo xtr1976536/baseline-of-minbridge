@@ -1,0 +1,225 @@
+{
+  "record": {
+    "question_id": "test-2145",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the mark-to-market value or gain of an existing FX forward using its contracted rate, notional, remaining maturity, current market forward rate derived from spot and forward points, and the relevant discount rate, while accounting for currency-pair quote conventions and bid/offer sides?",
+        "usage": {
+          "prompt_tokens": 5317,
+          "completion_tokens": 220,
+          "total_tokens": 5537,
+          "completion_tokens_details": {
+            "reasoning_tokens": 157
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C03\",\"C04\",\"C07\"]}",
+        "usage": {
+          "prompt_tokens": 14594,
+          "completion_tokens": 540,
+          "total_tokens": 15134,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    eur_notional = 5_000_000\n    contracted_gbp_per_eur = 0.7400\n    current_spot_bid = 0.7342\n    three_month_forward_bid_points = 14.0 / 10_000\n    gbp_90_day_libor = 0.0058\n    days = 90\n    basis = 360\n\n    # Calculate the current three-month GBP/EUR forward bid rate\n    current_forward_bid = current_spot_bid + three_month_forward_bid_points\n\n    # Calculate and discount the mark-to-market gain in GBP\n    undiscounted_gain = eur_notional * (\n        contracted_gbp_per_eur - current_forward_bid\n    )\n    discount_factor = 1 + gbp_90_day_libor * days / basis\n    mark_to_market_gain = undiscounted_gain / discount_factor\n\n    # Return the answer rounded to three decimal places\n    return round(mark_to_market_gain, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5733,
+          "completion_tokens": 739,
+          "total_tokens": 6472,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2623",
+        "score": 1.8115264177322388,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.783493161201477,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-601",
+        "score": 1.7795673608779907,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.6951382160186768,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.6890511512756348,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.6808197498321533,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.6744279861450195,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-603",
+        "score": 1.6610467433929443,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.6537261009216309,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.6427643299102783,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.6371873617172241,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-162",
+        "score": 1.6235811710357666,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.6149725914001465,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6092634201049805,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6055830717086792,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.5856513977050781,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.5848380327224731,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.5847047567367554,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2381",
+        "score": 1.5757654905319214,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.5754773616790771,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2359",
+        "score": 1.5727813243865967,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-604",
+        "score": 1.5689527988433838,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.5656499862670898,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1729",
+        "score": 1.5624191761016846,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-616",
+        "score": 1.5620659589767456,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2544",
+        "score": 1.5595526695251465,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1964",
+        "score": 1.555552363395691,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3001",
+        "score": 1.5553033351898193,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1886",
+        "score": 1.5550472736358643,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2975",
+        "score": 1.5544565916061401,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-601",
+      "article-3104",
+      "article-609"
+    ],
+    "status": "ok",
+    "answer": 21968.146,
+    "code": "def solution():\n    # Define variables\n    eur_notional = 5_000_000\n    contracted_gbp_per_eur = 0.7400\n    current_spot_bid = 0.7342\n    three_month_forward_bid_points = 14.0 / 10_000\n    gbp_90_day_libor = 0.0058\n    days = 90\n    basis = 360\n\n    # Calculate the current three-month GBP/EUR forward bid rate\n    current_forward_bid = current_spot_bid + three_month_forward_bid_points\n\n    # Calculate and discount the mark-to-market gain in GBP\n    undiscounted_gain = eur_notional * (\n        contracted_gbp_per_eur - current_forward_bid\n    )\n    discount_factor = 1 + gbp_90_day_libor * days / basis\n    mark_to_market_gain = undiscounted_gain / discount_factor\n\n    # Return the answer rounded to three decimal places\n    return round(mark_to_market_gain, 3)\n"
+  },
+  "digest": "92849fed41232d97da7ec767efa14ce31cb2f1f29f7ea737f46bd8cd8ca20e63"
+}

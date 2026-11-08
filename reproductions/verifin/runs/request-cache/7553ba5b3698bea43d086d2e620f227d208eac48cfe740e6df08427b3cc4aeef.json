@@ -1,0 +1,28 @@
+{
+  "request_hash": "7553ba5b3698bea43d086d2e620f227d208eac48cfe740e6df08427b3cc4aeef",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the FY2018 capital expenditure amount (in USD millions) for 3M? Give a response to the question by relying on the details shown in the cash flow statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"capital_expenditure\",\"facts\":[{\"name\":\"capital_expenditures\",\"aliases\":[\"Capital expenditures\",\"Capital spending\",\"Additions to property, plant and equipment\",\"Purchases of property, plant and equipment\",\"Purchases of property, plant and equipment and other assets\"],\"period\":\"FY2018\",\"statement\":\"cash flow\"}],\"reason\":\"Direct lookup of 3M's FY2018 capital expenditure amount from the cash flow statement.\"}",
+  "usage": {
+    "prompt_tokens": 4715,
+    "completion_tokens": 94,
+    "total_tokens": 4809,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    }
+  },
+  "response_id": "resp_013bb93f61c0762f016aedac9b83a087d2a5d8fa480e03978d",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

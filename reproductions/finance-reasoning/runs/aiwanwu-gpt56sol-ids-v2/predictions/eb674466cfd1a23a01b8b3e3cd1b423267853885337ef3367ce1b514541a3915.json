@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2142",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the binomial probability of exactly \\(k\\) successes in \\(n\\) independent trials with a fixed success probability \\(p\\), returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5044,
+          "completion_tokens": 46,
+          "total_tokens": 5090
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 14147,
+          "completion_tokens": 19,
+          "total_tokens": 14166,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    from math import comb\n\n    interested_recipients = 200\n    applicants = 10\n    application_probability = 0.05\n\n    # Calculate the binomial probability and convert it to a percentage\n    probability = (\n        comb(interested_recipients, applicants)\n        * application_probability**applicants\n        * (1 - application_probability) ** (interested_recipients - applicants)\n    )\n    answer = round(probability * 100, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5350,
+          "completion_tokens": 194,
+          "total_tokens": 5544,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 64
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-725",
+        "score": 1.8779926300048828,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1740",
+        "score": 1.8598957061767578,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-726",
+        "score": 1.578742265701294,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2039",
+        "score": 1.5340890884399414,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-147",
+        "score": 1.5135338306427002,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2276",
+        "score": 1.5003228187561035,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1742",
+        "score": 1.474824070930481,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2277",
+        "score": 1.4733754396438599,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2422",
+        "score": 1.4379889965057373,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2421",
+        "score": 1.4308900833129883,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.4160079956054688,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1143",
+        "score": 1.4097697734832764,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-702",
+        "score": 1.4084641933441162,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-5",
+        "score": 1.4069684743881226,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2832",
+        "score": 1.4057955741882324,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-6",
+        "score": 1.3938090801239014,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-514",
+        "score": 1.3879852294921875,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.370293378829956,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2539",
+        "score": 1.3680379390716553,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.367340087890625,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.36574125289917,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1988",
+        "score": 1.3630280494689941,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1016",
+        "score": 1.3629629611968994,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1075",
+        "score": 1.3566938638687134,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.352449893951416,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2633",
+        "score": 1.3515069484710693,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2601",
+        "score": 1.347537636756897,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2564",
+        "score": 1.34553861618042,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.3408656120300293,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.340252161026001,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-725",
+      "article-1740"
+    ],
+    "status": "ok",
+    "answer": 12.84,
+    "code": "def solution():\n    # Define variables name and value\n    from math import comb\n\n    interested_recipients = 200\n    applicants = 10\n    application_probability = 0.05\n\n    # Calculate the binomial probability and convert it to a percentage\n    probability = (\n        comb(interested_recipients, applicants)\n        * application_probability**applicants\n        * (1 - application_probability) ** (interested_recipients - applicants)\n    )\n    answer = round(probability * 100, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "65c969ad6bae0b057b7b77f91dc3002b5fb3db23831851b4a81faca27e3871ee"
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "ecd06dcfb5267c3fc7f521e4291b5cb81a466c88e1b3946e6ddd5492c656307f",
+  "response_digest": "07f80c3d021cb6c8c9b97af1e17df5e3e2fb0ef3e92c16e1973c5df64168427a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 1_300_000_000\n    pre_tax_profit_rate = 0.07\n    operating_cost = 6_000_000\n    deposit_interest_rate = 0.05\n    expected_loss_rate = 0.003\n    unexpected_loss_rate = 0.08\n    risk_free_rate = 0.015\n    tax_rate = 0.25\n\n    revenue = principal * pre_tax_profit_rate\n    deposit_interest_expense = principal * deposit_interest_rate\n    expenses = operating_cost + deposit_interest_expense\n    expected_loss = principal * expected_loss_rate\n\n    capital = principal * unexpected_loss_rate\n    income_from_capital = capital * risk_free_rate\n\n    pre_tax_risk_adjusted_income = revenue - expenses - expected_loss\n    after_tax_risk_adjusted_income = pre_tax_risk_adjusted_income * (1 - tax_rate)\n\n    raroc = (\n        after_tax_risk_adjusted_income + income_from_capital\n    ) / capital\n\n    # Return RAROC as a percentage rounded to three decimal places\n    return round(raroc * 100, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5353,
+      "completion_tokens": 1293,
+      "total_tokens": 6646,
+      "prompt_tokens_details": {
+        "cached_tokens": 3584
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

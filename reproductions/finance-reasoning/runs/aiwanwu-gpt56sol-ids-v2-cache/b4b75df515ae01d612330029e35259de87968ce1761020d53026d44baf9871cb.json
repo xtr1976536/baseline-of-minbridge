@@ -1,0 +1,18 @@
+{
+  "identity": "b4b75df515ae01d612330029e35259de87968ce1761020d53026d44baf9871cb",
+  "response_digest": "9e948ba4b7443097bc3524016a218bea753d7ce487f6175a5f76054839251725",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 100_000\n    annual_coupon_rate = 0.05\n    annual_market_rate = 0.04\n    years_to_maturity = 10\n    payments_per_year = 2\n\n    # Do math calculation to get the answer\n    period_rate = annual_market_rate / payments_per_year\n    coupon_payment = face_value * annual_coupon_rate / payments_per_year\n    total_payments = years_to_maturity * payments_per_year\n\n    present_value = sum(\n        coupon_payment / (1 + period_rate) ** period\n        for period in range(1, total_payments + 1)\n    )\n    present_value += face_value / (1 + period_rate) ** total_payments\n\n    # Return the answer rounded to the nearest dollar\n    return round(present_value)\n```",
+    "usage": {
+      "prompt_tokens": 5414,
+      "completion_tokens": 222,
+      "total_tokens": 5636,
+      "completion_tokens_details": {
+        "reasoning_tokens": 32
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

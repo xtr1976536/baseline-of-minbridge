@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:prepaid_expense_and_other_assets_current_fy2025,accounts_notes_and_loans_receivable_net_current_fy2025,cash_and_cash_equivalents_at_carrying_value_fy2025)

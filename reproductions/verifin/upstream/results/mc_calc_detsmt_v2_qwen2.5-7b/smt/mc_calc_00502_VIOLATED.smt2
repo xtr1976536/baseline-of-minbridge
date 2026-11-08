@@ -1,0 +1,52 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_liabilities_current_fy2022 Real)
+(declare-const accounts_payable_current_fy2022 Real)
+(declare-const contract_with_customer_liability_current_fy2022 Real)
+(declare-const debt_current_fy2022 Real)
+(declare-const employee_related_liabilities_current_fy2022 Real)
+(declare-const other_liabilities_current_fy2022 Real)
+
+(assert (! (= accounts_payable_current_fy2022 3381) :named evidence_accounts_payable_current_fy2022))
+(assert (! (= contract_with_customer_liability_current_fy2022 2601) :named evidence_contract_with_customer_liability_current_fy2022))
+(assert (! (= debt_current_fy2022 5579) :named evidence_debt_current_fy2022))
+(assert (! (= employee_related_liabilities_current_fy2022 2095) :named evidence_employee_related_liabilities_current_fy2022))
+(assert (! (= other_liabilities_current_fy2022 3354) :named evidence_other_liabilities_current_fy2022))
+
+(assert (! (= computed_liabilities_current_fy2022 (+ debt_current_fy2022 accounts_payable_current_fy2022 employee_related_liabilities_current_fy2022 contract_with_customer_liability_current_fy2022 other_liabilities_current_fy2022)) :named formula_liabilities_current_fy2022))
+
+(assert (! (<= (- computed_liabilities_current_fy2022 18831) 18.831) :named claim_upper))
+(assert (! (<= (- 18831 computed_liabilities_current_fy2022) 18.831) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2022_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2022_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_DebtCurrent_instant_2022_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none 17010) :named evidence_xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= debt_current_fy2022 xbrl_fact_us_gaap_DebtCurrent_instant_2022_12_31_unit_USD_dims_none) :named xbrl_bind_debt_current_fy2022_edgar_2022_12_31_0000097745_23_000008))
+(assert (! (= xbrl_fact_us_gaap_DebtCurrent_instant_2022_12_31_unit_USD_dims_none 5579) :named xbrl_instance_debt_current_fy2022))
+(assert (! (= accounts_payable_current_fy2022 xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2022_12_31_unit_USD_dims_none) :named xbrl_bind_accounts_payable_current_fy2022_edgar_2022_12_31_0000097745_23_000008))
+(assert (! (= xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2022_12_31_unit_USD_dims_none 3381) :named xbrl_instance_accounts_payable_current_fy2022))
+(assert (! (= employee_related_liabilities_current_fy2022 xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none) :named xbrl_bind_employee_related_liabilities_current_fy2022_edgar_2022_12_31_0000097745_23_000008))
+(assert (! (= xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none 2095) :named xbrl_instance_employee_related_liabilities_current_fy2022))
+(assert (! (= contract_with_customer_liability_current_fy2022 xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2022_12_31_unit_USD_dims_none) :named xbrl_bind_contract_with_customer_liability_current_fy2022_edgar_2022_12_31_0000097745_23_000008))
+(assert (! (= xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2022_12_31_unit_USD_dims_none 2601) :named xbrl_instance_contract_with_customer_liability_current_fy2022))
+(assert (! (= other_liabilities_current_fy2022 xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none) :named xbrl_bind_other_liabilities_current_fy2022_edgar_2022_12_31_0000097745_23_000008))
+(assert (! (= xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none 3354) :named xbrl_instance_other_liabilities_current_fy2022))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_DebtCurrent_instant_2022_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2022_12_31_unit_USD_dims_none xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2022_12_31_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none)) 3) :named xbrl_calc_2_415921018_LiabilitiesCurrent_i55336b273de0454a9e99fb0286361259_I20221231_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_DebtCurrent_instant_2022_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2022_12_31_unit_USD_dims_none xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2022_12_31_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2022_12_31_unit_USD_dims_none)) (- 3)) :named xbrl_calc_2_415921018_LiabilitiesCurrent_i55336b273de0454a9e99fb0286361259_I20221231_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

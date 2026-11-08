@@ -1,0 +1,28 @@
+{
+  "request_hash": "65974ad30f37d81d4283dfc6443238e336d87b02bf9bc1aa740f4a605372e777",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is Adobe's year-over-year change in unadjusted operating income from FY2015 to FY2016 (in units of percents and round to one decimal place)? Give a solution to the question by using the income statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"year_over_year_change_in_unadjusted_operating_income_percent\",\"facts\":[{\"name\":\"operating_income_fy2015\",\"aliases\":[\"Operating income\",\"Income from operations\",\"Operating income, unadjusted\"],\"period\":\"FY2015\",\"statement\":\"income statement\"},{\"name\":\"operating_income_fy2016\",\"aliases\":[\"Operating income\",\"Income from operations\",\"Operating income, unadjusted\"],\"period\":\"FY2016\",\"statement\":\"income statement\"}],\"reason\":\"Retrieve Adobe's reported unadjusted operating income for FY2015 and FY2016 from the income statement, then calculate ((FY2016 operating income - FY2015 operating income) / FY2015 operating income) × 100 and round to one decimal place.\"}",
+  "usage": {
+    "prompt_tokens": 4725,
+    "completion_tokens": 157,
+    "total_tokens": 4882,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    }
+  },
+  "response_id": "resp_02a1ae9cd6c2cdf0016aedb06eac0887d2a8ffd8a27abf5ad8",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

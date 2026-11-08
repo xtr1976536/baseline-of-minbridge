@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2064",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates diluted earnings per share using the treasury stock method, adjusting weighted-average shares for in-the-money employee stock options based on their exercise price and average market price, while incorporating net income and rounding the result to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 4999,
+          "completion_tokens": 51,
+          "total_tokens": 5050
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 13601,
+          "completion_tokens": 152,
+          "total_tokens": 13753,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 128
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 2_500_000\n    basic_shares = 300_000\n    options_warrants = 30_000\n    exercise_price = 20\n    market_price = 30\n    \n    # Do math calculation to get the answer\n    proceeds = options_warrants * exercise_price\n    repurchased_shares = proceeds / market_price\n    additional_shares = options_warrants - repurchased_shares\n    diluted_shares = basic_shares + additional_shares\n    diluted_eps = net_income / diluted_shares\n    \n    # Return the answer rounded to the nearest cent\n    return round(diluted_eps, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5619,
+          "completion_tokens": 234,
+          "total_tokens": 5853,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 74
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1952",
+        "score": 2.0486321449279785,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1951",
+        "score": 2.0419163703918457,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2654",
+        "score": 1.7831755876541138,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-642",
+        "score": 1.7376091480255127,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2712",
+        "score": 1.718130111694336,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1720",
+        "score": 1.716918706893921,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1718",
+        "score": 1.7114088535308838,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-492",
+        "score": 1.6749930381774902,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2645",
+        "score": 1.668166160583496,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1950",
+        "score": 1.6647249460220337,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-491",
+        "score": 1.6412689685821533,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1949",
+        "score": 1.6391880512237549,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-695",
+        "score": 1.626365065574646,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2050",
+        "score": 1.6259243488311768,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.6124765872955322,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.6092780828475952,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1494",
+        "score": 1.6036415100097656,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.5966506004333496,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2711",
+        "score": 1.594487190246582,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.5937111377716064,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-856",
+        "score": 1.5879566669464111,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-639",
+        "score": 1.5824401378631592,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.5780858993530273,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1318",
+        "score": 1.5742805004119873,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2908",
+        "score": 1.5742268562316895,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2340",
+        "score": 1.5703718662261963,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.5700554847717285,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1327",
+        "score": 1.5640087127685547,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.5602288246154785,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-269",
+        "score": 1.5578726530075073,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1952",
+      "article-1951",
+      "article-642"
+    ],
+    "status": "ok",
+    "answer": 8.06,
+    "code": "def solution():\n    # Define variables name and value\n    net_income = 2_500_000\n    basic_shares = 300_000\n    options_warrants = 30_000\n    exercise_price = 20\n    market_price = 30\n    \n    # Do math calculation to get the answer\n    proceeds = options_warrants * exercise_price\n    repurchased_shares = proceeds / market_price\n    additional_shares = options_warrants - repurchased_shares\n    diluted_shares = basic_shares + additional_shares\n    diluted_eps = net_income / diluted_shares\n    \n    # Return the answer rounded to the nearest cent\n    return round(diluted_eps, 2)\n"
+  },
+  "digest": "267201c3511267e782b6c23166d0e23de08f05f1dcf85aac80fadbc35da50b1b"
+}

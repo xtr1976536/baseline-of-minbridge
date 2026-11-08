@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2090",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the 14-period Relative Strength Index (RSI) from a sequence of daily price changes, using average gains and losses, and returns the result as a percentage?",
+        "usage": {
+          "prompt_tokens": 5104,
+          "completion_tokens": 40,
+          "total_tokens": 5144
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 16045,
+          "completion_tokens": 19,
+          "total_tokens": 16064,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    price_changes = [2.5, -1.3, 2.8, 3.1, -0.5, -2.2, 1.0, 1.5, 1.7, -1.8, 2.9, -0.4, -0.9, 0.8]\n    period = 14\n\n    gains = [max(change, 0) for change in price_changes]\n    losses = [abs(min(change, 0)) for change in price_changes]\n\n    average_gain = sum(gains) / period\n    average_loss = sum(losses) / period\n    relative_strength = average_gain / average_loss\n    rsi = 100 - (100 / (1 + relative_strength))\n\n    return round(rsi, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5476,
+          "completion_tokens": 319,
+          "total_tokens": 5795,
+          "completion_tokens_details": {
+            "reasoning_tokens": 136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1492",
+        "score": 2.1309235095977783,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3112",
+        "score": 2.1091766357421875,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1860",
+        "score": 2.0810585021972656,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1493",
+        "score": 2.0723657608032227,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.8792537450790405,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3128",
+        "score": 1.870506763458252,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.8288207054138184,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1975",
+        "score": 1.7526001930236816,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2638",
+        "score": 1.646692156791687,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-498",
+        "score": 1.6275640726089478,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-37",
+        "score": 1.6249412298202515,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.6150542497634888,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.6035256385803223,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.5945053100585938,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.5900049209594727,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.5886132717132568,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.5873920917510986,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.5826919078826904,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1090",
+        "score": 1.5812983512878418,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2466",
+        "score": 1.5781207084655762,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2717",
+        "score": 1.5704870223999023,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.5691943168640137,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-467",
+        "score": 1.568458914756775,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.5670984983444214,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1260",
+        "score": 1.561814546585083,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1604",
+        "score": 1.5585376024246216,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.5516486167907715,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-86",
+        "score": 1.5470550060272217,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.5458590984344482,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5449438095092773,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1492",
+      "article-3112"
+    ],
+    "status": "ok",
+    "answer": 69.66,
+    "code": "def solution():\n    price_changes = [2.5, -1.3, 2.8, 3.1, -0.5, -2.2, 1.0, 1.5, 1.7, -1.8, 2.9, -0.4, -0.9, 0.8]\n    period = 14\n\n    gains = [max(change, 0) for change in price_changes]\n    losses = [abs(min(change, 0)) for change in price_changes]\n\n    average_gain = sum(gains) / period\n    average_loss = sum(losses) / period\n    relative_strength = average_gain / average_loss\n    rsi = 100 - (100 / (1 + relative_strength))\n\n    return round(rsi, 2)\n"
+  },
+  "digest": "c5f5706349af2ef7dfefb9f6638bbe1d2430872b45a366c15531cf9eaf043332"
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "e7bb08baa8f7327ec687289e1661c2429fda63803e8f43440dd264775a396e95",
+  "response_digest": "bebb8943ca20cf085d323a245f66316b1b90c7cd531b0618183530407594197d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    five_year_par_rate = 0.0437\n    prior_spot_rates = [0.0250, 0.0300, 0.0350, 0.0400]\n    prior_years = [1, 2, 3, 4]\n\n    # Calculate discount factors for years 1 through 4\n    prior_discount_factors = [\n        1 / (1 + spot_rate) ** year\n        for spot_rate, year in zip(prior_spot_rates, prior_years)\n    ]\n\n    # Bootstrap the five-year discount factor from the par bond price\n    coupon = five_year_par_rate\n    five_year_discount_factor = (\n        1 - coupon * sum(prior_discount_factors)\n    ) / (1 + coupon)\n\n    # Calculate the five-year annual-compounded spot rate\n    five_year_spot_rate = (\n        five_year_discount_factor ** (-1 / 5)\n    ) - 1\n\n    # Return the answer as a percentage rounded to three decimal places\n    return round(five_year_spot_rate * 100, 3)\n```",
+    "usage": {
+      "prompt_tokens": 4757,
+      "completion_tokens": 363,
+      "total_tokens": 5120,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 112
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

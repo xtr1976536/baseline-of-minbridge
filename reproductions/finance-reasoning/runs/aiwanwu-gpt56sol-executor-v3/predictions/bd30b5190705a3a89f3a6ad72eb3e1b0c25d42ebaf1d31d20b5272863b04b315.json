@@ -1,0 +1,225 @@
+{
+  "record": {
+    "question_id": "test-2213",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Pearson correlation coefficient between two equal-length numerical time series of periodic asset returns, such as stock and market index returns, and returns the result rounded to four decimal places?",
+        "usage": {
+          "prompt_tokens": 5096,
+          "completion_tokens": 41,
+          "total_tokens": 5137,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14216,
+          "completion_tokens": 75,
+          "total_tokens": 14291,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 51
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define the monthly returns\n    tech_returns = [5.2, 3.8, 4.9, 2.7, 6.5, 3.3]\n    market_returns = [4.1, 3.9, 5.0, 2.5, 6.0, 3.7]\n\n    # Calculate the Pearson correlation coefficient\n    n = len(tech_returns)\n    sum_x = sum(tech_returns)\n    sum_y = sum(market_returns)\n    sum_xy = sum(x * y for x, y in zip(tech_returns, market_returns))\n    sum_x_squared = sum(x ** 2 for x in tech_returns)\n    sum_y_squared = sum(y ** 2 for y in market_returns)\n\n    numerator = n * sum_xy - sum_x * sum_y\n    denominator = (\n        (n * sum_x_squared - sum_x ** 2)\n        * (n * sum_y_squared - sum_y ** 2)\n    ) ** 0.5\n    correlation = numerator / denominator\n\n    # Return the coefficient rounded to four decimal places\n    return round(correlation, 4)\n```",
+        "usage": {
+          "prompt_tokens": 6045,
+          "completion_tokens": 285,
+          "total_tokens": 6330,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 28
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-176",
+        "score": 1.7573952674865723,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.7027223110198975,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1960",
+        "score": 1.6064937114715576,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.587104082107544,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.559596061706543,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.5418933629989624,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-213",
+        "score": 1.5247716903686523,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.521115779876709,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1055",
+        "score": 1.514609456062317,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.5123382806777954,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1130",
+        "score": 1.5040580034255981,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.5029923915863037,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1595",
+        "score": 1.4982612133026123,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1538",
+        "score": 1.4963099956512451,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1587",
+        "score": 1.4957698583602905,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.4918534755706787,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2410",
+        "score": 1.485643744468689,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-922",
+        "score": 1.484865427017212,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.4816219806671143,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1593",
+        "score": 1.4799786806106567,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.4745688438415527,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1294",
+        "score": 1.472907304763794,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.4726955890655518,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.4701876640319824,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.465535283088684,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1290",
+        "score": 1.4630979299545288,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.461617112159729,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1590",
+        "score": 1.4604873657226562,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.4599082469940186,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.4546265602111816,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-176",
+      "article-177",
+      "article-1960"
+    ],
+    "status": "ok",
+    "answer": 0.9261,
+    "code": "def solution():\n    # Define the monthly returns\n    tech_returns = [5.2, 3.8, 4.9, 2.7, 6.5, 3.3]\n    market_returns = [4.1, 3.9, 5.0, 2.5, 6.0, 3.7]\n\n    # Calculate the Pearson correlation coefficient\n    n = len(tech_returns)\n    sum_x = sum(tech_returns)\n    sum_y = sum(market_returns)\n    sum_xy = sum(x * y for x, y in zip(tech_returns, market_returns))\n    sum_x_squared = sum(x ** 2 for x in tech_returns)\n    sum_y_squared = sum(y ** 2 for y in market_returns)\n\n    numerator = n * sum_xy - sum_x * sum_y\n    denominator = (\n        (n * sum_x_squared - sum_x ** 2)\n        * (n * sum_y_squared - sum_y ** 2)\n    ) ** 0.5\n    correlation = numerator / denominator\n\n    # Return the coefficient rounded to four decimal places\n    return round(correlation, 4)\n"
+  },
+  "digest": "b7c826d4aeb062034cf8cecd4270c3740510be3a8d23b7bcbf0dae0fa091954b"
+}

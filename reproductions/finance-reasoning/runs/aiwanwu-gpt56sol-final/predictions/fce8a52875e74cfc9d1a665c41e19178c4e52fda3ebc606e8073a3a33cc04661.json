@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2133",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function converts a money market instrument’s add-on rate into a bond equivalent yield using the instrument’s term in days, a 360-day money market convention, and a 365-day bond-equivalent annualization basis, returning the result as a percentage?",
+        "usage": {
+          "prompt_tokens": 4955,
+          "completion_tokens": 55,
+          "total_tokens": 5010
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15882,
+          "completion_tokens": 1015,
+          "total_tokens": 16897,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 918
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    add_on_rate = 6.50\n    days_to_maturity = 150\n    days_in_year = 360\n    bond_year = 365\n\n    # Do math calculation to get the answer\n    holding_period_return = (add_on_rate / 100) * (days_to_maturity / days_in_year)\n    bond_equivalent_yield = holding_period_return * (bond_year / days_to_maturity) * 100\n\n    # return answer\n    return round(bond_equivalent_yield, 2)\n```",
+        "usage": {
+          "prompt_tokens": 4920,
+          "completion_tokens": 281,
+          "total_tokens": 5201,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 150
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-948",
+        "score": 1.6750452518463135
+      },
+      {
+        "function_id": "article-2557",
+        "score": 1.6550912857055664
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.6390306949615479
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.6284042596817017
+      },
+      {
+        "function_id": "article-1623",
+        "score": 1.6155529022216797
+      },
+      {
+        "function_id": "article-1956",
+        "score": 1.6053247451782227
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.585981845855713
+      },
+      {
+        "function_id": "article-737",
+        "score": 1.5800429582595825
+      },
+      {
+        "function_id": "article-1955",
+        "score": 1.5742552280426025
+      },
+      {
+        "function_id": "article-1829",
+        "score": 1.5735329389572144
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.5654518604278564
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.5622304677963257
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.5593552589416504
+      },
+      {
+        "function_id": "article-1790",
+        "score": 1.5580544471740723
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.5544633865356445
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.5542314052581787
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.5536010265350342
+      },
+      {
+        "function_id": "article-2606",
+        "score": 1.5528618097305298
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.5527479648590088
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.5513219833374023
+      },
+      {
+        "function_id": "article-2743",
+        "score": 1.5503270626068115
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.5455901622772217
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.5447821617126465
+      },
+      {
+        "function_id": "article-26",
+        "score": 1.541703462600708
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.5403854846954346
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.5398526191711426
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.5371711254119873
+      },
+      {
+        "function_id": "article-2080",
+        "score": 1.5334835052490234
+      },
+      {
+        "function_id": "article-293",
+        "score": 1.5334010124206543
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.5320985317230225
+      }
+    ],
+    "selected_ids": [
+      "article-737"
+    ],
+    "status": "ok",
+    "answer": 6.59,
+    "code": "def solution():\n    # Define variables name and value\n    add_on_rate = 6.50\n    days_to_maturity = 150\n    days_in_year = 360\n    bond_year = 365\n\n    # Do math calculation to get the answer\n    holding_period_return = (add_on_rate / 100) * (days_to_maturity / days_in_year)\n    bond_equivalent_yield = holding_period_return * (bond_year / days_to_maturity) * 100\n\n    # return answer\n    return round(bond_equivalent_yield, 2)\n"
+  },
+  "digest": "b7e12591f331fa556c656d310bac7c7f72214c4973baf2fdc72827900692397a"
+}

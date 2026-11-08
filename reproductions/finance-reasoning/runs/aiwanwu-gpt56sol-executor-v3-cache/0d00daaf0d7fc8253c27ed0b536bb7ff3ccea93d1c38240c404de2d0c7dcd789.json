@@ -1,0 +1,21 @@
+{
+  "identity": "0d00daaf0d7fc8253c27ed0b536bb7ff3ccea93d1c38240c404de2d0c7dcd789",
+  "response_digest": "6332d35e46b56fc46cbb8c1868f7a819850d8dce8cd416b6fbaf2e09fc4d32f8",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    spot_rate = 2.0979\n    domestic_interest_rate = 0.032875  # NZD\n    foreign_interest_rate = 0.016025   # GBP\n    period_days = 180\n    basis_points_multiplier = 10000\n\n    # Do math calculation to get the answer\n    domestic_factor = 1 + domestic_interest_rate * period_days / 360\n    foreign_factor = 1 + foreign_interest_rate * period_days / 360\n\n    forward_rate = spot_rate * (domestic_factor / foreign_factor)\n    forward_points = (forward_rate - spot_rate) * basis_points_multiplier\n\n    # return answer\n    return round(forward_points, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5318,
+      "completion_tokens": 280,
+      "total_tokens": 5598,
+      "prompt_tokens_details": {
+        "cached_tokens": 5120
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 114
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<link:linkbase
+    xmlns:link="http://www.xbrl.org/2003/linkbase"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- A plausible competing group comes first so selection must use evidence affinity. -->
+  <link:calculationLink xlink:type="extended" xlink:role="https://example.test/role/income-statement">
+    <link:loc xlink:type="locator" xlink:label="parent-summary"
+        xlink:href="taxonomy.xsd#us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"/>
+    <link:loc xlink:type="locator" xlink:label="gross-profit"
+        xlink:href="taxonomy.xsd#us-gaap_GrossProfit"/>
+    <link:loc xlink:type="locator" xlink:label="operating-expenses"
+        xlink:href="taxonomy.xsd#us-gaap_OperatingExpenses"/>
+    <link:calculationArc xlink:type="arc"
+        xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item"
+        xlink:from="parent-summary" xlink:to="gross-profit" order="1" weight="1"/>
+    <link:calculationArc xlink:type="arc"
+        xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item"
+        xlink:from="parent-summary" xlink:to="operating-expenses" order="2" weight="-1"/>
+  </link:calculationLink>
+
+  <link:calculationLink xlink:type="extended" xlink:role="https://example.test/role/income-before-tax-detail">
+    <link:loc xlink:type="locator" xlink:label="parent-detail"
+        xlink:href="taxonomy.xsd#us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"/>
+    <link:loc xlink:type="locator" xlink:label="domestic"
+        xlink:href="taxonomy.xsd#us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic"/>
+    <link:loc xlink:type="locator" xlink:label="foreign"
+        xlink:href="taxonomy.xsd#us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign"/>
+    <link:calculationArc xlink:type="arc"
+        xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item"
+        xlink:from="parent-detail" xlink:to="domestic" order="1" weight="1"/>
+    <link:calculationArc xlink:type="arc"
+        xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item"
+        xlink:from="parent-detail" xlink:to="foreign" order="2" weight="1"/>
+  </link:calculationLink>
+</link:linkbase>

@@ -1,0 +1,21 @@
+{
+  "identity": "2267298790bc5444b1fd683514c8622aaa131e5791c438d8c9176ce22de610a5",
+  "response_digest": "681c639d1d00e1d9348a6613d7950edbe92d46c213aa5f1def8ce95c7512c2f0",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [150, 152, 151, 153, 155, 154, 156, 158, 157, 160,\n              162, 161, 163, 162, 164, 165, 167, 168, 166, 169,\n              170, 172]\n    period = 20\n    smoothing_factor = 2\n\n    # Do math calculation to get the answer\n    multiplier = smoothing_factor / (period + 1)\n    ema = sum(prices[:period]) / period\n\n    for price in prices[period:]:\n        ema = (price - ema) * multiplier + ema\n\n    # return answer\n    return round(ema, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5859,
+      "completion_tokens": 443,
+      "total_tokens": 6302,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 268
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

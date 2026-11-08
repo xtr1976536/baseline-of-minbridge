@@ -1,0 +1,183 @@
+{
+  "record": {
+    "question_id": "test-2019",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the cumulative Volume Price Trend (VPT) for a stock from sequential closing prices and corresponding trading volumes, using each period’s percentage price change multiplied by volume, and returns the end-of-period value rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5062,
+          "completion_tokens": 52,
+          "total_tokens": 5114,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15760,
+          "completion_tokens": 579,
+          "total_tokens": 16339,
+          "completion_tokens_details": {
+            "reasoning_tokens": 482
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [120, 123, 121, 125, 130]\n    volumes = [1500, 1600, 1550, 1700, 1800]\n\n    # Do math calculation to get the answer\n    vpt = 0\n    for i in range(1, len(prices)):\n        price_change = (prices[i] - prices[i - 1]) / prices[i - 1]\n        vpt += price_change * volumes[i]\n\n    answer = round(vpt, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5325,
+          "completion_tokens": 281,
+          "total_tokens": 5606,
+          "completion_tokens_details": {
+            "reasoning_tokens": 139
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-333",
+        "score": 2.060436725616455
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.7414865493774414
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.7157325744628906
+      },
+      {
+        "function_id": "article-340",
+        "score": 1.7086012363433838
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.7030583620071411
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.698866844177246
+      },
+      {
+        "function_id": "article-334",
+        "score": 1.654793620109558
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.6498236656188965
+      },
+      {
+        "function_id": "article-1234",
+        "score": 1.632261037826538
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.632174015045166
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.6283228397369385
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.6231586933135986
+      },
+      {
+        "function_id": "article-1285",
+        "score": 1.6184790134429932
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.6173149347305298
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.6160809993743896
+      },
+      {
+        "function_id": "article-2075",
+        "score": 1.6123032569885254
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.6119096279144287
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.6113779544830322
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.5920257568359375
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.591066598892212
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.5850625038146973
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.5833427906036377
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.5788483619689941
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.5787174701690674
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5678883790969849
+      },
+      {
+        "function_id": "article-1324",
+        "score": 1.5620291233062744
+      },
+      {
+        "function_id": "article-208",
+        "score": 1.5592987537384033
+      },
+      {
+        "function_id": "article-1619",
+        "score": 1.5566661357879639
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.5537910461425781
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.5535796880722046
+      }
+    ],
+    "selected_ids": [
+      "article-333",
+      "article-2892"
+    ],
+    "status": "ok",
+    "answer": 143.0,
+    "code": "def solution():\n    # Define variables name and value\n    prices = [120, 123, 121, 125, 130]\n    volumes = [1500, 1600, 1550, 1700, 1800]\n\n    # Do math calculation to get the answer\n    vpt = 0\n    for i in range(1, len(prices)):\n        price_change = (prices[i] - prices[i - 1]) / prices[i - 1]\n        vpt += price_change * volumes[i]\n\n    answer = round(vpt, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "bb7ba9f9a886531e458b77278bbc0c594279f8d52298ebcb7f1774abe2afad14"
+}

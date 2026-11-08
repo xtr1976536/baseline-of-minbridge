@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2163",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the total expiration profit or loss of a covered call writing strategy, accounting for the number of option contracts, shares per contract, premium received per share, strike price, underlying stock purchase price, and expiration stock price, with the result rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5020,
+          "completion_tokens": 59,
+          "total_tokens": 5079,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C14\"]}",
+        "usage": {
+          "prompt_tokens": 14954,
+          "completion_tokens": 213,
+          "total_tokens": 15167,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 195
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    contracts = 5\n    shares_per_contract = 100\n    premium_received = 2.50\n    strike_price = 150\n    market_price = 158\n    shares_bought_price = 140\n\n    # Calculate the covered call profit\n    shares = contracts * shares_per_contract\n    total_premium = premium_received * shares\n    stock_profit = (min(market_price, strike_price) - shares_bought_price) * shares\n    answer = round(total_premium + stock_profit)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5142,
+          "completion_tokens": 195,
+          "total_tokens": 5337,
+          "completion_tokens_details": {
+            "reasoning_tokens": 59
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-217",
+        "score": 2.0193276405334473,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.9955395460128784,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-218",
+        "score": 1.9923768043518066,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2435",
+        "score": 1.9679218530654907,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.937723159790039,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2054",
+        "score": 1.9294754266738892,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.9269392490386963,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.9262160062789917,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.9242719411849976,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.916611909866333,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.9002923965454102,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.8852174282073975,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-706",
+        "score": 1.8650212287902832,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2502",
+        "score": 1.8626788854599,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-315",
+        "score": 1.8353558778762817,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2850",
+        "score": 1.8351210355758667,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-363",
+        "score": 1.8245227336883545,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.8227598667144775,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2849",
+        "score": 1.8055729866027832,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.8012773990631104,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.799067497253418,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-778",
+        "score": 1.793473720550537,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-777",
+        "score": 1.7878086566925049,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-759",
+        "score": 1.787426233291626,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2579",
+        "score": 1.7842400074005127,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-3105",
+        "score": 1.779728651046753,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-3063",
+        "score": 1.7781212329864502,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-796",
+        "score": 1.771298885345459,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-703",
+        "score": 1.7711598873138428,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-780",
+        "score": 1.7651455402374268,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2502"
+    ],
+    "status": "ok",
+    "answer": 6250,
+    "code": "def solution():\n    # Define variables name and value\n    contracts = 5\n    shares_per_contract = 100\n    premium_received = 2.50\n    strike_price = 150\n    market_price = 158\n    shares_bought_price = 140\n\n    # Calculate the covered call profit\n    shares = contracts * shares_per_contract\n    total_premium = premium_received * shares\n    stock_profit = (min(market_price, strike_price) - shares_bought_price) * shares\n    answer = round(total_premium + stock_profit)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "d5825b7e41055c776be13327480235d5c4093a6883a0a0528ad553478f39da53"
+}

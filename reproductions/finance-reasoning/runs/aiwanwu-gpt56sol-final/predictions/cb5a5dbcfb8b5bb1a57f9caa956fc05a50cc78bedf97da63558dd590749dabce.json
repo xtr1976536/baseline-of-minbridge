@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2035",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annualized geometric mean return over multiple years from a series of percentage returns, accounting for compounding and negative returns, and outputs the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 4994,
+          "completion_tokens": 44,
+          "total_tokens": 5038,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS]",
+        "usage": {
+          "prompt_tokens": 13983,
+          "completion_tokens": 735,
+          "total_tokens": 14718,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 638
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    returns = [0.20, -0.30, 0.15]\n    periods = 3\n\n    # Do math calculation to get the answer\n    compounded_growth = 1\n    for rate in returns:\n        compounded_growth *= 1 + rate\n\n    geometric_mean_return = (compounded_growth ** (1 / periods) - 1) * 100\n    answer = round(geometric_mean_return, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5545,
+          "completion_tokens": 422,
+          "total_tokens": 5967,
+          "prompt_tokens_details": {
+            "cached_tokens": 3764
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 300
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2330",
+        "score": 1.73572838306427
+      },
+      {
+        "function_id": "article-1130",
+        "score": 1.6468744277954102
+      },
+      {
+        "function_id": "article-2331",
+        "score": 1.6453680992126465
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.621332049369812
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.6054284572601318
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.6040891408920288
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.6016662120819092
+      },
+      {
+        "function_id": "article-1609",
+        "score": 1.6008224487304688
+      },
+      {
+        "function_id": "article-1608",
+        "score": 1.5943406820297241
+      },
+      {
+        "function_id": "article-2324",
+        "score": 1.5826892852783203
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.5815670490264893
+      },
+      {
+        "function_id": "article-3",
+        "score": 1.5792725086212158
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.5677490234375
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.566955804824829
+      },
+      {
+        "function_id": "article-2410",
+        "score": 1.5613393783569336
+      },
+      {
+        "function_id": "article-2319",
+        "score": 1.5610460042953491
+      },
+      {
+        "function_id": "article-1103",
+        "score": 1.560546636581421
+      },
+      {
+        "function_id": "article-7",
+        "score": 1.5572021007537842
+      },
+      {
+        "function_id": "article-2",
+        "score": 1.5498971939086914
+      },
+      {
+        "function_id": "article-2327",
+        "score": 1.538611650466919
+      },
+      {
+        "function_id": "article-1207",
+        "score": 1.5281751155853271
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.5262770652770996
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.5197856426239014
+      },
+      {
+        "function_id": "article-2317",
+        "score": 1.5195249319076538
+      },
+      {
+        "function_id": "article-2386",
+        "score": 1.519166350364685
+      },
+      {
+        "function_id": "article-1614",
+        "score": 1.5151368379592896
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.5123224258422852
+      },
+      {
+        "function_id": "article-325",
+        "score": 1.509055733680725
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.5054540634155273
+      },
+      {
+        "function_id": "article-1617",
+        "score": 1.4998905658721924
+      }
+    ],
+    "selected_ids": [
+      "article-2330",
+      "article-1130",
+      "article-2319"
+    ],
+    "status": "ok",
+    "answer": -1.15,
+    "code": "def solution():\n    # Define variables name and value\n    returns = [0.20, -0.30, 0.15]\n    periods = 3\n\n    # Do math calculation to get the answer\n    compounded_growth = 1\n    for rate in returns:\n        compounded_growth *= 1 + rate\n\n    geometric_mean_return = (compounded_growth ** (1 / periods) - 1) * 100\n    answer = round(geometric_mean_return, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "5a8b26c35e56ddd258e510804f755142b913c97a0a68dc9fb953dfeb66bac713"
+}

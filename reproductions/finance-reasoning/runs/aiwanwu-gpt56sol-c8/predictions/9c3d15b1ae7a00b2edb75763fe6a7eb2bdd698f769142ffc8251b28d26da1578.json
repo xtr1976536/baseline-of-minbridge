@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2063",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates cost of goods sold under a periodic inventory system using the LIFO inventory-costing method, given beginning inventory, dated purchases with unit costs, and units sold, excluding selling revenue and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5022,
+          "completion_tokens": 51,
+          "total_tokens": 5073
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14019,
+          "completion_tokens": 798,
+          "total_tokens": 14817,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 701
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    units_sold = 50000\n    purchase_costs = [\n        (40000, 17),  # 1/23 purchase, most recent\n        (30000, 15),  # 1/20 purchase\n        (20000, 13),  # Beginning inventory\n    ]\n\n    # Do math calculation to get the answer using periodic LIFO\n    units_remaining = units_sold\n    cogs = 0\n\n    for units, cost_per_unit in purchase_costs:\n        units_used = min(units_remaining, units)\n        cogs += units_used * cost_per_unit\n        units_remaining -= units_used\n\n        if units_remaining == 0:\n            break\n\n    # Return the cost of goods sold rounded to the nearest dollar\n    answer = round(cogs)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5829,
+          "completion_tokens": 248,
+          "total_tokens": 6077,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 56
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2098",
+        "score": 2.0316145420074463
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.9320549964904785
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.9193274974822998
+      },
+      {
+        "function_id": "article-2135",
+        "score": 1.9119608402252197
+      },
+      {
+        "function_id": "article-2958",
+        "score": 1.8288527727127075
+      },
+      {
+        "function_id": "article-2136",
+        "score": 1.7375274896621704
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.733040452003479
+      },
+      {
+        "function_id": "article-2396",
+        "score": 1.6965632438659668
+      },
+      {
+        "function_id": "article-2495",
+        "score": 1.6953513622283936
+      },
+      {
+        "function_id": "article-200",
+        "score": 1.6805994510650635
+      },
+      {
+        "function_id": "article-2395",
+        "score": 1.6657726764678955
+      },
+      {
+        "function_id": "article-2266",
+        "score": 1.6569849252700806
+      },
+      {
+        "function_id": "article-2207",
+        "score": 1.6519498825073242
+      },
+      {
+        "function_id": "article-1270",
+        "score": 1.6507797241210938
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.6059520244598389
+      },
+      {
+        "function_id": "article-1058",
+        "score": 1.59417724609375
+      },
+      {
+        "function_id": "article-466",
+        "score": 1.5833876132965088
+      },
+      {
+        "function_id": "article-1977",
+        "score": 1.582247018814087
+      },
+      {
+        "function_id": "article-82",
+        "score": 1.5796380043029785
+      },
+      {
+        "function_id": "article-1448",
+        "score": 1.568444013595581
+      },
+      {
+        "function_id": "article-85",
+        "score": 1.5614923238754272
+      },
+      {
+        "function_id": "article-288",
+        "score": 1.5606040954589844
+      },
+      {
+        "function_id": "article-3003",
+        "score": 1.5603141784667969
+      },
+      {
+        "function_id": "article-471",
+        "score": 1.559863567352295
+      },
+      {
+        "function_id": "article-1187",
+        "score": 1.5526340007781982
+      },
+      {
+        "function_id": "article-472",
+        "score": 1.539078950881958
+      },
+      {
+        "function_id": "article-2467",
+        "score": 1.538643717765808
+      },
+      {
+        "function_id": "article-2284",
+        "score": 1.5348483324050903
+      },
+      {
+        "function_id": "article-469",
+        "score": 1.5306949615478516
+      },
+      {
+        "function_id": "article-2529",
+        "score": 1.5279619693756104
+      }
+    ],
+    "selected_ids": [
+      "article-2098",
+      "article-2135",
+      "article-200"
+    ],
+    "status": "ok",
+    "answer": 830000,
+    "code": "def solution():\n    # Define variables name and value\n    units_sold = 50000\n    purchase_costs = [\n        (40000, 17),  # 1/23 purchase, most recent\n        (30000, 15),  # 1/20 purchase\n        (20000, 13),  # Beginning inventory\n    ]\n\n    # Do math calculation to get the answer using periodic LIFO\n    units_remaining = units_sold\n    cogs = 0\n\n    for units, cost_per_unit in purchase_costs:\n        units_used = min(units_remaining, units)\n        cogs += units_used * cost_per_unit\n        units_remaining -= units_used\n\n        if units_remaining == 0:\n            break\n\n    # Return the cost of goods sold rounded to the nearest dollar\n    answer = round(cogs)\n    return answer\n"
+  },
+  "digest": "47a4c439a4d279adcaaba1c9339a4f1a26b528537b34502294322d144ed7bf26"
+}

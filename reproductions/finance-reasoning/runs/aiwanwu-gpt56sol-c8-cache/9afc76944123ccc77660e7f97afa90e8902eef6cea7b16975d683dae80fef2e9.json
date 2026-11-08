@@ -1,0 +1,21 @@
+{
+  "identity": "9afc76944123ccc77660e7f97afa90e8902eef6cea7b16975d683dae80fef2e9",
+  "response_digest": "51b02f22506d8ad344132cadfbe4bb5558f3e1be657ff2ed48cd08306474992d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    spot_rate_short = 0.025  # 2-year spot rate\n    spot_rate_long = 0.055   # 4-year spot rate\n    period_short = 2\n    period_long = 4\n\n    # Do math calculation to get the answer\n    forward_rate = (\n        ((1 + spot_rate_long) ** period_long)\n        / ((1 + spot_rate_short) ** period_short)\n    ) ** (1 / (period_long - period_short)) - 1\n\n    answer = round(forward_rate * 100, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5352,
+      "completion_tokens": 214,
+      "total_tokens": 5566,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 65
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:income_loss_from_continuing_operations_before_income_taxes_foreign_fy2025)

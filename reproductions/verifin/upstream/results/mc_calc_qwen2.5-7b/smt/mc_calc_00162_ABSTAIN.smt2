@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:research_and_development_asset_acquired_other_than_through_business_combination_written_off_fy2025,increase_decrease_in_other_operating_capital_net_fy2025)

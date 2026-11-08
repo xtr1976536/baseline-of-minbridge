@@ -1,0 +1,21 @@
+{
+  "identity": "1a99ae84034981967a53cee5daf4a7d7cb053d2b1d1a99c91de0dbe01ea18c2a",
+  "response_digest": "9beae15d3647f63d8c4eae2514483dc6edf62585a7934365385d30c191018a84",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    fund_value = 100_000_000\n    current_share_weight = 0.80\n    target_share_weight = 0.60\n    share_beta = 1.20\n    futures_index_level = 1_200\n    futures_multiplier = 250\n    futures_beta = 0.95\n\n    # Calculate the equity exposure to be shifted\n    equity_exposure_shift = (\n        (current_share_weight - target_share_weight)\n        * fund_value\n        * share_beta\n    )\n\n    # Calculate the beta-adjusted value of one stock index futures contract\n    futures_contract_value = futures_index_level * futures_multiplier\n    beta_adjusted_contract_value = futures_contract_value * futures_beta\n\n    # Calculate the number of stock index futures contracts\n    contracts = equity_exposure_shift / beta_adjusted_contract_value\n\n    # Return the answer rounded to three decimal places\n    return round(contracts, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5495,
+      "completion_tokens": 597,
+      "total_tokens": 6092,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 388
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

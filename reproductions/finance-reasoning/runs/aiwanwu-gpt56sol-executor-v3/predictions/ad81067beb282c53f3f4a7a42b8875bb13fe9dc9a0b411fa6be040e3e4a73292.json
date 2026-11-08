@@ -1,0 +1,228 @@
+{
+  "record": {
+    "question_id": "test-2201",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Pearson correlation coefficient between two equally sized numeric time series of monthly stock prices, measuring the strength and direction of their linear relationship and returning a value that can be rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5104,
+          "completion_tokens": 57,
+          "total_tokens": 5161,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 10
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14751,
+          "completion_tokens": 80,
+          "total_tokens": 14831,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 56
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    company_a = [120, 125, 130, 128, 135, 138, 140, 142, 145, 147, 150, 152]\n    company_b = [100, 105, 110, 107, 112, 115, 118, 120, 123, 125, 130, 132]\n\n    # Do math calculation to get the answer\n    correlation = calculate_pearson_correlation(company_a, company_b)\n    answer = round(correlation, 2)\n\n    # return answer\n    return answer\n\n\ndef calculate_pearson_correlation(x_values, y_values):\n    n = len(x_values)\n    numerator = n * sum(x * y for x, y in zip(x_values, y_values)) - sum(x_values) * sum(y_values)\n    denominator = (\n        (n * sum(x ** 2 for x in x_values) - sum(x_values) ** 2)\n        * (n * sum(y ** 2 for y in y_values) - sum(y_values) ** 2)\n    ) ** 0.5\n    return numerator / denominator\n```",
+        "usage": {
+          "prompt_tokens": 6053,
+          "completion_tokens": 298,
+          "total_tokens": 6351,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 35
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-176",
+        "score": 1.7925701141357422,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.7591803073883057,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1960",
+        "score": 1.7087266445159912,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.627593755722046,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.569848895072937,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.5690157413482666,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.56648588180542,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.5447431802749634,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2873",
+        "score": 1.541201114654541,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5268168449401855,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.515129566192627,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1587",
+        "score": 1.503659725189209,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-3065",
+        "score": 1.4954200983047485,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.4899871349334717,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.4892570972442627,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1335",
+        "score": 1.488338589668274,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.4865273237228394,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-717",
+        "score": 1.4764883518218994,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.4716777801513672,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.4638564586639404,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.4617072343826294,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.4608241319656372,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1438",
+        "score": 1.4601026773452759,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2378",
+        "score": 1.4591493606567383,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.4561294317245483,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1322",
+        "score": 1.4503222703933716,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.4493532180786133,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1897",
+        "score": 1.4492061138153076,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2652",
+        "score": 1.4492058753967285,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1435",
+        "score": 1.447950005531311,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-176",
+      "article-177",
+      "article-1960"
+    ],
+    "status": "ok",
+    "answer": 0.99,
+    "code": "def solution():\n    # Define variables name and value\n    company_a = [120, 125, 130, 128, 135, 138, 140, 142, 145, 147, 150, 152]\n    company_b = [100, 105, 110, 107, 112, 115, 118, 120, 123, 125, 130, 132]\n\n    # Do math calculation to get the answer\n    correlation = calculate_pearson_correlation(company_a, company_b)\n    answer = round(correlation, 2)\n\n    # return answer\n    return answer\n\n\ndef calculate_pearson_correlation(x_values, y_values):\n    n = len(x_values)\n    numerator = n * sum(x * y for x, y in zip(x_values, y_values)) - sum(x_values) * sum(y_values)\n    denominator = (\n        (n * sum(x ** 2 for x in x_values) - sum(x_values) ** 2)\n        * (n * sum(y ** 2 for y in y_values) - sum(y_values) ** 2)\n    ) ** 0.5\n    return numerator / denominator\n"
+  },
+  "digest": "7baa89e9cd50cfde237e40d4f94f6443e00cd12059c82ed0d3bdfd4fd266de0b"
+}

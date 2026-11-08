@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2182",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates total hedge fund fees under a “2 and 20” fee structure, including a management fee based on end-of-year assets and a 20% incentive fee on profits exceeding both a soft hurdle rate net of management fees and a prior high-water mark, with asset growth inputs and results rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5020,
+          "completion_tokens": 70,
+          "total_tokens": 5090,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14662,
+          "completion_tokens": 2167,
+          "total_tokens": 16829,
+          "prompt_tokens_details": {
+            "cached_tokens": 10125
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 2070
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    starting_assets = 160.0\n    growth_rate = 0.25\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.20\n    hurdle_rate = 0.10\n    prior_high_water_mark = 198.0\n\n    # Calculate end-of-year assets and management fee\n    end_of_year_assets = starting_assets * (1 + growth_rate)\n    management_fee = end_of_year_assets * management_fee_rate\n\n    # Calculate asset value after management fees\n    net_assets = end_of_year_assets - management_fee\n\n    # The net hurdle must be exceeded, and net assets must exceed the high-water mark\n    hurdle_value = starting_assets * (1 + hurdle_rate)\n    incentive_fee_base = max(0.0, net_assets - max(prior_high_water_mark, hurdle_value))\n    incentive_fee = incentive_fee_base * incentive_fee_rate\n\n    # Calculate total fees\n    total_fees = management_fee + incentive_fee\n\n    # Return answer rounded to one decimal place\n    return round(total_fees, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5527,
+          "completion_tokens": 541,
+          "total_tokens": 6068,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 300
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1983",
+        "score": 1.918452501296997
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.8661563396453857
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.8599735498428345
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.8573997020721436
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.8320536613464355
+      },
+      {
+        "function_id": "article-1023",
+        "score": 1.8292732238769531
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.7218331098556519
+      },
+      {
+        "function_id": "article-811",
+        "score": 1.6692891120910645
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.6458392143249512
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.61460542678833
+      },
+      {
+        "function_id": "article-2902",
+        "score": 1.6007893085479736
+      },
+      {
+        "function_id": "article-2109",
+        "score": 1.5427519083023071
+      },
+      {
+        "function_id": "article-2901",
+        "score": 1.5402045249938965
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.5368191003799438
+      },
+      {
+        "function_id": "article-1171",
+        "score": 1.5089354515075684
+      },
+      {
+        "function_id": "article-77",
+        "score": 1.4956073760986328
+      },
+      {
+        "function_id": "article-2858",
+        "score": 1.4923945665359497
+      },
+      {
+        "function_id": "article-2178",
+        "score": 1.480349063873291
+      },
+      {
+        "function_id": "article-2888",
+        "score": 1.476599931716919
+      },
+      {
+        "function_id": "article-1025",
+        "score": 1.4765576124191284
+      },
+      {
+        "function_id": "article-593",
+        "score": 1.45072340965271
+      },
+      {
+        "function_id": "article-2047",
+        "score": 1.4468101263046265
+      },
+      {
+        "function_id": "article-545",
+        "score": 1.4446134567260742
+      },
+      {
+        "function_id": "article-2838",
+        "score": 1.441258192062378
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.4389269351959229
+      },
+      {
+        "function_id": "article-340",
+        "score": 1.436336636543274
+      },
+      {
+        "function_id": "article-2887",
+        "score": 1.4352035522460938
+      },
+      {
+        "function_id": "article-1026",
+        "score": 1.434761881828308
+      },
+      {
+        "function_id": "article-1293",
+        "score": 1.433990716934204
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.4252424240112305
+      }
+    ],
+    "selected_ids": [
+      "article-1983",
+      "article-1024",
+      "article-812"
+    ],
+    "status": "ok",
+    "answer": 4.0,
+    "code": "def solution():\n    # Define variables\n    starting_assets = 160.0\n    growth_rate = 0.25\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.20\n    hurdle_rate = 0.10\n    prior_high_water_mark = 198.0\n\n    # Calculate end-of-year assets and management fee\n    end_of_year_assets = starting_assets * (1 + growth_rate)\n    management_fee = end_of_year_assets * management_fee_rate\n\n    # Calculate asset value after management fees\n    net_assets = end_of_year_assets - management_fee\n\n    # The net hurdle must be exceeded, and net assets must exceed the high-water mark\n    hurdle_value = starting_assets * (1 + hurdle_rate)\n    incentive_fee_base = max(0.0, net_assets - max(prior_high_water_mark, hurdle_value))\n    incentive_fee = incentive_fee_base * incentive_fee_rate\n\n    # Calculate total fees\n    total_fees = management_fee + incentive_fee\n\n    # Return answer rounded to one decimal place\n    return round(total_fees, 1)\n"
+  },
+  "digest": "fdb1f610096847113963ee8779f891fec8e7d6a717fcd81cd91f5e99feaf8347"
+}

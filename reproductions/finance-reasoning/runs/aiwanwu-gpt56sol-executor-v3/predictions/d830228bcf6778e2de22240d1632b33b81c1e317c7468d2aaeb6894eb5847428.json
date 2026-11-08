@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2001",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annualized total return (CAGR) for an investment over a fixed multi-year period using its initial and final cumulative values, accounting for reinvested dividends and returning a percentage rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5367,
+          "completion_tokens": 49,
+          "total_tokens": 5416
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 13650,
+          "completion_tokens": 99,
+          "total_tokens": 13749,
+          "completion_tokens_details": {
+            "reasoning_tokens": 75
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    beginning_value = 100\n    ending_value = 370.32\n    holding_period_years = 5\n\n    # Calculate the annualized return (CAGR)\n    annualized_return = (\n        (ending_value / beginning_value) ** (1 / holding_period_years) - 1\n    ) * 100\n\n    # Return the result rounded to the nearest integer\n    answer = round(annualized_return)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5962,
+          "completion_tokens": 208,
+          "total_tokens": 6170,
+          "completion_tokens_details": {
+            "reasoning_tokens": 97
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-7",
+        "score": 2.062845468521118,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2327",
+        "score": 2.0610849857330322,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2319",
+        "score": 2.0552420616149902,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1213",
+        "score": 1.9315767288208008,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1443",
+        "score": 1.9124829769134521,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1217",
+        "score": 1.8843389749526978,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2342",
+        "score": 1.8823925256729126,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-137",
+        "score": 1.8640226125717163,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.8162342309951782,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2385",
+        "score": 1.801274061203003,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.7900173664093018,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-477",
+        "score": 1.7684590816497803,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2331",
+        "score": 1.7594189643859863,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1918",
+        "score": 1.7567062377929688,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.7463293075561523,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.7373182773590088,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.7311491966247559,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.7224681377410889,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.7156398296356201,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2214",
+        "score": 1.7074863910675049,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.691957712173462,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1609",
+        "score": 1.6719298362731934,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1062",
+        "score": 1.6696381568908691,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-481",
+        "score": 1.6689966917037964,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.6675161123275757,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1545",
+        "score": 1.6633806228637695,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-259",
+        "score": 1.6617352962493896,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1608",
+        "score": 1.6610136032104492,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1103",
+        "score": 1.6578643321990967,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1207",
+        "score": 1.6574532985687256,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-7",
+      "article-2327",
+      "article-2319"
+    ],
+    "status": "ok",
+    "answer": 30,
+    "code": "def solution():\n    # Define variables\n    beginning_value = 100\n    ending_value = 370.32\n    holding_period_years = 5\n\n    # Calculate the annualized return (CAGR)\n    annualized_return = (\n        (ending_value / beginning_value) ** (1 / holding_period_years) - 1\n    ) * 100\n\n    # Return the result rounded to the nearest integer\n    answer = round(annualized_return)\n    return answer\n"
+  },
+  "digest": "9969d18c796678b6906fd7e82f4951049a272cd74f3e41d86b1afb2405fa9b2e"
+}

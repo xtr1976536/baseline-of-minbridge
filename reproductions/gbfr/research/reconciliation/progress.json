@@ -1,0 +1,51 @@
+{
+  "objective": "你先继续解决知识图谱和测试集的不一致，严格以论文为准；API我之后提供。",
+  "status": "blocked",
+  "goal_completion_verified": false,
+  "turn_classification": "blocked",
+  "date": "2026-11-06",
+  "dataset_readiness": {
+    "CFBenchmark": false,
+    "FinanceReasoning": true,
+    "FinQA": true,
+    "TAT-QA": false
+  },
+  "graph": {
+    "complete": false,
+    "formula_binding": {
+      "syntactically_bound": 2749,
+      "requires_review": 5800
+    },
+    "reference_code_binding": {
+      "syntactically_bound": 1738,
+      "requires_review": 6811
+    },
+    "reciprocal_families": 52,
+    "formula_presence_variations": 218,
+    "source_type_explicitly_declared": false,
+    "formula_code_review": {
+      "input_metric_identity_needs_review": 371,
+      "constant_factor_needs_unit_review": 64,
+      "equivalent_under_explicit_paper_aliases": 13
+    }
+  },
+  "remaining_requirements": [
+    "完整 FMKG 的最终规范节点、类型、逐公式依赖与 DAG 方向仍不能从当前公开源唯一确定",
+    "TAT-QA UID 8af2135a1b3d73f3cb033d1458e429ca 的多值答案与单实数输出要求需要实际评测定义",
+    "CFBenchmark 140 条实际保留集合、混合标签及两处金标冲突需要确认"
+  ],
+  "next_evidence_paths": [
+    "docs/AUTHOR_CLARIFICATIONS.md",
+    "research/reconciliation/constraint_witnesses.json",
+    "research/reconciliation/public_source_availability.json",
+    "data/reconciliation/fmkg/formula_code_review.json"
+  ],
+  "real_api_calls": 0,
+  "blocking_condition": {
+    "id": "missing_authoritative_fmkg_and_evaluation_contract",
+    "observed_goal_turns": 3,
+    "threshold_reached_this_turn": true,
+    "note": "The same missing authoritative final FMKG and evaluation contract has persisted for three consecutive goal turns. Rechecked public HEAD, branches, tags, releases and issues; no new material. Fresh local audit still fails TAT-QA and CFBenchmark. No remaining non-arbitrary action can establish strict paper fidelity without new authoritative material."
+  },
+  "last_verified_at": "2026-11-06T07:49:41.708782+00:00"
+}

@@ -1,0 +1,31 @@
+{
+  "request_hash": "a65faae92ebc33b8997be910ac8640a38b31c37cd21eb163e7d94a8a12432dd3",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the FY2019 cash conversion cycle (CCC) for General Mills? CCC is defined as: DIO + DSO - DPO. DIO is defined as: 365 * (average inventory between FY2018 and FY2019) / (FY2019 COGS). DSO is defined as: 365 * (average accounts receivable between FY2018 and FY2019) / (FY2019 Revenue). DPO is defined as: 365 * (average accounts payable between FY2018 and FY2019) / (FY2019 COGS + change in inventory between FY2018 and FY2019). Round your answer to two decimal places. Address the question by using the line items and information shown within the income statement and the balance sheet.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"cash_conversion_cycle\",\"facts\":[{\"name\":\"inventory\",\"aliases\":[\"Inventories\",\"Inventory\",\"Finished goods and materials inventories\",\"Total inventories\"],\"period\":\"FY2018 and FY2019\",\"statement\":\"balance sheet\"},{\"name\":\"cost_of_goods_sold\",\"aliases\":[\"Cost of sales\",\"Cost of goods sold\",\"Cost of products sold\"],\"period\":\"FY2019\",\"statement\":\"income statement\"},{\"name\":\"accounts_receivable\",\"aliases\":[\"Accounts receivable\",\"Receivables\",\"Trade accounts receivable\",\"Accounts and notes receivable\"],\"period\":\"FY2018 and FY2019\",\"statement\":\"balance sheet\"},{\"name\":\"revenue\",\"aliases\":[\"Net sales\",\"Revenue\",\"Net revenue\",\"Sales\"],\"period\":\"FY2019\",\"statement\":\"income statement\"},{\"name\":\"accounts_payable\",\"aliases\":[\"Accounts payable\",\"Trade accounts payable\"],\"period\":\"FY2018 and FY2019\",\"statement\":\"balance sheet\"}],\"reason\":\"Calculate FY2019 CCC as DIO + DSO - DPO using FY2018 and FY2019 inventory, accounts receivable, and accounts payable balances; FY2019 cost of sales and revenue; and the inventory change derived from the two inventory balances.\"}",
+  "usage": {
+    "prompt_tokens": 4839,
+    "completion_tokens": 439,
+    "total_tokens": 5278,
+    "prompt_tokens_details": {
+      "cached_tokens": 4480
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 191
+    }
+  },
+  "response_id": "resp_005e6ed7792df2ee016aedb711239487d0996158cbd1af1047",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:income_loss_from_continuing_operations_before_income_taxes_minority_interest_and_income_loss_from_equity_method_investments_fy2021)

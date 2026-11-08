@@ -1,0 +1,186 @@
+{
+  "record": {
+    "question_id": "test-2128",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates diluted earnings per share under U.S. GAAP by adjusting net income for after-tax convertible bond interest and preferred dividends, and adjusting weighted-average common shares for shares issuable upon conversion of fully outstanding convertible bonds, with results rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5085,
+          "completion_tokens": 57,
+          "total_tokens": 5142,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14294,
+          "completion_tokens": 613,
+          "total_tokens": 14907,
+          "prompt_tokens_details": {
+            "cached_tokens": 9856
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 1_500_000\n    preferred_stock_par_value = 2_000_000\n    preferred_dividend_rate = 0.07\n    bond_par_value = 10_000_000\n    bond_coupon_rate = 0.04\n    tax_rate = 0.30\n    common_shares = 1_000_000\n    convertible_bond_shares = 300_000\n\n    # Do math calculation to get the answer\n    preferred_dividends = preferred_stock_par_value * preferred_dividend_rate\n    bond_interest = bond_par_value * bond_coupon_rate\n    after_tax_interest = bond_interest * (1 - tax_rate)\n\n    adjusted_net_income = (\n        net_income - preferred_dividends + after_tax_interest\n    )\n    diluted_shares = common_shares + convertible_bond_shares\n    diluted_eps = adjusted_net_income / diluted_shares\n\n    # return answer\n    return round(diluted_eps, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5341,
+          "completion_tokens": 322,
+          "total_tokens": 5663,
+          "completion_tokens_details": {
+            "reasoning_tokens": 95
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-642",
+        "score": 1.8052480220794678
+      },
+      {
+        "function_id": "article-2712",
+        "score": 1.8040249347686768
+      },
+      {
+        "function_id": "article-1718",
+        "score": 1.7811256647109985
+      },
+      {
+        "function_id": "article-492",
+        "score": 1.7666466236114502
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.7478294372558594
+      },
+      {
+        "function_id": "article-2340",
+        "score": 1.727078914642334
+      },
+      {
+        "function_id": "article-1952",
+        "score": 1.6921682357788086
+      },
+      {
+        "function_id": "article-2645",
+        "score": 1.6862157583236694
+      },
+      {
+        "function_id": "article-1951",
+        "score": 1.686105728149414
+      },
+      {
+        "function_id": "article-1720",
+        "score": 1.6687731742858887
+      },
+      {
+        "function_id": "article-639",
+        "score": 1.667499303817749
+      },
+      {
+        "function_id": "article-1237",
+        "score": 1.6644210815429688
+      },
+      {
+        "function_id": "article-755",
+        "score": 1.6518465280532837
+      },
+      {
+        "function_id": "article-1719",
+        "score": 1.6475400924682617
+      },
+      {
+        "function_id": "article-1240",
+        "score": 1.641483187675476
+      },
+      {
+        "function_id": "article-2704",
+        "score": 1.6410090923309326
+      },
+      {
+        "function_id": "article-168",
+        "score": 1.6287953853607178
+      },
+      {
+        "function_id": "article-1639",
+        "score": 1.6263275146484375
+      },
+      {
+        "function_id": "article-1300",
+        "score": 1.6230077743530273
+      },
+      {
+        "function_id": "article-2895",
+        "score": 1.6225440502166748
+      },
+      {
+        "function_id": "article-754",
+        "score": 1.622434139251709
+      },
+      {
+        "function_id": "article-2282",
+        "score": 1.6159348487854004
+      },
+      {
+        "function_id": "article-2928",
+        "score": 1.6158180236816406
+      },
+      {
+        "function_id": "article-2711",
+        "score": 1.6138571500778198
+      },
+      {
+        "function_id": "article-695",
+        "score": 1.613203763961792
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.612821340560913
+      },
+      {
+        "function_id": "article-167",
+        "score": 1.61063551902771
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.6104999780654907
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.601686954498291
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.6012252569198608
+      }
+    ],
+    "selected_ids": [
+      "article-2712",
+      "article-492"
+    ],
+    "status": "ok",
+    "answer": 1.262,
+    "code": "def solution():\n    # Define variables name and value\n    net_income = 1_500_000\n    preferred_stock_par_value = 2_000_000\n    preferred_dividend_rate = 0.07\n    bond_par_value = 10_000_000\n    bond_coupon_rate = 0.04\n    tax_rate = 0.30\n    common_shares = 1_000_000\n    convertible_bond_shares = 300_000\n\n    # Do math calculation to get the answer\n    preferred_dividends = preferred_stock_par_value * preferred_dividend_rate\n    bond_interest = bond_par_value * bond_coupon_rate\n    after_tax_interest = bond_interest * (1 - tax_rate)\n\n    adjusted_net_income = (\n        net_income - preferred_dividends + after_tax_interest\n    )\n    diluted_shares = common_shares + convertible_bond_shares\n    diluted_eps = adjusted_net_income / diluted_shares\n\n    # return answer\n    return round(diluted_eps, 3)\n"
+  },
+  "digest": "467a35071016527324cf8903afd70ddd26a100672ed9959220a5a8cc19822db3"
+}

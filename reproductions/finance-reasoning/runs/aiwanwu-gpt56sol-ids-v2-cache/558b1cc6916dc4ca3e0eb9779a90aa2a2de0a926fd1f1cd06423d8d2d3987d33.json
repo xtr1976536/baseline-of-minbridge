@@ -1,0 +1,18 @@
+{
+  "identity": "558b1cc6916dc4ca3e0eb9779a90aa2a2de0a926fd1f1cd06423d8d2d3987d33",
+  "response_digest": "8cfed953acdbbc1d8aac05543136148438c0d0bf507d322e0eddb45ded52f0a5",
+  "response": {
+    "content": "```python\ndef solution():\n    purchase_price = 95000\n    face_value = 100000\n    num_periods = 4\n    coupon_rate = 5\n    market_rate = 6\n\n    book_value = purchase_price\n    total_amortization = 0\n\n    for _ in range(num_periods):\n        coupon_payment = face_value * coupon_rate / 100\n        interest_expense = book_value * market_rate / 100\n        amortization = interest_expense - coupon_payment\n        total_amortization += amortization\n        book_value += amortization\n\n    answer = round(total_amortization)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5466,
+      "completion_tokens": 344,
+      "total_tokens": 5810,
+      "completion_tokens_details": {
+        "reasoning_tokens": 201
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

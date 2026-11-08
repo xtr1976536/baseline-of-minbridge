@@ -1,0 +1,21 @@
+{
+  "identity": "ecc43894b228ca80b2147a5a74daa7034fd024ac93c0307b8845d788dbdd0ad5",
+  "response_digest": "df86c43584425426452a1df96e4f8e5d5bd6e2c2f67f8ef255124973212933aa",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_price = 150\n    strike_price = 140\n    time_to_maturity = 0.5\n    risk_free_rate = 0.02\n    volatility = 0.25\n\n    # Do math calculation to get the answer\n    from math import erf, exp, log, sqrt\n\n    def normal_cdf(value):\n        return 0.5 * (1 + erf(value / sqrt(2)))\n\n    d1 = (\n        log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility**2) * time_to_maturity\n    ) / (volatility * sqrt(time_to_maturity))\n    d2 = d1 - volatility * sqrt(time_to_maturity)\n\n    put_price = (\n        strike_price\n        * exp(-risk_free_rate * time_to_maturity)\n        * normal_cdf(-d2)\n        - stock_price * normal_cdf(-d1)\n    )\n    answer = round(put_price, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5807,
+      "completion_tokens": 271,
+      "total_tokens": 6078,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 33
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

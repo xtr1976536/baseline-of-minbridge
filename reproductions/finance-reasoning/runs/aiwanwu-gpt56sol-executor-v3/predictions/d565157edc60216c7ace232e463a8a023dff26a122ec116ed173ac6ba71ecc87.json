@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2158",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function solves for the stock’s continuous implied dividend yield from European call and put prices using put-call parity, given spot price, strike price, risk-free rate, and time to expiration, and returns the yield as a percentage?",
+        "usage": {
+          "prompt_tokens": 5016,
+          "completion_tokens": 50,
+          "total_tokens": 5066
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14743,
+          "completion_tokens": 414,
+          "total_tokens": 15157,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 396
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\nimport math\n\ndef solution():\n    # Define variables name and value\n    S = 85\n    K = 90\n    r = 0.05\n    c = 10\n    p = 15\n    T = 5\n\n    # Put-call parity: c - p = S*exp(-q*T) - K*exp(-r*T)\n    discounted_stock = c - p + K * math.exp(-r * T)\n    q = -math.log(discounted_stock / S) / T\n    answer = round(q * 100, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 4963,
+          "completion_tokens": 240,
+          "total_tokens": 5203,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 99
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1408",
+        "score": 1.8452959060668945,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3060",
+        "score": 1.716491937637329,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1238",
+        "score": 1.6883080005645752,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.681583285331726,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1032",
+        "score": 1.67009437084198,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.6699655055999756,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.667993187904358,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1033",
+        "score": 1.6668121814727783,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-606",
+        "score": 1.6532776355743408,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1761",
+        "score": 1.6470986604690552,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.644102931022644,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-758",
+        "score": 1.6346511840820312,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-86",
+        "score": 1.6322548389434814,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1754",
+        "score": 1.620859146118164,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-605",
+        "score": 1.618175745010376,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1328",
+        "score": 1.6151273250579834,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-3061",
+        "score": 1.611527681350708,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-13",
+        "score": 1.6045366525650024,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-729",
+        "score": 1.5967857837677002,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-3130",
+        "score": 1.5954773426055908,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-935",
+        "score": 1.5922883749008179,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1768",
+        "score": 1.5917657613754272,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2649",
+        "score": 1.5865700244903564,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-706",
+        "score": 1.5859036445617676,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1516",
+        "score": 1.5858619213104248,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-707",
+        "score": 1.582144856452942,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1396",
+        "score": 1.5796005725860596,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-15",
+        "score": 1.5716640949249268,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1511",
+        "score": 1.5657628774642944,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2146",
+        "score": 1.5628061294555664,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1408"
+    ],
+    "status": "ok",
+    "answer": 5.337,
+    "code": "import math\n\ndef solution():\n    # Define variables name and value\n    S = 85\n    K = 90\n    r = 0.05\n    c = 10\n    p = 15\n    T = 5\n\n    # Put-call parity: c - p = S*exp(-q*T) - K*exp(-r*T)\n    discounted_stock = c - p + K * math.exp(-r * T)\n    q = -math.log(discounted_stock / S) / T\n    answer = round(q * 100, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "26a109773ca164f009827c7fc5d65417f7c66f88a6f881b98d9f11efd344b0c4"
+}

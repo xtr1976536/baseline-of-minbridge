@@ -1,0 +1,21 @@
+{
+  "identity": "1c38cdd3f5eab9c9250c231f6fdc44ea85f91f918479cf383930a75014d92439",
+  "response_digest": "68045369ca7a75d45b7ae8764c53e586001fbb5502c3c08fd6900a9082b98dbd",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    advertising = [3000, 4000, 5000, 6000, 7000]\n    revenue = [20000, 23000, 25000, 26000, 28000]\n\n    # Do math calculation to get the answer\n    mean_advertising = sum(advertising) / len(advertising)\n    mean_revenue = sum(revenue) / len(revenue)\n    numerator = sum(\n        (x - mean_advertising) * (y - mean_revenue)\n        for x, y in zip(advertising, revenue)\n    )\n    denominator = sum((x - mean_advertising) ** 2 for x in advertising)\n    slope = numerator / denominator\n    answer = round(slope, 2)\n\n    # Return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5976,
+      "completion_tokens": 288,
+      "total_tokens": 6264,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 97
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

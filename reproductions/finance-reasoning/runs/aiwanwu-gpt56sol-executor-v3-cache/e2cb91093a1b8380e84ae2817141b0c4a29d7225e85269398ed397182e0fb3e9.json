@@ -1,0 +1,21 @@
+{
+  "identity": "e2cb91093a1b8380e84ae2817141b0c4a29d7225e85269398ed397182e0fb3e9",
+  "response_digest": "d5cca7c02f8db8759deb59356596a8ba0b1cc1f619d0580c37caeb27dd2c27d8",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables in millions\n    net_income = 485\n    gross_fixed_assets_2008 = 4275\n    gross_fixed_assets_2007 = 3752\n    depreciation = 270\n\n    accounts_receivable_2008 = 770\n    inventories_2008 = 846\n    accounts_payable_2008 = 476\n    accrued_expenses_2008 = 149\n\n    accounts_receivable_2007 = 711\n    inventories_2007 = 780\n    accounts_payable_2007 = 443\n    accrued_expenses_2007 = 114\n\n    debt_2008 = 465 + 1575\n    debt_2007 = 450 + 1515\n\n    # Calculate capital expenditures\n    capital_expenditures = gross_fixed_assets_2008 - gross_fixed_assets_2007\n\n    # Calculate the change in net working capital, excluding cash and debt\n    nwc_2008 = (\n        accounts_receivable_2008\n        + inventories_2008\n        - accounts_payable_2008\n        - accrued_expenses_2008\n    )\n    nwc_2007 = (\n        accounts_receivable_2007\n        + inventories_2007\n        - accounts_payable_2007\n        - accrued_expenses_2007\n    )\n    change_in_nwc = nwc_2008 - nwc_2007\n\n    # Calculate net debt issued and the debt financing ratio\n    net_debt_issued = debt_2008 - debt_2007\n    total_reinvestment = (\n        capital_expenditures - depreciation + change_in_nwc\n    )\n    debt_ratio = net_debt_issued / total_reinvestment\n\n    # Calculate FCFE\n    fcfe = (\n        net_income\n        - (capital_expenditures - depreciation) * (1 - debt_ratio)\n        - change_in_nwc * (1 - debt_ratio)\n    )\n\n    # Return the answer to one decimal place\n    return round(fcfe, 1)\n```",
+    "usage": {
+      "prompt_tokens": 6401,
+      "completion_tokens": 1174,
+      "total_tokens": 7575,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 732
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

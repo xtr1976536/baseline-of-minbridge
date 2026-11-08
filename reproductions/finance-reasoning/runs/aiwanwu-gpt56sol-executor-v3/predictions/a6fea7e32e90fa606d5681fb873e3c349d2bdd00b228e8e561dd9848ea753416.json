@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2127",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates an interbank reference rate by averaging bid-offer mid-rates from multiple banks, excluding the two highest and two lowest mid-rates before computing the trimmed mean, and returns the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5135,
+          "completion_tokens": 53,
+          "total_tokens": 5188,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14317,
+          "completion_tokens": 54,
+          "total_tokens": 14371,
+          "completion_tokens_details": {
+            "reasoning_tokens": 36
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    bid_rates = [6.2, 6.4, 6.1, 6.5, 6.3, 6.4, 6.0, 6.1]\n    offer_rates = [6.6, 6.7, 6.5, 6.8, 6.7, 6.8, 6.4, 6.5]\n\n    # Calculate mid-rates\n    mid_rates = [(bid + offer) / 2 for bid, offer in zip(bid_rates, offer_rates)]\n\n    # Sort and remove the two lowest and two highest mid-rates\n    mid_rates.sort()\n    trimmed_mid_rates = mid_rates[2:-2]\n\n    # Calculate the JIBAR rate and round to two decimal places\n    jibar_rate = round(sum(trimmed_mid_rates) / len(trimmed_mid_rates), 2)\n\n    # Return answer\n    return jibar_rate\n```",
+        "usage": {
+          "prompt_tokens": 5197,
+          "completion_tokens": 352,
+          "total_tokens": 5549,
+          "completion_tokens_details": {
+            "reasoning_tokens": 134
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2419",
+        "score": 1.8565601110458374,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.5103869438171387,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-722",
+        "score": 1.4933526515960693,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.4896161556243896,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2109",
+        "score": 1.485045075416565,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-291",
+        "score": 1.4841492176055908,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1964",
+        "score": 1.4831165075302124,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-298",
+        "score": 1.4816935062408447,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1478",
+        "score": 1.4800279140472412,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-586",
+        "score": 1.4792596101760864,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2679",
+        "score": 1.4763333797454834,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2005",
+        "score": 1.473867654800415,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-993",
+        "score": 1.4703123569488525,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-78",
+        "score": 1.4665981531143188,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2622",
+        "score": 1.4655592441558838,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.4644262790679932,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.4615793228149414,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-989",
+        "score": 1.4612531661987305,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-196",
+        "score": 1.4552175998687744,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.4540185928344727,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.4539523124694824,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1723",
+        "score": 1.4528148174285889,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-297",
+        "score": 1.4514789581298828,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-450",
+        "score": 1.4512460231781006,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1859",
+        "score": 1.4509857892990112,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-585",
+        "score": 1.450137972831726,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1812",
+        "score": 1.449993371963501,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-816",
+        "score": 1.4480615854263306,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-992",
+        "score": 1.4480044841766357,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1044",
+        "score": 1.4476678371429443,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2419"
+    ],
+    "status": "ok",
+    "answer": 6.44,
+    "code": "def solution():\n    # Define variables\n    bid_rates = [6.2, 6.4, 6.1, 6.5, 6.3, 6.4, 6.0, 6.1]\n    offer_rates = [6.6, 6.7, 6.5, 6.8, 6.7, 6.8, 6.4, 6.5]\n\n    # Calculate mid-rates\n    mid_rates = [(bid + offer) / 2 for bid, offer in zip(bid_rates, offer_rates)]\n\n    # Sort and remove the two lowest and two highest mid-rates\n    mid_rates.sort()\n    trimmed_mid_rates = mid_rates[2:-2]\n\n    # Calculate the JIBAR rate and round to two decimal places\n    jibar_rate = round(sum(trimmed_mid_rates) / len(trimmed_mid_rates), 2)\n\n    # Return answer\n    return jibar_rate\n"
+  },
+  "digest": "53afd078c9ac1159a12c61e4387dd0757f47a791574c7ab710261d52119bd35a"
+}

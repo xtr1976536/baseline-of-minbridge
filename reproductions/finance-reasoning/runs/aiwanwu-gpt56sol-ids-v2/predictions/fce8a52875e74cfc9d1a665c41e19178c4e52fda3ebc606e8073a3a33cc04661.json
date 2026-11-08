@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2133",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function converts an add-on money market yield for an instrument with a specified term and 360-day convention into a bond equivalent yield, annualized on a 365-day basis and returned as a percentage?",
+        "usage": {
+          "prompt_tokens": 4955,
+          "completion_tokens": 45,
+          "total_tokens": 5000,
+          "prompt_tokens_details": {
+            "cached_tokens": 3316
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C05\",\"C14\"]}",
+        "usage": {
+          "prompt_tokens": 15425,
+          "completion_tokens": 530,
+          "total_tokens": 15955,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 509
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    add_on_rate = 0.065\n    days_to_maturity = 150\n    money_market_year = 360\n    bond_equivalent_year = 365\n\n    # Do math calculation to get the answer\n    holding_period_rate = add_on_rate * days_to_maturity / money_market_year\n    purchase_price_fraction = 1 - holding_period_rate\n    bond_equivalent_yield = (\n        holding_period_rate\n        / purchase_price_fraction\n        * bond_equivalent_year\n        / days_to_maturity\n        * 100\n    )\n\n    # return answer\n    return round(bond_equivalent_yield, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5221,
+          "completion_tokens": 475,
+          "total_tokens": 5696,
+          "completion_tokens_details": {
+            "reasoning_tokens": 320
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2557",
+        "score": 1.6821471452713013,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1623",
+        "score": 1.6563705205917358,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.6380380392074585,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.6377027034759521,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1956",
+        "score": 1.6338887214660645,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.6274387836456299,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-948",
+        "score": 1.6231273412704468,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.6190776824951172,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.607332468032837,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.6016393899917603,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.5995922088623047,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.5994081497192383,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.59708571434021,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-737",
+        "score": 1.5925121307373047,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.5887850522994995,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.5860347747802734,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.5844701528549194,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1955",
+        "score": 1.581194281578064,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.5755976438522339,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1209",
+        "score": 1.567434549331665,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.5662660598754883,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1829",
+        "score": 1.5656332969665527,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-31",
+        "score": 1.5644197463989258,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-28",
+        "score": 1.5636354684829712,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2246",
+        "score": 1.562291145324707,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2080",
+        "score": 1.5477306842803955,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1790",
+        "score": 1.5463268756866455,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-732",
+        "score": 1.5458519458770752,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.5442019701004028,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2971",
+        "score": 1.5435314178466797,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1956",
+      "article-737"
+    ],
+    "status": "ok",
+    "answer": 6.77,
+    "code": "def solution():\n    # Define variables name and value\n    add_on_rate = 0.065\n    days_to_maturity = 150\n    money_market_year = 360\n    bond_equivalent_year = 365\n\n    # Do math calculation to get the answer\n    holding_period_rate = add_on_rate * days_to_maturity / money_market_year\n    purchase_price_fraction = 1 - holding_period_rate\n    bond_equivalent_yield = (\n        holding_period_rate\n        / purchase_price_fraction\n        * bond_equivalent_year\n        / days_to_maturity\n        * 100\n    )\n\n    # return answer\n    return round(bond_equivalent_yield, 2)\n"
+  },
+  "digest": "5a5c7cf89536fd18aac069dffd5bb88eb60501c99d6e8bde30a59122ffa51b9f"
+}

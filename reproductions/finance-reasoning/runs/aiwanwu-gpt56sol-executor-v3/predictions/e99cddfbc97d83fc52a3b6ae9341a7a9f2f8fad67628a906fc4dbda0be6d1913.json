@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2190",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates an investor’s net return under a hedge fund “2 and 20” fee structure, applying a year-end management fee, a performance fee above both a 5% hurdle rate and an existing high-water mark, and returning the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5021,
+          "completion_tokens": 59,
+          "total_tokens": 5080
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C03\",\"C04\",\"C07\"]}",
+        "usage": {
+          "prompt_tokens": 14033,
+          "completion_tokens": 540,
+          "total_tokens": 14573,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    starting_assets = 515.0\n    ending_assets = 602.5\n    high_water_mark = 540.0\n    hurdle_rate = 0.05\n    management_fee_rate = 0.02\n    performance_fee_rate = 0.20\n\n    # Do math calculation to get the answer\n    hurdle_value = starting_assets * (1 + hurdle_rate)\n    performance_fee_threshold = max(high_water_mark, hurdle_value)\n    management_fee = ending_assets * management_fee_rate\n    performance_fee = max(0.0, ending_assets - performance_fee_threshold) * performance_fee_rate\n    net_ending_assets = ending_assets - management_fee - performance_fee\n    answer = (net_ending_assets / starting_assets - 1) * 100\n\n    # return answer\n    return round(answer, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5644,
+          "completion_tokens": 304,
+          "total_tokens": 5948,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 110
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1023",
+        "score": 1.8895888328552246,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.8464829921722412,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.8348190784454346,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1983",
+        "score": 1.8259608745574951,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.7956904172897339,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.7667250633239746,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.7653918266296387,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.741729974746704,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6796680688858032,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2901",
+        "score": 1.6254518032073975,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-811",
+        "score": 1.6087745428085327,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2902",
+        "score": 1.5962398052215576,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-545",
+        "score": 1.59466552734375,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2916",
+        "score": 1.5906270742416382,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.5880458354949951,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.5778169631958008,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-637",
+        "score": 1.5741416215896606,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.5718430280685425,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.565324068069458,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.5591109991073608,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1171",
+        "score": 1.5567877292633057,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-77",
+        "score": 1.536480188369751,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.5363731384277344,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.535545825958252,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.5312862396240234,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1173",
+        "score": 1.5302356481552124,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.5272605419158936,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2178",
+        "score": 1.525998830795288,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1920",
+        "score": 1.5257798433303833,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2858",
+        "score": 1.524930715560913,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1985",
+      "article-1983",
+      "article-1045"
+    ],
+    "status": "ok",
+    "answer": 12.252,
+    "code": "def solution():\n    # Define variables name and value\n    starting_assets = 515.0\n    ending_assets = 602.5\n    high_water_mark = 540.0\n    hurdle_rate = 0.05\n    management_fee_rate = 0.02\n    performance_fee_rate = 0.20\n\n    # Do math calculation to get the answer\n    hurdle_value = starting_assets * (1 + hurdle_rate)\n    performance_fee_threshold = max(high_water_mark, hurdle_value)\n    management_fee = ending_assets * management_fee_rate\n    performance_fee = max(0.0, ending_assets - performance_fee_threshold) * performance_fee_rate\n    net_ending_assets = ending_assets - management_fee - performance_fee\n    answer = (net_ending_assets / starting_assets - 1) * 100\n\n    # return answer\n    return round(answer, 3)\n"
+  },
+  "digest": "3e92c8766ace8941053cb2ef6a91ebf408396f910d962b73c967c477c9824e92"
+}

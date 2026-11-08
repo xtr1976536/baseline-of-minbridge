@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:increase_decrease_in_inventories_fy2025,increase_decrease_in_other_operating_assets_fy2025,net_income_loss_fy2025)

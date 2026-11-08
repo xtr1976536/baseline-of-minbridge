@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2204",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the least-squares slope of a linear trend line for paired time-series data, such as monthly stock prices, and returns the average price change per period rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5107,
+          "completion_tokens": 43,
+          "total_tokens": 5150,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14605,
+          "completion_tokens": 94,
+          "total_tokens": 14699,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 70
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    months = [1, 2, 3, 4, 5]\n    stock_prices = [150, 155, 147, 160, 166]\n\n    # Calculate the slope using the least squares method\n    n = len(months)\n    sum_x = sum(months)\n    sum_y = sum(stock_prices)\n    sum_xy = sum(x * y for x, y in zip(months, stock_prices))\n    sum_x_squared = sum(x ** 2 for x in months)\n\n    slope = (\n        n * sum_xy - sum_x * sum_y\n    ) / (\n        n * sum_x_squared - sum_x ** 2\n    )\n\n    # Return the slope rounded to two decimal places\n    return round(slope, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5980,
+          "completion_tokens": 296,
+          "total_tokens": 6276,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 117
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2106",
+        "score": 1.7076516151428223,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.652378797531128,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.6188644170761108,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.599893569946289,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2077",
+        "score": 1.5920991897583008,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1961",
+        "score": 1.5816102027893066,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.573124647140503,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.5532450675964355,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.5487704277038574,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5295517444610596,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.5252046585083008,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1632",
+        "score": 1.5215636491775513,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.5071909427642822,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.5012197494506836,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2526",
+        "score": 1.4995697736740112,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.4978829622268677,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1621",
+        "score": 1.486700415611267,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-509",
+        "score": 1.485353946685791,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.484410047531128,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2466",
+        "score": 1.4819672107696533,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.478524923324585,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-510",
+        "score": 1.478278636932373,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1234",
+        "score": 1.4743884801864624,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.4701921939849854,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1438",
+        "score": 1.4693571329116821,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2140",
+        "score": 1.4682199954986572,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2355",
+        "score": 1.4646785259246826,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2288",
+        "score": 1.4636917114257812,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.4627864360809326,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.4620054960250854,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2106",
+      "article-2105",
+      "article-2139"
+    ],
+    "status": "ok",
+    "answer": 3.7,
+    "code": "def solution():\n    # Define variables\n    months = [1, 2, 3, 4, 5]\n    stock_prices = [150, 155, 147, 160, 166]\n\n    # Calculate the slope using the least squares method\n    n = len(months)\n    sum_x = sum(months)\n    sum_y = sum(stock_prices)\n    sum_xy = sum(x * y for x, y in zip(months, stock_prices))\n    sum_x_squared = sum(x ** 2 for x in months)\n\n    slope = (\n        n * sum_xy - sum_x * sum_y\n    ) / (\n        n * sum_x_squared - sum_x ** 2\n    )\n\n    # Return the slope rounded to two decimal places\n    return round(slope, 2)\n"
+  },
+  "digest": "a3ec4c63c55580ca98d02120ec0513a5552a22c186d07b8bf69fd95a3f537b7c"
+}

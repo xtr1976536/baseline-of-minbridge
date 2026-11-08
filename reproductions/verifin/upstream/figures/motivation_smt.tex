@@ -1,0 +1,84 @@
+% Motivation figure: answer-independent symbolic verification.
+% Requires: \usepackage{tikz} + libraries below; \usepackage{xcolor}.
+% Compile standalone by uncommenting the documentclass block.
+
+% \documentclass[tikz,border=6pt]{standalone}
+% \usepackage{xcolor}
+% \begin{document}
+
+\usetikzlibrary{positioning,arrows.meta,fit,backgrounds,calc}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={rounded corners=2pt, draw, align=left, inner sep=6pt},
+  hdr/.style={font=\scriptsize\bfseries\sffamily, text=black!60},
+  smt/.style={font=\ttfamily\scriptsize, align=left},
+  ev/.style={font=\ttfamily\scriptsize, align=left},
+  prov/.style={-{Latex[length=4pt]}, black!45, thick},
+  verdict/.style={rounded corners=2pt, draw, font=\bfseries\sffamily, inner sep=5pt},
+  good/.style={verdict, draw=green!55!black, text=green!45!black, fill=green!8},
+  bad/.style={verdict, draw=red!65!black, text=red!55!black, fill=red!6},
+]
+
+% ---------- left: evidence + answer ----------
+\node[hdr] (evh) {EVIDENCE — 10-K excerpt (XBRL)};
+\node[box, below=2pt of evh.west, anchor=north west, fill=black!3] (ev) {%
+\begin{tabular}{@{}l r@{}}
+\ttfamily R\&D Expense            & \ttfamily 34{,}550 \\
+\ttfamily SG\&A Expense           & \ttfamily 27{,}601 \\
+\ttfamily Operating Expenses      & \ttfamily [redacted] \\
+\end{tabular}};
+
+\node[hdr, below=14pt of ev.south west, anchor=north west] (anh) {LLM ANSWER};
+\node[box, below=2pt of anh.west, anchor=north west, fill=black!3] (ans)
+  {\ttfamily ``\$65{,}000 million''};
+
+% ---------- right: proof obligation ----------
+\node[hdr, right=52pt of evh.east, anchor=west] (poh) {PROOF OBLIGATION (Z3)};
+\node[box, below=2pt of poh.west, anchor=north west, text width=6.2cm] (smt) {%
+\smt
+\textcolor{black!45}{; grounded from evidence}\\
+(assert (= |rnd|~~34550))\\
+(assert (= |sga|~~27601))\\[3pt]
+\textcolor{black!45}{; authority: XBRL calculation linkbase}\\
+\textcolor{black!45}{;~~OpEx = R\&D + SG\&A~~(weights +1,+1)}\\
+(assert (= |opex| (+ |rnd| |sga|)))\\[3pt]
+\textcolor{black!45}{; claim under test — must hold within tol}\\
+(assert (<= (abs (- |opex| 65000)) 1))\\
+(check-sat)\\
+};
+
+% ---------- verdict ----------
+\node[bad, below=12pt of smt.south west, anchor=north west, text width=6.0cm] (vd) {%
+\sffamily unsat \;$\Rightarrow$\; no consistent assignment\\[2pt]
+\normalfont\ttfamily\scriptsize computed opex $= 62{,}151 \notin [64{,}999,\,65{,}001]$\\[2pt]
+\sffamily $\Rightarrow$ VIOLATED \; \normalfont\itshape(answer rejected)};
+
+% ---------- provenance arrows ----------
+\draw[prov] (ev.east|-ev.north) ++(0,-6pt)  to[out=0,in=180] ($(smt.west)+(0,20pt)$);
+\draw[prov] (ev.east) ++(0,-2pt)            to[out=0,in=180] ($(smt.west)+(0,12pt)$);
+\draw[prov] (ans.east) to[out=0,in=180] ($(smt.west)-(0,20pt)$);
+
+% ---------- background grouping ----------
+\begin{scope}[on background layer]
+  \node[fit=(evh)(ev)(anh)(ans), rounded corners, draw=black!12, inner sep=8pt] {};
+  \node[fit=(poh)(smt)(vd), rounded corners, draw=black!12, inner sep=8pt] {};
+\end{scope}
+
+\end{tikzpicture}
+
+\caption{\textbf{Answer-independent symbolic verification.} The proof
+obligation is assembled from the filing alone: operand values are
+\emph{grounded} in the evidence and the identity is taken from the 10-K's XBRL
+calculation linkbase, not from the model's answer. The claim is asserted as a
+tolerance constraint that must hold jointly with the grounded facts:
+\texttt{unsat} means no assignment satisfies them together, so the claim is
+inconsistent with the source (computed $62{,}151$ vs.\ claimed $65{,}000$) and
+the answer is \textsc{violated}. A correct answer yields \texttt{sat} — the
+claim is satisfiable against the evidence — and is \textsc{verified}.}
+\label{fig:motivation}
+\end{figure*}
+
+% \end{document}

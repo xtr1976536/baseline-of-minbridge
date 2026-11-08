@@ -1,0 +1,34 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_net_cash_provided_by_used_in_investing_activities_fy2025 Real)
+(declare-const payments_for_proceeds_from_other_investing_activities_fy2025 Real)
+(declare-const payments_to_acquire_businesses_net_of_cash_acquired_fy2025 Real)
+(declare-const payments_to_acquire_productive_assets_fy2025 Real)
+
+(assert (! (= payments_for_proceeds_from_other_investing_activities_fy2025 -109) :named evidence_payments_for_proceeds_from_other_investing_activities_fy2025))
+(assert (! (= payments_to_acquire_businesses_net_of_cash_acquired_fy2025 5410) :named evidence_payments_to_acquire_businesses_net_of_cash_acquired_fy2025))
+(assert (! (= payments_to_acquire_productive_assets_fy2025 3679) :named evidence_payments_to_acquire_productive_assets_fy2025))
+
+(assert (! (= computed_net_cash_provided_by_used_in_investing_activities_fy2025 (+ (* (- 1) payments_to_acquire_productive_assets_fy2025) (* (- 1) payments_to_acquire_businesses_net_of_cash_acquired_fy2025) (* (- 1) payments_for_proceeds_from_other_investing_activities_fy2025))) :named formula_net_cash_provided_by_used_in_investing_activities_fy2025))
+
+(assert (! (<= (- computed_net_cash_provided_by_used_in_investing_activities_fy2025 -21031) 21.030999999999999) :named claim_upper))
+(assert (! (<= (- -21031 computed_net_cash_provided_by_used_in_investing_activities_fy2025) 21.030999999999999) :named claim_lower))
+
+; EDGAR-companyfacts fact bindings (no calculation-linkbase constraints).
+(declare-const xbrl_fact_us_gaap_PaymentsForProceedsFromOtherInvestingActivities_duration_2025_02_03_2026_02_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_PaymentsToAcquireBusinessesNetOfCashAcquired_duration_2025_02_03_2026_02_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_PaymentsToAcquireProductiveAssets_duration_2025_02_03_2026_02_01_unit_USD_dims_none Real)
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= payments_to_acquire_productive_assets_fy2025 xbrl_fact_us_gaap_PaymentsToAcquireProductiveAssets_duration_2025_02_03_2026_02_01_unit_USD_dims_none) :named xbrl_bind_payments_to_acquire_productive_assets_fy2025_edgar_2026_02_01_0001628280_26_019436))
+(assert (! (= xbrl_fact_us_gaap_PaymentsToAcquireProductiveAssets_duration_2025_02_03_2026_02_01_unit_USD_dims_none 3679) :named xbrl_instance_payments_to_acquire_productive_assets_fy2025))
+(assert (! (= payments_to_acquire_businesses_net_of_cash_acquired_fy2025 xbrl_fact_us_gaap_PaymentsToAcquireBusinessesNetOfCashAcquired_duration_2025_02_03_2026_02_01_unit_USD_dims_none) :named xbrl_bind_payments_to_acquire_businesses_net_of_cash_acquired_fy2025_edgar_2026_02_01_0001628280_26_019436))
+(assert (! (= xbrl_fact_us_gaap_PaymentsToAcquireBusinessesNetOfCashAcquired_duration_2025_02_03_2026_02_01_unit_USD_dims_none 5410) :named xbrl_instance_payments_to_acquire_businesses_net_of_cash_acquired_fy2025))
+(assert (! (= payments_for_proceeds_from_other_investing_activities_fy2025 xbrl_fact_us_gaap_PaymentsForProceedsFromOtherInvestingActivities_duration_2025_02_03_2026_02_01_unit_USD_dims_none) :named xbrl_bind_payments_for_proceeds_from_other_investing_activities_fy2025_edgar_2026_02_01_0001628280_26_019436))
+(assert (! (= xbrl_fact_us_gaap_PaymentsForProceedsFromOtherInvestingActivities_duration_2025_02_03_2026_02_01_unit_USD_dims_none -109) :named xbrl_instance_payments_for_proceeds_from_other_investing_activities_fy2025))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

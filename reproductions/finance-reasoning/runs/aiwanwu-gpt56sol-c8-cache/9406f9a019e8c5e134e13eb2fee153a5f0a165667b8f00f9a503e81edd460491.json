@@ -1,0 +1,21 @@
+{
+  "identity": "9406f9a019e8c5e134e13eb2fee153a5f0a165667b8f00f9a503e81edd460491",
+  "response_digest": "31099eb7e0dd29b8805330ea078debf02b4b6fd05984e1dd0dccd97dbde1e314",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    shares_outstanding = 1_200_000\n    share_price = 10\n    face_value_of_bonds = 10_000_000\n    coupon_rate = 0.08\n    years_to_maturity = 5\n    bond_yield = 0.1365\n    payments_per_year = 2\n    beta = 2.2\n    risk_free_rate = 0.03\n    market_return = 0.10\n    tax_rate = 0.30\n    new_funding = 7_500_000\n    debt_issue_threshold = 2_500_000\n    new_debt_rate_above_threshold = 0.16\n\n    # Calculate market value of existing equity\n    market_value_of_equity = shares_outstanding * share_price\n\n    # Calculate market value of existing bonds\n    coupon_payment = face_value_of_bonds * coupon_rate / payments_per_year\n    periodic_yield = bond_yield / payments_per_year\n    number_of_periods = years_to_maturity * payments_per_year\n\n    bond_price = (\n        coupon_payment * (1 - (1 + periodic_yield) ** (-number_of_periods)) / periodic_yield\n        + face_value_of_bonds * (1 + periodic_yield) ** (-number_of_periods)\n    )\n\n    # Calculate current capital structure proportions\n    total_market_value = market_value_of_equity + bond_price\n    debt_proportion = bond_price / total_market_value\n    equity_proportion = market_value_of_equity / total_market_value\n\n    # Determine the marginal cost of debt for the required financing\n    required_new_debt = new_funding * debt_proportion\n\n    if required_new_debt <= debt_issue_threshold:\n        cost_of_debt = bond_yield\n    else:\n        cost_of_debt = new_debt_rate_above_threshold\n\n    # Calculate cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * (market_return - risk_free_rate)\n\n    # Calculate WACC\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n    wacc = (\n        equity_proportion * cost_of_equity\n        + debt_proportion * after_tax_cost_of_debt\n    )\n\n    # Return WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5661,
+      "completion_tokens": 840,
+      "total_tokens": 6501,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 321
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

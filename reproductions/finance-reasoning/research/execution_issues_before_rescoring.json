@@ -1,0 +1,23 @@
+{
+  "time": "2026-11-06T18:48:25+08:00",
+  "basis": "Program syntax/runtime failures inspected without reading labels or selecting based on accuracy.",
+  "issues": [
+    {
+      "case": "test-2056",
+      "cause": "AST guard rejects the ordinary underscore loop variable",
+      "uniform_fix": "Allow ordinary leading-underscore local names; keep dunder names and private attributes blocked."
+    },
+    {
+      "case": "test-2067",
+      "cause": "datetime.strptime requires the trusted internal _strptime import",
+      "uniform_fix": "Permit that internal import in the worker only; do not allow it in generated program AST."
+    },
+    {
+      "case": "test-2075",
+      "cause": "A formatted pure decimal string is a scalar numerical representation",
+      "uniform_fix": "Parse only a full canonical finite numeric string; no eval, unit stripping, percent rescaling, or first-number extraction."
+    }
+  ],
+  "planned_action": "After freezing every inference response, replay the exact cached responses for all 238 questions with uniformly corrected execution. No extra LLM calls. Preserve this original run.",
+  "deferred_until_raw_inference_complete": true
+}

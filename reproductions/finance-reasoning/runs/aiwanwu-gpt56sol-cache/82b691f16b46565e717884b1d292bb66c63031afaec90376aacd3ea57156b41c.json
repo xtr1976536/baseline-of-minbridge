@@ -1,0 +1,18 @@
+{
+  "identity": "82b691f16b46565e717884b1d292bb66c63031afaec90376aacd3ea57156b41c",
+  "response_digest": "1280c25ed297d91a8beab1e071d5dd4e2d3ff425b03cefeb25171cf0234a2c6a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    equity_market_value = 150\n    debt_market_value = 100\n    cost_of_equity = 0.09\n    cost_of_debt = 0.05\n    tax_rate = 0.25\n\n    # Do math calculation to get the answer\n    total_value = equity_market_value + debt_market_value\n    equity_weight = equity_market_value / total_value\n    debt_weight = debt_market_value / total_value\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * after_tax_cost_of_debt\n    )\n\n    # Return answer as a percentage rounded to two decimal places\n    answer = round(wacc * 100, 2)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5868,
+      "completion_tokens": 244,
+      "total_tokens": 6112,
+      "completion_tokens_details": {
+        "reasoning_tokens": 55
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

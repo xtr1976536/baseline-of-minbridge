@@ -1,0 +1,53 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_liabilities_current_fy2026 Real)
+(declare-const accounts_payable_and_other_accrued_liabilities_current_fy2026 Real)
+(declare-const contract_with_customer_liability_current_fy2026 Real)
+(declare-const convertible_debt_current_fy2026 Real)
+(declare-const operating_lease_liability_current_fy2026 Real)
+
+(assert (! (= accounts_payable_and_other_accrued_liabilities_current_fy2026 8253) :named evidence_accounts_payable_and_other_accrued_liabilities_current_fy2026))
+(assert (! (= contract_with_customer_liability_current_fy2026 24317) :named evidence_contract_with_customer_liability_current_fy2026))
+(assert (! (= convertible_debt_current_fy2026 4000) :named evidence_convertible_debt_current_fy2026))
+(assert (! (= operating_lease_liability_current_fy2026 548) :named evidence_operating_lease_liability_current_fy2026))
+
+(assert (! (= computed_liabilities_current_fy2026 (+ accounts_payable_and_other_accrued_liabilities_current_fy2026 operating_lease_liability_current_fy2026 contract_with_customer_liability_current_fy2026 convertible_debt_current_fy2026)) :named formula_liabilities_current_fy2026))
+
+(assert (! (<= (- computed_liabilities_current_fy2026 37861) 37.861000000000004) :named claim_upper))
+(assert (! (<= (- 37861 computed_liabilities_current_fy2026) 37.861000000000004) :named claim_lower))
+
+; XBRL calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_AccountsPayableAndOtherAccruedLiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_ConvertibleDebtCurrent_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OperatingLeaseLiabilityNoncurrent_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OperatingLeaseLiability_instant_2026_01_31_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none 37118) :named evidence_xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OperatingLeaseLiabilityNoncurrent_instant_2026_01_31_unit_USD_dims_none 2189) :named evidence_xbrl_fact_us_gaap_OperatingLeaseLiabilityNoncurrent_instant_2026_01_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OperatingLeaseLiability_instant_2026_01_31_unit_USD_dims_none 2737) :named evidence_xbrl_fact_us_gaap_OperatingLeaseLiability_instant_2026_01_31_unit_USD_dims_none))
+
+; IR-to-XBRL bindings and independent instance-value witnesses.
+(assert (! (= accounts_payable_and_other_accrued_liabilities_current_fy2026 xbrl_fact_us_gaap_AccountsPayableAndOtherAccruedLiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none) :named xbrl_bind_accounts_payable_and_other_accrued_liabilities_current_fy2026_c_4))
+(assert (! (= xbrl_fact_us_gaap_AccountsPayableAndOtherAccruedLiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none 8253) :named xbrl_instance_accounts_payable_and_other_accrued_liabilities_current_fy2026))
+(assert (! (= operating_lease_liability_current_fy2026 xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none) :named xbrl_bind_operating_lease_liability_current_fy2026_c_4))
+(assert (! (= xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none 548) :named xbrl_instance_operating_lease_liability_current_fy2026))
+(assert (! (= contract_with_customer_liability_current_fy2026 xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none) :named xbrl_bind_contract_with_customer_liability_current_fy2026_c_4))
+(assert (! (= xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none 24317) :named xbrl_instance_contract_with_customer_liability_current_fy2026))
+(assert (! (= convertible_debt_current_fy2026 xbrl_fact_us_gaap_ConvertibleDebtCurrent_instant_2026_01_31_unit_USD_dims_none) :named xbrl_bind_convertible_debt_current_fy2026_c_4))
+(assert (! (= xbrl_fact_us_gaap_ConvertibleDebtCurrent_instant_2026_01_31_unit_USD_dims_none 4000) :named xbrl_instance_convertible_debt_current_fy2026))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_AccountsPayableAndOtherAccruedLiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_ConvertibleDebtCurrent_instant_2026_01_31_unit_USD_dims_none)) 2.5) :named xbrl_calc_1_83545172_LiabilitiesCurrent_c_4_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_AccountsPayableAndOtherAccruedLiabilitiesCurrent_instant_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_ConvertibleDebtCurrent_instant_2026_01_31_unit_USD_dims_none)) (- 2.5)) :named xbrl_calc_1_83545172_LiabilitiesCurrent_c_4_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_OperatingLeaseLiability_instant_2026_01_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_OperatingLeaseLiabilityNoncurrent_instant_2026_01_31_unit_USD_dims_none)) 1.5) :named xbrl_calc_25_153824419_OperatingLeaseLiability_c_4_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_OperatingLeaseLiability_instant_2026_01_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_OperatingLeaseLiabilityNoncurrent_instant_2026_01_31_unit_USD_dims_none)) (- 1.5)) :named xbrl_calc_25_153824419_OperatingLeaseLiability_c_4_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

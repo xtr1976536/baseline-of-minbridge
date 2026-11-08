@@ -1,0 +1,183 @@
+{
+  "record": {
+    "question_id": "test-2000",
+    "run_id": "69d19992e289f85dd9509e24d0adbb488198a27193a3a9931bde05e8bdeb88ef",
+    "stages": {
+      "query": {
+        "content": "What function calculates adjusted shares outstanding for a later reporting date by removing the impact of a prior acquisition from reported shares outstanding, accounting for subsequent share issuances, repurchases, and treasury-stock changes, with the result rounded to the nearest whole million?",
+        "usage": {
+          "prompt_tokens": 5307,
+          "completion_tokens": 117,
+          "total_tokens": 5424,
+          "completion_tokens_details": {
+            "reasoning_tokens": 62
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13980,
+          "completion_tokens": 613,
+          "total_tokens": 14593,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    reported_2012_shares_outstanding = 1328\n    acquisition_shares_outstanding = 176\n\n    # Do math calculation to get the answer\n    shares_without_acquisition = (\n        reported_2012_shares_outstanding - acquisition_shares_outstanding\n    )\n\n    # return answer\n    return round(shares_without_acquisition)\n```",
+        "usage": {
+          "prompt_tokens": 5467,
+          "completion_tokens": 316,
+          "total_tokens": 5783,
+          "completion_tokens_details": {
+            "reasoning_tokens": 222
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-491",
+        "score": 1.7774238586425781
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.7095987796783447
+      },
+      {
+        "function_id": "article-1950",
+        "score": 1.6852152347564697
+      },
+      {
+        "function_id": "article-639",
+        "score": 1.6643478870391846
+      },
+      {
+        "function_id": "article-748",
+        "score": 1.6610594987869263
+      },
+      {
+        "function_id": "article-1949",
+        "score": 1.652528166770935
+      },
+      {
+        "function_id": "article-2654",
+        "score": 1.6472299098968506
+      },
+      {
+        "function_id": "article-2281",
+        "score": 1.6425411701202393
+      },
+      {
+        "function_id": "article-2050",
+        "score": 1.6362686157226562
+      },
+      {
+        "function_id": "article-643",
+        "score": 1.634450078010559
+      },
+      {
+        "function_id": "article-2282",
+        "score": 1.6315186023712158
+      },
+      {
+        "function_id": "article-2279",
+        "score": 1.6107251644134521
+      },
+      {
+        "function_id": "article-2576",
+        "score": 1.610689401626587
+      },
+      {
+        "function_id": "article-2242",
+        "score": 1.60407292842865
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.6025279760360718
+      },
+      {
+        "function_id": "article-1227",
+        "score": 1.59297776222229
+      },
+      {
+        "function_id": "article-183",
+        "score": 1.59206223487854
+      },
+      {
+        "function_id": "article-2280",
+        "score": 1.5869197845458984
+      },
+      {
+        "function_id": "article-184",
+        "score": 1.586586594581604
+      },
+      {
+        "function_id": "article-1951",
+        "score": 1.5813877582550049
+      },
+      {
+        "function_id": "article-1030",
+        "score": 1.5802035331726074
+      },
+      {
+        "function_id": "article-9",
+        "score": 1.5701574087142944
+      },
+      {
+        "function_id": "article-1402",
+        "score": 1.5698261260986328
+      },
+      {
+        "function_id": "article-163",
+        "score": 1.5693179368972778
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.566974401473999
+      },
+      {
+        "function_id": "article-1952",
+        "score": 1.565691590309143
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.5655755996704102
+      },
+      {
+        "function_id": "article-2820",
+        "score": 1.5649994611740112
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.5638706684112549
+      },
+      {
+        "function_id": "article-1231",
+        "score": 1.5620501041412354
+      }
+    ],
+    "selected_ids": [
+      "article-491",
+      "article-2576"
+    ],
+    "status": "ok",
+    "answer": 1152,
+    "code": "def solution():\n    # Define variables name and value\n    reported_2012_shares_outstanding = 1328\n    acquisition_shares_outstanding = 176\n\n    # Do math calculation to get the answer\n    shares_without_acquisition = (\n        reported_2012_shares_outstanding - acquisition_shares_outstanding\n    )\n\n    # return answer\n    return round(shares_without_acquisition)\n"
+  },
+  "digest": "8253c02a227afe274f97057f5232d32a0b2028b6f667255354b792010aa348ab"
+}

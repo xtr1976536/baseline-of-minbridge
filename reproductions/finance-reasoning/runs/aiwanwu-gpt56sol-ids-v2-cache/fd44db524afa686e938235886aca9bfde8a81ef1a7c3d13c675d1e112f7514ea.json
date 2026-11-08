@@ -1,0 +1,21 @@
+{
+  "identity": "fd44db524afa686e938235886aca9bfde8a81ef1a7c3d13c675d1e112f7514ea",
+  "response_digest": "5be0e7db0cd0170d556a953a50568590342fbb6a35f7bfd04a3b021ecfb62b8e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define loan details for the first year\n    principal = 300_000\n    annual_interest_rate = 0.035\n    loan_term_years = 30\n\n    # Calculate the monthly payment using the amortization formula\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n\n    # Return the payment rounded to the nearest dollar\n    return round(monthly_payment)\n```",
+    "usage": {
+      "prompt_tokens": 5884,
+      "completion_tokens": 186,
+      "total_tokens": 6070,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 49
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

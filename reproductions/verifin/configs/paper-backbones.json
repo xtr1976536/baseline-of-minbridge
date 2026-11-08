@@ -1,0 +1,80 @@
+{
+  "scope": "verifin-v3-table4-only",
+  "datasets": [
+    "XBRLFiling",
+    "FinanceBench"
+  ],
+  "data_policy": "paper-method-source-reconstruction-v1",
+  "output_dir": "runs/main",
+  "retrieval": {
+    "embedding_model": "BAAI/bge-large-en-v1.5",
+    "embedding_revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+    "reranker_model": "BAAI/bge-reranker-v2-m3",
+    "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "lexical_weight": 0.2,
+    "top_k": 10,
+    "first_stage_k": 30,
+    "chunk_words": 200,
+    "chunk_overlap_words": 40
+  },
+  "models": {
+    "Qwen2.5-7B": {
+      "provider": "openai-compatible",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "base_url": "",
+      "base_url_env": "VF_QWEN25_BASE_URL",
+      "api_key_env": "VF_QWEN25_API_KEY",
+      "max_tokens": 4096,
+      "temperature": 0
+    },
+    "Llama-3.1-8B": {
+      "provider": "openai-compatible",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "base_url": "",
+      "base_url_env": "VF_LLAMA_BASE_URL",
+      "api_key_env": "VF_LLAMA_API_KEY",
+      "max_tokens": 4096,
+      "temperature": 0
+    },
+    "Qwen3-30B": {
+      "provider": "openai-compatible",
+      "model": "Qwen/Qwen3-30B-A3B",
+      "base_url": "",
+      "base_url_env": "VF_QWEN3_BASE_URL",
+      "api_key_env": "VF_QWEN3_API_KEY",
+      "max_tokens": 8192,
+      "temperature": 0
+    },
+    "Fin-o1-8B": {
+      "provider": "openai-compatible",
+      "model": "TheFinAI/Fino1-8B",
+      "base_url": "",
+      "base_url_env": "VF_FINO1_BASE_URL",
+      "api_key_env": "VF_FINO1_API_KEY",
+      "max_tokens": 8192,
+      "temperature": 0
+    },
+    "Claude-Haiku-4.5": {
+      "provider": "anthropic",
+      "model": "claude-haiku-4-5-20251001",
+      "base_url": "https://api.anthropic.com/v1",
+      "base_url_env": "VF_CLAUDE_BASE_URL",
+      "api_key_env": "VF_ANTHROPIC_API_KEY",
+      "max_tokens": 4096,
+      "temperature": 0
+    },
+    "GPT-5.5": {
+      "provider": "openai-compatible",
+      "model": "gpt-5.5",
+      "base_url": "https://api.openai.com/v1",
+      "base_url_env": "VF_OPENAI_BASE_URL",
+      "api_key_env": "VF_OPENAI_API_KEY",
+      "token_parameter": "max_completion_tokens",
+      "max_tokens": 8192,
+      "temperature": null,
+      "parameters": {
+        "reasoning_effort": "low"
+      }
+    }
+  }
+}

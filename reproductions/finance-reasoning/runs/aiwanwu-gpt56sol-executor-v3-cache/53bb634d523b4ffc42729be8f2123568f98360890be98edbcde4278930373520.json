@@ -1,0 +1,21 @@
+{
+  "identity": "53bb634d523b4ffc42729be8f2123568f98360890be98edbcde4278930373520",
+  "response_digest": "02d995e89b37a7b22e4b6c637060ece19ac7c59890fb0ea0735cb98d7778a541",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    remaining_payments = [5000, 5000, 5000]\n    principal = 100000\n    treasury_yield = 0.025\n    spread = 0.012\n\n    # Calculate the discount rate and present value of remaining cash flows\n    discount_rate = treasury_yield + spread\n    make_whole_price = sum(\n        payment / ((1 + discount_rate) ** (i + 1))\n        for i, payment in enumerate(remaining_payments)\n    )\n    make_whole_price += principal / ((1 + discount_rate) ** len(remaining_payments))\n\n    # Return the price rounded to the nearest whole number\n    return round(make_whole_price)\n```",
+    "usage": {
+      "prompt_tokens": 5438,
+      "completion_tokens": 331,
+      "total_tokens": 5769,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 168
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

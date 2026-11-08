@@ -1,0 +1,28 @@
+{
+  "request_hash": "b893d679102513c11ca443f0d13bc6b0ff9e7312cffb09fdaad3949507d82c64",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nUsing only the information within the balance sheet, how much total assets did Costco have at the end of FY2021? Answer in USD millions.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"total_assets\",\"facts\":[{\"name\":\"total_assets\",\"aliases\":[\"Total assets\",\"TOTAL ASSETS\"],\"period\":\"FY2021\",\"statement\":\"balance sheet\"}],\"reason\":\"Direct lookup of Costco's total assets at the end of FY2021 from the balance sheet, reported in USD millions.\"}",
+  "usage": {
+    "prompt_tokens": 4707,
+    "completion_tokens": 67,
+    "total_tokens": 4774,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    }
+  },
+  "response_id": "resp_07b5e1cd5754544b016aedb6a999dc87d2b204d1a7b507ee58",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2196",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the intrinsic per-share value of an equity security using a two-stage dividend discount model, discounting explicitly forecast dividends for the first two years at a CAPM-derived required return from the risk-free rate, beta, and market risk premium, then applying a constant long-term dividend growth rate from year three onward via a Gordon Growth terminal value, with results rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5069,
+          "completion_tokens": 82,
+          "total_tokens": 5151,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14228,
+          "completion_tokens": 598,
+          "total_tokens": 14826,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 501
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    risk_free_rate = 0.03\n    beta = 1.1\n    market_risk_premium = 0.05\n    dividend_year_1 = 1.13\n    dividend_year_2 = 1.22\n    long_term_growth_rate = 0.05\n\n    # Do math calculation to get the answer\n    required_rate_of_return = risk_free_rate + beta * market_risk_premium\n    dividend_year_3 = dividend_year_2 * (1 + long_term_growth_rate)\n    terminal_value_year_2 = dividend_year_3 / (\n        required_rate_of_return - long_term_growth_rate\n    )\n\n    intrinsic_value = (\n        dividend_year_1 / (1 + required_rate_of_return)\n        + (dividend_year_2 + terminal_value_year_2)\n        / (1 + required_rate_of_return) ** 2\n    )\n\n    # return answer\n    return round(intrinsic_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5650,
+          "completion_tokens": 321,
+          "total_tokens": 5971,
+          "completion_tokens_details": {
+            "reasoning_tokens": 98
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1758",
+        "score": 2.230656862258911
+      },
+      {
+        "function_id": "article-1151",
+        "score": 2.225480794906616
+      },
+      {
+        "function_id": "article-1755",
+        "score": 2.15427303314209
+      },
+      {
+        "function_id": "article-272",
+        "score": 2.0060997009277344
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.984614372253418
+      },
+      {
+        "function_id": "article-2796",
+        "score": 1.970048189163208
+      },
+      {
+        "function_id": "article-714",
+        "score": 1.9624824523925781
+      },
+      {
+        "function_id": "article-519",
+        "score": 1.9255120754241943
+      },
+      {
+        "function_id": "article-2943",
+        "score": 1.9202789068222046
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.919728398323059
+      },
+      {
+        "function_id": "article-1511",
+        "score": 1.9099960327148438
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.9027202129364014
+      },
+      {
+        "function_id": "article-2560",
+        "score": 1.8848799467086792
+      },
+      {
+        "function_id": "article-2212",
+        "score": 1.883301019668579
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.8725409507751465
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.8579049110412598
+      },
+      {
+        "function_id": "article-1592",
+        "score": 1.8505756855010986
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.8491827249526978
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.8153977394104004
+      },
+      {
+        "function_id": "article-1520",
+        "score": 1.8060351610183716
+      },
+      {
+        "function_id": "article-1512",
+        "score": 1.8002729415893555
+      },
+      {
+        "function_id": "article-463",
+        "score": 1.7947192192077637
+      },
+      {
+        "function_id": "article-43",
+        "score": 1.7714673280715942
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.7679314613342285
+      },
+      {
+        "function_id": "article-71",
+        "score": 1.7536587715148926
+      },
+      {
+        "function_id": "article-2475",
+        "score": 1.7515161037445068
+      },
+      {
+        "function_id": "article-1756",
+        "score": 1.7474713325500488
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.7416818141937256
+      },
+      {
+        "function_id": "article-1932",
+        "score": 1.7321528196334839
+      },
+      {
+        "function_id": "article-250",
+        "score": 1.7274069786071777
+      }
+    ],
+    "selected_ids": [
+      "article-1758",
+      "article-2796",
+      "article-519"
+    ],
+    "status": "ok",
+    "answer": 33.168,
+    "code": "def solution():\n    # Define variables name and value\n    risk_free_rate = 0.03\n    beta = 1.1\n    market_risk_premium = 0.05\n    dividend_year_1 = 1.13\n    dividend_year_2 = 1.22\n    long_term_growth_rate = 0.05\n\n    # Do math calculation to get the answer\n    required_rate_of_return = risk_free_rate + beta * market_risk_premium\n    dividend_year_3 = dividend_year_2 * (1 + long_term_growth_rate)\n    terminal_value_year_2 = dividend_year_3 / (\n        required_rate_of_return - long_term_growth_rate\n    )\n\n    intrinsic_value = (\n        dividend_year_1 / (1 + required_rate_of_return)\n        + (dividend_year_2 + terminal_value_year_2)\n        / (1 + required_rate_of_return) ** 2\n    )\n\n    # return answer\n    return round(intrinsic_value, 3)\n"
+  },
+  "digest": "424fe17126b0d1afbf579a77f9e0caee1062a0d96e7cb361ce4091e9dedf0097"
+}

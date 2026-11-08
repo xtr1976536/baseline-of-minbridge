@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2161",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates a total tiered transaction or investment-banking fee using the Lehman formula, applying percentage rates to progressive value brackets, including an amount above the highest tier, and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5104,
+          "completion_tokens": 48,
+          "total_tokens": 5152,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15700,
+          "completion_tokens": 278,
+          "total_tokens": 15978,
+          "completion_tokens_details": {
+            "reasoning_tokens": 181
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    transaction_amount = 12_000_000\n\n    first_tier = 1_000_000 * 0.05\n    second_tier = 4_000_000 * 0.04\n    third_tier = 5_000_000 * 0.03\n    final_tier = (transaction_amount - 10_000_000) * 0.02\n\n    # Do math calculation to get the answer\n    total_fee = first_tier + second_tier + third_tier + final_tier\n\n    # return answer\n    return round(total_fee)\n```",
+        "usage": {
+          "prompt_tokens": 5231,
+          "completion_tokens": 240,
+          "total_tokens": 5471,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 94
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2109",
+        "score": 2.0933430194854736
+      },
+      {
+        "function_id": "article-1891",
+        "score": 1.626842975616455
+      },
+      {
+        "function_id": "article-679",
+        "score": 1.6096633672714233
+      },
+      {
+        "function_id": "article-1893",
+        "score": 1.6000759601593018
+      },
+      {
+        "function_id": "article-443",
+        "score": 1.5953693389892578
+      },
+      {
+        "function_id": "article-1895",
+        "score": 1.5917809009552002
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.5916662216186523
+      },
+      {
+        "function_id": "article-332",
+        "score": 1.5897681713104248
+      },
+      {
+        "function_id": "article-1892",
+        "score": 1.586665153503418
+      },
+      {
+        "function_id": "article-1896",
+        "score": 1.5734033584594727
+      },
+      {
+        "function_id": "article-1582",
+        "score": 1.5519764423370361
+      },
+      {
+        "function_id": "article-516",
+        "score": 1.5369410514831543
+      },
+      {
+        "function_id": "article-1894",
+        "score": 1.5357197523117065
+      },
+      {
+        "function_id": "article-2436",
+        "score": 1.534387469291687
+      },
+      {
+        "function_id": "article-129",
+        "score": 1.5239876508712769
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.5120186805725098
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.511836290359497
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.5117623805999756
+      },
+      {
+        "function_id": "article-1581",
+        "score": 1.5089787244796753
+      },
+      {
+        "function_id": "article-1023",
+        "score": 1.5084385871887207
+      },
+      {
+        "function_id": "article-811",
+        "score": 1.5061678886413574
+      },
+      {
+        "function_id": "article-500",
+        "score": 1.5045509338378906
+      },
+      {
+        "function_id": "article-1939",
+        "score": 1.4977591037750244
+      },
+      {
+        "function_id": "article-1329",
+        "score": 1.4912573099136353
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.4909600019454956
+      },
+      {
+        "function_id": "article-628",
+        "score": 1.4868650436401367
+      },
+      {
+        "function_id": "article-42",
+        "score": 1.483879566192627
+      },
+      {
+        "function_id": "article-1983",
+        "score": 1.4836938381195068
+      },
+      {
+        "function_id": "article-2026",
+        "score": 1.4830341339111328
+      },
+      {
+        "function_id": "article-1859",
+        "score": 1.4830329418182373
+      }
+    ],
+    "selected_ids": [
+      "article-2109"
+    ],
+    "status": "ok",
+    "answer": 400000,
+    "code": "def solution():\n    # Define variables name and value\n    transaction_amount = 12_000_000\n\n    first_tier = 1_000_000 * 0.05\n    second_tier = 4_000_000 * 0.04\n    third_tier = 5_000_000 * 0.03\n    final_tier = (transaction_amount - 10_000_000) * 0.02\n\n    # Do math calculation to get the answer\n    total_fee = first_tier + second_tier + third_tier + final_tier\n\n    # return answer\n    return round(total_fee)\n"
+  },
+  "digest": "05b46c173b0d601a861d3ba5c3458e53f2a838b0657194a32f4e1d562f2d8c32"
+}

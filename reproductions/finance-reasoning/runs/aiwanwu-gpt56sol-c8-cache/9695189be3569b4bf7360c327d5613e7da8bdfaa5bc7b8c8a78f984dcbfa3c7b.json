@@ -1,0 +1,18 @@
+{
+  "identity": "9695189be3569b4bf7360c327d5613e7da8bdfaa5bc7b8c8a78f984dcbfa3c7b",
+  "response_digest": "8d0007d80a315fde4bb4a2ad4659e349e93ad9a5bc313c15a5891398a0a58844",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    annual_lease_payment = 10000\n    interest_rate = 0.08\n    residual_value = 15000\n    num_periods = 5\n    lease_payments = [annual_lease_payment] * num_periods\n\n    # Calculate the present value of the lease payments and residual value\n    present_value_payments = sum(\n        payment / ((1 + interest_rate) ** period)\n        for period, payment in enumerate(lease_payments, start=1)\n    )\n    present_value_residual = residual_value / (\n        (1 + interest_rate) ** num_periods\n    )\n    answer = round(present_value_payments + present_value_residual)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5061,
+      "completion_tokens": 193,
+      "total_tokens": 5254,
+      "completion_tokens_details": {
+        "reasoning_tokens": 21
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

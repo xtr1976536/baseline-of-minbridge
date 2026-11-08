@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2086",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates operating cash flow using the indirect method from year-over-year retained earnings, accounts receivable, inventory, and accounts payable balances, adding back noncash impairment expense, deriving net income from retained earnings changes and cash dividends, and excluding dividends classified as financing activities?",
+        "usage": {
+          "prompt_tokens": 5057,
+          "completion_tokens": 172,
+          "total_tokens": 5229,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 112
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 13788,
+          "completion_tokens": 227,
+          "total_tokens": 14015,
+          "completion_tokens_details": {
+            "reasoning_tokens": 203
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    retained_earnings_2016 = 110\n    retained_earnings_2017 = 125\n    dividends = 8\n    impairment_expense = 12\n\n    accounts_receivable_2016 = 45\n    accounts_receivable_2017 = 48\n    inventory_2016 = 24\n    inventory_2017 = 20\n    accounts_payable_2016 = 30\n    accounts_payable_2017 = 33\n\n    # Net income = increase in retained earnings + dividends\n    net_income = (retained_earnings_2017 - retained_earnings_2016) + dividends\n\n    # Calculate working capital adjustments\n    change_in_accounts_receivable = accounts_receivable_2017 - accounts_receivable_2016\n    change_in_inventory = inventory_2017 - inventory_2016\n    change_in_accounts_payable = accounts_payable_2017 - accounts_payable_2016\n\n    # Do math calculation to get the answer\n    operating_cash_flow = (\n        net_income\n        + impairment_expense\n        - change_in_accounts_receivable\n        - change_in_inventory\n        + change_in_accounts_payable\n    )\n\n    # return answer\n    return round(operating_cash_flow, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5720,
+          "completion_tokens": 388,
+          "total_tokens": 6108,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 99
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-407",
+        "score": 1.9770877361297607,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-91",
+        "score": 1.9566302299499512,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1721",
+        "score": 1.9230890274047852,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-92",
+        "score": 1.9027037620544434,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-3027",
+        "score": 1.898044228553772,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3026",
+        "score": 1.8722279071807861,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-555",
+        "score": 1.8303747177124023,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-89",
+        "score": 1.8293118476867676,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-3031",
+        "score": 1.8227145671844482,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3028",
+        "score": 1.8037340641021729,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-3029",
+        "score": 1.791788935661316,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1275",
+        "score": 1.7670085430145264,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1526",
+        "score": 1.763160228729248,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2890",
+        "score": 1.7539143562316895,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-3040",
+        "score": 1.7446099519729614,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-627",
+        "score": 1.7400773763656616,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-629",
+        "score": 1.7365537881851196,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-3047",
+        "score": 1.735816240310669,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-3030",
+        "score": 1.7246686220169067,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-3039",
+        "score": 1.7161779403686523,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-3037",
+        "score": 1.709043264389038,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-90",
+        "score": 1.7063732147216797,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-622",
+        "score": 1.703268051147461,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1665",
+        "score": 1.6984853744506836,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-625",
+        "score": 1.6972322463989258,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-52",
+        "score": 1.689882755279541,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-628",
+        "score": 1.6855424642562866,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3032",
+        "score": 1.6843457221984863,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2634",
+        "score": 1.6806453466415405,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2706",
+        "score": 1.6794252395629883,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-407",
+      "article-91",
+      "article-3027"
+    ],
+    "status": "ok",
+    "answer": 39,
+    "code": "def solution():\n    # Define variables name and value\n    retained_earnings_2016 = 110\n    retained_earnings_2017 = 125\n    dividends = 8\n    impairment_expense = 12\n\n    accounts_receivable_2016 = 45\n    accounts_receivable_2017 = 48\n    inventory_2016 = 24\n    inventory_2017 = 20\n    accounts_payable_2016 = 30\n    accounts_payable_2017 = 33\n\n    # Net income = increase in retained earnings + dividends\n    net_income = (retained_earnings_2017 - retained_earnings_2016) + dividends\n\n    # Calculate working capital adjustments\n    change_in_accounts_receivable = accounts_receivable_2017 - accounts_receivable_2016\n    change_in_inventory = inventory_2017 - inventory_2016\n    change_in_accounts_payable = accounts_payable_2017 - accounts_payable_2016\n\n    # Do math calculation to get the answer\n    operating_cash_flow = (\n        net_income\n        + impairment_expense\n        - change_in_accounts_receivable\n        - change_in_inventory\n        + change_in_accounts_payable\n    )\n\n    # return answer\n    return round(operating_cash_flow, 1)\n"
+  },
+  "digest": "2b443114321795a30e0f1e36cd6bd9e08002488ebeb47b8adcc9727117a5b4fa"
+}

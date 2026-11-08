@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2106",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Durbin-Watson statistic for detecting first-order autocorrelation in regression residuals, accepting equal-length actual and predicted value arrays, computing residuals as actual minus predicted, and returning the statistic as a float rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5155,
+          "completion_tokens": 55,
+          "total_tokens": 5210,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 15439,
+          "completion_tokens": 19,
+          "total_tokens": 15458
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    actual_values = [\n        150.2, 149.8, 150.5, 151.0, 150.7,\n        151.5, 152.0, 151.8, 152.3, 152.1\n    ]\n    expected_values = [\n        150.0, 150.1, 150.3, 150.9, 150.6,\n        151.3, 152.1, 151.9, 152.5, 152.0\n    ]\n\n    # Calculate residuals\n    residuals = [\n        actual - expected\n        for actual, expected in zip(actual_values, expected_values)\n    ]\n\n    # Calculate the Durbin-Watson statistic\n    squared_error_sum = sum(residual ** 2 for residual in residuals)\n    squared_difference_sum = sum(\n        (residuals[i] - residuals[i - 1]) ** 2\n        for i in range(1, len(residuals))\n    )\n    durbin_watson = squared_difference_sum / squared_error_sum\n\n    # Return the answer rounded to two decimal places\n    return round(durbin_watson, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5478,
+          "completion_tokens": 412,
+          "total_tokens": 5890,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 134
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2565",
+        "score": 2.1919662952423096,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1791",
+        "score": 2.071207284927368,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.5605976581573486,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1144",
+        "score": 1.5452080965042114,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1521",
+        "score": 1.544150948524475,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2669",
+        "score": 1.5321755409240723,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2668",
+        "score": 1.5274138450622559,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2379",
+        "score": 1.5251140594482422,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1523",
+        "score": 1.5141313076019287,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.5120735168457031,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2378",
+        "score": 1.4913015365600586,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.4907517433166504,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1075",
+        "score": 1.4708458185195923,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.4663597345352173,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-106",
+        "score": 1.4621472358703613,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2526",
+        "score": 1.4614758491516113,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.4588992595672607,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1988",
+        "score": 1.458512783050537,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.4582985639572144,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.4481024742126465,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-176",
+        "score": 1.4449326992034912,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1142",
+        "score": 1.4447886943817139,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-970",
+        "score": 1.444483757019043,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.441819190979004,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2989",
+        "score": 1.4392585754394531,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.4344497919082642,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1145",
+        "score": 1.431617259979248,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.4302325248718262,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.42765212059021,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1143",
+        "score": 1.4202141761779785,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2565",
+      "article-1791"
+    ],
+    "status": "ok",
+    "answer": 2.37,
+    "code": "def solution():\n    # Define variables name and value\n    actual_values = [\n        150.2, 149.8, 150.5, 151.0, 150.7,\n        151.5, 152.0, 151.8, 152.3, 152.1\n    ]\n    expected_values = [\n        150.0, 150.1, 150.3, 150.9, 150.6,\n        151.3, 152.1, 151.9, 152.5, 152.0\n    ]\n\n    # Calculate residuals\n    residuals = [\n        actual - expected\n        for actual, expected in zip(actual_values, expected_values)\n    ]\n\n    # Calculate the Durbin-Watson statistic\n    squared_error_sum = sum(residual ** 2 for residual in residuals)\n    squared_difference_sum = sum(\n        (residuals[i] - residuals[i - 1]) ** 2\n        for i in range(1, len(residuals))\n    )\n    durbin_watson = squared_difference_sum / squared_error_sum\n\n    # Return the answer rounded to two decimal places\n    return round(durbin_watson, 2)\n"
+  },
+  "digest": "a2d2924f0e1b8cad3fdccf99a52838cd29ff04b5fdbae8345bf045680158f586"
+}

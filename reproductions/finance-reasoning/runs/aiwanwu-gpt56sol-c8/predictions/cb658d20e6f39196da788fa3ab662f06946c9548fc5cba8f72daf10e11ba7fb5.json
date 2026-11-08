@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2030",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates portfolio beta relative to a benchmark using two equal-length series of periodic returns, defined as the covariance of portfolio returns divided by the benchmark’s variance, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5140,
+          "completion_tokens": 46,
+          "total_tokens": 5186,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15368,
+          "completion_tokens": 613,
+          "total_tokens": 15981,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    portfolio_returns = [0.02, 0.03, 0.01, -0.01, 0.02, 0.01,\n                         0.03, 0.02, 0.01, 0.02, 0.01, 0.04]\n    market_returns = [0.01, 0.02, 0.02, -0.02, 0.03, 0.02,\n                      0.01, 0.02, 0.03, 0.01, 0.02, 0.03]\n\n    # Do math calculation to get the answer\n    portfolio_mean = sum(portfolio_returns) / len(portfolio_returns)\n    market_mean = sum(market_returns) / len(market_returns)\n\n    covariance = sum(\n        (portfolio_return - portfolio_mean) * (market_return - market_mean)\n        for portfolio_return, market_return in zip(portfolio_returns, market_returns)\n    )\n\n    market_variance = sum(\n        (market_return - market_mean) ** 2\n        for market_return in market_returns\n    )\n\n    beta = covariance / market_variance\n\n    # Return answer rounded to two decimal places\n    return round(beta, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5898,
+          "completion_tokens": 951,
+          "total_tokens": 6849,
+          "prompt_tokens_details": {
+            "cached_tokens": 4032
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 665
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1744",
+        "score": 1.9301033020019531
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.8683215379714966
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.8461825847625732
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.8391742706298828
+      },
+      {
+        "function_id": "article-1035",
+        "score": 1.7717376947402954
+      },
+      {
+        "function_id": "article-1925",
+        "score": 1.7391412258148193
+      },
+      {
+        "function_id": "article-1294",
+        "score": 1.73328697681427
+      },
+      {
+        "function_id": "article-1593",
+        "score": 1.7331101894378662
+      },
+      {
+        "function_id": "article-1043",
+        "score": 1.7309906482696533
+      },
+      {
+        "function_id": "article-2301",
+        "score": 1.7109954357147217
+      },
+      {
+        "function_id": "article-1013",
+        "score": 1.7023693323135376
+      },
+      {
+        "function_id": "article-264",
+        "score": 1.6980066299438477
+      },
+      {
+        "function_id": "article-1586",
+        "score": 1.6732431650161743
+      },
+      {
+        "function_id": "article-2051",
+        "score": 1.6690495014190674
+      },
+      {
+        "function_id": "article-872",
+        "score": 1.666869878768921
+      },
+      {
+        "function_id": "article-1014",
+        "score": 1.6599202156066895
+      },
+      {
+        "function_id": "article-148",
+        "score": 1.658627986907959
+      },
+      {
+        "function_id": "article-2418",
+        "score": 1.6547622680664062
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.6471047401428223
+      },
+      {
+        "function_id": "article-2215",
+        "score": 1.6412423849105835
+      },
+      {
+        "function_id": "article-1296",
+        "score": 1.6374502182006836
+      },
+      {
+        "function_id": "article-2783",
+        "score": 1.6341694593429565
+      },
+      {
+        "function_id": "article-1585",
+        "score": 1.6324398517608643
+      },
+      {
+        "function_id": "article-1962",
+        "score": 1.6304452419281006
+      },
+      {
+        "function_id": "article-1292",
+        "score": 1.6303044557571411
+      },
+      {
+        "function_id": "article-870",
+        "score": 1.6298439502716064
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.6258468627929688
+      },
+      {
+        "function_id": "article-213",
+        "score": 1.6168382167816162
+      },
+      {
+        "function_id": "article-905",
+        "score": 1.6131696701049805
+      },
+      {
+        "function_id": "article-2881",
+        "score": 1.6111197471618652
+      }
+    ],
+    "selected_ids": [
+      "article-1744",
+      "article-872",
+      "article-1296"
+    ],
+    "status": "ok",
+    "answer": 0.53,
+    "code": "def solution():\n    # Define variables name and value\n    portfolio_returns = [0.02, 0.03, 0.01, -0.01, 0.02, 0.01,\n                         0.03, 0.02, 0.01, 0.02, 0.01, 0.04]\n    market_returns = [0.01, 0.02, 0.02, -0.02, 0.03, 0.02,\n                      0.01, 0.02, 0.03, 0.01, 0.02, 0.03]\n\n    # Do math calculation to get the answer\n    portfolio_mean = sum(portfolio_returns) / len(portfolio_returns)\n    market_mean = sum(market_returns) / len(market_returns)\n\n    covariance = sum(\n        (portfolio_return - portfolio_mean) * (market_return - market_mean)\n        for portfolio_return, market_return in zip(portfolio_returns, market_returns)\n    )\n\n    market_variance = sum(\n        (market_return - market_mean) ** 2\n        for market_return in market_returns\n    )\n\n    beta = covariance / market_variance\n\n    # Return answer rounded to two decimal places\n    return round(beta, 2)\n"
+  },
+  "digest": "c9fa82809495e2ecbad8125a06011ff908a334fd0c58cde19d4b8247af0b92fa"
+}

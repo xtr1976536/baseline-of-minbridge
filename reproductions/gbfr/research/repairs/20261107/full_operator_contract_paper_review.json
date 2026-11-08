@@ -1,0 +1,103 @@
+{
+  "review_type": "read-only paper and contract consistency review",
+  "api_requests": 0,
+  "code_edited_by_reviewer": false,
+  "reviewed_files_sha256": {
+    "gbfr/engine.py": "9528e511b1d8f95b41d0dfa1f253358c7619ebe755e6300616ba16a2c0ab8080",
+    "gbfr/prompts/query_examples.txt": "7ce40fc2b9e9e98b9eb7e7da9a4b64c0e7e14e3c3f180975b10b6e5f665162e6",
+    "research/paper.txt": "0e63ba7c69e3907ed20445d525a2a8c123b00e8533d811394153e575d8e4e8e0"
+  },
+  "verdict": "The quantity-times-price difference example is consistent with the Appendix F program-generation contract when the relationship comes from Q/D and every financial observation is grounded. Outer-operator wording is an implementation interpretation, not a verbatim grammar defined by Table 5.",
+  "paper_support": [
+    {
+      "pdf_page": 5,
+      "section": "4.1 OQA",
+      "text_lines": [
+        255,
+        284
+      ],
+      "support": "Function specifies final aggregation logic; subgoals define evidence required for computation."
+    },
+    {
+      "pdf_page": 6,
+      "section": "Algorithm 1 line 8 and OPE",
+      "text_lines": [
+        290,
+        305
+      ],
+      "support": "Apply Op on resolved Vresults; OPE executes symbolic path and verified values; missing values propagate bottom."
+    },
+    {
+      "pdf_page": 15,
+      "section": "Appendix C, Table 5",
+      "support": "Arithmetic operands follow relations in the query; final Op is in +,-,times,divide. This is abstract semantics, not an explicit nested-expression encoding."
+    },
+    {
+      "pdf_page": 17,
+      "section": "Appendix F Question Analysis Prompt",
+      "text_lines": [
+        887,
+        943
+      ],
+      "support": "Extract only required operands; no computation in OQA; ArithmeticCalculation includes basic operations and StatisticalAggregation includes weighted average when implied."
+    },
+    {
+      "pdf_page": 19,
+      "section": "Appendix F indicator program generation",
+      "text_lines": [
+        1028,
+        1070
+      ],
+      "support": "Financial indicator code is generated from the given metric formula."
+    },
+    {
+      "pdf_page": 20,
+      "section": "Appendix F solve-problem program generation",
+      "text_lines": [
+        1072,
+        1125
+      ],
+      "support": "Query/context/reasoning type/evidences supplied; compute(vars) returns value and trace; no imports/file/network/eval; return None on zero division. No restriction to one arithmetic AST operator."
+    }
+  ],
+  "existing_boundaries_observed": [
+    "Named financial metrics kept as OMD subgoals",
+    "All required goals must resolve before OPE.final",
+    "Only Q/D-requested or supplied elementary relationships allowed",
+    "Valuation basis cannot interchange exercise price and option fair value",
+    "A total-return index cannot become a share price"
+  ],
+  "remaining_recommendation": "State explicitly that financial observations used by the final program must come through vars; context-only financial values must not be inserted as unbound numeric literals. Query-given constants and mathematical/display-unit factors are different. This is an input-grounding safeguard, not an extra judge.",
+  "ordinary_arithmetic_candidates_by_group": {
+    "ordinary_aggregation": [
+      "FinQA:ALXN/2016/page_153.pdf-2",
+      "FinQA:PNC/2014/page_111.pdf-2",
+      "FinQA:JPM/2009/page_175.pdf-5",
+      "FinQA:UNP/2009/page_35.pdf-2",
+      "FinQA:LMT/2014/page_91.pdf-4",
+      "TAT-QA:e641836950c1db8da4260bb7842d1242_ae10d06f4a7b08fdc13138ec794ee3c5"
+    ],
+    "quantity_times_matching_unit_value": [
+      "FinQA:GPN/2010/page_89.pdf-4",
+      "FinQA:HWM/2018/page_96.pdf-2",
+      "FinQA:GPN/2013/page_87.pdf-3"
+    ],
+    "change_difference_or_return": [
+      "FinQA:BLL/2012/page_31.pdf-4",
+      "FinQA:ETR/2004/page_212.pdf-4",
+      "FinQA:BKNG/2016/page_33.pdf-3",
+      "TAT-QA:22be2fdb6d29626851b25f7a53fada57_6769cc0cee475e77d8eb292b9bdefd81"
+    ],
+    "ordinary_ratio": [
+      "TAT-QA:42e150a81c12286dac3083899a6488b1_653397f888b9461a9d37b7bc372cc33b"
+    ]
+  },
+  "group_counts": {
+    "ordinary_aggregation": 6,
+    "quantity_times_matching_unit_value": 3,
+    "change_difference_or_return": 4,
+    "ordinary_ratio": 1
+  },
+  "growth_factor_note": "ABMD/2007/page_78.pdf-2, outside the 14 heuristic candidates, also exposes an unreported appreciation-factor subgoal. Such a factor is elementary only when the projection assumption is given or directly implied by Q/D; do not invent compounding or choose a growth convention from the gold.",
+  "accuracy_or_live_fix_claim": false
+}

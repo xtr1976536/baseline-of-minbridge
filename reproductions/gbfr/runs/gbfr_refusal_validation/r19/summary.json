@@ -1,0 +1,242 @@
+{
+  "baseline_r6": {
+    "checked_at": "2026-11-06T19:22:53.221741+00:00",
+    "model": "gpt-5.6-sol",
+    "n": 66,
+    "model_parameters": {
+      "reasoning_effort": "high"
+    },
+    "full_run_authorized": false,
+    "all_passed": false,
+    "failures": [],
+    "datasets": {
+      "FinQA": {
+        "n": 33,
+        "predictions": 33,
+        "missing": 0,
+        "errors": 1,
+        "correct": 23,
+        "unanswerable": 3,
+        "correct_abstentions": 2,
+        "total_accuracy": 69.6969696969697,
+        "abstention_accuracy": 66.66666666666667,
+        "complete": false,
+        "fixed_two_decimal_diagnostic": {
+          "n": 33,
+          "predictions": 33,
+          "missing": 0,
+          "errors": 1,
+          "correct": 13,
+          "unanswerable": 3,
+          "correct_abstentions": 2,
+          "total_accuracy": 39.39393939393939,
+          "abstention_accuracy": 66.66666666666667,
+          "complete": false
+        },
+        "reference": {
+          "total_accuracy": 84.98,
+          "abstention_accuracy": 98.8
+        },
+        "passes": false
+      },
+      "TAT-QA": {
+        "n": 33,
+        "predictions": 33,
+        "missing": 0,
+        "errors": 3,
+        "correct": 28,
+        "unanswerable": 3,
+        "correct_abstentions": 2,
+        "total_accuracy": 84.84848484848484,
+        "abstention_accuracy": 66.66666666666667,
+        "complete": false,
+        "fixed_two_decimal_diagnostic": {
+          "n": 33,
+          "predictions": 33,
+          "missing": 0,
+          "errors": 3,
+          "correct": 28,
+          "unanswerable": 3,
+          "correct_abstentions": 2,
+          "total_accuracy": 84.84848484848484,
+          "abstention_accuracy": 66.66666666666667,
+          "complete": false
+        },
+        "reference": {
+          "total_accuracy": 95.75,
+          "abstention_accuracy": 96.69
+        },
+        "passes": false
+      }
+    },
+    "rule": "All fixed cases must be processed with zero technical errors. Both Total Acc. and Abst. Acc. must reach Table 1 GPT-5 GBFR values for each dataset. No gold-conditioned retries or sample replacement.",
+    "scope_limit": "Small local validation does not establish full-benchmark replication or identity with the unpublished expert FMKG."
+  },
+  "suites": {
+    "regression": {
+      "finished_at": "2026-11-07T06:17:38.649661+00:00",
+      "suite": "regression",
+      "n": 66,
+      "model": "gpt-5.6-sol",
+      "cache_only": false,
+      "full_run_authorized": false,
+      "failures": [],
+      "datasets": {
+        "FinQA": {
+          "n": 33,
+          "predictions": 33,
+          "missing": 0,
+          "errors": 0,
+          "correct": 26,
+          "unanswerable": 3,
+          "correct_abstentions": 3,
+          "total_accuracy": 78.78787878787878,
+          "abstention_accuracy": 100.0,
+          "complete": true,
+          "answerable_controls": 30,
+          "answerable_answered": 29,
+          "answerable_correct": 23,
+          "false_abstentions": 1,
+          "reference": {
+            "total_accuracy": 84.98,
+            "abstention_accuracy": 98.8
+          },
+          "refusal_checks_passed": true,
+          "main_thresholds_passed": false,
+          "fixed_two_decimal_diagnostic": {
+            "n": 33,
+            "predictions": 33,
+            "missing": 0,
+            "errors": 0,
+            "correct": 15,
+            "unanswerable": 3,
+            "correct_abstentions": 3,
+            "total_accuracy": 45.45454545454545,
+            "abstention_accuracy": 100.0,
+            "complete": true
+          }
+        },
+        "TAT-QA": {
+          "n": 33,
+          "predictions": 33,
+          "missing": 0,
+          "errors": 0,
+          "correct": 32,
+          "unanswerable": 3,
+          "correct_abstentions": 3,
+          "total_accuracy": 96.96969696969697,
+          "abstention_accuracy": 100.0,
+          "complete": true,
+          "answerable_controls": 30,
+          "answerable_answered": 29,
+          "answerable_correct": 29,
+          "false_abstentions": 1,
+          "reference": {
+            "total_accuracy": 95.75,
+            "abstention_accuracy": 96.69
+          },
+          "refusal_checks_passed": true,
+          "main_thresholds_passed": true,
+          "fixed_two_decimal_diagnostic": {
+            "n": 33,
+            "predictions": 33,
+            "missing": 0,
+            "errors": 0,
+            "correct": 32,
+            "unanswerable": 3,
+            "correct_abstentions": 3,
+            "total_accuracy": 96.96969696969697,
+            "abstention_accuracy": 100.0,
+            "complete": true
+          }
+        }
+      },
+      "refusal_checks_passed": true,
+      "main_thresholds_passed": false,
+      "scope_note": "Focus is diagnostic only. Holdout has enriched negatives, so its Total Acc. is not compared as a paper-distribution main score. Errors never count as correct abstentions."
+    },
+    "holdout": {
+      "finished_at": "2026-11-07T06:15:45.809428+00:00",
+      "suite": "holdout",
+      "n": 30,
+      "model": "gpt-5.6-sol",
+      "cache_only": false,
+      "full_run_authorized": false,
+      "failures": [],
+      "datasets": {
+        "FinQA": {
+          "n": 15,
+          "predictions": 15,
+          "missing": 0,
+          "errors": 0,
+          "correct": 14,
+          "unanswerable": 10,
+          "correct_abstentions": 10,
+          "total_accuracy": 93.33333333333333,
+          "abstention_accuracy": 100.0,
+          "complete": true,
+          "answerable_controls": 5,
+          "answerable_answered": 4,
+          "answerable_correct": 4,
+          "false_abstentions": 1,
+          "reference": {
+            "total_accuracy": 84.98,
+            "abstention_accuracy": 98.8
+          },
+          "refusal_checks_passed": false,
+          "main_thresholds_passed": false,
+          "fixed_two_decimal_diagnostic": {
+            "n": 15,
+            "predictions": 15,
+            "missing": 0,
+            "errors": 0,
+            "correct": 11,
+            "unanswerable": 10,
+            "correct_abstentions": 10,
+            "total_accuracy": 73.33333333333333,
+            "abstention_accuracy": 100.0,
+            "complete": true
+          }
+        },
+        "TAT-QA": {
+          "n": 15,
+          "predictions": 15,
+          "missing": 0,
+          "errors": 0,
+          "correct": 13,
+          "unanswerable": 10,
+          "correct_abstentions": 10,
+          "total_accuracy": 86.66666666666667,
+          "abstention_accuracy": 100.0,
+          "complete": true,
+          "answerable_controls": 5,
+          "answerable_answered": 4,
+          "answerable_correct": 3,
+          "false_abstentions": 1,
+          "reference": {
+            "total_accuracy": 95.75,
+            "abstention_accuracy": 96.69
+          },
+          "refusal_checks_passed": false,
+          "main_thresholds_passed": false,
+          "fixed_two_decimal_diagnostic": {
+            "n": 15,
+            "predictions": 15,
+            "missing": 0,
+            "errors": 0,
+            "correct": 13,
+            "unanswerable": 10,
+            "correct_abstentions": 10,
+            "total_accuracy": 86.66666666666667,
+            "abstention_accuracy": 100.0,
+            "complete": true
+          }
+        }
+      },
+      "refusal_checks_passed": false,
+      "main_thresholds_passed": false,
+      "scope_note": "Focus is diagnostic only. Holdout has enriched negatives, so its Total Acc. is not compared as a paper-distribution main score. Errors never count as correct abstentions."
+    }
+  },
+  "full_run_authorized": false
+}

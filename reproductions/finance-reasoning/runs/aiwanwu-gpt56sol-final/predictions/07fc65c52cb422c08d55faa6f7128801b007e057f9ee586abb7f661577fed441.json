@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2181",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the standard daily pivot point from the previous trading day’s high, low, and closing prices using `(high + low + close) / 3`, with the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5029,
+          "completion_tokens": 46,
+          "total_tokens": 5075,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15506,
+          "completion_tokens": 302,
+          "total_tokens": 15808,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 205
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    high = 152.75\n    low = 148.30\n    close = 150.10\n\n    # Do math calculation to get the answer\n    pivot_point = (high + low + close) / 3\n    answer = round(pivot_point, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5062,
+          "completion_tokens": 148,
+          "total_tokens": 5210,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 58
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1282",
+        "score": 1.8392093181610107
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.8053160905838013
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.6419247388839722
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.6383402347564697
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.5837937593460083
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.5803972482681274
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.5742806196212769
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.5595179796218872
+      },
+      {
+        "function_id": "article-1961",
+        "score": 1.55731201171875
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.5552202463150024
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.5539250373840332
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.552656888961792
+      },
+      {
+        "function_id": "article-2355",
+        "score": 1.5526466369628906
+      },
+      {
+        "function_id": "article-3025",
+        "score": 1.5501255989074707
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.5490881204605103
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.5484604835510254
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.5470588207244873
+      },
+      {
+        "function_id": "article-851",
+        "score": 1.5408724546432495
+      },
+      {
+        "function_id": "article-1886",
+        "score": 1.539223074913025
+      },
+      {
+        "function_id": "article-2861",
+        "score": 1.5391337871551514
+      },
+      {
+        "function_id": "article-1038",
+        "score": 1.538428544998169
+      },
+      {
+        "function_id": "article-2078",
+        "score": 1.5330162048339844
+      },
+      {
+        "function_id": "article-1438",
+        "score": 1.530914545059204
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.5249440670013428
+      },
+      {
+        "function_id": "article-1246",
+        "score": 1.5236263275146484
+      },
+      {
+        "function_id": "article-860",
+        "score": 1.5229328870773315
+      },
+      {
+        "function_id": "article-2579",
+        "score": 1.5193428993225098
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.5183477401733398
+      },
+      {
+        "function_id": "article-597",
+        "score": 1.5175403356552124
+      },
+      {
+        "function_id": "article-1285",
+        "score": 1.5159331560134888
+      }
+    ],
+    "selected_ids": [
+      "article-1282"
+    ],
+    "status": "ok",
+    "answer": 150.38,
+    "code": "def solution():\n    # Define variables name and value\n    high = 152.75\n    low = 148.30\n    close = 150.10\n\n    # Do math calculation to get the answer\n    pivot_point = (high + low + close) / 3\n    answer = round(pivot_point, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "4bf1b07a88256e2400f61e4d06564b0353eabbe1a57d142a8ba77c52d7f70825"
+}

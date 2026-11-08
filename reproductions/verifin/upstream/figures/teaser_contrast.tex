@@ -1,0 +1,95 @@
+% Teaser / main figure: the LLM picks a plausible-but-wrong concept; the verifier
+% binds to the calculation-linkbase child and catches it with an SMT obligation.
+% Requires: \usepackage{tikz} + libraries below; \usepackage{amsmath, xcolor}.
+% Compile standalone by uncommenting the documentclass block.
+
+% \documentclass[tikz,border=6pt]{standalone}
+% \usepackage{amsmath,xcolor}
+% \begin{document}
+
+\usetikzlibrary{positioning,arrows.meta,fit,backgrounds}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small, >=Latex,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=5pt, minimum height=9mm},
+  llm/.style={box, fill=black!5, draw=black!45},
+  claim/.style={box, fill=black!3, font=\ttfamily\footnotesize},
+  smt/.style={box, fill=black!3, align=left, font=\ttfamily\scriptsize},
+  callout/.style={box, fill=yellow!18, draw=orange!60!black, align=left, font=\scriptsize},
+  wrongflow/.style={-{Latex[length=5pt]}, very thick, red!65!black},
+  rightflow/.style={-{Latex[length=5pt]}, very thick, green!45!black},
+  flow/.style={-{Latex[length=5pt]}, thick, black!70},
+  good/.style={box, draw=green!55!black, text=green!40!black, fill=green!8, font=\bfseries, align=left},
+  bad/.style={box, draw=red!65!black, text=red!55!black, fill=red!6, font=\bfseries},
+  hdr/.style={font=\scriptsize\bfseries\sffamily, text=black!55},
+]
+
+% ===================== CENTER: the filing's XBRL concepts (ambiguous) =====================
+\node[box, fill=teal!7, draw=teal!45!black, align=left, font=\ttfamily\scriptsize,
+      text width=66mm] (x) {%
+\textbf{\sffamily Filing (XBRL concepts)}\\[2pt]
+us-gaap:Revenues~~~~~~~~~~~~~~~~~~~~= 215{,}938\\
+\textcolor{green!40!black}{\textbf{us-gaap:CostOfRevenue~~~~~~~~~~~~= 62{,}475}}\ \textcolor{green!40!black}{\tiny(linkbase child)}\\
+\textcolor{red!60!black}{\textbf{us-gaap:CostOfGoodsAndServicesSold = 60{,}938}}\ \textcolor{red!60!black}{\tiny(look-alike)}\\
+us-gaap:GrossProfit~~~~~~~~~~~~~~~~~= [redacted]\\[2pt]
+\textcolor{teal!45!black}{calc.\ linkbase:\ \ GrossProfit = Revenues $-$ \textbf{CostOfRevenue}}};
+
+% ===================== TOP: LLM picks the WRONG concept =====================
+\node[llm, above=13mm of x, xshift=-32mm] (llm) {LLM};
+\node[claim, right=30mm of llm] (c) {$c = 215{,}938 - \mathbf{60{,}938} = \$155{,}000$M};
+\node[bad, right=8mm of c] (accept) {a judge accepts it};
+
+\draw[wrongflow] (llm.east) to[out=0,in=150]
+  node[pos=0.6, above, font=\scriptsize\bfseries, text=red!60!black]{picks the wrong concept}
+  ($(x.north west)+(38mm,0)$);
+\draw[flow] (c) -- (accept);
+
+\node[callout, below right=1mm and 3mm of accept, text width=42mm] (why) {%
+\textbf{\sffamily Looks correct:} right magnitude, $\approx$1\% off, no visible
+slip. A judge, even one given the formula, waves it through. \textbf{But wrong.}};
+
+\node[hdr, left=1mm of llm, text=red!55!black] {WITHOUT};
+
+% ===================== BOTTOM: verifier follows the linkbase to the RIGHT concept =====================
+\node[smt, below=13mm of x, xshift=6mm, text width=60mm] (smt) {%
+\textbf{\sffamily SMT proof obligation} \textcolor{teal!45!black}{\scriptsize (operands bound by the linkbase's child concept)}\\[2pt]
+(assert (= Revenues 215938))\\
+(assert (= CostOfRevenue \textbf{62475}))\ \ \textcolor{green!40!black}{; the child}\\
+(assert (= gp (- Revenues CostOfRevenue)))\\
+(assert (<= (abs (- gp 155000)) $\tau$))\\
+(check-sat)\ \ \textcolor{red!60!black}{$\Rightarrow$ unsat}};
+
+\node[good, right=8mm of smt, text width=30mm] (viol) {%
+caught: \textsc{Violated}\\[2pt]
+\normalfont\scriptsize $gp=153{,}463$\\
+\normalfont\scriptsize $|155{,}000-153{,}463|{=}\mathbf{1{,}537}>\tau$\\[2pt]
+\normalfont\scriptsize correction $c^\star{=}153{,}463$};
+
+\draw[rightflow] ($(x.south west)+(24mm,0)$) to[out=-90,in=150]
+  node[pos=0.5, left=1pt, font=\scriptsize\bfseries, text=green!40!black]{follows the linkbase}
+  (smt.north west);
+\draw[flow] (smt) -- (viol);
+
+\node[hdr, left=1mm of smt, text=green!40!black] {WITH VerifiQA};
+
+\end{tikzpicture}
+
+\caption{\textbf{The LLM picks the wrong concept; the verifier binds the right
+one.} The filing contains look-alike tags. Asked for Nvidia's gross profit, the
+model subtracts \texttt{us-gaap:CostOfGoodsAndServicesSold} ($60{,}938$) instead
+of \texttt{us-gaap:CostOfRevenue} ($62{,}475$), yielding $\$155{,}000$M. The
+answer looks correct, within about $1\%$ of the true value with no visible slip,
+so a judge accepts it (top). VerifiQA does not read the operand by name: it takes
+the operand \emph{concept} from the calculation linkbase, which declares
+$\mathrm{GrossProfit}=\mathrm{Revenues}-\mathrm{CostOfRevenue}$, binds it to the
+authoritative value $62{,}475$, and discharges the claim as an SMT obligation
+(bottom). The reconstruction is $153{,}463$, the claim is $1{,}537$ outside
+tolerance $\tau$, the solver returns \texttt{unsat}, and the answer is caught as
+\textsc{Violated} with $153{,}463$ returned as the certified correction, all
+without any ground-truth answer.}
+\label{fig:teaser}
+\end{figure*}
+
+% \end{document}

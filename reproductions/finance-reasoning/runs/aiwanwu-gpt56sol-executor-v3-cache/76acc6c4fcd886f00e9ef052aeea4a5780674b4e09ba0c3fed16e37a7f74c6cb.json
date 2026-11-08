@@ -1,0 +1,21 @@
+{
+  "identity": "76acc6c4fcd886f00e9ef052aeea4a5780674b4e09ba0c3fed16e37a7f74c6cb",
+  "response_digest": "67e61e7192af4ffab5aa1cba3f8156fc50a6b3e2dad935495e68d8a9e6d0cc74",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    eur_notional = 5_000_000\n    contracted_gbp_per_eur = 0.7400\n    current_spot_bid = 0.7342\n    three_month_forward_bid_points = 14.0 / 10_000\n    gbp_90_day_libor = 0.0058\n    days = 90\n    basis = 360\n\n    # Calculate the current three-month GBP/EUR forward bid rate\n    current_forward_bid = current_spot_bid + three_month_forward_bid_points\n\n    # Calculate and discount the mark-to-market gain in GBP\n    undiscounted_gain = eur_notional * (\n        contracted_gbp_per_eur - current_forward_bid\n    )\n    discount_factor = 1 + gbp_90_day_libor * days / basis\n    mark_to_market_gain = undiscounted_gain / discount_factor\n\n    # Return the answer rounded to three decimal places\n    return round(mark_to_market_gain, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5733,
+      "completion_tokens": 739,
+      "total_tokens": 6472,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

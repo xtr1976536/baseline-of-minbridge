@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2189",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function computes the ordinary least squares slope of a simple linear regression between paired market index values and fund NAV changes, using historical observations and returning the estimated NAV change per unit change in the index, rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5129,
+          "completion_tokens": 49,
+          "total_tokens": 5178,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14586,
+          "completion_tokens": 22,
+          "total_tokens": 14608
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    market_index = [3, 2, 4, 5, 6]\n    nav_change = [5, 4, 6, 7, 9]\n\n    # Calculate the slope using the least squares formula\n    n = len(market_index)\n    sum_x = sum(market_index)\n    sum_y = sum(nav_change)\n    sum_xy = sum(x * y for x, y in zip(market_index, nav_change))\n    sum_x_squared = sum(x ** 2 for x in market_index)\n\n    slope = (\n        n * sum_xy - sum_x * sum_y\n    ) / (\n        n * sum_x_squared - sum_x ** 2\n    )\n\n    # Return the slope rounded to two decimal places\n    return round(slope, 2)\n```",
+        "usage": {
+          "prompt_tokens": 6002,
+          "completion_tokens": 294,
+          "total_tokens": 6296,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 110
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2106",
+        "score": 1.66808021068573,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.6439131498336792,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.637193202972412,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.6210399866104126,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.56402587890625,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2858",
+        "score": 1.5605757236480713,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.5603516101837158,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2526",
+        "score": 1.5371986627578735,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2047",
+        "score": 1.529526710510254,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2886",
+        "score": 1.5281813144683838,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-392",
+        "score": 1.5281262397766113,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2887",
+        "score": 1.524681568145752,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.522984266281128,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2888",
+        "score": 1.5165112018585205,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.5081737041473389,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.501046061515808,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.4994109869003296,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.4977359771728516,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-273",
+        "score": 1.496532917022705,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1055",
+        "score": 1.4942295551300049,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.493581771850586,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.4921116828918457,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1282",
+        "score": 1.4910264015197754,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.490865707397461,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1335",
+        "score": 1.490424394607544,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2077",
+        "score": 1.4865193367004395,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.4854686260223389,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.484670639038086,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1337",
+        "score": 1.4839223623275757,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-894",
+        "score": 1.4807888269424438,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2106",
+      "article-2139",
+      "article-2105"
+    ],
+    "status": "ok",
+    "answer": 1.2,
+    "code": "def solution():\n    # Define variables\n    market_index = [3, 2, 4, 5, 6]\n    nav_change = [5, 4, 6, 7, 9]\n\n    # Calculate the slope using the least squares formula\n    n = len(market_index)\n    sum_x = sum(market_index)\n    sum_y = sum(nav_change)\n    sum_xy = sum(x * y for x, y in zip(market_index, nav_change))\n    sum_x_squared = sum(x ** 2 for x in market_index)\n\n    slope = (\n        n * sum_xy - sum_x * sum_y\n    ) / (\n        n * sum_x_squared - sum_x ** 2\n    )\n\n    # Return the slope rounded to two decimal places\n    return round(slope, 2)\n"
+  },
+  "digest": "72b936375cd005409fa41a023377328fc67f9d3133537c12f461c90261e77b60"
+}

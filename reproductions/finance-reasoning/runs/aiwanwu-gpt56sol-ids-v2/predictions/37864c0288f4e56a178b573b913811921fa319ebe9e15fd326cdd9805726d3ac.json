@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2130",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a patient’s total out-of-pocket medical cost for a single bill by applying a deductible, a coinsurance percentage to the remaining eligible expenses, and an out-of-pocket maximum, returning the capped cost rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5026,
+          "completion_tokens": 87,
+          "total_tokens": 5113,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 33
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 13748,
+          "completion_tokens": 19,
+          "total_tokens": 13767,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    total_billed_amount = 10000\n    deductible = 1200\n    coinsurance_rate = 0.20\n    out_of_pocket_max = 3000\n    \n    # Do math calculation to get the answer\n    remaining_cost = max(total_billed_amount - deductible, 0)\n    coinsurance_cost = remaining_cost * coinsurance_rate\n    total_out_of_pocket = min(\n        deductible + coinsurance_cost,\n        out_of_pocket_max\n    )\n    \n    # return answer\n    return round(total_out_of_pocket)\n```",
+        "usage": {
+          "prompt_tokens": 5519,
+          "completion_tokens": 171,
+          "total_tokens": 5690,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 35
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-3100",
+        "score": 2.0139808654785156,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3099",
+        "score": 1.8660236597061157,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-114",
+        "score": 1.8534408807754517,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3097",
+        "score": 1.7696665525436401,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-3098",
+        "score": 1.5561134815216064,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-907",
+        "score": 1.5327813625335693,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2939",
+        "score": 1.488767385482788,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2293",
+        "score": 1.469124436378479,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2295",
+        "score": 1.4611895084381104,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1098",
+        "score": 1.4599807262420654,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2935",
+        "score": 1.4564669132232666,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2294",
+        "score": 1.4441823959350586,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2695",
+        "score": 1.443664312362671,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2508",
+        "score": 1.4432458877563477,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2937",
+        "score": 1.4396746158599854,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2028",
+        "score": 1.4276738166809082,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2938",
+        "score": 1.4187819957733154,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1192",
+        "score": 1.414146065711975,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2696",
+        "score": 1.396327257156372,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2936",
+        "score": 1.3835997581481934,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2023",
+        "score": 1.3779089450836182,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2067",
+        "score": 1.36622154712677,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2830",
+        "score": 1.3636465072631836,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2201",
+        "score": 1.3604381084442139,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1992",
+        "score": 1.3602780103683472,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2863",
+        "score": 1.3577516078948975,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2542",
+        "score": 1.3507097959518433,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-10",
+        "score": 1.3498121500015259,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-282",
+        "score": 1.3492710590362549,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1092",
+        "score": 1.3480578660964966,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-3100",
+      "article-114"
+    ],
+    "status": "ok",
+    "answer": 2960,
+    "code": "def solution():\n    # Define variables name and value\n    total_billed_amount = 10000\n    deductible = 1200\n    coinsurance_rate = 0.20\n    out_of_pocket_max = 3000\n    \n    # Do math calculation to get the answer\n    remaining_cost = max(total_billed_amount - deductible, 0)\n    coinsurance_cost = remaining_cost * coinsurance_rate\n    total_out_of_pocket = min(\n        deductible + coinsurance_cost,\n        out_of_pocket_max\n    )\n    \n    # return answer\n    return round(total_out_of_pocket)\n"
+  },
+  "digest": "60ff04921b773996e096a32bd49fd5d27ff889661207c3bec39de0ae7eee9634"
+}

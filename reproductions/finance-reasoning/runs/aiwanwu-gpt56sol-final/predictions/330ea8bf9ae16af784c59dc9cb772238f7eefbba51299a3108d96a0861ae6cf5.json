@@ -1,0 +1,186 @@
+{
+  "record": {
+    "question_id": "test-2039",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the percentage of a specific reserve amount relative to a total portfolio balance, using the reserve as the numerator and portfolio value as the denominator, and rounds the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5934,
+          "completion_tokens": 43,
+          "total_tokens": 5977,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15111,
+          "completion_tokens": 371,
+          "total_tokens": 15482,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 274
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    specific_reserves = 587\n    tdr_portfolio = 2859\n\n    # Calculate the specific reserves as a percentage of the TDR portfolio\n    percentage = (specific_reserves / tdr_portfolio) * 100\n\n    # Return the answer rounded to three decimal places\n    return round(percentage, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5601,
+          "completion_tokens": 165,
+          "total_tokens": 5766,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 77
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2831",
+        "score": 1.6197296380996704
+      },
+      {
+        "function_id": "article-335",
+        "score": 1.610741376876831
+      },
+      {
+        "function_id": "article-2442",
+        "score": 1.6029857397079468
+      },
+      {
+        "function_id": "article-1513",
+        "score": 1.5895956754684448
+      },
+      {
+        "function_id": "article-1514",
+        "score": 1.5784450769424438
+      },
+      {
+        "function_id": "article-680",
+        "score": 1.5762276649475098
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.5340124368667603
+      },
+      {
+        "function_id": "article-3008",
+        "score": 1.5338375568389893
+      },
+      {
+        "function_id": "article-1978",
+        "score": 1.5327584743499756
+      },
+      {
+        "function_id": "article-978",
+        "score": 1.530179738998413
+      },
+      {
+        "function_id": "article-1515",
+        "score": 1.5230170488357544
+      },
+      {
+        "function_id": "article-2022",
+        "score": 1.512342929840088
+      },
+      {
+        "function_id": "article-391",
+        "score": 1.505096435546875
+      },
+      {
+        "function_id": "article-1289",
+        "score": 1.5037436485290527
+      },
+      {
+        "function_id": "article-1504",
+        "score": 1.5006928443908691
+      },
+      {
+        "function_id": "article-1067",
+        "score": 1.4979177713394165
+      },
+      {
+        "function_id": "article-2581",
+        "score": 1.4970027208328247
+      },
+      {
+        "function_id": "article-2443",
+        "score": 1.494735836982727
+      },
+      {
+        "function_id": "article-3079",
+        "score": 1.4911059141159058
+      },
+      {
+        "function_id": "article-823",
+        "score": 1.4909732341766357
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.4872419834136963
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.4866740703582764
+      },
+      {
+        "function_id": "article-547",
+        "score": 1.4865639209747314
+      },
+      {
+        "function_id": "article-2881",
+        "score": 1.4842486381530762
+      },
+      {
+        "function_id": "article-2405",
+        "score": 1.4841253757476807
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.4835569858551025
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.4832029342651367
+      },
+      {
+        "function_id": "article-2205",
+        "score": 1.4824390411376953
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.481928825378418
+      },
+      {
+        "function_id": "article-2404",
+        "score": 1.4819118976593018
+      }
+    ],
+    "selected_ids": [],
+    "status": "ok",
+    "answer": 20.532,
+    "code": "def solution():\n    # Define variables\n    specific_reserves = 587\n    tdr_portfolio = 2859\n\n    # Calculate the specific reserves as a percentage of the TDR portfolio\n    percentage = (specific_reserves / tdr_portfolio) * 100\n\n    # Return the answer rounded to three decimal places\n    return round(percentage, 3)\n"
+  },
+  "digest": "910787c2ce9da90feb70aa951c49ec0cb2112fb37a9e777af395319015ca9036"
+}

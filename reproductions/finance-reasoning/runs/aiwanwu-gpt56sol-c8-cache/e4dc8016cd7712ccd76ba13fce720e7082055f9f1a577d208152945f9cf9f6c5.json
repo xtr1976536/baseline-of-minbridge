@@ -1,0 +1,21 @@
+{
+  "identity": "e4dc8016cd7712ccd76ba13fce720e7082055f9f1a577d208152945f9cf9f6c5",
+  "response_digest": "6891444f740f2175fbb3a96b0758f0b7636e09ab5fad8ceec6dcf19a42e50a01",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    asset_cash_flows = [500000, 300000, 200000]\n    liability_cash_flows = [400000, 250000, 150000]\n    discount_rate = 0.05\n\n    # Do math calculation to get the answer\n    present_value_assets = sum(\n        cash_flow / ((1 + discount_rate) ** (period + 1))\n        for period, cash_flow in enumerate(asset_cash_flows)\n    )\n    present_value_liabilities = sum(\n        cash_flow / ((1 + discount_rate) ** (period + 1))\n        for period, cash_flow in enumerate(liability_cash_flows)\n    )\n    eve = present_value_assets - present_value_liabilities\n    answer = round(eve)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5663,
+      "completion_tokens": 280,
+      "total_tokens": 5943,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 96
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

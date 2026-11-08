@@ -1,0 +1,18 @@
+{
+  "identity": "aae4a5a6d51220e37e95baf06eb1519c426711a8a77523a827fa6cb5b43ab1f7",
+  "response_digest": "7a78a21e55a0d90215099c486adde0f2e7575a4bbf30121013d86c9edcc4cfa0",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 155, 151, 154, 156, 157, 158, 160, 162, 161, 159]\n    lookback_period = 5\n\n    # Calculate the rank of the last price within the final lookback window\n    window = closing_prices[-lookback_period:]\n    rank = sorted(window).index(closing_prices[-1]) + 1\n    worden_stochastic = (100 / (lookback_period - 1)) * (rank - 1)\n\n    # return answer as a percentage to two decimal places\n    return f\"{worden_stochastic:.2f}%\"\n```",
+    "usage": {
+      "prompt_tokens": 5173,
+      "completion_tokens": 158,
+      "total_tokens": 5331,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

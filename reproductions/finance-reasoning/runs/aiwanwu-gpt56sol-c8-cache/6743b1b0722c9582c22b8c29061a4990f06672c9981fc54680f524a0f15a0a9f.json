@@ -1,0 +1,21 @@
+{
+  "identity": "6743b1b0722c9582c22b8c29061a4990f06672c9981fc54680f524a0f15a0a9f",
+  "response_digest": "f3bce3414de4d7086a8110c0e862a91d44036fe6018b68bd50c49e503c76f7f4",
+  "response": {
+    "content": "```python\ndef solution():\n    from datetime import datetime\n\n    # Define variables name and value\n    grant_date = datetime.strptime(\"2021-01-15\", \"%Y-%m-%d\")\n    exercise_date = datetime.strptime(\"2022-02-20\", \"%Y-%m-%d\")\n    sale_date = datetime.strptime(\"2023-05-05\", \"%Y-%m-%d\")\n\n    # Do math calculation to get the answer\n    held_after_exercise = (sale_date - exercise_date).days > 365\n    held_after_grant = (sale_date - grant_date).days > 730\n    answer = held_after_exercise and held_after_grant\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5093,
+      "completion_tokens": 220,
+      "total_tokens": 5313,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 62
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

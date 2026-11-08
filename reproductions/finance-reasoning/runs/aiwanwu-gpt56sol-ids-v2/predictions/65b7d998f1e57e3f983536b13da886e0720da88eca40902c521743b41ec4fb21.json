@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2045",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fixed monthly payment for refinancing an outstanding mortgage balance using a new annual interest rate compounded monthly over the unchanged remaining loan term, with payments at the end of each month and results rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 5034,
+          "completion_tokens": 48,
+          "total_tokens": 5082,
+          "prompt_tokens_details": {
+            "cached_tokens": 4864
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C04\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 16109,
+          "completion_tokens": 202,
+          "total_tokens": 16311,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 178
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 200000\n    old_interest_rate = 0.05\n    new_interest_rate = 0.035\n    remaining_term_years = 20\n\n    # Do math calculation to get the answer\n    monthly_rate = new_interest_rate / 12\n    total_payments = remaining_term_years * 12\n\n    new_payment = (\n        principal\n        * monthly_rate\n        * (1 + monthly_rate) ** total_payments\n        / ((1 + monthly_rate) ** total_payments - 1)\n    )\n\n    answer = round(new_payment, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5674,
+          "completion_tokens": 602,
+          "total_tokens": 6276,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 448
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1480",
+        "score": 1.9203007221221924,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.9006215333938599,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.8700422048568726,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.8696017265319824,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.8616726398468018,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2497",
+        "score": 1.8593639135360718,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.8523863554000854,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.831149935722351,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.8253326416015625,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.8052928447723389,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-299",
+        "score": 1.8051139116287231,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.7954157590866089,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.7888364791870117,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-438",
+        "score": 1.7878671884536743,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.7854266166687012,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1504",
+        "score": 1.7833765745162964,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.7724603414535522,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1068",
+        "score": 1.7715818881988525,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.764066219329834,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.7605210542678833,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.7527656555175781,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3005",
+        "score": 1.75225830078125,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-578",
+        "score": 1.7472172975540161,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.7375128269195557,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.7361092567443848,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.7317960262298584,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-989",
+        "score": 1.7287873029708862,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1668",
+        "score": 1.7272783517837524,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1153",
+        "score": 1.7255406379699707,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.7231093645095825,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1480",
+      "article-956",
+      "article-579"
+    ],
+    "status": "ok",
+    "answer": 1159.92,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 200000\n    old_interest_rate = 0.05\n    new_interest_rate = 0.035\n    remaining_term_years = 20\n\n    # Do math calculation to get the answer\n    monthly_rate = new_interest_rate / 12\n    total_payments = remaining_term_years * 12\n\n    new_payment = (\n        principal\n        * monthly_rate\n        * (1 + monthly_rate) ** total_payments\n        / ((1 + monthly_rate) ** total_payments - 1)\n    )\n\n    answer = round(new_payment, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "e7770d4850fdb70f74d9c683c359cffc45d2a64bb8f9810e4e5deec34e554f93"
+}

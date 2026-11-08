@@ -1,0 +1,119 @@
+{
+  "answer": "The verified capital expenditures is 1577 USD millions. Calculation: 1577.",
+  "certificate_type": "verifiqa_verifier_certificate",
+  "checks": {
+    "mathematical_validity": {
+      "enabled": true,
+      "reason": "",
+      "smt_status": "valid",
+      "solver_status": "UNSAT",
+      "status": "passed",
+      "valid": true
+    },
+    "policy_alignment": {
+      "enabled": false,
+      "reason": "policy_semantic_check_disabled",
+      "status": "skipped",
+      "valid": null
+    },
+    "semantic_validity": {
+      "enabled": false,
+      "reason": "policy_semantic_check_disabled",
+      "status": "skipped",
+      "valid": null
+    }
+  },
+  "claim": {
+    "claimed_value": 1577.0,
+    "metric": "capital_expenditures",
+    "period": "2018",
+    "tolerance": 0.5,
+    "tolerance_source": "answer_precision",
+    "unit": "USD millions"
+  },
+  "decision": {
+    "final_status": "VERIFIED",
+    "reason": "SMT was validated against the typed IR and Z3 proved the counterexample query UNSAT.",
+    "verified": true
+  },
+  "evidence_bindings": [
+    {
+      "chunk_id": "corpus:3M_2018_10K:p60",
+      "column": "2018",
+      "evidence_assertion": "evidence_capital_expenditures_2018",
+      "name": "capital_expenditures_2018",
+      "period": "2018",
+      "row_label": "Purchases of property plant and equipment PP&E",
+      "source_quote": "Purchases of property, plant and equipment (PP&E) (1,577) (1,373) (1,420)",
+      "unit": "USD millions",
+      "value": 1577.0
+    }
+  ],
+  "financebench_id": "financebench_id_03029",
+  "formula": {
+    "assertion_name": "formula_capital_expenditures",
+    "computed_unit": "USD millions",
+    "computed_value": 1577.0,
+    "computed_variable": "computed_capital_expenditures",
+    "expression": "capital_expenditures_2018"
+  },
+  "question": "What is the FY2018 capital expenditure amount (in USD millions) for 3M? Give a response to the question by relying on the details shown in the cash flow statement.",
+  "retrieval": {
+    "plan": {
+      "facts": [
+        {
+          "aliases": [
+            "Capital expenditures",
+            "Capex",
+            "Capital investments",
+            "Purchases of property, plant and equipment",
+            "Additions to property, plant and equipment",
+            "Property, plant and equipment additions",
+            "PP&E additions",
+            "Capital spending"
+          ],
+          "name": "capital_expenditures_2018",
+          "period": "2018",
+          "statement": "cash flow"
+        }
+      ],
+      "metric": "capital_expenditures",
+      "reason": "Need to retrieve the capital expenditure amount from 3M's 2018 cash flow statement to answer the direct lookup question."
+    },
+    "retrieved_chunk_ids": [
+      "corpus:3M_2018_10K:p49",
+      "corpus:3M_2018_10K:p59",
+      "corpus:3M_2018_10K:p46",
+      "corpus:3M_2018_10K:p39",
+      "corpus:3M_2018_10K:p60",
+      "corpus:3M_2018_10K:p47",
+      "corpus:3M_2018_10K:p126"
+    ]
+  },
+  "smt": {
+    "counterexample_model": "",
+    "first_pass_solver_status": "UNSAT",
+    "has_revised_smtlib": false,
+    "has_smtlib": true,
+    "query_type": "counterexample",
+    "revised_smt_path": "",
+    "revised_solver_status": "",
+    "semantics": "UNSAT means no evidence-grounded counterexample exists outside tolerance; SAT means a violating model exists; UNKNOWN is inconclusive.",
+    "smt_path": "runs/verification_complete/smt/0001_financebench_id_03029_first.smt2",
+    "smt_validation_reason": "",
+    "smt_validation_status": "valid",
+    "solver_status": "UNSAT"
+  },
+  "source_certificate": {
+    "calculation": "1577",
+    "claim_metric": "capital_expenditures",
+    "claim_unit": "USD millions",
+    "claim_value": 1577.0,
+    "fact_names": [
+      "capital_expenditures_2018"
+    ],
+    "formula": "capital_expenditures_2018",
+    "tolerance": 0.5
+  },
+  "version": 1
+}

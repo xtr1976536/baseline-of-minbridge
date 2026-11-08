@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2092",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a bond’s Macaulay duration as the present-value-weighted average time to receive annual coupon payments and the face-value repayment at maturity, given the bond’s term, coupon amount, face value, and annual yield to maturity, with the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5007,
+          "completion_tokens": 62,
+          "total_tokens": 5069
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14873,
+          "completion_tokens": 188,
+          "total_tokens": 15061,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 164
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 1000\n    annual_coupon = 50\n    term_years = 5\n    yield_to_maturity = 0.04\n\n    cash_flows = [annual_coupon] * (term_years - 1)\n    cash_flows.append(annual_coupon + face_value)\n\n    # Calculate the bond price and present-value-weighted cash flows\n    present_values = [\n        cash_flow / ((1 + yield_to_maturity) ** year)\n        for year, cash_flow in enumerate(cash_flows, start=1)\n    ]\n    bond_price = sum(present_values)\n\n    weighted_present_value = sum(\n        year * present_value\n        for year, present_value in enumerate(present_values, start=1)\n    )\n\n    # Calculate Macaulay duration\n    macaulay_duration = weighted_present_value / bond_price\n\n    # Return the answer rounded to two decimal places\n    return round(macaulay_duration, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5704,
+          "completion_tokens": 659,
+          "total_tokens": 6363,
+          "completion_tokens_details": {
+            "reasoning_tokens": 439
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1789",
+        "score": 2.1908717155456543,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-452",
+        "score": 2.1852622032165527,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-806",
+        "score": 2.180295705795288,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-453",
+        "score": 2.1306090354919434,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-733",
+        "score": 2.128718376159668,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-926",
+        "score": 2.1018123626708984,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-454",
+        "score": 1.9777077436447144,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.8715457916259766,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-503",
+        "score": 1.820361614227295,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.81022310256958,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.7876102924346924,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7847949266433716,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.7768609523773193,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.775586485862732,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.761049509048462,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.7595345973968506,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7484527826309204,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.736791729927063,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.7317761182785034,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.7310985326766968,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.7304537296295166,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.7299933433532715,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-172",
+        "score": 1.7155113220214844,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-927",
+        "score": 1.7077767848968506,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.7019819021224976,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1771",
+        "score": 1.6923171281814575,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-28",
+        "score": 1.6898571252822876,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1790",
+        "score": 1.6898502111434937,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-732",
+        "score": 1.6832433938980103,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1490",
+        "score": 1.6827435493469238,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1789",
+      "article-452",
+      "article-806"
+    ],
+    "status": "ok",
+    "answer": 4.56,
+    "code": "def solution():\n    # Define variables name and value\n    face_value = 1000\n    annual_coupon = 50\n    term_years = 5\n    yield_to_maturity = 0.04\n\n    cash_flows = [annual_coupon] * (term_years - 1)\n    cash_flows.append(annual_coupon + face_value)\n\n    # Calculate the bond price and present-value-weighted cash flows\n    present_values = [\n        cash_flow / ((1 + yield_to_maturity) ** year)\n        for year, cash_flow in enumerate(cash_flows, start=1)\n    ]\n    bond_price = sum(present_values)\n\n    weighted_present_value = sum(\n        year * present_value\n        for year, present_value in enumerate(present_values, start=1)\n    )\n\n    # Calculate Macaulay duration\n    macaulay_duration = weighted_present_value / bond_price\n\n    # Return the answer rounded to two decimal places\n    return round(macaulay_duration, 2)\n"
+  },
+  "digest": "0bb5b61b79063f2ed4d9b23acfdcf5d442aa6540c91fb6bb7a1187c5c40c4188"
+}

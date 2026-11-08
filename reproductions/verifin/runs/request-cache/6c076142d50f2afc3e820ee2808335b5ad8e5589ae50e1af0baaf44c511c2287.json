@@ -1,0 +1,28 @@
+{
+  "request_hash": "6c076142d50f2afc3e820ee2808335b5ad8e5589ae50e1af0baaf44c511c2287",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is Coca Cola's FY2021 COGS % margin? Calculate what was asked by utilizing the line items clearly shown in the income statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"cogs_percentage_margin\",\n  \"facts\": [\n    {\n      \"name\": \"cost_of_goods_sold\",\n      \"aliases\": [\n        \"Cost of goods sold\",\n        \"Cost of sales\",\n        \"COGS\"\n      ],\n      \"period\": \"FY2021\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"net_operating_revenues\",\n      \"aliases\": [\n        \"Net Operating Revenues\",\n        \"Net operating revenue\",\n        \"Net revenues\",\n        \"Revenue\"\n      ],\n      \"period\": \"FY2021\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Calculate FY2021 COGS percentage margin as cost of goods sold divided by net operating revenues, multiplied by 100.\"\n}",
+  "usage": {
+    "prompt_tokens": 4708,
+    "completion_tokens": 171,
+    "total_tokens": 4879,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    }
+  },
+  "response_id": "resp_0157d93b692eabb0016aedb55f9dfc87d2bb4aa6a55d238def",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

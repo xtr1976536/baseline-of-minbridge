@@ -1,0 +1,192 @@
+{
+  "record": {
+    "question_id": "test-2075",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the adjusted McClellan Oscillator as the difference between updated 19-day and 39-day EMAs of Adjusted Net Advances, using the current ANA and previous-day EMA values with standard EMA smoothing, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5073,
+          "completion_tokens": 172,
+          "total_tokens": 5245,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 111
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15847,
+          "completion_tokens": 335,
+          "total_tokens": 16182,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 238
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    ana = 550\n    prior_19_day_ema = 528\n    prior_39_day_ema = 530\n\n    # Calculate the current EMAs\n    ema_19_day = (ana * 0.10) + (prior_19_day_ema * 0.90)\n    ema_39_day = (ana * 0.05) + (prior_39_day_ema * 0.95)\n\n    # Calculate the adjusted McClellan Oscillator\n    adjusted_mcclellan_oscillator = ema_19_day - ema_39_day\n\n    # Return the answer to two decimal places\n    return f\"{adjusted_mcclellan_oscillator:.2f}\"\n```",
+        "usage": {
+          "prompt_tokens": 5090,
+          "completion_tokens": 292,
+          "total_tokens": 5382,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 121
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-898",
+        "score": 2.203794479370117
+      },
+      {
+        "function_id": "article-897",
+        "score": 2.131373882293701
+      },
+      {
+        "function_id": "article-896",
+        "score": 2.1252803802490234
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.5665099620819092
+      },
+      {
+        "function_id": "article-1051",
+        "score": 1.5306100845336914
+      },
+      {
+        "function_id": "article-2415",
+        "score": 1.5262293815612793
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.4870225191116333
+      },
+      {
+        "function_id": "article-1623",
+        "score": 1.4712613821029663
+      },
+      {
+        "function_id": "article-1994",
+        "score": 1.4417731761932373
+      },
+      {
+        "function_id": "article-2354",
+        "score": 1.4352296590805054
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.4278504848480225
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.4134578704833984
+      },
+      {
+        "function_id": "article-548",
+        "score": 1.4040567874908447
+      },
+      {
+        "function_id": "article-962",
+        "score": 1.403921127319336
+      },
+      {
+        "function_id": "article-2556",
+        "score": 1.4038318395614624
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.3926165103912354
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.391599416732788
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.3828647136688232
+      },
+      {
+        "function_id": "article-586",
+        "score": 1.375675082206726
+      },
+      {
+        "function_id": "article-1099",
+        "score": 1.375491738319397
+      },
+      {
+        "function_id": "article-1622",
+        "score": 1.3749330043792725
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.3746206760406494
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.3710215091705322
+      },
+      {
+        "function_id": "article-2288",
+        "score": 1.370510220527649
+      },
+      {
+        "function_id": "article-816",
+        "score": 1.3649524450302124
+      },
+      {
+        "function_id": "article-1666",
+        "score": 1.3624227046966553
+      },
+      {
+        "function_id": "article-467",
+        "score": 1.3619798421859741
+      },
+      {
+        "function_id": "article-3043",
+        "score": 1.3599019050598145
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.3584645986557007
+      },
+      {
+        "function_id": "article-83",
+        "score": 1.3565558195114136
+      }
+    ],
+    "selected_ids": [
+      "article-898"
+    ],
+    "status": "execution_error",
+    "answer": null,
+    "error": "ValueError",
+    "code": "def solution():\n    # Define variables\n    ana = 550\n    prior_19_day_ema = 528\n    prior_39_day_ema = 530\n\n    # Calculate the current EMAs\n    ema_19_day = (ana * 0.10) + (prior_19_day_ema * 0.90)\n    ema_39_day = (ana * 0.05) + (prior_39_day_ema * 0.95)\n\n    # Calculate the adjusted McClellan Oscillator\n    adjusted_mcclellan_oscillator = ema_19_day - ema_39_day\n\n    # Return the answer to two decimal places\n    return f\"{adjusted_mcclellan_oscillator:.2f}\"\n"
+  },
+  "digest": "2a2048a902f5568ac7706b2eea27952a398e61d3cfad73491206b04bda8a3a83"
+}

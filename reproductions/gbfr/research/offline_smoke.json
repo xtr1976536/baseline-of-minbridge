@@ -1,0 +1,1162 @@
+{
+  "mode": "offline scripted protocol check; not an LLM benchmark",
+  "fixture_is_paper_graph": false,
+  "answerable": {
+    "status": "answered",
+    "value": 40.0,
+    "meta": {
+      "currency": "USD",
+      "scale": "millions",
+      "unit": null
+    },
+    "precision": "unknown",
+    "trace": {
+      "events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "reasoning_type": "DirectRetrieval",
+            "operator": "sum",
+            "subgoals": [
+              {
+                "metric": "Gross Profit",
+                "constraints": {
+                  "temporal_scope": "2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": "USD",
+                    "scale": "millions",
+                    "unit": null
+                  }
+                }
+              }
+            ],
+            "precision": "unknown"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Gross Profit",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Not reported"
+          }
+        },
+        {
+          "operator": "OMD",
+          "goal": {
+            "metric": "Gross Profit",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          },
+          "paths": [
+            {
+              "id": "gp:revenue-cost",
+              "direction": "down",
+              "formula": "Gross Profit = Revenue - Cost"
+            },
+            {
+              "id": "gp:margin",
+              "direction": "down",
+              "formula": "Gross Profit = Revenue * Profit Margin"
+            },
+            {
+              "id": "double:gp:inverse:Gross Profit",
+              "direction": "up",
+              "formula": "Rearrange [Double Profit = 2 * Gross Profit] to solve for Gross Profit: (1/2)*parent_value"
+            }
+          ]
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Double Profit",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "var_bindings": {
+              "v1": {
+                "metric": "Double Profit",
+                "constraints": {
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  },
+                  "temporal_scope": "2024"
+                },
+                "value": 80,
+                "context": "Double Profit: 80",
+                "confidence": 1.0
+              }
+            },
+            "missing_vars": [],
+            "notes": null
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Revenue",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "var_bindings": {
+              "v1": {
+                "metric": "Revenue",
+                "constraints": {
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": "USD",
+                    "scale": "millions",
+                    "unit": null
+                  },
+                  "temporal_scope": "2024"
+                },
+                "value": 100,
+                "context": "Net Sales: 100",
+                "confidence": 1.0
+              }
+            },
+            "missing_vars": [],
+            "notes": "Resolved Revenue through registered alias"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Cost",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "var_bindings": {
+              "v1": {
+                "metric": "Cost",
+                "constraints": {
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": "USD",
+                    "scale": "millions",
+                    "unit": null
+                  },
+                  "temporal_scope": "2024"
+                },
+                "value": 60,
+                "context": "COGS: 60",
+                "confidence": 1.0
+              }
+            },
+            "missing_vars": [],
+            "notes": "Resolved Cost through registered alias"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Profit Margin",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "var_bindings": {
+              "v1": {
+                "metric": "Profit Margin",
+                "constraints": {
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "ratio"
+                  },
+                  "temporal_scope": "2024"
+                },
+                "value": 0.4,
+                "context": "Profit Margin: 0.4",
+                "confidence": 1.0
+              }
+            },
+            "missing_vars": [],
+            "notes": null
+          }
+        },
+        {
+          "operator": "OPE.metric",
+          "path_id": "gp:revenue-cost",
+          "program": "def compute(vars):\n    r = vars['Revenue']\n    c = vars['Cost']\n    return {\"value\": r-c, \"trace\": {}}",
+          "inputs": {
+            "Revenue": 100.0,
+            "Cost": 60.0
+          },
+          "execution": {
+            "value": 40.0,
+            "trace": {}
+          }
+        },
+        {
+          "operator": "OPE.metric",
+          "path_id": "double:gp:inverse:Gross Profit",
+          "program": "def compute(vars):\n    parent_value = vars['Double Profit']\n    return {\"value\": (1/2)*parent_value, \"trace\": {}}",
+          "inputs": {
+            "Double Profit": 80.0
+          },
+          "execution": {
+            "value": 40.0,
+            "trace": {}
+          }
+        },
+        {
+          "operator": "OPE.metric",
+          "path_id": "gp:margin",
+          "program": "def compute(vars):\n    r = vars['Revenue']\n    m = vars['Profit Margin']\n    return {\"value\": r*m, \"trace\": {}}",
+          "inputs": {
+            "Revenue": 100.0,
+            "Profit Margin": 0.4
+          },
+          "execution": {
+            "value": 40.0,
+            "trace": {}
+          }
+        },
+        {
+          "operator": "Verify",
+          "goal": {
+            "metric": "Gross Profit",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          },
+          "candidate_paths": [
+            {
+              "path_id": "gp:revenue-cost",
+              "direction": "down",
+              "subgoals": [
+                {
+                  "metric": "Revenue",
+                  "constraints": {
+                    "temporal_scope": "2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                },
+                {
+                  "metric": "Cost",
+                  "constraints": {
+                    "temporal_scope": "2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                }
+              ],
+              "evidence": {
+                "r": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": \"USD\", \"scale\": \"millions\", \"unit\": null}, \"temporal_scope\": \"2024\"}, \"metric\": \"Revenue\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Revenue",
+                        "constraints": {
+                          "temporal_scope": "2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "metric": "Revenue",
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          },
+                          "temporal_scope": "2024"
+                        },
+                        "value": 100,
+                        "context": "Net Sales: 100",
+                        "confidence": 1.0
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "Net Sales: 100"
+                    ],
+                    "value": 100.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                ],
+                "c": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": \"USD\", \"scale\": \"millions\", \"unit\": null}, \"temporal_scope\": \"2024\"}, \"metric\": \"Cost\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Cost",
+                        "constraints": {
+                          "temporal_scope": "2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "metric": "Cost",
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          },
+                          "temporal_scope": "2024"
+                        },
+                        "value": 60,
+                        "context": "COGS: 60",
+                        "confidence": 1.0
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "COGS: 60"
+                    ],
+                    "value": 60.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                ]
+              },
+              "computation": {
+                "formula": "Gross Profit = Revenue - Cost",
+                "symbolic_rhs": "r-c",
+                "program": "def compute(vars):\n    r = vars['Revenue']\n    c = vars['Cost']\n    return {\"value\": r-c, \"trace\": {}}",
+                "inputs": {
+                  "Revenue": 100.0,
+                  "Cost": 60.0
+                },
+                "trace": {}
+              },
+              "value": 40.0,
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              },
+              "verification": {
+                "path_id": "gp:revenue-cost",
+                "decision": "VALID",
+                "justification": "Offline test decision"
+              }
+            },
+            {
+              "path_id": "gp:margin",
+              "direction": "down",
+              "subgoals": [
+                {
+                  "metric": "Revenue",
+                  "constraints": {
+                    "temporal_scope": "2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                },
+                {
+                  "metric": "Profit Margin",
+                  "constraints": {
+                    "temporal_scope": "2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": "ratio"
+                    }
+                  }
+                }
+              ],
+              "evidence": {
+                "r": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": \"USD\", \"scale\": \"millions\", \"unit\": null}, \"temporal_scope\": \"2024\"}, \"metric\": \"Revenue\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Revenue",
+                        "constraints": {
+                          "temporal_scope": "2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "metric": "Revenue",
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          },
+                          "temporal_scope": "2024"
+                        },
+                        "value": 100,
+                        "context": "Net Sales: 100",
+                        "confidence": 1.0
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "Net Sales: 100"
+                    ],
+                    "value": 100.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                ],
+                "m": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": \"ratio\"}, \"temporal_scope\": \"2024\"}, \"metric\": \"Profit Margin\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Profit Margin",
+                        "constraints": {
+                          "temporal_scope": "2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": "ratio"
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "metric": "Profit Margin",
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": "ratio"
+                          },
+                          "temporal_scope": "2024"
+                        },
+                        "value": 0.4,
+                        "context": "Profit Margin: 0.4",
+                        "confidence": 1.0
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "Profit Margin: 0.4"
+                    ],
+                    "value": 0.4,
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": "ratio"
+                    }
+                  }
+                ]
+              },
+              "computation": {
+                "formula": "Gross Profit = Revenue * Profit Margin",
+                "symbolic_rhs": "r*m",
+                "program": "def compute(vars):\n    r = vars['Revenue']\n    m = vars['Profit Margin']\n    return {\"value\": r*m, \"trace\": {}}",
+                "inputs": {
+                  "Revenue": 100.0,
+                  "Profit Margin": 0.4
+                },
+                "trace": {}
+              },
+              "value": 40.0,
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              },
+              "verification": {
+                "path_id": "gp:margin",
+                "decision": "VALID",
+                "justification": "Offline test decision"
+              }
+            },
+            {
+              "path_id": "double:gp:inverse:Gross Profit",
+              "direction": "up",
+              "subgoals": [
+                {
+                  "metric": "Double Profit",
+                  "constraints": {
+                    "temporal_scope": "2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": null
+                    }
+                  }
+                }
+              ],
+              "evidence": {
+                "parent_value": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"2024\"}, \"metric\": \"Double Profit\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Double Profit",
+                        "constraints": {
+                          "temporal_scope": "2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "metric": "Double Profit",
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          },
+                          "temporal_scope": "2024"
+                        },
+                        "value": 80,
+                        "context": "Double Profit: 80",
+                        "confidence": 1.0
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "Double Profit: 80"
+                    ],
+                    "value": 80.0,
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": null
+                    }
+                  }
+                ]
+              },
+              "computation": {
+                "formula": "Rearrange [Double Profit = 2 * Gross Profit] to solve for Gross Profit: (1/2)*parent_value",
+                "symbolic_rhs": "(1/2)*parent_value",
+                "program": "def compute(vars):\n    parent_value = vars['Double Profit']\n    return {\"value\": (1/2)*parent_value, \"trace\": {}}",
+                "inputs": {
+                  "Double Profit": 80.0
+                },
+                "trace": {}
+              },
+              "value": 40.0,
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              },
+              "verification": {
+                "path_id": "double:gp:inverse:Gross Profit",
+                "decision": "VALID",
+                "justification": "Offline test decision"
+              }
+            }
+          ],
+          "response": {
+            "path_decisions": [
+              {
+                "path_id": "gp:revenue-cost",
+                "decision": "VALID",
+                "justification": "Offline test decision"
+              },
+              {
+                "path_id": "gp:margin",
+                "decision": "VALID",
+                "justification": "Offline test decision"
+              },
+              {
+                "path_id": "double:gp:inverse:Gross Profit",
+                "decision": "VALID",
+                "justification": "Offline test decision"
+              }
+            ]
+          }
+        },
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    return {\"value\": sum([vars[\"v1\"]]), \"trace\": {\"output_meta\": {'currency': 'USD', 'scale': 'millions', 'unit': None}}}",
+          "inputs": {
+            "v1": 40.0
+          },
+          "execution": {
+            "value": 40.0,
+            "trace": {
+              "output_meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "var_name": "v1",
+          "metric": "Gross Profit",
+          "constraints": {
+            "temporal_scope": "2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": "USD",
+              "scale": "millions",
+              "unit": null
+            }
+          },
+          "value": 40.0,
+          "meta": {
+            "currency": "USD",
+            "scale": "millions",
+            "unit": null
+          },
+          "paths": [
+            {
+              "path_id": "gp:revenue-cost",
+              "direction": "down",
+              "subgoals": [
+                {
+                  "metric": "Revenue",
+                  "constraints": {
+                    "temporal_scope": "2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                },
+                {
+                  "metric": "Cost",
+                  "constraints": {
+                    "temporal_scope": "2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                }
+              ],
+              "evidence": {
+                "r": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": \"USD\", \"scale\": \"millions\", \"unit\": null}, \"temporal_scope\": \"2024\"}, \"metric\": \"Revenue\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Revenue",
+                        "constraints": {
+                          "temporal_scope": "2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "metric": "Revenue",
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          },
+                          "temporal_scope": "2024"
+                        },
+                        "value": 100,
+                        "context": "Net Sales: 100",
+                        "confidence": 1.0
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "Net Sales: 100"
+                    ],
+                    "value": 100.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                ],
+                "c": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": \"USD\", \"scale\": \"millions\", \"unit\": null}, \"temporal_scope\": \"2024\"}, \"metric\": \"Cost\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Cost",
+                        "constraints": {
+                          "temporal_scope": "2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "metric": "Cost",
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          },
+                          "temporal_scope": "2024"
+                        },
+                        "value": 60,
+                        "context": "COGS: 60",
+                        "confidence": 1.0
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "COGS: 60"
+                    ],
+                    "value": 60.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                ]
+              },
+              "computation": {
+                "formula": "Gross Profit = Revenue - Cost",
+                "symbolic_rhs": "r-c",
+                "program": "def compute(vars):\n    r = vars['Revenue']\n    c = vars['Cost']\n    return {\"value\": r-c, \"trace\": {}}",
+                "inputs": {
+                  "Revenue": 100.0,
+                  "Cost": 60.0
+                },
+                "trace": {}
+              },
+              "value": 40.0,
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              },
+              "verification": {
+                "path_id": "gp:revenue-cost",
+                "decision": "VALID",
+                "justification": "Offline test decision"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "reason": ""
+  },
+  "missing_evidence": {
+    "status": "abstained",
+    "value": null,
+    "meta": {},
+    "precision": "unknown",
+    "trace": {
+      "events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "reasoning_type": "DirectRetrieval",
+            "operator": "sum",
+            "subgoals": [
+              {
+                "metric": "Gross Profit",
+                "constraints": {
+                  "temporal_scope": "2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": "USD",
+                    "scale": "millions",
+                    "unit": null
+                  }
+                }
+              }
+            ],
+            "precision": "unknown"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Gross Profit",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Not reported"
+          }
+        },
+        {
+          "operator": "OMD",
+          "goal": {
+            "metric": "Gross Profit",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          },
+          "paths": [
+            {
+              "id": "gp:revenue-cost",
+              "direction": "down",
+              "formula": "Gross Profit = Revenue - Cost"
+            },
+            {
+              "id": "gp:margin",
+              "direction": "down",
+              "formula": "Gross Profit = Revenue * Profit Margin"
+            },
+            {
+              "id": "double:gp:inverse:Gross Profit",
+              "direction": "up",
+              "formula": "Rearrange [Double Profit = 2 * Gross Profit] to solve for Gross Profit: (1/2)*parent_value"
+            }
+          ]
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Double Profit",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Not reported"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Revenue",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Not reported"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Cost",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Not reported"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Profit Margin",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Not reported"
+          }
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "double:gp:inverse:Gross Profit",
+          "reason": "missing_operand",
+          "goals": [
+            {
+              "metric": "Double Profit",
+              "constraints": {
+                "temporal_scope": "2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "gp:revenue-cost",
+          "reason": "missing_operand",
+          "goals": [
+            {
+              "metric": "Revenue",
+              "constraints": {
+                "temporal_scope": "2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": "USD",
+                  "scale": "millions",
+                  "unit": null
+                }
+              }
+            },
+            {
+              "metric": "Cost",
+              "constraints": {
+                "temporal_scope": "2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": "USD",
+                  "scale": "millions",
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "gp:margin",
+          "reason": "missing_operand",
+          "goals": [
+            {
+              "metric": "Revenue",
+              "constraints": {
+                "temporal_scope": "2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": "USD",
+                  "scale": "millions",
+                  "unit": null
+                }
+              }
+            },
+            {
+              "metric": "Profit Margin",
+              "constraints": {
+                "temporal_scope": "2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "ratio"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subgoal_results": [
+        {
+          "value": null,
+          "meta": {},
+          "paths": [],
+          "reason": "All graph-grounded derivations have missing operands or undefined values"
+        }
+      ]
+    },
+    "reason": "At least one required subgoal could not be grounded"
+  }
+}

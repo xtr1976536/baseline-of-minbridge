@@ -1,0 +1,1219 @@
+[
+  {
+    "id": "TAT-QA:6998ff3a821511af8a6c3d9b8c855502_34a544721ab7683ac3a3eb9109456529",
+    "question": "What is the proportion of the value of finished goods over total inventories in 2019?",
+    "frozen_gold": 0.65,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:6998ff3a821511af8a6c3d9b8c855502_34a544721ab7683ac3a3eb9109456529",
+      "status": "answered",
+      "value": 0.6485052545658606,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "proportion"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:6998ff3a821511af8a6c3d9b8c855502_34a544721ab7683ac3a3eb9109456529",
+      "status": "answered",
+      "value": 0.6485052545658606,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "proportion"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:6998ff3a821511af8a6c3d9b8c855502_34a544721ab7683ac3a3eb9109456529",
+      "value": 0.6485052545658606,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "ratio"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "65960f66964bd292490ccdb2e29fbc8c8fbe53f66afb4154f33c97ec47097c42",
+      "program": "def compute(vars):\n    finished_goods = vars[\"v1\"]\n    total_inventories = vars[\"v2\"]\n\n    if total_inventories == 0:\n        return None\n\n    proportion = finished_goods / total_inventories\n\n    return {\n        \"value\": proportion,\n        \"trace\": {\n            \"finished_goods\": finished_goods,\n            \"total_inventories\": total_inventories,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": \"ones\",\n                \"unit\": \"proportion\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 6356.0,
+        "v2": 9801.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "ratio",
+      "execution": {
+        "value": 0.6485052545658606,
+        "trace": {
+          "finished_goods": 6356.0,
+          "total_inventories": 9801.0,
+          "output_meta": {
+            "currency": null,
+            "scale": "ones",
+            "unit": "proportion"
+          },
+          "effective_output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "ratio"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:8df1cc899603c8633894847fc15cfa96_03b8194d47511d07e1e1aa58aa721957",
+    "question": "What is the change in Disposals during the year from 2018 to 2019?",
+    "frozen_gold": -3439,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:8df1cc899603c8633894847fc15cfa96_03b8194d47511d07e1e1aa58aa721957",
+      "status": "answered",
+      "value": 3439.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:8df1cc899603c8633894847fc15cfa96_03b8194d47511d07e1e1aa58aa721957",
+      "status": "answered",
+      "value": 3439.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:8df1cc899603c8633894847fc15cfa96_03b8194d47511d07e1e1aa58aa721957",
+      "value": 3439.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "program_sha256": "9697cba25a61afb272877fbd1890e14a4fa7e980728dcf11872d6d5bb06c0e5c",
+      "program": "def compute(vars):\n    old = vars[\"v1\"]\n    new = vars[\"v2\"]\n    change = new - old\n    return {\n        \"value\": change,\n        \"trace\": {\n            \"old_2018\": old,\n            \"new_2019\": new,\n            \"change\": change,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"thousand\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": -4400.0,
+        "v2": -961.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "difference",
+      "execution": {
+        "value": 3439.0,
+        "trace": {
+          "old_2018": -4400.0,
+          "new_2019": -961.0,
+          "change": 3439.0,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "thousand",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:eedaff83a4efeb4d5ea9cfcc7664b56e_f9b4661a1bafc824ab65e2b0f06ff408",
+    "question": "What was the income tax benefit in 2018?",
+    "frozen_gold": "$18.5 million",
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:eedaff83a4efeb4d5ea9cfcc7664b56e_f9b4661a1bafc824ab65e2b0f06ff408",
+      "status": "answered",
+      "value": 18467.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": null,
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:eedaff83a4efeb4d5ea9cfcc7664b56e_f9b4661a1bafc824ab65e2b0f06ff408",
+      "status": "answered",
+      "value": 18467.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": null,
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:eedaff83a4efeb4d5ea9cfcc7664b56e_f9b4661a1bafc824ab65e2b0f06ff408",
+      "value": 18467.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": null,
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "394d417f22b5ac3a92e80e5b8dc310d32c4f134896ab9034ba1310e686072b77",
+      "program": "def compute(vars):\n    value = vars[\"v1\"]\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"v1\": value,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"thousand\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 18467.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 2
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "sum",
+      "execution": {
+        "value": 18467.0,
+        "trace": {
+          "v1": 18467.0,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "thousand",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:6ad2ec5c0b711b3fb827cb77b1ebecbe_b6b9d21c799743ac0c5566a4601a093d",
+    "question": "How much did sales and marketing expenses increase by for year ended 2019 compared to year ended 2018?",
+    "frozen_gold": "$122.8 million",
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:6ad2ec5c0b711b3fb827cb77b1ebecbe_b6b9d21c799743ac0c5566a4601a093d",
+      "status": "answered",
+      "value": 122.8,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:6ad2ec5c0b711b3fb827cb77b1ebecbe_b6b9d21c799743ac0c5566a4601a093d",
+      "status": "answered",
+      "value": 122.8,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:6ad2ec5c0b711b3fb827cb77b1ebecbe_b6b9d21c799743ac0c5566a4601a093d",
+      "value": 122.8,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "af9851bc5a966b2602dfff081769c37dda7c180a69af4f3cd056eb361ed5acd4",
+      "program": "def compute(vars):\n    value = vars[\"v1\"]\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"reported_increase\": value,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 122.8
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 2
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "sum",
+      "execution": {
+        "value": 122.8,
+        "trace": {
+          "reported_increase": 122.8,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:f5850c2764209f26fccf7923dd714ea4_bdf2411e367d4b93fb0247c42751491f",
+    "question": "What is the change in the % of revenue?",
+    "frozen_gold": 7,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:f5850c2764209f26fccf7923dd714ea4_bdf2411e367d4b93fb0247c42751491f",
+      "status": "answered",
+      "value": 7.0,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:f5850c2764209f26fccf7923dd714ea4_bdf2411e367d4b93fb0247c42751491f",
+      "status": "answered",
+      "value": 7.0,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:f5850c2764209f26fccf7923dd714ea4_bdf2411e367d4b93fb0247c42751491f",
+      "value": 7.0,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "04a4e77c554a5bdd48ef327551f0220b05656db1ddf3de03762d1ab403cb3428",
+      "program": "def compute(vars):\n    v1 = vars[\"v1\"]\n    v2 = vars[\"v2\"]\n    value = v1 - v2\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"v1\": v1,\n            \"v2\": v2,\n            \"difference\": value,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": \"percentage\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 28.0,
+        "v2": 21.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "difference",
+      "execution": {
+        "value": 7.0,
+        "trace": {
+          "v1": 28.0,
+          "v2": 21.0,
+          "difference": 7.0,
+          "output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:504d01c4bb83fc6d346c56fee69948cc_ff6211402b4a547aff3f4197073e0423",
+    "question": "What was the change in Dividend Paid per Ordinary Share in € in 2016 from 2015?",
+    "frozen_gold": 0.1,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:504d01c4bb83fc6d346c56fee69948cc_ff6211402b4a547aff3f4197073e0423",
+      "status": "answered",
+      "value": 0.10000000000000009,
+      "meta": {
+        "currency": "EUR",
+        "scale": null,
+        "unit": "per ordinary share"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:504d01c4bb83fc6d346c56fee69948cc_ff6211402b4a547aff3f4197073e0423",
+      "status": "answered",
+      "value": 0.10000000000000009,
+      "meta": {
+        "currency": "EUR",
+        "scale": null,
+        "unit": "per ordinary share"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:504d01c4bb83fc6d346c56fee69948cc_ff6211402b4a547aff3f4197073e0423",
+      "value": 0.10000000000000009,
+      "meta": {
+        "currency": "EUR",
+        "scale": null,
+        "unit": "currency/share"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "84c6e9056d2b1186afb59e1ecf0fc05adc3a92d0dcbbf141e7a0c1bbfcb0c543",
+      "program": "def compute(vars):\n    old = vars[\"v1\"]\n    new = vars[\"v2\"]\n    change = new - old\n    return {\n        \"value\": change,\n        \"trace\": {\n            \"old_value\": old,\n            \"new_value\": new,\n            \"change\": change,\n            \"output_meta\": {\n                \"currency\": \"EUR\",\n                \"scale\": None,\n                \"unit\": \"per ordinary share\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 1.15,
+        "v2": 1.25
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "difference",
+      "execution": {
+        "value": 0.10000000000000009,
+        "trace": {
+          "old_value": 1.15,
+          "new_value": 1.25,
+          "change": 0.10000000000000009,
+          "output_meta": {
+            "currency": "EUR",
+            "scale": null,
+            "unit": "per ordinary share"
+          },
+          "effective_output_meta": {
+            "currency": "EUR",
+            "scale": null,
+            "unit": "currency/share"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:abd9a03c501a39369634fb1aa57880f5_4dcb5786a1d46ccef164d9683d82024c",
+    "question": "What was the profit margin for the fourth quarter of 2018?",
+    "frozen_gold": 16.52,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:abd9a03c501a39369634fb1aa57880f5_4dcb5786a1d46ccef164d9683d82024c",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:abd9a03c501a39369634fb1aa57880f5_4dcb5786a1d46ccef164d9683d82024c",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:abd9a03c501a39369634fb1aa57880f5_4dcb5786a1d46ccef164d9683d82024c",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "TAT-QA:8df1cc899603c8633894847fc15cfa96_4478c71ff25482f914636301d4c2413a",
+    "question": "What is the change in Other intangible assets Amortisation 2018 to 2019?",
+    "frozen_gold": -4606,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:8df1cc899603c8633894847fc15cfa96_4478c71ff25482f914636301d4c2413a",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:8df1cc899603c8633894847fc15cfa96_4478c71ff25482f914636301d4c2413a",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:8df1cc899603c8633894847fc15cfa96_4478c71ff25482f914636301d4c2413a",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "TAT-QA:7bc6da25adaae100b2983a53464947c1_6b607bd54f6a20e38c565139ea23aca8",
+    "question": "What was the change in trade receivables between 2018 and 2019?",
+    "frozen_gold": 2.8,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:7bc6da25adaae100b2983a53464947c1_6b607bd54f6a20e38c565139ea23aca8",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:7bc6da25adaae100b2983a53464947c1_6b607bd54f6a20e38c565139ea23aca8",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:7bc6da25adaae100b2983a53464947c1_6b607bd54f6a20e38c565139ea23aca8",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "TAT-QA:dbab56c6c9ced463d8eb498d67c8bc9c_62afbd1d4e987a0cb3193b11523d0dfd",
+    "question": "What is the NEOs' total salary?",
+    "frozen_gold": 3140000,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:dbab56c6c9ced463d8eb498d67c8bc9c_62afbd1d4e987a0cb3193b11523d0dfd",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:dbab56c6c9ced463d8eb498d67c8bc9c_62afbd1d4e987a0cb3193b11523d0dfd",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:dbab56c6c9ced463d8eb498d67c8bc9c_62afbd1d4e987a0cb3193b11523d0dfd",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "TAT-QA:13d7e83488f2ab1456d31bb9ac247990_4b3c2031187f750d4dcd31c525e78352",
+    "question": "How much was the restricted stock awards excluded from the computation of diluted earnings per share for the fiscal year ended 2019?",
+    "frozen_gold": "308,000",
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:13d7e83488f2ab1456d31bb9ac247990_4b3c2031187f750d4dcd31c525e78352",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:13d7e83488f2ab1456d31bb9ac247990_4b3c2031187f750d4dcd31c525e78352",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:13d7e83488f2ab1456d31bb9ac247990_4b3c2031187f750d4dcd31c525e78352",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "TAT-QA:3e2109c375cbf670d40c77b22b430b20_1b4108dfea9cc5047328dbdc7d31e766",
+    "question": "What was the average Deferred compensation for 2018 and 2019?",
+    "frozen_gold": 1905,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:3e2109c375cbf670d40c77b22b430b20_1b4108dfea9cc5047328dbdc7d31e766",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:3e2109c375cbf670d40c77b22b430b20_1b4108dfea9cc5047328dbdc7d31e766",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:3e2109c375cbf670d40c77b22b430b20_1b4108dfea9cc5047328dbdc7d31e766",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "TAT-QA:057149f07d2fad98ce7387e82475f309_77361e6295e37b679affaa3fd5295dc5",
+    "question": "Which year has the highest amount of Restricted Share Awards (“RSAs”)?",
+    "frozen_gold": "2019",
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:057149f07d2fad98ce7387e82475f309_77361e6295e37b679affaa3fd5295dc5",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "compute returned non-scalar text"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:057149f07d2fad98ce7387e82475f309_77361e6295e37b679affaa3fd5295dc5",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "compute returned non-scalar text"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:057149f07d2fad98ce7387e82475f309_77361e6295e37b679affaa3fd5295dc5",
+      "value": 2019.0,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "years"
+      },
+      "precision": null,
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "eb53c87660495c453057bac54139a9f04408678a4e4f9f7c78724cf1b1034220",
+      "program": "def compute(vars):\n    values = {\n        \"December 27, 2019\": vars[\"v1\"],\n        \"December 28, 2018\": vars[\"v2\"],\n        \"December 29, 2017\": vars[\"v3\"],\n    }\n    highest_year = max(values, key=values.get)\n    return {\n        \"value\": highest_year,\n        \"trace\": {\n            \"values\": values,\n            \"highest_amount\": values[highest_year],\n            \"output_meta\": {\"currency\": None, \"scale\": None, \"unit\": \"year\"},\n        },\n    }",
+      "inputs": {
+        "v1": 132861.0,
+        "v2": 42.0,
+        "v3": 84511.0
+      },
+      "provenance": {
+        "method": "captured_execute_with_frozen_control_flow_proof",
+        "engine_sha256": "8c7395cbd81af7ac909f4419d941893df0876b7f1acef4b73303c4b959a7de30",
+        "capture_program_sha256": "eb53c87660495c453057bac54139a9f04408678a4e4f9f7c78724cf1b1034220",
+        "capture_count": 1,
+        "original_trace_has_OMD_or_metric_execution": false,
+        "input_key_contract": "v1..vN; metric execute is preceded by OMD in this frozen engine"
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "compare",
+      "execution": {
+        "value": 2019.0,
+        "trace": {
+          "values": {
+            "December 27, 2019": 132861.0,
+            "December 28, 2018": 42.0,
+            "December 29, 2017": 84511.0
+          },
+          "highest_amount": 132861.0,
+          "output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "years"
+          },
+          "executor_protocol": {
+            "calendar_label_to_year": {
+              "original_value": "December 27, 2019",
+              "year": 2019,
+              "format": "named_calendar_date"
+            }
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:3e2109c375cbf670d40c77b22b430b20_0a5bf43b11e96289f11f5f5105b1da4a",
+    "question": "In which year was intangible assets negative?",
+    "frozen_gold": "2018",
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:3e2109c375cbf670d40c77b22b430b20_0a5bf43b11e96289f11f5f5105b1da4a",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "compute returned non-scalar text"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:3e2109c375cbf670d40c77b22b430b20_0a5bf43b11e96289f11f5f5105b1da4a",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "compute returned non-scalar text"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:3e2109c375cbf670d40c77b22b430b20_0a5bf43b11e96289f11f5f5105b1da4a",
+      "value": 2018.0,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "years"
+      },
+      "precision": null,
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "d2d6aadb1087069867b6ae479edf6294002e49354ccaa6563f6b988aa6310ae4",
+      "program": "def compute(vars):\n    v1 = vars[\"v1\"]\n    v2 = vars[\"v2\"]\n    if v1 < 0 and v2 >= 0:\n        value = \"September 27, 2019\"\n    elif v2 < 0 and v1 >= 0:\n        value = \"September 28, 2018\"\n    elif v1 < 0 and v2 < 0:\n        value = \"Both years\"\n    else:\n        value = \"Neither year\"\n\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"v1\": v1,\n            \"v2\": v2,\n            \"output_meta\": {\"currency\": None, \"scale\": None, \"unit\": None}\n        }\n    }",
+      "inputs": {
+        "v1": 9887.0,
+        "v2": -94929.0
+      },
+      "provenance": {
+        "method": "captured_execute_with_frozen_control_flow_proof",
+        "engine_sha256": "8c7395cbd81af7ac909f4419d941893df0876b7f1acef4b73303c4b959a7de30",
+        "capture_program_sha256": "d2d6aadb1087069867b6ae479edf6294002e49354ccaa6563f6b988aa6310ae4",
+        "capture_count": 1,
+        "original_trace_has_OMD_or_metric_execution": false,
+        "input_key_contract": "v1..vN; metric execute is preceded by OMD in this frozen engine"
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "compare",
+      "execution": {
+        "value": 2018.0,
+        "trace": {
+          "v1": 9887.0,
+          "v2": -94929.0,
+          "output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "years"
+          },
+          "executor_protocol": {
+            "calendar_label_to_year": {
+              "original_value": "September 28, 2018",
+              "year": 2018,
+              "format": "named_calendar_date"
+            }
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:4bf6297fe4aaf51d58b160a778fadc6f_82d14c3d4fe3414597b638431b2eeffc",
+    "question": "In which year was the net loss less -10,000?",
+    "frozen_gold": "2017",
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:4bf6297fe4aaf51d58b160a778fadc6f_82d14c3d4fe3414597b638431b2eeffc",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "Only arithmetic builtins and safe container methods may be called"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:4bf6297fe4aaf51d58b160a778fadc6f_82d14c3d4fe3414597b638431b2eeffc",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "Only arithmetic builtins and safe container methods may be called"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:4bf6297fe4aaf51d58b160a778fadc6f_82d14c3d4fe3414597b638431b2eeffc",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "status": "error",
+      "error_type": "ProtocolError",
+      "error": "compute returned non-scalar text"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "program_sha256": "0447c2d78b0f9c9646902d9af58415c2f36253b6a58dac028cb770fbe694f018",
+      "program": "def compute(vars):\n    losses = {\n        \"2019\": vars[\"v1\"],\n        \"2018\": vars[\"v2\"],\n        \"2017\": vars[\"v3\"],\n    }\n    threshold = -10000\n    matching_years = [year for year, loss in losses.items() if loss < threshold]\n    result = \" and \".join(matching_years) if matching_years else None\n\n    return {\n        \"value\": result,\n        \"trace\": {\n            \"losses\": losses,\n            \"threshold\": threshold,\n            \"matching_years\": matching_years,\n            \"output_meta\": {\"currency\": None, \"scale\": None, \"unit\": \"year\"},\n        },\n    }",
+      "inputs": {
+        "v1": -19898.0,
+        "v2": -26199.0,
+        "v3": -9187.0
+      },
+      "provenance": {
+        "method": "captured_execute_with_frozen_control_flow_proof",
+        "engine_sha256": "8c7395cbd81af7ac909f4419d941893df0876b7f1acef4b73303c4b959a7de30",
+        "capture_program_sha256": "0447c2d78b0f9c9646902d9af58415c2f36253b6a58dac028cb770fbe694f018",
+        "capture_count": 1,
+        "original_trace_has_OMD_or_metric_execution": false,
+        "input_key_contract": "v1..vN; metric execute is preceded by OMD in this frozen engine"
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "compare",
+      "method": "saved_final_program_reexecution_error",
+      "error_type": "ProtocolError",
+      "error": "compute returned non-scalar text"
+    }
+  },
+  {
+    "id": "TAT-QA:a533cbf8b477a41e6b83ce4c69b67b85_719edaf4f8269c822f6bbbf3d23834ca",
+    "question": "What was the increase / (decrease) in the Net change in cash and cash equivalent from discontinued operations from 2018 to 2019?",
+    "frozen_gold": 717474,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:a533cbf8b477a41e6b83ce4c69b67b85_719edaf4f8269c822f6bbbf3d23834ca",
+      "status": "answered",
+      "value": 717474.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:a533cbf8b477a41e6b83ce4c69b67b85_719edaf4f8269c822f6bbbf3d23834ca",
+      "status": "answered",
+      "value": 717474.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:a533cbf8b477a41e6b83ce4c69b67b85_719edaf4f8269c822f6bbbf3d23834ca",
+      "value": 717474.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "866f2436339a7f607efcd9540e060e8d3130d83db4f8fa9df187f506222833a5",
+      "program": "def compute(vars):\n    old_value = vars[\"v1\"]\n    new_value = vars[\"v2\"]\n    change = new_value - old_value\n\n    return {\n        \"value\": change,\n        \"trace\": {\n            \"old_value\": old_value,\n            \"new_value\": new_value,\n            \"change\": change,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"thousand\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 16333.0,
+        "v2": 733807.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "difference",
+      "execution": {
+        "value": 717474.0,
+        "trace": {
+          "old_value": 16333.0,
+          "new_value": 733807.0,
+          "change": 717474.0,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "thousand",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:e9b2c30146c37a6dd9e622e1fa3c69d3_9bb338355175b5d2807c0684cacebadb",
+    "question": "What was the change in Rest of World in 2019 from 2018?",
+    "frozen_gold": -3820,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:e9b2c30146c37a6dd9e622e1fa3c69d3_9bb338355175b5d2807c0684cacebadb",
+      "status": "answered",
+      "value": -3820.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:e9b2c30146c37a6dd9e622e1fa3c69d3_9bb338355175b5d2807c0684cacebadb",
+      "status": "answered",
+      "value": -3820.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:e9b2c30146c37a6dd9e622e1fa3c69d3_9bb338355175b5d2807c0684cacebadb",
+      "value": -3820.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "6196cfc6ed5722811ecf291667c2f9449f60a06c1703f3cba25d1e4f08b8f5bd",
+      "program": "def compute(vars):\n    old = vars[\"v1\"]\n    new = vars[\"v2\"]\n    value = new - old\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"old_2018\": old,\n            \"new_2019\": new,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"thousand\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 61379.0,
+        "v2": 57559.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 4
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "difference",
+      "execution": {
+        "value": -3820.0,
+        "trace": {
+          "old_2018": 61379.0,
+          "new_2019": 57559.0,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "thousand",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:596a9a79bc3d68a5fedca7987319a5f9_93837e64b62f8ebf3ed24c254d28038b",
+    "question": "What is the change in Total Revenue between 2017 and 2018 as a percentage?",
+    "frozen_gold": 11.6,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:596a9a79bc3d68a5fedca7987319a5f9_93837e64b62f8ebf3ed24c254d28038b",
+      "status": "answered",
+      "value": 11.599116155067065,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:596a9a79bc3d68a5fedca7987319a5f9_93837e64b62f8ebf3ed24c254d28038b",
+      "status": "answered",
+      "value": 11.599116155067065,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:596a9a79bc3d68a5fedca7987319a5f9_93837e64b62f8ebf3ed24c254d28038b",
+      "value": 11.599116155067065,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "4556322ae7de08f603539d55c5205713a230b26f1e148d524916495283b90cbf",
+      "program": "def compute(vars):\n    old_value = vars[\"v1\"]\n    new_value = vars[\"v2\"]\n\n    if old_value == 0:\n        return None\n\n    change = new_value - old_value\n    change_ratio_percentage = (change / old_value) * 100\n\n    return {\n        \"value\": change_ratio_percentage,\n        \"trace\": {\n            \"old_value\": old_value,\n            \"new_value\": new_value,\n            \"change\": change,\n            \"change_ratio_percentage\": change_ratio_percentage,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": \"percentage\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 481985.0,
+        "v2": 537891.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "change ratio",
+      "execution": {
+        "value": 11.599116155067065,
+        "trace": {
+          "old_value": 481985.0,
+          "new_value": 537891.0,
+          "change": 55906.0,
+          "change_ratio_percentage": 11.599116155067065,
+          "output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:7e8a46437303bd16e1b748161210ecdc_1c018f70da0669d8b807e3e339b1933a",
+    "question": "What was the change in Revenue between 2017 and 2018?",
+    "frozen_gold": 55906,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:7e8a46437303bd16e1b748161210ecdc_1c018f70da0669d8b807e3e339b1933a",
+      "status": "answered",
+      "value": 55906.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:7e8a46437303bd16e1b748161210ecdc_1c018f70da0669d8b807e3e339b1933a",
+      "status": "answered",
+      "value": 55906.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:7e8a46437303bd16e1b748161210ecdc_1c018f70da0669d8b807e3e339b1933a",
+      "value": 55906.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "thousand",
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "a38266f9e175b10193cbe0daf24be6d0007f12503812fc21329f1a06618f8e8e",
+      "program": "def compute(vars):\n    old_revenue = vars[\"v1\"]\n    new_revenue = vars[\"v2\"]\n    change = new_revenue - old_revenue\n    return {\n        \"value\": change,\n        \"trace\": {\n            \"old_revenue\": old_revenue,\n            \"new_revenue\": new_revenue,\n            \"change\": change,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"thousand\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 481985.0,
+        "v2": 537891.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "difference",
+      "execution": {
+        "value": 55906.0,
+        "trace": {
+          "old_revenue": 481985.0,
+          "new_revenue": 537891.0,
+          "change": 55906.0,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "thousand",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "TAT-QA:90f27fce7bbbda3fa39e96667c98b8f0_e84ddc532bbe469b2f4a37e34ee3c695",
+    "question": "What is the percentage change in total past due but not impaired receivables from 2018 to 2019?",
+    "frozen_gold": 35.25,
+    "baseline_prediction": {
+      "sample_id": "TAT-QA:90f27fce7bbbda3fa39e96667c98b8f0_e84ddc532bbe469b2f4a37e34ee3c695",
+      "status": "answered",
+      "value": 35.25399129172714,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "TAT-QA:90f27fce7bbbda3fa39e96667c98b8f0_e84ddc532bbe469b2f4a37e34ee3c695",
+      "status": "answered",
+      "value": 35.25399129172714,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "TAT-QA:90f27fce7bbbda3fa39e96667c98b8f0_e84ddc532bbe469b2f4a37e34ee3c695",
+      "value": 35.25399129172714,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "372642b6034c7060f4ed54bfc0cb302250bbb86f7e809bdcb18ce2fe2f44e79d",
+      "program": "def compute(vars):\n    old = vars[\"v1\"]\n    new = vars[\"v2\"]\n    if old == 0:\n        return {\"value\": None, \"trace\": {\"old\": old, \"new\": new, \"output_meta\": {\"currency\": None, \"scale\": \"ones\", \"unit\": \"percentage\"}}}\n    change_ratio = (new - old) / old\n    percentage_change = change_ratio * 100\n    return {\n        \"value\": percentage_change,\n        \"trace\": {\n            \"old\": old,\n            \"new\": new,\n            \"change_ratio\": change_ratio,\n            \"output_meta\": {\"currency\": None, \"scale\": \"ones\", \"unit\": \"percentage\"}\n        }\n    }",
+      "inputs": {
+        "v1": 6890.0,
+        "v2": 9319.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 5
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "change ratio",
+      "execution": {
+        "value": 35.25399129172714,
+        "trace": {
+          "old": 6890.0,
+          "new": 9319.0,
+          "change_ratio": 0.3525399129172714,
+          "output_meta": {
+            "currency": null,
+            "scale": "ones",
+            "unit": "percentage"
+          },
+          "effective_output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  }
+]

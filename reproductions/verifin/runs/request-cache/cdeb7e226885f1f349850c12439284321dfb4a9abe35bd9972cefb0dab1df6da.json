@@ -1,0 +1,28 @@
+{
+  "request_hash": "cdeb7e226885f1f349850c12439284321dfb4a9abe35bd9972cefb0dab1df6da",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is Lockheed Martin's FY2021 net working capital? Define net working capital as total current assets less total current liabilities. Answer in USD millions. Respond to the question by assuming the perspective of an investment analyst who can only use the details shown within the balance sheet.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"net_working_capital\",\n  \"facts\": [\n    {\n      \"name\": \"total_current_assets\",\n      \"aliases\": [\"Total current assets\", \"Total current assets\"],\n      \"period\": \"FY2021\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"total_current_liabilities\",\n      \"aliases\": [\"Total current liabilities\", \"Total current liabilities\"],\n      \"period\": \"FY2021\",\n      \"statement\": \"balance sheet\"\n    }\n  ],\n  \"reason\": \"Calculate FY2021 net working capital as total current assets minus total current liabilities, using balance sheet figures in USD millions.\"\n}",
+  "usage": {
+    "prompt_tokens": 4733,
+    "completion_tokens": 142,
+    "total_tokens": 4875,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    }
+  },
+  "response_id": "resp_088501fac8cc4622016aedb8fde1b887d280ed4f1ac1028c56",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

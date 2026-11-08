@@ -1,0 +1,18 @@
+{
+  "identity": "f82917cb0c255d636f7399c5f053395aee43b4a61328277838f21235ca9a78f8",
+  "response_digest": "508e1873f041c0d9f8cc3006311b4ed5cab47e904085a5361472b06b440919eb",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    advances = 1200\n    declines = 800\n    prior_19_day_ema = 150\n    prior_39_day_ema = 100\n\n    # Do math calculation to get the answer\n    net_advances = advances - declines\n    ema_19_day = (net_advances * 0.10) + (prior_19_day_ema * 0.90)\n    ema_39_day = (net_advances * 0.05) + (prior_39_day_ema * 0.95)\n    answer = round(ema_19_day - ema_39_day, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5094,
+      "completion_tokens": 160,
+      "total_tokens": 5254,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

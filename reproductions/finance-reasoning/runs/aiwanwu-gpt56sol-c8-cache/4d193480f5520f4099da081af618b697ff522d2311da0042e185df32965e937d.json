@@ -1,0 +1,18 @@
+{
+  "identity": "4d193480f5520f4099da081af618b697ff522d2311da0042e185df32965e937d",
+  "response_digest": "6ca287b24ad6469e032356aae90c0b97602d0abd41a0bd2f71fcc6534404d192",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_investment = -100000\n    cash_flows = [20000, 30000, 50000, 60000]\n    rate = 0.10\n    tolerance = 1e-6\n    max_iterations = 1000\n\n    # Do math calculation to get the answer\n    for _ in range(max_iterations):\n        npv = initial_investment + sum(\n            cash_flow / ((1 + rate) ** year)\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n        npv_derivative = sum(\n            -year * cash_flow / ((1 + rate) ** (year + 1))\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n\n        if abs(npv) < tolerance:\n            break\n\n        rate -= npv / npv_derivative\n\n    answer = round(rate * 100, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5800,
+      "completion_tokens": 476,
+      "total_tokens": 6276,
+      "completion_tokens_details": {
+        "reasoning_tokens": 249
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

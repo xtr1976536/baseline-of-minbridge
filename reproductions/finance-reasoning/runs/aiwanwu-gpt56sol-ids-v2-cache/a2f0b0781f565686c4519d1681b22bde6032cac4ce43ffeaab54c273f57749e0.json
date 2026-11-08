@@ -1,0 +1,18 @@
+{
+  "identity": "a2f0b0781f565686c4519d1681b22bde6032cac4ce43ffeaab54c273f57749e0",
+  "response_digest": "cbbacbeecfb49dab0899e420fe55db969daa6d25f532574980590ced04293f14",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 2_500_000\n    basic_shares = 300_000\n    options = 30_000\n    exercise_price = 20\n    average_market_price = 30\n\n    # Calculate incremental shares using the treasury stock method\n    exercise_proceeds = options * exercise_price\n    repurchased_shares = exercise_proceeds / average_market_price\n    incremental_shares = options - repurchased_shares\n    diluted_shares = basic_shares + incremental_shares\n\n    # Calculate diluted EPS and round to the closest cent\n    answer = round(net_income / diluted_shares, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5619,
+      "completion_tokens": 158,
+      "total_tokens": 5777,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

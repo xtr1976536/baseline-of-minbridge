@@ -1,0 +1,212 @@
+{
+  "record": {
+    "question_id": "test-2057",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the third-year depreciation expense using the sum-of-years-digits method for an asset with a purchase cost, fixed useful life, and salvage value, rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5002,
+          "completion_tokens": 44,
+          "total_tokens": 5046
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C04\",\"C09\"]}",
+        "usage": {
+          "prompt_tokens": 13857,
+          "completion_tokens": 22,
+          "total_tokens": 13879,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    cost = 120000\n    salvage_value = 20000\n    useful_life = 5\n    year = 3\n\n    # Do math calculation to get the answer\n    depreciable_amount = cost - salvage_value\n    sum_of_years = useful_life * (useful_life + 1) // 2\n    remaining_years = useful_life - year + 1\n    depreciation_expense = depreciable_amount * remaining_years / sum_of_years\n\n    # Return the answer rounded to the nearest dollar\n    return round(depreciation_expense)\n```",
+        "usage": {
+          "prompt_tokens": 5763,
+          "completion_tokens": 169,
+          "total_tokens": 5932,
+          "completion_tokens_details": {
+            "reasoning_tokens": 24
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2551",
+        "score": 2.0508031845092773,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2247",
+        "score": 2.0266339778900146,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2657",
+        "score": 2.0233664512634277,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1704",
+        "score": 1.9874227046966553,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2252",
+        "score": 1.971498727798462,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2549",
+        "score": 1.9691864252090454,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1123",
+        "score": 1.9638692140579224,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2220",
+        "score": 1.9634252786636353,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2250",
+        "score": 1.9459669589996338,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1699",
+        "score": 1.9373153448104858,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2550",
+        "score": 1.9250049591064453,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-72",
+        "score": 1.920428991317749,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-655",
+        "score": 1.9171150922775269,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1701",
+        "score": 1.9161908626556396,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2083",
+        "score": 1.9155144691467285,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-76",
+        "score": 1.9136648178100586,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1706",
+        "score": 1.9130264520645142,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1700",
+        "score": 1.9075095653533936,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-67",
+        "score": 1.9017750024795532,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2974",
+        "score": 1.8970402479171753,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-74",
+        "score": 1.893126130104065,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-787",
+        "score": 1.888598084449768,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1003",
+        "score": 1.8850481510162354,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1506",
+        "score": 1.8809401988983154,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-568",
+        "score": 1.8667216300964355,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1655",
+        "score": 1.8649306297302246,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2043",
+        "score": 1.8576993942260742,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2499",
+        "score": 1.8546372652053833,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-569",
+        "score": 1.8515887260437012,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2133",
+        "score": 1.8497580289840698,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2551",
+      "article-1704",
+      "article-2250"
+    ],
+    "status": "ok",
+    "answer": 20000,
+    "code": "def solution():\n    # Define variables name and value\n    cost = 120000\n    salvage_value = 20000\n    useful_life = 5\n    year = 3\n\n    # Do math calculation to get the answer\n    depreciable_amount = cost - salvage_value\n    sum_of_years = useful_life * (useful_life + 1) // 2\n    remaining_years = useful_life - year + 1\n    depreciation_expense = depreciable_amount * remaining_years / sum_of_years\n\n    # Return the answer rounded to the nearest dollar\n    return round(depreciation_expense)\n"
+  },
+  "digest": "5953e3c109f257dba31441e4cef6ff48c25d146e4a4364f22a6765cc2e44f7f1"
+}

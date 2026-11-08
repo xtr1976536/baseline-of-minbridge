@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2033",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Paasche price index for a basket of goods using current-period quantities as weights, comparing December prices with November base-period prices, and returns the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5056,
+          "completion_tokens": 92,
+          "total_tokens": 5148,
+          "completion_tokens_details": {
+            "reasoning_tokens": 47
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C18\"]}",
+        "usage": {
+          "prompt_tokens": 14233,
+          "completion_tokens": 273,
+          "total_tokens": 14506,
+          "completion_tokens_details": {
+            "reasoning_tokens": 249
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define current-period quantities and prices, plus base-period prices\n    sugar_quantity = 120\n    sugar_december_price = 1.00\n    sugar_november_price = 0.90\n\n    cotton_quantity = 50\n    cotton_december_price = 0.80\n    cotton_november_price = 0.60\n\n    # Calculate the Paasche price index using December quantities\n    december_cost = (\n        sugar_quantity * sugar_december_price\n        + cotton_quantity * cotton_december_price\n    )\n    november_prices_cost = (\n        sugar_quantity * sugar_november_price\n        + cotton_quantity * cotton_november_price\n    )\n    answer = round(december_cost / november_prices_cost * 100, 3)\n\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5580,
+          "completion_tokens": 239,
+          "total_tokens": 5819,
+          "completion_tokens_details": {
+            "reasoning_tokens": 63
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-701",
+        "score": 1.614864706993103,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2466",
+        "score": 1.5317766666412354,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-151",
+        "score": 1.4870920181274414,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.4259785413742065,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-402",
+        "score": 1.4173247814178467,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.410172700881958,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1324",
+        "score": 1.404167890548706,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.402555227279663,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2395",
+        "score": 1.392627477645874,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2556",
+        "score": 1.3914499282836914,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-200",
+        "score": 1.387286901473999,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.3858144283294678,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.3835046291351318,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1055",
+        "score": 1.3830846548080444,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.378967046737671,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-415",
+        "score": 1.3788385391235352,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-403",
+        "score": 1.3768446445465088,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-686",
+        "score": 1.3765919208526611,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.3755857944488525,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-413",
+        "score": 1.3727149963378906,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.3704530000686646,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1772",
+        "score": 1.370189905166626,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1438",
+        "score": 1.3654401302337646,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.364229440689087,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1146",
+        "score": 1.3633767366409302,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.3606674671173096,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.3606301546096802,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.3600953817367554,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1270",
+        "score": 1.3594131469726562,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.3590843677520752,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-701",
+      "article-151",
+      "article-686"
+    ],
+    "status": "ok",
+    "answer": 115.942,
+    "code": "def solution():\n    # Define current-period quantities and prices, plus base-period prices\n    sugar_quantity = 120\n    sugar_december_price = 1.00\n    sugar_november_price = 0.90\n\n    cotton_quantity = 50\n    cotton_december_price = 0.80\n    cotton_november_price = 0.60\n\n    # Calculate the Paasche price index using December quantities\n    december_cost = (\n        sugar_quantity * sugar_december_price\n        + cotton_quantity * cotton_december_price\n    )\n    november_prices_cost = (\n        sugar_quantity * sugar_november_price\n        + cotton_quantity * cotton_november_price\n    )\n    answer = round(december_cost / november_prices_cost * 100, 3)\n\n    return answer\n"
+  },
+  "digest": "2c8fefbaf7d7ac37a567187d2fd4fd46315b045a62375e7c9610772162398dc3"
+}

@@ -1,0 +1,18 @@
+{
+  "identity": "69a5fd14cc83939e9db28f310f638eb71236fe3afbe515d8e0ecdec36bbd592c",
+  "response_digest": "2584e4c20b03947cdfb19487beb9527554f3524b0a011bcaf4e1a96e266879df",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables and values\n    sales_changes = [3.5, 4.2, -1.0, 5.5, 2.1, 3.8]\n    stock_changes = [2.8, 5.0, -0.5, 6.0, 1.9, 4.4]\n\n    # Calculate the Pearson correlation coefficient\n    n = len(sales_changes)\n    sum_x = sum(sales_changes)\n    sum_y = sum(stock_changes)\n    sum_xy = sum(x * y for x, y in zip(sales_changes, stock_changes))\n    sum_x_squared = sum(x ** 2 for x in sales_changes)\n    sum_y_squared = sum(y ** 2 for y in stock_changes)\n\n    numerator = n * sum_xy - sum_x * sum_y\n    denominator = (\n        (n * sum_x_squared - sum_x ** 2)\n        * (n * sum_y_squared - sum_y ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 2)\n\n    # Return the rounded coefficient\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 6051,
+      "completion_tokens": 278,
+      "total_tokens": 6329,
+      "completion_tokens_details": {
+        "reasoning_tokens": 21
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

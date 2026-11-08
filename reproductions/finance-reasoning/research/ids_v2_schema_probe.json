@@ -1,0 +1,100 @@
+{
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "system",
+        "content": "This is a JSON Schema API compatibility test, not a financial benchmark question. Follow the requested response format."
+      },
+      {
+        "role": "user",
+        "content": "Return a JSON object whose selected_ids contains only C02. No explanation."
+      }
+    ],
+    "stream": false,
+    "n": 1,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "max_tokens": 256,
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "function_selection",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "selected_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "C01",
+                  "C02",
+                  "C03",
+                  "C04",
+                  "C05",
+                  "C06",
+                  "C07",
+                  "C08",
+                  "C09",
+                  "C10",
+                  "C11",
+                  "C12",
+                  "C13",
+                  "C14",
+                  "C15",
+                  "C16",
+                  "C17",
+                  "C18",
+                  "C19",
+                  "C20",
+                  "C21",
+                  "C22",
+                  "C23",
+                  "C24",
+                  "C25",
+                  "C26",
+                  "C27",
+                  "C28",
+                  "C29",
+                  "C30"
+                ]
+              },
+              "maxItems": 3
+            }
+          },
+          "required": [
+            "selected_ids"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "http_status": 200,
+  "seconds": 10.81,
+  "response": {
+    "id": "resp_019407b88c6cda56016aedb8e35bc887d091359db2470d38c8",
+    "object": "chat.completion",
+    "created": 1793964260,
+    "model": "gpt-5.6-sol",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"selected_ids\":[\"C02\"]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4545,
+      "completion_tokens": 16,
+      "total_tokens": 4561
+    },
+    "service_tier": "default"
+  },
+  "real_benchmark_data_used": false
+}

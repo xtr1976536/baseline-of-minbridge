@@ -1,0 +1,42 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_operating_income_loss_fy2024 Real)
+(declare-const cost_of_goods_and_services_sold_fy2024 Real)
+(declare-const revenue_from_contract_with_customer_excluding_assessed_tax_fy2024 Real)
+(declare-const selling_general_and_administrative_expense_fy2024 Real)
+
+(assert (! (= cost_of_goods_and_services_sold_fy2024 222358) :named evidence_cost_of_goods_and_services_sold_fy2024))
+(assert (! (= revenue_from_contract_with_customer_excluding_assessed_tax_fy2024 254453) :named evidence_revenue_from_contract_with_customer_excluding_assessed_tax_fy2024))
+(assert (! (= selling_general_and_administrative_expense_fy2024 22810) :named evidence_selling_general_and_administrative_expense_fy2024))
+
+(assert (! (= computed_operating_income_loss_fy2024 (+ revenue_from_contract_with_customer_excluding_assessed_tax_fy2024 (* (- 1) cost_of_goods_and_services_sold_fy2024) (* (- 1) selling_general_and_administrative_expense_fy2024))) :named formula_operating_income_loss_fy2024))
+
+(assert (! (<= (- computed_operating_income_loss_fy2024 9285) 9.2850000000000001) :named claim_upper))
+(assert (! (<= (- 9285 computed_operating_income_loss_fy2024) 9.2850000000000001) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_09_04_2024_09_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_09_04_2024_09_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2023_09_04_2024_09_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_09_04_2024_09_01_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_09_04_2024_09_01_unit_USD_dims_none 9285) :named evidence_xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_09_04_2024_09_01_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= revenue_from_contract_with_customer_excluding_assessed_tax_fy2024 xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2023_09_04_2024_09_01_unit_USD_dims_none) :named xbrl_bind_revenue_from_contract_with_customer_excluding_assessed_tax_fy2024_edgar_2024_09_01_0000909832_24_000049))
+(assert (! (= xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2023_09_04_2024_09_01_unit_USD_dims_none 254453) :named xbrl_instance_revenue_from_contract_with_customer_excluding_assessed_tax_fy2024))
+(assert (! (= cost_of_goods_and_services_sold_fy2024 xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_09_04_2024_09_01_unit_USD_dims_none) :named xbrl_bind_cost_of_goods_and_services_sold_fy2024_edgar_2024_09_01_0000909832_24_000049))
+(assert (! (= xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_09_04_2024_09_01_unit_USD_dims_none 222358) :named xbrl_instance_cost_of_goods_and_services_sold_fy2024))
+(assert (! (= selling_general_and_administrative_expense_fy2024 xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_09_04_2024_09_01_unit_USD_dims_none) :named xbrl_bind_selling_general_and_administrative_expense_fy2024_edgar_2024_09_01_0000909832_24_000049))
+(assert (! (= xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_09_04_2024_09_01_unit_USD_dims_none 22810) :named xbrl_instance_selling_general_and_administrative_expense_fy2024))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_09_04_2024_09_01_unit_USD_dims_none (+ xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2023_09_04_2024_09_01_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_09_04_2024_09_01_unit_USD_dims_none) (* -1 xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_09_04_2024_09_01_unit_USD_dims_none))) 2) :named xbrl_calc_3_628823250_OperatingIncomeLoss_c_1_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2023_09_04_2024_09_01_unit_USD_dims_none (+ xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2023_09_04_2024_09_01_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_CostOfGoodsAndServicesSold_duration_2023_09_04_2024_09_01_unit_USD_dims_none) (* -1 xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2023_09_04_2024_09_01_unit_USD_dims_none))) (- 2)) :named xbrl_calc_3_628823250_OperatingIncomeLoss_c_1_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

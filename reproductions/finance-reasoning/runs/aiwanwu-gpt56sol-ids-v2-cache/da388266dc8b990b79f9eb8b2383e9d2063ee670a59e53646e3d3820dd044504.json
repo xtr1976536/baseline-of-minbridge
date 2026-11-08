@@ -1,0 +1,21 @@
+{
+  "identity": "da388266dc8b990b79f9eb8b2383e9d2063ee670a59e53646e3d3820dd044504",
+  "response_digest": "c9b28959bfa51eed98b9cdbe9df1b5ea5c615b044c4a49a5d45c7b5cd3d1ce4f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 20000\n    annual_interest_rate = 0.055\n    loan_term_years = 5\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n    first_month_interest = principal * monthly_interest_rate\n    first_month_principal = monthly_payment - first_month_interest\n    answer = round(first_month_principal, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5853,
+      "completion_tokens": 231,
+      "total_tokens": 6084,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 70
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

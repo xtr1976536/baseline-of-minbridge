@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2216",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the True Strength Index (TSI) as a percentage from daily closing-price data using double exponential smoothing of price momentum, with configurable long and short EMA periods such as 25 and 13?",
+        "usage": {
+          "prompt_tokens": 5085,
+          "completion_tokens": 46,
+          "total_tokens": 5131,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 17772,
+          "completion_tokens": 16,
+          "total_tokens": 17788,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    current_prices = [150, 152, 151, 153, 155]\n    prior_prices = [148, 149, 150, 151, 152]\n    period1 = 25\n    period2 = 13\n\n    price_changes = [\n        current - prior\n        for current, prior in zip(current_prices, prior_prices)\n    ]\n    absolute_price_changes = [abs(change) for change in price_changes]\n\n    def calculate_ema(values, period):\n        multiplier = 2 / (period + 1)\n        ema = values[0]\n        for value in values[1:]:\n            ema = (value - ema) * multiplier + ema\n        return ema\n\n    first_ema = [calculate_ema(price_changes[:i + 1], period1)\n                 for i in range(len(price_changes))]\n    absolute_first_ema = [\n        calculate_ema(absolute_price_changes[:i + 1], period1)\n        for i in range(len(absolute_price_changes))\n    ]\n\n    double_ema = calculate_ema(first_ema, period2)\n    absolute_double_ema = calculate_ema(absolute_first_ema, period2)\n    tsi = (double_ema / absolute_double_ema) * 100\n\n    return round(tsi, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5185,
+          "completion_tokens": 331,
+          "total_tokens": 5516,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 47
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1975",
+        "score": 2.223383665084839,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1860",
+        "score": 1.8338960409164429,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1492",
+        "score": 1.8313710689544678,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3112",
+        "score": 1.8139399290084839,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.7923935651779175,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1493",
+        "score": 1.7919464111328125,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.7403711080551147,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.6385061740875244,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.6370292901992798,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.628841757774353,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.617422103881836,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.6074775457382202,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.5774869918823242,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1090",
+        "score": 1.5769884586334229,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.568856954574585,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-962",
+        "score": 1.558253288269043,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.5571073293685913,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-762",
+        "score": 1.5522651672363281,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.5515445470809937,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1260",
+        "score": 1.5476653575897217,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1225",
+        "score": 1.5434709787368774,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3128",
+        "score": 1.5423246622085571,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.5347181558609009,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.5310606956481934,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2349",
+        "score": 1.5253651142120361,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.5213947296142578,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-498",
+        "score": 1.517256498336792,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.515368938446045,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1031",
+        "score": 1.5137314796447754,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.5083484649658203,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1975"
+    ],
+    "status": "ok",
+    "answer": 100.0,
+    "code": "def solution():\n    current_prices = [150, 152, 151, 153, 155]\n    prior_prices = [148, 149, 150, 151, 152]\n    period1 = 25\n    period2 = 13\n\n    price_changes = [\n        current - prior\n        for current, prior in zip(current_prices, prior_prices)\n    ]\n    absolute_price_changes = [abs(change) for change in price_changes]\n\n    def calculate_ema(values, period):\n        multiplier = 2 / (period + 1)\n        ema = values[0]\n        for value in values[1:]:\n            ema = (value - ema) * multiplier + ema\n        return ema\n\n    first_ema = [calculate_ema(price_changes[:i + 1], period1)\n                 for i in range(len(price_changes))]\n    absolute_first_ema = [\n        calculate_ema(absolute_price_changes[:i + 1], period1)\n        for i in range(len(absolute_price_changes))\n    ]\n\n    double_ema = calculate_ema(first_ema, period2)\n    absolute_double_ema = calculate_ema(absolute_first_ema, period2)\n    tsi = (double_ema / absolute_double_ema) * 100\n\n    return round(tsi, 2)\n"
+  },
+  "digest": "b73f46f04abcd21274c4b8de92c8fe686043f653354a1613d19da4375302db22"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "One-question MVP using the bundled AMD quick-ratio fixture.",
+  "command": "PYTHONPATH=src python3 -m verifiqa mvp",
+  "question": "What was AMD's FY2022 quick ratio?",
+  "default_mode": "claude",
+  "optional_modes": ["vllm", "claude"],
+  "verification": {
+    "query_type": "counterexample",
+    "verified_status": "UNSAT",
+    "failed_statuses": ["SAT", "UNKNOWN", "INVALID"],
+    "repair_passes": 1
+  }
+}

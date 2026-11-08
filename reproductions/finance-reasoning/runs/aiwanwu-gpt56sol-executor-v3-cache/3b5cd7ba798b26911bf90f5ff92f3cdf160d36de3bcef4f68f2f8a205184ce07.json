@@ -1,0 +1,18 @@
+{
+  "identity": "3b5cd7ba798b26911bf90f5ff92f3cdf160d36de3bcef4f68f2f8a205184ce07",
+  "response_digest": "f94dd24838fc4a14bb2a0f2ccff27efccd68777f884e43ed85b9dfc428b96ff2",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables in millions of dollars\n    current_value_before_fees = 320.0\n    management_fee_rate = 0.02\n    prior_year_aum = 350.0\n    prior_year_return = 0.20\n\n    # Calculate the high-water mark and fees\n    high_water_mark = prior_year_aum * (1 + prior_year_return)\n    management_fee = current_value_before_fees * management_fee_rate\n    incentive_fee = max(0.0, current_value_before_fees - high_water_mark) * 0.30\n\n    # Calculate ending capital\n    ending_capital = current_value_before_fees - management_fee - incentive_fee\n\n    return round(ending_capital, 1)\n```",
+    "usage": {
+      "prompt_tokens": 5536,
+      "completion_tokens": 229,
+      "total_tokens": 5765,
+      "completion_tokens_details": {
+        "reasoning_tokens": 63
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

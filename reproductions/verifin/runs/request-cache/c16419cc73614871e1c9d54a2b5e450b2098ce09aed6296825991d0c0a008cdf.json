@@ -1,0 +1,31 @@
+{
+  "request_hash": "c16419cc73614871e1c9d54a2b5e450b2098ce09aed6296825991d0c0a008cdf",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the amount of the gain accruing to JnJ as a result of the separation of its Consumer Health business segment, as of August 30, 2023?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"gain_accruing_to_jnj_from_consumer_health_separation\",\n  \"facts\": [\n    {\n      \"name\": \"gain_accruing_to_jnj_from_consumer_health_separation\",\n      \"aliases\": [\n        \"gain accruing to JnJ\",\n        \"gain accruing to Johnson & Johnson\",\n        \"gain on separation of the Consumer Health business\",\n        \"gain resulting from the separation of the Consumer Health business\",\n        \"gain from separation of Consumer Health\",\n        \"separation gain\"\n      ],\n      \"period\": \"August 30, 2023\",\n      \"statement\": \"notes\"\n    }\n  ],\n  \"reason\": \"This is a direct lookup of the reported gain attributable to JnJ from the separation of its Consumer Health business as of the specified date.\"\n}",
+  "usage": {
+    "prompt_tokens": 4714,
+    "completion_tokens": 245,
+    "total_tokens": 4959,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 69
+    }
+  },
+  "response_id": "resp_03ca0b9b2a588d6f016aedb88007d487d2b5408537348e98f9",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2051",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the probability-weighted standard deviation of a discrete distribution of sales outcomes, using outcome values and associated probabilities that sum to one, and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4996,
+          "completion_tokens": 41,
+          "total_tokens": 5037,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C04\",\"C21\"]}",
+        "usage": {
+          "prompt_tokens": 14319,
+          "completion_tokens": 431,
+          "total_tokens": 14750,
+          "completion_tokens_details": {
+            "reasoning_tokens": 410
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    sales = [70, 40, 25]\n    probabilities = [0.05, 0.70, 0.25]\n\n    # Do math calculation to get the answer\n    expected_sales = sum(sale * probability for sale, probability in zip(sales, probabilities))\n    variance = sum(\n        probability * (sale - expected_sales) ** 2\n        for sale, probability in zip(sales, probabilities)\n    )\n    answer = round(variance ** 0.5, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5303,
+          "completion_tokens": 242,
+          "total_tokens": 5545,
+          "completion_tokens_details": {
+            "reasoning_tokens": 105
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1742",
+        "score": 1.6413418054580688,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2039",
+        "score": 1.6338136196136475,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1740",
+        "score": 1.6038503646850586,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2832",
+        "score": 1.5984456539154053,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.5964009761810303,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-725",
+        "score": 1.572683334350586,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.553006887435913,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.5462522506713867,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1580",
+        "score": 1.5335527658462524,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2836",
+        "score": 1.532940149307251,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.5268174409866333,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2632",
+        "score": 1.5230977535247803,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-302",
+        "score": 1.519815444946289,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2686",
+        "score": 1.5147242546081543,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1292",
+        "score": 1.5119500160217285,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.5035655498504639,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-284",
+        "score": 1.5019919872283936,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2990",
+        "score": 1.4978936910629272,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-726",
+        "score": 1.4889428615570068,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.4865877628326416,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2451",
+        "score": 1.4835307598114014,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1521",
+        "score": 1.4827802181243896,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1553",
+        "score": 1.4740920066833496,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2758",
+        "score": 1.4670085906982422,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2276",
+        "score": 1.4643404483795166,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2553",
+        "score": 1.4616637229919434,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.4587280750274658,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.4509357213974,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1604",
+        "score": 1.447432279586792,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2633",
+        "score": 1.4463402032852173,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2832",
+      "article-2451"
+    ],
+    "status": "ok",
+    "answer": 9.808,
+    "code": "def solution():\n    # Define variables name and value\n    sales = [70, 40, 25]\n    probabilities = [0.05, 0.70, 0.25]\n\n    # Do math calculation to get the answer\n    expected_sales = sum(sale * probability for sale, probability in zip(sales, probabilities))\n    variance = sum(\n        probability * (sale - expected_sales) ** 2\n        for sale, probability in zip(sales, probabilities)\n    )\n    answer = round(variance ** 0.5, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "bfd977356947914cc9a6feca06f9a2ed1ba6a332a11e925bfbc39136cb5ba409"
+}

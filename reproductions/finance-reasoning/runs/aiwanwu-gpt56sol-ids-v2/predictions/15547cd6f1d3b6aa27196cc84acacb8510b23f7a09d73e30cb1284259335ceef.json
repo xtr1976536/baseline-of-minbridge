@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2119",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function computes the probability density of a specified observation under a normal distribution given its mean and standard deviation, supporting decimal-valued daily stock returns and rounding the result to six decimal places?",
+        "usage": {
+          "prompt_tokens": 5024,
+          "completion_tokens": 41,
+          "total_tokens": 5065,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 14340,
+          "completion_tokens": 76,
+          "total_tokens": 14416,
+          "completion_tokens_details": {
+            "reasoning_tokens": 55
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    mean = 0.01\n    std_dev = 0.005\n    x = 0.005\n\n    # Do math calculation to get the answer\n    import math\n    exponent = -((x - mean) ** 2) / (2 * std_dev ** 2)\n    probability_density = (\n        1 / (math.sqrt(2 * math.pi) * std_dev)\n    ) * math.exp(exponent)\n    answer = round(probability_density, 6)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5232,
+          "completion_tokens": 256,
+          "total_tokens": 5488,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 123
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2990",
+        "score": 1.6714146137237549,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.6280320882797241,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.5999641418457031,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.5289198160171509,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2176",
+        "score": 1.5124437808990479,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2758",
+        "score": 1.5114338397979736,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2039",
+        "score": 1.5075886249542236,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.5040199756622314,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1740",
+        "score": 1.5002480745315552,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1742",
+        "score": 1.4709060192108154,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2832",
+        "score": 1.4692665338516235,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2632",
+        "score": 1.4567703008651733,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-514",
+        "score": 1.4414664506912231,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-284",
+        "score": 1.4401583671569824,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-726",
+        "score": 1.4399882555007935,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2686",
+        "score": 1.4322502613067627,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.4252188205718994,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-302",
+        "score": 1.4251127243041992,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-285",
+        "score": 1.4179298877716064,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-301",
+        "score": 1.4145236015319824,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1354",
+        "score": 1.404909610748291,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-725",
+        "score": 1.3987486362457275,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1521",
+        "score": 1.3967397212982178,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-633",
+        "score": 1.389915943145752,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.3836758136749268,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2685",
+        "score": 1.3785321712493896,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-149",
+        "score": 1.3784685134887695,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.376448631286621,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.3667834997177124,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.3654898405075073,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2990",
+      "article-1353"
+    ],
+    "status": "ok",
+    "answer": 48.394145,
+    "code": "def solution():\n    # Define variables name and value\n    mean = 0.01\n    std_dev = 0.005\n    x = 0.005\n\n    # Do math calculation to get the answer\n    import math\n    exponent = -((x - mean) ** 2) / (2 * std_dev ** 2)\n    probability_density = (\n        1 / (math.sqrt(2 * math.pi) * std_dev)\n    ) * math.exp(exponent)\n    answer = round(probability_density, 6)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "727249a4bb21bad51d9affff7ef4b3e09a844f5a1e05476cc45756ec15544ac9"
+}

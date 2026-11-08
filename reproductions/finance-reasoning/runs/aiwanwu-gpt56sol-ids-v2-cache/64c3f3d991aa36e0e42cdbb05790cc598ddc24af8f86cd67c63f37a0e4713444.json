@@ -1,0 +1,21 @@
+{
+  "identity": "64c3f3d991aa36e0e42cdbb05790cc598ddc24af8f86cd67c63f37a0e4713444",
+  "response_digest": "3743ac2e48058e8ca322c43d7e0a3cf2191d43ad952920c2d2a1586917e4dcc9",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 1000\n    current_rate = 0.08\n    up_rate = 0.10\n    down_rate = 0.06\n    probability_up = 0.50\n    probability_down = 0.50\n    annual_duration_risk_premium = 0.004\n\n    # Do math calculation to get the answer\n    expected_rate_after_one_year = (\n        probability_up * up_rate + probability_down * down_rate\n    )\n    risk_adjusted_rate = expected_rate_after_one_year + annual_duration_risk_premium\n    bond_value = face_value / ((1 + current_rate) * (1 + risk_adjusted_rate))\n\n    # Return the answer rounded to three decimal places\n    return round(bond_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5573,
+      "completion_tokens": 353,
+      "total_tokens": 5926,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 171
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

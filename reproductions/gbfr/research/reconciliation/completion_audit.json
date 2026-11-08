@@ -1,0 +1,35 @@
+{
+  "objective": "你先继续解决知识图谱和测试集的不一致，严格以论文为准；API我之后提供。",
+  "verified_complete": false,
+  "requirements": [
+    {
+      "requirement": "FinQA frozen source identities and numeric labels",
+      "state": "verified",
+      "evidence": "dataset_recovery.json + dataset_readiness.json"
+    },
+    {
+      "requirement": "FinanceReasoning full 2238 originals and 412 counterfactuals",
+      "state": "verified",
+      "evidence": "finance_reasoning_source.json + dataset_readiness.json"
+    },
+    {
+      "requirement": "TAT-QA final single-valued numeric answer contract",
+      "state": "incomplete",
+      "evidence": "constraint_witnesses.json"
+    },
+    {
+      "requirement": "CFBenchmark final retained IDs and labels",
+      "state": "incomplete",
+      "evidence": "cfbenchmark_source.json + cfbenchmark_gold_arithmetic.json"
+    },
+    {
+      "requirement": "Complete paper-validated canonical FMKG",
+      "state": "missing",
+      "evidence": "data/assets/fmkg.paper.json absent; graph_recovery.json remains paper_ready=false"
+    }
+  ],
+  "public_source_check": "public_source_availability.json",
+  "source_clarifications": "../../docs/AUTHOR_CLARIFICATIONS.md",
+  "paid_api_requests": 0,
+  "tests_are_not_a_substitute_for_asset_completion": true
+}

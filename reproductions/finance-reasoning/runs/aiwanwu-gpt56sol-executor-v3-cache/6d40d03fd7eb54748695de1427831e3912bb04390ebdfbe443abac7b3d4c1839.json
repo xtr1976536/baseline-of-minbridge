@@ -1,0 +1,21 @@
+{
+  "identity": "6d40d03fd7eb54748695de1427831e3912bb04390ebdfbe443abac7b3d4c1839",
+  "response_digest": "2cd90bf636a89a65133ae99861e9e8c73e8c8289dc90b01d34f37bcf3acb1958",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    intercept = 0.02\n    market_return = 0.05\n    factor_returns = [0.03, -0.01]\n    betas = [1.2, 0.8, -0.5]\n    error_term = 0.01\n\n    # Do math calculation to get the answer\n    expected_return = intercept\n    expected_return += betas[0] * market_return\n\n    for i in range(len(factor_returns)):\n        expected_return += betas[i + 1] * factor_returns[i]\n\n    expected_return += error_term\n    answer = round(expected_return * 100, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5155,
+      "completion_tokens": 244,
+      "total_tokens": 5399,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 80
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

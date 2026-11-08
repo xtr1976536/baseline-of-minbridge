@@ -1,0 +1,18 @@
+{
+  "identity": "c496129295ea37151055bb1d02cbfe39fb0fbd537b07572471150533c909d24a",
+  "response_digest": "8033deebd02a28f6b97bb614dea78ecdb35e5ea7e493c32074c06b2d150e30a0",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    income = 75000\n    tax_brackets = [\n        (0, 10000, 0.00),\n        (10000, 30000, 0.10),\n        (30000, 60000, 0.15),\n        (60000, float(\"inf\"), 0.25),\n    ]\n\n    # Do math calculation to get the answer\n    total_tax = 0.0\n\n    for lower_bound, upper_bound, tax_rate in tax_brackets:\n        taxable_amount = max(0, min(income, upper_bound) - lower_bound)\n        total_tax += taxable_amount * tax_rate\n\n    # Return answer rounded to the nearest integer\n    return round(total_tax)\n```",
+    "usage": {
+      "prompt_tokens": 5794,
+      "completion_tokens": 226,
+      "total_tokens": 6020,
+      "completion_tokens_details": {
+        "reasoning_tokens": 56
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

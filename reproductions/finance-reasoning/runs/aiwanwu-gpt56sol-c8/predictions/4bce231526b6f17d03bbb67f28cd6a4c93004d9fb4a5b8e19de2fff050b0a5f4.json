@@ -1,0 +1,189 @@
+{
+  "record": {
+    "question_id": "test-2051",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the standard deviation of a discrete probability distribution of financial outcomes, using outcome values and their associated probabilities, and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4996,
+          "completion_tokens": 36,
+          "total_tokens": 5032,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14871,
+          "completion_tokens": 459,
+          "total_tokens": 15330,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 362
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    sales = [70, 40, 25]\n    probabilities = [0.05, 0.70, 0.25]\n\n    # Do math calculation to get the answer\n    expected_sales = sum(sale * probability for sale, probability in zip(sales, probabilities))\n    variance = sum(\n        probability * (sale - expected_sales) ** 2\n        for sale, probability in zip(sales, probabilities)\n    )\n    standard_deviation = variance ** 0.5\n\n    # return answer\n    return round(standard_deviation, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5241,
+          "completion_tokens": 234,
+          "total_tokens": 5475,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 93
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-324",
+        "score": 1.6641639471054077
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.6570184230804443
+      },
+      {
+        "function_id": "article-1742",
+        "score": 1.6538305282592773
+      },
+      {
+        "function_id": "article-2039",
+        "score": 1.6467270851135254
+      },
+      {
+        "function_id": "article-2832",
+        "score": 1.638349175453186
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.6195626258850098
+      },
+      {
+        "function_id": "article-302",
+        "score": 1.614964246749878
+      },
+      {
+        "function_id": "article-1292",
+        "score": 1.5943307876586914
+      },
+      {
+        "function_id": "article-1580",
+        "score": 1.5918793678283691
+      },
+      {
+        "function_id": "article-2632",
+        "score": 1.5777491331100464
+      },
+      {
+        "function_id": "article-1740",
+        "score": 1.574009895324707
+      },
+      {
+        "function_id": "article-1570",
+        "score": 1.570734977722168
+      },
+      {
+        "function_id": "article-284",
+        "score": 1.5488007068634033
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.5436309576034546
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.533793568611145
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.5248076915740967
+      },
+      {
+        "function_id": "article-1588",
+        "score": 1.5213326215744019
+      },
+      {
+        "function_id": "article-2686",
+        "score": 1.519822597503662
+      },
+      {
+        "function_id": "article-1521",
+        "score": 1.5196900367736816
+      },
+      {
+        "function_id": "article-922",
+        "score": 1.5050026178359985
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.4982364177703857
+      },
+      {
+        "function_id": "article-2758",
+        "score": 1.4953769445419312
+      },
+      {
+        "function_id": "article-725",
+        "score": 1.4928579330444336
+      },
+      {
+        "function_id": "article-2990",
+        "score": 1.48579740524292
+      },
+      {
+        "function_id": "article-325",
+        "score": 1.482600450515747
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.4740179777145386
+      },
+      {
+        "function_id": "article-2833",
+        "score": 1.4732615947723389
+      },
+      {
+        "function_id": "article-2176",
+        "score": 1.4695918560028076
+      },
+      {
+        "function_id": "article-61",
+        "score": 1.4661916494369507
+      },
+      {
+        "function_id": "article-2633",
+        "score": 1.4565730094909668
+      }
+    ],
+    "selected_ids": [
+      "article-2832",
+      "article-2833"
+    ],
+    "status": "ok",
+    "answer": 9.808,
+    "code": "def solution():\n    # Define variables name and value\n    sales = [70, 40, 25]\n    probabilities = [0.05, 0.70, 0.25]\n\n    # Do math calculation to get the answer\n    expected_sales = sum(sale * probability for sale, probability in zip(sales, probabilities))\n    variance = sum(\n        probability * (sale - expected_sales) ** 2\n        for sale, probability in zip(sales, probabilities)\n    )\n    standard_deviation = variance ** 0.5\n\n    # return answer\n    return round(standard_deviation, 3)\n"
+  },
+  "digest": "be1d0f4005b47239a0b1a7d27576974994dfc32c680844022ab7d8991a22e2cb"
+}

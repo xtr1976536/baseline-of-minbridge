@@ -1,0 +1,21 @@
+{
+  "identity": "41aa3d17224f9bdb8de827a3a3793cc8ea5aceea17a19e128393e82c3b7568fb",
+  "response_digest": "032c26a51f38061e1adfef45ac44f4be7bbcf060fa457d873982ef463562f9c5",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 200000\n    monthly_interest_rate = 0.0033\n    total_periods = 20 * 12\n\n    # Do math calculation to get the answer\n    if monthly_interest_rate == 0:\n        monthly_payout = principal / total_periods\n    else:\n        growth_factor = (1 + monthly_interest_rate) ** total_periods\n        monthly_payout = (\n            principal\n            * monthly_interest_rate\n            * growth_factor\n            / (growth_factor - 1)\n        )\n\n    # return answer\n    return round(monthly_payout)\n```",
+    "usage": {
+      "prompt_tokens": 5716,
+      "completion_tokens": 347,
+      "total_tokens": 6063,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 204
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

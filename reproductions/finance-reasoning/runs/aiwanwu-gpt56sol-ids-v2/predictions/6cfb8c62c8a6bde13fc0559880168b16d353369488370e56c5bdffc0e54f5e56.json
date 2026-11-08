@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2068",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the present value of five equal annual cash flows of €300 discounted at a fixed 4% annual rate, with the first payment occurring immediately (annuity due), and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4965,
+          "completion_tokens": 49,
+          "total_tokens": 5014,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C05\",\"C06\"]}",
+        "usage": {
+          "prompt_tokens": 14464,
+          "completion_tokens": 79,
+          "total_tokens": 14543,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 55
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    payment = 300\n    discount_rate = 0.04\n    periods = 5\n\n    # Do math calculation to get the answer\n    present_value = (\n        payment\n        * (1 - (1 + discount_rate) ** (-periods))\n        / discount_rate\n        * (1 + discount_rate)\n    )\n    answer = round(present_value, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5583,
+          "completion_tokens": 172,
+          "total_tokens": 5755,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 61
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-252",
+        "score": 1.8975558280944824,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.8456053733825684,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-253",
+        "score": 1.830857276916504,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1313",
+        "score": 1.8112839460372925,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.810255527496338,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.8084418773651123,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.800289511680603,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2335",
+        "score": 1.772330641746521,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2334",
+        "score": 1.7712560892105103,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3073",
+        "score": 1.765655517578125,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.759634256362915,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1730",
+        "score": 1.7593023777008057,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2338",
+        "score": 1.7550172805786133,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2209",
+        "score": 1.752605676651001,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2463",
+        "score": 1.7512953281402588,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1272",
+        "score": 1.7497972249984741,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1735",
+        "score": 1.7497532367706299,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1309",
+        "score": 1.7440581321716309,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2464",
+        "score": 1.7114845514297485,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.7081794738769531,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-658",
+        "score": 1.7042739391326904,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1310",
+        "score": 1.6990047693252563,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1444",
+        "score": 1.6910089254379272,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-458",
+        "score": 1.6872267723083496,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2091",
+        "score": 1.6767189502716064,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.6738201379776,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2940",
+        "score": 1.672485113143921,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-369",
+        "score": 1.6676664352416992,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-247",
+        "score": 1.662868857383728,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-45",
+        "score": 1.662184715270996,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1314",
+      "article-3074",
+      "article-2336"
+    ],
+    "status": "ok",
+    "answer": 1388.969,
+    "code": "def solution():\n    # Define variables name and value\n    payment = 300\n    discount_rate = 0.04\n    periods = 5\n\n    # Do math calculation to get the answer\n    present_value = (\n        payment\n        * (1 - (1 + discount_rate) ** (-periods))\n        / discount_rate\n        * (1 + discount_rate)\n    )\n    answer = round(present_value, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "65c5da601e870f4c920a2ce354136a271277d1b5dd46e7106064cca67bc14945"
+}

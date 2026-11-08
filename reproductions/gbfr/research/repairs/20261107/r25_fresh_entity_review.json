@@ -1,0 +1,213 @@
+{
+  "title": "R25 fresh FinQA entity-scope review",
+  "sample_id": "FinQA:counterfactual:50",
+  "api_calls_by_reviewer": 0,
+  "read_only_core": true,
+  "round_policy": "R25 remains frozen. No retrospective code change, rerun or replacement of the same ten-question accuracy.",
+  "source_identity": {
+    "sample_file": "data/validation/gbfr_finqa_r25/FinQA.jsonl",
+    "sample_file_sha256": "77dd665cb041b2816b82fc0664235ac51b7eea5f656c26768d561e19e4c46f6c",
+    "sample_line_sha256": "07bc0096f6a730997f62fbf3393fe3e4f9c72c4ab37ae19f98bbc0d4d1756965",
+    "prediction_file": "runs/gbfr_e2e_validation/r25/fresh/GPT-5.6 Sol/FinQA/predictions.jsonl",
+    "prediction_file_sha256": "82b55d537abf12493e92229113e6898d674147db8af26bdf7a2cffa16e89e95e",
+    "prediction_line_sha256": "e0bbf9e0bdefbd9a597db0454fc674de64cdb93e25a11543908d43b73054abdb",
+    "data_main_finqa_sha256": "e1907f8304a7afcec5f0356d5335600aa4bbb9d2bf863e0ea674e827d22b78e9",
+    "sample_equals_main": true,
+    "raw_finqa_sha256": "831dbfb2e785dbc227f895ce3f24046433467aec67b09db2bd6ac7692a8a30dc",
+    "frozen_engine_sha256": "c7a54579f480bde80872dac6fb65f4859057b78d0583d78b4252c0392cdb53e0"
+  },
+  "actual_input": {
+    "answer": null,
+    "context": "as of december 31 , 2015 , the future minimum payments due under the lease financing obligation were as follows ( in thousands ) : years ending december 31 . upon completion of construction in 2013 , we evaluated the de-recognition of the asset and liability under the sale-leaseback accounting guidance . we concluded that we had forms of continued economic involvement in the facility , and therefore did not meet with the provisions for sale-leaseback accounting . therefore , the lease is accounted for as a financing obligation and lease payments will be attributed to ( 1 ) a reduction of the principal financing obligation ; ( 2 ) imputed interest expense ; and ( 3 ) land lease expense ( which is considered an operating lease and a component of cost of goods sold and operating expenses ) representing an imputed cost to lease the underlying land of the building . in addition , the underlying building asset is depreciated over the building 2019s estimated useful life of 30 years . at the conclusion of the initial lease term , we will de-recognize both the net book values of the asset and the remaining financing obligation . purchase commitments we outsource most of our manufacturing and supply chain management operations to third-party contract manufacturers , who procure components and assemble products on our behalf based on our forecasts in order to reduce manufacturing lead times and ensure adequate component supply . we issue purchase orders to our contract manufacturers for finished product and a significant portion of these orders consist of firm non- cancelable commitments . in addition , we purchase strategic component inventory from certain suppliers under purchase commitments that in some cases are non-cancelable , including integrated circuits , which are consigned to our contract manufacturers . as of december 31 , 2015 , we had non-cancelable purchase commitments of $ 43.9 million to our contract manufacturers and suppliers . we have provided restricted deposits to our third-party contract manufacturers and vendors to secure our obligations to purchase inventory . we had $ 2.3 million in restricted deposits as of december 31 , 2015 and december 31 , 2014 . restricted deposits are classified in other assets in our accompanying consolidated balance sheets . guarantees we have entered into agreements with some of our direct customers and channel partners that contain indemnification provisions relating to potential situations where claims could be alleged that our products infringe the intellectual property rights of a third party . we have at our option and expense the ability to repair any infringement , replace product with a non-infringing equivalent-in-function product or refund our customers .\n| 2016 | $5,754 |\n| --- | --- |\n| 2017 | 5,933 |\n| 2018 | 6,113 |\n| 2019 | 6,293 |\n| 2020 | 6,477 |\n| Thereafter | 18,810 |\n| Total payments | 49,380 |\n| Less: interest and land lease expense | (30,463) |\n| Total payments under facility financing obligations | 18,917 |\n| Property reverting to landlord | 23,629 |\n| Present value of obligation | 42,546 |\n| Less current portion | (1,336) |\n| Long-term portion of obligation | $41,210 |",
+    "dataset": "FinQA",
+    "id": "FinQA:counterfactual:50",
+    "question": "What is the current portion of the present value of lease obligations for Nimbus Corp?",
+    "source": {
+      "file": "finqa_nsdata.json",
+      "index": 50
+    },
+    "unanswerable": true
+  },
+  "actual_oqa": {
+    "operator": "sum",
+    "precision": "unknown",
+    "reasoning_type": "DirectRetrieval",
+    "subgoals": [
+      {
+        "constraints": {
+          "entity_scope": "Nimbus Corp",
+          "meta": {
+            "currency": "$",
+            "scale": "thousand",
+            "unit": "currency"
+          },
+          "temporal_scope": "as of December 31, 2015"
+        },
+        "metric": "Current portion of present value of lease obligations"
+      }
+    ]
+  },
+  "actual_oes": {
+    "operator": "OES",
+    "goal": {
+      "metric": "Current portion of present value of lease obligations",
+      "constraints": {
+        "temporal_scope": "as of December 31, 2015",
+        "entity_scope": "Nimbus Corp",
+        "meta": {
+          "currency": "$",
+          "scale": "thousand",
+          "unit": null
+        }
+      }
+    },
+    "response": {
+      "found": true,
+      "missing_vars": [],
+      "notes": "Resolved \"Current portion of present value of lease obligations\" via the source label \"Less current portion\"; the table is stated as of December 31, 2015 and amounts are in thousands.",
+      "var_bindings": {
+        "v1": {
+          "confidence": 0.98,
+          "constraints": {
+            "entity_scope": "Nimbus Corp",
+            "meta": {
+              "currency": "$",
+              "scale": "thousand",
+              "unit": null
+            },
+            "temporal_scope": "as of December 31, 2015"
+          },
+          "context": "Less current portion: (1,336)",
+          "context_spans": [
+            "| Less current portion | (1,336) |"
+          ],
+          "metric": "Current portion of present value of lease obligations",
+          "observed_meta": {
+            "currency": "$",
+            "scale": "thousand",
+            "unit": null
+          },
+          "source_label": "Less current portion",
+          "value": -1336.0
+        }
+      }
+    }
+  },
+  "actual_final_program": {
+    "operator": "OPE.final",
+    "program": "def compute(vars):\n    return {\n        \"value\": vars[\"v1\"],\n        \"trace\": {\n            \"source_value\": vars[\"v1\"],\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"thousand\",\n                \"unit\": None\n            }\n        }\n    }",
+    "inputs": {
+      "v1": -1336.0
+    },
+    "execution": {
+      "value": -1336.0,
+      "trace": {
+        "source_value": -1336.0,
+        "output_meta": {
+          "currency": "USD",
+          "scale": "thousand",
+          "unit": null
+        }
+      }
+    }
+  },
+  "entity_observations": {
+    "query_named_entity": "Nimbus Corp",
+    "query_entity_span": [
+      74,
+      85
+    ],
+    "query_entity_name_present_in_D_case_insensitive": false,
+    "nimbus_token_present_in_D_case_insensitive": false,
+    "document_explicit_company_matches": [],
+    "pronoun_counts": {
+      "we": 12,
+      "our": 13,
+      "us": 0
+    },
+    "manual_document_review": "The supplied D contains an anonymous first-person reporting entity, contract manufacturers, suppliers, landlords and customers, but no named issuer and no text linking that issuer to Nimbus Corp.",
+    "oes_copied_entity_constraint": "Nimbus Corp",
+    "oes_notes_explain_entity_identity": false,
+    "source_quotes_only_support": "The Less current portion row supports the numeric cell, reporting unit and local lease-obligation metric, not the issuer name.",
+    "supplementary_audit_status": {
+      "status": "supported"
+    },
+    "audit_limit": "supported here confirms lexical/table-coordinate support; it is not an independent proof that the anonymous issuer equals Nimbus."
+  },
+  "audit_only_native_source_match": {
+    "native_id": "ANET/2015/page_156.pdf-2",
+    "filename": "ANET/2015/page_156.pdf",
+    "narrative_exact_match": true,
+    "table_ori_exact_cells_match": true,
+    "native_question": "what is the current portion of the present value of lease obligations?",
+    "native_answer": "3.1%",
+    "native_program": "divide(1336, 42546)",
+    "not_present_in_model_inputs": "The native ANET filename/company-source identity is audit provenance, not text supplied in D or an input to the model. It must not be used as a label oracle to repair this prediction."
+  },
+  "old_supplemental_policy": {
+    "path": "runs/gbfr_e2e_validation/r25/source_snapshot/gbfr/engine.py",
+    "line": 276,
+    "text": "'Resolve ordinary document references in the supplied focal entity scope: the unqualified reporting entity \"the company\" may refer to the company named by the query/variable when the passage has no competing referent. Explain that reference mapping in notes; never overwrite an explicitly different company, subsidiary or category, and abstain if the reference is ambiguous. '",
+    "verdict": "Overbroad: query focal name plus no competing referent licenses an identity link absent from D. No competing issuer is absence of contradiction, not positive evidence of identity."
+  },
+  "paper_basis": [
+    {
+      "path": "research/paper.txt",
+      "lines": [
+        132,
+        142
+      ],
+      "rule": "A numeric answer requires a document-grounded valid derivation; missing/ambiguous context requires abstention."
+    },
+    {
+      "path": "research/paper.txt",
+      "lines": [
+        979,
+        989
+      ],
+      "rule": "OES evidence must match metric and temporal/entity/meta constraints; ambiguous or conflicting scope must be missing."
+    }
+  ],
+  "identifiability": {
+    "observable_from_QD": "The specifically named requested issuer is not grounded in D. Under a strict evidence-only task this is sufficient to leave the entity scope unresolved and abstain.",
+    "not_observable_from_QD": "The inputs do not prove that the anonymous issuer is a different company. The same Q/D could be paired with a genuinely Nimbus-owned excerpt or a mismatched excerpt. The counterfactual mismatch itself is not identifiable without trusted source identity.",
+    "both_conclusions_hold": true,
+    "benchmark_label_policy": "Keep unanswerable=true and the R25 failed-abstention score unchanged. Do not reclassify the sample, drop it from denominators, or claim the published mismatch is directly visible."
+  },
+  "minimal_future_proposal_not_applied": {
+    "replace_static_reference_rule": "Resolve we/our/the company to a specific entity only after the provided document or explicitly supplied trusted document-source identity establishes that reporting entity. A query name is a constraint, not its own evidence. No competing referent alone does not establish identity. If a specifically named requested issuer has no source anchor, report unresolved entity scope in OES notes/missing_vars; do not claim an explicitly contradictory issuer unless one is actually supplied.",
+    "preserve_valid_cases": [
+      "Generic reporter questions can use the unique anonymous we/our reporter without inventing a proper name.",
+      "Named issuer passages, source-supported aliases and already-established reporting-entity references remain valid.",
+      "Explicit company/subsidiary/category or period conflicts still cannot be overwritten."
+    ],
+    "optional_audit_improvement": "Keep numeric/table support separate from entity-reference support in audit provenance; a copied constraints.entity_scope field is not an evidence span. This is an audit distinction, not another LLM judge or post-hoc answer retry.",
+    "trusted_metadata_limit": "Only actual, pre-existing document-source identity supplied uniformly as evidence can anchor an issuer. No counterfactual label, sample id, hidden original-company lookup or benchmark answer may be promoted into runtime proof.",
+    "not_implemented": true
+  },
+  "tradeoffs": {
+    "expected_benefit": "A strict named-entity anchor rule reduces unsupported acceptance of entity-swapped questions with anonymous excerpts.",
+    "expected_cost": "Legitimate named-company questions paired with decontextualized anonymous financial excerpts may then be refused. No Q/D-only method can distinguish all such legitimate cases from entity swaps when the issuer link has been removed.",
+    "mitigation": "Preserve anonymous-reporter questions and source-established coreference. If the evaluation truly assumes document ownership, expose that trusted provenance consistently and disclose the input contract; do not silently assume that a question name supplies ownership.",
+    "accuracy_claim": "No numeric improvement or new error rate is estimated from this read-only audit."
+  },
+  "core_sha256_before": {
+    "gbfr/engine.py": "c7a54579f480bde80872dac6fb65f4859057b78d0583d78b4252c0392cdb53e0",
+    "gbfr/prompts.py": "6ef51b7317356235bd945dc95af3c5cea1a48c820c3af4fca9af184f3179be89",
+    "gbfr/evidence.py": "572e686bf82b237d0d17974591a3d05df98827a6a1760c31987732a5976512eb",
+    "gbfr/query_constraints.py": "aca5156cf556f7870e6a0ed25e2c9c58c3229190107eaf56d72bfe41fb853008"
+  },
+  "core_sha256_after": {
+    "gbfr/engine.py": "c7a54579f480bde80872dac6fb65f4859057b78d0583d78b4252c0392cdb53e0",
+    "gbfr/prompts.py": "6ef51b7317356235bd945dc95af3c5cea1a48c820c3af4fca9af184f3179be89",
+    "gbfr/evidence.py": "572e686bf82b237d0d17974591a3d05df98827a6a1760c31987732a5976512eb",
+    "gbfr/query_constraints.py": "aca5156cf556f7870e6a0ed25e2c9c58c3229190107eaf56d72bfe41fb853008"
+  },
+  "current_round_scores_unchanged": {
+    "fixed_two_total_accuracy": 50.0,
+    "reference_display_total_accuracy": 60.0,
+    "abstention_accuracy": 50.0,
+    "false_abstentions_answerable": 0,
+    "answerable_examples": 8
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "cff7c3aea43648f735a37b94bc846405b95db81733e844a3ed9b5f0e074fced3",
+  "response_digest": "bddc3440af716c228cf1a59f51a21bf93cd1bb5c8a281a5f485cc9fa1adadea1",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    principal = 30000\n    annual_interest_rate = 0.06\n    loan_term_years = 5\n    extra_monthly_payment = 100\n\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    regular_monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    remaining_principal = principal\n    total_cost = 0\n\n    while remaining_principal > 0:\n        interest_payment = remaining_principal * monthly_interest_rate\n        principal_payment = (\n            regular_monthly_payment\n            - interest_payment\n            + extra_monthly_payment\n        )\n\n        remaining_principal -= principal_payment\n        total_cost += regular_monthly_payment + extra_monthly_payment\n\n    # Return the total cost rounded to the nearest dollar\n    return round(total_cost)\n```",
+    "usage": {
+      "prompt_tokens": 5188,
+      "completion_tokens": 730,
+      "total_tokens": 5918,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

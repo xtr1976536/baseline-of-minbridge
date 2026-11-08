@@ -1,0 +1,221 @@
+--- labels-v1/fr_repro/client.py
++++ candidate-ids-v2/fr_repro/client.py
+@@ -40,9 +40,13 @@
+     async def close(self):
+         await self.http.aclose()
+ 
+-    async def complete(self, messages, scope):
++    async def complete(self, messages, scope, *, response_format=None):
+         body = {"model": self.config["model"], "messages": messages, "stream": False, "n": 1,
+                 **self.config.get("parameters", {})}
++        if response_format is not None:
++            if "response_format" in self.config.get("parameters", {}):
++                raise ValueError("Stage response format conflicts with global parameters")
++            body["response_format"] = response_format
+         identity = digest({"endpoint": self.endpoint, "body": body, "scope": scope})
+         path = self.cache_dir / f"{identity}.json"
+         if path.exists():
+--- labels-v1/fr_repro/common.py
++++ candidate-ids-v2/fr_repro/common.py
+@@ -40,6 +40,8 @@
+     for key in ["data_dir", "output_dir", "cache_dir"]:
+         config[key] = str((root / config[key]).resolve())
+     r = config["retriever"]
++    if config.get("judge_protocol", "labels-v1") not in {"labels-v1", "candidate-ids-v2"}:
++        raise ValueError("Unrecognized function selection protocol")
+     if (config["method"] != "table5-gpt4o-instructed-function-judge-pot-v1"
+         or r["top_k"] != 30 or r["selected_k"] != 3
+         or r["pooling"] != "masked_mean" or r["similarity"] != "inner_product"):
+--- labels-v1/fr_repro/prompts.py
++++ candidate-ids-v2/fr_repro/prompts.py
+@@ -6,6 +6,45 @@
+ from .assets import Problem
+ 
+ PROMPTS = json.loads(Path(__file__).with_name("prompts.json").read_text(encoding="utf-8"))
++LEGACY_JUDGE = "labels-v1"
++ID_JUDGE = "candidate-ids-v2"
++
++
++def candidate_ids(count):
++    return [f"C{i:02d}" for i in range(1, count+1)]
++
++
++def judge_response_format(count):
++    """Constrain only the selector's serialization, not financial relevance."""
++    return {"type": "json_schema", "json_schema": {"name": "function_selection", "strict": True,
++        "schema": {"type": "object", "properties": {"selected_ids": {"type": "array",
++            "items": {"type": "string", "enum": candidate_ids(count)}, "maxItems": 3}},
++            "required": ["selected_ids"], "additionalProperties": False}}}
++
++
++def id_judge_messages(question, functions):
++    # Preserve the author's relevance criteria. Only replace label serialization
++    # and add explicit reference IDs so no 30-position list must be counted.
++    system = PROMPTS["JUDGE_USEFUL_FUNCTIONS_SYSTEM_INPUT"]
++    system = system.replace("respond with [USEFUL]", "mark it as useful for selection")
++    system = system.replace("respond with [USELESS]", "exclude it from selection")
++    candidates = "\n\n".join(f'<candidate id="{identifier}">\n{code}\n</candidate>'
++                               for identifier, code in zip(candidate_ids(len(functions)), functions))
++    user = PROMPTS["JUDGE_USEFUL_FUNCTIONS_USER_INPUT"]
++    user = user.replace("output [USEFUL]", "consider its candidate ID for selection")
++    user = user.replace("output [USELESS]", "exclude its candidate ID")
++    user = user.replace("just the relevant outputs for each function", "only the requested JSON object")
++    user = user.format(question_input=question, function_input=candidates)
++    old_contract = "Output the results in the following format:\n        [USEFUL, USELESS, USELESS, ...]"
++    new_contract = ("Assess all candidates using the guidelines above. Return the IDs of at most the first three "
++                    "USEFUL candidates in displayed retrieval order. If fewer are useful, return fewer IDs; "
++                    "if none are useful, return an empty list. Do not include USELESS candidates. "
++                    "Output one JSON object with the single key selected_ids and a list of distinct existing "
++                    "candidate IDs as its value. Do not output positional labels, explanations, or code fences.")
++    if old_contract not in user:
++        raise ValueError("Pinned judge template no longer matches the reviewed output contract")
++    user = user.replace(old_contract, new_contract)
++    return [{"role": "system", "content": system}, {"role": "user", "content": user}]
+ 
+ 
+ def question_input(problem: Problem):
+@@ -14,12 +53,16 @@
+     return f"Question: {problem.question}\n"
+ 
+ 
+-def messages(stage, problem, functions=()):
++def messages(stage, problem, functions=(), *, judge_protocol=LEGACY_JUDGE):
+     question = question_input(problem)
+     if stage == "query":
+         system = PROMPTS["GENERATE_RETRIEVAL_QUERY_SYSTEM_INPUT"]
+         user = PROMPTS["GENERATE_RETRIEVAL_QUERY_USER_INPUT"].format(question_input=question)
+     elif stage == "judge":
++        if judge_protocol == ID_JUDGE:
++            return id_judge_messages(question, functions)
++        if judge_protocol != LEGACY_JUDGE:
++            raise ValueError("Unrecognized judge protocol")
+         system = PROMPTS["JUDGE_USEFUL_FUNCTIONS_SYSTEM_INPUT"]
+         user = PROMPTS["JUDGE_USEFUL_FUNCTIONS_USER_INPUT"].format(question_input=question, function_input=list(functions))
+     elif stage == "pot":
+@@ -31,10 +74,36 @@
+     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
+ 
+ 
+-def select_functions(raw, candidates):
++def select_functions(raw, candidates, *, judge_protocol=LEGACY_JUDGE):
+     # Author schema, with exact count checking; malformed output never silently
+     # falls back to vanilla top-3 or a second model attempt.
+     text = re.sub(r"^```(?:text|json)?\s*\n?(.*?)\n?```$", r"\1", raw.strip(), flags=re.S)
++    if judge_protocol == ID_JUDGE:
++        def unique_object(pairs):
++            obj = {}
++            for key, value in pairs:
++                if key in obj:
++                    raise ValueError("Duplicate selector JSON key")
++                obj[key] = value
++            return obj
++        try:
++            obj = json.loads(text, object_pairs_hook=unique_object)
++        except json.JSONDecodeError as exc:
++            raise ValueError("Selector did not return one valid JSON object") from exc
++        if not isinstance(obj, dict) or set(obj) != {"selected_ids"}:
++            raise ValueError("Selector must contain only selected_ids")
++        selected = obj["selected_ids"]
++        if not isinstance(selected, list) or len(selected) > 3 or any(type(x) is not str for x in selected):
++            raise ValueError("Selector must return zero to three string IDs")
++        if len(set(selected)) != len(selected):
++            raise ValueError("Selector IDs must be distinct")
++        identifiers = candidate_ids(len(candidates))
++        if not set(selected) <= set(identifiers):
++            raise ValueError("Selector returned an unknown candidate ID")
++        # Preserve the selected set and normalize only its presentation order.
++        return [candidate for identifier, candidate in zip(identifiers, candidates) if identifier in selected]
++    if judge_protocol != LEGACY_JUDGE:
++        raise ValueError("Unrecognized judge protocol")
+     if not re.fullmatch(r"\[\s*(?:USEFUL|USELESS)(?:\s*,\s*(?:USEFUL|USELESS))*\s*\]", text):
+         raise ValueError("Judge did not return the ordered USEFUL/USELESS list")
+     labels = [x.strip() for x in text[1:-1].split(",")]
+--- labels-v1/fr_repro/runner.py
++++ candidate-ids-v2/fr_repro/runner.py
+@@ -14,12 +14,12 @@
+ from .common import digest, read_json, sha256, write_json
+ from .execution import execute
+ from .metrics import summarize
+-from .prompts import messages, select_functions
++from .prompts import ID_JUDGE, LEGACY_JUDGE, candidate_ids, judge_response_format, messages, select_functions
+ from .retrieval import FunctionRetriever, verify_index
+ 
+ 
+-async def solve(problem, retriever, client, *, run_id, timeout):
+-    trace = {"question_id": problem.question_id, "run_id": run_id, "stages": {}}
++async def solve(problem, retriever, client, *, run_id, timeout, judge_protocol=LEGACY_JUDGE):
++    trace = {"question_id": problem.question_id, "run_id": run_id, "stages": {}, "judge_protocol": judge_protocol}
+     try:
+         query = await client.complete(messages("query", problem), [run_id, problem.question_id, "query"])
+         trace["stages"]["query"] = query
+@@ -27,10 +27,15 @@
+         if len(candidates) != 30 or len({c["function_id"] for c in candidates}) != 30:
+             raise RuntimeError("Retriever did not supply 30 unique functions")
+         trace["candidates"] = [{"function_id": c["function_id"], "score": c["score"]} for c in candidates]
+-        judge = await client.complete(messages("judge", problem, [c["function"] for c in candidates]),
+-                                      [run_id, problem.question_id, "judge"])
++        judge_kwargs = {}
++        if judge_protocol == ID_JUDGE:
++            for reference_id, candidate in zip(candidate_ids(len(candidates)), trace["candidates"]):
++                candidate["reference_id"] = reference_id
++            judge_kwargs["response_format"] = judge_response_format(len(candidates))
++        judge = await client.complete(messages("judge", problem, [c["function"] for c in candidates], judge_protocol=judge_protocol),
++                                      [run_id, problem.question_id, "judge"], **judge_kwargs)
+         trace["stages"]["judge"] = judge
+-        selected = select_functions(judge["content"], candidates)
++        selected = select_functions(judge["content"], candidates, judge_protocol=judge_protocol)
+         trace["selected_ids"] = [c["function_id"] for c in selected]
+         pot = await client.complete(messages("pot", problem, [c["function"] for c in selected]),
+                                     [run_id, problem.question_id, "pot"])
+@@ -119,7 +124,7 @@
+                {"record": record, "digest": digest(record)})
+ 
+ 
+-def report(output_dir, records, labels, *, scripted=False, model_name="gpt-4o-2024-11-20"):
++def report(output_dir, records, labels, *, scripted=False, model_name="gpt-4o-2024-11-20", judge_protocol=LEGACY_JUDGE):
+     summary = summarize(records, labels)
+     summary["statuses"] = dict(Counter(r["status"] for r in records))
+     usage = Counter()
+@@ -130,6 +135,7 @@
+                     usage[key] += value
+     summary["logical_stage_usage"] = dict(usage)
+     summary["backbone_requested"] = model_name
++    summary["judge_protocol"] = judge_protocol
+     summary["model_ids_returned"] = dict(Counter(response.get("model_returned", "not_reported")
+         for record in records for response in record["stages"].values()))
+     summary["paper_backbone_match_requested"] = model_name == "gpt-4o-2024-11-20"
+@@ -142,6 +148,7 @@
+     accuracy = f"{100*summary['accuracy']:.2f}%" if summary["is_performance_result"] else "not measured (scripted)" if scripted else "pending"
+     text = ("# FinanceReasoning Table 5 selected main method\n\n"
+             f"Backbone requested: `{model_name}`. LLM-instructed function retrieval + LLM judge + PoT; Hard split.\n\n"
++            f"Selector output protocol: `{judge_protocol}`.\n\n"
+             "| Method | Correct / full denominator | Local accuracy | Paper GPT-4o reference |\n"
+             "|---|---:|---:|---:|\n"
+             f"| Selected method with {model_name} | {summary['correct'] if not scripted else 'not measured'} / {summary['expected']} | {accuracy} | 91.60% |\n\n"
+@@ -167,7 +174,7 @@
+                 raise ValueError("limit must be positive")
+             pending = pending[:limit]
+         if not pending:
+-            return report(config["output_dir"], records, labels, scripted=config.get("execution_mode") == "scripted", model_name=config["llm"]["model"])
++            return report(config["output_dir"], records, labels, scripted=config.get("execution_mode") == "scripted", model_name=config["llm"]["model"], judge_protocol=config.get("judge_protocol", LEGACY_JUDGE))
+         own_client = client is None
+         client = client or ChatClient(config["llm"], config["cache_dir"])
+         try:
+@@ -176,7 +183,7 @@
+             async def one(problem):
+                 async with semaphore:
+                     record = await solve(problem, retriever, client, run_id=identity["run_id"],
+-                                         timeout=config.get("execution_timeout_seconds", 10))
++                                         timeout=config.get("execution_timeout_seconds", 10), judge_protocol=config.get("judge_protocol", LEGACY_JUDGE))
+                     save_record(config["output_dir"], record)
+                     previous[problem.question_id] = record
+                     print(f"{len(previous)}/{len(problems)} {problem.question_id}: {record['status']}", flush=True)
+@@ -192,7 +199,7 @@
+                     if not task.done():
+                         task.cancel()
+                 await asyncio.gather(*tasks, return_exceptions=True)
+-            return report(config["output_dir"], list(previous.values()), labels, scripted=config.get("execution_mode") == "scripted", model_name=config["llm"]["model"])
++            return report(config["output_dir"], list(previous.values()), labels, scripted=config.get("execution_mode") == "scripted", model_name=config["llm"]["model"], judge_protocol=config.get("judge_protocol", LEGACY_JUDGE))
+         finally:
+             if own_client:
+                 await client.close()

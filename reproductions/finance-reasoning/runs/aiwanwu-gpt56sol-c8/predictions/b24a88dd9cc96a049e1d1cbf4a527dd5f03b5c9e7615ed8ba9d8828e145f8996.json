@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2160",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the excess kurtosis of a finite sample of daily stock returns, using return observations as numeric inputs and reporting the result to two decimal places to measure fat-tailedness relative to a normal distribution?",
+        "usage": {
+          "prompt_tokens": 5067,
+          "completion_tokens": 46,
+          "total_tokens": 5113,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14686,
+          "completion_tokens": 388,
+          "total_tokens": 15074,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 291
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    returns = [1.5, -0.5, 3.2, -2.0, 0.8]\n    n = len(returns)\n    mean = sum(returns) / n\n\n    # Do math calculation to get the answer\n    s2 = sum((x - mean) ** 2 for x in returns)\n    s4 = sum((x - mean) ** 4 for x in returns)\n    m2 = s2 / n\n    m4 = s4 / n\n    excess_kurtosis = (m4 / (m2 ** 2)) - 3\n\n    # Return answer rounded to two decimal places\n    return round(excess_kurtosis, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5102,
+          "completion_tokens": 479,
+          "total_tokens": 5581,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 306
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-514",
+        "score": 1.8949952125549316
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.5232666730880737
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.4816787242889404
+      },
+      {
+        "function_id": "article-2809",
+        "score": 1.4768074750900269
+      },
+      {
+        "function_id": "article-2815",
+        "score": 1.4710049629211426
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.4632446765899658
+      },
+      {
+        "function_id": "article-1050",
+        "score": 1.4462895393371582
+      },
+      {
+        "function_id": "article-1593",
+        "score": 1.438239336013794
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.4306743144989014
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.4245306253433228
+      },
+      {
+        "function_id": "article-571",
+        "score": 1.4212877750396729
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.4180737733840942
+      },
+      {
+        "function_id": "article-1932",
+        "score": 1.4167921543121338
+      },
+      {
+        "function_id": "article-499",
+        "score": 1.4097424745559692
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.405916690826416
+      },
+      {
+        "function_id": "article-1541",
+        "score": 1.4045003652572632
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.4038665294647217
+      },
+      {
+        "function_id": "article-2176",
+        "score": 1.4006199836730957
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.399122953414917
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.3969424962997437
+      },
+      {
+        "function_id": "article-1075",
+        "score": 1.3958085775375366
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.3951001167297363
+      },
+      {
+        "function_id": "article-1986",
+        "score": 1.3906269073486328
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.3904623985290527
+      },
+      {
+        "function_id": "article-2638",
+        "score": 1.3902990818023682
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.3880150318145752
+      },
+      {
+        "function_id": "article-1516",
+        "score": 1.3879832029342651
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.3854458332061768
+      },
+      {
+        "function_id": "article-762",
+        "score": 1.3852736949920654
+      },
+      {
+        "function_id": "article-2668",
+        "score": 1.3852415084838867
+      }
+    ],
+    "selected_ids": [
+      "article-514"
+    ],
+    "status": "ok",
+    "answer": -1.07,
+    "code": "def solution():\n    # Define variables name and value\n    returns = [1.5, -0.5, 3.2, -2.0, 0.8]\n    n = len(returns)\n    mean = sum(returns) / n\n\n    # Do math calculation to get the answer\n    s2 = sum((x - mean) ** 2 for x in returns)\n    s4 = sum((x - mean) ** 4 for x in returns)\n    m2 = s2 / n\n    m4 = s4 / n\n    excess_kurtosis = (m4 / (m2 ** 2)) - 3\n\n    # Return answer rounded to two decimal places\n    return round(excess_kurtosis, 2)\n"
+  },
+  "digest": "1ef1a3a3bb6ad2a1e5ac77f86acb737056640b7e0985327b0c2d9ff277b0d085"
+}

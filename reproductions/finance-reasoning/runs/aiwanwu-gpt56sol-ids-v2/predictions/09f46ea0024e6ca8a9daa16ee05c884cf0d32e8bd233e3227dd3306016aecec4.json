@@ -1,0 +1,211 @@
+{
+  "record": {
+    "question_id": "test-2145",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the mark-to-market value or gain/loss of an existing foreign-exchange forward contract before maturity, using the original contracted exchange rate and notional, the remaining-term market forward rate derived from quoted forward points and spot bid/offer rates, and an appropriate discount rate? The function should support currency-pair quote conventions and a EUR receivable hedged into GBP, with the result reported in GBP.",
+        "usage": {
+          "prompt_tokens": 5317,
+          "completion_tokens": 87,
+          "total_tokens": 5404
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C06\",\"C07\"]}",
+        "usage": {
+          "prompt_tokens": 14633,
+          "completion_tokens": 280,
+          "total_tokens": 14913,
+          "completion_tokens_details": {
+            "reasoning_tokens": 259
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    spot_gbp_per_eur = 0.7343\n    three_month_offer_points = 15.0\n    points_scale = 10000\n    contract_rate = 0.7400\n    eur_notional = 5_000_000\n\n    # Do math calculation to get the answer\n    current_three_month_offer = (\n        spot_gbp_per_eur + three_month_offer_points / points_scale\n    )\n    mark_to_market_gain = (\n        contract_rate - current_three_month_offer\n    ) * eur_notional\n\n    # return answer\n    return round(mark_to_market_gain, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5475,
+          "completion_tokens": 572,
+          "total_tokens": 6047,
+          "completion_tokens_details": {
+            "reasoning_tokens": 422
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-596",
+        "score": 1.8797388076782227,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.8783975839614868,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-601",
+        "score": 1.8737461566925049,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-603",
+        "score": 1.8727844953536987,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.8189688920974731,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.8160327672958374,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.7938767671585083,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.7921823263168335,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.7598998546600342,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.7372665405273438,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.726684331893921,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.725454568862915,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.723848819732666,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.7238233089447021,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.716855764389038,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.7168505191802979,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-595",
+        "score": 1.7129639387130737,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1555",
+        "score": 1.7045493125915527,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-450",
+        "score": 1.698888897895813,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2005",
+        "score": 1.6897151470184326,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1963",
+        "score": 1.686108112335205,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-162",
+        "score": 1.6645902395248413,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-233",
+        "score": 1.664049506187439,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1964",
+        "score": 1.6616321802139282,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.661473035812378,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2381",
+        "score": 1.6600587368011475,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2205",
+        "score": 1.6598751544952393,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-410",
+        "score": 1.658627986907959,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2677",
+        "score": 1.6578313112258911,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2961",
+        "score": 1.6549407243728638,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-3104",
+      "article-609"
+    ],
+    "status": "ok",
+    "answer": 21000.0,
+    "code": "def solution():\n    # Define variables name and value\n    spot_gbp_per_eur = 0.7343\n    three_month_offer_points = 15.0\n    points_scale = 10000\n    contract_rate = 0.7400\n    eur_notional = 5_000_000\n\n    # Do math calculation to get the answer\n    current_three_month_offer = (\n        spot_gbp_per_eur + three_month_offer_points / points_scale\n    )\n    mark_to_market_gain = (\n        contract_rate - current_three_month_offer\n    ) * eur_notional\n\n    # return answer\n    return round(mark_to_market_gain, 3)\n"
+  },
+  "digest": "605982c8f0214b7c8f208e90fbd4300e7b3c98e8ff893ccbc842dee511290093"
+}

@@ -1,0 +1,212 @@
+{
+  "record": {
+    "question_id": "test-2036",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the adjusted cost basis of shares sold after a non-taxable stock dividend and a subsequent stock split by reallocating the original aggregate basis across the increased number of shares and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5002,
+          "completion_tokens": 48,
+          "total_tokens": 5050,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C13\",\"C18\"]}",
+        "usage": {
+          "prompt_tokens": 13356,
+          "completion_tokens": 22,
+          "total_tokens": 13378
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    original_shares = 2000\n    original_cost_per_share = 10.50\n    stock_dividend_rate = 0.05\n    stock_split_ratio = 2\n    shares_sold = 800\n\n    # Do math calculation to get the answer\n    total_cost_basis = original_shares * original_cost_per_share\n    shares_after_dividend = original_shares * (1 + stock_dividend_rate)\n    shares_after_split = shares_after_dividend * stock_split_ratio\n    adjusted_basis_per_share = total_cost_basis / shares_after_split\n    answer = round(shares_sold * adjusted_basis_per_share)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5469,
+          "completion_tokens": 159,
+          "total_tokens": 5628,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-184",
+        "score": 1.9216827154159546,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2981",
+        "score": 1.9201745986938477,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-183",
+        "score": 1.8403456211090088,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1535",
+        "score": 1.8389289379119873,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1767",
+        "score": 1.8358711004257202,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-748",
+        "score": 1.71490478515625,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.6994564533233643,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-696",
+        "score": 1.674856185913086,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2280",
+        "score": 1.6710102558135986,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1402",
+        "score": 1.667797565460205,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2279",
+        "score": 1.6657161712646484,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-3083",
+        "score": 1.6641062498092651,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2650",
+        "score": 1.663362741470337,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2392",
+        "score": 1.6623014211654663,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2651",
+        "score": 1.6615878343582153,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-639",
+        "score": 1.6608762741088867,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1516",
+        "score": 1.6456193923950195,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2652",
+        "score": 1.6450588703155518,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.6449896097183228,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.6328054666519165,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.6317734718322754,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-182",
+        "score": 1.628873586654663,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1401",
+        "score": 1.6204618215560913,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1699",
+        "score": 1.6144537925720215,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2636",
+        "score": 1.6144413948059082,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1162",
+        "score": 1.60921311378479,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2281",
+        "score": 1.600184679031372,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.5977013111114502,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-3084",
+        "score": 1.5915653705596924,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2766",
+        "score": 1.591240406036377,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-184",
+      "article-2650",
+      "article-2652"
+    ],
+    "status": "ok",
+    "answer": 4000,
+    "code": "def solution():\n    # Define variables name and value\n    original_shares = 2000\n    original_cost_per_share = 10.50\n    stock_dividend_rate = 0.05\n    stock_split_ratio = 2\n    shares_sold = 800\n\n    # Do math calculation to get the answer\n    total_cost_basis = original_shares * original_cost_per_share\n    shares_after_dividend = original_shares * (1 + stock_dividend_rate)\n    shares_after_split = shares_after_dividend * stock_split_ratio\n    adjusted_basis_per_share = total_cost_basis / shares_after_split\n    answer = round(shares_sold * adjusted_basis_per_share)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "e538553cf5953fc01000c540bf6225efbfd452bdbb18e95a504bc85fd27e0435"
+}

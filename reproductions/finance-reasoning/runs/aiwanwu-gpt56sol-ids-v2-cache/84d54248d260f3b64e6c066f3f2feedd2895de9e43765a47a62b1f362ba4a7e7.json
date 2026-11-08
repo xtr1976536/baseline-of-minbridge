@@ -1,0 +1,21 @@
+{
+  "identity": "84d54248d260f3b64e6c066f3f2feedd2895de9e43765a47a62b1f362ba4a7e7",
+  "response_digest": "92b6487e017075467dbea4b9ea42650f4f19e1ab3d014967e13f0e41bc9cde15",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_units = 200000\n    new_units = 220000\n    price_per_unit = 250\n    variable_cost_per_unit = 65\n    fixed_operating_costs = 10000000\n\n    # Calculate operating income at each output level\n    contribution_margin_per_unit = price_per_unit - variable_cost_per_unit\n    initial_operating_income = (\n        initial_units * contribution_margin_per_unit - fixed_operating_costs\n    )\n    new_operating_income = (\n        new_units * contribution_margin_per_unit - fixed_operating_costs\n    )\n\n    # Calculate the percentage change in operating income\n    percentage_change = (\n        (new_operating_income - initial_operating_income)\n        / initial_operating_income\n        * 100\n    )\n    answer = round(percentage_change, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5589,
+      "completion_tokens": 283,
+      "total_tokens": 5872,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 83
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

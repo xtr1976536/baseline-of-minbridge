@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2068",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the present value of five equal annual cash flows of €300 discounted at a fixed annual rate of 4%, with the first payment occurring immediately (annuity due), and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4965,
+          "completion_tokens": 49,
+          "total_tokens": 5014,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C05\",\"C06\"]}",
+        "usage": {
+          "prompt_tokens": 14436,
+          "completion_tokens": 161,
+          "total_tokens": 14597,
+          "completion_tokens_details": {
+            "reasoning_tokens": 137
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    payment = 300\n    annual_rate = 0.04\n    periods = 5\n\n    # Do math calculation to get the answer\n    present_value = sum(\n        payment / (1 + annual_rate) ** period\n        for period in range(periods)\n    )\n    answer = round(present_value, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5583,
+          "completion_tokens": 446,
+          "total_tokens": 6029,
+          "completion_tokens_details": {
+            "reasoning_tokens": 346
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-252",
+        "score": 1.9011222124099731,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.8483250141143799,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-253",
+        "score": 1.8360697031021118,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1313",
+        "score": 1.816199541091919,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.8142116069793701,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.8140828609466553,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.8023369312286377,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2334",
+        "score": 1.7758803367614746,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2335",
+        "score": 1.7734651565551758,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3073",
+        "score": 1.7732911109924316,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1730",
+        "score": 1.7641489505767822,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1272",
+        "score": 1.7611148357391357,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.7606253623962402,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2338",
+        "score": 1.759281873703003,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1309",
+        "score": 1.7531837224960327,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2209",
+        "score": 1.7516753673553467,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2463",
+        "score": 1.7503228187561035,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1735",
+        "score": 1.7498655319213867,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2464",
+        "score": 1.7178791761398315,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.712744951248169,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1310",
+        "score": 1.7091155052185059,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-658",
+        "score": 1.708739161491394,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1444",
+        "score": 1.6999295949935913,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-458",
+        "score": 1.6944637298583984,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2940",
+        "score": 1.6825435161590576,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2091",
+        "score": 1.679504632949829,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.676855206489563,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-45",
+        "score": 1.671039342880249,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-369",
+        "score": 1.6667277812957764,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1097",
+        "score": 1.6659860610961914,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1314",
+      "article-3074",
+      "article-2336"
+    ],
+    "status": "ok",
+    "answer": 1388.969,
+    "code": "def solution():\n    # Define variables name and value\n    payment = 300\n    annual_rate = 0.04\n    periods = 5\n\n    # Do math calculation to get the answer\n    present_value = sum(\n        payment / (1 + annual_rate) ** period\n        for period in range(periods)\n    )\n    answer = round(present_value, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "fb4dc3c2b0de48e7097d68282c555785e2be224ded841d2fdfe27103415cff21"
+}

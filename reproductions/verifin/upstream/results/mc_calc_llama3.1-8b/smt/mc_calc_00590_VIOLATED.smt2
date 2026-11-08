@@ -1,0 +1,60 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_assets_current_fy2023 Real)
+(declare-const accounts_receivable_net_current_fy2023 Real)
+(declare-const cash_cash_equivalents_restricted_cash_and_restricted_cash_equivalents_fy2023 Real)
+(declare-const inventory_net_fy2023 Real)
+(declare-const prepaid_expense_and_other_assets_current_fy2023 Real)
+
+(assert (! (= accounts_receivable_net_current_fy2023 5471.0) :named evidence_accounts_receivable_net_current_fy2023))
+(assert (! (= cash_cash_equivalents_restricted_cash_and_restricted_cash_equivalents_fy2023 8246.0) :named evidence_cash_cash_equivalents_restricted_cash_and_restricted_cash_equivalents_fy2023))
+(assert (! (= inventory_net_fy2023 7073.0) :named evidence_inventory_net_fy2023))
+(assert (! (= prepaid_expense_and_other_assets_current_fy2023 1858.0) :named evidence_prepaid_expense_and_other_assets_current_fy2023))
+
+(assert (! (= computed_assets_current_fy2023 (+ cash_cash_equivalents_restricted_cash_and_restricted_cash_equivalents_fy2023 accounts_receivable_net_current_fy2023 inventory_net_fy2023 prepaid_expense_and_other_assets_current_fy2023)) :named formula_assets_current_fy2023))
+
+(assert (! (or (> accounts_receivable_net_current_fy2023 0) (< accounts_receivable_net_current_fy2023 0)) :named denom_nonzero))
+(assert (! (or (> cash_cash_equivalents_restricted_cash_and_restricted_cash_equivalents_fy2023 0) (< cash_cash_equivalents_restricted_cash_and_restricted_cash_equivalents_fy2023 0)) :named denom_nonzero_1))
+(assert (! (or (> inventory_net_fy2023 0) (< inventory_net_fy2023 0)) :named denom_nonzero_2))
+(assert (! (or (> prepaid_expense_and_other_assets_current_fy2023 0) (< prepaid_expense_and_other_assets_current_fy2023 0)) :named denom_nonzero_3))
+
+(assert (! (<= (- computed_assets_current_fy2023 21653.0) 216.53) :named claim_upper))
+(assert (! (<= (- 21653.0 computed_assets_current_fy2023) 216.53) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2023_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AssetsCurrent_instant_2023_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents_instant_2023_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_InventoryFinishedGoodsNetOfReserves_instant_2023_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_InventoryNet_instant_2023_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_InventoryRawMaterialsAndSuppliesNetOfReserves_instant_2023_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_InventoryWorkInProcessNetOfReserves_instant_2023_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2023_06_30_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_AssetsCurrent_instant_2023_06_30_unit_USD_dims_none 22648) :named evidence_xbrl_fact_us_gaap_AssetsCurrent_instant_2023_06_30_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_InventoryFinishedGoodsNetOfReserves_instant_2023_06_30_unit_USD_dims_none 4254) :named evidence_xbrl_fact_us_gaap_InventoryFinishedGoodsNetOfReserves_instant_2023_06_30_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_InventoryRawMaterialsAndSuppliesNetOfReserves_instant_2023_06_30_unit_USD_dims_none 1863) :named evidence_xbrl_fact_us_gaap_InventoryRawMaterialsAndSuppliesNetOfReserves_instant_2023_06_30_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_InventoryWorkInProcessNetOfReserves_instant_2023_06_30_unit_USD_dims_none 956) :named evidence_xbrl_fact_us_gaap_InventoryWorkInProcessNetOfReserves_instant_2023_06_30_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= accounts_receivable_net_current_fy2023 xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2023_06_30_unit_USD_dims_none) :named xbrl_bind_accounts_receivable_net_current_fy2023_edgar_2023_06_30_0000080424_23_000073))
+(assert (! (= xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2023_06_30_unit_USD_dims_none 5471) :named xbrl_instance_accounts_receivable_net_current_fy2023))
+(assert (! (= cash_cash_equivalents_restricted_cash_and_restricted_cash_equivalents_fy2023 xbrl_fact_us_gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents_instant_2023_06_30_unit_USD_dims_none) :named xbrl_bind_cash_cash_equivalents_restricted_cash_and_restricted_cash_equivalents_fy2023_edgar_2023_06_30_0000080424_23_000073))
+(assert (! (= xbrl_fact_us_gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents_instant_2023_06_30_unit_USD_dims_none 8246) :named xbrl_instance_cash_cash_equivalents_restricted_cash_and_restricted_cash_equivalents_fy2023))
+(assert (! (= inventory_net_fy2023 xbrl_fact_us_gaap_InventoryNet_instant_2023_06_30_unit_USD_dims_none) :named xbrl_bind_inventory_net_fy2023_edgar_2023_06_30_0000080424_23_000073))
+(assert (! (= xbrl_fact_us_gaap_InventoryNet_instant_2023_06_30_unit_USD_dims_none 7073) :named xbrl_instance_inventory_net_fy2023))
+(assert (! (= prepaid_expense_and_other_assets_current_fy2023 xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2023_06_30_unit_USD_dims_none) :named xbrl_bind_prepaid_expense_and_other_assets_current_fy2023_edgar_2023_06_30_0000080424_23_000073))
+(assert (! (= xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2023_06_30_unit_USD_dims_none 1858) :named xbrl_instance_prepaid_expense_and_other_assets_current_fy2023))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_InventoryNet_instant_2023_06_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_InventoryRawMaterialsAndSuppliesNetOfReserves_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_InventoryWorkInProcessNetOfReserves_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_InventoryFinishedGoodsNetOfReserves_instant_2023_06_30_unit_USD_dims_none)) 2) :named xbrl_calc_9_440867150_InventoryNet_c_26_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_InventoryNet_instant_2023_06_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_InventoryRawMaterialsAndSuppliesNetOfReserves_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_InventoryWorkInProcessNetOfReserves_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_InventoryFinishedGoodsNetOfReserves_instant_2023_06_30_unit_USD_dims_none)) (- 2)) :named xbrl_calc_9_440867150_InventoryNet_c_26_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_AssetsCurrent_instant_2023_06_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_InventoryNet_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2023_06_30_unit_USD_dims_none)) 2.5) :named xbrl_calc_12_440867150_AssetsCurrent_c_26_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_AssetsCurrent_instant_2023_06_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_InventoryNet_instant_2023_06_30_unit_USD_dims_none xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2023_06_30_unit_USD_dims_none)) (- 2.5)) :named xbrl_calc_12_440867150_AssetsCurrent_c_26_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

@@ -1,0 +1,225 @@
+{
+  "record": {
+    "question_id": "test-2223",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the net lifetime savings from refinancing or exercising a mortgage float-down option by comparing fixed monthly payments for the original and reduced interest rates over the same loan term, subtracting a one-time fee expressed as a percentage of the loan principal, and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5046,
+          "completion_tokens": 62,
+          "total_tokens": 5108,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 15835,
+          "completion_tokens": 411,
+          "total_tokens": 16246,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 387
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    loan_amount = 300_000\n    original_rate = 0.045\n    new_rate = 0.04\n    loan_term_years = 30\n    float_down_fee_percent = 0.4\n\n    # Do math calculation to get the answer\n    total_payments = loan_term_years * 12\n\n    def monthly_payment(annual_rate):\n        monthly_rate = annual_rate / 12\n        return loan_amount * monthly_rate / (1 - (1 + monthly_rate) ** -total_payments)\n\n    payment_savings = (\n        monthly_payment(original_rate) - monthly_payment(new_rate)\n    ) * total_payments\n    fee = loan_amount * float_down_fee_percent / 100\n    answer = round(payment_savings - fee)\n\n    # Return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5847,
+          "completion_tokens": 221,
+          "total_tokens": 6068,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 31
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-957",
+        "score": 2.039080858230591,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-989",
+        "score": 1.9987798929214478,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1480",
+        "score": 1.8461954593658447,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.803412914276123,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.8024187088012695,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.7595510482788086,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1481",
+        "score": 1.753822922706604,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.744624137878418,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.7424678802490234,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-958",
+        "score": 1.7378666400909424,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.7309768199920654,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2497",
+        "score": 1.7253509759902954,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.7149465084075928,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-96",
+        "score": 1.712744116783142,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-3005",
+        "score": 1.7120767831802368,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2132",
+        "score": 1.7059601545333862,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.7016620635986328,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.7004282474517822,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.699214220046997,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-446",
+        "score": 1.6935065984725952,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-3093",
+        "score": 1.693380355834961,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.6907223463058472,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1503",
+        "score": 1.68827223777771,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-438",
+        "score": 1.6813867092132568,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.6775695085525513,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-586",
+        "score": 1.67258620262146,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-322",
+        "score": 1.6719920635223389,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2785",
+        "score": 1.6663233041763306,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-299",
+        "score": 1.6624665260314941,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.6615846157073975,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-957",
+      "article-1480",
+      "article-1070"
+    ],
+    "status": "ok",
+    "answer": 30412,
+    "code": "def solution():\n    # Define variables name and value\n    loan_amount = 300_000\n    original_rate = 0.045\n    new_rate = 0.04\n    loan_term_years = 30\n    float_down_fee_percent = 0.4\n\n    # Do math calculation to get the answer\n    total_payments = loan_term_years * 12\n\n    def monthly_payment(annual_rate):\n        monthly_rate = annual_rate / 12\n        return loan_amount * monthly_rate / (1 - (1 + monthly_rate) ** -total_payments)\n\n    payment_savings = (\n        monthly_payment(original_rate) - monthly_payment(new_rate)\n    ) * total_payments\n    fee = loan_amount * float_down_fee_percent / 100\n    answer = round(payment_savings - fee)\n\n    # Return answer\n    return answer\n"
+  },
+  "digest": "e14af3a0a387aa52bebc16bad55b06bc59614ae6347ada61889de8267f1814e2"
+}

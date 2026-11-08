@@ -1,0 +1,42 @@
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "scripts/run_full_parallel.py", line 112, in <module>
+    if __name__=='__main__':asyncio.run(main())
+                            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\28678\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\28678\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\28678\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 686, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "scripts/run_full_parallel.py", line 109, in main
+    if failures:raise RuntimeError('Full run interrupted: '+dumps(failures))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Full run interrupted: [{"dataset": "FinanceReasoning", "message": "Chat API returned HTTP 403; task=OES", "shard": 2, "type": "APIError"}, {"dataset": "FinanceReasoning", "message": "Chat API returned HTTP 403; task=OES", "shard": 4, "type": "APIError"}, {"dataset": "FinanceReasoning", "message": "Chat API returned HTTP 403; task=OES", "shard": 3, "type": "APIError"}, {"dataset": "FinanceReasoning", "message": "Chat API returned HTTP 403; task=OQA", "shard": 0, "type": "APIError"}, {"dataset": "FinanceReasoning", "message": "Chat API returned HTTP 403; task=OES", "shard": 6, "type": "APIError"}, {"dataset": "FinanceReasoning", "message": "Chat API returned HTTP 403; task=OES", "shard": 1, "type": "APIError"}, {"dataset": "FinanceReasoning", "message": "Chat API returned HTTP 403; task=OES", "shard": 5, "type": "APIError"}, {"dataset": "CFBenchmark", "message": "Chat API returned HTTP 403; task=OQA", "shard": 0, "type": "APIError"}]
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "scripts/run_full_parallel.py", line 168, in <module>
+    if __name__=='__main__':asyncio.run(main())
+                            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\28678\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\28678\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\28678\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 686, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "scripts/run_full_parallel.py", line 165, in main
+    if failures:raise RuntimeError('Full run interrupted: '+dumps(failures))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Full run interrupted: [{"dataset": "FinanceReasoning", "message": "Chat API returned HTTP 403; task=OES", "shard": 1, "type": "APIError"}]

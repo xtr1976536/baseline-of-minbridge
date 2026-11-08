@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:adjustments_to_reconcile_net_income_loss_to_cash_provided_by_used_in_operating_activities_fy2025)

@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2214",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function computes the Pearson correlation coefficient between two equal-length numerical time series, such as daily closing prices for two stocks, measuring the strength and direction of their linear relationship and returning a decimal result?",
+        "usage": {
+          "prompt_tokens": 5060,
+          "completion_tokens": 43,
+          "total_tokens": 5103,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 15224,
+          "completion_tokens": 64,
+          "total_tokens": 15288,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 40
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_a = [150, 152, 149, 153, 151]\n    stock_b = [45, 47, 44, 48, 46]\n\n    # Do math calculation to get the answer\n    n = len(stock_a)\n    sum_a = sum(stock_a)\n    sum_b = sum(stock_b)\n    sum_a_squared = sum(value ** 2 for value in stock_a)\n    sum_b_squared = sum(value ** 2 for value in stock_b)\n    sum_ab = sum(a * b for a, b in zip(stock_a, stock_b))\n\n    numerator = n * sum_ab - sum_a * sum_b\n    denominator = (\n        (n * sum_a_squared - sum_a ** 2)\n        * (n * sum_b_squared - sum_b ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 4)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 6009,
+          "completion_tokens": 269,
+          "total_tokens": 6278,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 44
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-176",
+        "score": 1.7625327110290527,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.751342535018921,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1960",
+        "score": 1.6792590618133545,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.606107473373413,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.5468130111694336,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.5352438688278198,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2873",
+        "score": 1.5328168869018555,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.4618593454360962,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.459395170211792,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3065",
+        "score": 1.4568469524383545,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2565",
+        "score": 1.4511487483978271,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.4476128816604614,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1057",
+        "score": 1.4471224546432495,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.4459919929504395,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.445087194442749,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.4390459060668945,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.433980941772461,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.4320204257965088,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.4268360137939453,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2378",
+        "score": 1.4163331985473633,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.415201187133789,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1897",
+        "score": 1.4115324020385742,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1028",
+        "score": 1.4072626829147339,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.404518961906433,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1776",
+        "score": 1.4024791717529297,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.4016398191452026,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.3995201587677002,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-717",
+        "score": 1.398517370223999,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.3963305950164795,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.3959290981292725,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-176",
+      "article-177",
+      "article-1960"
+    ],
+    "status": "ok",
+    "answer": 1.0,
+    "code": "def solution():\n    # Define variables name and value\n    stock_a = [150, 152, 149, 153, 151]\n    stock_b = [45, 47, 44, 48, 46]\n\n    # Do math calculation to get the answer\n    n = len(stock_a)\n    sum_a = sum(stock_a)\n    sum_b = sum(stock_b)\n    sum_a_squared = sum(value ** 2 for value in stock_a)\n    sum_b_squared = sum(value ** 2 for value in stock_b)\n    sum_ab = sum(a * b for a, b in zip(stock_a, stock_b))\n\n    numerator = n * sum_ab - sum_a * sum_b\n    denominator = (\n        (n * sum_a_squared - sum_a ** 2)\n        * (n * sum_b_squared - sum_b ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 4)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "e27cdbb43caf274399faac38e226632a998c71e0ee9dc0d8ed58b774312cbedb"
+}

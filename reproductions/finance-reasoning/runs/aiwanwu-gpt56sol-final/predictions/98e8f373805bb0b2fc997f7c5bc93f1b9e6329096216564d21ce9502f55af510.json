@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2200",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates an investor’s net dollar return for a hedge fund under a management-and-incentive fee structure, where the management fee is charged on year-end assets under management and the incentive fee is applied after the management fee only to returns exceeding a hurdle rate, with results expressed and rounded in millions of dollars?",
+        "usage": {
+          "prompt_tokens": 4999,
+          "completion_tokens": 67,
+          "total_tokens": 5066,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14710,
+          "completion_tokens": 587,
+          "total_tokens": 15297,
+          "completion_tokens_details": {
+            "reasoning_tokens": 490
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_investment = 120.0  # millions of dollars\n    gross_return_rate = 0.35\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.20\n    hurdle_rate = 0.05\n\n    # Do math calculation to get the answer\n    aum_end_year = initial_investment * (1 + gross_return_rate)\n    gross_profit = initial_investment * gross_return_rate\n    management_fee = aum_end_year * management_fee_rate\n    hurdle_profit = initial_investment * hurdle_rate\n    profit_above_hurdle_net_management_fee = (\n        gross_profit - management_fee - hurdle_profit\n    )\n    incentive_fee = profit_above_hurdle_net_management_fee * incentive_fee_rate\n    net_return = gross_profit - management_fee - incentive_fee\n    answer = round(net_return, 2)\n\n    # return answer in millions of dollars\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5550,
+          "completion_tokens": 346,
+          "total_tokens": 5896,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 126
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1983",
+        "score": 1.9134691953659058
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.8845319747924805
+      },
+      {
+        "function_id": "article-1023",
+        "score": 1.8776555061340332
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.8196566104888916
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.7909636497497559
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.782921314239502
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.7670490741729736
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.7208008766174316
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.7102599143981934
+      },
+      {
+        "function_id": "article-811",
+        "score": 1.6862866878509521
+      },
+      {
+        "function_id": "article-2916",
+        "score": 1.6718666553497314
+      },
+      {
+        "function_id": "article-1171",
+        "score": 1.6655102968215942
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.6544800996780396
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.6469228267669678
+      },
+      {
+        "function_id": "article-637",
+        "score": 1.6252506971359253
+      },
+      {
+        "function_id": "article-2901",
+        "score": 1.6160225868225098
+      },
+      {
+        "function_id": "article-545",
+        "score": 1.6127855777740479
+      },
+      {
+        "function_id": "article-2902",
+        "score": 1.5987550020217896
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.577618956565857
+      },
+      {
+        "function_id": "article-2944",
+        "score": 1.5693976879119873
+      },
+      {
+        "function_id": "article-126",
+        "score": 1.5691781044006348
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.559828519821167
+      },
+      {
+        "function_id": "article-2858",
+        "score": 1.5555475950241089
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.550396203994751
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.548952579498291
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.5471279621124268
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.5419998168945312
+      },
+      {
+        "function_id": "article-2047",
+        "score": 1.5412977933883667
+      },
+      {
+        "function_id": "article-2178",
+        "score": 1.5400731563568115
+      },
+      {
+        "function_id": "article-406",
+        "score": 1.5398924350738525
+      }
+    ],
+    "selected_ids": [
+      "article-1983",
+      "article-1024",
+      "article-1023"
+    ],
+    "status": "ok",
+    "answer": 32.21,
+    "code": "def solution():\n    # Define variables name and value\n    initial_investment = 120.0  # millions of dollars\n    gross_return_rate = 0.35\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.20\n    hurdle_rate = 0.05\n\n    # Do math calculation to get the answer\n    aum_end_year = initial_investment * (1 + gross_return_rate)\n    gross_profit = initial_investment * gross_return_rate\n    management_fee = aum_end_year * management_fee_rate\n    hurdle_profit = initial_investment * hurdle_rate\n    profit_above_hurdle_net_management_fee = (\n        gross_profit - management_fee - hurdle_profit\n    )\n    incentive_fee = profit_above_hurdle_net_management_fee * incentive_fee_rate\n    net_return = gross_profit - management_fee - incentive_fee\n    answer = round(net_return, 2)\n\n    # return answer in millions of dollars\n    return answer\n"
+  },
+  "digest": "3cf332c3ca3dd06ac6f41aa1294d87569c1ba6ccfaff3bcc58ce392408fa4378"
+}

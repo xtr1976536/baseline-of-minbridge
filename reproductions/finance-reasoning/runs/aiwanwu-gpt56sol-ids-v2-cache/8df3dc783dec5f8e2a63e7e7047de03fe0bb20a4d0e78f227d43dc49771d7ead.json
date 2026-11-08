@@ -1,0 +1,18 @@
+{
+  "identity": "8df3dc783dec5f8e2a63e7e7047de03fe0bb20a4d0e78f227d43dc49771d7ead",
+  "response_digest": "1c3a1a35e393693860c7a98579e0d3aeae400871a6fb6825325ad770c392ce0c",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    net_worth = 1_200_000\n    tax_brackets = [\n        (500_000, 0.00),\n        (1_000_000, 0.02),\n        (1_200_000, 0.04),\n    ]\n    residency_factor = 0.9\n\n    # Do math calculation to get the answer\n    total_tax = 0\n    previous_threshold = 0\n\n    for threshold, rate in tax_brackets:\n        if net_worth > threshold:\n            total_tax += (threshold - previous_threshold) * rate\n            previous_threshold = threshold\n        else:\n            total_tax += (net_worth - previous_threshold) * rate\n            break\n\n    adjusted_tax = total_tax * residency_factor\n\n    # Return the answer rounded to the nearest integer\n    return round(adjusted_tax)\n```",
+    "usage": {
+      "prompt_tokens": 5268,
+      "completion_tokens": 383,
+      "total_tokens": 5651,
+      "completion_tokens_details": {
+        "reasoning_tokens": 185
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

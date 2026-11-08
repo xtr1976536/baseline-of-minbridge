@@ -1,0 +1,31 @@
+{
+  "request_hash": "9163d5f8a85db3ec9a34df24fdd436537089ed4c962ba1e147b950385627a5f5",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the FY2017 return on assets (ROA) for Coca Cola? ROA is defined as: FY2017 net income / (average total assets between FY2016 and FY2017). Round your answer to two decimal places. Give a response to the question by relying on the details shown in the balance sheet and the P&L statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"return_on_assets\",\n  \"facts\": [\n    {\n      \"name\": \"net_income\",\n      \"aliases\": [\"Net income\", \"Net income attributable to shareowners of The Coca-Cola Company\", \"Consolidated net income\"],\n      \"period\": \"FY2017\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"total_assets_fy2016\",\n      \"aliases\": [\"Total assets\"],\n      \"period\": \"FY2016\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"total_assets_fy2017\",\n      \"aliases\": [\"Total assets\"],\n      \"period\": \"FY2017\",\n      \"statement\": \"balance sheet\"\n    }\n  ],\n  \"reason\": \"Calculate FY2017 ROA as FY2017 net income divided by the average of total assets at FY2016 and FY2017 year-end, then round to two decimal places.\"\n}",
+  "usage": {
+    "prompt_tokens": 4751,
+    "completion_tokens": 244,
+    "total_tokens": 4995,
+    "prompt_tokens_details": {
+      "cached_tokens": 4608
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 39
+    }
+  },
+  "response_id": "resp_0c76e9561fc82ea0016aedb5126c7087d08ddef83fb08a3c3f",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

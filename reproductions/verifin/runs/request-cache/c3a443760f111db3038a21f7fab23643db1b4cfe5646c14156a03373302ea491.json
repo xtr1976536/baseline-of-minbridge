@@ -1,0 +1,31 @@
+{
+  "request_hash": "c3a443760f111db3038a21f7fab23643db1b4cfe5646c14156a03373302ea491",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nBy drawing conclusions from the information stated only in the income statement, what is Amazon's FY2019 net income attributable to shareholders (in USD millions)?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"net_income_attributable_to_shareholders\",\n  \"facts\": [\n    {\n      \"name\": \"fy2019_net_income_attributable_to_shareholders\",\n      \"aliases\": [\n        \"Net income\",\n        \"Net income attributable to common shareholders\",\n        \"Net income attributable to shareholders\"\n      ],\n      \"period\": \"FY2019\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Direct lookup of Amazon's FY2019 net income amount from the income statement, reported in USD millions.\"\n}",
+  "usage": {
+    "prompt_tokens": 4708,
+    "completion_tokens": 199,
+    "total_tokens": 4907,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 77
+    }
+  },
+  "response_id": "resp_08bf4d7971d37428016aedb1a3cb1887d2b39b4c2def0786a6",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

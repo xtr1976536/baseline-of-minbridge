@@ -1,0 +1,193 @@
+{
+  "record": {
+    "question_id": "test-2209",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the principal portion of the first monthly payment for a fully amortizing fixed-rate loan, given the loan amount, annual interest rate converted to a monthly rate, and total number of monthly installments, with the result rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 5029,
+          "completion_tokens": 97,
+          "total_tokens": 5126,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 41
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16981,
+          "completion_tokens": 1224,
+          "total_tokens": 18205,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1127
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 20000\n    annual_interest_rate = 0.055\n    loan_term_years = 5\n    \n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n    \n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n    \n    first_month_interest = principal * monthly_interest_rate\n    principal_payment = monthly_payment - first_month_interest\n    \n    # return answer\n    return round(principal_payment, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5632,
+          "completion_tokens": 195,
+          "total_tokens": 5827,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 41
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-581",
+        "score": 1.9651587009429932
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.9032859802246094
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.8974374532699585
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.8794052600860596
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.875206470489502
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.8750994205474854
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.8678982257843018
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.85042142868042
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.8358978033065796
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.8182992935180664
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.811805248260498
+      },
+      {
+        "function_id": "article-582",
+        "score": 1.8110872507095337
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.8092470169067383
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.7871863842010498
+      },
+      {
+        "function_id": "article-2309",
+        "score": 1.7870057821273804
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.78025484085083
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.7752755880355835
+      },
+      {
+        "function_id": "article-1068",
+        "score": 1.774888277053833
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.7742666006088257
+      },
+      {
+        "function_id": "article-1638",
+        "score": 1.7737529277801514
+      },
+      {
+        "function_id": "article-2311",
+        "score": 1.7702701091766357
+      },
+      {
+        "function_id": "article-2273",
+        "score": 1.767190933227539
+      },
+      {
+        "function_id": "article-677",
+        "score": 1.7660586833953857
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.764452576637268
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.762629747390747
+      },
+      {
+        "function_id": "article-578",
+        "score": 1.7597110271453857
+      },
+      {
+        "function_id": "article-676",
+        "score": 1.7593724727630615
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.758801817893982
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.75313138961792
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.7471423149108887
+      }
+    ],
+    "selected_ids": [
+      "article-581",
+      "article-784",
+      "article-2164"
+    ],
+    "status": "ok",
+    "answer": 290.36,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 20000\n    annual_interest_rate = 0.055\n    loan_term_years = 5\n    \n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n    \n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n    \n    first_month_interest = principal * monthly_interest_rate\n    principal_payment = monthly_payment - first_month_interest\n    \n    # return answer\n    return round(principal_payment, 2)\n"
+  },
+  "digest": "5a7302c0ed695f77dafe32513cda70dffd515f253c129197ac182fd702441162"
+}

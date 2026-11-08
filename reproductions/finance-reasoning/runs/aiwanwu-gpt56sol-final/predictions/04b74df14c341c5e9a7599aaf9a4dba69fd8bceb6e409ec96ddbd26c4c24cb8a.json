@@ -1,0 +1,186 @@
+{
+  "record": {
+    "question_id": "test-2126",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the first-order autocorrelation coefficient of a finite time series of periodic financial returns, measuring the linear relationship between each return and its immediately preceding return, and returns the result rounded to four decimal places?",
+        "usage": {
+          "prompt_tokens": 5063,
+          "completion_tokens": 46,
+          "total_tokens": 5109,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14212,
+          "completion_tokens": 613,
+          "total_tokens": 14825,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    quarterly_returns = [5, 3, 8, 2, 7, 3, 6, 4, 5, 7, 6, 4]\n    lag = 1\n\n    # Do math calculation to get the answer\n    mean_return = sum(quarterly_returns) / len(quarterly_returns)\n\n    numerator = sum(\n        (quarterly_returns[i] - mean_return)\n        * (quarterly_returns[i - lag] - mean_return)\n        for i in range(lag, len(quarterly_returns))\n    )\n\n    denominator = sum(\n        (return_value - mean_return) ** 2\n        for return_value in quarterly_returns\n    )\n\n    autocorrelation = numerator / denominator\n    answer = round(autocorrelation, 4)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5529,
+          "completion_tokens": 472,
+          "total_tokens": 6001,
+          "completion_tokens_details": {
+            "reasoning_tokens": 276
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2378",
+        "score": 1.7793653011322021
+      },
+      {
+        "function_id": "article-2379",
+        "score": 1.6151068210601807
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.5932927131652832
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.569749355316162
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.5653382539749146
+      },
+      {
+        "function_id": "article-1212",
+        "score": 1.561311960220337
+      },
+      {
+        "function_id": "article-176",
+        "score": 1.5561659336090088
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.5433282852172852
+      },
+      {
+        "function_id": "article-1310",
+        "score": 1.5428603887557983
+      },
+      {
+        "function_id": "article-1905",
+        "score": 1.5407503843307495
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.530061960220337
+      },
+      {
+        "function_id": "article-2410",
+        "score": 1.5175321102142334
+      },
+      {
+        "function_id": "article-159",
+        "score": 1.5092359781265259
+      },
+      {
+        "function_id": "article-1055",
+        "score": 1.502596139907837
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.5000247955322266
+      },
+      {
+        "function_id": "article-1593",
+        "score": 1.4993456602096558
+      },
+      {
+        "function_id": "article-213",
+        "score": 1.4953222274780273
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.4932224750518799
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.4931507110595703
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.4910454750061035
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.489601492881775
+      },
+      {
+        "function_id": "article-2331",
+        "score": 1.488896369934082
+      },
+      {
+        "function_id": "article-2565",
+        "score": 1.4874341487884521
+      },
+      {
+        "function_id": "article-2214",
+        "score": 1.4863965511322021
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.483665108680725
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.4810330867767334
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.4791889190673828
+      },
+      {
+        "function_id": "article-1604",
+        "score": 1.4764404296875
+      },
+      {
+        "function_id": "article-2833",
+        "score": 1.4761054515838623
+      },
+      {
+        "function_id": "article-404",
+        "score": 1.4725675582885742
+      }
+    ],
+    "selected_ids": [
+      "article-2378",
+      "article-176"
+    ],
+    "status": "ok",
+    "answer": -0.7105,
+    "code": "def solution():\n    # Define variables name and value\n    quarterly_returns = [5, 3, 8, 2, 7, 3, 6, 4, 5, 7, 6, 4]\n    lag = 1\n\n    # Do math calculation to get the answer\n    mean_return = sum(quarterly_returns) / len(quarterly_returns)\n\n    numerator = sum(\n        (quarterly_returns[i] - mean_return)\n        * (quarterly_returns[i - lag] - mean_return)\n        for i in range(lag, len(quarterly_returns))\n    )\n\n    denominator = sum(\n        (return_value - mean_return) ** 2\n        for return_value in quarterly_returns\n    )\n\n    autocorrelation = numerator / denominator\n    answer = round(autocorrelation, 4)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "760b8475df7966927c176fdb3dea31f3e49353f8b7fdf0c45fe996451189c7fc"
+}

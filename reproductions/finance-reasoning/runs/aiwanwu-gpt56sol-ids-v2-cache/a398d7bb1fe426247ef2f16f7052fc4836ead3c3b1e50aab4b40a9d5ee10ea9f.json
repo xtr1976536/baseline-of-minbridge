@@ -1,0 +1,18 @@
+{
+  "identity": "a398d7bb1fe426247ef2f16f7052fc4836ead3c3b1e50aab4b40a9d5ee10ea9f",
+  "response_digest": "64b7e57586072affbf588e39fa79d95fc43553ebe319d8740b64c84d3cd18e82",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    returns = [\n        15.4, -6.2, 7.8, -14.3, 12.0, -9.1, 18.5, 25.7, -5.0, 3.3,\n        21.2, -7.6, 11.7, 29.8, -19.4, 8.9, 4.5, -11.2, 6.6, -13.7\n    ]\n    winsor_percent = 0.10\n\n    # Do math calculation to get the answer\n    sorted_returns = sorted(returns)\n    count = int(len(sorted_returns) * winsor_percent)\n    if count:\n        lower_value = sorted_returns[count]\n        upper_value = sorted_returns[-count - 1]\n        winsorized_returns = (\n            [lower_value] * count\n            + sorted_returns[count:-count]\n            + [upper_value] * count\n        )\n    else:\n        winsorized_returns = sorted_returns\n\n    answer = round(sum(winsorized_returns) / len(winsorized_returns), 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5245,
+      "completion_tokens": 631,
+      "total_tokens": 5876,
+      "completion_tokens_details": {
+        "reasoning_tokens": 360
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

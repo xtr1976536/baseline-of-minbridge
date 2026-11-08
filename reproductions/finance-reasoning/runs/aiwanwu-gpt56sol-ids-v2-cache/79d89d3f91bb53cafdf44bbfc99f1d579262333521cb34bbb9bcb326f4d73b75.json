@@ -1,0 +1,18 @@
+{
+  "identity": "79d89d3f91bb53cafdf44bbfc99f1d579262333521cb34bbb9bcb326f4d73b75",
+  "response_digest": "8ecad14539eaeac973dcb35193393f06818d205fbfd420b00d89a92d51e15e02",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 100\n    annual_coupon_rate = 0.10\n    spot_rates = [0.08, 0.09, 0.095]\n    annual_coupon_payment = face_value * annual_coupon_rate\n\n    # Discount each cash flow using its corresponding spot rate\n    cash_flows = [\n        annual_coupon_payment,\n        annual_coupon_payment,\n        annual_coupon_payment + face_value,\n    ]\n    bond_value = sum(\n        cash_flow / (1 + spot_rate) ** year\n        for year, (cash_flow, spot_rate) in enumerate(\n            zip(cash_flows, spot_rates), start=1\n        )\n    )\n    answer = round(bond_value, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5468,
+      "completion_tokens": 176,
+      "total_tokens": 5644,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

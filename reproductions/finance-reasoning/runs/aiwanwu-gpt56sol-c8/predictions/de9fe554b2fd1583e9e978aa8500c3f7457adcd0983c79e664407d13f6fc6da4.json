@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2064",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates diluted earnings per share using the treasury stock method, adjusting weighted-average shares outstanding for in-the-money stock options based on exercise price and average market price, while keeping net income unchanged and returning the result rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 4999,
+          "completion_tokens": 52,
+          "total_tokens": 5051,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14118,
+          "completion_tokens": 613,
+          "total_tokens": 14731,
+          "prompt_tokens_details": {
+            "cached_tokens": 9767
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 2_500_000\n    basic_shares = 300_000\n    options_warrants = 30_000\n    exercise_price = 20\n    market_price = 30\n\n    # Do math calculation to get the answer\n    proceeds = options_warrants * exercise_price\n    repurchased_shares = proceeds / market_price\n    additional_shares = options_warrants - repurchased_shares\n    diluted_shares = basic_shares + additional_shares\n    diluted_eps = net_income / diluted_shares\n\n    # return answer\n    return round(diluted_eps, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5619,
+          "completion_tokens": 215,
+          "total_tokens": 5834,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 61
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1952",
+        "score": 2.0838136672973633
+      },
+      {
+        "function_id": "article-1951",
+        "score": 2.0713863372802734
+      },
+      {
+        "function_id": "article-2654",
+        "score": 1.823991298675537
+      },
+      {
+        "function_id": "article-642",
+        "score": 1.7705261707305908
+      },
+      {
+        "function_id": "article-2712",
+        "score": 1.7578494548797607
+      },
+      {
+        "function_id": "article-1720",
+        "score": 1.7554268836975098
+      },
+      {
+        "function_id": "article-1718",
+        "score": 1.7448722124099731
+      },
+      {
+        "function_id": "article-491",
+        "score": 1.7235708236694336
+      },
+      {
+        "function_id": "article-2645",
+        "score": 1.7028253078460693
+      },
+      {
+        "function_id": "article-1950",
+        "score": 1.7015769481658936
+      },
+      {
+        "function_id": "article-492",
+        "score": 1.695183277130127
+      },
+      {
+        "function_id": "article-1949",
+        "score": 1.6766488552093506
+      },
+      {
+        "function_id": "article-2050",
+        "score": 1.653410792350769
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.6496626138687134
+      },
+      {
+        "function_id": "article-695",
+        "score": 1.6451085805892944
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.643739938735962
+      },
+      {
+        "function_id": "article-1494",
+        "score": 1.639045238494873
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.6309713125228882
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.6299185752868652
+      },
+      {
+        "function_id": "article-856",
+        "score": 1.6252086162567139
+      },
+      {
+        "function_id": "article-2711",
+        "score": 1.6237540245056152
+      },
+      {
+        "function_id": "article-639",
+        "score": 1.6230504512786865
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.6216413974761963
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.6103792190551758
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.6091653108596802
+      },
+      {
+        "function_id": "article-2340",
+        "score": 1.603517770767212
+      },
+      {
+        "function_id": "article-2908",
+        "score": 1.6020948886871338
+      },
+      {
+        "function_id": "article-1318",
+        "score": 1.5974016189575195
+      },
+      {
+        "function_id": "article-37",
+        "score": 1.5951530933380127
+      },
+      {
+        "function_id": "article-1327",
+        "score": 1.5907808542251587
+      }
+    ],
+    "selected_ids": [
+      "article-1952",
+      "article-1951",
+      "article-642"
+    ],
+    "status": "ok",
+    "answer": 8.06,
+    "code": "def solution():\n    # Define variables name and value\n    net_income = 2_500_000\n    basic_shares = 300_000\n    options_warrants = 30_000\n    exercise_price = 20\n    market_price = 30\n\n    # Do math calculation to get the answer\n    proceeds = options_warrants * exercise_price\n    repurchased_shares = proceeds / market_price\n    additional_shares = options_warrants - repurchased_shares\n    diluted_shares = basic_shares + additional_shares\n    diluted_eps = net_income / diluted_shares\n\n    # return answer\n    return round(diluted_eps, 2)\n"
+  },
+  "digest": "69beb765e73e7c99a8bb9c2c10eb919a479ac0b68a11bc281bb33de660de928b"
+}

@@ -1,0 +1,2173 @@
+--- message 1 role=user ---
+Answer the financial question using only the retrieved filing evidence below.
+
+Return JSON only, no markdown:
+{
+  "answer": "<concise answer with the relevant numeric value and calculation when possible>"
+}
+
+Rules:
+- Do not use outside knowledge.
+- Do not invent missing numbers.
+- If the retrieved evidence is insufficient, say that in the answer.
+- The retrieval plan lists the required facts and acceptable aliases. If a
+  retrieved table row matches an alias, use it as evidence for that fact.
+- Prefer STRUCTURED TABLE ROWS over raw page text. They bind row labels,
+  columns/periods, values, statement type, and unit scale.
+- If a structured row contains the requested row and column, use that value
+  instead of reparsing the raw page text.
+- For per-share shareholder-recovery questions, if the retrieved evidence
+  provides a reported per-share equity metric such as tangible book value per
+  share, TBVPS, or book value per share, answer from that reported per-share
+  value instead of decomposing gross assets by shares.
+- Keep the answer short.
+
+Question:
+What is the FY2018 capital expenditure amount (in USD millions) for 3M? Give a response to the question by relying on the details shown in the cash flow statement.
+
+Retrieval plan:
+metric: capital_expenditures
+- capital_expenditures_2018 period=2018 statement=cash flow aliases=[Capital expenditures, Capex, Capital investments, Purchases of property, plant and equipment, Additions to property, plant and equipment, Property, plant and equipment additions, PP&E additions, Capital spending]
+reason: Need to retrieve the capital expenditure amount from 3M's 2018 cash flow statement to answer the direct lookup question.
+
+Retrieved filing evidence:
+[corpus:3M_2018_10K:p49 page=49]
+STRUCTURED TABLE ROWS:
+[
+  {
+    "chunk_id": "corpus:3M_2018_10K:p49",
+    "columns": {
+      "2016": 1420.0,
+      "2017": 1373.0,
+      "2018": 1577.0
+    },
+    "page": 49,
+    "required_fact": "capital_expenditures_2018",
+    "row_label": "Purchases of property plant and equipment PP&E",
+    "source_quote": "Purchases of property, plant and equipment (PP&E) (1,577) (1,373) (1,420)",
+    "statement": "cash flow",
+    "unit": "",
+    "unit_scale": "",
+    "unit_scale_quote": ""
+  }
+]
+
+RAW FILING PAGE TEXT:
+[retrieved table-row match from corpus:3M_2018_10K:row:p49:r12]
+TABLE ROW CHUNK:
+Parent chunk id: corpus:3M_2018_10K:p49
+Document: corpus:3M_2018_10K:p49
+Page: 49
+Statement: cash flow
+Row label: Purchases of property plant and equipment PP&E
+Columns:
+- 2018: 1577
+- 2017: 1373
+- 2016: 1420
+Source quote: Purchases of property, plant and equipment (PP&E) (1,577) (1,373) (1,420)
+
+Table of Contents 
+Other cash flows from financing activities may include various other items, such as changes in cash overdraft balances, and principal payments for capital
+leases. In addition, in 2017, this included a payment related to the $96 million in interest expense associated with premiums and fees for the early retirement
+of debt. See Note 12 for additional details.
+ 
+Free Cash Flow (non-GAAP measure):
+ 
+Free cash flow and free cash flow conversion are not defined under U.S. generally accepted accounting principles (GAAP). Therefore, they should not be
+considered a substitute for income or cash flow data prepared in accordance with U.S. GAAP and may not be comparable to similarly titled measures used
+by other companies. The Company defines free cash flow as net cash provided by operating activities less purchases of property, plant and equipment. It
+should not be inferred that the entire free cash flow amount is available for discretionary expenditures. The Company defines free cash flow conversion as
+free cash flow divided by net income attributable to 3M. The Company believes free cash flow and free cash flow conversion are meaningful to investors as
+they are useful measures of performance and the Company uses these measures as an indication of the strength of the company and its ability to generate
+cash. The first quarter of each year is typically 3M\u2019s seasonal low for free cash flow and free cash flow conversion. Below find a recap of free cash flow and
+free cash flow conversion for 2018, 2017 and 2016.
+ 
+In 2018, free cash flow conversion was impacted by the $176 million measurement period adjustment to the tax expense recorded in December 2017 from
+the enactment of the TCJA, the $897 million pre-tax impact related to the resolution of the Minnesota natural resource damages (NRD), and the $381
+million pre-tax impact from the gain on sale of the Communication Markets Division, net of restructuring actions related to addressing corporate functional
+costs following the divestiture. On a combined basis, these items reduced free cash flow conversion by 2 percentage points.
+ 
+In 2017, free cash flow conversion was impacted by enactment of the TCJA, along with an additional U.S. pension contribution of $600 million that 3M
+made following the signing of tax reform. On a combined basis, these items benefited free cash flow conversion by 3 percentage points. Refer to the
+preceding \u201cCash Flows from Operating Activities\u201d section for discussion of additional items that impacted operating cash flow. Refer to the preceding
+\u201cCash Flows from Investing Activities\u201d section for discussion on capital spending for property, plant and equipment.
+ 
+Years ended December 31
+        
+ 
+    
+    
+ 
+        
+ 
+ 
+(Millions)
+ 
+2018
+ 
+2017
+ 
+2016
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Major GAAP Cash Flow Categories
+ 
+ 
+  
+ 
+  
+ 
+  
+Net cash provided by operating activities
+ 
+$
+6,439  
+$
+6,240  
+$
+6,662  
+Net cash provided by (used in) investing activities
+ 
+ 
+222  
+ 
+(3,086) 
+ 
+(1,403) 
+Net cash used in financing activities
+ 
+ 
+(6,701) 
+ 
+(2,655) 
+ 
+(4,626) 
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+Free Cash Flow (non-GAAP measure)
+ 
+ 
+  
+ 
+  
+ 
+  
+Net cash provided by operating activities
+ 
+$
+6,439  
+$
+6,240  
+$
+6,662  
+Purchases of property, plant and equipment (PP&E)
+ 
+ 
+(1,577) 
+ 
+(1,373) 
+ 
+(1,420) 
+Free cash flow
+ 
+$
+4,862  
+$
+4,867  
+$
+5,242  
+Net income attributable to 3M
+ 
+$
+5,349  
+$
+4,858  
+$
+5,050  
+Free cash flow conversion
+ 
+ 
+91 %   
+100 %  
+104 %
+ 
+Off-Balance Sheet Arrangements and Contractual Obligations:
+ 
+As of December 31, 2018, the Company has not utilized special purpose entities to facilitate off-balance sheet financing arrangements. Refer to the section
+entitled \u201cWarranties/Guarantees\u201d in Note 16 for discussion of accrued product warranty liabilities and guarantees.
+ 
+In addition to guarantees, 3M, in the normal course of business, periodically enters into agreements that require the Company to indemnify either major
+customers or suppliers for specific risks, such as claims for injury or property damage arising out of the use of 3M products or the negligence of 3M
+personnel, or claims alleging that 3M products infringe third-party patents or other intellectual property. While 3M\u2019s maximum exposure under these
+indemnification provisions cannot be estimated, these indemnifications are not expected to have a material impact on the Company\u2019s consolidated results of
+operations or financial condition.
+49
+ 
+
+
+[corpus:3M_2018_10K:p59 page=59]
+[previous page table header/scale context from corpus:3M_2018_10K:p58]
+(Dollars in millions, except per share amount)
+2018
+2017
+
+[retrieved table-row match from corpus:3M_2018_10K:row:p59:r12]
+TABLE ROW CHUNK:
+Parent chunk id: corpus:3M_2018_10K:p59
+Document: corpus:3M_2018_10K:p59
+Page: 59
+Statement: cash flow
+Row label: Capital
+Columns:
+- 2015: 31
+- 2016: 2015
+Unit scale: millions
+Unit scale quote: Dollars in millions
+Unit: USD millions
+Source quote: Capital Earnings Stock (Loss) Interest Balance at December 31, 2015 $ 11,468 $ 4,800 $ 36,296 $ (23,308) $
+
+PARENT FILING PAGE TEXT:
+Table of Contents 
+3M Company and Subsidiaries
+Consolidated Statement of Changes in Equit y
+Years Ended December 31
+ 
+  
+ 
+ 
+3M Company Shareholders
+ 
+ 
+ 
+ 
+ 
+     
+ 
+    Common      
+ 
+     
+ 
+    
+Accumulated
+     
+ 
+ 
+ 
+  
+ 
+ 
+Stock and
+  
+ 
+  
+ 
+ 
+Other
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ Additional   
+ 
+  
+ 
+ 
+Comprehensive
+ 
+Non-
+ 
+ 
+  
+ 
+ 
+Paid-in
+ Retained  Treasury  
+Income
+ 
+controlling  
+(Dollars in millions, except per share amounts)
+ 
+Total
+ 
+Capital
+ Earnings  
+Stock
+ 
+(Loss)
+ 
+Interest
+ 
+Balance at December 31, 2015
+ 
+$
+11,468  
+$
+4,800  
+$
+36,296  
+$ (23,308) 
+$
+(6,359) 
+$
+39  
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Net income
+ 
+ 
+5,058  
+ 
+  
+ 
+5,050  
+ 
+  
+ 
+  
+ 
+ 8  
+Other comprehensive income (loss), net of tax:
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Cumulative translation adjustment
+ 
+ 
+(331) 
+ 
+  
+ 
+  
+ 
+  
+ 
+(329) 
+ 
+(2) 
+Defined benefit pension and post-retirement plans adjustment
+ 
+ 
+(524) 
+ 
+  
+ 
+  
+ 
+  
+ 
+(524) 
+ 
+ \u2014  
+Cash flow hedging instruments - unrealized gain (loss)
+ 
+ 
+(33) 
+ 
+  
+ 
+  
+ 
+  
+ 
+(33) 
+ 
+ \u2014  
+Total other comprehensive income (loss), net of tax
+ 
+ 
+(888) 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Dividends declared ($4.44 per share, Note 8)
+ 
+ 
+(2,678) 
+ 
+  
+ 
+(2,678) 
+ 
+  
+ 
+  
+ 
+  
+Stock-based compensation
+ 
+ 
+270  
+ 
+270  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Reacquired stock
+ 
+ 
+(3,699) 
+ 
+  
+ 
+  
+ 
+(3,699) 
+ 
+  
+ 
+  
+Issuances pursuant to stock option and benefit plans
+ 
+ 
+812  
+ 
+  
+ 
+(761) 
+ 
+1,573  
+ 
+  
+ 
+  
+Balance at December 31, 2016
+ 
+$
+10,343  
+$
+5,070  
+$
+37,907  
+$ (25,434) 
+$
+(7,245) 
+$
+45  
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Net income
+ 
+ 
+4,869  
+ 
+  
+ 
+4,858  
+ 
+  
+ 
+  
+ 
+11  
+Other comprehensive income (loss), net of tax:
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Cumulative translation adjustment
+ 
+ 
+373  
+ 
+  
+ 
+  
+ 
+  
+ 
+370  
+ 
+ 3  
+Defined benefit pension and post-retirement plans adjustment
+ 
+ 
+52  
+ 
+  
+ 
+  
+ 
+  
+ 
+52  
+ 
+ \u2014  
+Cash flow hedging instruments - unrealized gain (loss)
+ 
+ 
+(203) 
+ 
+  
+ 
+  
+ 
+  
+ 
+(203) 
+ 
+ \u2014  
+Total other comprehensive income (loss), net of tax
+ 
+ 
+222  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Dividends declared ($4.70 per share, Note 8)
+ 
+ 
+(2,803) 
+ 
+  
+ 
+(2,803) 
+ 
+  
+ 
+  
+ 
+  
+Stock-based compensation
+ 
+ 
+291  
+ 
+291  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Reacquired stock
+ 
+ 
+(2,044) 
+ 
+  
+ 
+  
+ 
+(2,044) 
+ 
+  
+ 
+  
+Issuances pursuant to stock option and benefit plans
+ 
+ 
+744  
+ 
+  
+ 
+(847) 
+ 
+1,591  
+ 
+  
+ 
+  
+Balance at December 31, 2017
+ 
+$
+11,622  
+$
+5,361  
+$
+39,115  
+$ (25,887) 
+$
+(7,026) 
+$
+59  
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Net income
+ 
+ 
+5,363  
+ 
+  
+ 
+5,349  
+ 
+  
+ 
+  
+ 
+14  
+Other comprehensive income (loss), net of tax:
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Cumulative translation adjustment
+ 
+ 
+(467) 
+ 
+  
+ 
+  
+ 
+  
+ 
+(461) 
+ 
+(6) 
+Defined benefit pension and post-retirement plans adjustment
+ 
+ 
+444  
+ 
+  
+ 
+  
+ 
+  
+ 
+444  
+ 
+ \u2014  
+Cash flow hedging instruments - unrealized gain (loss)
+ 
+ 
+176  
+ 
+  
+ 
+  
+ 
+  
+ 
+176  
+ 
+ \u2014  
+Total other comprehensive income (loss), net of tax
+ 
+ 
+153  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Dividends declared ($5.44 per share, Note 8)
+ 
+ 
+(3,193) 
+ 
+  
+ 
+(3,193) 
+ 
+  
+ 
+  
+ 
+  
+Transfer of ownership involving non-wholly owned subsidiaries
+ 
+ 
+ \u2014  
+ 
+  
+ 
+14  
+ 
+  
+ 
+ 1  
+ 
+(15) 
+Stock-based compensation
+ 
+ 
+291  
+ 
+291  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+Reacquired stock
+ 
+ 
+(4,888) 
+ 
+  
+ 
+  
+ 
+(4,888) 
+ 
+  
+ 
+  
+Issuances pursuant to stock option and benefit plans
+ 
+ 
+500  
+ 
+  
+ 
+(649) 
+ 
+1,149  
+ 
+  
+ 
+  
+Balance at December 31, 2018
+ 
+$
+9,848  
+$
+5,652  
+$
+40,636  
+$ (29,626) 
+$
+(6,866) 
+$
+52  
+ 
+Supplemental share information
+    
+2018
+    
+2017
+    
+2016
+ 
+Treasury stock
+ 
+  
+  
+  
+Beginning balance
+ 
+349,148,819  
+347,306,778  
+334,702,932  
+Reacquired stock
+ 
+23,526,293  
+10,209,963  
+22,602,748  
+Issuances pursuant to stock options and benefit plans
+ 
+(5,217,224) 
+(8,367,922) 
+(9,998,902) 
+Ending balance
+ 
+367,457,888  
+349,148,819  
+347,306,778  
+ 
+The accompanying Notes to Consolidated Financial Statements are an integral part of this statement.
+59
+ 
+
+
+[corpus:3M_2018_10K:p46 page=46]
+STRUCTURED TABLE ROWS:
+[
+  {
+    "chunk_id": "corpus:3M_2018_10K:p46",
+    "columns": {
+      "2016": 1420.0,
+      "2017": 1373.0,
+      "2018": 1577.0
+    },
+    "page": 46,
+    "required_fact": "capital_expenditures_2018",
+    "row_label": "Purchases of property plant and equipment PP&E",
+    "source_quote": "Purchases of property, plant and equipment (PP&E) $ (1,577) $ (1,373) $ (1,420)",
+    "statement": "cash flow",
+    "unit": "",
+    "unit_scale": "",
+    "unit_scale_quote": ""
+  }
+]
+
+RAW FILING PAGE TEXT:
+[retrieved table-row match from corpus:3M_2018_10K:row:p46:r18]
+TABLE ROW CHUNK:
+Parent chunk id: corpus:3M_2018_10K:p46
+Document: corpus:3M_2018_10K:p46
+Page: 46
+Statement: cash flow
+Row label: Purchases of property plant and equipment PP&E
+Columns:
+- 2018: 1577
+- 2017: 1373
+- 2016: 1420
+Source quote: Purchases of property, plant and equipment (PP&E) $ (1,577) $ (1,373) $ (1,420)
+
+Table of Contents 
+Cash Flows:
+ 
+Cash flows from operating, investing and financing activities are provided in the tables that follow. Individual amounts in the Consolidated Statement of
+Cash Flows exclude the effects of acquisitions, divestitures and exchange rate impacts on cash and cash equivalents, which are presented separately in the
+cash flows. Thus, the amounts presented in the following operating, investing and financing activities tables reflect changes in balances from period to
+period adjusted for these effects.
+ 
+Cash Flows from Operating Activities:
+ 
+Years Ended December 31
+        
+ 
+        
+ 
+        
+ 
+ 
+(Millions)
+ 
+2018
+ 
+2017
+ 
+2016
+ 
+Net income including noncontrolling interest
+ 
+$
+5,363  
+$
+4,869  
+$
+5,058  
+Depreciation and amortization
+ 
+ 
+1,488  
+ 
+1,544  
+ 
+1,474  
+Company pension and postretirement contributions
+ 
+ 
+(370) 
+ 
+(967) 
+ 
+(383) 
+Company pension and postretirement expense
+ 
+ 
+410  
+ 
+334  
+ 
+250  
+Stock-based compensation expense
+ 
+ 
+302  
+ 
+324  
+ 
+298  
+Gain on sale of businesses
+ 
+ 
+(545) 
+ 
+(586) 
+ 
+(111) 
+Income taxes (deferred and accrued income taxes)
+ 
+ 
+77  
+ 
+1,074  
+ 
+108  
+Accounts receivable
+ 
+ 
+(305) 
+ 
+(245) 
+ 
+(313) 
+Inventories
+ 
+ 
+(509) 
+ 
+(387) 
+ 
+57  
+Accounts payable
+ 
+ 
+408  
+ 
+24  
+ 
+148  
+Other \u2014 net
+ 
+ 
+120  
+ 
+256  
+ 
+76  
+Net cash provided by operating activities
+ 
+$
+6,439  
+$
+6,240  
+$
+6,662  
+ 
+Cash flows from operating activities can fluctuate significantly from period to period, as pension funding decisions, tax timing differences and other items
+can significantly impact cash flows.
+ 
+In 2018, cash flows provided by operating activities increased $199 million compared to the same period last year, with the increase primarily made up of
+higher net income and lower year-on-year pension and postretirement contributions. The increase was partially offset primarily due to the Minnesota NRD
+resolution in the first quarter of 2018 and year-on-year increases in income tax payments. Additional factors that decreased operating cash flows were
+increases in inventory and accounts receivable. The combination of accounts receivable, inventories and accounts payable increased working capital by
+$406 million in 2018, compared to the working capital increases of $608 million in 2017. Additional discussion on working capital changes is provided
+earlier in the \u201cFinancial Condition and Liquidity\u201d section.
+ 
+In 2017, cash flows provided by operating activities decreased $422 million compared to the same period last year. Factors that decreased operating cash
+flows were increases in pension contributions, plus year-on-year increases in working capital. In December 2017, 3M contributed $600 million to its U.S.
+defined benefit pension plan, contributing to a year-on-year increase in pension and postretirement contributions of $584 million. The combination of
+accounts receivable, inventories and accounts payable increased working capital by $608 million in 2017, compared to working capital increases of $108
+million in 2016. In 2017, year-on-year decreases in income tax payments (net of refunds) increased operating cash flows by $284 million.
+ 
+Cash Flows from Investing Activities:
+ 
+Years ended December 31
+        
+ 
+        
+ 
+        
+ 
+ 
+(Millions)
+ 
+2018
+ 
+2017
+ 
+2016
+ 
+Purchases of property, plant and equipment (PP&E)
+ $
+(1,577) $
+(1,373) $
+(1,420) 
+Proceeds from sale of PP&E and other assets
+ 
+ 
+262  
+ 
+49  
+ 
+58  
+Acquisitions, net of cash acquired
+ 
+ 
+13  
+ 
+(2,023) 
+ 
+(16) 
+Purchases and proceeds from maturities and sale of marketable
+securities and investments, net
+ 
+ 
+669  
+ 
+(798) 
+ 
+(163) 
+Proceeds from sale of businesses, net of cash sold
+ 
+ 
+846  
+ 
+1,065  
+ 
+142  
+Other \u2014 net
+ 
+ 
+ 9  
+ 
+(6) 
+ 
+(4) 
+Net cash provided by (used in) investing activities
+ $
+222  $
+(3,086) $
+(1,403) 
+ 
+46
+ 
+
+
+[corpus:3M_2018_10K:p39 page=39]
+STRUCTURED TABLE ROWS:
+[
+  {
+    "chunk_id": "corpus:3M_2018_10K:p39",
+    "columns": {
+      "2018": 31.0
+    },
+    "page": 39,
+    "required_fact": "capital_expenditures_2018",
+    "row_label": "Capital Spending",
+    "source_quote": "Capital Spending as of December 31,",
+    "statement": "cash flow",
+    "unit": "",
+    "unit_scale": "",
+    "unit_scale_quote": ""
+  }
+]
+
+RAW FILING PAGE TEXT:
+Table of Contents 
+Geographic Area Supplemental Information
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+ Property, Plant and  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+ 
+Equipment - net
+ 
+ 
+ Employees as of December 31,  
+Capital Spending
+ as of December 31,  
+(Millions, except Employees)
+    
+2018
+    
+2017
+    
+2016
+    
+2018
+    
+2017
+    
+2016
+    
+2018
+    
+2017
+ 
+United States
+ 37,412  36,958  35,748  $
+994  $
+852  $
+834  $ 4,915  $ 4,891  
+Asia Pacific
+ 18,971  18,283  18,124  
+ 
+238   
+209   
+228  
+ 1,624   1,672  
+Europe, Middle East and Africa
+ 20,884  20,869  20,203  
+ 
+295   
+256   
+294  
+ 1,751   1,798  
+Latin America and Canada
+ 16,249  15,426  17,509  
+ 
+50   
+56   
+64  
+ 
+448   
+505  
+Total Company
+ 93,516  91,536  91,584  $ 1,577  $1,373  $1,420  $ 8,738  $ 8,866  
+ 
+Employment:
+ 
+Employment increased 1,980 positions in 2018 and decreased by 48 positions in 2017.
+ 
+Capital Spending/Net Property, Plant and Equipment:
+ 
+Investments in property, plant and equipment enable growth across many diverse markets, helping to meet product demand and increasing manufacturing
+efficiency. In 2018, 63% of 3M\u2019s capital spending was within the United States, followed by Europe, Middle East and Africa; Asia Pacific; and Latin
+America/Canada. 3M is increasing its investment in manufacturing and sourcing capability in order to more closely align its product capability with its sales
+in major geographic areas in order to best serve its customers throughout the world with proprietary, automated, efficient, safe and sustainable processes.
+Capital spending is discussed in more detail later in MD&A in the section entitled \u201cCash Flows from Investing Activities.\u201d
+ 
+ 
+ CRITICAL ACCOUNTING ESTIMA TES
+ 
+Information regarding significant accounting policies is included in Note 1 of the consolidated financial statements. As stated in Note 1, the preparation of
+financial statements requires management to make estimates and assumptions that affect the reported amounts of assets, liabilities, revenue and expenses,
+and related disclosure of contingent assets and liabilities. Management bases its estimates on historical experience and on various assumptions that are
+believed to be reasonable under the circumstances, the results of which form the basis for making judgments about the carrying values of assets and
+liabilities that are not readily apparent from other sources. Actual results may differ from these estimates.
+ 
+The Company believes its most critical accounting estimates relate to legal proceedings, the Company\u2019s pension and postretirement obligations, asset
+impairments and income taxes. Senior management has discussed the development, selection and disclosure of its critical accounting estimates with the
+Audit Committee of 3M\u2019s Board of Directors.
+ 
+Legal Proceedings:
+ 
+The categories of claims for which the Company has a probable and estimable liability, the amount of its liability accruals, and the estimates of its related
+insurance receivables are critical accounting estimates related to legal proceedings. Please refer to the section entitled \u201cProcess for Disclosure and
+Recording of Liabilities and Insurance Receivables Related to Legal Proceedings\u201d (contained in \u201cLegal Proceedings\u201d in Note 16) for additional information
+about such estimates.
+ 
+ Pension and Postretirement Obligations:
+ 
+ 3M has various company-sponsored retirement plans covering substantially all U.S. employees and many employees outside the United States. The
+primary U.S. defined-benefit pension plan was closed to new participants effective January 1, 2009. The Company accounts for its defined benefit pension
+and postretirement health care and life insurance benefit plans in accordance with Accounting Standard Codification (ASC) 715, Compensation \u2014
+Retirement Benefits, in measuring plan assets and benefit obligations and in determining the amount of net periodic benefit cost. ASC 715 requires
+employers to recognize the underfunded or overfunded status of a defined benefit pension or postretirement plan as an asset or liability in its statement of
+financial position and recognize changes in the funded status in the year in which the changes occur through accumulated other comprehensive income,
+which is a component of stockholders\u2019 equity. While the company believes the valuation methods used to determine the fair value of plan assets are
+39
+ 
+
+
+[corpus:3M_2018_10K:p60 page=60]
+STRUCTURED TABLE ROWS:
+[
+  {
+    "chunk_id": "corpus:3M_2018_10K:p60",
+    "columns": {
+      "2016": 1420.0,
+      "2017": 1373.0,
+      "2018": 1577.0
+    },
+    "page": 60,
+    "required_fact": "capital_expenditures_2018",
+    "row_label": "Purchases of property plant and equipment PP&E",
+    "source_quote": "Purchases of property, plant and equipment (PP&E) (1,577) (1,373) (1,420)",
+    "statement": "cash flow",
+    "unit": "USD millions",
+    "unit_scale": "millions",
+    "unit_scale_quote": "Dollars in millions"
+  }
+]
+
+RAW FILING PAGE TEXT:
+[previous page table header/scale context from corpus:3M_2018_10K:p59]
+Table of Contents
+Consolidated Statement of Changes in Equit y
+Years Ended December 31
+(Dollars in millions, except per share amounts)
+
+[retrieved table-row match from corpus:3M_2018_10K:row:p60:r21]
+TABLE ROW CHUNK:
+Parent chunk id: corpus:3M_2018_10K:p60
+Document: corpus:3M_2018_10K:p60
+Page: 60
+Statement: cash flow
+Row label: Cash Flows from Investing Activities
+Columns:
+- 2018: 1577
+- 2017: 1373
+- 2016: 1420
+Source quote: Cash Flows from Investing Activities Purchases of property, plant and equipment (PP&E) (1,577) (1,373) (1,420)
+
+[previous page table header/scale context from corpus:3M_2018_10K:p59]
+Table of Contents
+Consolidated Statement of Changes in Equit y
+Years Ended December 31
+(Dollars in millions, except per share amounts)
+
+Table of Contents 
+3M Company and Subsidiaries
+Consolidated Statement of Cash Flow s
+Years ended December 31
+ 
+(Millions)
+    
+2018
+    
+2017
+    
+2016
+ 
+Cash Flows from Operating Activities
+ 
+ 
+  
+ 
+  
+ 
+  
+Net income including noncontrolling interest
+ 
+$
+5,363  
+$
+4,869  
+$
+5,058  
+Adjustments to reconcile net income including noncontrolling interest to net cash
+provided by operating activities
+ 
+ 
+  
+ 
+  
+ 
+  
+Depreciation and amortization
+ 
+ 
+1,488  
+ 
+1,544  
+ 
+1,474  
+Company pension and postretirement contributions
+ 
+ 
+(370) 
+ 
+(967) 
+ 
+(383) 
+Company pension and postretirement expense
+ 
+ 
+410  
+ 
+334  
+ 
+250  
+Stock-based compensation expense
+ 
+ 
+302  
+ 
+324  
+ 
+298  
+Gain on sale of businesses
+ 
+ 
+(545) 
+ 
+(586) 
+ 
+(111) 
+Deferred income taxes
+ 
+ 
+(57) 
+ 
+107  
+ 
+ 7  
+Changes in assets and liabilities
+ 
+ 
+  
+ 
+  
+ 
+  
+Accounts receivable
+ 
+ 
+(305) 
+ 
+(245) 
+ 
+(313) 
+Inventories
+ 
+ 
+(509) 
+ 
+(387) 
+ 
+57  
+Accounts payable
+ 
+ 
+408  
+ 
+24  
+ 
+148  
+Accrued income taxes (current and long-term)
+ 
+ 
+134  
+ 
+967  
+ 
+101  
+Other \u2014 net
+ 
+ 
+120  
+ 
+256  
+ 
+76  
+Net cash provided by (used in) operating activities
+ 
+ 
+6,439  
+ 
+6,240  
+ 
+6,662  
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+Cash Flows from Investing Activities
+ 
+ 
+  
+ 
+  
+ 
+  
+Purchases of property, plant and equipment (PP&E)
+ 
+ 
+(1,577) 
+ 
+(1,373) 
+ 
+(1,420) 
+Proceeds from sale of PP&E and other assets
+ 
+ 
+262  
+ 
+49  
+ 
+58  
+Acquisitions, net of cash acquired
+ 
+ 
+13  
+ 
+(2,023) 
+ 
+(16) 
+Purchases of marketable securities and investments
+ 
+ 
+(1,828) 
+ 
+(2,152) 
+ 
+(1,410) 
+Proceeds from maturities and sale of marketable securities and investments
+ 
+ 
+2,497  
+ 
+1,354  
+ 
+1,247  
+Proceeds from sale of businesses, net of cash sold
+ 
+ 
+846  
+ 
+1,065  
+ 
+142  
+Other \u2014 net
+ 
+ 
+ 9  
+ 
+(6) 
+ 
+(4) 
+Net cash provided by (used in) investing activities
+ 
+ 
+222  
+ 
+(3,086) 
+ 
+(1,403) 
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+Cash Flows from Financing Activities
+ 
+ 
+  
+ 
+  
+ 
+  
+Change in short-term debt \u2014 net
+ 
+ 
+(284) 
+ 
+578  
+ 
+(797) 
+Repayment of debt (maturities greater than 90 days)
+ 
+ 
+(1,034) 
+ 
+(962) 
+ 
+(992) 
+Proceeds from debt (maturities greater than 90 days)
+ 
+ 
+2,251  
+ 
+1,987  
+ 
+2,832  
+Purchases of treasury stock
+ 
+ 
+(4,870) 
+ 
+(2,068) 
+ 
+(3,753) 
+Proceeds from issuance of treasury stock pursuant to stock option and benefit plans
+ 
+ 
+485  
+ 
+734  
+ 
+804  
+Dividends paid to shareholders
+ 
+ 
+(3,193) 
+ 
+(2,803) 
+ 
+(2,678) 
+Other \u2014 net
+ 
+ 
+(56) 
+ 
+(121) 
+ 
+(42) 
+Net cash provided by (used in) financing activities
+ 
+ 
+(6,701) 
+ 
+(2,655) 
+ 
+(4,626) 
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+Effect of exchange rate changes on cash and cash equivalents
+ 
+ 
+(160) 
+ 
+156  
+ 
+(33) 
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+Net increase (decrease) in cash and cash equivalents
+ 
+ 
+(200) 
+ 
+655  
+ 
+600  
+Cash and cash equivalents at beginning of year
+ 
+ 
+3,053  
+ 
+2,398  
+ 
+1,798  
+Cash and cash equivalents at end of period
+ 
+$
+2,853  
+$
+3,053  
+$
+2,398  
+ 
+The accompanying Notes to Consolidated Financial Statements are an integral part of this statement.
+ 
+60
+ 
+
+
+[corpus:3M_2018_10K:p47 page=47]
+[previous page table header/scale context from corpus:3M_2018_10K:p46]
+Table of Contents
+Cash flows from operating, investing and financing activities are provided in the tables that follow. Individual amounts in the Consolidated Statement of
+
+Table of Contents 
+Investments in property, plant and equipment enable growth across many diverse markets, helping to meet product demand and increasing manufacturing
+efficiency. The Company expects 2019 capital spending to be approximately $1.7 billion to $1.9 billion as 3M continues to invest in its businesses.
+ 
+3M invests in renewal and maintenance programs, which pertain to cost reduction, cycle time, maintaining and renewing current capacity, eliminating
+pollution, and compliance. Costs related to maintenance, ordinary repairs, and certain other items are expensed. 3M also invests in growth, which adds to
+capacity, driven by new products, both through expansion of current facilities and new facilities. Finally, 3M also invests in other initiatives, such as
+information technology (IT) and laboratory facilities.
+ 
+Refer to Note 3 for information on acquisitions and divestitures. The Company is actively considering additional acquisitions, investments and strategic
+alliances, and from time to time may also divest certain businesses. Proceeds from sale of businesses in 2018 primarily relate to the sale of 3M\u2019s
+Communication Markets Division and the sale of certain personal safety product offerings primarily focused on noise, environmental, and heat stress
+monitoring within the Safety and Graphics business segment.
+ 
+Purchases of marketable securities and investments and proceeds from maturities and sale of marketable securities and investments are primarily
+attributable to asset-backed securities, certificates of deposit/time deposits, commercial paper, and other securities, which are classified as available-for-sale.
+Refer to Note 11 for more details about 3M\u2019s diversified marketable securities portfolio. Purchases of investments include additional survivor benefit
+insurance, plus investments in equity securities.
+ 
+Cash Flows from Financing Activities:
+ 
+Years ended December 31
+        
+ 
+        
+ 
+        
+ 
+ 
+(Millions)
+ 
+2018
+ 
+2017
+ 
+2016
+ 
+Change in short-term debt \u2014 net
+ 
+$
+(284) 
+$
+578  
+$
+(797) 
+Repayment of debt (maturities greater than 90 days)
+ 
+ 
+(1,034) 
+ 
+(962) 
+ 
+(992) 
+Proceeds from debt (maturities greater than 90 days)
+ 
+ 
+2,251  
+ 
+1,987  
+ 
+2,832  
+Total cash change in debt
+ 
+$
+933  
+$
+1,603  
+$
+1,043  
+Purchases of treasury stock
+ 
+ 
+(4,870) 
+ 
+(2,068) 
+ 
+(3,753) 
+Proceeds from issuances of treasury stock pursuant to stock option and benefit plans  
+ 
+485  
+ 
+734  
+ 
+804  
+Dividends paid to stockholders
+ 
+ 
+(3,193) 
+ 
+(2,803) 
+ 
+(2,678) 
+Other \u2014 net
+ 
+ 
+(56) 
+ 
+(121) 
+ 
+(42) 
+Net cash used in financing activities
+ 
+$
+(6,701) 
+$
+(2,655) 
+$
+(4,626) 
+ 
+2018 Debt Activity:
+ 
+Total debt was approximately $14.6 billion at December 31, 2018 and $13.9 billion at December 31, 2017. Increases in debt related to the third quarter
+2018 issuance of $2.25 billion of medium-term notes, which was partially offset by the $450 million third quarter repayment and 500 million Euro fourth
+quarter repayment of maturing medium-term notes, the net impact of repayments and borrowings of international subsidiaries along with foreign currency
+effects, and lower year on year commercial paper balance. Outstanding commercial paper was $435 million at December 31, 2018, as compared to $745
+million at December 31, 2017. Net commercial paper issuances and repayments and borrowings by international subsidiaries are largely reflected in
+\u201cChange in short-term debt \u2013 net\u201d in the preceding table. 3M\u2019s primary short-term liquidity needs are met through cash on hand and U.S. commercial paper
+issuances.
+ 
+Proceeds from debt for 2018 primarily relate to the September 2018, issuance of $400 million aggregate principal amount of 3-year fixed rate medium-term
+notes due 2021 with a coupon rate of 3.00%, $300 million aggregate principal amount of 5.5-year fixed rate medium-term notes due 2024 with a coupon
+rate of 3.25%, $300 million aggregate principal amount of 5.5-year floating rate medium-term notes due 2024 with a rate based on a floating three-month
+LIBOR index, $600 million aggregate principal amount of 10-year fixed rate medium-term notes due 2028 with a coupon rate of 3.625%, and $650 million
+aggregate principal amount of 30-year fixed rate medium-term notes due 2048 with a coupon rate of 4.00%. Refer to Note 12 for more detail of these debt
+issuances.
+ 
+ 
+47
+ 
+
+
+[corpus:3M_2018_10K:p126 page=126]
+STRUCTURED TABLE ROWS:
+[
+  {
+    "chunk_id": "corpus:3M_2018_10K:p126",
+    "columns": {
+      "2016": 2016.0,
+      "2017": 2017.0,
+      "2018": 2018.0
+    },
+    "page": 126,
+    "required_fact": "capital_expenditures_2018",
+    "row_label": "Capital Expenditures",
+    "source_quote": "Capital Expenditures (Millions) 2018 2017 2016 2018 2017 2016 2018 2017 2016",
+    "statement": "cash flow",
+    "unit": "",
+    "unit_scale": "",
+    "unit_scale_quote": ""
+  }
+]
+
+RAW FILING PAGE TEXT:
+Table of Contents 
+Business Segment Information
+ 
+ 
+ 
+Net Sales
+ 
+Operating Income
+ 
+(Millions)
+    
+2018
+   
+2017
+   
+2016
+   
+2018
+   
+2017
+   
+2016
+ 
+Industrial
+ 
+$
+12,267  
+$
+11,866  
+$
+11,217  
+$
+2,737  
+$
+2,490  
+$
+2,528  
+Safety and Graphics
+ 
+ 
+6,827  
+ 
+6,235  
+ 
+5,948  
+ 
+1,720  
+ 
+2,066  
+ 
+1,403  
+Health Care
+ 
+ 
+6,021  
+ 
+5,853  
+ 
+5,606  
+ 
+1,799  
+ 
+1,764  
+ 
+1,731  
+Electronics and Energy
+ 
+ 
+5,472  
+ 
+5,501  
+ 
+4,926  
+ 
+2,055  
+ 
+1,377  
+ 
+1,145  
+Consumer
+ 
+ 
+4,796  
+ 
+4,731  
+ 
+4,578  
+ 
+1,027  
+ 
+1,004  
+ 
+1,054  
+Corporate and Unallocated
+ 
+ 
+50  
+ 
+ 3  
+ 
+ 6  
+ 
+(1,465) 
+ 
+(395) 
+ 
+(321) 
+Elimination of Dual Credit
+ 
+ 
+(2,668) 
+ 
+(2,532) 
+ 
+(2,172) 
+ 
+(666) 
+ 
+(614) 
+ 
+(513) 
+Total Company
+ 
+$
+32,765  
+$
+31,657  
+$
+30,109  
+$
+7,207  
+$
+7,692  
+$
+7,027  
+ 
+ 
+ 
+Assets
+ 
+Depreciation & Amortization
+ 
+Capital Expenditures
+ 
+(Millions)
+    
+2018
+    
+2017
+    
+2016
+    
+2018
+    
+2017
+    
+2016
+    
+2018
+    
+2017
+    
+2016
+ 
+Industrial
+ 
+$
+9,855  
+$
+9,895  
+$
+9,140  
+$
+376  
+$
+432  
+$
+407  
+$
+454  
+$
+381  
+$
+360  
+Safety and Graphics
+ 
+ 
+9,657  
+ 
+9,874  
+ 
+7,626  
+ 
+300  
+ 
+275  
+ 
+277  
+ 
+210  
+ 
+184  
+ 
+228  
+Health Care
+ 
+ 
+4,687  
+ 
+4,757  
+ 
+4,293  
+ 
+162  
+ 
+175  
+ 
+175  
+ 
+180  
+ 
+137  
+ 
+136  
+Electronics and Energy
+ 
+ 
+3,993  
+ 
+4,291  
+ 
+4,335  
+ 
+134  
+ 
+240  
+ 
+223  
+ 
+115  
+ 
+152  
+ 
+187  
+Consumer
+ 
+ 
+2,757  
+ 
+2,706  
+ 
+2,497  
+ 
+91  
+ 
+112  
+ 
+114  
+ 
+115  
+ 
+109  
+ 
+109  
+Corporate and Unallocated
+ 
+ 
+5,551  
+ 
+6,464  
+ 
+5,015  
+ 
+425  
+ 
+310  
+ 
+278  
+ 
+503  
+ 
+410  
+ 
+400  
+Total Company
+ 
+$
+36,500  
+$
+ 37,987  
+$
+32,906  
+$
+1,488  
+$
+1,544  
+$
+1,474  
+$
+1,577  
+$
+1,373  
+$
+1,420  
+ 
+Corporate and unallocated operating income includes a variety of miscellaneous items, such as corporate investment gains and losses, certain derivative
+gains and losses, certain insurance-related gains and losses, certain litigation and environmental expenses, corporate restructuring charges and certain
+under- or over-absorbed costs (e.g. pension, stock-based compensation) that the Company may choose not to allocate directly to its business segments.
+Corporate and Unallocated also includes sales, costs, and income from contract manufacturing, transition services and other arrangements with the acquirer
+of all of the Communication Markets Division following its divestiture in 2018. Because this category includes a variety of miscellaneous items, it is
+subject to fluctuation on a quarterly and annual basis.
+ 
+3M business segment reporting measures include dual credit to business segments for certain sales and related operating income. Management evaluates
+each of its five business segments based on net sales and operating income performance, including dual credit reporting to further incentivize sales growth.
+As a result, 3M reflects additional (\u201cdual\u201d) credit to another business segment when the customer account activity (\u201csales district\u201d) with respect to the
+particular product sold to the external customer is provided by a different business segment. This additional dual credit is largely reflected at the division
+level. For example, certain respirators are primarily sold by the Personal Safety Division within the Safety and Graphics business segment; however, a sales
+district within the Industrial business segment provides the contact for sales of the product to particular customers. In this example, the non-primary selling
+segment (Industrial) would also receive credit for the associated net sales initiated through its sales district and the related approximate operating income.
+The assigned operating income related to dual credit activity may differ from operating income that would result from actual costs associated with such
+sales. The offset to the dual credit business segment reporting is reflected as a reconciling item entitled \u201cElimination of Dual Credit,\u201d such that sales and
+operating income in total are unchanged.
+126
+ 
+
+

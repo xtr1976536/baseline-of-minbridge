@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2085",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the number of stock index futures contracts required to reduce a portfolio’s equity allocation and beta exposure from an existing allocation to a target allocation, using total portfolio value, current and target equity percentages, equity beta, futures beta, index level, and contract multiplier, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4998,
+          "completion_tokens": 67,
+          "total_tokens": 5065,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13122,
+          "completion_tokens": 1108,
+          "total_tokens": 14230,
+          "prompt_tokens_details": {
+            "cached_tokens": 9050
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1011
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    retirement_fund = 100_000_000\n    current_equity_allocation = 0.80\n    target_equity_allocation = 0.60\n    equity_beta = 1.20\n    futures_beta = 0.95\n    stock_index_value = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    equity_value_to_hedge = (\n        retirement_fund\n        * (current_equity_allocation - target_equity_allocation)\n    )\n    futures_contract_value = stock_index_value * contract_multiplier\n    number_of_futures = (\n        equity_value_to_hedge * equity_beta\n        / (futures_contract_value * futures_beta)\n    )\n\n    # return answer\n    return round(number_of_futures, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5372,
+          "completion_tokens": 513,
+          "total_tokens": 5885,
+          "completion_tokens_details": {
+            "reasoning_tokens": 321
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-659",
+        "score": 1.9032362699508667
+      },
+      {
+        "function_id": "article-394",
+        "score": 1.798532485961914
+      },
+      {
+        "function_id": "article-2691",
+        "score": 1.7669159173965454
+      },
+      {
+        "function_id": "article-660",
+        "score": 1.7654497623443604
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.7636491060256958
+      },
+      {
+        "function_id": "article-1744",
+        "score": 1.7415494918823242
+      },
+      {
+        "function_id": "article-2692",
+        "score": 1.7376093864440918
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.7322566509246826
+      },
+      {
+        "function_id": "article-395",
+        "score": 1.726914405822754
+      },
+      {
+        "function_id": "article-396",
+        "score": 1.7213737964630127
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.7001628875732422
+      },
+      {
+        "function_id": "article-1027",
+        "score": 1.6909546852111816
+      },
+      {
+        "function_id": "article-1105",
+        "score": 1.6576852798461914
+      },
+      {
+        "function_id": "article-397",
+        "score": 1.6566420793533325
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.6509112119674683
+      },
+      {
+        "function_id": "article-2137",
+        "score": 1.6482701301574707
+      },
+      {
+        "function_id": "article-663",
+        "score": 1.6320407390594482
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.6271228790283203
+      },
+      {
+        "function_id": "article-1889",
+        "score": 1.6269958019256592
+      },
+      {
+        "function_id": "article-1035",
+        "score": 1.6194027662277222
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6188313961029053
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.613102674484253
+      },
+      {
+        "function_id": "article-661",
+        "score": 1.5996180772781372
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.5976977348327637
+      },
+      {
+        "function_id": "article-700",
+        "score": 1.5966793298721313
+      },
+      {
+        "function_id": "article-858",
+        "score": 1.5943751335144043
+      },
+      {
+        "function_id": "article-3071",
+        "score": 1.5937726497650146
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.588326096534729
+      },
+      {
+        "function_id": "article-2782",
+        "score": 1.5881823301315308
+      },
+      {
+        "function_id": "article-2375",
+        "score": 1.588150978088379
+      }
+    ],
+    "selected_ids": [
+      "article-659",
+      "article-394",
+      "article-2691"
+    ],
+    "status": "ok",
+    "answer": 84.211,
+    "code": "def solution():\n    # Define variables name and value\n    retirement_fund = 100_000_000\n    current_equity_allocation = 0.80\n    target_equity_allocation = 0.60\n    equity_beta = 1.20\n    futures_beta = 0.95\n    stock_index_value = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    equity_value_to_hedge = (\n        retirement_fund\n        * (current_equity_allocation - target_equity_allocation)\n    )\n    futures_contract_value = stock_index_value * contract_multiplier\n    number_of_futures = (\n        equity_value_to_hedge * equity_beta\n        / (futures_contract_value * futures_beta)\n    )\n\n    # return answer\n    return round(number_of_futures, 3)\n"
+  },
+  "digest": "670cca17b04ec5b25b006313947f2e520eb0affa0d7773124aaf32b433e543d0"
+}

@@ -1,0 +1,89 @@
+{
+  "case": {
+    "id": "table-header",
+    "question": "What is Company A's Fiscal Revenue for 2024, in CNY?",
+    "context": "Company A财政数据，金额单位为人民币元。\n| 年份 | 财政收入 | 债务 |\n| --- | --- | --- |\n| 2023 | 31 | 80 |\n| 2024 | 42 | 99 |",
+    "expected_value": 42
+  },
+  "passed": false,
+  "error": "Unsupported observed evidence units",
+  "error_type": "ProtocolError",
+  "trace": {
+    "events": [
+      {
+        "operator": "OQA",
+        "response": {
+          "reasoning_type": "DirectRetrieval",
+          "operator": "sum",
+          "subgoals": [
+            {
+              "metric": "Fiscal Revenue",
+              "constraints": {
+                "temporal_scope": "2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": "CNY",
+                  "scale": "yuan",
+                  "unit": "currency"
+                }
+              }
+            }
+          ],
+          "precision": "unknown"
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Fiscal Revenue",
+          "constraints": {
+            "temporal_scope": "2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": "CNY",
+              "scale": "yuan",
+              "unit": "currency"
+            }
+          }
+        },
+        "response": {
+          "found": true,
+          "missing_vars": [],
+          "notes": "Resolved Fiscal Revenue via translation of 财政收入.",
+          "var_bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": "CNY",
+                  "scale": "yuan",
+                  "unit": "currency"
+                },
+                "temporal_scope": "2024"
+              },
+              "context": "| 2024 | 42 |",
+              "context_spans": [
+                "| 年份 | 财政收入 | 债务 |",
+                "| 2024 | 42 | 99 |",
+                "Company A财政数据，金额单位为人民币元。"
+              ],
+              "label_alignment": {
+                "explanation": "Translated 财政收入 as Fiscal Revenue.",
+                "kind": "translation",
+                "source_label": "财政收入"
+              },
+              "metric": "Fiscal Revenue",
+              "observed_meta": {
+                "currency": "CNY",
+                "scale": "yuan",
+                "unit": "currency"
+              },
+              "value": 42
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "edd404c6c14453935959e10169f3e297b31544450f9e82dc2551a5065f054fc4",
+  "response_digest": "0e6aee53789e810d23922f0542bd863b035da442ad7da6b83db534bc3a1f1449",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    initial_dividend = 0.22\n    high_growth_rate = 0.12\n    stable_growth_rate = 0.06\n    required_return = 0.09\n    high_growth_years = 4\n\n    # Calculate dividend at the end of the high-growth period\n    dividend_year_4 = initial_dividend * (1 + high_growth_rate) ** high_growth_years\n\n    # Calculate the dividend in the first stable-growth year\n    dividend_year_5 = dividend_year_4 * (1 + stable_growth_rate)\n\n    # Calculate terminal value at the end of year 4 using the Gordon Growth Model\n    terminal_value = dividend_year_5 / (required_return - stable_growth_rate)\n\n    # Return the answer rounded to three decimal places\n    return round(terminal_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5683,
+      "completion_tokens": 255,
+      "total_tokens": 5938,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 67
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

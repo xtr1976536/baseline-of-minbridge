@@ -1,0 +1,21 @@
+{
+  "identity": "2912e30f38718b28de71083171e762af3330d097709a9e7a3cf9e761401ef989",
+  "response_digest": "6674bf17b06f08fdfc28aeec75116661570920983d8786fbaea06b164744d38e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    stock_price = 150.0\n    strike_price = 160.0\n    time_to_expiration = 0.5\n    risk_free_rate = 0.05\n    volatility = 0.20\n\n    # Calculate d1 and d2\n    import math\n\n    d1 = (\n        math.log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility ** 2) * time_to_expiration\n    ) / (volatility * math.sqrt(time_to_expiration))\n\n    d2 = d1 - volatility * math.sqrt(time_to_expiration)\n\n    # Standard normal cumulative distribution function\n    def norm_cdf(x):\n        return 0.5 * (1 + math.erf(x / math.sqrt(2)))\n\n    # Calculate the Black-Scholes call option price\n    call_price = (\n        stock_price * norm_cdf(d1)\n        - strike_price\n        * math.exp(-risk_free_rate * time_to_expiration)\n        * norm_cdf(d2)\n    )\n\n    # Return the price rounded to two decimal places\n    return round(call_price, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5959,
+      "completion_tokens": 457,
+      "total_tokens": 6416,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 202
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

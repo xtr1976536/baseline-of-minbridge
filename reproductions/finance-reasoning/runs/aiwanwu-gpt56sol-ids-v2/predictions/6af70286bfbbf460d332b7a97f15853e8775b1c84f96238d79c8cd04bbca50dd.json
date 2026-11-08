@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2196",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the intrinsic per-share value of an equity security using a two-stage dividend discount model, discounting explicitly forecast dividends for the first two years at the required return derived from the risk-free rate, beta, and market risk premium via CAPM, then applying a constant long-term dividend growth rate from year three onward through a Gordon growth terminal value, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5069,
+          "completion_tokens": 84,
+          "total_tokens": 5153,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 13743,
+          "completion_tokens": 273,
+          "total_tokens": 14016,
+          "completion_tokens_details": {
+            "reasoning_tokens": 249
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    risk_free_rate = 0.03\n    beta = 1.1\n    market_risk_premium = 0.05\n    dividend_year_1 = 1.13\n    dividend_year_2 = 1.22\n    long_term_growth_rate = 0.05\n\n    # Do math calculation to get the answer\n    cost_of_equity = risk_free_rate + beta * market_risk_premium\n    dividend_year_3 = dividend_year_2 * (1 + long_term_growth_rate)\n    terminal_value_year_2 = dividend_year_3 / (\n        cost_of_equity - long_term_growth_rate\n    )\n\n    intrinsic_value = (\n        dividend_year_1 / (1 + cost_of_equity)\n        + (dividend_year_2 + terminal_value_year_2)\n        / (1 + cost_of_equity) ** 2\n    )\n\n    # return answer\n    return round(intrinsic_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5666,
+          "completion_tokens": 304,
+          "total_tokens": 5970,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 81
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1758",
+        "score": 2.2291102409362793,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1151",
+        "score": 2.2271251678466797,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1755",
+        "score": 2.173710823059082,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2796",
+        "score": 2.012906074523926,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-272",
+        "score": 2.001641273498535,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.9868593215942383,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-714",
+        "score": 1.9633455276489258,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.9623148441314697,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1511",
+        "score": 1.9335839748382568,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2560",
+        "score": 1.9248660802841187,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-519",
+        "score": 1.922385573387146,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2212",
+        "score": 1.9202120304107666,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2943",
+        "score": 1.9173510074615479,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.9075016975402832,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.8974778652191162,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.8956748247146606,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1592",
+        "score": 1.894067645072937,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.8796818256378174,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.8632937669754028,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1512",
+        "score": 1.8430089950561523,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-43",
+        "score": 1.8222365379333496,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-463",
+        "score": 1.8057141304016113,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1520",
+        "score": 1.8045578002929688,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2475",
+        "score": 1.8039023876190186,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.7701046466827393,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-874",
+        "score": 1.7692742347717285,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1756",
+        "score": 1.7561205625534058,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-71",
+        "score": 1.7533254623413086,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.7513525485992432,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1932",
+        "score": 1.747825264930725,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1758",
+      "article-1151",
+      "article-1755"
+    ],
+    "status": "ok",
+    "answer": 33.168,
+    "code": "def solution():\n    # Define variables name and value\n    risk_free_rate = 0.03\n    beta = 1.1\n    market_risk_premium = 0.05\n    dividend_year_1 = 1.13\n    dividend_year_2 = 1.22\n    long_term_growth_rate = 0.05\n\n    # Do math calculation to get the answer\n    cost_of_equity = risk_free_rate + beta * market_risk_premium\n    dividend_year_3 = dividend_year_2 * (1 + long_term_growth_rate)\n    terminal_value_year_2 = dividend_year_3 / (\n        cost_of_equity - long_term_growth_rate\n    )\n\n    intrinsic_value = (\n        dividend_year_1 / (1 + cost_of_equity)\n        + (dividend_year_2 + terminal_value_year_2)\n        / (1 + cost_of_equity) ** 2\n    )\n\n    # return answer\n    return round(intrinsic_value, 3)\n"
+  },
+  "digest": "c8ac03f0553b1e95b0f332d3741067452b62468363e73951b480db25b957a3bd"
+}

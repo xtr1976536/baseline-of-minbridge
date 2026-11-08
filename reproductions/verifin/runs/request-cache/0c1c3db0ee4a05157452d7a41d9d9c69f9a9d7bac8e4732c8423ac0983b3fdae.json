@@ -1,0 +1,28 @@
+{
+  "request_hash": "0c1c3db0ee4a05157452d7a41d9d9c69f9a9d7bac8e4732c8423ac0983b3fdae",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nBasing your judgments off of the balance sheet, what is the year end FY2018 amount of accounts payable for MGM Resorts? Answer in USD millions.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"accounts_payable\",\n  \"facts\": [\n    {\n      \"name\": \"accounts_payable_fy2018\",\n      \"aliases\": [\n        \"Accounts payable\",\n        \"Accounts payable and accrued liabilities\",\n        \"Trade accounts payable\"\n      ],\n      \"period\": \"FY2018 year end\",\n      \"statement\": \"balance sheet\"\n    }\n  ],\n  \"reason\": \"Direct lookup of the FY2018 year-end accounts payable amount on MGM Resorts' balance sheet, reported in USD millions.\"\n}",
+  "usage": {
+    "prompt_tokens": 4709,
+    "completion_tokens": 113,
+    "total_tokens": 4822,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    }
+  },
+  "response_id": "resp_0eebcadb8e353ce7016aedb9b3774087d28bf0a4de50d3abe5",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

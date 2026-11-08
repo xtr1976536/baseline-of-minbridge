@@ -1,0 +1,21 @@
+{
+  "identity": "67ed2416ee5aaf255e444388324e09c7cfdceba638189aba84a27eb92b5e3329",
+  "response_digest": "f8e6cd5b8e0dd2ef9306d808e0f159e5bcd4c9234c55fb9340148399e7d7099f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    current_prices = [150, 152, 151, 153, 155]\n    prior_prices = [148, 149, 150, 151, 152]\n    period1 = 25\n    period2 = 13\n\n    # Calculate price changes and absolute price changes\n    price_changes = [\n        current - prior\n        for current, prior in zip(current_prices, prior_prices)\n    ]\n    absolute_price_changes = [abs(change) for change in price_changes]\n\n    def calculate_ema(values, period):\n        ema = [values[0]]\n        multiplier = 2 / (period + 1)\n\n        for value in values[1:]:\n            ema.append((value - ema[-1]) * multiplier + ema[-1])\n\n        return ema\n\n    # Do math calculation to get the answer\n    pcs_ema = calculate_ema(price_changes, period1)\n    apc_ema = calculate_ema(absolute_price_changes, period1)\n\n    pcds_ema = calculate_ema(pcs_ema, period2)\n    apcds_ema = calculate_ema(apc_ema, period2)\n\n    tsi = (pcds_ema[-1] / apcds_ema[-1]) * 100\n\n    # return answer rounded to two decimal places\n    return round(tsi, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5185,
+      "completion_tokens": 369,
+      "total_tokens": 5554,
+      "prompt_tokens_details": {
+        "cached_tokens": 3495
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 67
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

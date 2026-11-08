@@ -1,0 +1,21 @@
+{
+  "identity": "2ace54163bdb6bdbaba316c69ac937e7e38595095354816316d26ffa0fafc3ac",
+  "response_digest": "6edc5cead32a30750dd4e4435c8304677c0ae2a7f4f9a3a0b2d7fd21ac145a86",
+  "response": {
+    "content": "```python\nimport math\n\ndef solution():\n    # Define variables name and value\n    S = 85\n    K = 90\n    r = 0.05\n    c = 10\n    p = 15\n    T = 5\n\n    # Put-call parity: c - p = S*exp(-q*T) - K*exp(-r*T)\n    discounted_stock = c - p + K * math.exp(-r * T)\n    q = -math.log(discounted_stock / S) / T\n    answer = round(q * 100, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 4963,
+      "completion_tokens": 240,
+      "total_tokens": 5203,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 99
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

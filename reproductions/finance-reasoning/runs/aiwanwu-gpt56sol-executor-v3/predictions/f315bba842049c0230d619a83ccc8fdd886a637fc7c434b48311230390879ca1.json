@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2023",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the net profit or loss at expiration for purchased put options using the strike price, expiration underlying price, premium per share, number of contracts, and contract size, accounting for intrinsic value minus premium and returning the total dollar result?",
+        "usage": {
+          "prompt_tokens": 5054,
+          "completion_tokens": 52,
+          "total_tokens": 5106
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C07\"]}",
+        "usage": {
+          "prompt_tokens": 15714,
+          "completion_tokens": 232,
+          "total_tokens": 15946,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 208
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    strike_price = 145\n    expiration_price = 140\n    premium_per_share = 3.25\n    contracts = 5\n    shares_per_contract = 100\n\n    # Do math calculation to get the answer\n    intrinsic_value_per_share = max(0, strike_price - expiration_price)\n    profit_per_share = intrinsic_value_per_share - premium_per_share\n    net_profit_or_loss = profit_per_share * contracts * shares_per_contract\n\n    # Return answer\n    return round(net_profit_or_loss)\n```",
+        "usage": {
+          "prompt_tokens": 5852,
+          "completion_tokens": 176,
+          "total_tokens": 6028,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 48
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-3067",
+        "score": 2.0456056594848633,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-449",
+        "score": 2.0143613815307617,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.9804599285125732,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.9425863027572632,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-363",
+        "score": 1.9380865097045898,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-706",
+        "score": 1.9348191022872925,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.929214596748352,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.9173979759216309,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-3105",
+        "score": 1.9126861095428467,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.901088833808899,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-777",
+        "score": 1.8870320320129395,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.883705973625183,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-317",
+        "score": 1.8616191148757935,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.858285665512085,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2586",
+        "score": 1.8509613275527954,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-759",
+        "score": 1.847840666770935,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.8434257507324219,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1407",
+        "score": 1.8358575105667114,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1411",
+        "score": 1.8329931497573853,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-316",
+        "score": 1.8307325839996338,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-34",
+        "score": 1.8283761739730835,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-315",
+        "score": 1.8275656700134277,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2435",
+        "score": 1.8268041610717773,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-35",
+        "score": 1.8247528076171875,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.815610647201538,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2659",
+        "score": 1.8039631843566895,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.8037623167037964,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3066",
+        "score": 1.8009449243545532,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.8000051975250244,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2502",
+        "score": 1.799760103225708,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-3067",
+      "article-2807",
+      "article-3054"
+    ],
+    "status": "ok",
+    "answer": 875,
+    "code": "def solution():\n    # Define variables name and value\n    strike_price = 145\n    expiration_price = 140\n    premium_per_share = 3.25\n    contracts = 5\n    shares_per_contract = 100\n\n    # Do math calculation to get the answer\n    intrinsic_value_per_share = max(0, strike_price - expiration_price)\n    profit_per_share = intrinsic_value_per_share - premium_per_share\n    net_profit_or_loss = profit_per_share * contracts * shares_per_contract\n\n    # Return answer\n    return round(net_profit_or_loss)\n"
+  },
+  "digest": "60134dc181e96e5de65d02c4095faa46a81b82b7261b18f5f35273be2073ae31"
+}

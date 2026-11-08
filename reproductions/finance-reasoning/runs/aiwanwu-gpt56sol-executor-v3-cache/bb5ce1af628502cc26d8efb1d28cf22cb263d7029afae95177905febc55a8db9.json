@@ -1,0 +1,21 @@
+{
+  "identity": "bb5ce1af628502cc26d8efb1d28cf22cb263d7029afae95177905febc55a8db9",
+  "response_digest": "ce12ca4bf2e86dbda9f3f3f89ae00b622f1524379fd41ab9292bcd1c1e195e93",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define outcomes and their probabilities\n    sales = [70, 40, 25]\n    probabilities = [0.05, 0.70, 0.25]\n\n    # Calculate the probability-weighted mean and population variance\n    mean_sales = sum(value * probability for value, probability in zip(sales, probabilities))\n    variance = sum(\n        probability * (value - mean_sales) ** 2\n        for value, probability in zip(sales, probabilities)\n    )\n    answer = round(variance ** 0.5, 3)\n\n    # Return the standard deviation in millions of dollars\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5438,
+      "completion_tokens": 254,
+      "total_tokens": 5692,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 110
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2225",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Ultimate Oscillator momentum indicator from aligned high, low, close, and prior-close price series using short, medium, and long lookback periods of 7, 14, and 28, and returns the oscillator value rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5368,
+          "completion_tokens": 58,
+          "total_tokens": 5426,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 20316,
+          "completion_tokens": 462,
+          "total_tokens": 20778,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 365
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    close_prices = [\n        145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159, 160, 162,\n        161, 163, 165, 166, 167, 168, 170, 171, 172, 173, 175, 176, 177,\n        178, 180\n    ]\n\n    low_prices = [\n        140, 145, 148, 147, 149, 150, 152, 153, 154, 155, 156, 157, 159,\n        158, 160, 162, 163, 164, 165, 167, 168, 169, 170, 172, 173, 174,\n        175, 177\n    ]\n\n    high_prices = [\n        150, 151, 153, 155, 156, 158, 159, 160, 161, 162, 163, 164, 165,\n        167, 168, 169, 170, 171, 172, 174, 175, 176, 177, 179, 180, 181,\n        182, 183\n    ]\n\n    prior_close_prices = [\n        144, 145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159, 160,\n        162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173, 175, 176,\n        177, 178\n    ]\n\n    # Calculate buying pressure and true range\n    bp_values = []\n    tr_values = []\n\n    for close, low, high, prior_close in zip(\n        close_prices, low_prices, high_prices, prior_close_prices\n    ):\n        minimum_price = min(low, prior_close)\n        maximum_price = max(high, prior_close)\n\n        bp_values.append(close - minimum_price)\n        tr_values.append(maximum_price - minimum_price)\n\n    # Calculate weighted averages for the three periods\n    def average_ratio(period):\n        buying_pressure = sum(bp_values[-period:])\n        true_range = sum(tr_values[-period:])\n        return buying_pressure / true_range\n\n    average_7 = average_ratio(7)\n    average_14 = average_ratio(14)\n    average_28 = average_ratio(28)\n\n    # Calculate the Ultimate Oscillator\n    ultimate_oscillator = (\n        (average_7 * 4) + (average_14 * 2) + average_28\n    ) / 7 * 100\n\n    # Return the value rounded to two decimal places\n    return round(ultimate_oscillator, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5522,
+          "completion_tokens": 771,
+          "total_tokens": 6293,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 144
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1994",
+        "score": 1.971226692199707
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.8414889574050903
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.8232606649398804
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.7669892311096191
+      },
+      {
+        "function_id": "article-1051",
+        "score": 1.6912298202514648
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.6593692302703857
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.6536635160446167
+      },
+      {
+        "function_id": "article-1050",
+        "score": 1.6379525661468506
+      },
+      {
+        "function_id": "article-2354",
+        "score": 1.6087229251861572
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.5993304252624512
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.5883266925811768
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5841549634933472
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.583570957183838
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.5740547180175781
+      },
+      {
+        "function_id": "article-1860",
+        "score": 1.5683327913284302
+      },
+      {
+        "function_id": "article-930",
+        "score": 1.5641424655914307
+      },
+      {
+        "function_id": "article-1435",
+        "score": 1.559298038482666
+      },
+      {
+        "function_id": "article-2351",
+        "score": 1.5569250583648682
+      },
+      {
+        "function_id": "article-2638",
+        "score": 1.5509071350097656
+      },
+      {
+        "function_id": "article-1282",
+        "score": 1.5505870580673218
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.5457051992416382
+      },
+      {
+        "function_id": "article-2350",
+        "score": 1.545311450958252
+      },
+      {
+        "function_id": "article-339",
+        "score": 1.542121171951294
+      },
+      {
+        "function_id": "article-2402",
+        "score": 1.5380789041519165
+      },
+      {
+        "function_id": "article-2876",
+        "score": 1.5368432998657227
+      },
+      {
+        "function_id": "article-1492",
+        "score": 1.5346578359603882
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.5326324701309204
+      },
+      {
+        "function_id": "article-898",
+        "score": 1.528550148010254
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.5276026725769043
+      },
+      {
+        "function_id": "article-350",
+        "score": 1.5206032991409302
+      }
+    ],
+    "selected_ids": [
+      "article-1994"
+    ],
+    "status": "ok",
+    "answer": 42.99,
+    "code": "def solution():\n    # Define variables\n    close_prices = [\n        145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159, 160, 162,\n        161, 163, 165, 166, 167, 168, 170, 171, 172, 173, 175, 176, 177,\n        178, 180\n    ]\n\n    low_prices = [\n        140, 145, 148, 147, 149, 150, 152, 153, 154, 155, 156, 157, 159,\n        158, 160, 162, 163, 164, 165, 167, 168, 169, 170, 172, 173, 174,\n        175, 177\n    ]\n\n    high_prices = [\n        150, 151, 153, 155, 156, 158, 159, 160, 161, 162, 163, 164, 165,\n        167, 168, 169, 170, 171, 172, 174, 175, 176, 177, 179, 180, 181,\n        182, 183\n    ]\n\n    prior_close_prices = [\n        144, 145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159, 160,\n        162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173, 175, 176,\n        177, 178\n    ]\n\n    # Calculate buying pressure and true range\n    bp_values = []\n    tr_values = []\n\n    for close, low, high, prior_close in zip(\n        close_prices, low_prices, high_prices, prior_close_prices\n    ):\n        minimum_price = min(low, prior_close)\n        maximum_price = max(high, prior_close)\n\n        bp_values.append(close - minimum_price)\n        tr_values.append(maximum_price - minimum_price)\n\n    # Calculate weighted averages for the three periods\n    def average_ratio(period):\n        buying_pressure = sum(bp_values[-period:])\n        true_range = sum(tr_values[-period:])\n        return buying_pressure / true_range\n\n    average_7 = average_ratio(7)\n    average_14 = average_ratio(14)\n    average_28 = average_ratio(28)\n\n    # Calculate the Ultimate Oscillator\n    ultimate_oscillator = (\n        (average_7 * 4) + (average_14 * 2) + average_28\n    ) / 7 * 100\n\n    # Return the value rounded to two decimal places\n    return round(ultimate_oscillator, 2)\n"
+  },
+  "digest": "8898c3b5b9f71efa9b2c91104f20d0e099699ddc93b3ed9b2e2187414fbc5cee"
+}

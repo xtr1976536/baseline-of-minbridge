@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2128",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates diluted earnings per share under U.S. GAAP using the if-converted method for convertible bonds and cumulative preferred dividends, adjusting net income for after-tax bond interest and adding conversion shares to weighted-average common shares when securities are outstanding for the full year?",
+        "usage": {
+          "prompt_tokens": 5085,
+          "completion_tokens": 57,
+          "total_tokens": 5142
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C30\"]}",
+        "usage": {
+          "prompt_tokens": 13554,
+          "completion_tokens": 345,
+          "total_tokens": 13899,
+          "completion_tokens_details": {
+            "reasoning_tokens": 324
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 1_500_000\n    common_shares_outstanding = 1_000_000\n    convertible_shares = 300_000\n    bond_par_value = 10_000_000\n    bond_coupon_rate = 0.04\n    preferred_stock_par_value = 2_000_000\n    preferred_dividend_rate = 0.07\n    tax_rate = 0.30\n\n    # Do math calculation to get the answer\n    preferred_dividends = preferred_stock_par_value * preferred_dividend_rate\n    interest_on_bonds = bond_par_value * bond_coupon_rate\n    after_tax_interest = interest_on_bonds * (1 - tax_rate)\n\n    adjusted_net_income = (\n        net_income - preferred_dividends + after_tax_interest\n    )\n    total_shares = common_shares_outstanding + convertible_shares\n    diluted_eps = adjusted_net_income / total_shares\n\n    # return answer\n    return round(diluted_eps, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5303,
+          "completion_tokens": 324,
+          "total_tokens": 5627,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 93
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-642",
+        "score": 1.8120231628417969,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2712",
+        "score": 1.7960541248321533,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-492",
+        "score": 1.7871887683868408,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1718",
+        "score": 1.7851614952087402,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.741856336593628,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1952",
+        "score": 1.7224864959716797,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2340",
+        "score": 1.7122641801834106,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1951",
+        "score": 1.7030444145202637,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2645",
+        "score": 1.6896861791610718,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1720",
+        "score": 1.6732995510101318,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1237",
+        "score": 1.670168161392212,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1300",
+        "score": 1.6619229316711426,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1240",
+        "score": 1.6493037939071655,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-755",
+        "score": 1.6481229066848755,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-168",
+        "score": 1.6423594951629639,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-639",
+        "score": 1.6396452188491821,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.6299349069595337,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2704",
+        "score": 1.6277049779891968,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1719",
+        "score": 1.6257076263427734,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2895",
+        "score": 1.623559832572937,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2711",
+        "score": 1.6201074123382568,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1299",
+        "score": 1.6154491901397705,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2928",
+        "score": 1.6154351234436035,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.6137797832489014,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-754",
+        "score": 1.612857460975647,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-167",
+        "score": 1.6108145713806152,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-752",
+        "score": 1.6097184419631958,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-166",
+        "score": 1.6049768924713135,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-695",
+        "score": 1.6016302108764648,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1301",
+        "score": 1.5996944904327393,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2712",
+      "article-1301"
+    ],
+    "status": "ok",
+    "answer": 1.262,
+    "code": "def solution():\n    # Define variables name and value\n    net_income = 1_500_000\n    common_shares_outstanding = 1_000_000\n    convertible_shares = 300_000\n    bond_par_value = 10_000_000\n    bond_coupon_rate = 0.04\n    preferred_stock_par_value = 2_000_000\n    preferred_dividend_rate = 0.07\n    tax_rate = 0.30\n\n    # Do math calculation to get the answer\n    preferred_dividends = preferred_stock_par_value * preferred_dividend_rate\n    interest_on_bonds = bond_par_value * bond_coupon_rate\n    after_tax_interest = interest_on_bonds * (1 - tax_rate)\n\n    adjusted_net_income = (\n        net_income - preferred_dividends + after_tax_interest\n    )\n    total_shares = common_shares_outstanding + convertible_shares\n    diluted_eps = adjusted_net_income / total_shares\n\n    # return answer\n    return round(diluted_eps, 3)\n"
+  },
+  "digest": "8d0a42ffbbfb8c068702c3f4334a109d43b1aaa76850bfeff5f9def12f83fea0"
+}

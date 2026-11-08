@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:proceeds_from_issuance_of_long_term_debt_fy2025,repayments_of_long_term_debt_and_capital_securities_fy2025,proceeds_from_payments_to_minority_shareholders_fy2025)

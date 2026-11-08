@@ -1,0 +1,191 @@
+{
+  "record": {
+    "question_id": "test-2233",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the maximum deductible mortgage interest for a married-filing-jointly taxpayer under post-December 15, 2017 TCJA rules, applying the $750,000 qualified acquisition-debt limit to a $850,000 secured mortgage originated January 10, 2018, and prorating actual interest when the loan exceeds the IRS cap?",
+        "usage": {
+          "prompt_tokens": 5015,
+          "completion_tokens": 191,
+          "total_tokens": 5206,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 113
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16897,
+          "completion_tokens": 446,
+          "total_tokens": 17343,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 349
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    mortgage_amount = 850000\n    is_secured = True\n    loan_date = \"2018-01-10\"\n    filing_status = \"married_jointly\"\n\n    # Do math calculation to get the answer\n    if not is_secured:\n        raise ValueError(\"Mortgage must be secured to qualify for interest deduction.\")\n\n    if loan_date < \"1987-10-13\":\n        deduction_limit = float(\"inf\")\n    elif loan_date <= \"2017-12-15\":\n        deduction_limit = 1000000\n    else:\n        deduction_limit = 750000\n\n    deductible_interest = min(mortgage_amount, deduction_limit)\n    answer = round(deductible_interest)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5341,
+          "completion_tokens": 229,
+          "total_tokens": 5570,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 54
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1824",
+        "score": 2.0331568717956543
+      },
+      {
+        "function_id": "article-1073",
+        "score": 1.9620037078857422
+      },
+      {
+        "function_id": "article-2341",
+        "score": 1.735715627670288
+      },
+      {
+        "function_id": "article-1823",
+        "score": 1.6950905323028564
+      },
+      {
+        "function_id": "article-2162",
+        "score": 1.677297592163086
+      },
+      {
+        "function_id": "article-1486",
+        "score": 1.6691179275512695
+      },
+      {
+        "function_id": "article-1488",
+        "score": 1.6291937828063965
+      },
+      {
+        "function_id": "article-1081",
+        "score": 1.6256489753723145
+      },
+      {
+        "function_id": "article-1811",
+        "score": 1.6240291595458984
+      },
+      {
+        "function_id": "article-2520",
+        "score": 1.6227984428405762
+      },
+      {
+        "function_id": "article-594",
+        "score": 1.5987240076065063
+      },
+      {
+        "function_id": "article-989",
+        "score": 1.5918024778366089
+      },
+      {
+        "function_id": "article-2999",
+        "score": 1.5894348621368408
+      },
+      {
+        "function_id": "article-3005",
+        "score": 1.5892202854156494
+      },
+      {
+        "function_id": "article-895",
+        "score": 1.5852248668670654
+      },
+      {
+        "function_id": "article-2161",
+        "score": 1.5753750801086426
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.571572184562683
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.5593557357788086
+      },
+      {
+        "function_id": "article-746",
+        "score": 1.557128667831421
+      },
+      {
+        "function_id": "article-2016",
+        "score": 1.5560874938964844
+      },
+      {
+        "function_id": "article-2108",
+        "score": 1.5501303672790527
+      },
+      {
+        "function_id": "article-2134",
+        "score": 1.5481715202331543
+      },
+      {
+        "function_id": "article-2058",
+        "score": 1.5418353080749512
+      },
+      {
+        "function_id": "article-2558",
+        "score": 1.527745246887207
+      },
+      {
+        "function_id": "article-1066",
+        "score": 1.525604486465454
+      },
+      {
+        "function_id": "article-1649",
+        "score": 1.5250306129455566
+      },
+      {
+        "function_id": "article-1099",
+        "score": 1.5244078636169434
+      },
+      {
+        "function_id": "article-993",
+        "score": 1.5236035585403442
+      },
+      {
+        "function_id": "article-1109",
+        "score": 1.5195250511169434
+      },
+      {
+        "function_id": "article-2027",
+        "score": 1.5178582668304443
+      }
+    ],
+    "selected_ids": [
+      "article-1073"
+    ],
+    "status": "ok",
+    "answer": 750000,
+    "code": "def solution():\n    # Define variables name and value\n    mortgage_amount = 850000\n    is_secured = True\n    loan_date = \"2018-01-10\"\n    filing_status = \"married_jointly\"\n\n    # Do math calculation to get the answer\n    if not is_secured:\n        raise ValueError(\"Mortgage must be secured to qualify for interest deduction.\")\n\n    if loan_date < \"1987-10-13\":\n        deduction_limit = float(\"inf\")\n    elif loan_date <= \"2017-12-15\":\n        deduction_limit = 1000000\n    else:\n        deduction_limit = 750000\n\n    deductible_interest = min(mortgage_amount, deduction_limit)\n    answer = round(deductible_interest)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "3ea8bdb5707e2cfdb6d04f204bccde275c0a5a225b787c0be904a41d7cb031ec"
+}

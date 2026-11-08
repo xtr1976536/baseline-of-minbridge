@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2113",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates a bond’s make-whole call price by discounting its remaining periodic coupon payments and maturity principal at the comparable Treasury yield plus the required spread, for a fixed number of annual periods, and returns the result rounded to the nearest whole number?",
+        "usage": {
+          "prompt_tokens": 5018,
+          "completion_tokens": 55,
+          "total_tokens": 5073,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15487,
+          "completion_tokens": 486,
+          "total_tokens": 15973,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 389
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    remaining_payments = [5000, 5000, 5000]\n    principal = 100000\n    treasury_yield = 0.025\n    spread = 0.012\n\n    # Do math calculation to get the answer\n    discount_rate = treasury_yield + spread\n    make_whole_call_price = sum(\n        payment / ((1 + discount_rate) ** (year + 1))\n        for year, payment in enumerate(remaining_payments)\n    )\n    make_whole_call_price += principal / ((1 + discount_rate) ** len(remaining_payments))\n\n    answer = round(make_whole_call_price)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5815,
+          "completion_tokens": 355,
+          "total_tokens": 6170,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 192
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-810",
+        "score": 2.1367013454437256
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.8562320470809937
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.8248274326324463
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.8243589401245117
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.8190197944641113
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.8131765127182007
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.8030955791473389
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7985081672668457
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.780611276626587
+      },
+      {
+        "function_id": "article-31",
+        "score": 1.774256706237793
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.7705988883972168
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.7698661088943481
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.7692053318023682
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.7663812637329102
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.7632352113723755
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.7595746517181396
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.7531945705413818
+      },
+      {
+        "function_id": "article-398",
+        "score": 1.7482551336288452
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.7480520009994507
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.7474114894866943
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.7406830787658691
+      },
+      {
+        "function_id": "article-576",
+        "score": 1.7388715744018555
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7364046573638916
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.736191749572754
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.7265422344207764
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.7238514423370361
+      },
+      {
+        "function_id": "article-2243",
+        "score": 1.7212820053100586
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.7196235656738281
+      },
+      {
+        "function_id": "article-2606",
+        "score": 1.719132661819458
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.7165677547454834
+      }
+    ],
+    "selected_ids": [
+      "article-810",
+      "article-741",
+      "article-734"
+    ],
+    "status": "ok",
+    "answer": 103628,
+    "code": "def solution():\n    # Define variables name and value\n    remaining_payments = [5000, 5000, 5000]\n    principal = 100000\n    treasury_yield = 0.025\n    spread = 0.012\n\n    # Do math calculation to get the answer\n    discount_rate = treasury_yield + spread\n    make_whole_call_price = sum(\n        payment / ((1 + discount_rate) ** (year + 1))\n        for year, payment in enumerate(remaining_payments)\n    )\n    make_whole_call_price += principal / ((1 + discount_rate) ** len(remaining_payments))\n\n    answer = round(make_whole_call_price)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "4aa3c0602c300e22bd1a85cde9017e64083b8a9e4138d8d88a8f2cf3f1fe9927"
+}

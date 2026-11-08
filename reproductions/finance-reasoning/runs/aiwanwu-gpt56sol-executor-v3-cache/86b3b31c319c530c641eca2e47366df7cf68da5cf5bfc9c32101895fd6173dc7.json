@@ -1,0 +1,21 @@
+{
+  "identity": "86b3b31c319c530c641eca2e47366df7cf68da5cf5bfc9c32101895fd6173dc7",
+  "response_digest": "fa032e09624d57066855f6f2993a8f2fbc314c7087f03afa2053430e14452511",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define quarterly time points and yields in percentage units\n    quarters = [1, 2, 3, 4]\n    yields = [2.0, 2.5, 3.0, 3.5]\n    midpoint_q3 = 2.5\n\n    # Linearly interpolate between the ends of Q2 and Q3\n    answer = yields[1] + (yields[2] - yields[1]) * (\n        (midpoint_q3 - quarters[1]) / (quarters[2] - quarters[1])\n    )\n\n    # Return the yield as a percentage to two decimal places\n    return f\"{answer:.2f}%\"\n```",
+    "usage": {
+      "prompt_tokens": 5620,
+      "completion_tokens": 255,
+      "total_tokens": 5875,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 99
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

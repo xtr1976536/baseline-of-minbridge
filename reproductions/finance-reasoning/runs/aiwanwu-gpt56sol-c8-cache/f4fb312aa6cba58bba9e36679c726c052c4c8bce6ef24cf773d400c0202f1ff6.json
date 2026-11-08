@@ -1,0 +1,18 @@
+{
+  "identity": "f4fb312aa6cba58bba9e36679c726c052c4c8bce6ef24cf773d400c0202f1ff6",
+  "response_digest": "c8404fe6ecf203c0aab82cf04df6ed5afd94dc0aedf5f7d6e38abf2ed700d1b4",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    house_price = 300000\n    down_payment = 60000\n    annual_interest_rate = 0.045\n    loan_term_years = 30\n\n    # Do math calculation to get the answer\n    principal = house_price - down_payment\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n    answer = round(monthly_payment)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5856,
+      "completion_tokens": 195,
+      "total_tokens": 6051,
+      "completion_tokens_details": {
+        "reasoning_tokens": 46
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

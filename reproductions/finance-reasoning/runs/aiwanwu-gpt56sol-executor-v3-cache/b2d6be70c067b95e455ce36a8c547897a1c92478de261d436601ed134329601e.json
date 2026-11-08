@@ -1,0 +1,18 @@
+{
+  "identity": "b2d6be70c067b95e455ce36a8c547897a1c92478de261d436601ed134329601e",
+  "response_digest": "e41f9c125faac2843c4c9e070710a1bbcff934cbdeb3a0b1130f8f3a8a025ed4",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    unlevered_firm_value = 800_000\n    debt = 300_000\n    interest_rate = 0.05\n    tax_rate = 0.28\n    periods = 5\n\n    # Calculate the present value of the interest tax shield\n    annual_tax_shield = debt * interest_rate * tax_rate\n    pv_tax_shield = annual_tax_shield * (\n        1 - (1 / (1 + interest_rate) ** periods)\n    ) / interest_rate\n\n    # Calculate APV\n    apv = unlevered_firm_value + pv_tax_shield\n\n    # Return APV rounded to the nearest integer\n    return round(apv)\n```",
+    "usage": {
+      "prompt_tokens": 5732,
+      "completion_tokens": 214,
+      "total_tokens": 5946,
+      "completion_tokens_details": {
+        "reasoning_tokens": 52
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

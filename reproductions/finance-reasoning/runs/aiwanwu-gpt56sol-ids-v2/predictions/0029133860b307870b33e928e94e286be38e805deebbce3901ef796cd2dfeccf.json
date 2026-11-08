@@ -1,0 +1,224 @@
+{
+  "record": {
+    "question_id": "test-2227",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the percentage change in a fixed-rate bond’s market price when yield to maturity changes, using face value, annual coupon rate, remaining maturity, annual coupon payments, and initial and current market interest rates?",
+        "usage": {
+          "prompt_tokens": 5039,
+          "completion_tokens": 96,
+          "total_tokens": 5135,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 47
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 15006,
+          "completion_tokens": 206,
+          "total_tokens": 15212,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 182
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 100000\n    coupon_rate = 0.05\n    original_market_rate = 0.05\n    new_market_rate = 0.06\n    years_to_maturity = 10\n\n    annual_coupon_payment = face_value * coupon_rate\n\n    original_price = sum(\n        annual_coupon_payment / ((1 + original_market_rate) ** t)\n        for t in range(1, years_to_maturity + 1)\n    ) + face_value / ((1 + original_market_rate) ** years_to_maturity)\n\n    new_price = sum(\n        annual_coupon_payment / ((1 + new_market_rate) ** t)\n        for t in range(1, years_to_maturity + 1)\n    ) + face_value / ((1 + new_market_rate) ** years_to_maturity)\n\n    # Do math calculation to get the answer\n    percentage_change = ((new_price - original_price) / original_price) * 100\n    answer = round(percentage_change, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5787,
+          "completion_tokens": 360,
+          "total_tokens": 6147,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 121
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2968",
+        "score": 1.8969396352767944,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.8722716569900513,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.8573848009109497,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.855825424194336,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.8094393014907837,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.803626537322998,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.8000645637512207,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.7855099439620972,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1303",
+        "score": 1.7849369049072266,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.7801902294158936,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.776115894317627,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.7705466747283936,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.7686161994934082,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.7675834894180298,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7532670497894287,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.751587986946106,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.7494704723358154,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.745863437652588,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.7414321899414062,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.7408894300460815,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-744",
+        "score": 1.7344733476638794,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.7336907386779785,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.728607177734375,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.7263367176055908,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2567",
+        "score": 1.724755048751831,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.7214432954788208,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.72078275680542,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.710729718208313,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-810",
+        "score": 1.7105216979980469,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.706059455871582,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2968",
+      "article-741",
+      "article-451"
+    ],
+    "status": "ok",
+    "answer": -7.36,
+    "code": "def solution():\n    # Define variables name and value\n    face_value = 100000\n    coupon_rate = 0.05\n    original_market_rate = 0.05\n    new_market_rate = 0.06\n    years_to_maturity = 10\n\n    annual_coupon_payment = face_value * coupon_rate\n\n    original_price = sum(\n        annual_coupon_payment / ((1 + original_market_rate) ** t)\n        for t in range(1, years_to_maturity + 1)\n    ) + face_value / ((1 + original_market_rate) ** years_to_maturity)\n\n    new_price = sum(\n        annual_coupon_payment / ((1 + new_market_rate) ** t)\n        for t in range(1, years_to_maturity + 1)\n    ) + face_value / ((1 + new_market_rate) ** years_to_maturity)\n\n    # Do math calculation to get the answer\n    percentage_change = ((new_price - original_price) / original_price) * 100\n    answer = round(percentage_change, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "46cda84c41f360f588179793c90699e2540ae7451e627b1beade32ffd9a1380c"
+}

@@ -1,0 +1,100 @@
+--- ids-v2/fr_repro/execution.py
++++ executor-v3/fr_repro/execution.py
+@@ -50,7 +50,7 @@
+ copysign fabs isinf isnan pow gcd lcm comb perm prod
+ Decimal ROUND_HALF_UP ROUND_HALF_EVEN ROUND_DOWN ROUND_UP getcontext localcontext prec rounding quantize
+ to_integral_value to_integral_exact normalize scaleb Fraction numerator denominator limit_denominator
+-mean median mode stdev pstdev variance pvariance harmonic_mean geometric_mean
++mean median mode stdev pstdev variance pvariance harmonic_mean geometric_mean NormalDist
+ symbols Symbol Eq solve nsolve diff integrate Rational Integer Float simplify S N re im
+ optimize newton brentq bisect root fsolve minimize minimize_scalar success x fun
+ append extend insert pop remove count index reverse clear copy keys values items get setdefault update
+@@ -83,7 +83,22 @@
+             raise ValueError("Unsupported function decorator/name")
+ 
+ 
+-def execute(output, timeout=10):
++def percentage_output_requested(question):
++    """Honor explicit output-unit clauses in the original question, never gold.
++
++    The last explicit answer/result/expressed-as unit wins. Decimal-place
++    precision is not itself a request for decimal/fraction units.
++    """
++    pattern = r"\b(?:(?P<direct>answer|result)\s+(?:as|in|with)|(?P<expressed>expressed)\s+as)\s+(?:a\s+)?(?P<unit>percentage|percent|decimal|fraction)\b(?P<points>\s+points?\b)?"
++    matches = [match for match in re.finditer(pattern, question, flags=re.I)
++               if match.group("direct") or re.fullmatch(r"[\s)\]}.!?]*", question[match.end():])]
++    if not matches:
++        return False
++    last = matches[-1]
++    return last.group("unit").lower() in {"percentage", "percent"} and last.group("points") is None
++
++
++def execute(output, timeout=10, *, percentage_output=False):
+     try:
+         code = extract_program(output)
+     except (ValueError, SyntaxError) as exc:
+@@ -92,7 +107,7 @@
+     env.update({"OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"})
+     try:
+         result = subprocess.run([sys.executable, "-I", str(Path(__file__).with_name("worker.py"))],
+-                                input=json.dumps({"code": code}), capture_output=True, text=True,
++                                input=json.dumps({"code": code, "percentage_output": percentage_output}), capture_output=True, text=True,
+                                 encoding="utf-8", timeout=timeout, env=env)
+     except subprocess.TimeoutExpired:
+         return {"status": "execution_error", "answer": None, "code": code, "error": "Execution timed out"}
+--- ids-v2/fr_repro/runner.py
++++ executor-v3/fr_repro/runner.py
+@@ -12,7 +12,7 @@
+ from .assets import verify_assets
+ from .client import APIError, ChatClient
+ from .common import digest, read_json, sha256, write_json
+-from .execution import execute
++from .execution import execute, percentage_output_requested
+ from .metrics import summarize
+ from .prompts import ID_JUDGE, LEGACY_JUDGE, candidate_ids, judge_response_format, messages, select_functions
+ from .retrieval import FunctionRetriever, verify_index
+@@ -20,6 +20,9 @@
+ 
+ async def solve(problem, retriever, client, *, run_id, timeout, judge_protocol=LEGACY_JUDGE):
+     trace = {"question_id": problem.question_id, "run_id": run_id, "stages": {}, "judge_protocol": judge_protocol}
++    percentage_output = percentage_output_requested(problem.question)
++    trace["answer_output_contract"] = {"percentage_literal_allowed": percentage_output,
++                                       "source": "explicit unit request in the original question"}
+     try:
+         query = await client.complete(messages("query", problem), [run_id, problem.question_id, "query"])
+         trace["stages"]["query"] = query
+@@ -40,7 +43,7 @@
+         pot = await client.complete(messages("pot", problem, [c["function"] for c in selected]),
+                                     [run_id, problem.question_id, "pot"])
+         trace["stages"]["pot"] = pot
+-        result = await asyncio.to_thread(execute, pot["content"], timeout)
++        result = await asyncio.to_thread(execute, pot["content"], timeout, percentage_output=percentage_output)
+         return {**trace, **result}
+     except APIError as exc:
+         return {**trace, "status": "api_error", "answer": None, "error": str(exc), "fatal_api_error": exc.fatal}
+--- ids-v2/fr_repro/worker.py
++++ executor-v3/fr_repro/worker.py
+@@ -29,8 +29,14 @@
+             exec(compile(payload["code"], "<model_program>", "exec"), namespace)
+             answer = namespace["solution"]()
+         # Pure numerical formatting is a representation adapter, not a unit conversion.
++        representation = {}
+         if isinstance(answer, str):
+             text = answer.strip()
++            if text.endswith("%"):
++                if payload.get("percentage_output") is not True:
++                    raise ValueError("Percentage output was not explicitly requested")
++                representation = {"raw_return": answer, "return_representation": "percentage_points"}
++                text = text[:-1].strip()
+             if not re.fullmatch(r"[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?", text):
+                 raise ValueError("String result is not a single canonical number")
+             answer = Decimal(text)
+@@ -44,7 +50,7 @@
+                 raise ValueError("Non-finite program result")
+         else:
+             raise ValueError("Program did not return a single real number or boolean")
+-        result = {"status": "ok", "answer": answer}
++        result = {"status": "ok", "answer": answer, **representation}
+     except Exception as exc:
+         result = {"status": "execution_error", "answer": None, "error": type(exc).__name__}
+     print(json.dumps(result, allow_nan=False))

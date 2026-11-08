@@ -1,0 +1,21 @@
+{
+  "identity": "7602825ad1fbf2092ba2a0f07f324e54910d73af6bb9765ff684ad64be7a1e8c",
+  "response_digest": "7f32e3636d2ebf3643681108deae7cf0d95a6ee172de653baae73d844cee0306",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    coupon_rate = 0.03\n    yield_to_maturity = 0.05\n    years_to_maturity = 9\n    dirty_price = 85.784357\n    par_value = 100\n\n    annual_coupon = coupon_rate * par_value\n\n    # Calculate Macaulay duration from the bond's cash flows\n    weighted_present_value = 0.0\n    for year in range(1, years_to_maturity + 1):\n        cash_flow = annual_coupon\n        if year == years_to_maturity:\n            cash_flow += par_value\n\n        present_value = cash_flow / (1 + yield_to_maturity) ** year\n        weighted_present_value += year * present_value\n\n    macaulay_duration = weighted_present_value / dirty_price\n\n    # Convert Macaulay duration to modified duration\n    modified_duration = macaulay_duration / (1 + yield_to_maturity)\n\n    # Calculate price value of a basis point\n    pvbp = modified_duration * dirty_price * 0.0001\n\n    # Return the answer to three decimal places\n    return round(pvbp, 3)\n```",
+    "usage": {
+      "prompt_tokens": 4922,
+      "completion_tokens": 1284,
+      "total_tokens": 6206,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

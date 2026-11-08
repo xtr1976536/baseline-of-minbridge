@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2100",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the breakeven equity index level that makes a receive-fixed, pay-equity-index swap worth zero, using the initial index level, fixed annual rate, quarterly resets, remaining maturity, notional amount, and discount factors for the relevant quarterly payment dates?",
+        "usage": {
+          "prompt_tokens": 5090,
+          "completion_tokens": 58,
+          "total_tokens": 5148
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13713,
+          "completion_tokens": 613,
+          "total_tokens": 14326,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_equity_index = 100.0\n    fixed_rate = 0.03\n    notional_amount = 100_000_000\n    payment_frequency = 4\n\n    # Three months have elapsed, so three quarterly payments remain\n    remaining_pv_factors = [0.997506, 0.992556, 0.985222]\n\n    fixed_payment = (fixed_rate * notional_amount) / payment_frequency\n    present_value_fixed_leg = fixed_payment * sum(remaining_pv_factors)\n\n    # Equity leg return required for the swap value to equal zero\n    required_equity_return = present_value_fixed_leg / notional_amount\n    equity_index_level = initial_equity_index * (1 + required_equity_return)\n\n    # return answer\n    return round(equity_index_level, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5038,
+          "completion_tokens": 1659,
+          "total_tokens": 6697,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1464
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2849",
+        "score": 1.731858253479004
+      },
+      {
+        "function_id": "article-2063",
+        "score": 1.7046678066253662
+      },
+      {
+        "function_id": "article-771",
+        "score": 1.6975390911102295
+      },
+      {
+        "function_id": "article-400",
+        "score": 1.6954272985458374
+      },
+      {
+        "function_id": "article-208",
+        "score": 1.69056236743927
+      },
+      {
+        "function_id": "article-116",
+        "score": 1.6889680624008179
+      },
+      {
+        "function_id": "article-1424",
+        "score": 1.6823365688323975
+      },
+      {
+        "function_id": "article-2793",
+        "score": 1.6777961254119873
+      },
+      {
+        "function_id": "article-780",
+        "score": 1.677304983139038
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.674787998199463
+      },
+      {
+        "function_id": "article-888",
+        "score": 1.6742217540740967
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.671833872795105
+      },
+      {
+        "function_id": "article-710",
+        "score": 1.667933464050293
+      },
+      {
+        "function_id": "article-2186",
+        "score": 1.666548252105713
+      },
+      {
+        "function_id": "article-300",
+        "score": 1.6551854610443115
+      },
+      {
+        "function_id": "article-2658",
+        "score": 1.6539732217788696
+      },
+      {
+        "function_id": "article-573",
+        "score": 1.6483664512634277
+      },
+      {
+        "function_id": "article-781",
+        "score": 1.6449981927871704
+      },
+      {
+        "function_id": "article-707",
+        "score": 1.637529730796814
+      },
+      {
+        "function_id": "article-776",
+        "score": 1.6340233087539673
+      },
+      {
+        "function_id": "article-37",
+        "score": 1.6268229484558105
+      },
+      {
+        "function_id": "article-2649",
+        "score": 1.6250088214874268
+      },
+      {
+        "function_id": "article-2434",
+        "score": 1.6243939399719238
+      },
+      {
+        "function_id": "article-1425",
+        "score": 1.6242339611053467
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.6169987916946411
+      },
+      {
+        "function_id": "article-2678",
+        "score": 1.6089255809783936
+      },
+      {
+        "function_id": "article-2820",
+        "score": 1.60797119140625
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.606946349143982
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.6053552627563477
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.6002700328826904
+      }
+    ],
+    "selected_ids": [
+      "article-2678"
+    ],
+    "status": "ok",
+    "answer": 102.231,
+    "code": "def solution():\n    # Define variables name and value\n    initial_equity_index = 100.0\n    fixed_rate = 0.03\n    notional_amount = 100_000_000\n    payment_frequency = 4\n\n    # Three months have elapsed, so three quarterly payments remain\n    remaining_pv_factors = [0.997506, 0.992556, 0.985222]\n\n    fixed_payment = (fixed_rate * notional_amount) / payment_frequency\n    present_value_fixed_leg = fixed_payment * sum(remaining_pv_factors)\n\n    # Equity leg return required for the swap value to equal zero\n    required_equity_return = present_value_fixed_leg / notional_amount\n    equity_index_level = initial_equity_index * (1 + required_equity_return)\n\n    # return answer\n    return round(equity_index_level, 3)\n"
+  },
+  "digest": "2c522848f7af5f0ac1b28f9d65dbc198cedb89ad60abf73ee30f2c63cdb9fe9d"
+}

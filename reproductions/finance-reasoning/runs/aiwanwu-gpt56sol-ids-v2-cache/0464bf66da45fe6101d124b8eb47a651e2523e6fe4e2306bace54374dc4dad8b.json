@@ -1,0 +1,21 @@
+{
+  "identity": "0464bf66da45fe6101d124b8eb47a651e2523e6fe4e2306bace54374dc4dad8b",
+  "response_digest": "1f3cf060632d2a1b6788c2f1a76b1b9eb650d95f1bad79a189fd1d24be2ea183",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    december_quantities = [120, 50]\n    november_prices = [0.90, 0.60]\n    december_prices = [1.00, 0.80]\n\n    # Calculate the Paasche price index using December quantities\n    december_basket_cost = sum(\n        quantity * price\n        for quantity, price in zip(december_quantities, december_prices)\n    )\n    base_price_basket_cost = sum(\n        quantity * price\n        for quantity, price in zip(december_quantities, november_prices)\n    )\n    paasche_index = (december_basket_cost / base_price_basket_cost) * 100\n\n    # return answer to three decimal places\n    return round(paasche_index, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5580,
+      "completion_tokens": 258,
+      "total_tokens": 5838,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 83
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

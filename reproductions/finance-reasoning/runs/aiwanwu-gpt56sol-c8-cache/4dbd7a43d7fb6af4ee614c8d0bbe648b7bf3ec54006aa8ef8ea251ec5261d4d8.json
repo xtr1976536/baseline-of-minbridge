@@ -1,0 +1,18 @@
+{
+  "identity": "4dbd7a43d7fb6af4ee614c8d0bbe648b7bf3ec54006aa8ef8ea251ec5261d4d8",
+  "response_digest": "130aaffdc4a0996d6b72f2306f79be52481f219524d7c48f8d359f6867b0dadb",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    purchase_price = 40\n    sale_price = 55\n    shares = 200\n    discount = 0.15\n    holding_period = 1.5\n\n    # Calculate the discounted purchase price and total gain\n    discounted_purchase_price = purchase_price * (1 - discount)\n    total_gain = (sale_price - discounted_purchase_price) * shares\n\n    # Shares held less than two years have the full gain treated as ordinary income\n    taxable_income = total_gain if holding_period < 2 else discount * purchase_price * shares\n\n    # Return taxable income rounded to the nearest dollar\n    return round(taxable_income)\n```",
+    "usage": {
+      "prompt_tokens": 5586,
+      "completion_tokens": 255,
+      "total_tokens": 5841,
+      "completion_tokens_details": {
+        "reasoning_tokens": 105
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

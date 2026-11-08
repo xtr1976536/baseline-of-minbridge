@@ -1,0 +1,224 @@
+{
+  "record": {
+    "question_id": "test-2222",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the money-weighted rate of return (MWRR) or internal rate of return (IRR) for an initial investment followed by dated annual cash flows, using an initial rate guess and returning the result as a percentage?",
+        "usage": {
+          "prompt_tokens": 5059,
+          "completion_tokens": 51,
+          "total_tokens": 5110,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 14943,
+          "completion_tokens": 216,
+          "total_tokens": 15159,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 195
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    cash_flows = [20000, 30000, 50000, 60000]\n    initial_investment = -100000\n    guess_rate = 0.10\n    tolerance = 1e-6\n    max_iterations = 1000\n\n    # Do math calculation to get the answer\n    def npv(rate):\n        return initial_investment + sum(\n            cash_flow / ((1 + rate) ** year)\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n\n    def npv_derivative(rate):\n        return sum(\n            -year * cash_flow / ((1 + rate) ** (year + 1))\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n\n    rate = guess_rate\n\n    for _ in range(max_iterations):\n        current_npv = npv(rate)\n\n        if abs(current_npv) < tolerance:\n            break\n\n        rate -= current_npv / npv_derivative(rate)\n\n    # Return the MWRR as a percentage rounded to two decimal places\n    answer = round(rate * 100, 2)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5800,
+          "completion_tokens": 534,
+          "total_tokens": 6334,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 269
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-952",
+        "score": 2.3673763275146484,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-488",
+        "score": 1.9678528308868408,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-458",
+        "score": 1.9615575075149536,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-929",
+        "score": 1.935968041419983,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2916",
+        "score": 1.9159626960754395,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1444",
+        "score": 1.9097946882247925,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2003",
+        "score": 1.8997581005096436,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1442",
+        "score": 1.7792320251464844,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.7489415407180786,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1907",
+        "score": 1.7464998960494995,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1062",
+        "score": 1.7098522186279297,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.6897482872009277,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1061",
+        "score": 1.660081386566162,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2227",
+        "score": 1.660022258758545,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1095",
+        "score": 1.6157689094543457,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-456",
+        "score": 1.613732099533081,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1064",
+        "score": 1.6127475500106812,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-3052",
+        "score": 1.5931466817855835,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-424",
+        "score": 1.5910093784332275,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-560",
+        "score": 1.5909334421157837,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1545",
+        "score": 1.5877336263656616,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2319",
+        "score": 1.5824007987976074,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.5808162689208984,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2004",
+        "score": 1.5774269104003906,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2961",
+        "score": 1.576635718345642,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2967",
+        "score": 1.5697033405303955,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-3106",
+        "score": 1.5689246654510498,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1310",
+        "score": 1.5689170360565186,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-444",
+        "score": 1.5687308311462402,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1534",
+        "score": 1.567018747329712,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-952",
+      "article-488"
+    ],
+    "status": "ok",
+    "answer": 17.95,
+    "code": "def solution():\n    # Define variables name and value\n    cash_flows = [20000, 30000, 50000, 60000]\n    initial_investment = -100000\n    guess_rate = 0.10\n    tolerance = 1e-6\n    max_iterations = 1000\n\n    # Do math calculation to get the answer\n    def npv(rate):\n        return initial_investment + sum(\n            cash_flow / ((1 + rate) ** year)\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n\n    def npv_derivative(rate):\n        return sum(\n            -year * cash_flow / ((1 + rate) ** (year + 1))\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n\n    rate = guess_rate\n\n    for _ in range(max_iterations):\n        current_npv = npv(rate)\n\n        if abs(current_npv) < tolerance:\n            break\n\n        rate -= current_npv / npv_derivative(rate)\n\n    # Return the MWRR as a percentage rounded to two decimal places\n    answer = round(rate * 100, 2)\n    return answer\n"
+  },
+  "digest": "3089712e3f4f411c615be1f21e0fedcb2203f5ca66eb3644b3e8122715c88725"
+}

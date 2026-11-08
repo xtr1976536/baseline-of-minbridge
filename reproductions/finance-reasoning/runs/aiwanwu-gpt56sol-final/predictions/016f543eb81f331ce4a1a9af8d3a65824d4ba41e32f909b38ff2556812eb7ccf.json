@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2204",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the slope of a least-squares linear regression trend line from paired time-period and historical stock-price data, representing the average price change per period and supporting rounding to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5107,
+          "completion_tokens": 43,
+          "total_tokens": 5150,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15432,
+          "completion_tokens": 392,
+          "total_tokens": 15824,
+          "completion_tokens_details": {
+            "reasoning_tokens": 295
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    months = [1, 2, 3, 4, 5]\n    stock_prices = [150, 155, 147, 160, 166]\n    n = len(months)\n\n    # Do math calculation to get the answer\n    sum_x = sum(months)\n    sum_y = sum(stock_prices)\n    sum_xy = sum(x * y for x, y in zip(months, stock_prices))\n    sum_x_squared = sum(x ** 2 for x in months)\n\n    slope = (\n        (n * sum_xy - sum_x * sum_y)\n        / (n * sum_x_squared - sum_x ** 2)\n    )\n    answer = round(slope, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5893,
+          "completion_tokens": 365,
+          "total_tokens": 6258,
+          "completion_tokens_details": {
+            "reasoning_tokens": 186
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2106",
+        "score": 1.748508095741272
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.7356343269348145
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.7194263935089111
+      },
+      {
+        "function_id": "article-2077",
+        "score": 1.6735858917236328
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.663914680480957
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.6587939262390137
+      },
+      {
+        "function_id": "article-2526",
+        "score": 1.5988107919692993
+      },
+      {
+        "function_id": "article-1961",
+        "score": 1.5767170190811157
+      },
+      {
+        "function_id": "article-2140",
+        "score": 1.5582315921783447
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.5263142585754395
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.5251553058624268
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5192943811416626
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.5129737854003906
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.5122467279434204
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.507075548171997
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.505326271057129
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.4908208847045898
+      },
+      {
+        "function_id": "article-1234",
+        "score": 1.4903813600540161
+      },
+      {
+        "function_id": "article-2466",
+        "score": 1.488822102546692
+      },
+      {
+        "function_id": "article-2288",
+        "score": 1.4881374835968018
+      },
+      {
+        "function_id": "article-2355",
+        "score": 1.4867565631866455
+      },
+      {
+        "function_id": "article-2989",
+        "score": 1.485392451286316
+      },
+      {
+        "function_id": "article-510",
+        "score": 1.4804065227508545
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.474944829940796
+      },
+      {
+        "function_id": "article-359",
+        "score": 1.4694933891296387
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.468900442123413
+      },
+      {
+        "function_id": "article-2673",
+        "score": 1.4683343172073364
+      },
+      {
+        "function_id": "article-1632",
+        "score": 1.4675018787384033
+      },
+      {
+        "function_id": "article-2669",
+        "score": 1.4649834632873535
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.4638508558273315
+      }
+    ],
+    "selected_ids": [
+      "article-2106",
+      "article-2105",
+      "article-1959"
+    ],
+    "status": "ok",
+    "answer": 3.7,
+    "code": "def solution():\n    # Define variables name and value\n    months = [1, 2, 3, 4, 5]\n    stock_prices = [150, 155, 147, 160, 166]\n    n = len(months)\n\n    # Do math calculation to get the answer\n    sum_x = sum(months)\n    sum_y = sum(stock_prices)\n    sum_xy = sum(x * y for x, y in zip(months, stock_prices))\n    sum_x_squared = sum(x ** 2 for x in months)\n\n    slope = (\n        (n * sum_xy - sum_x * sum_y)\n        / (n * sum_x_squared - sum_x ** 2)\n    )\n    answer = round(slope, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "517deedd597e9ff3e5b32a5ab12b1ba339e72d2e5888e91e4f8e3419e44d55fe"
+}

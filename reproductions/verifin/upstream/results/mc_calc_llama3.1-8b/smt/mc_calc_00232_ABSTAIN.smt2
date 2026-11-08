@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:revenue_from_contract_with_customer_excluding_assessed_tax_fy2024,cost_of_goods_and_services_sold_fy2024)

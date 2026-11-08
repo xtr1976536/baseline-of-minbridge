@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2148",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Exponential Moving Average (EMA) for a time series of daily stock prices using a specified period, supports the standard smoothing factor of 2, and returns the EMA value for the final observation rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5086,
+          "completion_tokens": 52,
+          "total_tokens": 5138,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16792,
+          "completion_tokens": 613,
+          "total_tokens": 17405,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [150, 152, 151, 153, 155, 154, 156, 158, 157, 160,\n              162, 161, 163, 162, 164, 165, 167, 168, 166, 169,\n              170, 172]\n    period = 20\n    smoothing = 2\n\n    # Do math calculation to get the answer\n    multiplier = smoothing / (period + 1)\n    ema = sum(prices[:period]) / period\n\n    for price in prices[period:]:\n        ema = (price - ema) * multiplier + ema\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5859,
+          "completion_tokens": 398,
+          "total_tokens": 6257,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 220
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-962",
+        "score": 2.124180793762207
+      },
+      {
+        "function_id": "article-1225",
+        "score": 2.0611789226531982
+      },
+      {
+        "function_id": "article-1622",
+        "score": 2.0416595935821533
+      },
+      {
+        "function_id": "article-2845",
+        "score": 2.031196355819702
+      },
+      {
+        "function_id": "article-2471",
+        "score": 1.985466718673706
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.8816226720809937
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.872488260269165
+      },
+      {
+        "function_id": "article-1776",
+        "score": 1.8231191635131836
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.8114500045776367
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.7657561302185059
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.7558139562606812
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.7538793087005615
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.7497127056121826
+      },
+      {
+        "function_id": "article-1958",
+        "score": 1.7438768148422241
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.7081122398376465
+      },
+      {
+        "function_id": "article-1861",
+        "score": 1.6978522539138794
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.6818926334381104
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.6653861999511719
+      },
+      {
+        "function_id": "article-2145",
+        "score": 1.6245414018630981
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.6242679357528687
+      },
+      {
+        "function_id": "article-1226",
+        "score": 1.609122395515442
+      },
+      {
+        "function_id": "article-1632",
+        "score": 1.60333251953125
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.5877890586853027
+      },
+      {
+        "function_id": "article-501",
+        "score": 1.5827856063842773
+      },
+      {
+        "function_id": "article-852",
+        "score": 1.580315351486206
+      },
+      {
+        "function_id": "article-1621",
+        "score": 1.5715346336364746
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.5610473155975342
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.5607025623321533
+      },
+      {
+        "function_id": "article-666",
+        "score": 1.5596742630004883
+      },
+      {
+        "function_id": "article-359",
+        "score": 1.5509097576141357
+      }
+    ],
+    "selected_ids": [
+      "article-962",
+      "article-1225",
+      "article-2845"
+    ],
+    "status": "ok",
+    "answer": 161.72,
+    "code": "def solution():\n    # Define variables name and value\n    prices = [150, 152, 151, 153, 155, 154, 156, 158, 157, 160,\n              162, 161, 163, 162, 164, 165, 167, 168, 166, 169,\n              170, 172]\n    period = 20\n    smoothing = 2\n\n    # Do math calculation to get the answer\n    multiplier = smoothing / (period + 1)\n    ema = sum(prices[:period]) / period\n\n    for price in prices[period:]:\n        ema = (price - ema) * multiplier + ema\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "520f2441a01125e1d24fb566a983627ad93a50ddbc165a61786d3a65731ddb1e"
+}

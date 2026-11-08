@@ -1,0 +1,225 @@
+{
+  "record": {
+    "question_id": "test-2070",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the one-year net investor return for a hedge fund-of-funds investment after independently applying annual management and incentive fees under a 4% management and 12% performance fee structure to the initial investment and ending fund value, returning the result as a percentage rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5006,
+          "completion_tokens": 141,
+          "total_tokens": 5147,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 76
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14234,
+          "completion_tokens": 266,
+          "total_tokens": 14500,
+          "completion_tokens_details": {
+            "reasoning_tokens": 242
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_investment = 250_000\n    ending_fund_value = 320_000\n    management_fee_rate = 0.04\n    incentive_fee_rate = 0.12\n\n    # Do math calculation to get the answer\n    profit = ending_fund_value - initial_investment\n    management_fee = ending_fund_value * management_fee_rate\n    incentive_fee = profit * incentive_fee_rate\n    investor_value = ending_fund_value - management_fee - incentive_fee\n    answer = round((investor_value / initial_investment - 1) * 100, 1)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5557,
+          "completion_tokens": 283,
+          "total_tokens": 5840,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 126
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1023",
+        "score": 1.8236974477767944,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1983",
+        "score": 1.8138673305511475,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.803844928741455,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.7803728580474854,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.7793079614639282,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.7578102350234985,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.7422175407409668,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.7418712377548218,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.7067139148712158,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.6965672969818115,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.6697927713394165,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2901",
+        "score": 1.6561495065689087,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2902",
+        "score": 1.6501634120941162,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.6427137851715088,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2",
+        "score": 1.6382761001586914,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-545",
+        "score": 1.6377075910568237,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-637",
+        "score": 1.6343145370483398,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1460",
+        "score": 1.6299190521240234,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2916",
+        "score": 1.6250391006469727,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-126",
+        "score": 1.6224110126495361,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2944",
+        "score": 1.616089940071106,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.6119043827056885,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1171",
+        "score": 1.6103262901306152,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.6095972061157227,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1918",
+        "score": 1.6065287590026855,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1207",
+        "score": 1.6050174236297607,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.6049859523773193,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1920",
+        "score": 1.6016688346862793,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.6013710498809814,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.598755121231079,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1023",
+      "article-1983",
+      "article-1024"
+    ],
+    "status": "ok",
+    "answer": 19.5,
+    "code": "def solution():\n    # Define variables name and value\n    initial_investment = 250_000\n    ending_fund_value = 320_000\n    management_fee_rate = 0.04\n    incentive_fee_rate = 0.12\n\n    # Do math calculation to get the answer\n    profit = ending_fund_value - initial_investment\n    management_fee = ending_fund_value * management_fee_rate\n    incentive_fee = profit * incentive_fee_rate\n    investor_value = ending_fund_value - management_fee - incentive_fee\n    answer = round((investor_value / initial_investment - 1) * 100, 1)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "d433b44cb02596fa0a5964d5d70ea7b963597a12aecc2d25eb7014984d593db9"
+}

@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2057",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates annual depreciation expense using the sum-of-years-digits method for an asset with a given acquisition cost, salvage value, useful life, and specified year of depreciation, returning the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5002,
+          "completion_tokens": 48,
+          "total_tokens": 5050,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14242,
+          "completion_tokens": 437,
+          "total_tokens": 14679,
+          "completion_tokens_details": {
+            "reasoning_tokens": 340
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    cost = 120000\n    salvage_value = 20000\n    useful_life = 5\n    year = 3\n\n    # Do math calculation to get the answer\n    depreciable_base = cost - salvage_value\n    sum_of_years = useful_life * (useful_life + 1) // 2\n    remaining_years = useful_life - year + 1\n    depreciation_expense = depreciable_base * remaining_years / sum_of_years\n\n    # return answer\n    return round(depreciation_expense)\n```",
+        "usage": {
+          "prompt_tokens": 5763,
+          "completion_tokens": 173,
+          "total_tokens": 5936,
+          "completion_tokens_details": {
+            "reasoning_tokens": 34
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2551",
+        "score": 2.144298791885376
+      },
+      {
+        "function_id": "article-2247",
+        "score": 2.102430582046509
+      },
+      {
+        "function_id": "article-2657",
+        "score": 2.0990915298461914
+      },
+      {
+        "function_id": "article-2250",
+        "score": 2.0648651123046875
+      },
+      {
+        "function_id": "article-1704",
+        "score": 2.0615248680114746
+      },
+      {
+        "function_id": "article-2549",
+        "score": 2.0372824668884277
+      },
+      {
+        "function_id": "article-2220",
+        "score": 2.0297021865844727
+      },
+      {
+        "function_id": "article-1123",
+        "score": 2.0266969203948975
+      },
+      {
+        "function_id": "article-1701",
+        "score": 1.9928948879241943
+      },
+      {
+        "function_id": "article-76",
+        "score": 1.9928832054138184
+      },
+      {
+        "function_id": "article-1700",
+        "score": 1.986803412437439
+      },
+      {
+        "function_id": "article-1706",
+        "score": 1.9857957363128662
+      },
+      {
+        "function_id": "article-72",
+        "score": 1.9811081886291504
+      },
+      {
+        "function_id": "article-2550",
+        "score": 1.980847716331482
+      },
+      {
+        "function_id": "article-2083",
+        "score": 1.9759505987167358
+      },
+      {
+        "function_id": "article-2252",
+        "score": 1.9701595306396484
+      },
+      {
+        "function_id": "article-787",
+        "score": 1.9666601419448853
+      },
+      {
+        "function_id": "article-2974",
+        "score": 1.9614841938018799
+      },
+      {
+        "function_id": "article-67",
+        "score": 1.9573945999145508
+      },
+      {
+        "function_id": "article-655",
+        "score": 1.951817274093628
+      },
+      {
+        "function_id": "article-1506",
+        "score": 1.9497809410095215
+      },
+      {
+        "function_id": "article-74",
+        "score": 1.9465134143829346
+      },
+      {
+        "function_id": "article-1003",
+        "score": 1.9410829544067383
+      },
+      {
+        "function_id": "article-2248",
+        "score": 1.9243175983428955
+      },
+      {
+        "function_id": "article-1699",
+        "score": 1.9203226566314697
+      },
+      {
+        "function_id": "article-568",
+        "score": 1.919809103012085
+      },
+      {
+        "function_id": "article-2133",
+        "score": 1.9018083810806274
+      },
+      {
+        "function_id": "article-1122",
+        "score": 1.8997783660888672
+      },
+      {
+        "function_id": "article-2307",
+        "score": 1.899756908416748
+      },
+      {
+        "function_id": "article-1525",
+        "score": 1.8908724784851074
+      }
+    ],
+    "selected_ids": [
+      "article-2551",
+      "article-2250",
+      "article-1704"
+    ],
+    "status": "ok",
+    "answer": 20000,
+    "code": "def solution():\n    # Define variables name and value\n    cost = 120000\n    salvage_value = 20000\n    useful_life = 5\n    year = 3\n\n    # Do math calculation to get the answer\n    depreciable_base = cost - salvage_value\n    sum_of_years = useful_life * (useful_life + 1) // 2\n    remaining_years = useful_life - year + 1\n    depreciation_expense = depreciable_base * remaining_years / sum_of_years\n\n    # return answer\n    return round(depreciation_expense)\n"
+  },
+  "digest": "a5e55c96c70ba2cfaf853f8fc31198e5a2f1380546c70af1bdedb0fb76f5f177"
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "d29b22d7485d7d8e3ddd43f4ae30bec181c8d2cde77d3b2e1fd358783a199f99",
+  "response_digest": "3cc767ce532443c20a112cbd4f8f68251f53d905099fa765e71cacfa0fe45d43",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 100\n    coupon_rate = 0.08\n    coupon_payment = face_value * coupon_rate\n    spot_rates = [0.07, 0.08, 0.09]\n\n    # Discount each annual cash flow using its corresponding spot rate\n    bond_price = sum(\n        coupon_payment / (1 + spot_rates[year - 1]) ** year\n        for year in range(1, 4)\n    )\n    bond_price += face_value / (1 + spot_rates[2]) ** 3\n\n    # Return the price rounded to three decimal places\n    return round(bond_price, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5486,
+      "completion_tokens": 185,
+      "total_tokens": 5671,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 29
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

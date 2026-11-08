@@ -1,0 +1,21 @@
+{
+  "identity": "340a17b177a0a945a348b107e8396aec362533743d2ae45d38f09301ee6ac24d",
+  "response_digest": "ff5d937d92dcd352bd9a0a9fdaca5c07105fdaf10551eddf0f91887656aa28dd",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    two_year_spot_rate = 0.025\n    four_year_spot_rate = 0.055\n    start_year = 2\n    end_year = 4\n\n    # Calculate the two-year forward rate starting two years from now\n    forward_rate = (\n        ((1 + four_year_spot_rate) ** end_year)\n        / ((1 + two_year_spot_rate) ** start_year)\n    ) ** (1 / (end_year - start_year)) - 1\n\n    # Return the percentage rounded to three decimal places\n    answer = round(forward_rate * 100, 3)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5352,
+      "completion_tokens": 285,
+      "total_tokens": 5637,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 132
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

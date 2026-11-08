@@ -1,0 +1,18 @@
+{
+  "identity": "0a118aae5b3b4f5cb3f816ee431a38714b655cbbf766277bbf1dab19ba285d0f",
+  "response_digest": "e7a0b7951f9c7993fe18026badea603474a3ee592ee14dafee2c790ebfd9e04a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    face_value = 100\n    annual_coupon_rate = 0.05\n    payment_frequency = 1\n    spot_rates = [0.0486, 0.0495, 0.0565]\n    z_spread = 0.0234\n\n    # Calculate the annual coupon payment\n    coupon_payment = (face_value * annual_coupon_rate) / payment_frequency\n\n    # Discount each cash flow using the spot rate plus the Z-spread\n    bond_value = (\n        coupon_payment / (1 + spot_rates[0] + z_spread) ** 1\n        + coupon_payment / (1 + spot_rates[1] + z_spread) ** 2\n        + (coupon_payment + face_value)\n        / (1 + spot_rates[2] + z_spread) ** 3\n    )\n\n    # Return the bond value rounded to three decimal places\n    return round(bond_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 4976,
+      "completion_tokens": 353,
+      "total_tokens": 5329,
+      "completion_tokens_details": {
+        "reasoning_tokens": 138
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

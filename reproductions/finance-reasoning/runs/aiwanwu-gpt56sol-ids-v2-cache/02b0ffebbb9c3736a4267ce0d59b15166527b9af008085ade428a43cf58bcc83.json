@@ -1,0 +1,21 @@
+{
+  "identity": "02b0ffebbb9c3736a4267ce0d59b15166527b9af008085ade428a43cf58bcc83",
+  "response_digest": "9ab009d43b1b3739be11889b659642f4805fdb90dfb50d99e592704e9a56b65d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    common_shares = 1_200_000\n    share_price = 10\n    equity_market_value = common_shares * share_price\n\n    bond_face_value = 10_000_000\n    coupon_rate = 0.08\n    years_to_maturity = 5\n    semiannual_periods = years_to_maturity * 2\n    bond_yield = 0.1365\n    semiannual_coupon = bond_face_value * coupon_rate / 2\n    semiannual_yield = bond_yield / 2\n\n    # Market value of existing bonds\n    debt_market_value = (\n        semiannual_coupon * (1 - (1 + semiannual_yield) ** (-semiannual_periods)) / semiannual_yield\n        + bond_face_value * (1 + semiannual_yield) ** (-semiannual_periods)\n    )\n\n    total_market_value = equity_market_value + debt_market_value\n    equity_proportion = equity_market_value / total_market_value\n    debt_proportion = debt_market_value / total_market_value\n\n    new_funding = 7_500_000\n    new_debt = new_funding * debt_proportion\n\n    # Since the required new debt exceeds $2.5 million, the entire issuance\n    # carries a 16% pre-tax cost of debt.\n    cost_of_debt = 0.16\n    tax_rate = 0.30\n\n    risk_free_rate = 0.03\n    beta = 2.2\n    market_return = 0.10\n    cost_of_equity = risk_free_rate + beta * (market_return - risk_free_rate)\n\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n    wacc = (\n        equity_proportion * cost_of_equity\n        + debt_proportion * after_tax_cost_of_debt\n    )\n\n    answer = round(wacc * 100, 2)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5661,
+      "completion_tokens": 597,
+      "total_tokens": 6258,
+      "prompt_tokens_details": {
+        "cached_tokens": 5504
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 168
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

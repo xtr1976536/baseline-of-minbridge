@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2228",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the one-year total return on a leveraged stock position, accounting for purchase and sale prices, per-share commissions, dividends, leverage ratio, and financing interest at the call money rate, and returns the result as a percentage?",
+        "usage": {
+          "prompt_tokens": 5024,
+          "completion_tokens": 51,
+          "total_tokens": 5075
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C03\",\"C28\"]}",
+        "usage": {
+          "prompt_tokens": 13525,
+          "completion_tokens": 209,
+          "total_tokens": 13734,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 188
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    shares = 100\n    purchase_price = 50.0\n    commission_per_share = 0.05\n    leverage_ratio = 2.0\n    call_money_rate = 0.06\n    ending_price = 70.0\n    dividend_per_share = 0.50\n\n    # Do math calculation to get the answer\n    purchase_value = shares * purchase_price\n    borrowed_amount = purchase_value * (1 - 1 / leverage_ratio)\n    initial_investment = purchase_value / leverage_ratio + shares * commission_per_share\n    financing_cost = borrowed_amount * call_money_rate\n    final_equity_value = (\n        shares * ending_price\n        - borrowed_amount\n        - financing_cost\n        + shares * dividend_per_share\n    )\n    answer = (final_equity_value - initial_investment) / initial_investment * 100\n\n    # return answer\n    return round(answer, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5178,
+          "completion_tokens": 655,
+          "total_tokens": 5833,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 438
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2898",
+        "score": 1.68400239944458,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1922",
+        "score": 1.65932297706604,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-477",
+        "score": 1.658198595046997,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-574",
+        "score": 1.6511259078979492,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1183",
+        "score": 1.647223711013794,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2127",
+        "score": 1.6461039781570435,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-126",
+        "score": 1.6429827213287354,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2123",
+        "score": 1.6410447359085083,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1675",
+        "score": 1.6396753787994385,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2798",
+        "score": 1.6332623958587646,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.629624843597412,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1676",
+        "score": 1.629305124282837,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.6191848516464233,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1787",
+        "score": 1.6147432327270508,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2268",
+        "score": 1.6131559610366821,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-796",
+        "score": 1.6121697425842285,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.611302375793457,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1541",
+        "score": 1.6105337142944336,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2392",
+        "score": 1.609553575515747,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2230",
+        "score": 1.6080933809280396,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-40",
+        "score": 1.6077605485916138,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2792",
+        "score": 1.602344274520874,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1679",
+        "score": 1.6014081239700317,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1402",
+        "score": 1.6000409126281738,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2191",
+        "score": 1.5990365743637085,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.5987632274627686,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.5987436771392822,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1918",
+        "score": 1.5983206033706665,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1543",
+        "score": 1.5980594158172607,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-254",
+        "score": 1.5969821214675903,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-477",
+      "article-1918"
+    ],
+    "status": "ok",
+    "answer": 75.65,
+    "code": "def solution():\n    # Define variables name and value\n    shares = 100\n    purchase_price = 50.0\n    commission_per_share = 0.05\n    leverage_ratio = 2.0\n    call_money_rate = 0.06\n    ending_price = 70.0\n    dividend_per_share = 0.50\n\n    # Do math calculation to get the answer\n    purchase_value = shares * purchase_price\n    borrowed_amount = purchase_value * (1 - 1 / leverage_ratio)\n    initial_investment = purchase_value / leverage_ratio + shares * commission_per_share\n    financing_cost = borrowed_amount * call_money_rate\n    final_equity_value = (\n        shares * ending_price\n        - borrowed_amount\n        - financing_cost\n        + shares * dividend_per_share\n    )\n    answer = (final_equity_value - initial_investment) / initial_investment * 100\n\n    # return answer\n    return round(answer, 2)\n"
+  },
+  "digest": "2538b2d28943b51be60c1de743c152f51bbb9618b842edb991654291c22c51db"
+}

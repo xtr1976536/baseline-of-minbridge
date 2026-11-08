@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2067",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the integer number of calendar days between a commercial paper’s issue date and maturity date, using two specified dates and excluding financial valuation, interest, or yield calculations?",
+        "usage": {
+          "prompt_tokens": 5008,
+          "completion_tokens": 39,
+          "total_tokens": 5047,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15892,
+          "completion_tokens": 281,
+          "total_tokens": 16173,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 184
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    issuance_date = \"2023-03-15\"\n    maturity_date = \"2023-09-12\"\n\n    # Do math calculation to get the answer\n    from datetime import datetime\n\n    issuance_date_obj = datetime.strptime(issuance_date, \"%Y-%m-%d\")\n    maturity_date_obj = datetime.strptime(maturity_date, \"%Y-%m-%d\")\n    answer = (maturity_date_obj - issuance_date_obj).days\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 4959,
+          "completion_tokens": 206,
+          "total_tokens": 5165,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 84
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-125",
+        "score": 1.9952552318572998
+      },
+      {
+        "function_id": "article-1623",
+        "score": 1.6637345552444458
+      },
+      {
+        "function_id": "article-1793",
+        "score": 1.593465805053711
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.5725212097167969
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.570778489112854
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.56211256980896
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.5614030361175537
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.5301127433776855
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.5221768617630005
+      },
+      {
+        "function_id": "article-2567",
+        "score": 1.5189180374145508
+      },
+      {
+        "function_id": "article-2246",
+        "score": 1.5183287858963013
+      },
+      {
+        "function_id": "article-124",
+        "score": 1.510298728942871
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.5097613334655762
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.5080878734588623
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.508023977279663
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5045183897018433
+      },
+      {
+        "function_id": "article-1624",
+        "score": 1.5013418197631836
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.4990756511688232
+      },
+      {
+        "function_id": "article-28",
+        "score": 1.4906466007232666
+      },
+      {
+        "function_id": "article-948",
+        "score": 1.490371823310852
+      },
+      {
+        "function_id": "article-2557",
+        "score": 1.487436056137085
+      },
+      {
+        "function_id": "article-84",
+        "score": 1.4863765239715576
+      },
+      {
+        "function_id": "article-1956",
+        "score": 1.4853101968765259
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.483601689338684
+      },
+      {
+        "function_id": "article-102",
+        "score": 1.48141610622406
+      },
+      {
+        "function_id": "article-123",
+        "score": 1.4799606800079346
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.4762628078460693
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.475114107131958
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.4745349884033203
+      },
+      {
+        "function_id": "article-2738",
+        "score": 1.4733662605285645
+      }
+    ],
+    "selected_ids": [
+      "article-125"
+    ],
+    "status": "ok",
+    "answer": 181,
+    "code": "def solution():\n    # Define variables name and value\n    issuance_date = \"2023-03-15\"\n    maturity_date = \"2023-09-12\"\n\n    # Do math calculation to get the answer\n    from datetime import datetime\n\n    issuance_date_obj = datetime.strptime(issuance_date, \"%Y-%m-%d\")\n    maturity_date_obj = datetime.strptime(maturity_date, \"%Y-%m-%d\")\n    answer = (maturity_date_obj - issuance_date_obj).days\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "9701ae604ed0fea9aa6f452cb451bb75d17ae1b0b854a1321657ecf15e2c307f"
+}

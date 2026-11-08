@@ -1,0 +1,42 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_stockholders_equity_fy2022 Real)
+(declare-const accumulated_other_comprehensive_income_loss_net_of_tax_fy2022 Real)
+(declare-const common_stocks_including_additional_paid_in_capital_fy2022 Real)
+(declare-const retained_earnings_accumulated_deficit_fy2022 Real)
+
+(assert (! (= accumulated_other_comprehensive_income_loss_net_of_tax_fy2022 -4678) :named evidence_accumulated_other_comprehensive_income_loss_net_of_tax_fy2022))
+(assert (! (= common_stocks_including_additional_paid_in_capital_fy2022 86939) :named evidence_common_stocks_including_additional_paid_in_capital_fy2022))
+(assert (! (= retained_earnings_accumulated_deficit_fy2022 84281) :named evidence_retained_earnings_accumulated_deficit_fy2022))
+
+(assert (! (= computed_stockholders_equity_fy2022 (+ common_stocks_including_additional_paid_in_capital_fy2022 retained_earnings_accumulated_deficit_fy2022 accumulated_other_comprehensive_income_loss_net_of_tax_fy2022)) :named formula_stockholders_equity_fy2022))
+
+(assert (! (<= (- computed_stockholders_equity_fy2022 88542) 88.542000000000002) :named claim_upper))
+(assert (! (<= (- 88542 computed_stockholders_equity_fy2022) 88.542000000000002) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2022_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2022_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2022_06_30_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_StockholdersEquity_instant_2022_06_30_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_StockholdersEquity_instant_2022_06_30_unit_USD_dims_none 166542) :named evidence_xbrl_fact_us_gaap_StockholdersEquity_instant_2022_06_30_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= common_stocks_including_additional_paid_in_capital_fy2022 xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2022_06_30_unit_USD_dims_none) :named xbrl_bind_common_stocks_including_additional_paid_in_capital_fy2022_edgar_2022_06_30_0001564590_22_026876))
+(assert (! (= xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2022_06_30_unit_USD_dims_none 86939) :named xbrl_instance_common_stocks_including_additional_paid_in_capital_fy2022))
+(assert (! (= retained_earnings_accumulated_deficit_fy2022 xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2022_06_30_unit_USD_dims_none) :named xbrl_bind_retained_earnings_accumulated_deficit_fy2022_edgar_2022_06_30_0001564590_22_026876))
+(assert (! (= xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2022_06_30_unit_USD_dims_none 84281) :named xbrl_instance_retained_earnings_accumulated_deficit_fy2022))
+(assert (! (= accumulated_other_comprehensive_income_loss_net_of_tax_fy2022 xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2022_06_30_unit_USD_dims_none) :named xbrl_bind_accumulated_other_comprehensive_income_loss_net_of_tax_fy2022_edgar_2022_06_30_0001564590_22_026876))
+(assert (! (= xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2022_06_30_unit_USD_dims_none -4678) :named xbrl_instance_accumulated_other_comprehensive_income_loss_net_of_tax_fy2022))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_StockholdersEquity_instant_2022_06_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2022_06_30_unit_USD_dims_none xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2022_06_30_unit_USD_dims_none xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2022_06_30_unit_USD_dims_none)) 2) :named xbrl_calc_7_630596644_StockholdersEquity_C_0000789019_20220630_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_StockholdersEquity_instant_2022_06_30_unit_USD_dims_none (+ xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2022_06_30_unit_USD_dims_none xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2022_06_30_unit_USD_dims_none xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2022_06_30_unit_USD_dims_none)) (- 2)) :named xbrl_calc_7_630596644_StockholdersEquity_C_0000789019_20220630_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

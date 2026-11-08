@@ -1,0 +1,1243 @@
+[
+  {
+    "id": "FinQA:AES/2001/page_33.pdf-3",
+    "question": "what was the 2001 first quarter average of high and low stock prices?",
+    "frozen_gold": "50.73",
+    "baseline_prediction": {
+      "sample_id": "FinQA:AES/2001/page_33.pdf-3",
+      "status": "answered",
+      "value": 50.724999999999994,
+      "meta": {
+        "currency": "USD",
+        "scale": null,
+        "unit": "currency/share"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:AES/2001/page_33.pdf-3",
+      "status": "answered",
+      "value": 50.724999999999994,
+      "meta": {
+        "currency": "USD",
+        "scale": null,
+        "unit": "currency/share"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:AES/2001/page_33.pdf-3",
+      "value": 50.724999999999994,
+      "meta": {
+        "currency": "USD",
+        "scale": null,
+        "unit": "currency/share"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "program_sha256": "ed1b1c5403c0e9fb328f1532b28e28f92f5cdbcb36003d2ec8a6881df6317c0d",
+      "program": "def compute(vars):\n    high = vars[\"v1\"]\n    low = vars[\"v2\"]\n    value = (high + low) / 2\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"high\": high,\n            \"low\": low,\n            \"count\": 2,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": None,\n                \"unit\": \"currency/share\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 60.15,
+        "v2": 41.3
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 5
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "average",
+      "execution": {
+        "value": 50.724999999999994,
+        "trace": {
+          "high": 60.15,
+          "low": 41.3,
+          "count": 2,
+          "output_meta": {
+            "currency": "USD",
+            "scale": null,
+            "unit": "currency/share"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:HIG/2011/page_53.pdf-2",
+    "question": "in 2011 what was the summary of environmental reserves as of december 31 , 2011",
+    "frozen_gold": "18.1%",
+    "baseline_prediction": {
+      "sample_id": "FinQA:HIG/2011/page_53.pdf-2",
+      "status": "answered",
+      "value": 1007.0,
+      "meta": {
+        "currency": "USD",
+        "scale": null,
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:HIG/2011/page_53.pdf-2",
+      "status": "answered",
+      "value": 1007.0,
+      "meta": {
+        "currency": "USD",
+        "scale": null,
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:HIG/2011/page_53.pdf-2",
+      "value": 1007.0,
+      "meta": {
+        "currency": "USD",
+        "scale": null,
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "program_sha256": "a77843ee02aff144b83357fea7aac7a6079f1b8067caea0916f9c825df63343a",
+      "program": "def compute(vars):\n    values = {\n        \"v1\": vars[\"v1\"],\n        \"v2\": vars[\"v2\"],\n        \"v3\": vars[\"v3\"],\n        \"v4\": vars[\"v4\"],\n        \"v5\": vars[\"v5\"],\n        \"v6\": vars[\"v6\"],\n    }\n    result = sum(values.values())\n    return {\n        \"value\": result,\n        \"trace\": {\n            \"inputs\": values,\n            \"sum\": result,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": None,\n                \"unit\": None,\n            },\n        },\n    }",
+      "inputs": {
+        "v1": 271.0,
+        "v2": 39.0,
+        "v3": 57.0,
+        "v4": 367.0,
+        "v5": -47.0,
+        "v6": 320.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 7
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "sum",
+      "execution": {
+        "value": 1007.0,
+        "trace": {
+          "inputs": {
+            "v1": 271.0,
+            "v2": 39.0,
+            "v3": 57.0,
+            "v4": 367.0,
+            "v5": -47.0,
+            "v6": 320.0
+          },
+          "sum": 1007.0,
+          "output_meta": {
+            "currency": "USD",
+            "scale": null,
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:GS/2017/page_86.pdf-2",
+    "question": "in millions for the fourth quarters of 2017 and 2016 , what was the total tier 1 capital?",
+    "frozen_gold": "160032",
+    "baseline_prediction": {
+      "sample_id": "FinQA:GS/2017/page_86.pdf-2",
+      "status": "answered",
+      "value": 160035.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:GS/2017/page_86.pdf-2",
+      "status": "answered",
+      "value": 160035.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:GS/2017/page_86.pdf-2",
+      "value": 160035.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "program_sha256": "b8bb4b590977769febf21992681916cfa8dc92a21ce58773835cdf9e3084352d",
+      "program": "def compute(vars):\n    total_tier_1_capital = vars[\"v1\"] + vars[\"v2\"]\n    return {\n        \"value\": total_tier_1_capital,\n        \"trace\": {\n            \"total_tier_1_capital\": total_tier_1_capital,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 78227.0,
+        "v2": 81808.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "sum",
+      "execution": {
+        "value": 160035.0,
+        "trace": {
+          "total_tier_1_capital": 160035.0,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:LMT/2012/page_73.pdf-1",
+    "question": "what was the ratio of the shares in 2012 to 2011 that were excluded in the calculation of the diluted earnings due to the anti-dilute nature",
+    "frozen_gold": "0.91",
+    "baseline_prediction": {
+      "sample_id": "FinQA:LMT/2012/page_73.pdf-1",
+      "status": "answered",
+      "value": 0.5970149253731343,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "ratio"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:LMT/2012/page_73.pdf-1",
+      "status": "answered",
+      "value": 0.5970149253731343,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "ratio"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:LMT/2012/page_73.pdf-1",
+      "value": 0.5970149253731343,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "ratio"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "program_sha256": "18786d2f7a55619c9a13792c7d8b04d63ffcfb166fb6467cbe983d98c85a82bd",
+      "program": "def compute(vars):\n    numerator_2012 = vars[\"v1\"]\n    denominator_2011 = vars[\"v2\"]\n\n    if denominator_2011 == 0:\n        return {\"value\": None, \"trace\": {\n            \"numerator_2012\": numerator_2012,\n            \"denominator_2011\": denominator_2011,\n            \"output_meta\": {\"currency\": None, \"scale\": \"ones\", \"unit\": \"ratio\"}\n        }}\n\n    ratio = numerator_2012 / denominator_2011\n    return {\n        \"value\": ratio,\n        \"trace\": {\n            \"numerator_2012\": numerator_2012,\n            \"denominator_2011\": denominator_2011,\n            \"output_meta\": {\"currency\": None, \"scale\": \"ones\", \"unit\": \"ratio\"}\n        }\n    }",
+      "inputs": {
+        "v1": 8.0,
+        "v2": 13.4
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 5
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "ratio",
+      "execution": {
+        "value": 0.5970149253731343,
+        "trace": {
+          "numerator_2012": 8.0,
+          "denominator_2011": 13.4,
+          "output_meta": {
+            "currency": null,
+            "scale": "ones",
+            "unit": "ratio"
+          },
+          "effective_output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "ratio"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:JPM/2018/page_90.pdf-6",
+    "question": "in 2017 what was the percent of the cib markets net interest income as part of the managed interest income",
+    "frozen_gold": "9.9%",
+    "baseline_prediction": {
+      "sample_id": "FinQA:JPM/2018/page_90.pdf-6",
+      "status": "answered",
+      "value": 9.006029955261623,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "percentage",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:JPM/2018/page_90.pdf-6",
+      "status": "answered",
+      "value": 9.006029955261623,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "percentage",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:JPM/2018/page_90.pdf-6",
+      "value": 9.006029955261623,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "percentage",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "program_sha256": "6c346cf34d90bc475f2db2a6108418012a9a4443981833fda2b59c6514434eb6",
+      "program": "def compute(vars):\n    cib_markets_income = vars[\"v1\"]\n    managed_income = vars[\"v2\"]\n\n    if managed_income == 0:\n        return {\"value\": None, \"trace\": {}}\n\n    percentage = cib_markets_income / managed_income * 100\n\n    return {\n        \"value\": percentage,\n        \"trace\": {\n            \"cib_markets_income\": cib_markets_income,\n            \"managed_income\": managed_income,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": \"percentage\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 4630.0,
+        "v2": 51410.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "ratio",
+      "execution": {
+        "value": 9.006029955261623,
+        "trace": {
+          "cib_markets_income": 4630.0,
+          "managed_income": 51410.0,
+          "output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:GPN/2010/page_89.pdf-3",
+    "question": "what was the total compensation expense for restricted stock recognized from 2008 to 2010",
+    "frozen_gold": "26.8",
+    "baseline_prediction": {
+      "sample_id": "FinQA:GPN/2010/page_89.pdf-3",
+      "status": "answered",
+      "value": 26.799999999999997,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:GPN/2010/page_89.pdf-3",
+      "status": "answered",
+      "value": 26.799999999999997,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:GPN/2010/page_89.pdf-3",
+      "value": 26.799999999999997,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "666ec9882bfd72764a2b5d7162e8fe56fa1efc2819004a0bc61501fbd5119306",
+      "program": "def compute(vars):\n    v1 = vars[\"v1\"]\n    v2 = vars[\"v2\"]\n    v3 = vars[\"v3\"]\n    total = v1 + v2 + v3\n\n    return {\n        \"value\": total,\n        \"trace\": {\n            \"v1\": v1,\n            \"v2\": v2,\n            \"v3\": v3,\n            \"total_compensation_expense\": total,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 5.7,
+        "v2": 9.0,
+        "v3": 12.1
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 4
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "sum",
+      "execution": {
+        "value": 26.799999999999997,
+        "trace": {
+          "v1": 5.7,
+          "v2": 9.0,
+          "v3": 12.1,
+          "total_compensation_expense": 26.799999999999997,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:TFX/2017/page_78.pdf-1",
+    "question": "what portion of the total number of securities approved by security holders is issued?",
+    "frozen_gold": "32.0%",
+    "baseline_prediction": {
+      "sample_id": "FinQA:TFX/2017/page_78.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:TFX/2017/page_78.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:TFX/2017/page_78.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "FinQA:CME/2010/page_91.pdf-2",
+    "question": "what percentage of total other current assets is represented by",
+    "frozen_gold": "8%",
+    "baseline_prediction": {
+      "sample_id": "FinQA:CME/2010/page_91.pdf-2",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:CME/2010/page_91.pdf-2",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:CME/2010/page_91.pdf-2",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "FinQA:ETR/2016/page_23.pdf-1",
+    "question": "what is the growth rate in net revenue in 2015 for entergy corporation?",
+    "frozen_gold": "1.6%",
+    "baseline_prediction": {
+      "sample_id": "FinQA:ETR/2016/page_23.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:ETR/2016/page_23.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:ETR/2016/page_23.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "FinQA:STT/2009/page_127.pdf-1",
+    "question": "how much did the company spent to repurchase shares of common stock in 2008 , in millions?",
+    "frozen_gold": "300",
+    "baseline_prediction": {
+      "sample_id": "FinQA:STT/2009/page_127.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:STT/2009/page_127.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:STT/2009/page_127.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "FinQA:RSG/2018/page_135.pdf-1",
+    "question": "based on the december 31 2018 target what was the debt to equity ratio",
+    "frozen_gold": "4.6",
+    "baseline_prediction": {
+      "sample_id": "FinQA:RSG/2018/page_135.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:RSG/2018/page_135.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:RSG/2018/page_135.pdf-1",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "FinQA:AES/2001/page_85.pdf-2",
+    "question": "prior to the first remarketing date , what is the annual interest cost on the remarketable or redeemable securities ( 2018 2018roars 2019 2019 ) ?",
+    "frozen_gold": "18525000",
+    "baseline_prediction": {
+      "sample_id": "FinQA:AES/2001/page_85.pdf-2",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:AES/2001/page_85.pdf-2",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:AES/2001/page_85.pdf-2",
+      "status": "abstained",
+      "value": null,
+      "meta": {},
+      "precision": "unknown",
+      "reason": "At least one required subgoal could not be grounded"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "method": "unchanged_no_proven_final_program",
+      "model_steps_rerun": false
+    }
+  },
+  {
+    "id": "FinQA:CB/2008/page_229.pdf-2",
+    "question": "what was the average amortization expense from 2006 to 2008",
+    "frozen_gold": "77",
+    "baseline_prediction": {
+      "sample_id": "FinQA:CB/2008/page_229.pdf-2",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "Invalid generated Python syntax"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:CB/2008/page_229.pdf-2",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "Invalid generated Python syntax"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:CB/2008/page_229.pdf-2",
+      "value": 77.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": null,
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "01a928dd6dee134f4d398d2aac60a6b6db88067a4dc6d17ca2ccc423a7dc868e",
+      "program": "def compute(vars):\n    values = [vars[\"v1\"], vars[\"v2\"], vars[\"v3\"]]\n    result = sum(values) / len(values)\n    return {\n        \"value\": result,\n        \"trace\": {\n            \"values\": values,\n            \"count\": len(values),\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    } }",
+      "inputs": {
+        "v1": 64.0,
+        "v2": 77.0,
+        "v3": 90.0
+      },
+      "provenance": {
+        "method": "captured_execute_with_frozen_control_flow_proof",
+        "engine_sha256": "8c7395cbd81af7ac909f4419d941893df0876b7f1acef4b73303c4b959a7de30",
+        "capture_program_sha256": "01a928dd6dee134f4d398d2aac60a6b6db88067a4dc6d17ca2ccc423a7dc868e",
+        "capture_count": 1,
+        "original_trace_has_OMD_or_metric_execution": false,
+        "input_key_contract": "v1..vN; metric execute is preceded by OMD in this frozen engine"
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "average",
+      "execution": {
+        "value": 77.0,
+        "trace": {
+          "values": [
+            64.0,
+            77.0,
+            90.0
+          ],
+          "count": 3,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          },
+          "executor_protocol": {
+            "program_representation": [
+              "extraneous_terminal_brace"
+            ],
+            "effective_program": "def compute(vars):\n    values = [vars[\"v1\"], vars[\"v2\"], vars[\"v3\"]]\n    result = sum(values) / len(values)\n    return {\n        \"value\": result,\n        \"trace\": {\n            \"values\": values,\n            \"count\": len(values),\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    }"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:SNA/2007/page_49.pdf-2",
+    "question": "based on the cash dividends paid , how many common stock shares were outstanding?",
+    "frozen_gold": "58909091",
+    "baseline_prediction": {
+      "sample_id": "FinQA:SNA/2007/page_49.pdf-2",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "Only one compute(vars) function is permitted"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:SNA/2007/page_49.pdf-2",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ProtocolError",
+      "error": "Only one compute(vars) function is permitted"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:SNA/2007/page_49.pdf-2",
+      "value": 58.37837837837837,
+      "meta": {
+        "currency": null,
+        "scale": "million",
+        "unit": "shares"
+      },
+      "precision": null,
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": false,
+    "reexecution": {
+      "program_sha256": "0bae7864b9ca72f0dfa5d82e961b848b75eb12b15e55b6e2273ccfae886fdaa1",
+      "program": "{\"code\":\"def compute(vars):\\n    cash_dividends_paid = vars[\\\"v1\\\"]\\n    dividends_per_common_share = vars[\\\"v2\\\"]\\n\\n    if dividends_per_common_share == 0:\\n        return None\\n\\n    shares_outstanding = cash_dividends_paid / dividends_per_common_share\\n    return {\\n        \\\"value\\\": shares_outstanding,\\n        \\\"trace\\\": {\\n            \\\"cash_dividends_paid\\\": cash_dividends_paid,\\n            \\\"dividends_per_common_share\\\": dividends_per_common_share,\\n            \\\"output_meta\\\": {\\n                \\\"currency\\\": None,\\n                \\\"scale\\\": \\\"million\\\",\\n                \\\"unit\\\": \\\"shares\\\"\\n            }\\n        }\\n    }\"}",
+      "inputs": {
+        "v1": 64.8,
+        "v2": 1.11
+      },
+      "provenance": {
+        "method": "captured_execute_with_frozen_control_flow_proof",
+        "engine_sha256": "8c7395cbd81af7ac909f4419d941893df0876b7f1acef4b73303c4b959a7de30",
+        "capture_program_sha256": "0bae7864b9ca72f0dfa5d82e961b848b75eb12b15e55b6e2273ccfae886fdaa1",
+        "capture_count": 1,
+        "original_trace_has_OMD_or_metric_execution": false,
+        "input_key_contract": "v1..vN; metric execute is preceded by OMD in this frozen engine"
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "division",
+      "execution": {
+        "value": 58.37837837837837,
+        "trace": {
+          "cash_dividends_paid": 64.8,
+          "dividends_per_common_share": 1.11,
+          "output_meta": {
+            "currency": null,
+            "scale": "million",
+            "unit": "shares"
+          },
+          "executor_protocol": {
+            "program_representation": [
+              "sole_json_code_field"
+            ],
+            "effective_program": "def compute(vars):\n    cash_dividends_paid = vars[\"v1\"]\n    dividends_per_common_share = vars[\"v2\"]\n\n    if dividends_per_common_share == 0:\n        return None\n\n    shares_outstanding = cash_dividends_paid / dividends_per_common_share\n    return {\n        \"value\": shares_outstanding,\n        \"trace\": {\n            \"cash_dividends_paid\": cash_dividends_paid,\n            \"dividends_per_common_share\": dividends_per_common_share,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": \"million\",\n                \"unit\": \"shares\"\n            }\n        }\n    }"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:AMT/2014/page_160.pdf-2",
+    "question": "what portion of future lease payments are due after 5 years?",
+    "frozen_gold": "61%",
+    "baseline_prediction": {
+      "sample_id": "FinQA:AMT/2014/page_160.pdf-2",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ValueError",
+      "error": "Unsupported scale: ratio"
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:AMT/2014/page_160.pdf-2",
+      "status": "error",
+      "value": null,
+      "meta": {},
+      "precision": null,
+      "error_type": "ValueError",
+      "error": "Unsupported scale: ratio"
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:AMT/2014/page_160.pdf-2",
+      "value": 0.6105295118719062,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "ratio"
+      },
+      "precision": null,
+      "status": "answered"
+    },
+    "baseline_correct": false,
+    "rescored_only_correct": false,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "7f68adcde7e80fabc1345759ccc98459b38f42d269a749534442b1ec61bb8d24",
+      "program": "def compute(vars):\n    try:\n        thereafter = vars[\"v1\"]\n        total = vars[\"v2\"]\n        portion = thereafter / total\n    except ZeroDivisionError:\n        return None\n\n    return {\n        \"value\": portion,\n        \"trace\": {\n            \"thereafter\": thereafter,\n            \"total\": total,\n            \"portion\": portion,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": \"ratio\",\n                \"unit\": \"ratio\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 4214600.0,
+        "v2": 6903188.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 4
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "ratio",
+      "execution": {
+        "value": 0.6105295118719062,
+        "trace": {
+          "thereafter": 4214600.0,
+          "total": 6903188.0,
+          "portion": 0.6105295118719062,
+          "output_meta": {
+            "currency": null,
+            "scale": "ratio",
+            "unit": "ratio"
+          },
+          "effective_output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "ratio"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:TMUS/2017/page_29.pdf-2",
+    "question": "what is the average size ( in square feet ) of call centers in 2017?",
+    "frozen_gold": "82352.94",
+    "baseline_prediction": {
+      "sample_id": "FinQA:TMUS/2017/page_29.pdf-2",
+      "status": "answered",
+      "value": 82352.94117647059,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "square feet"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:TMUS/2017/page_29.pdf-2",
+      "status": "answered",
+      "value": 82352.94117647059,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "square feet"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:TMUS/2017/page_29.pdf-2",
+      "value": 82352.94117647059,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "square feet"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "921770af4885c4ba45a670c28a4e5934fda01e32cf54e11b176f5e6fcbdc78c1",
+      "program": "def compute(vars):\n    total_size = vars[\"v1\"]\n    number_of_call_centers = vars[\"v2\"]\n\n    if number_of_call_centers == 0:\n        return None\n\n    average_size = total_size / number_of_call_centers\n\n    return {\n        \"value\": average_size,\n        \"trace\": {\n            \"total_size\": total_size,\n            \"number_of_call_centers\": number_of_call_centers,\n            \"average_size\": average_size,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": \"square feet\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 1400000.0,
+        "v2": 17.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 4
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "average",
+      "execution": {
+        "value": 82352.94117647059,
+        "trace": {
+          "total_size": 1400000.0,
+          "number_of_call_centers": 17.0,
+          "average_size": 82352.94117647059,
+          "output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "square feet"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:GS/2017/page_132.pdf-3",
+    "question": "what was the percentage change in level 3 financial assets from 2016 to 2017 in millions?",
+    "frozen_gold": "-18%",
+    "baseline_prediction": {
+      "sample_id": "FinQA:GS/2017/page_132.pdf-3",
+      "status": "answered",
+      "value": -17.52147766323024,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:GS/2017/page_132.pdf-3",
+      "status": "answered",
+      "value": -17.52147766323024,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:GS/2017/page_132.pdf-3",
+      "value": -17.52147766323024,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "0476e54bd88ba6f554ac2aa9bbde08f33b1c42e5eca7d73493842629ca192f1c",
+      "program": "def compute(vars):\n    old_value = vars[\"v1\"]\n    new_value = vars[\"v2\"]\n    if old_value == 0:\n        return None\n    change_ratio = (new_value - old_value) / old_value\n    value = change_ratio * 100\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"old_value\": old_value,\n            \"new_value\": new_value,\n            \"change_ratio\": change_ratio,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": \"percentage\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 23280.0,
+        "v2": 19201.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 4
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "change ratio",
+      "execution": {
+        "value": -17.52147766323024,
+        "trace": {
+          "old_value": 23280.0,
+          "new_value": 19201.0,
+          "change_ratio": -0.1752147766323024,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": "percentage"
+          },
+          "effective_output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:AON/2007/page_171.pdf-3",
+    "question": "what are the average net unrealized investment gains for the period?",
+    "frozen_gold": "67",
+    "baseline_prediction": {
+      "sample_id": "FinQA:AON/2007/page_171.pdf-3",
+      "status": "answered",
+      "value": 67.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:AON/2007/page_171.pdf-3",
+      "status": "answered",
+      "value": 67.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:AON/2007/page_171.pdf-3",
+      "value": 67.0,
+      "meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "af704114bbd4f85f756d734f58a9ad5b75a47642df998df4cd9168ec2d3c2bf7",
+      "program": "def compute(vars):\n    values = [vars[\"v1\"], vars[\"v2\"], vars[\"v3\"]]\n    count = len(values)\n    average = sum(values) / count\n    return {\n        \"value\": average,\n        \"trace\": {\n            \"values\": values,\n            \"count\": count,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 52.0,
+        "v2": 73.0,
+        "v3": 76.0
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 4
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "average",
+      "execution": {
+        "value": 67.0,
+        "trace": {
+          "values": [
+            52.0,
+            73.0,
+            76.0
+          ],
+          "count": 3,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:C/2015/page_96.pdf-3",
+    "question": "what was the difference in billions in net outflows from dec . 31 , 2014 to dec . 31 , 2015?",
+    "frozen_gold": "-32.1",
+    "baseline_prediction": {
+      "sample_id": "FinQA:C/2015/page_96.pdf-3",
+      "status": "answered",
+      "value": -32.10000000000002,
+      "meta": {
+        "currency": "USD",
+        "scale": "billion",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:C/2015/page_96.pdf-3",
+      "status": "answered",
+      "value": -32.10000000000002,
+      "meta": {
+        "currency": "USD",
+        "scale": "billion",
+        "unit": null
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:C/2015/page_96.pdf-3",
+      "value": -32.10000000000002,
+      "meta": {
+        "currency": "USD",
+        "scale": "billion",
+        "unit": null
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "17d050848a335328f24c6c5f2c807eaa6ee1f9675f2b8781648dda57a017c37c",
+      "program": "def compute(vars):\n    old = vars[\"v1\"]\n    new = vars[\"v2\"]\n    difference = new - old\n    return {\n        \"value\": difference,\n        \"trace\": {\n            \"old_net_outflows\": old,\n            \"new_net_outflows\": new,\n            \"difference\": difference,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"billion\",\n                \"unit\": None\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 368.6,
+        "v2": 336.5
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "difference",
+      "execution": {
+        "value": -32.10000000000002,
+        "trace": {
+          "old_net_outflows": 368.6,
+          "new_net_outflows": 336.5,
+          "difference": -32.10000000000002,
+          "output_meta": {
+            "currency": "USD",
+            "scale": "billion",
+            "unit": null
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  },
+  {
+    "id": "FinQA:SNA/2007/page_29.pdf-1",
+    "question": "in 2004 what was the ratio of the snap-on incorporated to the peer group perfomance",
+    "frozen_gold": "0.86",
+    "baseline_prediction": {
+      "sample_id": "FinQA:SNA/2007/page_29.pdf-1",
+      "status": "answered",
+      "value": 0.8572365831255742,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "ratio"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "rescored_only_prediction": {
+      "sample_id": "FinQA:SNA/2007/page_29.pdf-1",
+      "status": "answered",
+      "value": 0.8572365831255742,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "ratio"
+      },
+      "precision": "unknown",
+      "reason": ""
+    },
+    "reexecuted_prediction": {
+      "sample_id": "FinQA:SNA/2007/page_29.pdf-1",
+      "value": 0.8572365831255742,
+      "meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "ratio"
+      },
+      "precision": "unknown",
+      "status": "answered"
+    },
+    "baseline_correct": true,
+    "rescored_only_correct": true,
+    "reexecuted_correct": true,
+    "reexecution": {
+      "program_sha256": "282fd4809f0d873a111db35657e9230b284227fcf9e0e17ce6fd7c993df72511",
+      "program": "def compute(vars):\n    snap_on = vars[\"v1\"]\n    peer_group = vars[\"v2\"]\n\n    if peer_group == 0:\n        return None\n\n    value = snap_on / peer_group\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"snap_on\": snap_on,\n            \"peer_group\": peer_group,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": \"ratio\"\n            }\n        }\n    }",
+      "inputs": {
+        "v1": 130.66,
+        "v2": 152.42
+      },
+      "provenance": {
+        "method": "stored_OPE.final_event",
+        "event_index": 3
+      },
+      "model_steps_rerun": false,
+      "operator_from_original_plan": "ratio",
+      "execution": {
+        "value": 0.8572365831255742,
+        "trace": {
+          "snap_on": 130.66,
+          "peer_group": 152.42,
+          "output_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "ratio"
+          }
+        }
+      },
+      "method": "saved_final_program_reexecution"
+    }
+  }
+]

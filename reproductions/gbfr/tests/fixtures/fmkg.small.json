@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "provenance": {"source": "Hand-written test fixture; NOT the paper FMKG", "paper_validated": false},
+  "nodes": [
+    {"name": "Revenue", "aliases": ["Net Sales"], "definition": "Test revenue", "kind": "atomic"},
+    {"name": "Cost", "aliases": ["COGS"], "definition": "Test cost", "kind": "atomic"},
+    {"name": "Profit Margin", "aliases": [], "definition": "Test profit ratio", "kind": "atomic"},
+    {"name": "Gross Profit", "aliases": [], "definition": "Test derived profit", "kind": "derived", "formulas": [
+      {"id": "gp:revenue-cost", "source_formula": "Gross Profit = Revenue - Cost", "expression": "r-c", "operands": [
+        {"symbol": "r", "metric": "Revenue"}, {"symbol": "c", "metric": "Cost"}
+      ]},
+      {"id": "gp:margin", "source_formula": "Gross Profit = Revenue * Profit Margin", "expression": "r*m", "operands": [
+        {"symbol": "r", "metric": "Revenue"},
+        {"symbol": "m", "metric": "Profit Margin", "constraints": {"meta": {"currency": null, "scale": null, "unit": "ratio"}}}
+      ]}
+    ]},
+    {"name": "Double Profit", "aliases": [], "definition": "Synthetic parent for inverse testing", "kind": "derived", "formulas": [
+      {"id": "double:gp", "source_formula": "Double Profit = 2 * Gross Profit", "expression": "2*p", "operands": [
+        {"symbol": "p", "metric": "Gross Profit"}
+      ]}
+    ]}
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-07T14:52:25.886198+00:00",
+  "purpose": "Supplemental natural-main graph operator coverage only; not part of R24 fixed-20 headline metrics.",
+  "selection_policy": {
+    "maximum_samples": 2,
+    "selected_count": 2,
+    "native_records_only": true,
+    "question_or_context_modified": false,
+    "gold_or_prior_prediction_used_for_selection": false,
+    "selection_features": [
+      "question text",
+      "supplied context labels, units and periods",
+      "existing graph canonical names, registered aliases and source formula dependencies"
+    ],
+    "selection_method": "Read-only question keyword scan of natural data/main FinQA and TAT-QA, then inspect only Q/D/source metadata and graph structure. No prediction logs or answer values were consulted in selecting these records.",
+    "api_calls": 0,
+    "code_or_graph_or_labels_modified": false,
+    "existing_run_snapshots_modified": false,
+    "expected_coverage_is_not_observed_success": true,
+    "new_formula_priority_note": "No unambiguous natural question directly matching a newly added target with fully explicit operands was found in the focused scan. A ROA question can exercise a newly added average-assets dependency, but retained equivalent paths and denominator ambiguity are disclosed rather than forced."
+  },
+  "graph": {
+    "path": "data/assets/fmkg.reconstructed_candidate_v2_conservative.json",
+    "sha256": "bc6bdbe2d88a2effc9c4709b3207687c2d8e580557ec733fe5754b2ac76402bc",
+    "baseline_path": "data/assets/fmkg.reconstructed.json",
+    "baseline_sha256": "094871c783c318541ede74750f944ff61622cb3de7d2317b1609792f1b34f28a"
+  },
+  "samples_file": "data/validation/gbfr_r24_graph_coverage/samples.jsonl",
+  "selected": [
+    {
+      "id": "FinQA:HII/2015/page_121.pdf-2",
+      "dataset": "FinQA",
+      "native_main_file": "data/main/FinQA.jsonl",
+      "native_line_number": 437,
+      "native_line_sha256_utf8": "e07859dd84263ea822ad0dbc543fc61aaf571e6eb4968ef04638d6ab0b3e5d6b",
+      "source": {
+        "commit": "b2eaa7156acb7d12fecc7386b92dd4bf82f9cc52",
+        "index": 452,
+        "uid": "HII/2015/page_121.pdf-2"
+      },
+      "question": "what is the net income margin in the q3 of 2014?",
+      "record_copy_policy": "Exact original JSON line; every original field retained unchanged. Answer fields were not used as selection features.",
+      "selection_reason": "Natural question explicitly asks net income margin for Q3 2014. D contains same-column Net earnings (loss) and Sales and service revenues in the 2014 table; it does not directly report a margin ratio. The graph uniquely resolves the registered alias Net Income Margin to the derived Net Profit Margin node.",
+      "context_evidence": [
+        "| ($ in millions, except per share amounts) | 1st Qtr | 2nd Qtr | 3rd Qtr | 4th Qtr<sup>(3)</sup> |",
+        "| Sales and service revenues | $1,594 | $1,719 | $1,717 | $1,927 |",
+        "| Net earnings (loss) | 90 | 100 | 96 | 52 |"
+      ],
+      "expected_target": {
+        "requested_label": "Net Income Margin",
+        "canonical_node": "Net Profit Margin",
+        "kind": "derived",
+        "resolution": "Unique registered alias; no derived-first override."
+      },
+      "expected_paths": [
+        {
+          "target": "Net Profit Margin",
+          "formula_id": "source:ef5530e57a46ebd6a8fd",
+          "expression": "x0 / x1",
+          "operands": [
+            {
+              "symbol": "x0",
+              "metric": "Net Income",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            },
+            {
+              "symbol": "x1",
+              "metric": "Revenue",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ],
+          "formula_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "ratio"
+          },
+          "source_formula": "Net Profit Margin = Net Income ÷ Revenue",
+          "source_records": [
+            6826,
+            7798,
+            7799
+          ],
+          "new_in_108_extension": false
+        },
+        {
+          "target": "Net Profit Margin",
+          "formula_id": "source:cdecea102822c7628955",
+          "expression": "(x0 / x1) * x2",
+          "operands": [
+            {
+              "symbol": "x0",
+              "metric": "Net Income",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            },
+            {
+              "symbol": "x1",
+              "metric": "Revenue",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            },
+            {
+              "symbol": "x2",
+              "metric": "100",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ],
+          "formula_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          },
+          "source_formula": "Net Profit Margin = (Net Income ÷ Revenue) × 100%",
+          "source_records": [
+            7463,
+            7469
+          ],
+          "new_in_108_extension": false
+        },
+        {
+          "target": "Net Profit Margin",
+          "formula_id": "source:eb7049dc3f6ee59a9cd2",
+          "expression": "x0 / x1",
+          "operands": [
+            {
+              "symbol": "x0",
+              "metric": "Net Income",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            },
+            {
+              "symbol": "x1",
+              "metric": "Sales Revenue",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ],
+          "formula_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "ratio"
+          },
+          "source_formula": "Net Profit Margin = Net Profit ÷ Sales Revenue",
+          "source_records": [
+            628,
+            629
+          ],
+          "new_in_108_extension": false
+        }
+      ],
+      "expected_operand_alignment": "Use only Q3 2014 net earnings and sales/service revenues; same currency and scale. Net Income has registered Net Earnings alias. Revenue/Sales Revenue linkage to the table label must be explicitly grounded by OES.",
+      "expected_operator_coverage": "Direct OES on named margin should not find an explicit ratio; OMD can expand a retained source formula, OES should bind primitive values, OPE.metric should execute, Verify may compare compatible redundant paths. This is a coverage expectation, not an observed result.",
+      "new_formula_coverage": "Selected for clear retained-graph coverage; no claim that an added formula will be used.",
+      "limits": [
+        "Ratio and percentage variants require unit normalization before Verify.",
+        "Same-input scaled variants are not independent financial evidence."
+      ]
+    },
+    {
+      "id": "TAT-QA:930920fe5224bbd051390e4e332fb0cc_f5b391186459d87daf95bd87fa07ed94",
+      "dataset": "TAT-QA",
+      "native_main_file": "data/main/TAT-QA.jsonl",
+      "native_line_number": 835,
+      "native_line_sha256_utf8": "cefbe6b5600e508552a4afa4380bbf39451e9b10376c79bec3b65aaf244e9bf0",
+      "source": {
+        "commit": "12fd7c8bb474e8b45e9f54dbf7c281c178f1a510",
+        "index": 1229,
+        "uid": "930920fe5224bbd051390e4e332fb0cc_f5b391186459d87daf95bd87fa07ed94"
+      },
+      "question": "What is the company’s return on assets in 2017?",
+      "record_copy_policy": "Exact original JSON line; every original field retained unchanged. Answer fields were not used as selection features.",
+      "selection_reason": "Natural question explicitly asks 2017 return on assets. D includes annual Net income and Total assets for 2017 and 2016, but no reported ROA. Canonical Return on Assets is derived and contains source-supported direct and average-assets paths. This is the clearest natural candidate found with a possible newly added Average Total Assets dependency, without using an answer or prior success/failure.",
+      "context_evidence": [
+        "|  | 2019 (1) | 2018 (2) | 2017 (3) | 2016 | 2015 |",
+        "|  |  |  | (in thousands, except per share amounts) |  |  |",
+        "| Net income | $113,890 | $82,097 | $114,141 | $56,391 | $51,127 |",
+        "| Total assets | $2,107,914 | $1,803,871 | $1,744,475 | $1,598,464 | $1,506,424 |"
+      ],
+      "expected_target": {
+        "requested_label": "Return on Assets",
+        "canonical_node": "Return on Assets",
+        "kind": "derived",
+        "resolution": "Exact canonical name; no alias-priority changes."
+      },
+      "expected_paths": [
+        {
+          "target": "Return on Assets",
+          "formula_id": "source:60ff6a8c628c45e38fdf",
+          "expression": "x0 / x1",
+          "operands": [
+            {
+              "symbol": "x0",
+              "metric": "Net Income",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            },
+            {
+              "symbol": "x1",
+              "metric": "Total Assets",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ],
+          "formula_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "ratio"
+          },
+          "source_formula": "Return on Assets = Net Profit ÷ Total Assets",
+          "source_records": [
+            27,
+            6698,
+            6728,
+            6826
+          ],
+          "new_in_108_extension": false
+        },
+        {
+          "target": "Return on Assets",
+          "formula_id": "source:2a5d952ad68985108a0f",
+          "expression": "x0 / x1",
+          "operands": [
+            {
+              "symbol": "x0",
+              "metric": "Net Income",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            },
+            {
+              "symbol": "x1",
+              "metric": "Average Total Assets",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ],
+          "formula_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "ratio"
+          },
+          "source_formula": "Return on Assets = Net Profit / Average Total Assets",
+          "source_records": [
+            1172,
+            1459,
+            1460
+          ],
+          "new_in_108_extension": false
+        },
+        {
+          "target": "Average Total Assets",
+          "formula_id": "source:40024c9b5d4402430e09",
+          "expression": "(x0 + x1) / 2",
+          "operands": [
+            {
+              "symbol": "x0",
+              "metric": "Total Assets at Beginning of Period",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            },
+            {
+              "symbol": "x1",
+              "metric": "Total Assets at Period End",
+              "constraints": {
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ],
+          "formula_meta": {},
+          "source_formula": "Average Total Assets = (Total Assets at Beginning of Period + Total Assets at End of Period) ÷ 2",
+          "source_records": [
+            1657
+          ],
+          "new_in_108_extension": true
+        }
+      ],
+      "expected_operand_alignment": "2017 Net Income and 2017 Total Assets are explicitly tabulated. A beginning/end average-assets path additionally needs explicit temporal binding of 2017 opening assets to the 2016 closing balance and 2017 closing assets to the 2017 balance; no unsupported period substitution is allowed.",
+      "expected_operator_coverage": "OMD should expose graph formulas for the named ROA. Depending on supported denominator constraints, OPE.metric may compute a direct-assets path or recurse into Average Total Assets. Verify coverage is an expectation only and must be confirmed in live traces.",
+      "new_formula_coverage": "Average Total Assets source:40024c9b5d4402430e09 is one of the 108 additions, but pre-existing equivalent average-assets formulas also remain. No guarantee the new formula will be selected; do not force or reorder formulas for this sample.",
+      "limits": [
+        "Graph contains both end-of-period-assets and average-assets ROA definitions; the question does not specify the denominator convention.",
+        "These denominator definitions can legitimately differ and must not be treated as algebraically equivalent merely because both are labelled ROA. Preserve constraints or abstain if unresolved.",
+        "This coverage sample is for operator-path diagnosis and is excluded from the fixed 20-question headline metrics."
+      ]
+    }
+  ]
+}

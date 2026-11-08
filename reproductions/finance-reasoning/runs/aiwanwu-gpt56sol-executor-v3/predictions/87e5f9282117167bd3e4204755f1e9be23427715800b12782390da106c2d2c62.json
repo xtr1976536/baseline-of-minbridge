@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2065",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the future value of a regular series of fixed monthly contributions made at the beginning of each period (annuity due), using a nominal annual interest rate compounded monthly over a specified number of years?",
+        "usage": {
+          "prompt_tokens": 5021,
+          "completion_tokens": 45,
+          "total_tokens": 5066,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14559,
+          "completion_tokens": 104,
+          "total_tokens": 14663,
+          "completion_tokens_details": {
+            "reasoning_tokens": 80
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    monthly_contribution = 500\n    annual_interest_rate = 0.06\n    months_per_year = 12\n    years = 10\n    monthly_interest_rate = annual_interest_rate / months_per_year\n    number_of_periods = years * months_per_year\n    annuity_due = True\n\n    # Do math calculation to get the answer\n    if monthly_interest_rate == 0:\n        future_value = monthly_contribution * number_of_periods\n    else:\n        future_value = (\n            monthly_contribution\n            * (((1 + monthly_interest_rate) ** number_of_periods - 1)\n               / monthly_interest_rate)\n        )\n\n        if annuity_due:\n            future_value *= 1 + monthly_interest_rate\n\n    # return answer\n    return round(future_value)\n```",
+        "usage": {
+          "prompt_tokens": 5702,
+          "completion_tokens": 336,
+          "total_tokens": 6038,
+          "completion_tokens_details": {
+            "reasoning_tokens": 151
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2334",
+        "score": 1.9667904376983643,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.9647009372711182,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-658",
+        "score": 1.9559547901153564,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.9385215044021606,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.8939484357833862,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3073",
+        "score": 1.8918285369873047,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.8889658451080322,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.8815226554870605,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.8709919452667236,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2338",
+        "score": 1.863294005393982,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-253",
+        "score": 1.8627469539642334,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2335",
+        "score": 1.8592898845672607,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2333",
+        "score": 1.8546664714813232,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2091",
+        "score": 1.838376760482788,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1313",
+        "score": 1.8333449363708496,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2463",
+        "score": 1.8277955055236816,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-369",
+        "score": 1.826615333557129,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-12",
+        "score": 1.8164851665496826,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-252",
+        "score": 1.803958535194397,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.799196481704712,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2462",
+        "score": 1.793609619140625,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.7911297082901,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.7887176275253296,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.78493070602417,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.7815937995910645,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.7686891555786133,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.7605847120285034,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1905",
+        "score": 1.754225492477417,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.7479321956634521,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-139",
+        "score": 1.747877597808838,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2334",
+      "article-2337",
+      "article-658"
+    ],
+    "status": "ok",
+    "answer": 82349,
+    "code": "def solution():\n    # Define variables name and value\n    monthly_contribution = 500\n    annual_interest_rate = 0.06\n    months_per_year = 12\n    years = 10\n    monthly_interest_rate = annual_interest_rate / months_per_year\n    number_of_periods = years * months_per_year\n    annuity_due = True\n\n    # Do math calculation to get the answer\n    if monthly_interest_rate == 0:\n        future_value = monthly_contribution * number_of_periods\n    else:\n        future_value = (\n            monthly_contribution\n            * (((1 + monthly_interest_rate) ** number_of_periods - 1)\n               / monthly_interest_rate)\n        )\n\n        if annuity_due:\n            future_value *= 1 + monthly_interest_rate\n\n    # return answer\n    return round(future_value)\n"
+  },
+  "digest": "6a83e8ccf8a3aa13d397a6240ebb6cecb22f649a65ea6f6562797aff09ce31cb"
+}

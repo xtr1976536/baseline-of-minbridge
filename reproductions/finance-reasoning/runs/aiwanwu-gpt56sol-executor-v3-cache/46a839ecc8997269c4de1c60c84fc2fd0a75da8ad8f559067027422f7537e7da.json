@@ -1,0 +1,18 @@
+{
+  "identity": "46a839ecc8997269c4de1c60c84fc2fd0a75da8ad8f559067027422f7537e7da",
+  "response_digest": "f94e0443ef91e48364e43088a5a03f5b589eadc9087a44145fb45c6832b94556",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    fund_value = 100_000_000\n    current_share_weight = 0.80\n    target_share_weight = 0.60\n    share_beta = 1.20\n    futures_index_level = 1_200\n    futures_multiplier = 250\n    futures_beta = 0.95\n\n    # Calculate the equity exposure that must be removed\n    equity_reduction = fund_value * (current_share_weight - target_share_weight)\n\n    # Calculate the beta-adjusted value of one stock index futures contract\n    futures_contract_value = futures_index_level * futures_multiplier\n    beta_adjusted_contract_value = futures_contract_value * (\n        futures_beta / share_beta\n    )\n\n    # Calculate the number of stock index futures contracts\n    contracts = equity_reduction / beta_adjusted_contract_value\n\n    # Return the number of contracts, rounded to three decimal places\n    return round(contracts, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5432,
+      "completion_tokens": 822,
+      "total_tokens": 6254,
+      "completion_tokens_details": {
+        "reasoning_tokens": 615
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

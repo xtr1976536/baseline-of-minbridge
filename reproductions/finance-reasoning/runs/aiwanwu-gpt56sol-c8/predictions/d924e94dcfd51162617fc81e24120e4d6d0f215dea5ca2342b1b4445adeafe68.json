@@ -1,0 +1,179 @@
+{
+  "record": {
+    "question_id": "test-2012",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the after-tax increase in annual net income from switching inventory accounting from LIFO to FIFO, using the year-over-year change in the LIFO reserve and a constant corporate tax rate, with inputs in thousands and output rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5100,
+          "completion_tokens": 55,
+          "total_tokens": 5155
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14984,
+          "completion_tokens": 515,
+          "total_tokens": 15499,
+          "completion_tokens_details": {
+            "reasoning_tokens": 418
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    current_lifo_reserve = 82\n    prior_lifo_reserve = 64\n    tax_rate = 0.30\n\n    # Do math calculation to get the answer\n    increase_in_ebt = current_lifo_reserve - prior_lifo_reserve\n    increase_in_net_income = increase_in_ebt * (1 - tax_rate)\n\n    # return answer\n    return round(increase_in_net_income, 1)\n```",
+        "usage": {
+          "prompt_tokens": 4984,
+          "completion_tokens": 186,
+          "total_tokens": 5170,
+          "completion_tokens_details": {
+            "reasoning_tokens": 72
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2136",
+        "score": 1.807807445526123
+      },
+      {
+        "function_id": "article-2135",
+        "score": 1.7360285520553589
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.703489899635315
+      },
+      {
+        "function_id": "article-2958",
+        "score": 1.6990467309951782
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.688016414642334
+      },
+      {
+        "function_id": "article-2098",
+        "score": 1.671386480331421
+      },
+      {
+        "function_id": "article-1546",
+        "score": 1.6520220041275024
+      },
+      {
+        "function_id": "article-471",
+        "score": 1.6412925720214844
+      },
+      {
+        "function_id": "article-2284",
+        "score": 1.6324667930603027
+      },
+      {
+        "function_id": "article-2933",
+        "score": 1.6280126571655273
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.6257574558258057
+      },
+      {
+        "function_id": "article-2226",
+        "score": 1.6181278228759766
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.6165168285369873
+      },
+      {
+        "function_id": "article-194",
+        "score": 1.5966410636901855
+      },
+      {
+        "function_id": "article-2934",
+        "score": 1.5944769382476807
+      },
+      {
+        "function_id": "article-2290",
+        "score": 1.5855615139007568
+      },
+      {
+        "function_id": "article-1821",
+        "score": 1.5720378160476685
+      },
+      {
+        "function_id": "article-2550",
+        "score": 1.5680370330810547
+      },
+      {
+        "function_id": "article-1847",
+        "score": 1.566495656967163
+      },
+      {
+        "function_id": "article-2909",
+        "score": 1.5664335489273071
+      },
+      {
+        "function_id": "article-353",
+        "score": 1.5657401084899902
+      },
+      {
+        "function_id": "article-1147",
+        "score": 1.5656867027282715
+      },
+      {
+        "function_id": "article-2200",
+        "score": 1.5534487962722778
+      },
+      {
+        "function_id": "article-126",
+        "score": 1.5502185821533203
+      },
+      {
+        "function_id": "article-628",
+        "score": 1.5461227893829346
+      },
+      {
+        "function_id": "article-1206",
+        "score": 1.545303225517273
+      },
+      {
+        "function_id": "article-2248",
+        "score": 1.5425033569335938
+      },
+      {
+        "function_id": "article-1181",
+        "score": 1.5384712219238281
+      },
+      {
+        "function_id": "article-1148",
+        "score": 1.5376542806625366
+      },
+      {
+        "function_id": "article-629",
+        "score": 1.5354856252670288
+      }
+    ],
+    "selected_ids": [
+      "article-2226"
+    ],
+    "status": "ok",
+    "answer": 12.6,
+    "code": "def solution():\n    # Define variables name and value\n    current_lifo_reserve = 82\n    prior_lifo_reserve = 64\n    tax_rate = 0.30\n\n    # Do math calculation to get the answer\n    increase_in_ebt = current_lifo_reserve - prior_lifo_reserve\n    increase_in_net_income = increase_in_ebt * (1 - tax_rate)\n\n    # return answer\n    return round(increase_in_net_income, 1)\n"
+  },
+  "digest": "8d8acf0f96d6a4ca8be0cf2515d7462528a6ab2e219bf211f1db8324ac4d3101"
+}

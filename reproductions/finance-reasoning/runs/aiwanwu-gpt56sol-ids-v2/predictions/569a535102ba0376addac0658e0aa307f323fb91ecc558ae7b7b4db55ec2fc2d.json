@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2147",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates total U.S. SECA tax on annual self-employment net earnings by applying the Social Security rate up to the annual wage-base cap, the Medicare rate to all earnings, and the filing-status-dependent Additional Medicare Tax rate only to earnings above its threshold, returning the result rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 5124,
+          "completion_tokens": 67,
+          "total_tokens": 5191,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 16563,
+          "completion_tokens": 172,
+          "total_tokens": 16735,
+          "completion_tokens_details": {
+            "reasoning_tokens": 148
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_earnings = 220000\n    social_security_cap = 160200\n    social_security_rate = 0.124\n    medicare_rate = 0.029\n    additional_medicare_rate = 0.009\n    additional_medicare_threshold = 200000\n\n    # Do math calculation to get the answer\n    social_security_tax = min(net_earnings, social_security_cap) * social_security_rate\n    medicare_tax = net_earnings * medicare_rate\n    additional_medicare_tax = max(\n        0,\n        net_earnings - additional_medicare_threshold\n    ) * additional_medicare_rate\n\n    total_seca_tax = (\n        social_security_tax\n        + medicare_tax\n        + additional_medicare_tax\n    )\n\n    # return answer\n    return round(total_seca_tax, 2)\n```",
+        "usage": {
+          "prompt_tokens": 6093,
+          "completion_tokens": 266,
+          "total_tokens": 6359,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 61
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2563",
+        "score": 2.0613911151885986,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1857",
+        "score": 1.8603155612945557,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1259",
+        "score": 1.7735673189163208,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-529",
+        "score": 1.7708109617233276,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2851",
+        "score": 1.767289638519287,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1858",
+        "score": 1.7218995094299316,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.643474817276001,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2484",
+        "score": 1.6408534049987793,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2611",
+        "score": 1.6161235570907593,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-532",
+        "score": 1.6040990352630615,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.6039695739746094,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1818",
+        "score": 1.5813546180725098,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-846",
+        "score": 1.562124490737915,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.561915397644043,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2994",
+        "score": 1.5617995262145996,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.5609307289123535,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2520",
+        "score": 1.5507371425628662,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2517",
+        "score": 1.5507242679595947,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1257",
+        "score": 1.5506296157836914,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2953",
+        "score": 1.5440607070922852,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1842",
+        "score": 1.540919303894043,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2440",
+        "score": 1.5376238822937012,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2768",
+        "score": 1.5263755321502686,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-594",
+        "score": 1.5223982334136963,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.5214277505874634,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2744",
+        "score": 1.5117816925048828,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2828",
+        "score": 1.5100440979003906,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.5071783065795898,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2439",
+        "score": 1.5054905414581299,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-3076",
+        "score": 1.5022159814834595,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2563",
+      "article-1857",
+      "article-529"
+    ],
+    "status": "ok",
+    "answer": 26424.8,
+    "code": "def solution():\n    # Define variables name and value\n    net_earnings = 220000\n    social_security_cap = 160200\n    social_security_rate = 0.124\n    medicare_rate = 0.029\n    additional_medicare_rate = 0.009\n    additional_medicare_threshold = 200000\n\n    # Do math calculation to get the answer\n    social_security_tax = min(net_earnings, social_security_cap) * social_security_rate\n    medicare_tax = net_earnings * medicare_rate\n    additional_medicare_tax = max(\n        0,\n        net_earnings - additional_medicare_threshold\n    ) * additional_medicare_rate\n\n    total_seca_tax = (\n        social_security_tax\n        + medicare_tax\n        + additional_medicare_tax\n    )\n\n    # return answer\n    return round(total_seca_tax, 2)\n"
+  },
+  "digest": "7a84cf3a66e7fbd35e92666a22288be1b7bdfef52e10ca328a8d912315ae1465"
+}

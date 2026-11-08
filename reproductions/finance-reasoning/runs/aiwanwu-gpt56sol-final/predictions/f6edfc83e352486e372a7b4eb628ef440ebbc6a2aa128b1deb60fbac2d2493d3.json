@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2217",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates a multi-period holding period return for a fund with varying annual investment amounts and annual returns, accounting for additional cash contributions and returning the result as a percentage rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5020,
+          "completion_tokens": 43,
+          "total_tokens": 5063,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13700,
+          "completion_tokens": 1131,
+          "total_tokens": 14831,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    investments = [500, 600, 1000]\n    returns = [0.12, 0.05, 0.01]\n\n    # Do math calculation to get the answer\n    total_investment = sum(investments)\n    total_return = sum(investment * rate for investment, rate in zip(investments, returns))\n    holding_period_return = (total_return / total_investment) * 100\n\n    # return answer\n    return round(holding_period_return, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5455,
+          "completion_tokens": 509,
+          "total_tokens": 5964,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 380
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1063",
+        "score": 1.886285424232483
+      },
+      {
+        "function_id": "article-1062",
+        "score": 1.8431274890899658
+      },
+      {
+        "function_id": "article-477",
+        "score": 1.8066318035125732
+      },
+      {
+        "function_id": "article-1907",
+        "score": 1.7822015285491943
+      },
+      {
+        "function_id": "article-9",
+        "score": 1.769864559173584
+      },
+      {
+        "function_id": "article-1061",
+        "score": 1.764249563217163
+      },
+      {
+        "function_id": "article-1064",
+        "score": 1.7557703256607056
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.7166013717651367
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.6958973407745361
+      },
+      {
+        "function_id": "article-1465",
+        "score": 1.6931027173995972
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.6660411357879639
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6571335792541504
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.640094518661499
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.6294629573822021
+      },
+      {
+        "function_id": "article-140",
+        "score": 1.6274371147155762
+      },
+      {
+        "function_id": "article-1733",
+        "score": 1.626807451248169
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.6229968070983887
+      },
+      {
+        "function_id": "article-1918",
+        "score": 1.6206989288330078
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.6145613193511963
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.612494945526123
+      },
+      {
+        "function_id": "article-1533",
+        "score": 1.6032123565673828
+      },
+      {
+        "function_id": "article-2331",
+        "score": 1.6014211177825928
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.5977838039398193
+      },
+      {
+        "function_id": "article-1608",
+        "score": 1.59675931930542
+      },
+      {
+        "function_id": "article-2634",
+        "score": 1.5951741933822632
+      },
+      {
+        "function_id": "article-2004",
+        "score": 1.5918958187103271
+      },
+      {
+        "function_id": "article-2",
+        "score": 1.59007728099823
+      },
+      {
+        "function_id": "article-266",
+        "score": 1.5860521793365479
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.5853204727172852
+      },
+      {
+        "function_id": "article-1251",
+        "score": 1.585221767425537
+      }
+    ],
+    "selected_ids": [
+      "article-1062",
+      "article-477",
+      "article-1907"
+    ],
+    "status": "ok",
+    "answer": 4.762,
+    "code": "def solution():\n    # Define variables name and value\n    investments = [500, 600, 1000]\n    returns = [0.12, 0.05, 0.01]\n\n    # Do math calculation to get the answer\n    total_investment = sum(investments)\n    total_return = sum(investment * rate for investment, rate in zip(investments, returns))\n    holding_period_return = (total_return / total_investment) * 100\n\n    # return answer\n    return round(holding_period_return, 3)\n"
+  },
+  "digest": "56d40853f316bcb9322af5e19038d28da8191e5d6ebc8a30bc5a626246b56d65"
+}

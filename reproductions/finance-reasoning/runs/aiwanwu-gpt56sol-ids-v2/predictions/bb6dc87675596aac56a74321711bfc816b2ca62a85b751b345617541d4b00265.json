@@ -1,0 +1,213 @@
+{
+  "record": {
+    "question_id": "test-2011",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the median of a finite series of annual percentage returns, supports unsorted numeric observations over a multi-year period, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5063,
+          "completion_tokens": 39,
+          "total_tokens": 5102,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 13722,
+          "completion_tokens": 22,
+          "total_tokens": 13744
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    annual_return_rates = [5.2, 7.1, 2.8, 6.5, 3.9, 9.0, 4.6, 8.3, 5.7, 7.4]\n\n    # Do math calculation to get the answer\n    sorted_rates = sorted(annual_return_rates)\n    midpoint = len(sorted_rates) // 2\n    median_return_rate = (\n        sorted_rates[midpoint - 1] + sorted_rates[midpoint]\n    ) / 2\n    answer = f\"{median_return_rate:.2f}%\"\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5571,
+          "completion_tokens": 154,
+          "total_tokens": 5725,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-906",
+        "score": 1.5870044231414795,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2410",
+        "score": 1.5515241622924805,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1713",
+        "score": 1.5237009525299072,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.522355079650879,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2685",
+        "score": 1.5136507749557495,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.5086257457733154,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.5081560611724854,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.5072262287139893,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-691",
+        "score": 1.493670105934143,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2",
+        "score": 1.4843621253967285,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1130",
+        "score": 1.4718189239501953,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.4642127752304077,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-971",
+        "score": 1.462281346321106,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2534",
+        "score": 1.4606883525848389,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1541",
+        "score": 1.4591867923736572,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.455230951309204,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2317",
+        "score": 1.4547054767608643,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1207",
+        "score": 1.451852798461914,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2451",
+        "score": 1.450987696647644,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2556",
+        "score": 1.4498063325881958,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2386",
+        "score": 1.448521614074707,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.4483460187911987,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2331",
+        "score": 1.4465465545654297,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3",
+        "score": 1.4453961849212646,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1608",
+        "score": 1.44281005859375,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.4396252632141113,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.4394197463989258,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2320",
+        "score": 1.4389312267303467,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.4386943578720093,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2448",
+        "score": 1.438112497329712,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-906",
+      "article-1713",
+      "article-2685"
+    ],
+    "status": "execution_error",
+    "answer": null,
+    "error": "ValueError",
+    "code": "def solution():\n    # Define variables name and value\n    annual_return_rates = [5.2, 7.1, 2.8, 6.5, 3.9, 9.0, 4.6, 8.3, 5.7, 7.4]\n\n    # Do math calculation to get the answer\n    sorted_rates = sorted(annual_return_rates)\n    midpoint = len(sorted_rates) // 2\n    median_return_rate = (\n        sorted_rates[midpoint - 1] + sorted_rates[midpoint]\n    ) / 2\n    answer = f\"{median_return_rate:.2f}%\"\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "5f6ac89c619c85029ee666464097d8351b074a4e7b34a83cf259e2fb0d66a312"
+}

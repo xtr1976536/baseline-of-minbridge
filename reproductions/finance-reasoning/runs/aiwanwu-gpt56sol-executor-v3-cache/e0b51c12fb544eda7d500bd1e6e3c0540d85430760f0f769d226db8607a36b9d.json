@@ -1,0 +1,21 @@
+{
+  "identity": "e0b51c12fb544eda7d500bd1e6e3c0540d85430760f0f769d226db8607a36b9d",
+  "response_digest": "579f4cef6a0d584af2bdde38abe5f161c2b5c7e7f4f04b4593ae080ff076c65d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define trade prices and prevailing bid/offer prices\n    transactions = [\n        {\"trade_price\": 41.50, \"bid\": 41.45, \"offer\": 41.50},\n        {\"trade_price\": 41.75, \"bid\": 41.73, \"offer\": 41.75},\n    ]\n\n    # Calculate each transaction's effective spread:\n    # Effective spread = 2 * absolute(trade price - midpoint)\n    effective_spreads = []\n    for transaction in transactions:\n        midpoint = (transaction[\"bid\"] + transaction[\"offer\"]) / 2\n        effective_spread = 2 * abs(transaction[\"trade_price\"] - midpoint)\n        effective_spreads.append(effective_spread)\n\n    # Calculate the average effective spread\n    average_effective_spread = sum(effective_spreads) / len(effective_spreads)\n\n    # Return the answer rounded to three decimal places\n    return round(average_effective_spread, 3)\n```",
+    "usage": {
+      "prompt_tokens": 4771,
+      "completion_tokens": 379,
+      "total_tokens": 5150,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 164
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

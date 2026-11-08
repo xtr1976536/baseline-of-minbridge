@@ -1,0 +1,31 @@
+{
+  "request_hash": "db516a4904026e46fd9b6364e4321edfe62c353fda520fac7b9c1511c5b1c4f3",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nBased on the information provided primarily in the statement of income, what is the FY2018 - FY2019 change in unadjusted operating income % margin for Walmart? Answer in units of percents and round to one decimal place.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"unadjusted_operating_income_margin_change\",\n  \"facts\": [\n    {\n      \"name\": \"operating_income\",\n      \"aliases\": [\n        \"Operating income\",\n        \"Operating income (loss)\",\n        \"Income from operations\"\n      ],\n      \"period\": \"FY2018 and FY2019\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"net_sales\",\n      \"aliases\": [\n        \"Net sales\",\n        \"Sales\",\n        \"Total sales\"\n      ],\n      \"period\": \"FY2018 and FY2019\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Calculate unadjusted operating income margin for each fiscal year as operating income divided by net sales, then compute the FY2019 margin minus the FY2018 margin and round to one decimal place.\"\n}",
+  "usage": {
+    "prompt_tokens": 4725,
+    "completion_tokens": 270,
+    "total_tokens": 4995,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 84
+    }
+  },
+  "response_id": "resp_02d099fab48825ba016aedbd97f6bc87d1bb02c9cfa2109d94",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

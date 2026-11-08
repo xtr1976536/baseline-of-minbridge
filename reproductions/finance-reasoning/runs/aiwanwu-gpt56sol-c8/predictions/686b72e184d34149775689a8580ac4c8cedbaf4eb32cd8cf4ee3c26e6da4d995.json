@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2156",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates a hedge fund’s ending investor capital after independently applying a 2% management fee to end-of-period assets and a 30% incentive fee only on profits exceeding a prior high-water mark, using end-of-period valuation and handling periods with no incentive fee due?",
+        "usage": {
+          "prompt_tokens": 5031,
+          "completion_tokens": 140,
+          "total_tokens": 5171,
+          "completion_tokens_details": {
+            "reasoning_tokens": 79
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14252,
+          "completion_tokens": 829,
+          "total_tokens": 15081,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 732
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    current_value_before_fees = 320.0\n    management_fee_rate = 0.02\n    performance_fee_rate = 0.30\n    previous_high_water_mark = 350.0 * (1 + 0.20)\n\n    # Do math calculation to get the answer\n    management_fee = current_value_before_fees * management_fee_rate\n\n    # The current value is below the high water mark, so no incentive fee applies.\n    performance_fee = 0.0\n    ending_capital_position = (\n        current_value_before_fees - management_fee - performance_fee\n    )\n\n    # Return answer in millions of dollars to one decimal place\n    return round(ending_capital_position, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5582,
+          "completion_tokens": 341,
+          "total_tokens": 5923,
+          "completion_tokens_details": {
+            "reasoning_tokens": 171
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1983",
+        "score": 1.933528184890747
+      },
+      {
+        "function_id": "article-1023",
+        "score": 1.8236408233642578
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.818283200263977
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.806097149848938
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.772040605545044
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.7622404098510742
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.75166654586792
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.7259941101074219
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.6771385669708252
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.6750233173370361
+      },
+      {
+        "function_id": "article-811",
+        "score": 1.6366448402404785
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.6326243877410889
+      },
+      {
+        "function_id": "article-2902",
+        "score": 1.6295942068099976
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.6029082536697388
+      },
+      {
+        "function_id": "article-1870",
+        "score": 1.5859239101409912
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.5848404169082642
+      },
+      {
+        "function_id": "article-637",
+        "score": 1.5775903463363647
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.5678000450134277
+      },
+      {
+        "function_id": "article-1460",
+        "score": 1.5669234991073608
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.5651780366897583
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.5637787580490112
+      },
+      {
+        "function_id": "article-2188",
+        "score": 1.5629652738571167
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.5597165822982788
+      },
+      {
+        "function_id": "article-2810",
+        "score": 1.5561718940734863
+      },
+      {
+        "function_id": "article-2901",
+        "score": 1.5535027980804443
+      },
+      {
+        "function_id": "article-1062",
+        "score": 1.5503677129745483
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.5457662343978882
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.5420691967010498
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.5336530208587646
+      },
+      {
+        "function_id": "article-2888",
+        "score": 1.5286298990249634
+      }
+    ],
+    "selected_ids": [
+      "article-1983",
+      "article-1023",
+      "article-1024"
+    ],
+    "status": "ok",
+    "answer": 313.6,
+    "code": "def solution():\n    # Define variables name and value\n    current_value_before_fees = 320.0\n    management_fee_rate = 0.02\n    performance_fee_rate = 0.30\n    previous_high_water_mark = 350.0 * (1 + 0.20)\n\n    # Do math calculation to get the answer\n    management_fee = current_value_before_fees * management_fee_rate\n\n    # The current value is below the high water mark, so no incentive fee applies.\n    performance_fee = 0.0\n    ending_capital_position = (\n        current_value_before_fees - management_fee - performance_fee\n    )\n\n    # Return answer in millions of dollars to one decimal place\n    return round(ending_capital_position, 1)\n"
+  },
+  "digest": "a2ceb7062aadafca8aa275b22c344310a7ed04abf60bd11bd592b9db384b85aa"
+}

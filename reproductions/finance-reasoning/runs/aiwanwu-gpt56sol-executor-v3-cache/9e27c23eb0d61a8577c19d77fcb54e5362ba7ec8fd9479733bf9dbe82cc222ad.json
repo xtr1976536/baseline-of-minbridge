@@ -1,0 +1,21 @@
+{
+  "identity": "9e27c23eb0d61a8577c19d77fcb54e5362ba7ec8fd9479733bf9dbe82cc222ad",
+  "response_digest": "f4f0bb51af3ce4cd15b0318e0a13073be98e61b0808b2858ee3cf409cbbfc0eb",
+  "response": {
+    "content": "```python\ndef solution():\n    units_sold = 350\n    selling_price = 40\n    inventory_levels = [100, 150, 200]  # Oldest to newest\n    unit_costs = [20, 25, 30]\n\n    revenue = units_sold * selling_price\n    units_remaining = units_sold\n    cogs = 0\n\n    for i in range(len(inventory_levels) - 1, -1, -1):\n        units_from_batch = min(units_remaining, inventory_levels[i])\n        cogs += units_from_batch * unit_costs[i]\n        units_remaining -= units_from_batch\n\n    gross_profit = revenue - cogs\n    return round(gross_profit)\n```",
+    "usage": {
+      "prompt_tokens": 5856,
+      "completion_tokens": 192,
+      "total_tokens": 6048,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 34
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

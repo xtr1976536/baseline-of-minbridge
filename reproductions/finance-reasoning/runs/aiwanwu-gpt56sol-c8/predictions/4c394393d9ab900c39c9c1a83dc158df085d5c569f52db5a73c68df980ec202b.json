@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2006",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates degree of operating leverage as total contribution margin divided by operating income across production levels, using unit contribution margin and fixed production costs up to a specified capacity, identifies the production level with the minimum DOL, and rounds the result to one decimal place?",
+        "usage": {
+          "prompt_tokens": 4984,
+          "completion_tokens": 169,
+          "total_tokens": 5153,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 111
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 12933,
+          "completion_tokens": 607,
+          "total_tokens": 13540,
+          "prompt_tokens_details": {
+            "cached_tokens": 8960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 510
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    unit_contribution_margin = 20\n    fixed_production_costs = 500_000\n    maximum_production_units = 300_000\n\n    # Calculate DOL at the maximum production level\n    total_contribution_margin = (\n        unit_contribution_margin * maximum_production_units\n    )\n    operating_income = total_contribution_margin - fixed_production_costs\n    dol = total_contribution_margin / operating_income\n\n    # The DOL is least at the maximum production level\n    answer = round(maximum_production_units, 1)\n\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5561,
+          "completion_tokens": 393,
+          "total_tokens": 5954,
+          "completion_tokens_details": {
+            "reasoning_tokens": 256
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1680",
+        "score": 2.423095703125
+      },
+      {
+        "function_id": "article-1682",
+        "score": 2.4216251373291016
+      },
+      {
+        "function_id": "article-1681",
+        "score": 2.2911064624786377
+      },
+      {
+        "function_id": "article-1679",
+        "score": 2.2482900619506836
+      },
+      {
+        "function_id": "article-1676",
+        "score": 2.2325093746185303
+      },
+      {
+        "function_id": "article-3041",
+        "score": 2.06693696975708
+      },
+      {
+        "function_id": "article-1675",
+        "score": 2.0483033657073975
+      },
+      {
+        "function_id": "article-574",
+        "score": 2.0446057319641113
+      },
+      {
+        "function_id": "article-2121",
+        "score": 1.943887710571289
+      },
+      {
+        "function_id": "article-1678",
+        "score": 1.9405665397644043
+      },
+      {
+        "function_id": "article-1677",
+        "score": 1.8858826160430908
+      },
+      {
+        "function_id": "article-2116",
+        "score": 1.877200722694397
+      },
+      {
+        "function_id": "article-573",
+        "score": 1.8045871257781982
+      },
+      {
+        "function_id": "article-539",
+        "score": 1.7988847494125366
+      },
+      {
+        "function_id": "article-3035",
+        "score": 1.786616563796997
+      },
+      {
+        "function_id": "article-767",
+        "score": 1.7803771495819092
+      },
+      {
+        "function_id": "article-428",
+        "score": 1.7791306972503662
+      },
+      {
+        "function_id": "article-164",
+        "score": 1.7717986106872559
+      },
+      {
+        "function_id": "article-1371",
+        "score": 1.765972375869751
+      },
+      {
+        "function_id": "article-165",
+        "score": 1.7653818130493164
+      },
+      {
+        "function_id": "article-3044",
+        "score": 1.7618935108184814
+      },
+      {
+        "function_id": "article-1198",
+        "score": 1.7526224851608276
+      },
+      {
+        "function_id": "article-1183",
+        "score": 1.7524244785308838
+      },
+      {
+        "function_id": "article-3049",
+        "score": 1.7274847030639648
+      },
+      {
+        "function_id": "article-3048",
+        "score": 1.726981520652771
+      },
+      {
+        "function_id": "article-179",
+        "score": 1.7251862287521362
+      },
+      {
+        "function_id": "article-211",
+        "score": 1.725081443786621
+      },
+      {
+        "function_id": "article-769",
+        "score": 1.721526861190796
+      },
+      {
+        "function_id": "article-768",
+        "score": 1.715045690536499
+      },
+      {
+        "function_id": "article-2229",
+        "score": 1.7085846662521362
+      }
+    ],
+    "selected_ids": [
+      "article-1680",
+      "article-3041",
+      "article-574"
+    ],
+    "status": "ok",
+    "answer": 300000,
+    "code": "def solution():\n    # Define variables\n    unit_contribution_margin = 20\n    fixed_production_costs = 500_000\n    maximum_production_units = 300_000\n\n    # Calculate DOL at the maximum production level\n    total_contribution_margin = (\n        unit_contribution_margin * maximum_production_units\n    )\n    operating_income = total_contribution_margin - fixed_production_costs\n    dol = total_contribution_margin / operating_income\n\n    # The DOL is least at the maximum production level\n    answer = round(maximum_production_units, 1)\n\n    return answer\n"
+  },
+  "digest": "f9cc3b2ba0cbd9aed184c1b87c8ab96a8a4e6312896a98b0e6fc321cb2ffaf64"
+}

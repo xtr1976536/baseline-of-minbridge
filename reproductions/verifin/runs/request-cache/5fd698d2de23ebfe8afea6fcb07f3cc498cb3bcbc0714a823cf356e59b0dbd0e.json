@@ -1,0 +1,31 @@
+{
+  "request_hash": "5fd698d2de23ebfe8afea6fcb07f3cc498cb3bcbc0714a823cf356e59b0dbd0e",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nAssume that you are a public equities analyst. Answer the following question by primarily using information that is shown in the balance sheet: what is the year end FY2018 net PPNE for 3M? Answer in USD billions.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"net_ppne\",\n  \"facts\": [\n    {\n      \"name\": \"net_property_plant_and_equipment\",\n      \"aliases\": [\n        \"Property, plant and equipment, net\",\n        \"Property, plant and equipment — net\",\n        \"Property, plant and equipment, less accumulated depreciation\",\n        \"Net property, plant and equipment\",\n        \"PP&E, net\"\n      ],\n      \"period\": \"FY2018 year end\",\n      \"statement\": \"balance sheet\"\n    }\n  ],\n  \"reason\": \"Direct lookup of 3M's year-end FY2018 net property, plant and equipment balance from the balance sheet.\"\n}",
+  "usage": {
+    "prompt_tokens": 4725,
+    "completion_tokens": 220,
+    "total_tokens": 4945,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 76
+    }
+  },
+  "response_id": "resp_06a4fc02c5412c4b016aedad0ffe8087d2a7d6724689a2bc19",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

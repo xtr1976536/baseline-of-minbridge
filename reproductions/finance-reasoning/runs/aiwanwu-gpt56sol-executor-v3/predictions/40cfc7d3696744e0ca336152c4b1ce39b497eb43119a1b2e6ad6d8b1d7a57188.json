@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2144",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a weighted average from credit-profile factor ratings using specified FICO weights (payment history 35%, amounts owed 30%, credit history length 15%, credit mix 10%, and new credit 10%) and rounds the result to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5068,
+          "completion_tokens": 97,
+          "total_tokens": 5165,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 38
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C09\",\"C12\"]}",
+        "usage": {
+          "prompt_tokens": 14686,
+          "completion_tokens": 22,
+          "total_tokens": 14708
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    payment_history = 90\n    accounts_owed = 65\n    length_of_credit_history = 70\n    credit_mix = 80\n    new_credit = 50\n\n    payment_history_weight = 0.35\n    accounts_owed_weight = 0.30\n    length_of_credit_history_weight = 0.15\n    credit_mix_weight = 0.10\n    new_credit_weight = 0.10\n\n    # Do math calculation to get the answer\n    fico_score = (\n        payment_history * payment_history_weight\n        + accounts_owed * accounts_owed_weight\n        + length_of_credit_history * length_of_credit_history_weight\n        + credit_mix * credit_mix_weight\n        + new_credit * new_credit_weight\n    )\n\n    answer = int(fico_score + 0.5)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5727,
+          "completion_tokens": 305,
+          "total_tokens": 6032,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 104
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-537",
+        "score": 1.8256713151931763,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2460",
+        "score": 1.7619191408157349,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2455",
+        "score": 1.6875405311584473,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-220",
+        "score": 1.5782467126846313,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1663",
+        "score": 1.568579912185669,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3019",
+        "score": 1.567162036895752,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1415",
+        "score": 1.550917387008667,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2404",
+        "score": 1.5502102375030518,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2451",
+        "score": 1.5480670928955078,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2456",
+        "score": 1.544982671737671,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2454",
+        "score": 1.539946436882019,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2874",
+        "score": 1.5398571491241455,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1416",
+        "score": 1.5352749824523926,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2457",
+        "score": 1.526659607887268,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2448",
+        "score": 1.523773193359375,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-643",
+        "score": 1.5147531032562256,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-223",
+        "score": 1.5125031471252441,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2997",
+        "score": 1.5121268033981323,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2403",
+        "score": 1.5117607116699219,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-560",
+        "score": 1.5096063613891602,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2165",
+        "score": 1.4988045692443848,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1653",
+        "score": 1.4982378482818604,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2120",
+        "score": 1.4918415546417236,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-189",
+        "score": 1.489234209060669,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2523",
+        "score": 1.4881417751312256,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1399",
+        "score": 1.4876301288604736,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2461",
+        "score": 1.4873783588409424,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.4813051223754883,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1095",
+        "score": 1.4803569316864014,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1647",
+        "score": 1.478168249130249,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-537",
+      "article-2451",
+      "article-2874"
+    ],
+    "status": "ok",
+    "answer": 75,
+    "code": "def solution():\n    # Define variables name and value\n    payment_history = 90\n    accounts_owed = 65\n    length_of_credit_history = 70\n    credit_mix = 80\n    new_credit = 50\n\n    payment_history_weight = 0.35\n    accounts_owed_weight = 0.30\n    length_of_credit_history_weight = 0.15\n    credit_mix_weight = 0.10\n    new_credit_weight = 0.10\n\n    # Do math calculation to get the answer\n    fico_score = (\n        payment_history * payment_history_weight\n        + accounts_owed * accounts_owed_weight\n        + length_of_credit_history * length_of_credit_history_weight\n        + credit_mix * credit_mix_weight\n        + new_credit * new_credit_weight\n    )\n\n    answer = int(fico_score + 0.5)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "751bb4e3f03768151b3a3a762d06c02acfcebe35f496a7b57a9f5daa8b7bb5af"
+}

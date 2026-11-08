@@ -1,0 +1,193 @@
+{
+  "record": {
+    "question_id": "test-2143",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates Economic Value of Equity as the present value of time-sequenced asset cash flows minus the present value of corresponding liability cash flows, using a fixed annual discount rate and returning the result rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5088,
+          "completion_tokens": 85,
+          "total_tokens": 5173,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 34
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14743,
+          "completion_tokens": 914,
+          "total_tokens": 15657,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 817
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    asset_cash_flows = [500000, 300000, 200000]\n    liability_cash_flows = [400000, 250000, 150000]\n    discount_rate = 0.05\n\n    # Do math calculation to get the answer\n    present_value_assets = sum(\n        cash_flow / ((1 + discount_rate) ** (period + 1))\n        for period, cash_flow in enumerate(asset_cash_flows)\n    )\n    present_value_liabilities = sum(\n        cash_flow / ((1 + discount_rate) ** (period + 1))\n        for period, cash_flow in enumerate(liability_cash_flows)\n    )\n    eve = present_value_assets - present_value_liabilities\n    answer = round(eve)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5663,
+          "completion_tokens": 280,
+          "total_tokens": 5943,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 96
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2738",
+        "score": 1.9061095714569092
+      },
+      {
+        "function_id": "article-250",
+        "score": 1.7857427597045898
+      },
+      {
+        "function_id": "article-1735",
+        "score": 1.7771592140197754
+      },
+      {
+        "function_id": "article-1730",
+        "score": 1.754202127456665
+      },
+      {
+        "function_id": "article-713",
+        "score": 1.7287862300872803
+      },
+      {
+        "function_id": "article-1309",
+        "score": 1.7268493175506592
+      },
+      {
+        "function_id": "article-1097",
+        "score": 1.722559928894043
+      },
+      {
+        "function_id": "article-2940",
+        "score": 1.7117209434509277
+      },
+      {
+        "function_id": "article-45",
+        "score": 1.7054905891418457
+      },
+      {
+        "function_id": "article-2700",
+        "score": 1.6976244449615479
+      },
+      {
+        "function_id": "article-1272",
+        "score": 1.693256139755249
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.6879265308380127
+      },
+      {
+        "function_id": "article-252",
+        "score": 1.687219500541687
+      },
+      {
+        "function_id": "article-1310",
+        "score": 1.6817529201507568
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.6808991432189941
+      },
+      {
+        "function_id": "article-2944",
+        "score": 1.6779167652130127
+      },
+      {
+        "function_id": "article-1732",
+        "score": 1.6777673959732056
+      },
+      {
+        "function_id": "article-2368",
+        "score": 1.6761480569839478
+      },
+      {
+        "function_id": "article-247",
+        "score": 1.6689822673797607
+      },
+      {
+        "function_id": "article-463",
+        "score": 1.6672983169555664
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6456806659698486
+      },
+      {
+        "function_id": "article-187",
+        "score": 1.6420838832855225
+      },
+      {
+        "function_id": "article-37",
+        "score": 1.6402312517166138
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.639021396636963
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.6371835470199585
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.635845422744751
+      },
+      {
+        "function_id": "article-2791",
+        "score": 1.6300685405731201
+      },
+      {
+        "function_id": "article-2570",
+        "score": 1.6289899349212646
+      },
+      {
+        "function_id": "article-356",
+        "score": 1.627485752105713
+      },
+      {
+        "function_id": "article-101",
+        "score": 1.6268887519836426
+      }
+    ],
+    "selected_ids": [
+      "article-2738",
+      "article-713",
+      "article-1309"
+    ],
+    "status": "ok",
+    "answer": 183781,
+    "code": "def solution():\n    # Define variables name and value\n    asset_cash_flows = [500000, 300000, 200000]\n    liability_cash_flows = [400000, 250000, 150000]\n    discount_rate = 0.05\n\n    # Do math calculation to get the answer\n    present_value_assets = sum(\n        cash_flow / ((1 + discount_rate) ** (period + 1))\n        for period, cash_flow in enumerate(asset_cash_flows)\n    )\n    present_value_liabilities = sum(\n        cash_flow / ((1 + discount_rate) ** (period + 1))\n        for period, cash_flow in enumerate(liability_cash_flows)\n    )\n    eve = present_value_assets - present_value_liabilities\n    answer = round(eve)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "237f0e222c0e54da1affb51d92ca4c4f12db55398dc2efd162328b2b190189cc"
+}

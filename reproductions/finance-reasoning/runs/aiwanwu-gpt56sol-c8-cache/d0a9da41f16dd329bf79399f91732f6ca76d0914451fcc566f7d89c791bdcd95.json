@@ -1,0 +1,21 @@
+{
+  "identity": "d0a9da41f16dd329bf79399f91732f6ca76d0914451fcc566f7d89c791bdcd95",
+  "response_digest": "bbe093995e1695dd351b6c495f6a51885c62f2c19ba2de4fb0839c964858072b",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    returns = [1.5, -0.5, 3.2, -2.0, 0.8]\n    n = len(returns)\n    mean = sum(returns) / n\n\n    # Do math calculation to get the answer\n    s2 = sum((x - mean) ** 2 for x in returns)\n    s4 = sum((x - mean) ** 4 for x in returns)\n    m2 = s2 / n\n    m4 = s4 / n\n    excess_kurtosis = (m4 / (m2 ** 2)) - 3\n\n    # Return answer rounded to two decimal places\n    return round(excess_kurtosis, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5102,
+      "completion_tokens": 479,
+      "total_tokens": 5581,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 306
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

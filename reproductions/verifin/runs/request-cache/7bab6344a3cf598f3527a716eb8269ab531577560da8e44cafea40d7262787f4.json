@@ -1,0 +1,31 @@
+{
+  "request_hash": "7bab6344a3cf598f3527a716eb8269ab531577560da8e44cafea40d7262787f4",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is Lockheed Martin's 2 year total revenue CAGR from FY2020 to FY2022 (in units of percents and round to one decimal place)? Provide a response to the question by primarily using the statement of income.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"total_revenue_cagr\",\n  \"facts\": [\n    {\n      \"name\": \"revenue_fy2020\",\n      \"aliases\": [\"Net sales\", \"Total revenue\", \"Total revenues\", \"Revenue\", \"Sales\"],\n      \"period\": \"FY2020\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"revenue_fy2022\",\n      \"aliases\": [\"Net sales\", \"Total revenue\", \"Total revenues\", \"Revenue\", \"Sales\"],\n      \"period\": \"FY2022\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Calculate the 2-year total revenue CAGR using FY2020 and FY2022 revenue: (FY2022 revenue / FY2020 revenue)^(1/2) - 1, then express as a percentage rounded to one decimal place.\"\n}",
+  "usage": {
+    "prompt_tokens": 4725,
+    "completion_tokens": 252,
+    "total_tokens": 4977,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 62
+    }
+  },
+  "response_id": "resp_0f7bc6079b8f0104016aedb9557a8887d19d2d391eca3e3f44",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

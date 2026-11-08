@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2148",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a fixed-period Exponential Moving Average (EMA) from a chronological series of daily stock prices, using the standard smoothing multiplier of 2/(period + 1), and returns the latest EMA value after sufficient observations?",
+        "usage": {
+          "prompt_tokens": 5086,
+          "completion_tokens": 50,
+          "total_tokens": 5136,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 16362,
+          "completion_tokens": 301,
+          "total_tokens": 16663,
+          "completion_tokens_details": {
+            "reasoning_tokens": 277
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [150, 152, 151, 153, 155, 154, 156, 158, 157, 160,\n              162, 161, 163, 162, 164, 165, 167, 168, 166, 169,\n              170, 172]\n    period = 20\n    smoothing_factor = 2\n\n    # Do math calculation to get the answer\n    multiplier = smoothing_factor / (period + 1)\n    ema = sum(prices[:period]) / period\n\n    for price in prices[period:]:\n        ema = (price - ema) * multiplier + ema\n\n    # return answer\n    return round(ema, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5859,
+          "completion_tokens": 443,
+          "total_tokens": 6302,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 268
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-962",
+        "score": 2.137619972229004,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1225",
+        "score": 2.0713064670562744,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1622",
+        "score": 2.0248513221740723,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2845",
+        "score": 2.0246965885162354,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2471",
+        "score": 1.9673800468444824,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.9068231582641602,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.8851628303527832,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.8156306743621826,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1776",
+        "score": 1.8020579814910889,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1958",
+        "score": 1.7821731567382812,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.7693594694137573,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.768108606338501,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.7656939029693604,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.757234811782837,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1861",
+        "score": 1.7130452394485474,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.7030847072601318,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.6975692510604858,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1226",
+        "score": 1.6969037055969238,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.6666762828826904,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.6417348384857178,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2145",
+        "score": 1.633025884628296,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1632",
+        "score": 1.6220526695251465,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.606360912322998,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-666",
+        "score": 1.5893760919570923,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-501",
+        "score": 1.5784739255905151,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.5678985118865967,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2414",
+        "score": 1.5651119947433472,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1621",
+        "score": 1.5604603290557861,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-359",
+        "score": 1.5532644987106323,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2996",
+        "score": 1.5494639873504639,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-962",
+      "article-1225",
+      "article-2845"
+    ],
+    "status": "ok",
+    "answer": 161.72,
+    "code": "def solution():\n    # Define variables name and value\n    prices = [150, 152, 151, 153, 155, 154, 156, 158, 157, 160,\n              162, 161, 163, 162, 164, 165, 167, 168, 166, 169,\n              170, 172]\n    period = 20\n    smoothing_factor = 2\n\n    # Do math calculation to get the answer\n    multiplier = smoothing_factor / (period + 1)\n    ema = sum(prices[:period]) / period\n\n    for price in prices[period:]:\n        ema = (price - ema) * multiplier + ema\n\n    # return answer\n    return round(ema, 2)\n"
+  },
+  "digest": "9956637e765668242a48ef78478ea466cb65dc08654e93a613e5a04a59bace26"
+}

@@ -1,0 +1,53 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_liabilities_noncurrent_fy2021 Real)
+(declare-const accrued_income_taxes_noncurrent_fy2021 Real)
+(declare-const deferred_income_tax_liabilities_net_fy2021 Real)
+(declare-const long_term_notes_and_loans_fy2021 Real)
+(declare-const other_liabilities_noncurrent_fy2021 Real)
+
+(assert (! (= accrued_income_taxes_noncurrent_fy2021 12345) :named evidence_accrued_income_taxes_noncurrent_fy2021))
+(assert (! (= deferred_income_tax_liabilities_net_fy2021 7864) :named evidence_deferred_income_tax_liabilities_net_fy2021))
+(assert (! (= long_term_notes_and_loans_fy2021 75995) :named evidence_long_term_notes_and_loans_fy2021))
+(assert (! (= other_liabilities_noncurrent_fy2021 4787) :named evidence_other_liabilities_noncurrent_fy2021))
+
+(assert (! (= computed_liabilities_noncurrent_fy2021 (+ long_term_notes_and_loans_fy2021 accrued_income_taxes_noncurrent_fy2021 deferred_income_tax_liabilities_net_fy2021 other_liabilities_noncurrent_fy2021)) :named formula_liabilities_noncurrent_fy2021))
+
+(assert (! (<= (- computed_liabilities_noncurrent_fy2021 85521) 85.521000000000001) :named claim_upper))
+(assert (! (<= (- 85521 computed_liabilities_noncurrent_fy2021) 85.521000000000001) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_AccruedIncomeTaxesNoncurrent_instant_2021_05_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_DeferredIncomeTaxAssetsNet_instant_2021_05_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_DeferredIncomeTaxLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_DeferredTaxAssetsLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LongTermNotesAndLoans_instant_2021_05_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_DeferredIncomeTaxAssetsNet_instant_2021_05_31_unit_USD_dims_none 13636) :named evidence_xbrl_fact_us_gaap_DeferredIncomeTaxAssetsNet_instant_2021_05_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_DeferredTaxAssetsLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none 5772) :named evidence_xbrl_fact_us_gaap_DeferredTaxAssetsLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none 100991) :named evidence_xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= long_term_notes_and_loans_fy2021 xbrl_fact_us_gaap_LongTermNotesAndLoans_instant_2021_05_31_unit_USD_dims_none) :named xbrl_bind_long_term_notes_and_loans_fy2021_edgar_2021_05_31_0001564590_21_033616))
+(assert (! (= xbrl_fact_us_gaap_LongTermNotesAndLoans_instant_2021_05_31_unit_USD_dims_none 75995) :named xbrl_instance_long_term_notes_and_loans_fy2021))
+(assert (! (= accrued_income_taxes_noncurrent_fy2021 xbrl_fact_us_gaap_AccruedIncomeTaxesNoncurrent_instant_2021_05_31_unit_USD_dims_none) :named xbrl_bind_accrued_income_taxes_noncurrent_fy2021_edgar_2021_05_31_0001564590_21_033616))
+(assert (! (= xbrl_fact_us_gaap_AccruedIncomeTaxesNoncurrent_instant_2021_05_31_unit_USD_dims_none 12345) :named xbrl_instance_accrued_income_taxes_noncurrent_fy2021))
+(assert (! (= deferred_income_tax_liabilities_net_fy2021 xbrl_fact_us_gaap_DeferredIncomeTaxLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none) :named xbrl_bind_deferred_income_tax_liabilities_net_fy2021_edgar_2021_05_31_0001564590_21_033616))
+(assert (! (= xbrl_fact_us_gaap_DeferredIncomeTaxLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none 7864) :named xbrl_instance_deferred_income_tax_liabilities_net_fy2021))
+(assert (! (= other_liabilities_noncurrent_fy2021 xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none) :named xbrl_bind_other_liabilities_noncurrent_fy2021_edgar_2021_05_31_0001564590_21_033616))
+(assert (! (= xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none 4787) :named xbrl_instance_other_liabilities_noncurrent_fy2021))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_LongTermNotesAndLoans_instant_2021_05_31_unit_USD_dims_none xbrl_fact_us_gaap_AccruedIncomeTaxesNoncurrent_instant_2021_05_31_unit_USD_dims_none xbrl_fact_us_gaap_DeferredIncomeTaxLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none)) 2.5) :named xbrl_calc_3_137141254_LiabilitiesNoncurrent_C_0001341439_20210531_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_LongTermNotesAndLoans_instant_2021_05_31_unit_USD_dims_none xbrl_fact_us_gaap_AccruedIncomeTaxesNoncurrent_instant_2021_05_31_unit_USD_dims_none xbrl_fact_us_gaap_DeferredIncomeTaxLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2021_05_31_unit_USD_dims_none)) (- 2.5)) :named xbrl_calc_3_137141254_LiabilitiesNoncurrent_C_0001341439_20210531_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_DeferredTaxAssetsLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_DeferredIncomeTaxAssetsNet_instant_2021_05_31_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_DeferredIncomeTaxLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none))) 1.5) :named xbrl_calc_49_776616428_DeferredTaxAssetsLiabilitiesNet_C_0001341439_20210531_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_DeferredTaxAssetsLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_DeferredIncomeTaxAssetsNet_instant_2021_05_31_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_DeferredIncomeTaxLiabilitiesNet_instant_2021_05_31_unit_USD_dims_none))) (- 1.5)) :named xbrl_calc_49_776616428_DeferredTaxAssetsLiabilitiesNet_C_0001341439_20210531_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

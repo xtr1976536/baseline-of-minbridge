@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2033",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Paasche price index between a base period and a current period using current-period quantities as weights and prices from both periods, returning the result as a decimal rounded to three places?",
+        "usage": {
+          "prompt_tokens": 5056,
+          "completion_tokens": 43,
+          "total_tokens": 5099,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14988,
+          "completion_tokens": 613,
+          "total_tokens": 15601,
+          "prompt_tokens_details": {
+            "cached_tokens": 14848
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    november_sugar_price = 0.90\n    november_cotton_price = 0.60\n\n    december_sugar_price = 1.00\n    december_cotton_price = 0.80\n\n    december_sugar_quantity = 120\n    december_cotton_quantity = 50\n\n    # Calculate the Paasche price index for December\n    current_period_cost = (\n        december_sugar_price * december_sugar_quantity\n        + december_cotton_price * december_cotton_quantity\n    )\n    base_period_cost = (\n        november_sugar_price * december_sugar_quantity\n        + november_cotton_price * december_cotton_quantity\n    )\n\n    paasche_index = (current_period_cost / base_period_cost) * 100\n\n    # Return the answer rounded to three decimal places\n    return round(paasche_index, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5503,
+          "completion_tokens": 266,
+          "total_tokens": 5769,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 66
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2466",
+        "score": 1.6218440532684326
+      },
+      {
+        "function_id": "article-402",
+        "score": 1.5892728567123413
+      },
+      {
+        "function_id": "article-403",
+        "score": 1.5184872150421143
+      },
+      {
+        "function_id": "article-686",
+        "score": 1.5120995044708252
+      },
+      {
+        "function_id": "article-945",
+        "score": 1.4952830076217651
+      },
+      {
+        "function_id": "article-1438",
+        "score": 1.4909727573394775
+      },
+      {
+        "function_id": "article-415",
+        "score": 1.4814891815185547
+      },
+      {
+        "function_id": "article-2556",
+        "score": 1.4731872081756592
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.4720687866210938
+      },
+      {
+        "function_id": "article-413",
+        "score": 1.4654464721679688
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.4648051261901855
+      },
+      {
+        "function_id": "article-1772",
+        "score": 1.4611921310424805
+      },
+      {
+        "function_id": "article-701",
+        "score": 1.459221363067627
+      },
+      {
+        "function_id": "article-1055",
+        "score": 1.4561381340026855
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.4554835557937622
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.4495418071746826
+      },
+      {
+        "function_id": "article-2146",
+        "score": 1.4475774765014648
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.4423320293426514
+      },
+      {
+        "function_id": "article-1324",
+        "score": 1.4398813247680664
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.4389286041259766
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.4332246780395508
+      },
+      {
+        "function_id": "article-691",
+        "score": 1.4323298931121826
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.4320087432861328
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.431986689567566
+      },
+      {
+        "function_id": "article-151",
+        "score": 1.4251821041107178
+      },
+      {
+        "function_id": "article-2788",
+        "score": 1.424926519393921
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.4229933023452759
+      },
+      {
+        "function_id": "article-1309",
+        "score": 1.4228395223617554
+      },
+      {
+        "function_id": "article-393",
+        "score": 1.4218604564666748
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.4210026264190674
+      }
+    ],
+    "selected_ids": [
+      "article-686",
+      "article-415",
+      "article-691"
+    ],
+    "status": "ok",
+    "answer": 115.942,
+    "code": "def solution():\n    # Define variables\n    november_sugar_price = 0.90\n    november_cotton_price = 0.60\n\n    december_sugar_price = 1.00\n    december_cotton_price = 0.80\n\n    december_sugar_quantity = 120\n    december_cotton_quantity = 50\n\n    # Calculate the Paasche price index for December\n    current_period_cost = (\n        december_sugar_price * december_sugar_quantity\n        + december_cotton_price * december_cotton_quantity\n    )\n    base_period_cost = (\n        november_sugar_price * december_sugar_quantity\n        + november_cotton_price * december_cotton_quantity\n    )\n\n    paasche_index = (current_period_cost / base_period_cost) * 100\n\n    # Return the answer rounded to three decimal places\n    return round(paasche_index, 3)\n"
+  },
+  "digest": "4e66edeeaf5a66280ad327fc0d438f170e8d868adb44f2eff846990bd2701b55"
+}

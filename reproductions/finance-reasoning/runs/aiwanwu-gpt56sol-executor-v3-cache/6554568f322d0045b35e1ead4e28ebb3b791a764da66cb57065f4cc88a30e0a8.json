@@ -1,0 +1,18 @@
+{
+  "identity": "6554568f322d0045b35e1ead4e28ebb3b791a764da66cb57065f4cc88a30e0a8",
+  "response_digest": "f4c614a68f295da31e791333d1caac96a999cd35d805ff96edf2609fb602bc3f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    asset_cash_flows = [500000, 300000, 200000]\n    liability_cash_flows = [400000, 250000, 150000]\n    discount_rate = 0.05\n\n    # Calculate present values and EVE\n    present_value_assets = sum(\n        cash_flow / ((1 + discount_rate) ** (i + 1))\n        for i, cash_flow in enumerate(asset_cash_flows)\n    )\n    present_value_liabilities = sum(\n        cash_flow / ((1 + discount_rate) ** (i + 1))\n        for i, cash_flow in enumerate(liability_cash_flows)\n    )\n    answer = round(present_value_assets - present_value_liabilities)\n\n    # Return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5690,
+      "completion_tokens": 253,
+      "total_tokens": 5943,
+      "completion_tokens_details": {
+        "reasoning_tokens": 75
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

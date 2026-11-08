@@ -1,0 +1,21 @@
+{
+  "identity": "d907637b84220b5939fea87f5149c87415822f80c6e42d40b891af0d00e2e7a4",
+  "response_digest": "51a24a4b10b41093285baed8bcc31f5ed59a4ce2bab90431b7f8e36255a896a0",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    units_sold = 50000\n    purchase_costs = [\n        (40000, 17),  # 1/23 purchase\n        (30000, 15),  # 1/20 purchase\n        (20000, 13),  # Beginning inventory\n    ]\n\n    # Do math calculation to get the answer using LIFO\n    units_remaining = units_sold\n    cost_of_goods_sold = 0\n\n    for units, cost_per_unit in purchase_costs:\n        units_used = min(units_remaining, units)\n        cost_of_goods_sold += units_used * cost_per_unit\n        units_remaining -= units_used\n\n        if units_remaining == 0:\n            break\n\n    # Return answer to the nearest dollar\n    return round(cost_of_goods_sold)\n```",
+    "usage": {
+      "prompt_tokens": 5829,
+      "completion_tokens": 247,
+      "total_tokens": 6076,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 60
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

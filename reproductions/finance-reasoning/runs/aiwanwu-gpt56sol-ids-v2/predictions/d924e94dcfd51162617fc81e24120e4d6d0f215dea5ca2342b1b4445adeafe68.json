@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2012",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the increase in annual net income from switching inventory accounting from LIFO to FIFO using the year-over-year change in the LIFO reserve, adjusts the pretax difference for a constant corporate tax rate, accepts values in thousands, and returns the result rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5100,
+          "completion_tokens": 61,
+          "total_tokens": 5161,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14475,
+          "completion_tokens": 322,
+          "total_tokens": 14797,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 304
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    lifo_reserve_2014 = 82\n    lifo_reserve_2013 = 64\n    tax_rate = 0.30\n\n    # Do math calculation to get the answer\n    change_in_lifo_reserve = lifo_reserve_2014 - lifo_reserve_2013\n    higher_net_income = change_in_lifo_reserve * (1 - tax_rate)\n    answer = round(higher_net_income, 1)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5025,
+          "completion_tokens": 277,
+          "total_tokens": 5302,
+          "completion_tokens_details": {
+            "reasoning_tokens": 150
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2136",
+        "score": 1.8993964195251465,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2135",
+        "score": 1.788684368133545,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.7335305213928223,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2284",
+        "score": 1.7250878810882568,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.721278190612793,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2098",
+        "score": 1.703662395477295,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2958",
+        "score": 1.6800777912139893,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.645749568939209,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.637190818786621,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2550",
+        "score": 1.6346646547317505,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-353",
+        "score": 1.6321470737457275,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2905",
+        "score": 1.6073256731033325,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-471",
+        "score": 1.605102777481079,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2248",
+        "score": 1.6007070541381836,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-682",
+        "score": 1.597829818725586,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-472",
+        "score": 1.5967302322387695,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-161",
+        "score": 1.5885941982269287,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1122",
+        "score": 1.5797799825668335,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1206",
+        "score": 1.5778875350952148,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1003",
+        "score": 1.574584722518921,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2467",
+        "score": 1.5730576515197754,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2934",
+        "score": 1.5714151859283447,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1703",
+        "score": 1.5686417818069458,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2551",
+        "score": 1.5674667358398438,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2495",
+        "score": 1.5671706199645996,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2200",
+        "score": 1.5660611391067505,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1546",
+        "score": 1.5644996166229248,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-629",
+        "score": 1.5638874769210815,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2323",
+        "score": 1.5613219738006592,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2249",
+        "score": 1.5565977096557617,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2136"
+    ],
+    "status": "ok",
+    "answer": 12.6,
+    "code": "def solution():\n    # Define variables name and value\n    lifo_reserve_2014 = 82\n    lifo_reserve_2013 = 64\n    tax_rate = 0.30\n\n    # Do math calculation to get the answer\n    change_in_lifo_reserve = lifo_reserve_2014 - lifo_reserve_2013\n    higher_net_income = change_in_lifo_reserve * (1 - tax_rate)\n    answer = round(higher_net_income, 1)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "807637cf9154fb1fabd4ce53e10f9b266649bfa7b6407fb036f5a1d2fd8cab99"
+}

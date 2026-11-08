@@ -1,0 +1,21 @@
+{
+  "identity": "8c920b52803e29a9519ba2a95d7d59870cf6d99856706effdffa4c4973ef6269",
+  "response_digest": "7f4ca2489eafdca8259117972373ae494fd2493e64faf1c9c65f0207313f479c",
+  "response": {
+    "content": "```python\ndef solution():\n    cash_flows = [8, 10, 12, 15, 18]\n    discount_rate = 0.08\n    terminal_value_multiple = 4\n\n    present_value_of_cash_flows = sum(\n        cash_flow / ((1 + discount_rate) ** year)\n        for year, cash_flow in enumerate(cash_flows, start=1)\n    )\n    terminal_value = cash_flows[-1] * terminal_value_multiple\n    present_value_of_terminal_value = terminal_value / ((1 + discount_rate) ** len(cash_flows))\n\n    answer = round(present_value_of_cash_flows + present_value_of_terminal_value, 2)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5996,
+      "completion_tokens": 179,
+      "total_tokens": 6175,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 24
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

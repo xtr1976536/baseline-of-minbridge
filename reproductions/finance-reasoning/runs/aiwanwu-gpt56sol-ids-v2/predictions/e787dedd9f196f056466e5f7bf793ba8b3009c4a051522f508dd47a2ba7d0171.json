@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2009",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the one-period profit of a currency carry trade by converting borrowed foreign-currency principal at a fixed exchange rate, applying borrowing and investment interest rates, assuming no exchange-rate change, and returning profit in the investment currency?",
+        "usage": {
+          "prompt_tokens": 5046,
+          "completion_tokens": 50,
+          "total_tokens": 5096,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C14\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 13934,
+          "completion_tokens": 22,
+          "total_tokens": 13956
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    borrowed_amount_jpy = 1_000_000\n    borrowing_rate = 0.005\n    investment_rate = 0.05\n    exchange_rate = 0.05  # Brazilian Reals per Japanese Yen\n\n    # Convert borrowed funds to BRL and calculate the interest-rate spread\n    invested_amount_brl = borrowed_amount_jpy * exchange_rate\n    investment_interest_brl = invested_amount_brl * investment_rate\n    borrowing_interest_brl = (\n        borrowed_amount_jpy * borrowing_rate * exchange_rate\n    )\n    profit_brl = investment_interest_brl - borrowing_interest_brl\n\n    # Return the profit to the nearest integer\n    return round(profit_brl)\n```",
+        "usage": {
+          "prompt_tokens": 5619,
+          "completion_tokens": 249,
+          "total_tokens": 5868,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 83
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-233",
+        "score": 2.140101194381714,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2869",
+        "score": 1.9723140001296997,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-445",
+        "score": 1.8221466541290283,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3106",
+        "score": 1.80881929397583,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2343",
+        "score": 1.8063892126083374,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.7603635787963867,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-672",
+        "score": 1.7461967468261719,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-597",
+        "score": 1.7445935010910034,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2004",
+        "score": 1.7409266233444214,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-79",
+        "score": 1.726564884185791,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1963",
+        "score": 1.7179558277130127,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-162",
+        "score": 1.7172214984893799,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2677",
+        "score": 1.7003014087677002,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2423",
+        "score": 1.6866251230239868,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1673",
+        "score": 1.6846389770507812,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.6831955909729004,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.671802043914795,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1964",
+        "score": 1.6697542667388916,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.6663353443145752,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-598",
+        "score": 1.6656495332717896,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-595",
+        "score": 1.6640253067016602,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-77",
+        "score": 1.6630573272705078,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-817",
+        "score": 1.6604537963867188,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2900",
+        "score": 1.6506969928741455,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.6494674682617188,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6480653285980225,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1888",
+        "score": 1.6435015201568604,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2961",
+        "score": 1.6428861618041992,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2187",
+        "score": 1.642648696899414,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.6404701471328735,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-233",
+      "article-3106",
+      "article-2423"
+    ],
+    "status": "ok",
+    "answer": 2250,
+    "code": "def solution():\n    # Define variables name and value\n    borrowed_amount_jpy = 1_000_000\n    borrowing_rate = 0.005\n    investment_rate = 0.05\n    exchange_rate = 0.05  # Brazilian Reals per Japanese Yen\n\n    # Convert borrowed funds to BRL and calculate the interest-rate spread\n    invested_amount_brl = borrowed_amount_jpy * exchange_rate\n    investment_interest_brl = invested_amount_brl * investment_rate\n    borrowing_interest_brl = (\n        borrowed_amount_jpy * borrowing_rate * exchange_rate\n    )\n    profit_brl = investment_interest_brl - borrowing_interest_brl\n\n    # Return the profit to the nearest integer\n    return round(profit_brl)\n"
+  },
+  "digest": "ebe0e261fcf6c306423dea00faf5fadc920b472c9d148327e4d98820805b4add"
+}

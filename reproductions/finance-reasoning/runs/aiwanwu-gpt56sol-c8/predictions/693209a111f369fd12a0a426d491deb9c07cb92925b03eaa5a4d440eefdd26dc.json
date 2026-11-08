@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2231",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the theoretical price of a European call option using the Black-Scholes model given the current stock price, strike price, time to expiration in years, annual risk-free interest rate, and annualized volatility, assuming no dividends, with the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5027,
+          "completion_tokens": 60,
+          "total_tokens": 5087,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16816,
+          "completion_tokens": 399,
+          "total_tokens": 17215,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 302
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_price = 150.0\n    strike_price = 160.0\n    time_to_expiration = 0.5\n    risk_free_rate = 0.05\n    volatility = 0.20\n\n    # Do math calculation to get the answer\n    import math\n    from scipy.stats import norm\n\n    d1 = (\n        math.log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility ** 2) * time_to_expiration\n    ) / (volatility * math.sqrt(time_to_expiration))\n\n    d2 = d1 - volatility * math.sqrt(time_to_expiration)\n\n    call_price = (\n        stock_price * norm.cdf(d1)\n        - strike_price\n        * math.exp(-risk_free_rate * time_to_expiration)\n        * norm.cdf(d2)\n    )\n\n    answer = round(call_price, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5959,
+          "completion_tokens": 413,
+          "total_tokens": 6372,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 194
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-729",
+        "score": 2.352437973022461
+      },
+      {
+        "function_id": "article-3060",
+        "score": 2.3226683139801025
+      },
+      {
+        "function_id": "article-1032",
+        "score": 2.3039538860321045
+      },
+      {
+        "function_id": "article-1033",
+        "score": 2.1687088012695312
+      },
+      {
+        "function_id": "article-3061",
+        "score": 2.1412038803100586
+      },
+      {
+        "function_id": "article-2505",
+        "score": 2.04105281829834
+      },
+      {
+        "function_id": "article-358",
+        "score": 2.0023882389068604
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.8958327770233154
+      },
+      {
+        "function_id": "article-1408",
+        "score": 1.8582909107208252
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.8023605346679688
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.7237231731414795
+      },
+      {
+        "function_id": "article-2054",
+        "score": 1.7007993459701538
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.6997014284133911
+      },
+      {
+        "function_id": "article-2435",
+        "score": 1.6939889192581177
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.6887760162353516
+      },
+      {
+        "function_id": "article-758",
+        "score": 1.6849560737609863
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.6845362186431885
+      },
+      {
+        "function_id": "article-2649",
+        "score": 1.6809800863265991
+      },
+      {
+        "function_id": "article-2850",
+        "score": 1.6714438199996948
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.6688942909240723
+      },
+      {
+        "function_id": "article-1156",
+        "score": 1.6679468154907227
+      },
+      {
+        "function_id": "article-727",
+        "score": 1.6673877239227295
+      },
+      {
+        "function_id": "article-3063",
+        "score": 1.665686011314392
+      },
+      {
+        "function_id": "article-2849",
+        "score": 1.6653493642807007
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.6531617641448975
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.6492199897766113
+      },
+      {
+        "function_id": "article-1875",
+        "score": 1.6411806344985962
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6397799253463745
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.6379680633544922
+      },
+      {
+        "function_id": "article-34",
+        "score": 1.6324632167816162
+      }
+    ],
+    "selected_ids": [
+      "article-729",
+      "article-3060",
+      "article-1032"
+    ],
+    "status": "ok",
+    "answer": 5.94,
+    "code": "def solution():\n    # Define variables name and value\n    stock_price = 150.0\n    strike_price = 160.0\n    time_to_expiration = 0.5\n    risk_free_rate = 0.05\n    volatility = 0.20\n\n    # Do math calculation to get the answer\n    import math\n    from scipy.stats import norm\n\n    d1 = (\n        math.log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility ** 2) * time_to_expiration\n    ) / (volatility * math.sqrt(time_to_expiration))\n\n    d2 = d1 - volatility * math.sqrt(time_to_expiration)\n\n    call_price = (\n        stock_price * norm.cdf(d1)\n        - strike_price\n        * math.exp(-risk_free_rate * time_to_expiration)\n        * norm.cdf(d2)\n    )\n\n    answer = round(call_price, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "4fa33a40720ecb3357dbf99331f5a29f4efe53214c881ec8ecb38c66d5fa87df"
+}

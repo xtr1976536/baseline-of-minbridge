@@ -1,0 +1,21 @@
+{
+  "identity": "6b6f76a60fb59bfe2fc714b825ef3cd5a24e68541cd8623b7cee2780ba7e1e5f",
+  "response_digest": "8698fa1f3c08c0c68f2b0a13a32abc2914602b4b6f00c8a0e9866f2882f1d2b0",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    asset_value = 150.0\n    debt_value = 100.0\n    risk_free_rate = 0.05\n    asset_volatility = 0.20\n    time_to_maturity = 3.0\n\n    # Do math calculation to get the answer\n    import math\n    from scipy.stats import norm\n\n    d1 = (\n        math.log(asset_value / debt_value)\n        + (risk_free_rate + 0.5 * asset_volatility ** 2) * time_to_maturity\n    ) / (asset_volatility * math.sqrt(time_to_maturity))\n\n    d2 = d1 - asset_volatility * math.sqrt(time_to_maturity)\n\n    equity_value = (\n        asset_value * norm.cdf(d1)\n        - debt_value\n        * math.exp(-risk_free_rate * time_to_maturity)\n        * norm.cdf(d2)\n    )\n\n    # Return the equity value rounded to two decimal places\n    answer = round(equity_value, 2)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5595,
+      "completion_tokens": 507,
+      "total_tokens": 6102,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 272
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

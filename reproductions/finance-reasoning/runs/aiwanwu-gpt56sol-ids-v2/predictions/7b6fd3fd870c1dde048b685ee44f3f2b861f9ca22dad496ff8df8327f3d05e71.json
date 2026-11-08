@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2170",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the percentage change in operating income when unit sales volume changes, given a constant selling price per unit, variable cost per unit, and total fixed operating costs, with the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5014,
+          "completion_tokens": 47,
+          "total_tokens": 5061,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C06\"]}",
+        "usage": {
+          "prompt_tokens": 12963,
+          "completion_tokens": 143,
+          "total_tokens": 13106,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 119
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_units = 200000\n    new_units = 220000\n    price_per_unit = 250\n    variable_cost_per_unit = 65\n    fixed_operating_costs = 10000000\n\n    # Calculate operating income at each output level\n    contribution_margin_per_unit = price_per_unit - variable_cost_per_unit\n    initial_operating_income = (\n        initial_units * contribution_margin_per_unit - fixed_operating_costs\n    )\n    new_operating_income = (\n        new_units * contribution_margin_per_unit - fixed_operating_costs\n    )\n\n    # Calculate the percentage change in operating income\n    percentage_change = (\n        (new_operating_income - initial_operating_income)\n        / initial_operating_income\n        * 100\n    )\n    answer = round(percentage_change, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5589,
+          "completion_tokens": 283,
+          "total_tokens": 5872,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 83
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-574",
+        "score": 1.8332206010818481,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-573",
+        "score": 1.7124214172363281,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1681",
+        "score": 1.6689765453338623,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-180",
+        "score": 1.6582980155944824,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2229",
+        "score": 1.6425482034683228,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1366",
+        "score": 1.635814905166626,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-763",
+        "score": 1.630213975906372,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-210",
+        "score": 1.6290315389633179,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1679",
+        "score": 1.61728036403656,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1371",
+        "score": 1.6080151796340942,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-3035",
+        "score": 1.6039925813674927,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-768",
+        "score": 1.6020350456237793,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-3049",
+        "score": 1.5986757278442383,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-3045",
+        "score": 1.5933659076690674,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-765",
+        "score": 1.5927491188049316,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-289",
+        "score": 1.5909841060638428,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2045",
+        "score": 1.5909008979797363,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-211",
+        "score": 1.5889110565185547,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-3048",
+        "score": 1.5859122276306152,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-3044",
+        "score": 1.5852564573287964,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-539",
+        "score": 1.5836689472198486,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-204",
+        "score": 1.5752673149108887,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-3033",
+        "score": 1.5736875534057617,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2228",
+        "score": 1.5684388875961304,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-769",
+        "score": 1.5662912130355835,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-208",
+        "score": 1.5648772716522217,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-3043",
+        "score": 1.5628912448883057,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3039",
+        "score": 1.5625951290130615,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-164",
+        "score": 1.5608391761779785,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1200",
+        "score": 1.5601285696029663,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-574",
+      "article-1681",
+      "article-1366"
+    ],
+    "status": "ok",
+    "answer": 13.7,
+    "code": "def solution():\n    # Define variables name and value\n    initial_units = 200000\n    new_units = 220000\n    price_per_unit = 250\n    variable_cost_per_unit = 65\n    fixed_operating_costs = 10000000\n\n    # Calculate operating income at each output level\n    contribution_margin_per_unit = price_per_unit - variable_cost_per_unit\n    initial_operating_income = (\n        initial_units * contribution_margin_per_unit - fixed_operating_costs\n    )\n    new_operating_income = (\n        new_units * contribution_margin_per_unit - fixed_operating_costs\n    )\n\n    # Calculate the percentage change in operating income\n    percentage_change = (\n        (new_operating_income - initial_operating_income)\n        / initial_operating_income\n        * 100\n    )\n    answer = round(percentage_change, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "93cf45ea518e38fea18b93b5cf84959a16b86fa885c9138adf2c1f7b7c582635"
+}

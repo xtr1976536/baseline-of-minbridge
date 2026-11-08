@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2206",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the two-sample equal-variance (pooled) t-statistic for comparing the means of two independent financial return samples, given their sample means, variances, and equal sample sizes over a fixed observation period, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5042,
+          "completion_tokens": 60,
+          "total_tokens": 5102,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14249,
+          "completion_tokens": 335,
+          "total_tokens": 14584,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 238
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    mean_1 = 8\n    mean_2 = 6\n    var_1 = 4\n    var_2 = 3\n    n1 = 5\n    n2 = 5\n\n    # Do math calculation to get the answer\n    pooled_variance = (\n        ((n1 - 1) * var_1 ** 2) + ((n2 - 1) * var_2 ** 2)\n    ) / (n1 + n2 - 2)\n\n    t_value = (mean_1 - mean_2) / (\n        pooled_variance * (1 / n1 + 1 / n2)\n    ) ** 0.5\n\n    # Return the t-value rounded to two decimal places\n    return round(t_value, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5150,
+          "completion_tokens": 460,
+          "total_tokens": 5610,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 271
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1797",
+        "score": 1.7144532203674316
+      },
+      {
+        "function_id": "article-1798",
+        "score": 1.5646847486495972
+      },
+      {
+        "function_id": "article-1794",
+        "score": 1.5454707145690918
+      },
+      {
+        "function_id": "article-1294",
+        "score": 1.5343687534332275
+      },
+      {
+        "function_id": "article-1796",
+        "score": 1.5005996227264404
+      },
+      {
+        "function_id": "article-192",
+        "score": 1.4989955425262451
+      },
+      {
+        "function_id": "article-1988",
+        "score": 1.481546401977539
+      },
+      {
+        "function_id": "article-967",
+        "score": 1.480463981628418
+      },
+      {
+        "function_id": "article-301",
+        "score": 1.464194893836975
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.4581921100616455
+      },
+      {
+        "function_id": "article-971",
+        "score": 1.448009967803955
+      },
+      {
+        "function_id": "article-1143",
+        "score": 1.4457827806472778
+      },
+      {
+        "function_id": "article-1795",
+        "score": 1.4434622526168823
+      },
+      {
+        "function_id": "article-968",
+        "score": 1.4431180953979492
+      },
+      {
+        "function_id": "article-106",
+        "score": 1.4385974407196045
+      },
+      {
+        "function_id": "article-1142",
+        "score": 1.4344041347503662
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.4316089153289795
+      },
+      {
+        "function_id": "article-2553",
+        "score": 1.4295134544372559
+      },
+      {
+        "function_id": "article-2036",
+        "score": 1.4269325733184814
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.426391363143921
+      },
+      {
+        "function_id": "article-2669",
+        "score": 1.4256954193115234
+      },
+      {
+        "function_id": "article-2667",
+        "score": 1.424359917640686
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.420867681503296
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.419480323791504
+      },
+      {
+        "function_id": "article-1716",
+        "score": 1.4128824472427368
+      },
+      {
+        "function_id": "article-773",
+        "score": 1.4118235111236572
+      },
+      {
+        "function_id": "article-726",
+        "score": 1.4112799167633057
+      },
+      {
+        "function_id": "article-1145",
+        "score": 1.4073083400726318
+      },
+      {
+        "function_id": "article-1437",
+        "score": 1.407094120979309
+      },
+      {
+        "function_id": "article-2421",
+        "score": 1.4056257009506226
+      }
+    ],
+    "selected_ids": [
+      "article-1797"
+    ],
+    "status": "ok",
+    "answer": 0.89,
+    "code": "def solution():\n    # Define variables name and value\n    mean_1 = 8\n    mean_2 = 6\n    var_1 = 4\n    var_2 = 3\n    n1 = 5\n    n2 = 5\n\n    # Do math calculation to get the answer\n    pooled_variance = (\n        ((n1 - 1) * var_1 ** 2) + ((n2 - 1) * var_2 ** 2)\n    ) / (n1 + n2 - 2)\n\n    t_value = (mean_1 - mean_2) / (\n        pooled_variance * (1 / n1 + 1 / n2)\n    ) ** 0.5\n\n    # Return the t-value rounded to two decimal places\n    return round(t_value, 2)\n"
+  },
+  "digest": "ee75e24efaf1a747d31ca5ef787f7b282cda76f60032a13062d8cfc1d1a84130"
+}

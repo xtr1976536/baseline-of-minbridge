@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2215",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Pearson correlation coefficient between two equal-length paired numerical time series of quarterly percentage changes and returns the result as a decimal that can be rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5102,
+          "completion_tokens": 39,
+          "total_tokens": 5141,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15016,
+          "completion_tokens": 471,
+          "total_tokens": 15487,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 374
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    sales_changes = [3.5, 4.2, -1.0, 5.5, 2.1, 3.8]\n    stock_price_changes = [2.8, 5.0, -0.5, 6.0, 1.9, 4.4]\n\n    # Do math calculation to get the answer\n    n = len(sales_changes)\n    sum_x = sum(sales_changes)\n    sum_y = sum(stock_price_changes)\n    sum_xy = sum(x * y for x, y in zip(sales_changes, stock_price_changes))\n    sum_x_squared = sum(x ** 2 for x in sales_changes)\n    sum_y_squared = sum(y ** 2 for y in stock_price_changes)\n\n    numerator = n * sum_xy - sum_x * sum_y\n    denominator = (\n        (n * sum_x_squared - sum_x ** 2)\n        * (n * sum_y_squared - sum_y ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 2)\n\n    # Return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 6051,
+          "completion_tokens": 713,
+          "total_tokens": 6764,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 451
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-176",
+        "score": 1.7353729009628296
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.7173967361450195
+      },
+      {
+        "function_id": "article-1960",
+        "score": 1.6354029178619385
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.5761277675628662
+      },
+      {
+        "function_id": "article-2873",
+        "score": 1.5205349922180176
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.520273208618164
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.505358338356018
+      },
+      {
+        "function_id": "article-393",
+        "score": 1.4831280708312988
+      },
+      {
+        "function_id": "article-687",
+        "score": 1.4805406332015991
+      },
+      {
+        "function_id": "article-1076",
+        "score": 1.4615039825439453
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.4330295324325562
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.432228446006775
+      },
+      {
+        "function_id": "article-1263",
+        "score": 1.4298797845840454
+      },
+      {
+        "function_id": "article-541",
+        "score": 1.4233007431030273
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.4071215391159058
+      },
+      {
+        "function_id": "article-693",
+        "score": 1.4023869037628174
+      },
+      {
+        "function_id": "article-705",
+        "score": 1.4012583494186401
+      },
+      {
+        "function_id": "article-1440",
+        "score": 1.4010009765625
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.3969388008117676
+      },
+      {
+        "function_id": "article-2565",
+        "score": 1.3966045379638672
+      },
+      {
+        "function_id": "article-2144",
+        "score": 1.3928552865982056
+      },
+      {
+        "function_id": "article-459",
+        "score": 1.3927119970321655
+      },
+      {
+        "function_id": "article-2177",
+        "score": 1.3855035305023193
+      },
+      {
+        "function_id": "article-2421",
+        "score": 1.3814146518707275
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.3790037631988525
+      },
+      {
+        "function_id": "article-273",
+        "score": 1.3781654834747314
+      },
+      {
+        "function_id": "article-2564",
+        "score": 1.3777871131896973
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.3764772415161133
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.376338005065918
+      },
+      {
+        "function_id": "article-2556",
+        "score": 1.3730828762054443
+      }
+    ],
+    "selected_ids": [
+      "article-176",
+      "article-177",
+      "article-1960"
+    ],
+    "status": "ok",
+    "answer": 0.97,
+    "code": "def solution():\n    # Define variables name and value\n    sales_changes = [3.5, 4.2, -1.0, 5.5, 2.1, 3.8]\n    stock_price_changes = [2.8, 5.0, -0.5, 6.0, 1.9, 4.4]\n\n    # Do math calculation to get the answer\n    n = len(sales_changes)\n    sum_x = sum(sales_changes)\n    sum_y = sum(stock_price_changes)\n    sum_xy = sum(x * y for x, y in zip(sales_changes, stock_price_changes))\n    sum_x_squared = sum(x ** 2 for x in sales_changes)\n    sum_y_squared = sum(y ** 2 for y in stock_price_changes)\n\n    numerator = n * sum_xy - sum_x * sum_y\n    denominator = (\n        (n * sum_x_squared - sum_x ** 2)\n        * (n * sum_y_squared - sum_y ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 2)\n\n    # Return answer\n    return answer\n"
+  },
+  "digest": "533dd4cd1775ee630537430e3acd807acaebef707915b12db92fe9547be649a6"
+}

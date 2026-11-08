@@ -1,0 +1,21 @@
+{
+  "identity": "15f8e218dc1f1425a0e3f304038d529e49e148dd22239616cbaed99aa63ee24e",
+  "response_digest": "ed23eb2d0c5a683dad962f3caf21234f669514664c0b8b09bcf268b71c23bb15",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    life_expectancy = 75\n    mean_years_school = 10\n    expected_years_school = 16\n    gni_per_capita = 35000\n\n    # Do math calculation to get the answer\n    life_expectancy_index = (life_expectancy - 20) / (85 - 20)\n    education_index = (\n        (mean_years_school / 15) + (expected_years_school / 18)\n    ) / 2\n    gni_index = (gni_per_capita - 100) / (75000 - 100)\n\n    hdi = (life_expectancy_index * education_index * gni_index) ** (1 / 3)\n    answer = round(hdi, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5198,
+      "completion_tokens": 387,
+      "total_tokens": 5585,
+      "prompt_tokens_details": {
+        "cached_tokens": 4992
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 201
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

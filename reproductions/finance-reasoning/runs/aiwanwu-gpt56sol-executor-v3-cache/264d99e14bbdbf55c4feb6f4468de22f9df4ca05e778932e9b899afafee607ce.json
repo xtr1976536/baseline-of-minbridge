@@ -1,0 +1,21 @@
+{
+  "identity": "264d99e14bbdbf55c4feb6f4468de22f9df4ca05e778932e9b899afafee607ce",
+  "response_digest": "a6bf95d88af6170a051934cf0f2866703185e1d7009873c3168fe36233dad75a",
+  "response": {
+    "content": "```python\ndef solution():\n    high_prices = [150, 152, 153]\n    low_prices = [145, 148, 149]\n    closing_prices = [148, 150, 151]\n    volumes = [2000, 3500, 5000]\n\n    typical_prices = [\n        (high + low + close) / 3\n        for high, low, close in zip(high_prices, low_prices, closing_prices)\n    ]\n    total_value = sum(price * volume for price, volume in zip(typical_prices, volumes))\n    total_volume = sum(volumes)\n    answer = round(total_value / total_volume, 2)\n\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5796,
+      "completion_tokens": 210,
+      "total_tokens": 6006,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 60
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

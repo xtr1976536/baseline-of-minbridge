@@ -1,0 +1,18 @@
+{
+  "identity": "81459f625e8371f83e8b21776adfb2bf619691b25fae607d9589d966d8b72b5f",
+  "response_digest": "627a16f18fa9ee8ed1440414d53501668217a4a769f4362e50bf87305067e91d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    weights = [0.30, 0.70]\n    standard_deviations = [0.12, 0.25]\n    correlation = 0.20\n\n    # Calculate portfolio variance\n    portfolio_variance = (\n        (weights[0] * standard_deviations[0]) ** 2\n        + (weights[1] * standard_deviations[1]) ** 2\n        + 2 * weights[0] * weights[1]\n        * standard_deviations[0] * standard_deviations[1]\n        * correlation\n    )\n\n    # Calculate standard deviation and express it as a percentage\n    portfolio_standard_deviation = portfolio_variance ** 0.5\n    answer = round(portfolio_standard_deviation * 100, 2)\n\n    # Return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 6117,
+      "completion_tokens": 296,
+      "total_tokens": 6413,
+      "completion_tokens_details": {
+        "reasoning_tokens": 103
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

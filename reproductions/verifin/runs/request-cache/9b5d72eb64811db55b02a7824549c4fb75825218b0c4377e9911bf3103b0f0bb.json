@@ -1,0 +1,31 @@
+{
+  "request_hash": "9b5d72eb64811db55b02a7824549c4fb75825218b0c4377e9911bf3103b0f0bb",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nAt the Pepsico AGM held on May 3, 2023, what was the outcome of the shareholder vote on the shareholder proposal for a congruency report by Pepsico on net-zero emissions policies?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"shareholder_proposal_vote_outcome\",\n  \"facts\": [\n    {\n      \"name\": \"congruency_report_on_net_zero_emissions_policies_proposal_vote_result\",\n      \"aliases\": [\n        \"shareholder proposal for a congruency report by PepsiCo on net-zero emissions policies\",\n        \"proposal regarding a report on the congruency of PepsiCo's net-zero emissions policies\",\n        \"net-zero emissions policies congruency report\",\n        \"shareholder proposal vote\"\n      ],\n      \"period\": \"May 3, 2023 AGM\",\n      \"statement\": \"proxy\"\n    }\n  ],\n  \"reason\": \"The question asks for the direct outcome of a specific shareholder proposal vote at PepsiCo's May 3, 2023 annual general meeting.\"\n}",
+  "usage": {
+    "prompt_tokens": 4722,
+    "completion_tokens": 218,
+    "total_tokens": 4940,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 46
+    }
+  },
+  "response_id": "resp_0a9d12f3851b849d016aedbc63374487d280aef9aec7ef3d13",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

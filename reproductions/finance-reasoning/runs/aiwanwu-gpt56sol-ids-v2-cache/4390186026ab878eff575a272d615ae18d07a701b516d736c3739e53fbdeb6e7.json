@@ -1,0 +1,21 @@
+{
+  "identity": "4390186026ab878eff575a272d615ae18d07a701b516d736c3739e53fbdeb6e7",
+  "response_digest": "45d805765cfd2214faf00fd372853dc689d9f77fd6da5621032c5bc4a7e537fc",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    wages = 25000\n    social_security_medicare_rate = 0.0765\n    employer_and_employee_shares = 2\n    futa_wage_base = 7000\n    futa_rate = 0.06\n    \n    # Do math calculation to get the answer\n    social_security_medicare_tax = (\n        wages * social_security_medicare_rate * employer_and_employee_shares\n    )\n    federal_unemployment_tax = min(wages, futa_wage_base) * futa_rate\n    total_tax = social_security_medicare_tax + federal_unemployment_tax\n    \n    # return answer\n    return round(total_tax)\n```",
+    "usage": {
+      "prompt_tokens": 5457,
+      "completion_tokens": 241,
+      "total_tokens": 5698,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 83
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

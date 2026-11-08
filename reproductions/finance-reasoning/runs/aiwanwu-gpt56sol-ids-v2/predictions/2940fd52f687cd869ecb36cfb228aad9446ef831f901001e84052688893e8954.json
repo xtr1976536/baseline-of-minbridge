@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2049",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a predicted IPO initial return using a linear regression model with an intercept and multiple coefficients, accepts underwriter rank, pre-offer price adjustment, offer size, and insider fraction retained as inputs, and returns the forecast in decimal form rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5283,
+          "completion_tokens": 58,
+          "total_tokens": 5341,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C14\"]}",
+        "usage": {
+          "prompt_tokens": 14621,
+          "completion_tokens": 127,
+          "total_tokens": 14748,
+          "completion_tokens_details": {
+            "reasoning_tokens": 109
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    intercept = 0.0477\n    underwriter_rank_coefficient = 0.0150\n    pre_offer_adjustment_coefficient = 0.4350\n    offer_size_coefficient = -0.0009\n    fraction_retained_coefficient = 0.0500\n\n    underwriter_rank = 6\n    pre_offer_adjustment = 0.04\n    offer_size_millions = 40\n    fraction_retained = 0.70\n\n    # Do math calculation to get the answer\n    initial_return = (\n        intercept\n        + underwriter_rank_coefficient * underwriter_rank\n        + pre_offer_adjustment_coefficient * pre_offer_adjustment\n        + offer_size_coefficient * offer_size_millions\n        + fraction_retained_coefficient * fraction_retained\n    )\n\n    # Return the answer rounded to three decimal places\n    return round(initial_return, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5359,
+          "completion_tokens": 381,
+          "total_tokens": 5740,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 169
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2017",
+        "score": 1.7842178344726562,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1201",
+        "score": 1.7741284370422363,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1202",
+        "score": 1.6692419052124023,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.6495529413223267,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.6489858627319336,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1154",
+        "score": 1.644397258758545,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-493",
+        "score": 1.6201744079589844,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2275",
+        "score": 1.6171214580535889,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.6118745803833008,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1736",
+        "score": 1.6087218523025513,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2798",
+        "score": 1.598548173904419,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.5972650051116943,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2861",
+        "score": 1.593843698501587,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-966",
+        "score": 1.5917370319366455,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2344",
+        "score": 1.5838897228240967,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1212",
+        "score": 1.5834803581237793,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1787",
+        "score": 1.5822553634643555,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.5813863277435303,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.581327199935913,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1324",
+        "score": 1.5797245502471924,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1604",
+        "score": 1.5794963836669922,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2862",
+        "score": 1.5776560306549072,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.5769652128219604,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.567246437072754,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2146",
+        "score": 1.5662150382995605,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2379",
+        "score": 1.5652999877929688,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1875",
+        "score": 1.5650529861450195,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-218",
+        "score": 1.5644187927246094,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-727",
+        "score": 1.5602447986602783,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.5598578453063965,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-966"
+    ],
+    "status": "ok",
+    "answer": 0.154,
+    "code": "def solution():\n    # Define variables name and value\n    intercept = 0.0477\n    underwriter_rank_coefficient = 0.0150\n    pre_offer_adjustment_coefficient = 0.4350\n    offer_size_coefficient = -0.0009\n    fraction_retained_coefficient = 0.0500\n\n    underwriter_rank = 6\n    pre_offer_adjustment = 0.04\n    offer_size_millions = 40\n    fraction_retained = 0.70\n\n    # Do math calculation to get the answer\n    initial_return = (\n        intercept\n        + underwriter_rank_coefficient * underwriter_rank\n        + pre_offer_adjustment_coefficient * pre_offer_adjustment\n        + offer_size_coefficient * offer_size_millions\n        + fraction_retained_coefficient * fraction_retained\n    )\n\n    # Return the answer rounded to three decimal places\n    return round(initial_return, 3)\n"
+  },
+  "digest": "3e748c980a9cf4eb128938cb1547c86c07865bb0b42e3bf74cf94afd2f001cb7"
+}

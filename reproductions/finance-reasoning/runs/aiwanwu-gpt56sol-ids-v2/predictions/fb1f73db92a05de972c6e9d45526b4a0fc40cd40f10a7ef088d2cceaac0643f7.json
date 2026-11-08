@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2085",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the number of stock index futures contracts required to adjust a portfolio’s equity allocation and beta exposure from a current equity percentage and beta to a target equity percentage, using total portfolio value, index value, contract multiplier, and futures beta, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4998,
+          "completion_tokens": 62,
+          "total_tokens": 5060,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C12\"]}",
+        "usage": {
+          "prompt_tokens": 13221,
+          "completion_tokens": 298,
+          "total_tokens": 13519,
+          "completion_tokens_details": {
+            "reasoning_tokens": 274
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    fund_value = 100_000_000\n    current_equity_allocation = 0.80\n    target_equity_allocation = 0.60\n    equity_beta = 1.20\n    futures_beta = 0.95\n    index_value = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    equity_exposure_to_adjust = (\n        fund_value\n        * (current_equity_allocation - target_equity_allocation)\n        * equity_beta\n    )\n    futures_contract_value = index_value * contract_multiplier\n    beta_adjusted_futures_value = futures_contract_value * futures_beta\n\n    number_of_contracts = equity_exposure_to_adjust / beta_adjusted_futures_value\n\n    # return answer\n    return round(number_of_contracts, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5435,
+          "completion_tokens": 711,
+          "total_tokens": 6146,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-659",
+        "score": 1.8763680458068848,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-394",
+        "score": 1.787663459777832,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2691",
+        "score": 1.7527332305908203,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1744",
+        "score": 1.7496337890625,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-660",
+        "score": 1.7374111413955688,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.7338048219680786,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2692",
+        "score": 1.7256739139556885,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.7073938846588135,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.6999516487121582,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-395",
+        "score": 1.6989960670471191,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-396",
+        "score": 1.6774206161499023,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1027",
+        "score": 1.669111728668213,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.6675634384155273,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1105",
+        "score": 1.658551812171936,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.6519862413406372,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.6405531167984009,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1035",
+        "score": 1.6276721954345703,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1889",
+        "score": 1.6260735988616943,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-663",
+        "score": 1.6189069747924805,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-397",
+        "score": 1.6184754371643066,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6162828207015991,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1106",
+        "score": 1.6106359958648682,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2137",
+        "score": 1.6061062812805176,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-858",
+        "score": 1.6054961681365967,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.6010513305664062,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1260",
+        "score": 1.5990395545959473,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-3072",
+        "score": 1.5981085300445557,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.594292163848877,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2051",
+        "score": 1.592228651046753,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2375",
+        "score": 1.5869687795639038,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-659",
+      "article-394",
+      "article-1027"
+    ],
+    "status": "ok",
+    "answer": 84.211,
+    "code": "def solution():\n    # Define variables name and value\n    fund_value = 100_000_000\n    current_equity_allocation = 0.80\n    target_equity_allocation = 0.60\n    equity_beta = 1.20\n    futures_beta = 0.95\n    index_value = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    equity_exposure_to_adjust = (\n        fund_value\n        * (current_equity_allocation - target_equity_allocation)\n        * equity_beta\n    )\n    futures_contract_value = index_value * contract_multiplier\n    beta_adjusted_futures_value = futures_contract_value * futures_beta\n\n    number_of_contracts = equity_exposure_to_adjust / beta_adjusted_futures_value\n\n    # return answer\n    return round(number_of_contracts, 3)\n"
+  },
+  "digest": "3be17a33303dc2090638b925fe315381a03033ac0d0683ab22bc89d910a3190b"
+}

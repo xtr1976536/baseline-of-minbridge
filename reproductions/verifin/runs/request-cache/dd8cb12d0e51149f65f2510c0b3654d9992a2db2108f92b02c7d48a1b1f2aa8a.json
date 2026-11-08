@@ -1,0 +1,28 @@
+{
+  "request_hash": "dd8cb12d0e51149f65f2510c0b3654d9992a2db2108f92b02c7d48a1b1f2aa8a",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the FY2019 fixed asset turnover ratio for Activision Blizzard? Fixed asset turnover ratio is defined as: FY2019 revenue / (average PP&E between FY2018 and FY2019). Round your answer to two decimal places. Base your judgments on the information provided primarily in the statement of income and the statement of financial position.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"fixed_asset_turnover_ratio\",\"facts\":[{\"name\":\"fy2019_revenue\",\"aliases\":[\"Net revenues\",\"Revenue\",\"Total revenues\"],\"period\":\"FY2019\",\"statement\":\"income statement\"},{\"name\":\"fy2018_property_plant_and_equipment\",\"aliases\":[\"Property and equipment, net\",\"Property, plant and equipment, net\",\"Property and equipment\",\"PP&E, net\"],\"period\":\"FY2018\",\"statement\":\"balance sheet\"},{\"name\":\"fy2019_property_plant_and_equipment\",\"aliases\":[\"Property and equipment, net\",\"Property, plant and equipment, net\",\"Property and equipment\",\"PP&E, net\"],\"period\":\"FY2019\",\"statement\":\"balance sheet\"}],\"reason\":\"The ratio is FY2019 revenue divided by average PP&E for FY2018 and FY2019, so retrieve the revenue and both period-end PP&E balances.\"}",
+  "usage": {
+    "prompt_tokens": 4747,
+    "completion_tokens": 181,
+    "total_tokens": 4928,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    }
+  },
+  "response_id": "resp_0da55df17feae11c016aedad46d35087d0bc2269ba73767a76",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

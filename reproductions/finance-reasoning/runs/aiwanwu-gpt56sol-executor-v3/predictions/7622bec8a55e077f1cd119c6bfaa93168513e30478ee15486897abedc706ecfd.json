@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2167",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Worden Stochastic oscillator as a percentage from historical closing prices using a specified lookback period, returning the value for the final observation with a 5-day window and rounding to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5080,
+          "completion_tokens": 47,
+          "total_tokens": 5127,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 16090,
+          "completion_tokens": 16,
+          "total_tokens": 16106,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 155, 151, 154, 156, 157, 158, 160, 162, 161, 159]\n    lookback_period = 5\n    window = closing_prices[-lookback_period:]\n\n    # Do math calculation to get the answer\n    rank = sorted(window).index(window[-1]) + 1\n    worden_stochastic = (100 / (lookback_period - 1)) * (rank - 1)\n\n    # Return the answer as a percentage rounded to two decimal places\n    return f\"{worden_stochastic:.2f}%\"\n```",
+        "usage": {
+          "prompt_tokens": 5173,
+          "completion_tokens": 219,
+          "total_tokens": 5392,
+          "completion_tokens_details": {
+            "reasoning_tokens": 65
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2485",
+        "score": 2.168261766433716,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.827815055847168,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1051",
+        "score": 1.6695152521133423,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.6644196510314941,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2638",
+        "score": 1.65287446975708,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.6370412111282349,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6150187253952026,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1050",
+        "score": 1.6135330200195312,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.5812692642211914,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.5741748809814453,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1994",
+        "score": 1.5431859493255615,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.5058002471923828,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-3065",
+        "score": 1.5034114122390747,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.4985191822052002,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.4914827346801758,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1897",
+        "score": 1.4872100353240967,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.4762654304504395,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.4744501113891602,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.4720542430877686,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-345",
+        "score": 1.4583635330200195,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2137",
+        "score": 1.4580950736999512,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2195",
+        "score": 1.4553005695343018,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.4503989219665527,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2658",
+        "score": 1.4496976137161255,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.4490445852279663,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.4455472230911255,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1156",
+        "score": 1.4428672790527344,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2196",
+        "score": 1.440598487854004,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.4362469911575317,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.4358067512512207,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2485"
+    ],
+    "status": "ok",
+    "answer": 25.0,
+    "raw_return": "25.00%",
+    "return_representation": "percentage_points",
+    "code": "def solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 155, 151, 154, 156, 157, 158, 160, 162, 161, 159]\n    lookback_period = 5\n    window = closing_prices[-lookback_period:]\n\n    # Do math calculation to get the answer\n    rank = sorted(window).index(window[-1]) + 1\n    worden_stochastic = (100 / (lookback_period - 1)) * (rank - 1)\n\n    # Return the answer as a percentage rounded to two decimal places\n    return f\"{worden_stochastic:.2f}%\"\n"
+  },
+  "digest": "7e2591b6d627e68696351a9c343e71f59b77c17f30b5333cd29a8e5de893d0a9"
+}

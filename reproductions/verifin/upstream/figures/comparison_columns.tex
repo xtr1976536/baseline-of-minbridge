@@ -1,0 +1,81 @@
+% Side-by-side comparison: WITHOUT verification (left) vs WITH VerifiQA (right),
+% flowing top-to-bottom from shared inputs. Left column trusts the LLM; the right
+% column runs the verification pipeline (IR -> autoformalizer -> SMT -> solver).
+% Requires: \usepackage{tikz} + libraries below; \usepackage{amsmath, xcolor}.
+% Compile standalone by uncommenting the documentclass block.
+
+% \documentclass[tikz,border=6pt]{standalone}
+% \usepackage{amsmath,xcolor}
+% \begin{document}
+
+\usetikzlibrary{positioning,arrows.meta,fit,backgrounds}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small, >=Latex, node distance=6mm,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=4pt, minimum height=8mm, text width=32mm},
+  io/.style={box, fill=black!4, text width=22mm},
+  llm/.style={box, fill=black!6, draw=black!45},
+  auth/.style={box, fill=teal!8, draw=teal!45!black, align=left, font=\scriptsize},
+  ir/.style={box, fill=violet!6, draw=violet!45!black, align=left, font=\scriptsize},
+  smt/.style={box, fill=black!3, align=left, font=\ttfamily\scriptsize},
+  proc/.style={box, fill=blue!5, draw=blue!45!black},
+  flow/.style={-{Latex[length=5pt]}, thick, black!70},
+  bad/.style={box, draw=red!65!black, text=red!55!black, fill=red!6, font=\bfseries},
+  good/.style={box, draw=green!55!black, text=green!40!black, fill=green!8, font=\bfseries, align=left},
+  colhdr/.style={font=\bfseries\sffamily},
+]
+
+% ---------------- shared inputs (top center) ----------------
+\node[io] (in) {Question $+$ Filing\\\scriptsize (PDF + XBRL)};
+
+% ================= LEFT COLUMN: WITHOUT verification =================
+\node[colhdr, text=red!55!black, below left=6mm and 12mm of in] (hL) {WITHOUT VERIFICATION};
+\node[llm, below=4mm of hL] (llmL) {LLM};
+\node[box, below=of llmL, fill=black!3] (ansL) {answer $c$};
+\node[bad, below=of ansL] (outL) {accepted as correct\\[1pt]\normalfont\scriptsize unverified, may be wrong};
+
+\draw[flow] (llmL) -- (ansL);
+\draw[flow] (ansL) -- (outL);
+
+% ================= RIGHT COLUMN: WITH VerifiQA =================
+\node[colhdr, text=green!40!black, below right=6mm and 12mm of in] (hR) {WITH VerifiQA};
+\node[llm, below=4mm of hR] (llmR) {LLM $\Rightarrow$ claim $c$};
+\node[auth, below=of llmR] (grR) {ground from filing:\\ formula $+$ authoritative operands};
+\node[ir, below=of grR] (irR) {Verification IR:\\ metric, formula, facts (concept$\mapsto$value), $c$, $\tau$};
+\node[llm, below=of irR] (afR) {autoformalizer LLM $\Rightarrow$ SMT};
+\node[proc, below=of afR, text width=26mm] (z3R) {Z3\ \ \scriptsize $\Phi:\lvert m^\star{-}c\rvert\le\tau$};
+\node[good, below=of z3R] (outR) {%
+\textcolor{green!40!black}{Verified} \scriptsize sat \ \ \textcolor{red!55!black}{Violated} \scriptsize unsat ($c^\star{=}m^\star$)\\[1pt]
+\textcolor{black!55}{Abstain} \scriptsize not grounded};
+
+\draw[flow] (llmR) -- (grR);
+\draw[flow] (grR) -- (irR);
+\draw[flow] (irR) -- (afR);
+\draw[flow] (afR) -- (z3R);
+\draw[flow] (z3R) -- (outR);
+
+% ---------------- split from shared inputs ----------------
+\draw[flow] (in.south) to[out=-90,in=90] (llmL.north);
+\draw[flow] (in.south) to[out=-90,in=90] (llmR.north);
+
+% ---------------- divider ----------------
+\draw[black!15, thick] ($(hL.south east)!0.5!(hR.south west)+(0,3mm)$) -- ++(0,-52mm);
+
+\end{tikzpicture}
+
+\caption{\textbf{Without vs.\ with verification.} Both start from the same
+question and filing. \textbf{Left:} deployed directly, the model's answer $c$ is
+accepted as correct, unverified and possibly wrong. \textbf{Right:} VerifiQA
+treats $c$ as an untrusted claim, grounds the check in the filing's structure
+(formula and authoritative operands), assembles a typed Verification IR, has an
+autoformalizer compile it to an SMT proof obligation
+$\Phi:\lvert m^\star-c\rvert\le\tau$, and lets Z3 decide:
+\textsc{Verified}, \textsc{Violated} (returning the certified correction
+$c^\star=m^\star$), or \textsc{Abstain}. The verdict never depends on trusting a
+model, because the check is reconstructed from the filing.}
+\label{fig:comparison}
+\end{figure}
+
+% \end{document}

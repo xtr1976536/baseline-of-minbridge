@@ -1,0 +1,21 @@
+{
+  "identity": "4ccdd529bc02a5ff659aa7fd4038645b595caa870d38fdb46f836fb4ae32b6a0",
+  "response_digest": "331cb6c0e32035fd95a3e1c30081ce1a266dfb0b1886b5dd7dc2986eb75a25c2",
+  "response": {
+    "content": "```python\ndef solution():\n    home_price = 500_000\n    first_principal = home_price * 0.80\n    second_principal = home_price * 0.10\n\n    first_rate = 0.035 / 12\n    first_payments = 30 * 12\n    first_monthly_payment = (\n        first_principal * first_rate\n        / (1 - (1 + first_rate) ** -first_payments)\n    )\n\n    second_rate = 0.06 / 12\n    second_payments = 15 * 12\n    second_monthly_payment = (\n        second_principal * second_rate\n        / (1 - (1 + second_rate) ** -second_payments)\n    )\n\n    answer = round(first_monthly_payment + second_monthly_payment)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 6181,
+      "completion_tokens": 275,
+      "total_tokens": 6456,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 95
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "3b2894e56b7c38ab7e8cba2d206738205e616b929b58514a4b58a5b2207caee5",
+  "response_digest": "0017d664f1cab3b5cbb406f6b0c9f414c63bc3333de2aab13fc4c005bd4be197",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    net_earnings = 220000\n    social_security_cap = 160200\n    social_security_rate = 0.124\n    medicare_rate = 0.029\n    additional_medicare_threshold = 200000\n    additional_medicare_rate = 0.009\n\n    # Do math calculation to get the answer\n    social_security_tax = min(net_earnings, social_security_cap) * social_security_rate\n    medicare_tax = net_earnings * medicare_rate\n    additional_medicare_tax = max(\n        0,\n        net_earnings - additional_medicare_threshold\n    ) * additional_medicare_rate\n\n    total_seca_tax = (\n        social_security_tax\n        + medicare_tax\n        + additional_medicare_tax\n    )\n\n    # return answer\n    return round(total_seca_tax, 2)\n```",
+    "usage": {
+      "prompt_tokens": 6093,
+      "completion_tokens": 276,
+      "total_tokens": 6369,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 71
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "record": {
+    "question_id": "test-2100",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the break-even current equity index level that makes a receive-fixed/pay-equity swap worth zero, using the initial index, fixed annual rate, quarterly reset periods, notional amount, remaining maturity, and discount factors for each quarterly cash flow?",
+        "usage": {
+          "prompt_tokens": 5090,
+          "completion_tokens": 174,
+          "total_tokens": 5264,
+          "completion_tokens_details": {
+            "reasoning_tokens": 117
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C06\"]}",
+        "usage": {
+          "prompt_tokens": 13953,
+          "completion_tokens": 328,
+          "total_tokens": 14281,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 307
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_index = 100.0\n    notional_amount = 100_000_000.0\n    fixed_rate = 0.03\n    payment_frequency = 4\n\n    # Three months have elapsed, leaving three quarterly payments\n    present_value_factors = [0.997506, 0.992556, 0.985222]\n\n    fixed_payment = (fixed_rate * notional_amount) / payment_frequency\n    present_value_fixed_leg = sum(\n        fixed_payment * factor for factor in present_value_factors\n    )\n\n    # At zero value, the equity return equals the present value of the fixed leg\n    equity_return = present_value_fixed_leg / notional_amount\n    index_level = initial_index * (1 + equity_return)\n\n    # return answer\n    return round(index_level, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5383,
+          "completion_tokens": 1653,
+          "total_tokens": 7036,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1460
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1428",
+        "score": 1.7896620035171509,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-400",
+        "score": 1.7363696098327637,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1424",
+        "score": 1.7234551906585693,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.7099411487579346,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2649",
+        "score": 1.691596508026123,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2678",
+        "score": 1.675416350364685,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-419",
+        "score": 1.6654969453811646,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-707",
+        "score": 1.6594784259796143,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-3069",
+        "score": 1.6479816436767578,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.6467400789260864,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1425",
+        "score": 1.6429582834243774,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1432",
+        "score": 1.642591953277588,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.633225440979004,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-766",
+        "score": 1.6329209804534912,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-37",
+        "score": 1.6291084289550781,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.6276168823242188,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-180",
+        "score": 1.6273643970489502,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2793",
+        "score": 1.6190392971038818,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-763",
+        "score": 1.6160773038864136,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1022",
+        "score": 1.615853190422058,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6153398752212524,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3127",
+        "score": 1.6151611804962158,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-764",
+        "score": 1.6091582775115967,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-329",
+        "score": 1.6087234020233154,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2820",
+        "score": 1.608571171760559,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.603169322013855,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-659",
+        "score": 1.6011677980422974,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2588",
+        "score": 1.5996930599212646,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2679",
+        "score": 1.597392201423645,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.5914027690887451,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1428",
+      "article-2678"
+    ],
+    "status": "ok",
+    "answer": 102.231,
+    "code": "def solution():\n    # Define variables name and value\n    initial_index = 100.0\n    notional_amount = 100_000_000.0\n    fixed_rate = 0.03\n    payment_frequency = 4\n\n    # Three months have elapsed, leaving three quarterly payments\n    present_value_factors = [0.997506, 0.992556, 0.985222]\n\n    fixed_payment = (fixed_rate * notional_amount) / payment_frequency\n    present_value_fixed_leg = sum(\n        fixed_payment * factor for factor in present_value_factors\n    )\n\n    # At zero value, the equity return equals the present value of the fixed leg\n    equity_return = present_value_fixed_leg / notional_amount\n    index_level = initial_index * (1 + equity_return)\n\n    # return answer\n    return round(index_level, 3)\n"
+  },
+  "digest": "366b0abcbac3711425ea72e4caedf9dcfd8730684ff4edae408e912910b77fb6"
+}

@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2080",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates cumulative intraday Volume-Weighted Average Price (VWAP) across multiple trading sessions using high, low, and closing prices with volume weights, returning the final volume-weighted average price rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5142,
+          "completion_tokens": 49,
+          "total_tokens": 5191,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15605,
+          "completion_tokens": 482,
+          "total_tokens": 16087,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 385
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    high_prices = [150, 152, 153]\n    low_prices = [145, 148, 149]\n    closing_prices = [148, 150, 151]\n    volumes = [2000, 3500, 5000]\n\n    # Calculate typical prices for each session\n    typical_prices = [\n        (high + low + close) / 3\n        for high, low, close in zip(high_prices, low_prices, closing_prices)\n    ]\n\n    # Calculate cumulative price-volume and volume through the third session\n    cumulative_value = sum(\n        typical_price * volume\n        for typical_price, volume in zip(typical_prices, volumes)\n    )\n    cumulative_volume = sum(volumes)\n\n    # Calculate and round the VWAP after the third session\n    answer = round(cumulative_value / cumulative_volume, 2)\n\n    # Return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5796,
+          "completion_tokens": 268,
+          "total_tokens": 6064,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 64
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-334",
+        "score": 2.1738476753234863
+      },
+      {
+        "function_id": "article-340",
+        "score": 2.1020607948303223
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.7260050773620605
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.705885410308838
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.6806418895721436
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.6723710298538208
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.656348466873169
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.6281260251998901
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.6271651983261108
+      },
+      {
+        "function_id": "article-1619",
+        "score": 1.6082079410552979
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.6049823760986328
+      },
+      {
+        "function_id": "article-2145",
+        "score": 1.6046801805496216
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.6004267930984497
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.600085735321045
+      },
+      {
+        "function_id": "article-755",
+        "score": 1.5867069959640503
+      },
+      {
+        "function_id": "article-333",
+        "score": 1.5864744186401367
+      },
+      {
+        "function_id": "article-754",
+        "score": 1.576891303062439
+      },
+      {
+        "function_id": "article-1805",
+        "score": 1.5657835006713867
+      },
+      {
+        "function_id": "article-752",
+        "score": 1.5639420747756958
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.561585545539856
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.5592939853668213
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.5590511560440063
+      },
+      {
+        "function_id": "article-1154",
+        "score": 1.5440723896026611
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5440306663513184
+      },
+      {
+        "function_id": "article-2466",
+        "score": 1.5293009281158447
+      },
+      {
+        "function_id": "article-1329",
+        "score": 1.5290422439575195
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.5082471370697021
+      },
+      {
+        "function_id": "article-1333",
+        "score": 1.5047162771224976
+      },
+      {
+        "function_id": "article-1334",
+        "score": 1.5024805068969727
+      },
+      {
+        "function_id": "article-2461",
+        "score": 1.4973828792572021
+      }
+    ],
+    "selected_ids": [
+      "article-334",
+      "article-340",
+      "article-940"
+    ],
+    "status": "ok",
+    "answer": 150.03,
+    "code": "def solution():\n    # Define variables\n    high_prices = [150, 152, 153]\n    low_prices = [145, 148, 149]\n    closing_prices = [148, 150, 151]\n    volumes = [2000, 3500, 5000]\n\n    # Calculate typical prices for each session\n    typical_prices = [\n        (high + low + close) / 3\n        for high, low, close in zip(high_prices, low_prices, closing_prices)\n    ]\n\n    # Calculate cumulative price-volume and volume through the third session\n    cumulative_value = sum(\n        typical_price * volume\n        for typical_price, volume in zip(typical_prices, volumes)\n    )\n    cumulative_volume = sum(volumes)\n\n    # Calculate and round the VWAP after the third session\n    answer = round(cumulative_value / cumulative_volume, 2)\n\n    # Return answer\n    return answer\n"
+  },
+  "digest": "57dd5d0726150b5e5068b403a424ade3840662a136fca06cd8b144eb38231bc8"
+}

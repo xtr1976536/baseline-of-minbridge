@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2122",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the USD cash cost of terminating an FX forward before maturity by offsetting the original foreign-currency notional with a new forward for the remaining term, using bid/ask spot and forward-point quotations, appropriate dealer-side rates, and present-value discounting to the termination date?",
+        "usage": {
+          "prompt_tokens": 5205,
+          "completion_tokens": 62,
+          "total_tokens": 5267,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C09\",\"C24\"]}",
+        "usage": {
+          "prompt_tokens": 14124,
+          "completion_tokens": 540,
+          "total_tokens": 14664,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # EUR amount covered by the forward contract\n    eur_amount = 200_000 * 90\n\n    # A long EUR share position is hedged by selling EUR forward.\n    initial_forward_bid = 1.3935 - 19.0 / 10_000\n    three_month_forward_bid = 1.4106 - 21.6 / 10_000\n\n    # Discount the cost of closing the remaining three-month forward.\n    usd_libor = 1.266 / 100\n    time_to_maturity = 3 / 12\n    undiscounted_cost = eur_amount * (three_month_forward_bid - initial_forward_bid)\n    termination_cost = undiscounted_cost / (1 + usd_libor * time_to_maturity)\n\n    return round(termination_cost, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5657,
+          "completion_tokens": 643,
+          "total_tokens": 6300,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 462
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-596",
+        "score": 1.8202300071716309,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.7459611892700195,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.7290129661560059,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.6934971809387207,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.6796715259552002,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.6791210174560547,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.6755722761154175,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2975",
+        "score": 1.67301607131958,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.6464474201202393,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.6392388343811035,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.630262851715088,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.6202824115753174,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.5979326963424683,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1964",
+        "score": 1.5906068086624146,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2079",
+        "score": 1.5877699851989746,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.5840164422988892,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1555",
+        "score": 1.5823322534561157,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-237",
+        "score": 1.5797936916351318,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2621",
+        "score": 1.5795409679412842,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1281",
+        "score": 1.5784497261047363,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-162",
+        "score": 1.5759987831115723,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-597",
+        "score": 1.5743460655212402,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1963",
+        "score": 1.5733401775360107,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-604",
+        "score": 1.5689224004745483,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2976",
+        "score": 1.5663443803787231,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.5649110078811646,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-127",
+        "score": 1.5626440048217773,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.5587332248687744,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1938",
+        "score": 1.5580027103424072,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-598",
+        "score": 1.5546989440917969,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-596",
+      "article-609",
+      "article-604"
+    ],
+    "status": "ok",
+    "answer": 302163.7,
+    "code": "def solution():\n    # EUR amount covered by the forward contract\n    eur_amount = 200_000 * 90\n\n    # A long EUR share position is hedged by selling EUR forward.\n    initial_forward_bid = 1.3935 - 19.0 / 10_000\n    three_month_forward_bid = 1.4106 - 21.6 / 10_000\n\n    # Discount the cost of closing the remaining three-month forward.\n    usd_libor = 1.266 / 100\n    time_to_maturity = 3 / 12\n    undiscounted_cost = eur_amount * (three_month_forward_bid - initial_forward_bid)\n    termination_cost = undiscounted_cost / (1 + usd_libor * time_to_maturity)\n\n    return round(termination_cost, 1)\n"
+  },
+  "digest": "46ecdc16ff951ac0f1e3d15fb3ec59a6fb68da6da911b51047a0636d79c08ec3"
+}

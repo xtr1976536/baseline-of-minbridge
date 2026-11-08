@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2157",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates foreign exchange forward points in basis points for an NZD/GBP currency pair using the spot exchange rate, domestic and foreign annualized interest rates, and a specified tenor in days under a 360-day day-count convention, with results rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5014,
+          "completion_tokens": 59,
+          "total_tokens": 5073,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 14207,
+          "completion_tokens": 19,
+          "total_tokens": 14226
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    spot_rate = 2.0979\n    domestic_interest_rate = 0.032875  # NZD\n    foreign_interest_rate = 0.016025   # GBP\n    period_days = 180\n    basis_points_multiplier = 10000\n\n    # Do math calculation to get the answer\n    domestic_factor = 1 + domestic_interest_rate * period_days / 360\n    foreign_factor = 1 + foreign_interest_rate * period_days / 360\n\n    forward_rate = spot_rate * (domestic_factor / foreign_factor)\n    forward_points = (forward_rate - spot_rate) * basis_points_multiplier\n\n    # return answer\n    return round(forward_points, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5318,
+          "completion_tokens": 280,
+          "total_tokens": 5598,
+          "prompt_tokens_details": {
+            "cached_tokens": 5120
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 114
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-609",
+        "score": 1.8464380502700806,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.8098785877227783,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.784862995147705,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.7841734886169434,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.7651314735412598,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.7340351343154907,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.7314910888671875,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-450",
+        "score": 1.7283282279968262,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.7015924453735352,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2005",
+        "score": 1.6546311378479004,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.6366829872131348,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.622170329093933,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-616",
+        "score": 1.618145227432251,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.593133568763733,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1623",
+        "score": 1.5896120071411133,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2961",
+        "score": 1.5726265907287598,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-236",
+        "score": 1.5713655948638916,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.5500023365020752,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-237",
+        "score": 1.5453927516937256,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1491",
+        "score": 1.542417287826538,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1964",
+        "score": 1.5316879749298096,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-459",
+        "score": 1.5280332565307617,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2915",
+        "score": 1.5275624990463257,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-409",
+        "score": 1.527442216873169,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-408",
+        "score": 1.527024269104004,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1451",
+        "score": 1.5246282815933228,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-598",
+        "score": 1.5101102590560913,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1938",
+        "score": 1.506717562675476,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-235",
+        "score": 1.5067044496536255,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.5053908824920654,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-607",
+      "article-611"
+    ],
+    "status": "ok",
+    "answer": 175.343,
+    "code": "def solution():\n    # Define variables name and value\n    spot_rate = 2.0979\n    domestic_interest_rate = 0.032875  # NZD\n    foreign_interest_rate = 0.016025   # GBP\n    period_days = 180\n    basis_points_multiplier = 10000\n\n    # Do math calculation to get the answer\n    domestic_factor = 1 + domestic_interest_rate * period_days / 360\n    foreign_factor = 1 + foreign_interest_rate * period_days / 360\n\n    forward_rate = spot_rate * (domestic_factor / foreign_factor)\n    forward_points = (forward_rate - spot_rate) * basis_points_multiplier\n\n    # return answer\n    return round(forward_points, 3)\n"
+  },
+  "digest": "c23b66c326f5215b70ac7bb23470ef7d756a54008a35890b8daed96a618458c9"
+}

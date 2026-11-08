@@ -1,0 +1,21 @@
+{
+  "identity": "5e5945b27866e099882e2ee99385b0ddfb3b0b3209589f78fa155dd33659b47e",
+  "response_digest": "ac2d48aa8c653efb5b4d00efe14f2dd0acadc6c2ede7f9d12784ec306680b8c4",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 875.0\n    depreciation = 400.0\n\n    gross_fixed_assets_2018 = 5000.0\n    gross_fixed_assets_2017 = 4250.0\n\n    accounts_receivable_2018 = 800.0\n    inventories_2018 = 850.0\n    accounts_payable_2018 = 400.0\n    accrued_expenses_2018 = 120.0\n\n    accounts_receivable_2017 = 750.0\n    inventories_2017 = 720.0\n    accounts_payable_2017 = 300.0\n    accrued_expenses_2017 = 90.0\n\n    notes_payable_2018 = 550.0\n    notes_payable_2017 = 500.0\n    long_term_debt_2018 = 1500.0\n    long_term_debt_2017 = 1400.0\n\n    # Calculate capital expenditures\n    capital_expenditures = (\n        gross_fixed_assets_2018 - gross_fixed_assets_2017 + depreciation\n    )\n\n    # Calculate the change in non-cash net working capital\n    net_working_capital_2018 = (\n        accounts_receivable_2018\n        + inventories_2018\n        - accounts_payable_2018\n        - accrued_expenses_2018\n    )\n    net_working_capital_2017 = (\n        accounts_receivable_2017\n        + inventories_2017\n        - accounts_payable_2017\n        - accrued_expenses_2017\n    )\n    change_in_net_working_capital = (\n        net_working_capital_2018 - net_working_capital_2017\n    )\n\n    # Calculate net debt issued\n    net_debt_issued = (\n        notes_payable_2018\n        - notes_payable_2017\n        + long_term_debt_2018\n        - long_term_debt_2017\n    )\n\n    # Calculate FCFE in millions\n    fcfe = (\n        net_income\n        + depreciation\n        - capital_expenditures\n        - change_in_net_working_capital\n        + net_debt_issued\n    )\n\n    # return answer\n    return round(fcfe, 1)\n```",
+    "usage": {
+      "prompt_tokens": 6064,
+      "completion_tokens": 660,
+      "total_tokens": 6724,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 154
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2044",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the present value of fixed annual lease payments over a specified term plus a residual value received at the end, using an annual discount rate and end-of-period cash flows, and returns the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5024,
+          "completion_tokens": 50,
+          "total_tokens": 5074
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 13815,
+          "completion_tokens": 540,
+          "total_tokens": 14355,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    lease_payments = [10000, 10000, 10000, 10000, 10000]\n    interest_rate = 0.08\n    residual_value = 15000\n    num_periods = 5\n\n    # Do math calculation to get the answer\n    present_value = sum(\n        payment / ((1 + interest_rate) ** (i + 1))\n        for i, payment in enumerate(lease_payments)\n    )\n    present_value += residual_value / ((1 + interest_rate) ** num_periods)\n\n    # return answer\n    return round(present_value)\n```",
+        "usage": {
+          "prompt_tokens": 5565,
+          "completion_tokens": 200,
+          "total_tokens": 5765,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 53
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-917",
+        "score": 2.0962412357330322,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-58",
+        "score": 2.0068607330322266,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-3020",
+        "score": 1.946122169494629,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2104",
+        "score": 1.8174936771392822,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.7966936826705933,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1524",
+        "score": 1.787207841873169,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1967",
+        "score": 1.7231498956680298,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.7183092832565308,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-938",
+        "score": 1.7125694751739502,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1870",
+        "score": 1.691537618637085,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.6849970817565918,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-939",
+        "score": 1.6689746379852295,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-569",
+        "score": 1.6607050895690918,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6570067405700684,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1617",
+        "score": 1.650820255279541,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.6506402492523193,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2006",
+        "score": 1.6497750282287598,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.6494030952453613,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1735",
+        "score": 1.6487739086151123,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2725",
+        "score": 1.6486256122589111,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1525",
+        "score": 1.644776463508606,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1272",
+        "score": 1.6390080451965332,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2247",
+        "score": 1.6385407447814941,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1730",
+        "score": 1.6359943151474,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2657",
+        "score": 1.6321966648101807,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-45",
+        "score": 1.6298637390136719,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.62752103805542,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2549",
+        "score": 1.6274328231811523,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.627063274383545,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2944",
+        "score": 1.6263537406921387,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-917",
+      "article-58",
+      "article-442"
+    ],
+    "status": "ok",
+    "answer": 50136,
+    "code": "def solution():\n    # Define variables name and value\n    lease_payments = [10000, 10000, 10000, 10000, 10000]\n    interest_rate = 0.08\n    residual_value = 15000\n    num_periods = 5\n\n    # Do math calculation to get the answer\n    present_value = sum(\n        payment / ((1 + interest_rate) ** (i + 1))\n        for i, payment in enumerate(lease_payments)\n    )\n    present_value += residual_value / ((1 + interest_rate) ** num_periods)\n\n    # return answer\n    return round(present_value)\n"
+  },
+  "digest": "f59c7f90890ec828cc04603562ca0e1bcfd3f761f1c9494507d7790560694858"
+}

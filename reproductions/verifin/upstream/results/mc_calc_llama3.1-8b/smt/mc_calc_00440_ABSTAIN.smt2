@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:cash_and_cash_equivalents_at_carrying_value_fy2022,accounts_notes_and_loans_receivable_net_current_fy2022,prepaid_expense_current_fy2022)

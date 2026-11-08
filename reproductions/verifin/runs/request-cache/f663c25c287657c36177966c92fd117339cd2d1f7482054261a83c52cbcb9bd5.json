@@ -1,0 +1,31 @@
+{
+  "request_hash": "f663c25c287657c36177966c92fd117339cd2d1f7482054261a83c52cbcb9bd5",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nBasing your judgments off of the cash flow statement and the income statement, what is American Water Works's FY2021 unadjusted operating income + depreciation and amortization from the cash flow statement (unadjusted EBITDA) in USD millions?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"unadjusted_ebitda\",\n  \"facts\": [\n    {\n      \"name\": \"operating_income\",\n      \"aliases\": [\n        \"Operating income\",\n        \"Operating earnings\",\n        \"Income from operations\"\n      ],\n      \"period\": \"FY2021\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"depreciation_and_amortization\",\n      \"aliases\": [\n        \"Depreciation and amortization\",\n        \"Depreciation & amortization\",\n        \"Depreciation\",\n        \"Amortization\"\n      ],\n      \"period\": \"FY2021\",\n      \"statement\": \"cash flow\"\n    }\n  ],\n  \"reason\": \"Calculate unadjusted EBITDA as FY2021 operating income plus FY2021 depreciation and amortization reported in the cash flow statement.\"\n}",
+  "usage": {
+    "prompt_tokens": 4727,
+    "completion_tokens": 247,
+    "total_tokens": 4974,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 64
+    }
+  },
+  "response_id": "resp_0ed5b682f23b4f5c016aedb30f204c87d18902936cb73b649e",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

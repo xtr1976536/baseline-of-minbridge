@@ -1,0 +1,21 @@
+{
+  "identity": "858b84cea4326a73ae47d9d92b5c171abfd4e81a519d18bc89bff750e8efe734",
+  "response_digest": "cd3e9b0e16ebd6bb33640b4eb58539a129c19efe12ede192739fbb7737736e29",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    annual_returns = [0.09, 0.05, 0.08]\n    embedded_gain_pct = 0.10\n    capital_gains_tax_rate = 0.25\n    periods = 3\n\n    # Do math calculation to get the answer\n    compounded_growth = 1\n    for rate in annual_returns:\n        compounded_growth *= 1 + rate\n\n    liquidation_tax_pct = embedded_gain_pct * capital_gains_tax_rate\n    post_liquidation_growth = compounded_growth * (1 - liquidation_tax_pct)\n    annualized_return_pct = (post_liquidation_growth ** (1 / periods) - 1) * 100\n\n    # Return the answer to three decimal places\n    return round(annualized_return_pct, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5297,
+      "completion_tokens": 319,
+      "total_tokens": 5616,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 138
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

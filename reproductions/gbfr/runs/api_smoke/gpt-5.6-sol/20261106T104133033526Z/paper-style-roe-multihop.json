@@ -1,0 +1,1370 @@
+{
+  "case": {
+    "id": "paper-style-roe-multihop",
+    "question": "Compute Company A's Return on Equity (ROE) for fiscal year 2024 as a percentage, rounded to two decimal places. Use average equity.",
+    "context": "Company A annual report. All financial amounts are in USD millions. Net Profit for fiscal year 2024: 500. Total Equity at the end of fiscal year 2024: 2500. Total Equity at the end of fiscal year 2023: 2200. No other values are reported.",
+    "expected": "answered",
+    "expected_percent": 21.27659574468085
+  },
+  "passed": false,
+  "error_type": "ProtocolError",
+  "error": "Forbidden Python syntax: Try",
+  "trace": {
+    "events": [
+      {
+        "operator": "OQA",
+        "response": {
+          "reasoning_type": "ArithmeticCalculation",
+          "operator": "sum",
+          "subgoals": [
+            {
+              "metric": "Return on Equity (ROE)",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": "USD",
+                  "scale": "millions",
+                  "unit": "percentage"
+                }
+              }
+            }
+          ],
+          "precision": "percentage to two decimal places"
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Return on Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": "USD",
+              "scale": "millions",
+              "unit": "percentage"
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Return on Equity is not directly stated in the context; only Net Profit and Total Equity values are available."
+        }
+      },
+      {
+        "operator": "OMD",
+        "goal": {
+          "metric": "Return on Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": "USD",
+              "scale": "millions",
+              "unit": "percentage"
+            }
+          }
+        },
+        "paths": [
+          {
+            "id": "paper:2",
+            "direction": "down",
+            "formula": "ROE = Net Income / Average Equity"
+          },
+          {
+            "id": "source:7db2bb737b3785b0b931:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Annual Growth Rate of Common Dividends = Retention Ratio × Return on Equity] to solve for Return on Equity: parent_value/x0"
+          },
+          {
+            "id": "source:baff06762311172b94c5:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Dividend Growth Rate = Retention Ratio × Return on Equity] to solve for Return on Equity: parent_value/x0"
+          },
+          {
+            "id": "source:e41d9667c4aac8f4e0f4:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Dividend Perpetual Growth Rate = Return on Equity × (1 - Dividend Payout Ratio) ÷ [1 - Return on Equity × (1 - Dividend Payout Ratio)]] to solve for Return on Equity: -parent_value/(parent_value*x1 - parent_value + x1 - 1)"
+          },
+          {
+            "id": "source:ac305b2d2768ae8065bc:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Equity Value Added = Beginning Shareholders' Equity × (Return on Equity - Cost of Equity Rate)] to solve for Return on Equity: parent_value/x0 + x2"
+          },
+          {
+            "id": "source:8e40b0a7c1fd31fb96b2:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Expected Dividend Growth Rate = Return on Equity × (1 - Dividend Payout Ratio)] to solve for Return on Equity: -parent_value/(x1 - 1)"
+          },
+          {
+            "id": "source:d3b29188050a028da543:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Expected Dividend Growth Rate = Retention Ratio × Return on Equity] to solve for Return on Equity: parent_value/x0"
+          },
+          {
+            "id": "source:51db89dcee500ee9debc:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Intrinsic Price-to-Book Ratio = (Dividend Payout Ratio × Return on Equity) ÷ (Cost of Equity - Growth Rate)] to solve for Return on Equity: parent_value*(x2 - x3)/x0"
+          },
+          {
+            "id": "source:d3acc467a93dfa62a95e:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Per Share Value = Adjusted Average Price-to-Book Ratio × Return on Equity × 100 × Net Assets Per Share] to solve for Return on Equity: parent_value/(x0*x2*x3)"
+          },
+          {
+            "id": "source:d022b3590e5f8963bfe0:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Price-to-Book Ratio = (Return on Equity × Dividend Payout Ratio × (1 + Growth Rate)) ÷ (Cost of Equity - Growth Rate)] to solve for Return on Equity: parent_value*(-x2 + x3)/(x1*(x2 + 1))"
+          },
+          {
+            "id": "source:8764c325a14c5cf6ccdb:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Shareholders' Equity Growth Rate = Return on Equity × Retention Ratio ÷ (1 - Return on Equity × Retention Ratio)] to solve for Return on Equity: parent_value/(x1*(parent_value + 1))"
+          },
+          {
+            "id": "source:afa669f01569e6991849:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Stable Growth Rate = (Return on Equity × Retention Ratio) ÷ (1 - Return on Equity × Retention Ratio)] to solve for Return on Equity: parent_value/(x1*(parent_value + 1))"
+          },
+          {
+            "id": "source:48dcd19c996b08cf5cb4:inverse:Return on Equity",
+            "direction": "up",
+            "formula": "Rearrange [Sustainable Growth Rate = Retention Ratio × Return on Equity] to solve for Return on Equity: parent_value/x0"
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Annual Growth Rate of Common Dividends",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Annual Growth Rate of Common Dividends is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Retention Ratio",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Retention Ratio is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:7db2bb737b3785b0b931:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Annual Growth Rate of Common Dividends",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Retention Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Dividend Perpetual Growth Rate",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": "ratio"
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Dividend Perpetual Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Dividend Growth Rate",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Dividend Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:baff06762311172b94c5:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Dividend Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Retention Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Dividend Payout Ratio",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Dividend Payout Ratio for Company A for fiscal year 2024 is not directly stated in the context."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:e41d9667c4aac8f4e0f4:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Dividend Perpetual Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          {
+            "metric": "Dividend Payout Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Equity Value Added",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Equity Value Added is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Cost of Equity Rate",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Cost of Equity Rate is not directly stated in the context."
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Beginning Shareholders' Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Beginning Shareholders' Equity is not directly stated in the context; only Total Equity at the end of fiscal year 2023 and fiscal year 2024 are reported."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:ac305b2d2768ae8065bc:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Equity Value Added",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Beginning Shareholders' Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Cost of Equity Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Expected Dividend Growth Rate",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Expected Dividend Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:8e40b0a7c1fd31fb96b2:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Expected Dividend Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Dividend Payout Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:d3b29188050a028da543:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Expected Dividend Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Retention Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Intrinsic Price-to-Book Ratio",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": "ratio"
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Intrinsic Price-to-Book Ratio is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Cost of Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Cost of Equity is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Growth Rate",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported, so no calculation or derivation is permitted."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:51db89dcee500ee9debc:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Intrinsic Price-to-Book Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          {
+            "metric": "Dividend Payout Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Cost of Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Per Share Value",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Per Share Value is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "100",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Metric 100 is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Adjusted Average Price-to-Book Ratio",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Adjusted Average Price-to-Book Ratio is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Net Assets Per Share",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Net Assets Per Share is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:d3acc467a93dfa62a95e:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Per Share Value",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Adjusted Average Price-to-Book Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "100",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Net Assets Per Share",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Price-to-Book Ratio",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": "ratio"
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Price-to-Book Ratio is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:d022b3590e5f8963bfe0:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Price-to-Book Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          {
+            "metric": "Dividend Payout Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Cost of Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Shareholders' Equity Growth Rate",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": "ratio"
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Shareholders' Equity Growth Rate is not directly stated in the context; only Total Equity values for fiscal years 2024 and 2023 are provided."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:8764c325a14c5cf6ccdb:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Shareholders' Equity Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          {
+            "metric": "Retention Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Stable Growth Rate",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": "ratio"
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Stable Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:afa669f01569e6991849:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Stable Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          {
+            "metric": "Retention Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Net Income",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": true,
+          "missing_vars": [],
+          "notes": "Resolved Net Income via alias Net Profit.",
+          "var_bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "fiscal year 2024"
+              },
+              "context": "Net Profit for fiscal year 2024: 500",
+              "metric": "Net Income",
+              "observed_meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              },
+              "value": 500.0
+            }
+          }
+        }
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Average Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Average Equity is not directly stated in the context; only Total Equity values for fiscal years 2024 and 2023 are reported."
+        }
+      },
+      {
+        "operator": "OMD",
+        "goal": {
+          "metric": "Average Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "paths": [
+          {
+            "id": "paper:1",
+            "direction": "down",
+            "formula": "Average Equity = (Initial Equity + Final Equity)/2"
+          },
+          {
+            "id": "paper:2:inverse:Average Equity",
+            "direction": "up",
+            "formula": "Rearrange [ROE = Net Income / Average Equity] to solve for Average Equity: i/parent_value"
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Return on Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": "ratio"
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Return on Equity is not directly stated in the context; only Net Profit and Total Equity component values are reported."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "paper:2:inverse:Average Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Return on Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          {
+            "metric": "Net Income",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Sustainable Growth Rate",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Sustainable Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported."
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "source:48dcd19c996b08cf5cb4:inverse:Return on Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Sustainable Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Retention Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Initial Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": false,
+          "var_bindings": {},
+          "missing_vars": [
+            "v1"
+          ],
+          "notes": "Initial Equity is not directly stated in the context; only Total Equity for fiscal years 2024 and 2023 is reported."
+        }
+      },
+      {
+        "operator": "OMD",
+        "goal": {
+          "metric": "Initial Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "paths": [
+          {
+            "id": "paper:0",
+            "direction": "down",
+            "formula": "Initial Equity = prior-year Final Equity"
+          },
+          {
+            "id": "paper:1:inverse:Initial Equity",
+            "direction": "up",
+            "formula": "Rearrange [Average Equity = (Initial Equity + Final Equity)/2] to solve for Initial Equity: -e + 2*parent_value"
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Final Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": true,
+          "missing_vars": [],
+          "notes": "Resolved Final Equity via alias Total Equity.",
+          "var_bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "fiscal year 2024"
+              },
+              "context": "Total Equity at the end of fiscal year 2024: 2500.",
+              "metric": "Final Equity",
+              "observed_meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              },
+              "value": 2500
+            }
+          }
+        }
+      },
+      {
+        "operator": "path_pruned",
+        "path_id": "paper:1:inverse:Initial Equity",
+        "reason": "missing_operand",
+        "goals": [
+          {
+            "metric": "Average Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          {
+            "metric": "Final Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "operator": "OES",
+        "goal": {
+          "metric": "Final Equity",
+          "constraints": {
+            "temporal_scope": "fiscal year 2023",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": true,
+          "missing_vars": [],
+          "notes": "Resolved Final Equity via alias Total Equity.",
+          "var_bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "fiscal year 2023"
+              },
+              "context": "Total Equity at the end of fiscal year 2023: 2200.",
+              "metric": "Final Equity",
+              "observed_meta": {
+                "currency": null,
+                "scale": "millions",
+                "unit": null
+              },
+              "value": 2200.0
+            }
+          }
+        }
+      }
+    ]
+  }
+}

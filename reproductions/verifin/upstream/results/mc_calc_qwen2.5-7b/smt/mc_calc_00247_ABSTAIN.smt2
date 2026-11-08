@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:increase_decrease_in_accrued_income_taxes_payable_fy2025,increase_decrease_in_pension_and_postretirement_obligations_fy2025,increase_decrease_in_other_operating_capital_net_fy2025)

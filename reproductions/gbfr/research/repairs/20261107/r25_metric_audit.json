@@ -1,0 +1,1338 @@
+{
+  "audit": "R25 independent metric audit of R24 FinQA, paper definitions, units, approximation and precision policy",
+  "api_calls": 0,
+  "code_edits": 2,
+  "dataset_or_gold_edits": 0,
+  "full_run_resumed": false,
+  "paper_evidence": {
+    "file": "research/paper.txt",
+    "total_accuracy_lines": [
+      375,
+      389
+    ],
+    "abstention_recall_lines": [
+      394,
+      400
+    ],
+    "dataset_counts_lines": [
+      728,
+      733
+    ],
+    "gpt5_table1_lines": [
+      340,
+      348
+    ],
+    "definitions": "Total includes all answerable and unanswerable test questions. Abstention Accuracy is recall on unanswerable subset, not precision among all refusals. Explicit query precision must match at that resolution. Unspecified precision is compared after rounding both values to the same precision; two decimals is given as an example. Paper does not explicitly specify reference-display decimal selection, ROUND_HALF_UP tie handling, relative tolerance, or a special approximate-amount correctness rule."
+  },
+  "configured_evaluation": {
+    "unspecified_decimals": 2,
+    "precision_policy": "reference_display",
+    "rounding": "ROUND_HALF_UP"
+  },
+  "recomputed_summaries": {
+    "reference_display": {
+      "n": 10,
+      "predictions": 10,
+      "missing": 0,
+      "errors": 0,
+      "correct": 7,
+      "unanswerable": 2,
+      "correct_abstentions": 2,
+      "total_accuracy": 70.0,
+      "abstention_accuracy": 100.0,
+      "complete": true
+    },
+    "fixed": {
+      "n": 10,
+      "predictions": 10,
+      "missing": 0,
+      "errors": 0,
+      "correct": 4,
+      "unanswerable": 2,
+      "correct_abstentions": 2,
+      "total_accuracy": 40.0,
+      "abstention_accuracy": 100.0,
+      "complete": true
+    }
+  },
+  "r24_result_matches_recalculation": true,
+  "metric_decomposition": {
+    "answerable": 8,
+    "unanswerable": 2,
+    "answerable_correct_reference_display": 5,
+    "correct_abstentions": 2,
+    "benchmark_false_abstentions": 1,
+    "incorrect_answered": 2,
+    "total_correct": 7,
+    "all_abstentions": 3,
+    "total_accuracy_percent": 70,
+    "answerable_accuracy_percent": 62.5,
+    "unanswerable_recall_percent": 100,
+    "abstention_precision_percent": 66.66666666666667,
+    "false_abstention_rate_answerable_percent": 12.5
+  },
+  "precision_flips": [
+    {
+      "id": "FinQA:ECL/2017/page_69.pdf-2",
+      "question": "what is the percentage change in the total carrying amount of goodwill from 2016 to 2017?",
+      "gold": "12.3%",
+      "prediction": 12.284192386025387,
+      "prediction_meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "target_meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "fixed_2": false,
+      "reference_display": true
+    },
+    {
+      "id": "FinQA:PKG/2002/page_52.pdf-2",
+      "question": "what is the total value of the balance of options as of december 31 , 2002 , in millions?",
+      "gold": "58.9",
+      "prediction": 58.91432819999999,
+      "prediction_meta": {
+        "currency": "USD",
+        "scale": "million",
+        "unit": null
+      },
+      "target_meta": {
+        "currency": null,
+        "scale": "million",
+        "unit": null
+      },
+      "fixed_2": false,
+      "reference_display": true
+    },
+    {
+      "id": "FinQA:L/2009/page_84.pdf-1",
+      "question": "what was the growth rate of the loews common stock from december 31 , 2004 to 2009",
+      "gold": "60.6%",
+      "prediction": 60.620000000000005,
+      "prediction_meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "target_meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "fixed_2": false,
+      "reference_display": true
+    }
+  ],
+  "cases": [
+    {
+      "id": "FinQA:MKTX/2004/page_99.pdf-2",
+      "classification": "benchmark_false_abstention_with_source_metric_conflict",
+      "calculation_verdict": "Scorer correctly counts this as incorrect because official label says answerable; OES refusal is supported by authorized versus outstanding distinction.",
+      "source_quotes": [
+        "as of december 31 , 2004 , the company had 110000000 authorized shares of common stock and 10000000 authorized shares of non-voting common stock ."
+      ],
+      "official_math": "10000000 / (110000000 + 10000000) = 8.333333333333332%",
+      "semantic_issue": "Official program computes an authorized-share proportion, but question asks outstanding shares. Authorized, issued, and outstanding are not interchangeable.",
+      "minimal_action": "Keep original benchmark label and main score. Flag source/question mismatch in audit; do not make authorized an alias of outstanding or weaken counterfactual constraints.",
+      "question": "as of december 31 , 2004 , what percentage of common stock outstanding were non-voting shares?",
+      "answer": "8.3%",
+      "answer_meta": {},
+      "source_context": "table of contents marketaxess holdings inc .\nnotes to consolidated financial statements 2014 ( continued ) ( in thousands , except share and per share amounts ) the combined aggregate amount of redemption requirements for the senior preferred shares was as follows : shares of series b convertible preferred stock were convertible into common stock on a 3.33-for-one basis and only in connection with an initial public offering of the company 2019s stock .\ndividends on the series b convertible preferred stock accrued at the rate of 8% ( 8 % ) per annum and were subordinate to dividend payments on the senior preferred shares .\nshares of series b convertible preferred stock had a liquidation preference equal to the original issue price plus all cumulative accrued but unpaid dividends .\nthe liquidation preference was subordinate to that of the senior preferred shares .\ncumulative accrued but unpaid dividends were forfeited upon conversion of shares of series b convertible preferred stock into common stock .\nas such , the company did not accrue dividends , as liquidation of the shares of series b convertible preferred stock was not anticipated .\nas of december 31 , 2004 , the company had 110000000 authorized shares of common stock and 10000000 authorized shares of non-voting common stock .\nas of december 31 , 2003 , the company had 120000000 authorized shares of common stock and 450060 authorized shares of non-voting common stock .\ncommon stock entitles the holder to one vote per share of common stock held .\nnon-voting common stock is convertible on a one-for-one basis into shares of common stock at any time subject to a limitation on conversion to the extent such conversion would result in a stockholder , together with its affiliates , owning more than 9.99% ( 9.99 % ) of the outstanding shares of common stock .\non march 30 , 2004 , the company 2019s board of directors authorized , and on november 1 , 2004 the company effectuated , a one-for-three reverse stock split of shares of common stock and non-voting common stock to be effective prior to the closing of the company 2019s initial public offering .\nall references in these financial statements to the number of shares of common stock and non-voting common stock of the company , securities convertible or exercisable therefor and per share amounts have been restated for all periods presented to reflect the effect of the common stock reverse stock split .\nin 2004 and 2003 , the company had 1939734 shares and 1937141 shares , respectively , of common stock that were issued to employees .\nincluded in these amounts , in 2001 , the company awarded 64001 shares and 289581 shares to employees at $ .003 and $ 3.60 , respectively , per share .\nthe common stock subscribed was issued in 2001 in exchange for three-year promissory notes ( 64001 shares ) and eleven-year promissory notes ( 289581 shares ) , which bear interest at the applicable federal rate and are collateralized by the subscribed shares .\nthe promissory note due in 2004 was repaid on january 15 , 2005 .\ncompensation expense in relation to the excess of the fair value of such awards over the amount paid will be recorded over the vesting period .\nthe awards vest over a period of either one and one-half or three years and are restricted as to transferability based on the vesting schedule set forth in the award agreement .\nthe eleven-year promissory notes ( 289581 shares ) were entered into in connection with the loans of approximately $ 1042 made to the company 2019s chief executive officer in 2001 .\nthese loans were made prior to the passage of the sarbanes-oxley act of 2002. .\n|  | As of December 31, |\n| --- | --- |\n| Year Ended December 31, | 2004 | 2003 |\n| 2005 | $— | $177,973 |\nconvertible preferred stock 9 .\nstockholders 2019 equity ( deficit ) common stock restricted common stock and common stock subscribed .",
+      "source_ref": {
+        "commit": "b2eaa7156acb7d12fecc7386b92dd4bf82f9cc52",
+        "index": 916,
+        "uid": "MKTX/2004/page_99.pdf-2"
+      },
+      "prediction": {
+        "status": "abstained",
+        "value": null,
+        "meta": {},
+        "precision": "unknown",
+        "reason": "At least one required subgoal could not be grounded"
+      },
+      "target_meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "document_reporting_meta": {
+        "scale": "thousand",
+        "currency": null,
+        "unit": null
+      },
+      "official_annotation_for_audit_only": {
+        "program": "add(110000000, 10000000), divide(10000000, #0)",
+        "steps": [
+          {
+            "op": "add2-1",
+            "arg1": "110000000",
+            "arg2": "10000000",
+            "res": "120000000"
+          },
+          {
+            "op": "divide2-2",
+            "arg1": "10000000",
+            "arg2": "#0",
+            "res": "8.3%"
+          }
+        ],
+        "exe_ans": 0.08333
+      },
+      "operator_events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "operator": "ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "MarketAxess Holdings Inc.",
+                  "meta": {
+                    "currency": null,
+                    "scale": "ones",
+                    "unit": "shares"
+                  },
+                  "temporal_scope": "as of December 31, 2004"
+                },
+                "metric": "Non-voting common shares outstanding"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "MarketAxess Holdings Inc.",
+                  "meta": {
+                    "currency": null,
+                    "scale": "ones",
+                    "unit": "shares"
+                  },
+                  "temporal_scope": "as of December 31, 2004"
+                },
+                "metric": "Total common shares outstanding"
+              }
+            ]
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Total common shares outstanding",
+            "constraints": {
+              "temporal_scope": "as of December 31, 2004",
+              "entity_scope": "MarketAxess Holdings Inc.",
+              "meta": {
+                "currency": null,
+                "scale": "ones",
+                "unit": "shares"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Total common shares outstanding as of December 31, 2004 is not directly stated. The context gives authorized shares and shares issued to employees, which are not the requested outstanding-share total.",
+            "var_bindings": {}
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Non-voting common shares outstanding",
+            "constraints": {
+              "temporal_scope": "as of December 31, 2004",
+              "entity_scope": "MarketAxess Holdings Inc.",
+              "meta": {
+                "currency": null,
+                "scale": "ones",
+                "unit": "shares"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Non-voting common shares outstanding as of December 31, 2004 is not directly stated. The context gives authorized non-voting common shares, not shares outstanding.",
+            "var_bindings": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "FinQA:CDNS/2018/page_66.pdf-2",
+      "classification": "baseline_semantics_not_unit_or_arithmetic_error",
+      "calculation_verdict": "All amounts are correctly extracted. The scorer correctly rejects 20.127% versus 25% under either precision policy.",
+      "source_quotes": [
+        "| Balance, December 30, 2017, as previously reported | $341,003 |",
+        "| Balance, December 30, 2017, as adjusted | 426,932 |",
+        "| Revenue from Contracts with Customers (Topic 606)* | 91,640 |",
+        "| Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory | (8,349) |"
+      ],
+      "model_math": "(91640 + 2638 - 8349) / 426932 * 100 = 20.12709283914066%",
+      "official_math": "(426932 - 341003) / 341003 * 100 = 25.198898543414572%",
+      "semantic_issue": "Share of adjusted balance versus percentage effect/change relative to previously reported balance. Wording mentions balance as adjusted and does not unambiguously state baseline; official program chooses previous balance. Official intermediate step text 85959 is a typo; executable subtraction yields 85929.",
+      "minimal_action": "Clarify percentage-change baseline at query planning with source-qualified labels; do not relabel adjusted as previously reported in extraction or alter gold.",
+      "question": "what is the percentage net effect of the cumulative effect adjustments , net of income tax effects , to beginning retained earnings for new accounting standards adopted by cadence on the retained earnings balance as adjusted for december 30 , 2017?",
+      "answer": "25%",
+      "answer_meta": {},
+      "source_context": "entity transfers of inventory , the income tax effects will continue to be deferred until the inventory has been sold to a third party .\ncadence adopted the new standard on the first day of fiscal 2018 using the modified retrospective transition approach and recorded a cumulative-effect adjustment to decrease retained earnings in the amount of $ 8.3 million .\nthe cumulative-effect adjustment includes the write-off of income tax consequences deferred from prior intra-entity transfers involving assets other than inventory and new deferred tax assets for amounts not recognized under u.s .\ngaap .\nwe anticipate the potential for increased volatility in future effective tax rates from the adoption of this guidance .\nstock-based compensation in may 2017 , the fasb issued asu 2017-09 , 201ccompensation 2014stock compensation ( topic 718 ) : scope of modification accounting , 201d that provides guidance about which changes to the terms or conditions of a share-based payment award require an entity to apply modification accounting .\ncadence adopted the standard on the first day of fiscal 2018 .\nthe adoption of this standard did not impact cadence 2019s consolidated financial statements or the related disclosures .\ncumulative effect adjustments to retained earnings the following table presents the cumulative effect adjustments , net of income tax effects , to beginning retained earnings for new accounting standards adopted by cadence on the first day of fiscal 2018 : retained earnings ( in thousands ) .\n|  | Retained Earnings (In thousands) |\n| --- | --- |\n| Balance, December 30, 2017, as previously reported | $341,003 |\n| Cumulative effect adjustment from the adoption of new accounting standards: |  |\n| Revenue from Contracts with Customers (Topic 606)* | 91,640 |\n| Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities | 2,638 |\n| Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory | (8,349) |\n| Balance, December 30, 2017, as adjusted | 426,932 |\n| Net Income | 345,777 |\n| Balance, December 29, 2018 | $772,709 |\n* the cumulative effect adjustment from the adoption of revenue from contracts with customers ( topic 606 ) is presented net of the related income tax effect of $ 17.5 million .\nnew accounting standards not yet adopted leases in february 2016 , the fasb issued asu 2016-02 , 201cleases ( topic 842 ) , 201d requiring , among other things , the recognition of lease liabilities and corresponding right-of-use assets on the balance sheet by lessees for all leases with a term longer than 12 months .\nthe new standard is effective for cadence in the first quarter of fiscal 2019 .\na modified retrospective approach is required , applying the new standard to leases existing as of the date of initial application .\nan entity may choose to apply the standard as of either its effective date or the beginning of the earliest comparative period presented in the financial statements .\ncadence adopted the new standard on december 30 , 2018 , the first day of fiscal 2019 , and used the effective date as the date of initial application .\nconsequently , financial information will not be updated and the disclosures required under the new standard will not be provided for dates and periods prior to the first quarter of fiscal 2019 .\ncadence elected certain practical expedients permitted under the transition guidance within the new standard , which among other things , allowed cadence to carry forward its prior conclusions about lease identification and classification. .",
+      "source_ref": {
+        "commit": "b2eaa7156acb7d12fecc7386b92dd4bf82f9cc52",
+        "index": 1002,
+        "uid": "CDNS/2018/page_66.pdf-2"
+      },
+      "prediction": {
+        "status": "answered",
+        "value": 20.12709283914066,
+        "meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        },
+        "precision": "unknown",
+        "reason": ""
+      },
+      "target_meta": {
+        "currency": null,
+        "scale": null,
+        "unit": "percentage"
+      },
+      "document_reporting_meta": {
+        "scale": null,
+        "currency": null,
+        "unit": null
+      },
+      "official_annotation_for_audit_only": {
+        "program": "subtract(426932, 341003), divide(#0, 341003)",
+        "steps": [
+          {
+            "op": "minus2-1",
+            "arg1": "426932",
+            "arg2": "341003",
+            "res": "85959"
+          },
+          {
+            "op": "divide2-2",
+            "arg1": "#0",
+            "arg2": "341003",
+            "res": "25%"
+          }
+        ],
+        "exe_ans": 0.25199
+      },
+      "operator_events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "operator": "ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "Cadence",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": "currency"
+                  },
+                  "temporal_scope": "December 30, 2017"
+                },
+                "metric": "Revenue from Contracts with Customers (Topic 606) cumulative effect adjustment"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Cadence",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": "currency"
+                  },
+                  "temporal_scope": "December 30, 2017"
+                },
+                "metric": "Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities cumulative effect adjustment"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Cadence",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": "currency"
+                  },
+                  "temporal_scope": "December 30, 2017"
+                },
+                "metric": "Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory cumulative effect adjustment"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Cadence",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": "currency"
+                  },
+                  "temporal_scope": "December 30, 2017"
+                },
+                "metric": "Retained earnings balance, as adjusted"
+              }
+            ]
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory cumulative effect adjustment",
+            "constraints": {
+              "temporal_scope": "December 30, 2017",
+              "entity_scope": "Cadence",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved the requested cumulative effect adjustment from the table's “Cumulative effect adjustment from the adoption of new accounting standards” section. The table identifies this beginning retained earnings adjustment with the December 30, 2017 balances.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 0.98,
+                "constraints": {
+                  "entity_scope": "Cadence",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "December 30, 2017"
+                },
+                "context": "Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory | (8,349)",
+                "context_spans": [
+                  "|  | Retained Earnings (In thousands) |\n| --- | --- |",
+                  "| Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory | (8,349) |"
+                ],
+                "metric": "Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory cumulative effect adjustment",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "source_label": "Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory",
+                "value": -8349
+              }
+            }
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Revenue from Contracts with Customers (Topic 606) cumulative effect adjustment",
+            "constraints": {
+              "temporal_scope": "December 30, 2017",
+              "entity_scope": "Cadence",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved the requested cumulative effect adjustment via the row \"Revenue from Contracts with Customers (Topic 606)*\" under the table section \"Cumulative effect adjustment from the adoption of new accounting standards.\" The adjustment is presented in the Retained Earnings (In thousands) column for beginning retained earnings at December 30, 2017.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 0.99,
+                "constraints": {
+                  "entity_scope": "Cadence",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "December 30, 2017"
+                },
+                "context": "| Revenue from Contracts with Customers (Topic 606)* | 91,640 |",
+                "context_spans": [
+                  "|  | Retained Earnings (In thousands) |",
+                  "| Revenue from Contracts with Customers (Topic 606)* | 91,640 |"
+                ],
+                "metric": "Revenue from Contracts with Customers (Topic 606) cumulative effect adjustment",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "source_label": "Revenue from Contracts with Customers (Topic 606)*",
+                "value": 91640
+              }
+            }
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Retained earnings balance, as adjusted",
+            "constraints": {
+              "temporal_scope": "December 30, 2017",
+              "entity_scope": "Cadence",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved \"Retained earnings balance, as adjusted\" via the table row \"Balance, December 30, 2017, as adjusted\" under the \"Retained Earnings (In thousands)\" header. The dollar currency is declared in the same table's monetary column.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": "Cadence",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "December 30, 2017"
+                },
+                "context": "|  | Retained Earnings (In thousands) |\n| Balance, December 30, 2017, as adjusted | 426,932 |",
+                "context_spans": [
+                  "|  | Retained Earnings (In thousands) |",
+                  "| Balance, December 30, 2017, as adjusted | 426,932 |",
+                  "| Balance, December 30, 2017, as previously reported | $341,003 |"
+                ],
+                "metric": "Retained earnings balance, as adjusted",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "source_label": "Balance, December 30, 2017, as adjusted",
+                "value": 426932.0
+              }
+            }
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities cumulative effect adjustment",
+            "constraints": {
+              "temporal_scope": "December 30, 2017",
+              "entity_scope": "Cadence",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": null,
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": "Cadence",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "December 30, 2017"
+                },
+                "context": "Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities: 2,638",
+                "context_spans": [
+                  "|  | Retained Earnings (In thousands) |",
+                  "| Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities | 2,638 |"
+                ],
+                "metric": "Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities cumulative effect adjustment",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "source_label": "Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities",
+                "value": 2638.0
+              }
+            }
+          }
+        },
+        {
+          "operator": "evidence_audit",
+          "goal": {
+            "metric": "Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities cumulative effect adjustment",
+            "constraints": {
+              "temporal_scope": "December 30, 2017",
+              "entity_scope": "Cadence",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "status": "warning",
+          "reason": "An unregistered alias needs its explanation in notes",
+          "policy": "paper-oes-semantic-decision"
+        },
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    net_adjustment = vars[\"v1\"] + vars[\"v2\"] + vars[\"v3\"]\n    adjusted_balance = vars[\"v4\"]\n\n    if adjusted_balance == 0:\n        return None\n\n    value = (net_adjustment / adjusted_balance) * 100\n\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"net_adjustment\": net_adjustment,\n            \"adjusted_balance\": adjusted_balance,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": \"percentage\"\n            }\n        }\n    }",
+          "inputs": {
+            "v1": 91640.0,
+            "v2": 2638.0,
+            "v3": -8349.0,
+            "v4": 426932.0
+          },
+          "execution": {
+            "value": 20.12709283914066,
+            "trace": {
+              "net_adjustment": 85929.0,
+              "adjusted_balance": 426932.0,
+              "output_meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "percentage"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "FinQA:AMT/2012/page_50.pdf-4",
+      "classification": "approximate_reported_total_vs_computed_amount_and_unresolved_native_display",
+      "calculation_verdict": "Actual output46 million and gold45984064 remain different even after physical unit normalization: 46000000 versus45984064. Unit-only score repair cannot make them exact.",
+      "source_quotes": [
+        "we repurchased 619314 shares of our common stock for an aggregate of approximately $ 46.0 million , including commissions and fees",
+        "| Total Fourth Quarter | 619,314 | $74.25 | 619,314 | $1,256.1 |",
+        "( 2 ) average price per share is calculated using the aggregate price , excluding commissions and fees ."
+      ],
+      "model_math": "Direct reported approximate total including commissions and fees = 46.0 million USD",
+      "official_math": "619314 shares * 74.25 USD/share = 45984064.5 USD, excluding commissions and fees",
+      "semantic_issue": "Reported approximate inclusive amount and product of rounded average price excluding fees are different source contracts. Gold string45984064 also differs by0.5 from official executable result45984064.5. Neither fixed2 nor reference_display with HALF_UP accepts official exact product against that integer string.",
+      "minimal_action": "Preserve approximation and fee scope during planning and extraction. Paper does not prescribe a relative or source-approximation tolerance, so keep main label and score unchanged and report conflict separately.",
+      "question": "was was the total amount spent on stock repurchases in the fourth quarter?",
+      "answer": "45984064",
+      "answer_meta": {},
+      "source_context": "issuer purchases of equity securities during the three months ended december 31 , 2012 , we repurchased 619314 shares of our common stock for an aggregate of approximately $ 46.0 million , including commissions and fees , pursuant to our publicly announced stock repurchase program , as follows : period total number of shares purchased ( 1 ) average price paid per share ( 2 ) total number of shares purchased as part of publicly announced plans or programs approximate dollar value of shares that may yet be purchased under the plans or programs ( in millions ) .\n| Period | Total Number of Shares Purchased(1) | Average Price Paid per Share(2) | Total Number of Shares Purchased as Part of Publicly Announced Plans orPrograms | Approximate Dollar Value of Shares that May Yet be Purchased Under the Plans orPrograms  (in millions) |\n| --- | --- | --- | --- | --- |\n| October 2012 | 27,524 | $72.62 | 27,524 | $1,300.1 |\n| November 2012 | 489,390 | $74.22 | 489,390 | $1,263.7 |\n| December 2012 | 102,400 | $74.83 | 102,400 | $1,256.1 |\n| Total Fourth Quarter | 619,314 | $74.25 | 619,314 | $1,256.1 |\n( 1 ) repurchases made pursuant to the $ 1.5 billion stock repurchase program approved by our board of directors in march 2011 ( the 201c2011 buyback 201d ) .\nunder this program , our management is authorized to purchase shares from time to time through open market purchases or privately negotiated transactions at prevailing prices as permitted by securities laws and other legal requirements , and subject to market conditions and other factors .\nto facilitate repurchases , we make purchases pursuant to trading plans under rule 10b5-1 of the exchange act , which allows us to repurchase shares during periods when we otherwise might be prevented from doing so under insider trading laws or because of self-imposed trading blackout periods .\nthis program may be discontinued at any time .\n( 2 ) average price per share is calculated using the aggregate price , excluding commissions and fees .\nwe continued to repurchase shares of our common stock pursuant to our 2011 buyback subsequent to december 31 , 2012 .\nbetween january 1 , 2013 and january 21 , 2013 , we repurchased an additional 15790 shares of our common stock for an aggregate of $ 1.2 million , including commissions and fees , pursuant to the 2011 buyback .\nas a result , as of january 21 , 2013 , we had repurchased a total of approximately 4.3 million shares of our common stock under the 2011 buyback for an aggregate of $ 245.2 million , including commissions and fees .\nwe expect to continue to manage the pacing of the remaining $ 1.3 billion under the 2011 buyback in response to general market conditions and other relevant factors. .",
+      "source_ref": {
+        "commit": "b2eaa7156acb7d12fecc7386b92dd4bf82f9cc52",
+        "index": 780,
+        "uid": "AMT/2012/page_50.pdf-4"
+      },
+      "prediction": {
+        "status": "answered",
+        "value": 46.0,
+        "meta": {
+          "currency": "USD",
+          "scale": "million",
+          "unit": null
+        },
+        "precision": "unknown",
+        "reason": ""
+      },
+      "target_meta": {
+        "currency": null,
+        "scale": null,
+        "unit": null
+      },
+      "document_reporting_meta": {
+        "scale": null,
+        "currency": null,
+        "unit": null
+      },
+      "official_annotation_for_audit_only": {
+        "program": "multiply(619314, 74.25)",
+        "steps": [
+          {
+            "op": "multiply1-1",
+            "arg1": "619314",
+            "arg2": "74.25",
+            "res": "45984064"
+          }
+        ],
+        "exe_ans": 45984064.5
+      },
+      "operator_events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "operator": "sum",
+            "precision": "unknown",
+            "reasoning_type": "DirectRetrieval",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "issuer's common stock repurchases",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "fourth quarter 2012"
+                },
+                "metric": "Aggregate amount spent on common stock repurchases, including commissions and fees"
+              }
+            ]
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Aggregate amount spent on common stock repurchases, including commissions and fees",
+            "constraints": {
+              "temporal_scope": "fourth quarter 2012",
+              "entity_scope": "issuer's common stock repurchases",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved Aggregate amount spent on common stock repurchases, including commissions and fees via the contextual label “aggregate” in the issuer repurchases passage.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 0.98,
+                "constraints": {
+                  "entity_scope": "issuer's common stock repurchases",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "fourth quarter 2012"
+                },
+                "context": "During the three months ended December 31, 2012, we repurchased 619314 shares of our common stock for an aggregate of approximately $46.0 million, including commissions and fees.",
+                "context_spans": [
+                  "During the three months ended December 31, 2012, we repurchased 619314 shares of our common stock for an aggregate of approximately $46.0 million, including commissions and fees"
+                ],
+                "metric": "Aggregate amount spent on common stock repurchases, including commissions and fees",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "source_label": "aggregate",
+                "value": 46.0
+              }
+            }
+          }
+        },
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    value = vars[\"v1\"]\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"reported_value\": value,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    }",
+          "inputs": {
+            "v1": 46.0
+          },
+          "execution": {
+            "value": 46.0,
+            "trace": {
+              "reported_value": 46.0,
+              "output_meta": {
+                "currency": "USD",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "confirmed_latent_implementation_problem": {
+    "location": "gbfr/metrics.py:172-177",
+    "issue": "If all target metadata are unknown, unknown_display replaces both canonical values by raw values and clears both dimensions. This discards explicitly known prediction units and can accept a source-provable million-fold wrong amount if raw numeric text matches.",
+    "target_meta_for_AMT": {
+      "currency": null,
+      "scale": null,
+      "unit": null
+    },
+    "impact_on_actual_R24_failures": "None of the three actual failures becomes correct by fixing this behavior. Actual AMT stays incorrect.",
+    "minimal_recommendation": "Do not erase explicit prediction dimensions and call the result physically normalized. When target display contract is ungrounded, retain a unit_contract_unresolved audit status; separate raw-display agreement from verified unit agreement. Do not infer target scale from numeric magnitude or use predictions/gold-fit to select it. Coordinate a declared policy before changing main scoring.",
+    "repair_status": "Conservative unresolved-contract check implemented after root authorization; frozen old artifacts unchanged.",
+    "diagnostic_probes_before_repair": [
+      {
+        "label": "actual_reported_approx",
+        "prediction": {
+          "status": "answered",
+          "value": 46,
+          "meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        },
+        "fixed_2": false,
+        "reference_display": false
+      },
+      {
+        "label": "same_approx_base_dollars",
+        "prediction": {
+          "status": "answered",
+          "value": 46000000,
+          "meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": null
+          }
+        },
+        "fixed_2": false,
+        "reference_display": false
+      },
+      {
+        "label": "official_program_raw_output",
+        "prediction": {
+          "status": "answered",
+          "value": 45984064.5,
+          "meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": null
+          }
+        },
+        "fixed_2": false,
+        "reference_display": false
+      },
+      {
+        "label": "reference_number_dollars",
+        "prediction": {
+          "status": "answered",
+          "value": 45984064,
+          "meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": null
+          }
+        },
+        "fixed_2": true,
+        "reference_display": true
+      },
+      {
+        "label": "same_reference_number_wrong_million_scale",
+        "prediction": {
+          "status": "answered",
+          "value": 45984064,
+          "meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        },
+        "fixed_2": true,
+        "reference_display": true
+      }
+    ],
+    "diagnostic_probes_after_repair": [
+      {
+        "label": "actual_reported_approx",
+        "prediction": {
+          "status": "answered",
+          "value": 46,
+          "meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        },
+        "fixed_2": false,
+        "reference_display": false,
+        "contract": {
+          "status": "unresolved",
+          "reason": "Target display units are unknown, so explicit monetary or scaled prediction units cannot be verified",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        }
+      },
+      {
+        "label": "same_approx_base_dollars",
+        "prediction": {
+          "status": "answered",
+          "value": 46000000,
+          "meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": null
+          }
+        },
+        "fixed_2": false,
+        "reference_display": false,
+        "contract": {
+          "status": "unresolved",
+          "reason": "Target display units are unknown, so explicit monetary or scaled prediction units cannot be verified",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": null
+          }
+        }
+      },
+      {
+        "label": "official_program_raw_output",
+        "prediction": {
+          "status": "answered",
+          "value": 45984064.5,
+          "meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": null
+          }
+        },
+        "fixed_2": false,
+        "reference_display": false,
+        "contract": {
+          "status": "unresolved",
+          "reason": "Target display units are unknown, so explicit monetary or scaled prediction units cannot be verified",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": null
+          }
+        }
+      },
+      {
+        "label": "reference_number_dollars",
+        "prediction": {
+          "status": "answered",
+          "value": 45984064,
+          "meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": null
+          }
+        },
+        "fixed_2": false,
+        "reference_display": false,
+        "contract": {
+          "status": "unresolved",
+          "reason": "Target display units are unknown, so explicit monetary or scaled prediction units cannot be verified",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": null
+          }
+        }
+      },
+      {
+        "label": "same_reference_number_wrong_million_scale",
+        "prediction": {
+          "status": "answered",
+          "value": 45984064,
+          "meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        },
+        "fixed_2": false,
+        "reference_display": false,
+        "contract": {
+          "status": "unresolved",
+          "reason": "Target display units are unknown, so explicit monetary or scaled prediction units cannot be verified",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        }
+      }
+    ]
+  },
+  "negative_status_diagnostics": [
+    {
+      "status": "abstained",
+      "correct": true
+    },
+    {
+      "status": "error",
+      "correct": false
+    },
+    {
+      "status": "answered",
+      "correct": false
+    },
+    {
+      "status": "missing",
+      "correct": false
+    }
+  ],
+  "comparability_risks": {
+    "backbone": "Paper uses GPT-5; current API model identifier is gpt-5.6-sol, a different provider-selected backbone.",
+    "selection": "R24 is20 selected questions,10 FinQA; prior live rounds on same selection are r21,r22,r23. This is now a reused regression set, not fresh full-test evidence.",
+    "negative_weight": "FinQA R24 negative share2/10=20%; paper Table4 is97/1099=8.8262%. Different mixture changes Total even at identical stratum accuracies.",
+    "paper_reweighted_descriptive_only": 65.8098271155596,
+    "precision": "Reference-display R24=70%; fixed2 diagnostic=40%. Paper gives no explicit rule choosing reference decimal places, so claims of exact same scoring require qualification. Do not switch precision after observing outcomes.",
+    "native_display": "Bare FinQA references lack unit labels; document reporting scale can refer to another column or unrelated paragraph. Amount outputs may be dollars while a neighboring table column is millions. One global document scale cannot establish all target units.",
+    "main_score_policy": "Keep all original samples, labels and errors in main denominator. Do not drop three conflicts, replace main labels or count source-sensible abstention as benchmark-correct.",
+    "small_n": "10 questions are insufficient to establish attainment of paper full-benchmark accuracy;100% abstention is only2/2.",
+    "paper_counterfactual_count_vs_reported_abstention": {
+      "paper_finqa_unanswerable_n": 97,
+      "paper_gpt5_gbfr_abstention_percent": 98.8,
+      "integer_counts_rounding_to_reported_value": [],
+      "nearby_values": {
+        "95/97": 97.9381443298969,
+        "96/97": 98.96907216494846
+      },
+      "interpretation": "Reported98.80% is not attainable as an integer recall with denominator97 at two-decimal rounding. This is an unresolved paper reporting/count discrepancy, not justification to change labels or reported reference."
+    }
+  },
+  "minimal_recommendations": [
+    "Continue to report Total and unanswerable recall with explicit numerator/denominator, plus answerable accuracy and false abstentions separately.",
+    "Freeze and disclose precision policy before new validation; retain fixed2 and reference_display side by side until ambiguity is resolved.",
+    "Do not conflate a reported approximate quantity with a source-grounded exact calculation; preserve qualifiers and fee scope.",
+    "Keep benchmark scores and evidence-quality findings separate for MKTX/CDNS/AMT.",
+    "Address explicit unit-metadata erasure conservatively, with positive and incompatible-unit negative tests, without number-magnitude heuristics."
+  ],
+  "before_repair_source_integrity": {
+    "metrics.py": {
+      "current_sha256": "aa76a51dda6746f8326b1f383c38e34a411398fafe5fd42b9955563b3d36cd6c",
+      "r24_snapshot_sha256": "aa76a51dda6746f8326b1f383c38e34a411398fafe5fd42b9955563b3d36cd6c",
+      "match": true
+    },
+    "units.py": {
+      "current_sha256": "aa04cda48a8ed0db2b6e2b92cc11498f531ebc06a707d7caae510a714a7a36ab",
+      "r24_snapshot_sha256": "aa04cda48a8ed0db2b6e2b92cc11498f531ebc06a707d7caae510a714a7a36ab",
+      "match": true
+    }
+  },
+  "initial_read_only_audit": {
+    "api_calls": 0,
+    "code_edits": 0
+  },
+  "authorized_repair": {
+    "files": [
+      "gbfr/metrics.py",
+      "gbfr/units.py (target quantity plus parenthesized output scale only)",
+      "tests/test_metric_repairs_r25.py",
+      "tests/test_full_metric_repairs.py (one authorized test)",
+      "tests/test_paper_repairs.py (one authorized test)"
+    ],
+    "helper": "gbfr.metrics.unit_contract(prediction, sample)",
+    "helper_statuses": [
+      "resolved",
+      "native_display",
+      "unresolved",
+      "not_applicable",
+      "not_numeric",
+      "invalid"
+    ],
+    "method": "Only reject unverifiable explicit currency/non-ones scale/currency-per-unit when all target metadata are unknown. Native dimensionless and bare scalar display comparison remains. No new target units are inferred.",
+    "precision_policy_unchanged": true,
+    "old_and_new_R24_metrics": {
+      "fixed": {
+        "old": {
+          "n": 10,
+          "predictions": 10,
+          "missing": 0,
+          "errors": 0,
+          "correct": 4,
+          "unanswerable": 2,
+          "correct_abstentions": 2,
+          "total_accuracy": 40.0,
+          "abstention_accuracy": 100.0,
+          "complete": true
+        },
+        "new": {
+          "n": 10,
+          "predictions": 10,
+          "missing": 0,
+          "errors": 0,
+          "correct": 4,
+          "unanswerable": 2,
+          "correct_abstentions": 2,
+          "total_accuracy": 40.0,
+          "abstention_accuracy": 100.0,
+          "complete": true
+        }
+      },
+      "reference_display": {
+        "old": {
+          "n": 10,
+          "predictions": 10,
+          "missing": 0,
+          "errors": 0,
+          "correct": 7,
+          "unanswerable": 2,
+          "correct_abstentions": 2,
+          "total_accuracy": 70.0,
+          "abstention_accuracy": 100.0,
+          "complete": true
+        },
+        "new": {
+          "n": 10,
+          "predictions": 10,
+          "missing": 0,
+          "errors": 0,
+          "correct": 7,
+          "unanswerable": 2,
+          "correct_abstentions": 2,
+          "total_accuracy": 70.0,
+          "abstention_accuracy": 100.0,
+          "complete": true
+        }
+      }
+    },
+    "changed_actual_R24_ids": [],
+    "unit_contract_per_R24_question": [
+      {
+        "id": "FinQA:ECL/2017/page_69.pdf-2",
+        "status": "answered",
+        "unit_contract": {
+          "status": "resolved",
+          "reason": "Target display dimensions are specified; compatibility is checked separately",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          },
+          "prediction_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          }
+        },
+        "old_fixed_2": false,
+        "new_fixed_2": false,
+        "old_reference_display": true,
+        "new_reference_display": true
+      },
+      {
+        "id": "FinQA:AMT/2012/page_50.pdf-4",
+        "status": "answered",
+        "unit_contract": {
+          "status": "unresolved",
+          "reason": "Target display units are unknown, so explicit monetary or scaled prediction units cannot be verified",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        },
+        "old_fixed_2": false,
+        "new_fixed_2": false,
+        "old_reference_display": false,
+        "new_reference_display": false
+      },
+      {
+        "id": "FinQA:KHC/2018/page_132.pdf-1",
+        "status": "answered",
+        "unit_contract": {
+          "status": "resolved",
+          "reason": "Target display dimensions are specified; compatibility is checked separately",
+          "target_meta": {
+            "currency": null,
+            "scale": "million",
+            "unit": "shares"
+          },
+          "prediction_meta": {
+            "currency": null,
+            "scale": "million",
+            "unit": "shares"
+          }
+        },
+        "old_fixed_2": true,
+        "new_fixed_2": true,
+        "old_reference_display": true,
+        "new_reference_display": true
+      },
+      {
+        "id": "FinQA:PKG/2002/page_52.pdf-2",
+        "status": "answered",
+        "unit_contract": {
+          "status": "resolved",
+          "reason": "Target display dimensions are specified; compatibility is checked separately",
+          "target_meta": {
+            "currency": null,
+            "scale": "million",
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        },
+        "old_fixed_2": false,
+        "new_fixed_2": false,
+        "old_reference_display": true,
+        "new_reference_display": true
+      },
+      {
+        "id": "FinQA:MKTX/2004/page_99.pdf-2",
+        "status": "abstained",
+        "unit_contract": {
+          "status": "not_applicable",
+          "reason": "No answered numeric target to compare"
+        },
+        "old_fixed_2": false,
+        "new_fixed_2": false,
+        "old_reference_display": false,
+        "new_reference_display": false
+      },
+      {
+        "id": "FinQA:CDNS/2018/page_66.pdf-2",
+        "status": "answered",
+        "unit_contract": {
+          "status": "resolved",
+          "reason": "Target display dimensions are specified; compatibility is checked separately",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          },
+          "prediction_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          }
+        },
+        "old_fixed_2": false,
+        "new_fixed_2": false,
+        "old_reference_display": false,
+        "new_reference_display": false
+      },
+      {
+        "id": "FinQA:L/2009/page_84.pdf-1",
+        "status": "answered",
+        "unit_contract": {
+          "status": "resolved",
+          "reason": "Target display dimensions are specified; compatibility is checked separately",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          },
+          "prediction_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          }
+        },
+        "old_fixed_2": false,
+        "new_fixed_2": false,
+        "old_reference_display": true,
+        "new_reference_display": true
+      },
+      {
+        "id": "FinQA:ETR/2016/page_150.pdf-2",
+        "status": "answered",
+        "unit_contract": {
+          "status": "resolved",
+          "reason": "Target display dimensions are specified; compatibility is checked separately",
+          "target_meta": {
+            "currency": null,
+            "scale": "million",
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        },
+        "old_fixed_2": true,
+        "new_fixed_2": true,
+        "old_reference_display": true,
+        "new_reference_display": true
+      },
+      {
+        "id": "FinQA:counterfactual:7",
+        "status": "abstained",
+        "unit_contract": {
+          "status": "not_applicable",
+          "reason": "No answered numeric target to compare"
+        },
+        "old_fixed_2": true,
+        "new_fixed_2": true,
+        "old_reference_display": true,
+        "new_reference_display": true
+      },
+      {
+        "id": "FinQA:counterfactual:81",
+        "status": "abstained",
+        "unit_contract": {
+          "status": "not_applicable",
+          "reason": "No answered numeric target to compare"
+        },
+        "old_fixed_2": true,
+        "new_fixed_2": true,
+        "old_reference_display": true,
+        "new_reference_display": true
+      }
+    ],
+    "unresolved_ids": [
+      "FinQA:AMT/2012/page_50.pdf-4"
+    ],
+    "unresolved_count": 1,
+    "new10_questions_read": false,
+    "source_hashes_after_repair": {
+      "gbfr/metrics.py": "6628d5dbb856dc7465c82407a562febd947ff3f1341098cf31877775c39fc12e",
+      "gbfr/units.py": "c51ddd53266808f019adff457d754661549248abffacf7181d0a6d37baedcd6b",
+      "tests/test_metric_repairs_r25.py": "31b31e672e80ea126023b1d839f0307f3ce8a328551a4e39aabecef40a7191c3"
+    },
+    "test_result": "124 passed,1 deselected in focused suite; deselected unrelated engine.metric_hints regression already reported to root. New R25 metric tests35 passed.",
+    "target_parser_gap": {
+      "id": "FinQA:ETR/2016/page_150.pdf-2",
+      "question": "relating to the texas securitization bonds , what were the total amounts ( millions ) of the issuance when considering the transaction costs and the related deferred income tax benefits?",
+      "issue": "Question explicitly supplies target amount scale in parentheses, but target_meta only recognizes in millions, leaving all target dimensions unknown.",
+      "current_impact": "Conservative contract check rejects this formerly accepted result pending source-grounded target-scale parsing. No unit-label inference from numeric magnitude is warranted.",
+      "status": "Repaired after root authorization: quantity-bound parenthesized target scale in final output head, with input-clause and output-dimension counterexamples."
+    },
+    "baseline_import": "Old metrics and units imported together under a separate package rooted in the R24 frozen snapshot; no use of current target parser for baseline."
+  }
+}

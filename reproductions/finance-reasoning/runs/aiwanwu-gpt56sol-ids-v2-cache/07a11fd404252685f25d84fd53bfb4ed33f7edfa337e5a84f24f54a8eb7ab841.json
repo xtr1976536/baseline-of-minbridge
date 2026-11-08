@@ -1,0 +1,21 @@
+{
+  "identity": "07a11fd404252685f25d84fd53bfb4ed33f7edfa337e5a84f24f54a8eb7ab841",
+  "response_digest": "7ebcb016cf79dbba7b3909b8cd01b92c052052d541e4a38fa952fad4499159a5",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    higher_strike_price = 155\n    lower_strike_price = 145\n    cost_of_higher_strike = 5\n    revenue_from_lower_strike = 2\n    underlying_at_expiration = 140\n    shares_per_contract = 100\n\n    # Do math calculation to get the answer\n    net_cost_of_spread = (\n        cost_of_higher_strike - revenue_from_lower_strike\n    ) * shares_per_contract\n\n    spread_value_at_expiration = (\n        higher_strike_price - lower_strike_price\n    ) * shares_per_contract\n\n    profit_or_loss = spread_value_at_expiration - net_cost_of_spread\n\n    # return answer\n    return round(profit_or_loss)\n```",
+    "usage": {
+      "prompt_tokens": 5904,
+      "completion_tokens": 215,
+      "total_tokens": 6119,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 43
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

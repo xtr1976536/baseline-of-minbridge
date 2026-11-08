@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2219",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates a firm’s weighted average cost of capital for a target funding amount while maintaining a constant debt-to-equity ratio, using CAPM for the cost of equity, market-value debt and equity weights, tax-adjusted cost of debt, and tiered marginal borrowing rates based on a debt issuance threshold?",
+        "usage": {
+          "prompt_tokens": 5128,
+          "completion_tokens": 119,
+          "total_tokens": 5247,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 51
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL]",
+        "usage": {
+          "prompt_tokens": 14850,
+          "completion_tokens": 938,
+          "total_tokens": 15788,
+          "completion_tokens_details": {
+            "reasoning_tokens": 841
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    shares_outstanding = 1_200_000\n    share_price = 10\n    face_value_of_bonds = 10_000_000\n    coupon_rate = 0.08\n    years_to_maturity = 5\n    bond_yield = 0.1365\n    payments_per_year = 2\n    beta = 2.2\n    risk_free_rate = 0.03\n    market_return = 0.10\n    tax_rate = 0.30\n    new_funding = 7_500_000\n    debt_issue_threshold = 2_500_000\n    new_debt_rate_above_threshold = 0.16\n\n    # Calculate market value of existing equity\n    market_value_of_equity = shares_outstanding * share_price\n\n    # Calculate market value of existing bonds\n    coupon_payment = face_value_of_bonds * coupon_rate / payments_per_year\n    periodic_yield = bond_yield / payments_per_year\n    number_of_periods = years_to_maturity * payments_per_year\n\n    bond_price = (\n        coupon_payment * (1 - (1 + periodic_yield) ** (-number_of_periods)) / periodic_yield\n        + face_value_of_bonds * (1 + periodic_yield) ** (-number_of_periods)\n    )\n\n    # Calculate current capital structure proportions\n    total_market_value = market_value_of_equity + bond_price\n    debt_proportion = bond_price / total_market_value\n    equity_proportion = market_value_of_equity / total_market_value\n\n    # Determine the marginal cost of debt for the required financing\n    required_new_debt = new_funding * debt_proportion\n\n    if required_new_debt <= debt_issue_threshold:\n        cost_of_debt = bond_yield\n    else:\n        cost_of_debt = new_debt_rate_above_threshold\n\n    # Calculate cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * (market_return - risk_free_rate)\n\n    # Calculate WACC\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n    wacc = (\n        equity_proportion * cost_of_equity\n        + debt_proportion * after_tax_cost_of_debt\n    )\n\n    # Return WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5661,
+          "completion_tokens": 840,
+          "total_tokens": 6501,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 321
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-198",
+        "score": 1.9498674869537354
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.9238808155059814
+      },
+      {
+        "function_id": "article-189",
+        "score": 1.851265788078308
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.805393934249878
+      },
+      {
+        "function_id": "article-388",
+        "score": 1.8052184581756592
+      },
+      {
+        "function_id": "article-1512",
+        "score": 1.8043572902679443
+      },
+      {
+        "function_id": "article-560",
+        "score": 1.8041263818740845
+      },
+      {
+        "function_id": "article-874",
+        "score": 1.7966036796569824
+      },
+      {
+        "function_id": "article-2796",
+        "score": 1.7881391048431396
+      },
+      {
+        "function_id": "article-2452",
+        "score": 1.787843942642212
+      },
+      {
+        "function_id": "article-43",
+        "score": 1.7827527523040771
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.7783846855163574
+      },
+      {
+        "function_id": "article-1644",
+        "score": 1.7731003761291504
+      },
+      {
+        "function_id": "article-2560",
+        "score": 1.7707477807998657
+      },
+      {
+        "function_id": "article-2475",
+        "score": 1.7696669101715088
+      },
+      {
+        "function_id": "article-1095",
+        "score": 1.7631711959838867
+      },
+      {
+        "function_id": "article-561",
+        "score": 1.7621872425079346
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.7304720878601074
+      },
+      {
+        "function_id": "article-1643",
+        "score": 1.7304060459136963
+      },
+      {
+        "function_id": "article-3052",
+        "score": 1.7262357473373413
+      },
+      {
+        "function_id": "article-552",
+        "score": 1.7181482315063477
+      },
+      {
+        "function_id": "article-1592",
+        "score": 1.7170584201812744
+      },
+      {
+        "function_id": "article-3125",
+        "score": 1.7154244184494019
+      },
+      {
+        "function_id": "article-46",
+        "score": 1.7116858959197998
+      },
+      {
+        "function_id": "article-2619",
+        "score": 1.7052788734436035
+      },
+      {
+        "function_id": "article-39",
+        "score": 1.703165888786316
+      },
+      {
+        "function_id": "article-199",
+        "score": 1.700339436531067
+      },
+      {
+        "function_id": "article-41",
+        "score": 1.6974983215332031
+      },
+      {
+        "function_id": "article-2212",
+        "score": 1.6939908266067505
+      },
+      {
+        "function_id": "article-2191",
+        "score": 1.6937371492385864
+      }
+    ],
+    "selected_ids": [
+      "article-198",
+      "article-191",
+      "article-189"
+    ],
+    "status": "ok",
+    "answer": 15.52,
+    "code": "def solution():\n    # Define variables\n    shares_outstanding = 1_200_000\n    share_price = 10\n    face_value_of_bonds = 10_000_000\n    coupon_rate = 0.08\n    years_to_maturity = 5\n    bond_yield = 0.1365\n    payments_per_year = 2\n    beta = 2.2\n    risk_free_rate = 0.03\n    market_return = 0.10\n    tax_rate = 0.30\n    new_funding = 7_500_000\n    debt_issue_threshold = 2_500_000\n    new_debt_rate_above_threshold = 0.16\n\n    # Calculate market value of existing equity\n    market_value_of_equity = shares_outstanding * share_price\n\n    # Calculate market value of existing bonds\n    coupon_payment = face_value_of_bonds * coupon_rate / payments_per_year\n    periodic_yield = bond_yield / payments_per_year\n    number_of_periods = years_to_maturity * payments_per_year\n\n    bond_price = (\n        coupon_payment * (1 - (1 + periodic_yield) ** (-number_of_periods)) / periodic_yield\n        + face_value_of_bonds * (1 + periodic_yield) ** (-number_of_periods)\n    )\n\n    # Calculate current capital structure proportions\n    total_market_value = market_value_of_equity + bond_price\n    debt_proportion = bond_price / total_market_value\n    equity_proportion = market_value_of_equity / total_market_value\n\n    # Determine the marginal cost of debt for the required financing\n    required_new_debt = new_funding * debt_proportion\n\n    if required_new_debt <= debt_issue_threshold:\n        cost_of_debt = bond_yield\n    else:\n        cost_of_debt = new_debt_rate_above_threshold\n\n    # Calculate cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * (market_return - risk_free_rate)\n\n    # Calculate WACC\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n    wacc = (\n        equity_proportion * cost_of_equity\n        + debt_proportion * after_tax_cost_of_debt\n    )\n\n    # Return WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n"
+  },
+  "digest": "2ed4cf831b5c0ab344f6f709fb97f73e6ccdd7a2bc86bb3ba2181d10b6707285"
+}

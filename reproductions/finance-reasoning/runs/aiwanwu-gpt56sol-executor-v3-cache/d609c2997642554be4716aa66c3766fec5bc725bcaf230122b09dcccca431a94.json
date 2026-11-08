@@ -1,0 +1,18 @@
+{
+  "identity": "d609c2997642554be4716aa66c3766fec5bc725bcaf230122b09dcccca431a94",
+  "response_digest": "aa0b8acad2d8320b735d9503842f2df931f9679b3c495ca82eee65e1e16fc5e4",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables and values\n    intercept = 0.0477\n    underwriter_rank = 6\n    pre_offer_price_adjustment = 0.04\n    offer_size = 40\n    fraction_retained = 0.70\n\n    underwriter_rank_coefficient = 0.0150\n    pre_offer_coefficient = 0.4350\n    offer_size_coefficient = -0.0009\n    fraction_retained_coefficient = 0.0500\n\n    # Do math calculation to get the anticipated initial return\n    anticipated_return = (\n        intercept\n        + underwriter_rank_coefficient * underwriter_rank\n        + pre_offer_coefficient * pre_offer_price_adjustment\n        + offer_size_coefficient * offer_size\n        + fraction_retained_coefficient * fraction_retained\n    )\n\n    # Return answer rounded to three decimal places\n    return round(anticipated_return, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5660,
+      "completion_tokens": 299,
+      "total_tokens": 5959,
+      "completion_tokens_details": {
+        "reasoning_tokens": 94
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

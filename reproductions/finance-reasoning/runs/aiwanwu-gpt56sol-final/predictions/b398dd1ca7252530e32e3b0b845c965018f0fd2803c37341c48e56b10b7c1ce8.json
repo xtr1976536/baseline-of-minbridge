@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2168",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Stochastic RSI by normalizing the latest RSI value against the minimum and maximum RSI values over a specified lookback window, supports RSI time series input and a 5-period lookback, and returns a value between 0 and 1 rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5124,
+          "completion_tokens": 61,
+          "total_tokens": 5185,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16945,
+          "completion_tokens": 295,
+          "total_tokens": 17240,
+          "completion_tokens_details": {
+            "reasoning_tokens": 198
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    rsi_values = [\n        40.5, 42.3, 41.8, 45.2, 47.6,\n        49.0, 51.3, 48.7, 46.8, 44.9,\n        42.1, 39.5, 37.2, 36.4, 35.0\n    ]\n    lookback_period = 5\n\n    # Use the final 5-day RSI window\n    final_window = rsi_values[-lookback_period:]\n    min_rsi = min(final_window)\n    max_rsi = max(final_window)\n    current_rsi = final_window[-1]\n\n    # Do math calculation to get the answer\n    if max_rsi == min_rsi:\n        stoch_rsi = 0.0\n    else:\n        stoch_rsi = (current_rsi - min_rsi) / (max_rsi - min_rsi)\n\n    answer = round(stoch_rsi, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5253,
+          "completion_tokens": 314,
+          "total_tokens": 5567,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 68
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2638",
+        "score": 2.0325095653533936
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.5759048461914062
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.546304702758789
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.5088400840759277
+      },
+      {
+        "function_id": "article-1860",
+        "score": 1.4892194271087646
+      },
+      {
+        "function_id": "article-1492",
+        "score": 1.4787418842315674
+      },
+      {
+        "function_id": "article-1493",
+        "score": 1.4780161380767822
+      },
+      {
+        "function_id": "article-3112",
+        "score": 1.4772636890411377
+      },
+      {
+        "function_id": "article-1523",
+        "score": 1.4681310653686523
+      },
+      {
+        "function_id": "article-3128",
+        "score": 1.4593262672424316
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.4500484466552734
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.447056531906128
+      },
+      {
+        "function_id": "article-2668",
+        "score": 1.4469115734100342
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.4411218166351318
+      },
+      {
+        "function_id": "article-1897",
+        "score": 1.4332836866378784
+      },
+      {
+        "function_id": "article-1026",
+        "score": 1.4280425310134888
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.420145034790039
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.4177966117858887
+      },
+      {
+        "function_id": "article-3060",
+        "score": 1.4148647785186768
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.4129029512405396
+      },
+      {
+        "function_id": "article-2380",
+        "score": 1.4118441343307495
+      },
+      {
+        "function_id": "article-2195",
+        "score": 1.4101582765579224
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.4077736139297485
+      },
+      {
+        "function_id": "article-3065",
+        "score": 1.4047492742538452
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.404675006866455
+      },
+      {
+        "function_id": "article-1733",
+        "score": 1.4026095867156982
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.4018352031707764
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.4015668630599976
+      },
+      {
+        "function_id": "article-1604",
+        "score": 1.3975741863250732
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.3972570896148682
+      }
+    ],
+    "selected_ids": [
+      "article-2638"
+    ],
+    "status": "ok",
+    "answer": 0.0,
+    "code": "def solution():\n    # Define variables name and value\n    rsi_values = [\n        40.5, 42.3, 41.8, 45.2, 47.6,\n        49.0, 51.3, 48.7, 46.8, 44.9,\n        42.1, 39.5, 37.2, 36.4, 35.0\n    ]\n    lookback_period = 5\n\n    # Use the final 5-day RSI window\n    final_window = rsi_values[-lookback_period:]\n    min_rsi = min(final_window)\n    max_rsi = max(final_window)\n    current_rsi = final_window[-1]\n\n    # Do math calculation to get the answer\n    if max_rsi == min_rsi:\n        stoch_rsi = 0.0\n    else:\n        stoch_rsi = (current_rsi - min_rsi) / (max_rsi - min_rsi)\n\n    answer = round(stoch_rsi, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "85408295786b394fc03097222b706fd926251f8866601849c59a7e27c02fd3a4"
+}

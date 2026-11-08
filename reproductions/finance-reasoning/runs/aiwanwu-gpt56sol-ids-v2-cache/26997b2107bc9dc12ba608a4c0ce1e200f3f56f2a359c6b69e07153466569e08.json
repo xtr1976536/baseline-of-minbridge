@@ -1,0 +1,21 @@
+{
+  "identity": "26997b2107bc9dc12ba608a4c0ce1e200f3f56f2a359c6b69e07153466569e08",
+  "response_digest": "2ea833c369062722f33831ea53bd99974170cd14fa9f7e857ea928286218b17e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    shares_purchased = 200_000\n    price_per_share_eur = 90\n    euro_notional = shares_purchased * price_per_share_eur\n\n    initial_spot_bid = 1.3935\n    initial_six_month_forward_bid_points = -19.0\n\n    three_month_spot_ask = 1.4210\n    three_month_forward_ask_points = -21.0\n\n    usd_libor = 0.01266\n    remaining_term_years = 3 / 12\n\n    # The original hedge sells euros, so it uses the six-month forward bid.\n    original_forward_rate = (\n        initial_spot_bid + initial_six_month_forward_bid_points / 10_000\n    )\n\n    # Closing the hedge requires buying euros, so it uses the current ask.\n    closing_forward_rate = (\n        three_month_spot_ask + three_month_forward_ask_points / 10_000\n    )\n\n    # Discount the forward loss from maturity to the three-month valuation date.\n    value_at_maturity = euro_notional * (\n        original_forward_rate - closing_forward_rate\n    )\n    mark_to_market_value = value_at_maturity / (\n        1 + usd_libor * remaining_term_years\n    )\n\n    # return answer\n    return round(mark_to_market_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5163,
+      "completion_tokens": 866,
+      "total_tokens": 6029,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 566
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

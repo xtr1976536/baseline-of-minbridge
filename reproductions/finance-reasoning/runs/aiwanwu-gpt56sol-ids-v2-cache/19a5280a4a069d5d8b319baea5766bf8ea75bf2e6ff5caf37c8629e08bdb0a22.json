@@ -1,0 +1,21 @@
+{
+  "identity": "19a5280a4a069d5d8b319baea5766bf8ea75bf2e6ff5caf37c8629e08bdb0a22",
+  "response_digest": "83d599a2894a27d39a9ac063f27a77e7aa8df42195367d1e0c99242d7cca8210",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 485.0\n    depreciation = 270.0\n\n    gross_fixed_assets_2008 = 4275.0\n    gross_fixed_assets_2007 = 3752.0\n\n    operating_current_assets_2008 = 770.0 + 846.0\n    operating_current_assets_2007 = 711.0 + 780.0\n    operating_current_liabilities_2008 = 476.0 + 149.0\n    operating_current_liabilities_2007 = 443.0 + 114.0\n\n    notes_payable_2008 = 465.0\n    notes_payable_2007 = 450.0\n    long_term_debt_2008 = 1575.0\n    long_term_debt_2007 = 1515.0\n\n    # Do math calculation to get the answer\n    capital_expenditures = gross_fixed_assets_2008 - gross_fixed_assets_2007\n\n    net_working_capital_2008 = (\n        operating_current_assets_2008 - operating_current_liabilities_2008\n    )\n    net_working_capital_2007 = (\n        operating_current_assets_2007 - operating_current_liabilities_2007\n    )\n    change_in_net_working_capital = (\n        net_working_capital_2008 - net_working_capital_2007\n    )\n\n    net_debt_issued = (\n        (notes_payable_2008 - notes_payable_2007)\n        + (long_term_debt_2008 - long_term_debt_2007)\n    )\n\n    fcfe = (\n        net_income\n        + depreciation\n        - capital_expenditures\n        - change_in_net_working_capital\n        + net_debt_issued\n    )\n\n    # return answer in millions, rounded to one decimal place\n    return round(fcfe, 1)\n```",
+    "usage": {
+      "prompt_tokens": 6371,
+      "completion_tokens": 650,
+      "total_tokens": 7021,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 228
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

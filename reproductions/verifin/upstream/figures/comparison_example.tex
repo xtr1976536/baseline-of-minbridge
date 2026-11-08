@@ -1,0 +1,131 @@
+% Full statement (left) + verification pipeline (right), over a real filing
+% (Nvidia FY2026). Gross profit is a reported subtotal whose formula, operand tags,
+% and weights come directly from the XBRL CALCULATION LINKBASE
+% (GrossProfit = +1*Revenues + -1*CostOfRevenue). The model must compute the
+% redacted subtotal; it computes wrong; the solver catches it against the filing's
+% own identity and authoritative operand values.
+% Requires: \usepackage{tikz} + libraries below; \usepackage{amsmath, xcolor}.
+% Compile standalone by uncommenting the documentclass block.
+
+% \documentclass[tikz,border=8pt]{standalone}
+% \usepackage{amsmath,xcolor}
+% \begin{document}
+
+\usetikzlibrary{positioning,arrows.meta,fit,backgrounds}
+
+% --- restrained palette ---
+\definecolor{vqInk}{HTML}{1F2937}
+\definecolor{vqGrey}{HTML}{6B7280}
+\definecolor{vqTeal}{HTML}{0F766E}
+\definecolor{vqViolet}{HTML}{6D28D9}
+\definecolor{vqBlue}{HTML}{1D4ED8}
+\definecolor{vqGreen}{HTML}{15803D}
+\definecolor{vqRed}{HTML}{B91C1C}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize, >=Latex, node distance=4mm,
+  every node/.style={text=vqInk},
+  box/.style={draw, rounded corners=3pt, align=left, inner sep=5pt, line width=0.5pt},
+  step/.style={box, text width=68mm},
+  doc/.style={box, text width=76mm, fill=white, draw=vqInk!35, font=\ttfamily\scriptsize},
+  grey/.style={step, fill=vqGrey!8, draw=vqGrey!55},
+  teal/.style={step, fill=vqTeal!7, draw=vqTeal!55},
+  violet/.style={step, fill=vqViolet!6, draw=vqViolet!50},
+  code/.style={step, fill=vqInk!4, draw=vqInk!30, font=\ttfamily\scriptsize},
+  solver/.style={step, fill=vqBlue!6, draw=vqBlue!50},
+  qbox/.style={box, text width=76mm, align=center, fill=vqInk!4, draw=vqInk!30},
+  out/.style={step, align=left},
+  arr/.style={-{Latex[length=4pt]}, vqInk!55, line width=0.6pt},
+  read/.style={-{Latex[length=4pt]}, vqInk!45, line width=0.6pt, dashed},
+  repair/.style={-{Latex[length=4pt]}, dashed, line width=0.7pt, orange!80!black},
+  rlbl/.style={font=\scriptsize\itshape, text=orange!60!black, align=center},
+  hdr/.style={font=\scriptsize\bfseries\sffamily, text=black!55},
+]
+
+\newcommand{\drow}[3]{\makebox[44mm][l]{#1}\makebox[15mm][r]{#2}\makebox[15mm][r]{#3}}
+
+% ============================== question (top) ==============================
+\node[qbox] (q) {\textbf{\textcolor{vqGrey}{1}~~Question}\ \ ``What was Nvidia's
+FY2026 gross profit, in USD millions?''};
+
+% ============================== LEFT: statement ==============================
+\node[doc, below=6mm of q.west, anchor=north west] (doc) {%
+\textbf{\normalfont\sffamily\scriptsize NVIDIA CORP --- Form 10-K, FY2026}\ (\$M)\\
+\textcolor{vqGrey}{\rule{72mm}{0.3pt}}\\
+\drow{\textbf{Consolidated Statements of Operations}}{\textbf{2026}}{\textbf{2025}}\\
+\drow{~Revenues}{\textcolor{vqTeal}{\textbf{215,938}}}{130,497}\\
+\drow{~Cost of Revenue}{\textcolor{vqTeal}{\textbf{62,475}}}{32,639}\\
+\drow{~Gross Profit}{\textcolor{vqRed}{[redacted]}}{97,858}\\
+\drow{~Operating Expenses}{23,076}{16,405}\\
+\drow{~Operating Income}{130,387}{81,453}\\
+\drow{~R\&D Expense}{18,497}{12,914}\\
+\drow{~SG\&A Expense}{4,579}{3,491}\\};
+
+% ============================== RIGHT: pipeline ==============================
+\node[grey, right=9mm of q.south east, anchor=north west, yshift=-6mm] (gen) {%
+\textbf{\textcolor{vqGrey}{2}~~LLM answer.}\ Gross profit is redacted, so the model
+computes it, but gets it wrong and returns $c = \mathbf{155{,}000}$
+\textcolor{vqGrey}{(true $=215{,}938-62{,}475=153{,}463$)}};
+\node[teal, below=of gen] (r1) {%
+\textbf{\textcolor{vqGrey}{3}~~Ground (from the XBRL calculation linkbase).}\\[1pt]
+parent \texttt{\textcolor{vqTeal}{us-gaap:GrossProfit}} sums:\\
+\hspace*{3mm}$+1\cdot$\,\texttt{us-gaap:Revenues}\hfill $=215{,}938$\\
+\hspace*{3mm}$-1\cdot$\,\texttt{us-gaap:CostOfRevenue}\hfill $=62{,}475$\\
+$\Rightarrow$ formula \emph{read from the filing}: $\mathrm{GP}=\mathrm{Rev}-\mathrm{Cost}$;
+values from companyfacts (FY2026)};
+\node[violet, below=of r1] (r2) {%
+\textbf{\textcolor{vqGrey}{4}~~Verification IR}\ \ metric gross\_profit; formula
+Rev$-$Cost; facts $\{$Rev$=215{,}938$; Cost$=62{,}475\}$; claim $c{=}155{,}000$; tol $\tau$};
+\node[code, below=of r2] (r3) {%
+\textbf{\normalfont\sffamily\textcolor{vqGrey}{5}~~Formalize $\Rightarrow$ SMT}\\
+(assert (= rev 215938)) (assert (= cost 62475))\\
+(assert (= gp (- rev cost)))\ \ ; linkbase identity\\
+(assert (<= (abs (- gp 155000)) $\tau$)) (check-sat)};
+\node[solver, below=of r3] (r4) {%
+\textbf{\textcolor{vqGrey}{6}~~Solve (Z3)} $\Rightarrow$ \texttt{unsat}\ \
+$m^\star=153{,}463$; $|155{,}000-153{,}463|=1{,}537>\tau$
+$\Rightarrow$ \textbf{\textcolor{vqRed}{Violated}}};
+\node[out, below=of r4, fill=vqInk!3, draw=vqInk!40, line width=0.8pt, text width=68mm] (rA) {%
+\textbf{\textcolor{vqGrey}{7}~~Output}\\[2pt]
+\textcolor{vqRed}{$\bullet$\ \textbf{without verification:}}\ $155{,}000$\ (wrong, shipped)\\
+\textcolor{vqGreen}{$\bullet$\ \textbf{with VerifiQA:}}\ $153{,}463$\ (certified correction $c^\star$)};
+
+\node[hdr, above=1mm of gen, text=vqGreen!45!black] {THE VERIFICATION PIPELINE};
+
+% ============================== flow ==============================
+\draw[arr] (q.south) to[out=-90,in=90] (gen.north);
+\draw[read] (doc.east|-gen) -- (gen.west) node[midway, above, font=\tiny\itshape, text=vqInk!45]{reads};
+\draw[read] (doc.east|-r1) -- (r1.west) node[midway, above, font=\tiny\itshape, text=vqInk!45]{grounds};
+\draw[arr] (gen) -- (r1);
+\draw[arr] (r1) -- (r2);
+\draw[arr] (r2) -- (r3);
+\draw[arr] (r3) -- (r4);
+\draw[arr] (r4) -- (rA);
+
+% ============================== repair loops ==============================
+\draw[repair] (r4.east) to[out=0,in=0]
+  node[rlbl, right=1pt, pos=0.5, text width=17mm]{regenerate $\le1$ (invalid SMT); re-ask $\le1$ (Violated)}
+  (gen.east);
+
+\end{tikzpicture}
+
+\caption{\textbf{Verification grounded in the XBRL calculation linkbase (Nvidia
+FY2026).} Gross profit is a reported subtotal, so its formula, operand tags, and
+weights are read directly from the filing's calculation linkbase, which declares
+$\texttt{us-gaap:GrossProfit} = (+1)\,\texttt{us-gaap:Revenues} +
+(-1)\,\texttt{us-gaap:CostOfRevenue}$. In the redacted setting the model must
+compute the subtotal; it returns $155{,}000$, though the filing gives $153{,}463$.
+Deployed directly this ships as correct. VerifiQA (right) grounds the check
+end-to-end in the filing: it takes the identity and the operand concepts from the
+linkbase and binds each to its authoritative companyfacts value for FY2026
+($215{,}938$, $62{,}475$), then discharges the SMT proof obligation. The
+reconstruction is $153{,}463$, the claim is $1{,}537$ outside tolerance $\tau$,
+Z3 returns \texttt{unsat}, and $153{,}463$ is delivered as the certified
+correction. Because the formula and operands come from the filing's own
+structure, a look-alike tag or an altered formula cannot be substituted.}
+\label{fig:example}
+\end{figure*}
+
+% \end{document}

@@ -1,0 +1,97 @@
+{
+  "checked_at": "2026-11-07T13:17:22.390709+00:00",
+  "status": "interrupted",
+  "interrupted_at_beijing": "2026-11-07T18:16:52.187515+08:00",
+  "stop_reason": {
+    "http_status": 403,
+    "type": "billing_error",
+    "message": "insufficient balance"
+  },
+  "processed": 1401,
+  "planned": 2325,
+  "remaining": 924,
+  "datasets": {
+    "FinQA": {
+      "processed": 731,
+      "planned": 1096,
+      "remaining": 365,
+      "correct": 511,
+      "processed_total_accuracy": 69.90424076607387,
+      "processed_unanswerable": 0,
+      "correct_abstentions": 0,
+      "processed_abstention_accuracy": null,
+      "technical_errors": 4,
+      "statuses": {
+        "abstained": 74,
+        "answered": 653,
+        "error": 4
+      },
+      "false_abstentions": 74,
+      "paper_gpt5_total_accuracy": 84.98,
+      "paper_gpt5_abstention_accuracy": 98.8,
+      "total_accuracy_gap_percentage_points": -15.075759233926135,
+      "error_breakdown": [
+        {
+          "type": "ValueError",
+          "message": "Unsupported scale: ratio",
+          "n": 1
+        },
+        {
+          "type": "ProtocolError",
+          "message": "Invalid generated Python syntax",
+          "n": 1
+        },
+        {
+          "type": "ProtocolError",
+          "message": "Only one compute(vars) function is permitted",
+          "n": 1
+        },
+        {
+          "type": "APIError",
+          "message": "Chat API returned HTTP 403; task=OQA",
+          "n": 1
+        }
+      ]
+    },
+    "TAT-QA": {
+      "processed": 670,
+      "planned": 1229,
+      "remaining": 559,
+      "correct": 536,
+      "processed_total_accuracy": 80.0,
+      "processed_unanswerable": 0,
+      "correct_abstentions": 0,
+      "processed_abstention_accuracy": null,
+      "technical_errors": 8,
+      "statuses": {
+        "answered": 626,
+        "abstained": 36,
+        "error": 8
+      },
+      "false_abstentions": 36,
+      "paper_gpt5_total_accuracy": 95.75,
+      "paper_gpt5_abstention_accuracy": 96.69,
+      "total_accuracy_gap_percentage_points": -15.75,
+      "error_breakdown": [
+        {
+          "type": "ProtocolError",
+          "message": "Only arithmetic builtins and safe container methods may be called",
+          "n": 2
+        },
+        {
+          "type": "ProtocolError",
+          "message": "compute returned non-scalar text",
+          "n": 4
+        },
+        {
+          "type": "ProtocolError",
+          "message": "Invalid generated Python syntax",
+          "n": 2
+        }
+      ]
+    }
+  },
+  "api_calls_for_this_assessment": 0,
+  "metric_note": "Accuracies use only processed samples and include technical errors as failures. No unanswerable sample has been processed; abstention accuracy is undefined, not 0%. Paper uses GPT-5 with its complete evaluation distribution; this run uses GPT-5.6 Sol.",
+  "completion_percentage": 60.25806451612903
+}

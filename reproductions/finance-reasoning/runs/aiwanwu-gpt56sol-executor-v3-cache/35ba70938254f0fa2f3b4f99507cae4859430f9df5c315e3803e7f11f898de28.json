@@ -1,0 +1,21 @@
+{
+  "identity": "35ba70938254f0fa2f3b4f99507cae4859430f9df5c315e3803e7f11f898de28",
+  "response_digest": "1362461839dd8b25ba9d95805fdc1d55c60238577a3c792609eb98fe128c3063",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    life_expectancy = 75\n    mean_years_school = 10\n    expected_years_school = 16\n    gni_per_capita = 35000\n\n    # Calculate normalized indices\n    life_expectancy_index = (life_expectancy - 20) / (85 - 20)\n    education_index = (\n        (mean_years_school / 15) + (expected_years_school / 18)\n    ) / 2\n    gni_index = (gni_per_capita - 100) / (75000 - 100)\n\n    # Calculate HDI using the geometric mean\n    hdi = (\n        life_expectancy_index * education_index * gni_index\n    ) ** (1 / 3)\n\n    # Return HDI rounded to three decimal places\n    return round(hdi, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5198,
+      "completion_tokens": 341,
+      "total_tokens": 5539,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 148
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

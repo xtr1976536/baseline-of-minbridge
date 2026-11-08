@@ -1,0 +1,52 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_liabilities_current_fy2023 Real)
+(declare-const accounts_payable_current_fy2023 Real)
+(declare-const accrual_for_taxes_other_than_income_taxes_current_fy2023 Real)
+(declare-const accrued_income_taxes_current_fy2023 Real)
+(declare-const accrued_liabilities_current_fy2023 Real)
+(declare-const short_term_borrowings_fy2023 Real)
+
+(assert (! (= accounts_payable_current_fy2023 20423) :named evidence_accounts_payable_current_fy2023))
+(assert (! (= accrual_for_taxes_other_than_income_taxes_current_fy2023 1788) :named evidence_accrual_for_taxes_other_than_income_taxes_current_fy2023))
+(assert (! (= accrued_income_taxes_current_fy2023 1863) :named evidence_accrued_income_taxes_current_fy2023))
+(assert (! (= accrued_liabilities_current_fy2023 7655) :named evidence_accrued_liabilities_current_fy2023))
+(assert (! (= short_term_borrowings_fy2023 529) :named evidence_short_term_borrowings_fy2023))
+
+(assert (! (= computed_liabilities_current_fy2023 (+ accrual_for_taxes_other_than_income_taxes_current_fy2023 accrued_income_taxes_current_fy2023 accrued_liabilities_current_fy2023 accounts_payable_current_fy2023 short_term_borrowings_fy2023)) :named formula_liabilities_current_fy2023))
+
+(assert (! (<= (- computed_liabilities_current_fy2023 34208) 34.207999999999998) :named claim_upper))
+(assert (! (<= (- 34208 computed_liabilities_current_fy2023) 34.207999999999998) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2023_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AccrualForTaxesOtherThanIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AccruedLiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_ShortTermBorrowings_instant_2023_12_31_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none 32258) :named evidence_xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= accrual_for_taxes_other_than_income_taxes_current_fy2023 xbrl_fact_us_gaap_AccrualForTaxesOtherThanIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none) :named xbrl_bind_accrual_for_taxes_other_than_income_taxes_current_fy2023_edgar_2023_12_31_0000093410_24_000013))
+(assert (! (= xbrl_fact_us_gaap_AccrualForTaxesOtherThanIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none 1788) :named xbrl_instance_accrual_for_taxes_other_than_income_taxes_current_fy2023))
+(assert (! (= accrued_income_taxes_current_fy2023 xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none) :named xbrl_bind_accrued_income_taxes_current_fy2023_edgar_2023_12_31_0000093410_24_000013))
+(assert (! (= xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none 1863) :named xbrl_instance_accrued_income_taxes_current_fy2023))
+(assert (! (= accrued_liabilities_current_fy2023 xbrl_fact_us_gaap_AccruedLiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none) :named xbrl_bind_accrued_liabilities_current_fy2023_edgar_2023_12_31_0000093410_24_000013))
+(assert (! (= xbrl_fact_us_gaap_AccruedLiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none 7655) :named xbrl_instance_accrued_liabilities_current_fy2023))
+(assert (! (= accounts_payable_current_fy2023 xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2023_12_31_unit_USD_dims_none) :named xbrl_bind_accounts_payable_current_fy2023_edgar_2023_12_31_0000093410_24_000013))
+(assert (! (= xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2023_12_31_unit_USD_dims_none 20423) :named xbrl_instance_accounts_payable_current_fy2023))
+(assert (! (= short_term_borrowings_fy2023 xbrl_fact_us_gaap_ShortTermBorrowings_instant_2023_12_31_unit_USD_dims_none) :named xbrl_bind_short_term_borrowings_fy2023_edgar_2023_12_31_0000093410_24_000013))
+(assert (! (= xbrl_fact_us_gaap_ShortTermBorrowings_instant_2023_12_31_unit_USD_dims_none 529) :named xbrl_instance_short_term_borrowings_fy2023))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_AccrualForTaxesOtherThanIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccruedLiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_ShortTermBorrowings_instant_2023_12_31_unit_USD_dims_none)) 3) :named xbrl_calc_10_653354734_LiabilitiesCurrent_c_15_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_AccrualForTaxesOtherThanIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccruedLiabilitiesCurrent_instant_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_ShortTermBorrowings_instant_2023_12_31_unit_USD_dims_none)) (- 3)) :named xbrl_calc_10_653354734_LiabilitiesCurrent_c_15_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

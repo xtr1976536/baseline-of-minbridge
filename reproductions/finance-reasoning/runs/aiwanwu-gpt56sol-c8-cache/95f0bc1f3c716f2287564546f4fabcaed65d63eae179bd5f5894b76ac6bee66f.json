@@ -1,0 +1,21 @@
+{
+  "identity": "95f0bc1f3c716f2287564546f4fabcaed65d63eae179bd5f5894b76ac6bee66f",
+  "response_digest": "212df9875159d1c7112eb0f426caeff55b18ad1d5f3efa2fd68128a7e2ee7fc0",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_equity_index = 100.0\n    fixed_rate = 0.03\n    notional_amount = 100_000_000\n    payment_frequency = 4\n\n    # Three months have elapsed, so three quarterly payments remain\n    remaining_pv_factors = [0.997506, 0.992556, 0.985222]\n\n    fixed_payment = (fixed_rate * notional_amount) / payment_frequency\n    present_value_fixed_leg = fixed_payment * sum(remaining_pv_factors)\n\n    # Equity leg return required for the swap value to equal zero\n    required_equity_return = present_value_fixed_leg / notional_amount\n    equity_index_level = initial_equity_index * (1 + required_equity_return)\n\n    # return answer\n    return round(equity_index_level, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5038,
+      "completion_tokens": 1659,
+      "total_tokens": 6697,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1464
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

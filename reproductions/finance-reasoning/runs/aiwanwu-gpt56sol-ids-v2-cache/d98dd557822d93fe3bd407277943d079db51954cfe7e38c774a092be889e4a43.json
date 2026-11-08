@@ -1,0 +1,18 @@
+{
+  "identity": "d98dd557822d93fe3bd407277943d079db51954cfe7e38c774a092be889e4a43",
+  "response_digest": "d7f037b875de1b36088f6c6516342547ea091dee8779134eddb6776700216660",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    coupon_payments = [5000, 5000, 5000]\n    principal = 100000\n    treasury_yield = 0.025\n    spread = 0.012\n    discount_rate = treasury_yield + spread\n\n    # Do math calculation to get the answer\n    call_price = sum(\n        payment / ((1 + discount_rate) ** (year + 1))\n        for year, payment in enumerate(coupon_payments)\n    )\n    call_price += principal / ((1 + discount_rate) ** len(coupon_payments))\n    answer = round(call_price)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5815,
+      "completion_tokens": 303,
+      "total_tokens": 6118,
+      "completion_tokens_details": {
+        "reasoning_tokens": 149
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

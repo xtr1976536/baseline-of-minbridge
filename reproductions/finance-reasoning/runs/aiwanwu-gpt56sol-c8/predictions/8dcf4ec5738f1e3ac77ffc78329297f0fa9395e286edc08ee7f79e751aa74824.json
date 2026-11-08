@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2205",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Intraday Momentum Index (IMI) from time-ordered opening and closing price series using a configurable rolling lookback period, summing gains on up days and losses on down days, and returns the latest value as a percentage?",
+        "usage": {
+          "prompt_tokens": 5140,
+          "completion_tokens": 54,
+          "total_tokens": 5194,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 19271,
+          "completion_tokens": 296,
+          "total_tokens": 19567,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 199
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    open_prices = [150, 152, 153, 151, 152, 150, 149, 151, 150, 148, 147, 146, 148, 149, 147]\n    close_prices = [152, 150, 152, 153, 151, 152, 150, 149, 151, 150, 149, 148, 146, 147, 148]\n    period = 14\n\n    # Calculate gains and losses for each day\n    gains = []\n    losses = []\n\n    for opening, closing in zip(open_prices, close_prices):\n        if closing > opening:\n            gains.append(closing - opening)\n            losses.append(0)\n        else:\n            gains.append(0)\n            losses.append(opening - closing)\n\n    # Use the most recent 14 days ending on day 15\n    recent_gains = sum(gains[-period:])\n    recent_losses = sum(losses[-period:])\n\n    # Calculate IMI as a percentage\n    total_movement = recent_gains + recent_losses\n    imi = (recent_gains / total_movement) * 100 if total_movement else 0\n\n    # Return the answer rounded to two decimal places\n    return round(imi, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5325,
+          "completion_tokens": 536,
+          "total_tokens": 5861,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 245
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-462",
+        "score": 2.259810447692871
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.7677940130233765
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.7033464908599854
+      },
+      {
+        "function_id": "article-1991",
+        "score": 1.7031463384628296
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.701697826385498
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.6963083744049072
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.6941829919815063
+      },
+      {
+        "function_id": "article-3112",
+        "score": 1.6819896697998047
+      },
+      {
+        "function_id": "article-1492",
+        "score": 1.6778017282485962
+      },
+      {
+        "function_id": "article-1860",
+        "score": 1.6591088771820068
+      },
+      {
+        "function_id": "article-1493",
+        "score": 1.651230812072754
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.6376099586486816
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.6114647388458252
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.6067838668823242
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.5995898246765137
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5751621723175049
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.568131923675537
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.5599205493927002
+      },
+      {
+        "function_id": "article-930",
+        "score": 1.5552289485931396
+      },
+      {
+        "function_id": "article-1090",
+        "score": 1.5537562370300293
+      },
+      {
+        "function_id": "article-467",
+        "score": 1.5450830459594727
+      },
+      {
+        "function_id": "article-1724",
+        "score": 1.5344903469085693
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.533614158630371
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.5328388214111328
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.5321934223175049
+      },
+      {
+        "function_id": "article-2474",
+        "score": 1.5283570289611816
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.5229847431182861
+      },
+      {
+        "function_id": "article-2253",
+        "score": 1.5213596820831299
+      },
+      {
+        "function_id": "article-1994",
+        "score": 1.5207797288894653
+      },
+      {
+        "function_id": "article-944",
+        "score": 1.5186848640441895
+      }
+    ],
+    "selected_ids": [
+      "article-462"
+    ],
+    "status": "ok",
+    "answer": 56.52,
+    "code": "def solution():\n    # Define variables\n    open_prices = [150, 152, 153, 151, 152, 150, 149, 151, 150, 148, 147, 146, 148, 149, 147]\n    close_prices = [152, 150, 152, 153, 151, 152, 150, 149, 151, 150, 149, 148, 146, 147, 148]\n    period = 14\n\n    # Calculate gains and losses for each day\n    gains = []\n    losses = []\n\n    for opening, closing in zip(open_prices, close_prices):\n        if closing > opening:\n            gains.append(closing - opening)\n            losses.append(0)\n        else:\n            gains.append(0)\n            losses.append(opening - closing)\n\n    # Use the most recent 14 days ending on day 15\n    recent_gains = sum(gains[-period:])\n    recent_losses = sum(losses[-period:])\n\n    # Calculate IMI as a percentage\n    total_movement = recent_gains + recent_losses\n    imi = (recent_gains / total_movement) * 100 if total_movement else 0\n\n    # Return the answer rounded to two decimal places\n    return round(imi, 2)\n"
+  },
+  "digest": "2bcf8a32dd3b50cfafe0725e255a9d099e54c7caeb5f99c5a2e1de02a106745d"
+}

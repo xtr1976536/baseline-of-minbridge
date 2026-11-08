@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2123",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function prices a fixed-coupon bond by discounting its annual coupon payments and face-value repayment using maturity-matched annual spot rates, for a 3-year bond with a 10% coupon, face value 100, and results rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5022,
+          "completion_tokens": 57,
+          "total_tokens": 5079
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C04\",\"C25\"]}",
+        "usage": {
+          "prompt_tokens": 14223,
+          "completion_tokens": 540,
+          "total_tokens": 14763,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 100\n    annual_coupon_rate = 0.10\n    spot_rates = [0.08, 0.09, 0.095]\n    annual_coupon_payment = face_value * annual_coupon_rate\n\n    # Discount each cash flow using its corresponding spot rate\n    cash_flows = [\n        annual_coupon_payment,\n        annual_coupon_payment,\n        annual_coupon_payment + face_value,\n    ]\n    bond_value = sum(\n        cash_flow / (1 + spot_rate) ** year\n        for year, (cash_flow, spot_rate) in enumerate(\n            zip(cash_flows, spot_rates), start=1\n        )\n    )\n    answer = round(bond_value, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5468,
+          "completion_tokens": 176,
+          "total_tokens": 5644,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-741",
+        "score": 1.8535223007202148,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.7975057363510132,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.7951539754867554,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.76505708694458,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.7573081254959106,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7522917985916138,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.7513887882232666,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.7400943040847778,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.7373486757278442,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.733071208000183,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.7206265926361084,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7072027921676636,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.705560326576233,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1303",
+        "score": 1.6980698108673096,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.6945136785507202,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.6801707744598389,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.6689107418060303,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.6604831218719482,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.6529583930969238,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.6403656005859375,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.6350395679473877,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3086",
+        "score": 1.6320438385009766,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-739",
+        "score": 1.625646948814392,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.6178371906280518,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.6174426078796387,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2743",
+        "score": 1.6128294467926025,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.6100047826766968,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1352",
+        "score": 1.6074190139770508,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2006",
+        "score": 1.6039270162582397,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.6026389598846436,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-741",
+      "article-575",
+      "article-1229"
+    ],
+    "status": "ok",
+    "answer": 101.458,
+    "code": "def solution():\n    # Define variables name and value\n    face_value = 100\n    annual_coupon_rate = 0.10\n    spot_rates = [0.08, 0.09, 0.095]\n    annual_coupon_payment = face_value * annual_coupon_rate\n\n    # Discount each cash flow using its corresponding spot rate\n    cash_flows = [\n        annual_coupon_payment,\n        annual_coupon_payment,\n        annual_coupon_payment + face_value,\n    ]\n    bond_value = sum(\n        cash_flow / (1 + spot_rate) ** year\n        for year, (cash_flow, spot_rate) in enumerate(\n            zip(cash_flows, spot_rates), start=1\n        )\n    )\n    answer = round(bond_value, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "71d611e9ed9e80183a3f075f53c7fde69541ced0399a069291374f0390986d13"
+}

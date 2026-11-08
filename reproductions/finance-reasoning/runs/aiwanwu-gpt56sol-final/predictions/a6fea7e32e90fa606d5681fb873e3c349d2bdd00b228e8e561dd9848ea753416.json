@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2127",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates an interbank reference rate by computing the midpoint of each bank’s bid and offer rates, removing the two highest and two lowest mid-rates from eight observations, and averaging the remaining rates to return a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5135,
+          "completion_tokens": 54,
+          "total_tokens": 5189
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14753,
+          "completion_tokens": 252,
+          "total_tokens": 15005,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 155
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    bid_rates = [6.2, 6.4, 6.1, 6.5, 6.3, 6.4, 6.0, 6.1]\n    offer_rates = [6.6, 6.7, 6.5, 6.8, 6.7, 6.8, 6.4, 6.5]\n\n    # Calculate and sort the mid-rates\n    mid_rates = [(bid + offer) / 2 for bid, offer in zip(bid_rates, offer_rates)]\n    mid_rates.sort()\n\n    # Remove the two lowest and two highest mid-rates\n    trimmed_mid_rates = mid_rates[2:-2]\n\n    # Calculate the JIBAR and round to two decimal places\n    jibar_rate = round(sum(trimmed_mid_rates) / len(trimmed_mid_rates), 2)\n\n    # Return the answer\n    return jibar_rate\n```",
+        "usage": {
+          "prompt_tokens": 5197,
+          "completion_tokens": 369,
+          "total_tokens": 5566,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 150
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2419",
+        "score": 1.861480951309204
+      },
+      {
+        "function_id": "article-1964",
+        "score": 1.5342609882354736
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.517642617225647
+      },
+      {
+        "function_id": "article-2679",
+        "score": 1.514514684677124
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.513576865196228
+      },
+      {
+        "function_id": "article-2005",
+        "score": 1.5074708461761475
+      },
+      {
+        "function_id": "article-722",
+        "score": 1.5005862712860107
+      },
+      {
+        "function_id": "article-1478",
+        "score": 1.498435616493225
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.495323657989502
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.494844913482666
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.4917066097259521
+      },
+      {
+        "function_id": "article-450",
+        "score": 1.490094780921936
+      },
+      {
+        "function_id": "article-2109",
+        "score": 1.4896025657653809
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.4895870685577393
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.4893139600753784
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.4873690605163574
+      },
+      {
+        "function_id": "article-2678",
+        "score": 1.4861631393432617
+      },
+      {
+        "function_id": "article-1723",
+        "score": 1.4854291677474976
+      },
+      {
+        "function_id": "article-1812",
+        "score": 1.4821999073028564
+      },
+      {
+        "function_id": "article-586",
+        "score": 1.4805643558502197
+      },
+      {
+        "function_id": "article-1859",
+        "score": 1.4794045686721802
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.4780206680297852
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.4773567914962769
+      },
+      {
+        "function_id": "article-298",
+        "score": 1.4761762619018555
+      },
+      {
+        "function_id": "article-989",
+        "score": 1.473641276359558
+      },
+      {
+        "function_id": "article-816",
+        "score": 1.4720807075500488
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.4711883068084717
+      },
+      {
+        "function_id": "article-2420",
+        "score": 1.4707025289535522
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.469024419784546
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.4679923057556152
+      }
+    ],
+    "selected_ids": [
+      "article-2419"
+    ],
+    "status": "ok",
+    "answer": 6.44,
+    "code": "def solution():\n    # Define variables\n    bid_rates = [6.2, 6.4, 6.1, 6.5, 6.3, 6.4, 6.0, 6.1]\n    offer_rates = [6.6, 6.7, 6.5, 6.8, 6.7, 6.8, 6.4, 6.5]\n\n    # Calculate and sort the mid-rates\n    mid_rates = [(bid + offer) / 2 for bid, offer in zip(bid_rates, offer_rates)]\n    mid_rates.sort()\n\n    # Remove the two lowest and two highest mid-rates\n    trimmed_mid_rates = mid_rates[2:-2]\n\n    # Calculate the JIBAR and round to two decimal places\n    jibar_rate = round(sum(trimmed_mid_rates) / len(trimmed_mid_rates), 2)\n\n    # Return the answer\n    return jibar_rate\n"
+  },
+  "digest": "0ae56adc768d441590f9d85e91f63e5f086b40b8d5042f980ddecdb1245a7dbd"
+}

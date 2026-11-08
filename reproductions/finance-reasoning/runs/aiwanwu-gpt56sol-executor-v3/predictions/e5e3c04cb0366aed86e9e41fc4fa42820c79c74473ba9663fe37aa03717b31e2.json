@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2235",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates accrued interest on a fixed-rate bond using principal amount, annual coupon rate, start and end dates, and the Actual/365 day-count convention, returning the result rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 5053,
+          "completion_tokens": 45,
+          "total_tokens": 5098
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14343,
+          "completion_tokens": 181,
+          "total_tokens": 14524,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 157
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 200000\n    annual_interest_rate = 0.07\n    days_accrued = 184\n    day_count_convention = 365\n\n    # Do math calculation to get the answer\n    accrued_interest = (\n        principal\n        * annual_interest_rate\n        * days_accrued\n        / day_count_convention\n    )\n    answer = round(accrued_interest, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 6007,
+          "completion_tokens": 200,
+          "total_tokens": 6207,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 83
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1623",
+        "score": 2.0337295532226562,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2246",
+        "score": 1.9584839344024658,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1352",
+        "score": 1.90414297580719,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2599",
+        "score": 1.8393362760543823,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1725",
+        "score": 1.838068962097168,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1344",
+        "score": 1.7553514242172241,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.7384107112884521,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1343",
+        "score": 1.7161169052124023,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-431",
+        "score": 1.7087422609329224,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-138",
+        "score": 1.6909904479980469,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1182",
+        "score": 1.6834869384765625,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1342",
+        "score": 1.6718225479125977,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.6690360307693481,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-292",
+        "score": 1.6668946743011475,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6639032363891602,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2405",
+        "score": 1.663508415222168,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.6594374179840088,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.6591689586639404,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.6576511859893799,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.654771327972412,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.6489953994750977,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2743",
+        "score": 1.6415890455245972,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.6413851976394653,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.6409612894058228,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.6390845775604248,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.6384738683700562,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-810",
+        "score": 1.6371433734893799,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.6351830959320068,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.6297149658203125,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-291",
+        "score": 1.6264876127243042,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1623",
+      "article-2246",
+      "article-1352"
+    ],
+    "status": "ok",
+    "answer": 7057.53,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 200000\n    annual_interest_rate = 0.07\n    days_accrued = 184\n    day_count_convention = 365\n\n    # Do math calculation to get the answer\n    accrued_interest = (\n        principal\n        * annual_interest_rate\n        * days_accrued\n        / day_count_convention\n    )\n    answer = round(accrued_interest, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "9e37b306dc1c7ed8c4f431fd49befb4777e0a0b1a141f710700f3d318f1bf30c"
+}

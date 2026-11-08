@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2198",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the percentage of observations in a numeric return dataset that fall within one standard deviation of a specified mean, using inclusive lower and upper bounds and returning the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5084,
+          "completion_tokens": 43,
+          "total_tokens": 5127,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C21\",\"C26\"]}",
+        "usage": {
+          "prompt_tokens": 14432,
+          "completion_tokens": 521,
+          "total_tokens": 14953,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 497
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    mean = 9\n    std_dev = 2\n    data_points = [5, 8, 13, 12, 7, 9, 10, 6, 11, 7]\n\n    # Calculate the percentage within one standard deviation (7% to 11%)\n    count_within_range = sum(\n        mean - std_dev <= value <= mean + std_dev\n        for value in data_points\n    )\n    answer = (count_within_range / len(data_points)) * 100\n\n    # return answer\n    return round(answer, 2)\n```",
+        "usage": {
+          "prompt_tokens": 6143,
+          "completion_tokens": 197,
+          "total_tokens": 6340,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 53
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-711",
+        "score": 1.6060149669647217,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.5316061973571777,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2686",
+        "score": 1.5108271837234497,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2632",
+        "score": 1.5092997550964355,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-284",
+        "score": 1.501932144165039,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.4732542037963867,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2667",
+        "score": 1.470238447189331,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-302",
+        "score": 1.4694228172302246,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.4548689126968384,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-687",
+        "score": 1.4476865530014038,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2553",
+        "score": 1.441596269607544,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2539",
+        "score": 1.4379301071166992,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1965",
+        "score": 1.4356591701507568,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-705",
+        "score": 1.4337900876998901,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-285",
+        "score": 1.4298475980758667,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2633",
+        "score": 1.4289003610610962,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1521",
+        "score": 1.4244656562805176,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.4220794439315796,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-301",
+        "score": 1.4164862632751465,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1580",
+        "score": 1.4118866920471191,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2758",
+        "score": 1.4089088439941406,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-149",
+        "score": 1.4040327072143555,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2",
+        "score": 1.3998452425003052,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1263",
+        "score": 1.3997702598571777,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2564",
+        "score": 1.3991587162017822,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1413",
+        "score": 1.3987088203430176,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2037",
+        "score": 1.3973153829574585,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2299",
+        "score": 1.3939785957336426,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1786",
+        "score": 1.3919388055801392,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1588",
+        "score": 1.3880943059921265,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-711",
+      "article-2758",
+      "article-1413"
+    ],
+    "status": "ok",
+    "answer": 60.0,
+    "code": "def solution():\n    # Define variables name and value\n    mean = 9\n    std_dev = 2\n    data_points = [5, 8, 13, 12, 7, 9, 10, 6, 11, 7]\n\n    # Calculate the percentage within one standard deviation (7% to 11%)\n    count_within_range = sum(\n        mean - std_dev <= value <= mean + std_dev\n        for value in data_points\n    )\n    answer = (count_within_range / len(data_points)) * 100\n\n    # return answer\n    return round(answer, 2)\n"
+  },
+  "digest": "600d7d38e8885cc8cfbf87192460c06f72e7d0f61b4fa46d1d1ad1595c66ce87"
+}

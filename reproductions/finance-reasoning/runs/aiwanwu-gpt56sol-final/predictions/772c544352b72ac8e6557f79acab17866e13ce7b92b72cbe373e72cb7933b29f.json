@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2029",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates total income tax liability using progressive tax brackets and marginal rates for a given annual taxable income, including income above the highest bracket, and returns the result rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5067,
+          "completion_tokens": 42,
+          "total_tokens": 5109,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16798,
+          "completion_tokens": 651,
+          "total_tokens": 17449,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 554
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    taxable_income = 115000\n    tax_brackets = [\n        (0, 10000, 0.10),\n        (10000, 40000, 0.15),\n        (40000, 90000, 0.20),\n        (90000, float(\"inf\"), 0.25),\n    ]\n\n    # Do math calculation to get the answer\n    total_tax = 0.0\n\n    for lower_bound, upper_bound, rate in tax_brackets:\n        if taxable_income > lower_bound:\n            income_in_bracket = min(taxable_income, upper_bound) - lower_bound\n            total_tax += income_in_bracket * rate\n\n    answer = round(total_tax)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5716,
+          "completion_tokens": 241,
+          "total_tokens": 5957,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 62
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-846",
+        "score": 2.0313549041748047
+      },
+      {
+        "function_id": "article-3076",
+        "score": 1.904969573020935
+      },
+      {
+        "function_id": "article-1815",
+        "score": 1.88982355594635
+      },
+      {
+        "function_id": "article-313",
+        "score": 1.8846981525421143
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.849456787109375
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.78141450881958
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.7788197994232178
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.777892827987671
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.7778842449188232
+      },
+      {
+        "function_id": "article-2440",
+        "score": 1.764744520187378
+      },
+      {
+        "function_id": "article-1852",
+        "score": 1.7567551136016846
+      },
+      {
+        "function_id": "article-1842",
+        "score": 1.7290289402008057
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.680962085723877
+      },
+      {
+        "function_id": "article-1813",
+        "score": 1.6565828323364258
+      },
+      {
+        "function_id": "article-2979",
+        "score": 1.650092601776123
+      },
+      {
+        "function_id": "article-1835",
+        "score": 1.6498205661773682
+      },
+      {
+        "function_id": "article-1839",
+        "score": 1.639653205871582
+      },
+      {
+        "function_id": "article-384",
+        "score": 1.6255486011505127
+      },
+      {
+        "function_id": "article-1671",
+        "score": 1.6159828901290894
+      },
+      {
+        "function_id": "article-1816",
+        "score": 1.5897502899169922
+      },
+      {
+        "function_id": "article-1819",
+        "score": 1.5895798206329346
+      },
+      {
+        "function_id": "article-383",
+        "score": 1.5878745317459106
+      },
+      {
+        "function_id": "article-1850",
+        "score": 1.584434986114502
+      },
+      {
+        "function_id": "article-1633",
+        "score": 1.5838332176208496
+      },
+      {
+        "function_id": "article-1841",
+        "score": 1.5835278034210205
+      },
+      {
+        "function_id": "article-482",
+        "score": 1.5811595916748047
+      },
+      {
+        "function_id": "article-2484",
+        "score": 1.5757132768630981
+      },
+      {
+        "function_id": "article-2303",
+        "score": 1.575660228729248
+      },
+      {
+        "function_id": "article-1821",
+        "score": 1.5730695724487305
+      },
+      {
+        "function_id": "article-1667",
+        "score": 1.5707757472991943
+      }
+    ],
+    "selected_ids": [
+      "article-846",
+      "article-3076",
+      "article-1815"
+    ],
+    "status": "ok",
+    "answer": 21750,
+    "code": "def solution():\n    # Define variables name and value\n    taxable_income = 115000\n    tax_brackets = [\n        (0, 10000, 0.10),\n        (10000, 40000, 0.15),\n        (40000, 90000, 0.20),\n        (90000, float(\"inf\"), 0.25),\n    ]\n\n    # Do math calculation to get the answer\n    total_tax = 0.0\n\n    for lower_bound, upper_bound, rate in tax_brackets:\n        if taxable_income > lower_bound:\n            income_in_bracket = min(taxable_income, upper_bound) - lower_bound\n            total_tax += income_in_bracket * rate\n\n    answer = round(total_tax)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "e3319288a01a5d6aa40baf755a3332879163f7e45eb659cd911347c0e1a8853c"
+}

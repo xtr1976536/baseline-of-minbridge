@@ -1,0 +1,21 @@
+{
+  "identity": "22ae1bf62bf1e2c5e4fc0d1b18d7b29150824e46966a072eb31eaced5ed6db7b",
+  "response_digest": "e5555f222e897e77cf821b1ab45ca4798db0dc3ee3380f85d16f2b705b328363",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 10000\n    coupon_rate = 0.05\n    discount_rate = 0.04\n    years = 5\n    annual_coupon = face_value * coupon_rate\n    cash_flows = [annual_coupon] * years\n\n    # Do math calculation to get the answer\n    pv_coupons = sum(\n        cash_flow / ((1 + discount_rate) ** (i + 1))\n        for i, cash_flow in enumerate(cash_flows)\n    )\n    pv_face_value = face_value / ((1 + discount_rate) ** years)\n    bond_value = pv_coupons + pv_face_value\n    answer = round(bond_value)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5409,
+      "completion_tokens": 268,
+      "total_tokens": 5677,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 96
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

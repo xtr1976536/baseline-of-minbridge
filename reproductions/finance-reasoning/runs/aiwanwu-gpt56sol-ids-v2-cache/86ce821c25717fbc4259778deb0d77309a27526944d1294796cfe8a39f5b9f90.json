@@ -1,0 +1,21 @@
+{
+  "identity": "86ce821c25717fbc4259778deb0d77309a27526944d1294796cfe8a39f5b9f90",
+  "response_digest": "1db380cbe630452fab08c7bbdfe83f7d09a01990a08a98365c8f42de1b72a306",
+  "response": {
+    "content": "```python\ndef solution():\n    # EUR amount covered by the forward contract\n    eur_amount = 200_000 * 90\n\n    # A long EUR share position is hedged by selling EUR forward.\n    initial_forward_bid = 1.3935 - 19.0 / 10_000\n    three_month_forward_bid = 1.4106 - 21.6 / 10_000\n\n    # Discount the cost of closing the remaining three-month forward.\n    usd_libor = 1.266 / 100\n    time_to_maturity = 3 / 12\n    undiscounted_cost = eur_amount * (three_month_forward_bid - initial_forward_bid)\n    termination_cost = undiscounted_cost / (1 + usd_libor * time_to_maturity)\n\n    return round(termination_cost, 1)\n```",
+    "usage": {
+      "prompt_tokens": 5657,
+      "completion_tokens": 643,
+      "total_tokens": 6300,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 462
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "2174b965c565b19905c5af2ce69bc0ebdc439241993c3a6fc8402b2164645be3",
+  "response_digest": "c35f35a60a33ea3587ccc71e1cde3a9549a9a39f9d5a9a222f8e150ab3976f8e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    spot_price = 50\n    risk_free_rate = 0.04\n    time_to_maturity = 3 / 12\n    value_of_advantages = 5\n    value_of_disadvantages = 6\n\n    # Adjust the spot price for advantages and disadvantages, then compound annually\n    net_spot_value = spot_price + value_of_advantages - value_of_disadvantages\n    forward_price = net_spot_value * (1 + risk_free_rate) ** time_to_maturity\n\n    # Return the forward price rounded to three decimal places\n    return round(forward_price, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5589,
+      "completion_tokens": 203,
+      "total_tokens": 5792,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 60
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

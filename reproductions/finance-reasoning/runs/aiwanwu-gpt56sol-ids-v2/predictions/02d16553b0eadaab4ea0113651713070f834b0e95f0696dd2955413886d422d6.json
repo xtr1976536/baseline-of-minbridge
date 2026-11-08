@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2062",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates normalized EPS for a cyclical company by applying the average ROE over a complete earnings cycle to common equity (total assets minus total liabilities minus preferred equity) and dividing by common shares outstanding, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5168,
+          "completion_tokens": 171,
+          "total_tokens": 5339,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 115
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C03\",\"C05\",\"C06\"]}",
+        "usage": {
+          "prompt_tokens": 13319,
+          "completion_tokens": 494,
+          "total_tokens": 13813,
+          "completion_tokens_details": {
+            "reasoning_tokens": 470
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    roe_values = [0.1200, 0.1310, 0.1055, 0.1120, 0.1205]\n    total_assets = 2100  # millions\n    total_liabilities = 1200  # millions\n    preferred_equity = 120  # millions\n    common_shares_outstanding = 32  # millions\n\n    # Do math calculation to get the answer\n    average_roe = sum(roe_values) / len(roe_values)\n    common_equity = total_assets - total_liabilities - preferred_equity\n    normalized_net_income = average_roe * common_equity\n    normalized_eps = normalized_net_income / common_shares_outstanding\n\n    # return answer\n    return round(normalized_eps, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5525,
+          "completion_tokens": 297,
+          "total_tokens": 5822,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 111
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2711",
+        "score": 1.8044373989105225,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-695",
+        "score": 1.7998511791229248,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.7884095907211304,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-40",
+        "score": 1.7674388885498047,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2908",
+        "score": 1.7667126655578613,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2697",
+        "score": 1.7606401443481445,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1543",
+        "score": 1.7568278312683105,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.750015377998352,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2268",
+        "score": 1.7400438785552979,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-642",
+        "score": 1.737661600112915,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1787",
+        "score": 1.7371137142181396,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1260",
+        "score": 1.7354278564453125,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1494",
+        "score": 1.722524881362915,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.7152513265609741,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.7149642705917358,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.7124760150909424,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1327",
+        "score": 1.7103971242904663,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2717",
+        "score": 1.7099794149398804,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-507",
+        "score": 1.7035579681396484,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2714",
+        "score": 1.7027819156646729,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-37",
+        "score": 1.6925828456878662,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2712",
+        "score": 1.6911702156066895,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.6891027688980103,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2242",
+        "score": 1.6884609460830688,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.6879743337631226,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2645",
+        "score": 1.686741828918457,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-651",
+        "score": 1.6862449645996094,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.684519648551941,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2245",
+        "score": 1.6791856288909912,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2574",
+        "score": 1.67622971534729,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-378",
+      "article-2908",
+      "article-2697"
+    ],
+    "status": "ok",
+    "answer": 2.871,
+    "code": "def solution():\n    # Define variables name and value\n    roe_values = [0.1200, 0.1310, 0.1055, 0.1120, 0.1205]\n    total_assets = 2100  # millions\n    total_liabilities = 1200  # millions\n    preferred_equity = 120  # millions\n    common_shares_outstanding = 32  # millions\n\n    # Do math calculation to get the answer\n    average_roe = sum(roe_values) / len(roe_values)\n    common_equity = total_assets - total_liabilities - preferred_equity\n    normalized_net_income = average_roe * common_equity\n    normalized_eps = normalized_net_income / common_shares_outstanding\n\n    # return answer\n    return round(normalized_eps, 3)\n"
+  },
+  "digest": "bf2e5da62ec30ba1934e0950e309030b5ef3eeefc24d30a0418e1074a9c16041"
+}

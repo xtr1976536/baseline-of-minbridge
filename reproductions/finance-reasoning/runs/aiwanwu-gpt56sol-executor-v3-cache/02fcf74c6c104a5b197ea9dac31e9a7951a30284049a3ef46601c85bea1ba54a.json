@@ -1,0 +1,18 @@
+{
+  "identity": "02fcf74c6c104a5b197ea9dac31e9a7951a30284049a3ef46601c85bea1ba54a",
+  "response_digest": "f94b827d99d9d61d597e91dcbe45869e56ab905d4a5ed4557a01f0f569015233",
+  "response": {
+    "content": "```python\ndef solution():\n    income = 75_000\n    tax_brackets = [\n        (10_000, 0.00),\n        (30_000, 0.10),\n        (60_000, 0.15),\n        (float(\"inf\"), 0.25),\n    ]\n\n    total_tax = 0\n    previous_limit = 0\n\n    for limit, rate in tax_brackets:\n        taxable_in_bracket = max(0, min(income, limit) - previous_limit)\n        total_tax += taxable_in_bracket * rate\n        previous_limit = limit\n        if income <= limit:\n            break\n\n    return round(total_tax)\n```",
+    "usage": {
+      "prompt_tokens": 5906,
+      "completion_tokens": 186,
+      "total_tokens": 6092,
+      "completion_tokens_details": {
+        "reasoning_tokens": 37
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

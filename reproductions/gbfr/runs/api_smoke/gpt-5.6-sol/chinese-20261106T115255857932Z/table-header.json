@@ -1,0 +1,73 @@
+{
+  "case": {
+    "id": "table-header",
+    "question": "What is Company A's Fiscal Revenue for 2024, in CNY?",
+    "context": "Company A财政数据，金额单位为人民币元。\n| 年份 | 财政收入 | 债务 |\n| --- | --- | --- |\n| 2023 | 31 | 80 |\n| 2024 | 42 | 99 |",
+    "expected_value": 42
+  },
+  "prediction": {
+    "status": "abstained",
+    "value": null,
+    "meta": {},
+    "precision": "unknown",
+    "trace": {
+      "events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "reasoning_type": "DirectRetrieval",
+            "operator": "sum",
+            "subgoals": [
+              {
+                "metric": "Revenue",
+                "constraints": {
+                  "temporal_scope": "2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": "CNY",
+                    "scale": "yuan",
+                    "unit": "monetary"
+                  }
+                }
+              }
+            ],
+            "precision": "unknown"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Revenue",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "CNY",
+                "scale": "yuan",
+                "unit": "monetary"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Revenue for Company A in 2024 is not directly stated. The context labels 42 as “财政收入” (fiscal revenue), which is not a clear translation or alias of the requested enterprise operating Revenue metric."
+          }
+        }
+      ],
+      "subgoal_results": [
+        {
+          "value": null,
+          "meta": {},
+          "paths": [],
+          "reason": "Revenue for Company A in 2024 is not directly stated. The context labels 42 as “财政收入” (fiscal revenue), which is not a clear translation or alias of the requested enterprise operating Revenue metric."
+        }
+      ]
+    },
+    "reason": "At least one required subgoal could not be grounded"
+  },
+  "passed": false
+}

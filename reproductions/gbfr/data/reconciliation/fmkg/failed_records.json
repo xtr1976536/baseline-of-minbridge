@@ -1,0 +1,122 @@
+[
+  {
+    "record_index": 7038,
+    "source_id": "article-889",
+    "source": {
+      "function_id": "article-889",
+      "article_title": "Married Put",
+      "function": "def calculate_married_put_floor(stock_price: float, strike_price: float) -> float:\n    \"\"\"\n    Calculate the downside protection floor for a married put strategy.\n\n    This function determines the floor price, or the minimum price level,\n    at which the investor's losses are capped in a married put strategy.\n\n    Args:\n        stock_price (float): The price of the stock at the time of purchasing the put option.\n        strike_price (float): The strike price of the put option.\n\n    Returns:\n        floor (float): The difference between the initial stock price and\n                       the strike price, representing the downside protection.\n\n    Notes:\n        - Applicability: Useful for estimating risk exposure in a married\n          put strategy.\n        - Constraints: Assumes that the put and stock are purchased simultaneously.\n        - Considerations: Does not include the cost of the option premium\n          or other transaction fees in the floor calculation.\n    \"\"\"\n    floor = stock_price - strike_price\n    return floor"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7039,
+    "source_id": "article-890",
+    "source": {
+      "function_id": "article-890",
+      "article_title": "Married Put",
+      "function": "def calculate_married_put_protection(stock_price: float, option_premium: float, strike_price: float) -> float:\n    \"\"\"\n    Calculate the protection level provided by a married put strategy.\n\n    This function calculates the overall protection level, factoring in\n    both the put option's strike price and the premium paid, to determine\n    the effective downside risk limit.\n\n    Args:\n        stock_price (float): The initial price paid for the stock.\n        option_premium (float): The premium cost of the put option per share.\n        strike_price (float): The strike price of the put option.\n\n    Returns:\n        protection_limit (float): The effective minimum value of the stock at\n                                  which an investor's loss is limited.\n\n    Notes:\n        - Applicability: Used to assess the extent of protection in a married\n          put transaction.\n        - Constraints: Assumes purchase of both stock and option occurs simultaneously.\n        - Considerations: Option premium should be included as part of the loss budget.\n    \"\"\"\n    protection_limit = (stock_price + option_premium) - strike_price\n    return protection_limit"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7040,
+    "source_id": "article-891",
+    "source": {
+      "function_id": "article-891",
+      "article_title": "Matching Orders",
+      "function": "def match_orders_fifo(buy_orders: list, sell_orders: list) -> list:\n    \"\"\"\n    Match buy and sell orders using a FIFO (First-In-First-Out) approach.\n\n    This function matches orders based on the price-time priority algorithm, where the earliest\n    buy order at the highest price is prioritized over subsequent orders at the same price.\n\n    Args:\n        buy_orders (list): A list of buy orders, each represented as a dictionary with keys\n                           'quantity' and 'price'.\n        sell_orders (list): A list of sell orders, each represented as a dictionary with keys\n                            'quantity' and 'price'.\n\n    Returns:\n        matches (list): A list of matches, where each match is a dictionary indicating which\n                        buy and sell orders were matched and the executed quantity.\n\n    Notes:\n        - This function assumes buy and sell orders are sorted by time of entry.\n        - Only perfectly matched quantities or fully exhausted orders will be returned.\n        - This algorithm prioritizes transactions by 'first come, first served' philosophy.\n        - Ensure that buy orders are sorted by descending price and entry time.\n    \"\"\"\n    matches = []\n    buy_index, sell_index = 0, 0\n    \n    while buy_index < len(buy_orders) and sell_index < len(sell_orders):\n        buy_order = buy_orders[buy_index]\n        sell_order = sell_orders[sell_index]\n        \n        if buy_order['price'] >= sell_order['price']:\n            match_quantity = min(buy_order['quantity'], sell_order['quantity'])\n            matches.append({\n                'buy_order_index': buy_index,\n                'sell_order_index': sell_index,\n                'executed_quantity': match_quantity\n            })\n            buy_order['quantity'] -= match_quantity\n            sell_order['quantity'] -= match_quantity\n            \n            if buy_order['quantity'] == 0:\n                buy_index += 1\n            if sell_order['quantity'] == 0:\n                sell_index += 1\n        else:\n            break\n    \n    return matches"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7041,
+    "source_id": "article-892",
+    "source": {
+      "function_id": "article-892",
+      "article_title": "Matching Orders",
+      "function": "def match_orders_pro_rata(buy_orders: list, sell_orders: list) -> list:\n    \"\"\"\n    Match buy and sell orders using a Pro-Rata approach.\n\n    This function matches orders at the same price proportionally, based on the size\n    of each order.\n\n    Args:\n        buy_orders (list): A list of buy orders, each represented as a dictionary with keys\n                           'quantity' and 'price'.\n        sell_orders (list): A list of sell orders, each represented as a dictionary with keys\n                            'quantity' and 'price'.\n\n    Returns:\n        matches (list): A list of matches, where each match is a dictionary indicating which\n                        buy and sell orders were matched and the executed quantity.\n\n    Notes:\n        - This function assumes buy and sell orders at a given price are to be matched.\n        - Only orders with compatible prices are considered for matching.\n        - The relative size of each buy order impacts the quantity matched.\n        - Ensure all orders considered are at the same price before applying pro-rata logic.\n    \"\"\"\n    matches = []\n    total_buy_quantity = sum(order['quantity'] for order in buy_orders)\n    \n    for sell_order in sell_orders:\n        for buy_order in buy_orders:\n            if buy_order['price'] >= sell_order['price']:\n                proportional_quantity = (buy_order['quantity'] / total_buy_quantity) * sell_order['quantity']\n                matched_quantity = min(proportional_quantity, buy_order['quantity'], sell_order['quantity'])\n                \n                matches.append({\n                    'buy_order_index': buy_orders.index(buy_order),\n                    'sell_order_index': sell_orders.index(sell_order),\n                    'executed_quantity': round(matched_quantity)\n                })\n                \n                buy_order['quantity'] -= matched_quantity\n                sell_order['quantity'] -= matched_quantity\n                \n                if buy_order['quantity'] == 0:\n                    break\n    \n    return matches"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7042,
+    "source_id": "article-893",
+    "source": {
+      "function_id": "article-893",
+      "article_title": "Max Pain",
+      "function": "def calculate_max_pain(strike_prices: list, stock_price: float, open_interest_puts: list, open_interest_calls: list) -> float:\n    \"\"\"\n    Calculate the max pain point for options traders.\n\n    This function calculates the max pain point, which is the strike price where the\n    combined dollar value for outstanding put and call options is highest. This price is\n    of interest because it causes the maximum number of options to expire worthless.\n\n    Args:\n        strike_prices (list): A list of available strike prices for the options.\n        stock_price (float): The current stock price.\n        open_interest_puts (list): A list of open interests for puts corresponding to the strike prices.\n        open_interest_calls (list): A list of open interests for calls corresponding to the strike prices.\n\n    Returns:\n        max_pain_price (float): The strike price corresponding to the max pain point.\n\n    Notes:\n        - Each input list (strike_prices, open_interest_puts, open_interest_calls) must be of the same length.\n        - This function assumes that each element in the open_interest lists corresponds to the same index in the strike_prices list.\n        - Max pain is dependent on market data, which can change frequently, hence should be recalculated regularly.\n        - Accuracy depends on the correctness and timeliness of the input data.\n    \"\"\"\n    if not (len(strike_prices) == len(open_interest_puts) == len(open_interest_calls)):\n        raise ValueError(\"Input lists must have the same length.\")\n    \n    max_pain_value = float('-inf')\n    max_pain_price = None\n\n    for i, strike_price in enumerate(strike_prices):\n        put_value = max(0, stock_price - strike_price) * open_interest_puts[i]\n        call_value = max(0, strike_price - stock_price) * open_interest_calls[i]\n        total_value = put_value + call_value\n\n        if total_value > max_pain_value:\n            max_pain_value = total_value\n            max_pain_price = strike_price\n\n    return max_pain_price"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7043,
+    "source_id": "article-894",
+    "source": {
+      "function_id": "article-894",
+      "article_title": "Maximum Drawdown (MDD)",
+      "function": "def calculate_maximum_drawdown(prices: list) -> float:\n    \"\"\"\n    Calculate the maximum drawdown (MDD) of an investment portfolio.\n\n    This function computes the maximum drawdown, which is the largest \n    observed loss from a peak to a trough before a new peak is achieved, \n    over a specified time period. It is expressed as a percentage and \n    is used to assess downside risk.\n\n    Args:\n        prices (list): A list of portfolio values over time.\n\n    Returns:\n        maximum_drawdown (float): The maximum drawdown as a percentage.\n\n    Notes:\n        - Applicability: This function is applicable to any investment \n          portfolio or asset where periodic value data is available.\n        - Constraints: The list 'prices' should contain at least two values \n          to calculate drawdown.\n        - Considerations: This function focuses solely on the largest drawdown \n          and does not account for the duration or frequency of drawdowns.\n    \"\"\"\n    if len(prices) < 2:\n        raise ValueError(\"The 'prices' list must contain at least two values.\")\n\n    peak_value = prices[0]\n    maximum_drawdown = 0\n\n    for price in prices:\n        if price > peak_value:\n            peak_value = price\n        drawdown = (price - peak_value) / peak_value\n        if drawdown < maximum_drawdown:\n            maximum_drawdown = drawdown\n\n    return maximum_drawdown * 100"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7044,
+    "source_id": "article-895",
+    "source": {
+      "function_id": "article-895",
+      "article_title": "Maximum Loan Amount",
+      "function": "def calculate_max_loan_amount(credit_score: int, debt_to_income_ratio: float, collateral_value: float, loan_to_value_ratio: float) -> float:\n    \"\"\"\n    Calculate the maximum loan amount a borrower can qualify for based on credit score, debt-to-income ratio, \n    collateral value, and loan-to-value ratio.\n\n    This function determines the maximum loan amount a lender might offer to a borrower considering their financial \n    credentials and the value of a secured asset. Applicable for secured loans where collateral is involved.\n\n    Args:\n        credit_score (int): The borrower's credit score on a scale from 300 to 850.\n        debt_to_income_ratio (float): The ratio of the borrower's ongoing debt payments to their gross income, \n                                      expressed as a percentage (0-100).\n        collateral_value (float): The total value of the asset being used as collateral for the loan.\n        loan_to_value_ratio (float): The percentage of the collateral value that the lender is willing to loan.\n\n    Returns:\n        max_loan_amount (float): The calculated maximum loan amount based on provided parameters.\n    \n    Notes:\n        - Applicability: This function is useful for calculating potential loan amounts in the context of secured loans.\n        - Constraints: Assumes credit score and debt-to-income ratios reflect typical lending considerations.\n        - Considerations: The results are indicative and should incorporate further individualized financial assessment.\n    \"\"\"\n    # Check if the debt-to-income ratio is within acceptable limits\n    if debt_to_income_ratio > 36:\n        raise ValueError(\"Debt-to-income ratio exceeds the common acceptable threshold for lenders.\")\n\n    # Calculate the maximum loan value based on collateral and loan-to-value ratio\n    max_loan_based_on_collateral = collateral_value * (loan_to_value_ratio / 100)\n\n    # Additional considerations for credit score impact can be factored in a more detailed model\n    max_loan_amount = max_loan_based_on_collateral\n\n    return max_loan_amount"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7045,
+    "source_id": "article-896",
+    "source": {
+      "function_id": "article-896",
+      "article_title": "McClellan Oscillator",
+      "function": "def calculate_mcclellan_oscillator(advances: float, declines: float, prior_19_day_ema: float, prior_39_day_ema: float) -> float:\n    \"\"\"\n    Calculate the McClellan Oscillator using the number of advancing and declining stocks.\n\n    The McClellan Oscillator is a market breadth indicator based on the difference \n    between short-term (19-day) and long-term (39-day) exponential moving averages (EMA) \n    of net advances (advances minus declines) in a stock exchange.\n\n    Args:\n        advances (float): The number of stocks with gains over their previous day's close.\n        declines (float): The number of stocks with losses over their previous day's close.\n        prior_19_day_ema (float): The previous day's 19-day EMA of net advances.\n        prior_39_day_ema (float): The previous day's 39-day EMA of net advances.\n\n    Returns:\n        mcclellan_oscillator (float): The value of the McClellan Oscillator.\n\n    Notes:\n        - This function requires daily stock advances and declines as input.\n        - Prior day EMA values serve as the initial EMA values.\n        - Assumes continuous data to ensure EMA calculations are accurate.\n        - Useful for assessing stock market trends and potential reversals.\n    \"\"\"\n    net_advances = advances - declines\n    ema_19_day = (net_advances * 0.10) + (prior_19_day_ema * (1 - 0.10))\n    ema_39_day = (net_advances * 0.05) + (prior_39_day_ema * (1 - 0.05))\n    mcclellan_oscillator = ema_19_day - ema_39_day\n    \n    return mcclellan_oscillator"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7046,
+    "source_id": "article-897",
+    "source": {
+      "function_id": "article-897",
+      "article_title": "McClellan Oscillator",
+      "function": "def calculate_adjusted_net_advances(advances: float, declines: float) -> float:\n    \"\"\"\n    Calculate the Adjusted Net Advances used in the adjusted McClellan Oscillator.\n\n    Adjusted Net Advances (ANA) normalize the difference between advancing and declining \n    stocks to account for the total number of traded stocks, providing a more consistent basis\n    for analysis over time.\n\n    Args:\n        advances (float): The number of stocks with gains over their previous day's close.\n        declines (float): The number of stocks with losses over their previous day's close.\n\n    Returns:\n        adjusted_net_advances (float): The value of the adjusted net advances.\n\n    Notes:\n        - The formula normalizes advances and declines relative to their total to handle \n          changes in exchange size.\n        - It offers better comparability of breadth data over varying periods.\n        - Primarily used in the adjusted formula for the McClellan Oscillator.\n    \"\"\"\n    if advances + declines == 0:\n        return 0\n\n    adjusted_net_advances = (advances - declines) / (advances + declines)\n    \n    return adjusted_net_advances"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7047,
+    "source_id": "article-898",
+    "source": {
+      "function_id": "article-898",
+      "article_title": "McClellan Oscillator",
+      "function": "def calculate_adjusted_mcclellan_oscillator(ana: float, prior_19_day_ema: float, prior_39_day_ema: float) -> float:\n    \"\"\"\n    Calculate the Adjusted McClellan Oscillator using Adjusted Net Advances (ANA).\n\n    This version of the McClellan Oscillator adjusts for changes in the number of \n    stocks listed by using ANA instead of raw advances/declines, offering a more \n    reliable long-term indicator.\n\n    Args:\n        ana (float): Adjusted Net Advances, a normalized measure of market breadth.\n        prior_19_day_ema (float): The previous day's 19-day EMA of ANA.\n        prior_39_day_ema (float): The previous day's 39-day EMA of ANA.\n\n    Returns:\n        adjusted_mcclellan_oscillator (float): The value of the adjusted McClellan Oscillator.\n\n    Notes:\n        - This version provides consistency across periods with varying numbers of listed stocks.\n        - Ensure prior EMA values are initialized based on historical 19- and 39-day averages.\n        - Reflects the overall trend direction in the market adjusted for breadth.\n    \"\"\"\n    ema_19_day = (ana * 0.10) + (prior_19_day_ema * (1 - 0.10))\n    ema_39_day = (ana * 0.05) + (prior_39_day_ema * (1 - 0.05))\n    adjusted_mcclellan_oscillator = ema_19_day - ema_39_day\n    \n    return adjusted_mcclellan_oscillator"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7048,
+    "source_id": "article-899",
+    "source": {
+      "function_id": "article-899",
+      "article_title": "MCF (Measuring Natural Gas)",
+      "function": "def convert_mcm_to_mcf(mcm: float) -> float:\n    \"\"\"\n    Convert a volume measurement from thousand cubic meters (MCM) to thousand cubic feet (MCF).\n\n    This function converts a given volume expressed in thousand cubic meters (MCM) to\n    the equivalent volume in thousand cubic feet (MCF), using the conversion factor \n    where 1 MCM is approximately equal to 35.3 MCF.\n\n    Args:\n        mcm (float): Volume in thousand cubic meters (MCM).\n\n    Returns:\n        mcf (float): Equivalent volume in thousand cubic feet (MCF).\n\n    Notes:\n        - This function is useful for financial analysts working with international oil\n          and gas companies reporting in different unit systems.\n        - Applicable in scenarios where conversions between metric and imperial systems\n          are required for comparing international data.\n        - Ensure input volumes are accurate, as small errors can generate significant\n          discrepancies in large-scale data.\n    \"\"\"\n    conversion_factor = 35.3\n    mcf = mcm * conversion_factor\n    return mcf"
+    },
+    "issue": "generation_failed"
+  },
+  {
+    "record_index": 7278,
+    "source_id": "article-1144",
+    "source": {
+      "function_id": "article-1144",
+      "article_title": "Goodness-of-Fit",
+      "function": "def calculate_anderson_darling(sample_data: list, cdf_function: callable) -> float:\n    \"\"\"\n    Calculate the Anderson-Darling statistic for a sample.\n\n    This function computes the Anderson-Darling (A-D) statistic, which is used to test\n    the goodness-of-fit of a sample to a specified distribution. It gives more weight to\n    the tails than the Kolmogorov-Smirnov test, making it particularly sensitive to differences\n    in the tails of the distribution.\n\n    Args:\n        sample_data (list): A list of sample data points.\n        cdf_function (callable): A function that takes a data point as input and returns\n                                 the CDF value of the corresponding reference distribution.\n\n    Returns:\n        ad_statistic (float): The calculated A-D statistic.\n\n    Notes:\n        - Applicability: Use this test when you need to place more emphasis on the distribution tails,\n          which can be crucial in financial analyses.\n        - Constraints: The data sample should ideally be of moderate to large size.\n        - Considerations: A higher A-D statistic indicates that the sample distribution\n          deviates more from the reference distribution, especially in the tails.\n    \"\"\"\n    n = len(sample_data)\n    if n == 0:\n        raise ValueError(\"Sample data cannot be empty.\")\n\n    sorted_data = sorted(sample_data)\n    sum_term = sum((2 * i - 1) * (math.log(cdf_function(val)) + math.log(1 - cdf_function(sorted_data[n - i])))\n                   for i, val in enumerate(sorted_data, start=1))\n    \n    ad_statistic = -n - sum_term / n\n    \n    return ad_statistic"
+    },
+    "issue": "generation_failed"
+  }
+]

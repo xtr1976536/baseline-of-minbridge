@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:repayments_of_debt_maturing_in_more_than_three_months_fy2022,payments_of_dividends_common_stock_fy2022)

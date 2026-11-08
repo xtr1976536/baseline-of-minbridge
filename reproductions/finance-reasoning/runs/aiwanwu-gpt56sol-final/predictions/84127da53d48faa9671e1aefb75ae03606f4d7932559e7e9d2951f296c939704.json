@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2070",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annual investor return for a hedge fund or fund-of-funds investment after applying independently calculated annual management and incentive fees to the ending fund value, given the initial investment, management fee rate, incentive fee rate, and one-year performance, returning the result as a percentage rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5006,
+          "completion_tokens": 152,
+          "total_tokens": 5158,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 84
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USEFUL]",
+        "usage": {
+          "prompt_tokens": 14081,
+          "completion_tokens": 928,
+          "total_tokens": 15009,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 831
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_investment = 250000\n    ending_fund_value = 320000\n    management_fee_rate = 0.04\n    incentive_fee_rate = 0.12\n\n    # Do math calculation to get the answer\n    profit = ending_fund_value - initial_investment\n    management_fee = ending_fund_value * management_fee_rate\n    incentive_fee = profit * incentive_fee_rate\n    ending_investor_value = ending_fund_value - management_fee - incentive_fee\n    annual_return = ((ending_investor_value - initial_investment) / initial_investment) * 100\n\n    # return answer\n    return round(annual_return, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5557,
+          "completion_tokens": 293,
+          "total_tokens": 5850,
+          "completion_tokens_details": {
+            "reasoning_tokens": 127
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1024",
+        "score": 1.8619221448898315
+      },
+      {
+        "function_id": "article-1983",
+        "score": 1.8575572967529297
+      },
+      {
+        "function_id": "article-1023",
+        "score": 1.8084840774536133
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.7891100645065308
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.7657814025878906
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.7602261304855347
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.7526607513427734
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.7411293983459473
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.7331486940383911
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.6662262678146362
+      },
+      {
+        "function_id": "article-2",
+        "score": 1.663510799407959
+      },
+      {
+        "function_id": "article-2386",
+        "score": 1.6585872173309326
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.657434105873108
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.6524125337600708
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.6495176553726196
+      },
+      {
+        "function_id": "article-811",
+        "score": 1.6372876167297363
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.631505012512207
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.6262805461883545
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.622560977935791
+      },
+      {
+        "function_id": "article-2882",
+        "score": 1.6174923181533813
+      },
+      {
+        "function_id": "article-2319",
+        "score": 1.613200068473816
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.612183690071106
+      },
+      {
+        "function_id": "article-2902",
+        "score": 1.6075866222381592
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.6075458526611328
+      },
+      {
+        "function_id": "article-1460",
+        "score": 1.6061043739318848
+      },
+      {
+        "function_id": "article-1207",
+        "score": 1.6051995754241943
+      },
+      {
+        "function_id": "article-1918",
+        "score": 1.6028903722763062
+      },
+      {
+        "function_id": "article-1920",
+        "score": 1.601351261138916
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.5971020460128784
+      },
+      {
+        "function_id": "article-1531",
+        "score": 1.595750331878662
+      }
+    ],
+    "selected_ids": [
+      "article-1024",
+      "article-1983",
+      "article-1023"
+    ],
+    "status": "ok",
+    "answer": 19.5,
+    "code": "def solution():\n    # Define variables name and value\n    initial_investment = 250000\n    ending_fund_value = 320000\n    management_fee_rate = 0.04\n    incentive_fee_rate = 0.12\n\n    # Do math calculation to get the answer\n    profit = ending_fund_value - initial_investment\n    management_fee = ending_fund_value * management_fee_rate\n    incentive_fee = profit * incentive_fee_rate\n    ending_investor_value = ending_fund_value - management_fee - incentive_fee\n    annual_return = ((ending_investor_value - initial_investment) / initial_investment) * 100\n\n    # return answer\n    return round(annual_return, 1)\n"
+  },
+  "digest": "2afe7c24c05f4671f3fa6ae0aba19e7e0007a5a1d1e3c22e886f4b5fe0e82974"
+}

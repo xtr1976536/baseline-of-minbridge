@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2052",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fixed monthly payout of an ordinary fixed-term annuity from a lump-sum present value, monthly interest rate, and number of monthly payment periods, assuming end-of-month payments over 20 years and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5014,
+          "completion_tokens": 55,
+          "total_tokens": 5069,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS]",
+        "usage": {
+          "prompt_tokens": 15578,
+          "completion_tokens": 1309,
+          "total_tokens": 16887,
+          "completion_tokens_details": {
+            "reasoning_tokens": 1212
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 200000\n    monthly_interest_rate = 0.0033\n    total_periods = 20 * 12\n\n    # Do math calculation to get the answer\n    if monthly_interest_rate == 0:\n        monthly_payout = principal / total_periods\n    else:\n        growth_factor = (1 + monthly_interest_rate) ** total_periods\n        monthly_payout = (\n            principal\n            * monthly_interest_rate\n            * growth_factor\n            / (growth_factor - 1)\n        )\n\n    # return answer\n    return round(monthly_payout)\n```",
+        "usage": {
+          "prompt_tokens": 5716,
+          "completion_tokens": 347,
+          "total_tokens": 6063,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 204
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-369",
+        "score": 1.961860179901123
+      },
+      {
+        "function_id": "article-12",
+        "score": 1.9006807804107666
+      },
+      {
+        "function_id": "article-2333",
+        "score": 1.8878134489059448
+      },
+      {
+        "function_id": "article-2332",
+        "score": 1.8550900220870972
+      },
+      {
+        "function_id": "article-2334",
+        "score": 1.848876714706421
+      },
+      {
+        "function_id": "article-3073",
+        "score": 1.8345876932144165
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.8280972242355347
+      },
+      {
+        "function_id": "article-658",
+        "score": 1.8259196281433105
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.8210725784301758
+      },
+      {
+        "function_id": "article-2338",
+        "score": 1.8194613456726074
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.805025339126587
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.8040003776550293
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.802709698677063
+      },
+      {
+        "function_id": "article-1252",
+        "score": 1.8014514446258545
+      },
+      {
+        "function_id": "article-1313",
+        "score": 1.798251986503601
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.7932244539260864
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.776917576789856
+      },
+      {
+        "function_id": "article-253",
+        "score": 1.7719533443450928
+      },
+      {
+        "function_id": "article-2335",
+        "score": 1.7581062316894531
+      },
+      {
+        "function_id": "article-2209",
+        "score": 1.7462313175201416
+      },
+      {
+        "function_id": "article-2091",
+        "score": 1.7440111637115479
+      },
+      {
+        "function_id": "article-2463",
+        "score": 1.738410472869873
+      },
+      {
+        "function_id": "article-2464",
+        "score": 1.7147349119186401
+      },
+      {
+        "function_id": "article-252",
+        "score": 1.709883451461792
+      },
+      {
+        "function_id": "article-1068",
+        "score": 1.6564695835113525
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.6558425426483154
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.6525588035583496
+      },
+      {
+        "function_id": "article-1674",
+        "score": 1.6463344097137451
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.6456480026245117
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.6336238384246826
+      }
+    ],
+    "selected_ids": [
+      "article-369",
+      "article-12",
+      "article-2333"
+    ],
+    "status": "ok",
+    "answer": 1208,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 200000\n    monthly_interest_rate = 0.0033\n    total_periods = 20 * 12\n\n    # Do math calculation to get the answer\n    if monthly_interest_rate == 0:\n        monthly_payout = principal / total_periods\n    else:\n        growth_factor = (1 + monthly_interest_rate) ** total_periods\n        monthly_payout = (\n            principal\n            * monthly_interest_rate\n            * growth_factor\n            / (growth_factor - 1)\n        )\n\n    # return answer\n    return round(monthly_payout)\n"
+  },
+  "digest": "619c5f8f2bed6709682215c3717b35a5c490f4c918175f0019aaa7b06f697278"
+}

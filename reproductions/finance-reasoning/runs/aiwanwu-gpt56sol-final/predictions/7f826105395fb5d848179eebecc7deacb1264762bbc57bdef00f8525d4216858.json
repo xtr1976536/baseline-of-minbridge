@@ -1,0 +1,183 @@
+{
+  "record": {
+    "question_id": "test-2169",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Williams %R momentum indicator from aligned high, low, and closing price series over a configurable 14-period rolling lookback and returns the latest value as a percentage for identifying overbought or oversold conditions?",
+        "usage": {
+          "prompt_tokens": 5237,
+          "completion_tokens": 50,
+          "total_tokens": 5287
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 18025,
+          "completion_tokens": 179,
+          "total_tokens": 18204,
+          "completion_tokens_details": {
+            "reasoning_tokens": 82
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    high_prices = [120, 122, 121, 119, 123, 125, 126, 127, 126, 124,\n                   123, 122, 121, 120, 119, 118, 120, 121, 122, 123]\n    low_prices = [115, 116, 117, 115, 118, 119, 120, 121, 122, 120,\n                  119, 118, 116, 115, 114, 113, 114, 115, 116, 118]\n    closing_prices = [117, 118, 119, 117, 120, 123, 124, 122, 123, 121,\n                      120, 119, 118, 117, 116, 115, 118, 120, 121, 122]\n    period = 14\n\n    # Use the most recent 14-day period\n    recent_highs = high_prices[-period:]\n    recent_lows = low_prices[-period:]\n    current_close = closing_prices[-1]\n\n    highest_high = max(recent_highs)\n    lowest_low = min(recent_lows)\n\n    # Calculate Williams %R\n    williams_r = ((highest_high - current_close) /\n                  (highest_high - lowest_low)) * -100\n\n    # Return the value rounded to two decimal places\n    return round(williams_r, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5811,
+          "completion_tokens": 462,
+          "total_tokens": 6273,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 127
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2477",
+        "score": 2.3891360759735107
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.7414976358413696
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.729148030281067
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6475603580474854
+      },
+      {
+        "function_id": "article-1322",
+        "score": 1.6269334554672241
+      },
+      {
+        "function_id": "article-2351",
+        "score": 1.6163685321807861
+      },
+      {
+        "function_id": "article-1492",
+        "score": 1.6132166385650635
+      },
+      {
+        "function_id": "article-2350",
+        "score": 1.6063625812530518
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.6060903072357178
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.5979645252227783
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.5932775735855103
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.5788164138793945
+      },
+      {
+        "function_id": "article-2638",
+        "score": 1.5765702724456787
+      },
+      {
+        "function_id": "article-1282",
+        "score": 1.570609211921692
+      },
+      {
+        "function_id": "article-2074",
+        "score": 1.568192958831787
+      },
+      {
+        "function_id": "article-930",
+        "score": 1.5641621351242065
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.5520243644714355
+      },
+      {
+        "function_id": "article-1860",
+        "score": 1.5412631034851074
+      },
+      {
+        "function_id": "article-339",
+        "score": 1.5405449867248535
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.5323922634124756
+      },
+      {
+        "function_id": "article-1154",
+        "score": 1.5213100910186768
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.5172027349472046
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.5156621932983398
+      },
+      {
+        "function_id": "article-1994",
+        "score": 1.5149630308151245
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.514683485031128
+      },
+      {
+        "function_id": "article-1493",
+        "score": 1.510083556175232
+      },
+      {
+        "function_id": "article-2876",
+        "score": 1.5067927837371826
+      },
+      {
+        "function_id": "article-350",
+        "score": 1.5056891441345215
+      },
+      {
+        "function_id": "article-3112",
+        "score": 1.5055198669433594
+      },
+      {
+        "function_id": "article-1006",
+        "score": 1.4990084171295166
+      }
+    ],
+    "selected_ids": [
+      "article-2477",
+      "article-2637"
+    ],
+    "status": "ok",
+    "answer": -35.71,
+    "code": "def solution():\n    # Define variables name and value\n    high_prices = [120, 122, 121, 119, 123, 125, 126, 127, 126, 124,\n                   123, 122, 121, 120, 119, 118, 120, 121, 122, 123]\n    low_prices = [115, 116, 117, 115, 118, 119, 120, 121, 122, 120,\n                  119, 118, 116, 115, 114, 113, 114, 115, 116, 118]\n    closing_prices = [117, 118, 119, 117, 120, 123, 124, 122, 123, 121,\n                      120, 119, 118, 117, 116, 115, 118, 120, 121, 122]\n    period = 14\n\n    # Use the most recent 14-day period\n    recent_highs = high_prices[-period:]\n    recent_lows = low_prices[-period:]\n    current_close = closing_prices[-1]\n\n    highest_high = max(recent_highs)\n    lowest_low = min(recent_lows)\n\n    # Calculate Williams %R\n    williams_r = ((highest_high - current_close) /\n                  (highest_high - lowest_low)) * -100\n\n    # Return the value rounded to two decimal places\n    return round(williams_r, 2)\n"
+  },
+  "digest": "9c791773dfa4336a09fd4e1ae30e27469b0d20765a8f0d6ddee52c30a9c69164"
+}

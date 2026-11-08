@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:deferred_income_tax_liabilities_net_fy2025,liabilities_current_fy2025,long_term_debt_noncurrent_fy2025)

@@ -1,0 +1,21 @@
+{
+  "identity": "89a8b25f8597eb903e500cefdc503efe2ef18889b8fa15888e5262b258959efd",
+  "response_digest": "2b4c2120355660dc17196541069659d5516f4a56661e7a696027e48771239fa7",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    loan_amount = 300000\n    loan_term_years = 30\n    original_rate = 0.045\n    new_rate = 0.04\n    float_down_fee_percent = 0.4\n\n    # Calculate monthly interest rates and total number of payments\n    original_monthly_rate = original_rate / 12\n    new_monthly_rate = new_rate / 12\n    total_payments = loan_term_years * 12\n\n    # Calculate monthly mortgage payments\n    original_payment = (\n        loan_amount * original_monthly_rate\n        / (1 - (1 + original_monthly_rate) ** -total_payments)\n    )\n    new_payment = (\n        loan_amount * new_monthly_rate\n        / (1 - (1 + new_monthly_rate) ** -total_payments)\n    )\n\n    # Calculate total payment savings and subtract the float down fee\n    total_payment_savings = (original_payment - new_payment) * total_payments\n    float_down_fee = loan_amount * (float_down_fee_percent / 100)\n    net_savings = total_payment_savings - float_down_fee\n\n    # Return savings rounded to the nearest dollar\n    return round(net_savings)\n```",
+    "usage": {
+      "prompt_tokens": 6202,
+      "completion_tokens": 371,
+      "total_tokens": 6573,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 102
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

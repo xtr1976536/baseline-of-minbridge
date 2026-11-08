@@ -1,0 +1,182 @@
+{
+  "record": {
+    "question_id": "test-2071",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates Weighted Average Cost of Capital (WACC) from equity, debt, and preferred stock capital amounts and their respective costs, using capital-structure weights and returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5060,
+          "completion_tokens": 49,
+          "total_tokens": 5109,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15315,
+          "completion_tokens": 464,
+          "total_tokens": 15779,
+          "completion_tokens_details": {
+            "reasoning_tokens": 367
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    equity_value = 150\n    equity_cost = 0.12\n    debt_value = 100\n    debt_cost = 0.05\n    preferred_value = 50\n    preferred_cost = 0.08\n\n    # Do math calculation to get the answer\n    total_value = equity_value + debt_value + preferred_value\n    weight_equity = equity_value / total_value\n    weight_debt = debt_value / total_value\n    weight_preferred = preferred_value / total_value\n\n    wacc = (\n        weight_equity * equity_cost\n        + weight_debt * debt_cost\n        + weight_preferred * preferred_cost\n    )\n\n    # Return WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5163,
+          "completion_tokens": 283,
+          "total_tokens": 5446,
+          "completion_tokens_details": {
+            "reasoning_tokens": 99
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-189",
+        "score": 2.1753973960876465
+      },
+      {
+        "function_id": "article-2452",
+        "score": 2.154435396194458
+      },
+      {
+        "function_id": "article-1644",
+        "score": 2.1255364418029785
+      },
+      {
+        "function_id": "article-560",
+        "score": 2.1220970153808594
+      },
+      {
+        "function_id": "article-1095",
+        "score": 2.1204142570495605
+      },
+      {
+        "function_id": "article-561",
+        "score": 2.078636646270752
+      },
+      {
+        "function_id": "article-3052",
+        "score": 2.0555260181427
+      },
+      {
+        "function_id": "article-2453",
+        "score": 1.8979768753051758
+      },
+      {
+        "function_id": "article-46",
+        "score": 1.8423117399215698
+      },
+      {
+        "function_id": "article-199",
+        "score": 1.742465853691101
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.7415599822998047
+      },
+      {
+        "function_id": "article-2700",
+        "score": 1.7305368185043335
+      },
+      {
+        "function_id": "article-1096",
+        "score": 1.711437463760376
+      },
+      {
+        "function_id": "article-552",
+        "score": 1.6716525554656982
+      },
+      {
+        "function_id": "article-2191",
+        "score": 1.6552610397338867
+      },
+      {
+        "function_id": "article-1911",
+        "score": 1.6435346603393555
+      },
+      {
+        "function_id": "article-2454",
+        "score": 1.641802430152893
+      },
+      {
+        "function_id": "article-41",
+        "score": 1.6395937204360962
+      },
+      {
+        "function_id": "article-1401",
+        "score": 1.639173984527588
+      },
+      {
+        "function_id": "article-2455",
+        "score": 1.6355867385864258
+      },
+      {
+        "function_id": "article-559",
+        "score": 1.6342836618423462
+      },
+      {
+        "function_id": "article-2120",
+        "score": 1.6326396465301514
+      },
+      {
+        "function_id": "article-3125",
+        "score": 1.6241214275360107
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.6232459545135498
+      },
+      {
+        "function_id": "article-558",
+        "score": 1.6181185245513916
+      },
+      {
+        "function_id": "article-388",
+        "score": 1.616487979888916
+      },
+      {
+        "function_id": "article-2459",
+        "score": 1.614328384399414
+      },
+      {
+        "function_id": "article-643",
+        "score": 1.6103711128234863
+      },
+      {
+        "function_id": "article-2545",
+        "score": 1.6067390441894531
+      },
+      {
+        "function_id": "article-2230",
+        "score": 1.601433277130127
+      }
+    ],
+    "selected_ids": [
+      "article-1095"
+    ],
+    "status": "ok",
+    "answer": 9.0,
+    "code": "def solution():\n    # Define variables name and value\n    equity_value = 150\n    equity_cost = 0.12\n    debt_value = 100\n    debt_cost = 0.05\n    preferred_value = 50\n    preferred_cost = 0.08\n\n    # Do math calculation to get the answer\n    total_value = equity_value + debt_value + preferred_value\n    weight_equity = equity_value / total_value\n    weight_debt = debt_value / total_value\n    weight_preferred = preferred_value / total_value\n\n    wacc = (\n        weight_equity * equity_cost\n        + weight_debt * debt_cost\n        + weight_preferred * preferred_cost\n    )\n\n    # Return WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n"
+  },
+  "digest": "5182e7096163a0b4fe195f74cf012dee883f9b61880c59fdcd28d8ddefc56718"
+}

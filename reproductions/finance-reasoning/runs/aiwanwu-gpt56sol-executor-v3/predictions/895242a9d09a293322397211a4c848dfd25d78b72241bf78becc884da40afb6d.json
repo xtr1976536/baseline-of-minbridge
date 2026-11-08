@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2197",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fair value of a European call option using the Black-Scholes model from the current underlying stock price, strike price, time to maturity, continuously compounded risk-free interest rate, and annualized volatility, returning the option price to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5066,
+          "completion_tokens": 56,
+          "total_tokens": 5122,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 15885,
+          "completion_tokens": 22,
+          "total_tokens": 15907,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    from math import erf, exp, log, sqrt\n\n    stock_price = 120.0\n    strike_price = 130.0\n    risk_free_rate = 0.02\n    time_to_maturity = 1.0\n    volatility = 0.35\n\n    d1 = (\n        log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility ** 2) * time_to_maturity\n    ) / (volatility * sqrt(time_to_maturity))\n    d2 = d1 - volatility * sqrt(time_to_maturity)\n\n    normal_cdf = lambda x: 0.5 * (1.0 + erf(x / sqrt(2.0)))\n    call_price = (\n        stock_price * normal_cdf(d1)\n        - strike_price * exp(-risk_free_rate * time_to_maturity) * normal_cdf(d2)\n    )\n\n    return round(call_price, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5998,
+          "completion_tokens": 246,
+          "total_tokens": 6244,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 34
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1032",
+        "score": 2.340301513671875,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-729",
+        "score": 2.3370094299316406,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-3060",
+        "score": 2.2668042182922363,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1033",
+        "score": 2.1985223293304443,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-3061",
+        "score": 2.1493821144104004,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2505",
+        "score": 2.1149425506591797,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-358",
+        "score": 2.0131032466888428,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.8695790767669678,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1408",
+        "score": 1.8586232662200928,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.7691059112548828,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-758",
+        "score": 1.7269586324691772,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1902",
+        "score": 1.6955679655075073,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-32",
+        "score": 1.6944149732589722,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2054",
+        "score": 1.6897804737091064,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2663",
+        "score": 1.6889528036117554,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2850",
+        "score": 1.6864330768585205,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.6833735704421997,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.6819853782653809,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6803350448608398,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-3057",
+        "score": 1.678900957107544,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2649",
+        "score": 1.6719661951065063,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.6690027713775635,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.6689872741699219,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3058",
+        "score": 1.6644299030303955,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2196",
+        "score": 1.662989854812622,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.6627821922302246,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1898",
+        "score": 1.6605585813522339,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3063",
+        "score": 1.658543586730957,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2648",
+        "score": 1.656611442565918,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2840",
+        "score": 1.6537706851959229,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1032",
+      "article-729",
+      "article-3060"
+    ],
+    "status": "ok",
+    "answer": 13.72,
+    "code": "def solution():\n    from math import erf, exp, log, sqrt\n\n    stock_price = 120.0\n    strike_price = 130.0\n    risk_free_rate = 0.02\n    time_to_maturity = 1.0\n    volatility = 0.35\n\n    d1 = (\n        log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility ** 2) * time_to_maturity\n    ) / (volatility * sqrt(time_to_maturity))\n    d2 = d1 - volatility * sqrt(time_to_maturity)\n\n    normal_cdf = lambda x: 0.5 * (1.0 + erf(x / sqrt(2.0)))\n    call_price = (\n        stock_price * normal_cdf(d1)\n        - strike_price * exp(-risk_free_rate * time_to_maturity) * normal_cdf(d2)\n    )\n\n    return round(call_price, 2)\n"
+  },
+  "digest": "daec2b66f62f4ff6220e0a6490c27a4ce27f443df684e3a5e5a1aaa6c5559e4f"
+}

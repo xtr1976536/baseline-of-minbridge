@@ -1,0 +1,21 @@
+{
+  "identity": "ff5ee3fd4292f0933157e707511942b5e39ea27ac76879128ef05ffdb4680708",
+  "response_digest": "bd22b260c3031d29855c395778866d77076541e6eb16a457c96d9cabe4a7c4d9",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables and values\n    advances = 1200\n    declines = 800\n    prior_19_day_ema = 150\n    prior_39_day_ema = 100\n\n    # Calculate today's EMAs and McClellan Oscillator\n    net_advances = advances - declines\n    ema_19_day = net_advances * 0.10 + prior_19_day_ema * 0.90\n    ema_39_day = net_advances * 0.05 + prior_39_day_ema * 0.95\n    answer = round(ema_19_day - ema_39_day, 2)\n\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5094,
+      "completion_tokens": 198,
+      "total_tokens": 5292,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 44
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

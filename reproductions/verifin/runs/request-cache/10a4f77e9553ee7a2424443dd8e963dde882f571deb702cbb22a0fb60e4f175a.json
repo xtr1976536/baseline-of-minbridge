@@ -1,0 +1,31 @@
+{
+  "request_hash": "10a4f77e9553ee7a2424443dd8e963dde882f571deb702cbb22a0fb60e4f175a",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nHow much does Pfizer expect to pay to spin off Upjohn in the future in USD million?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"expected_future_upjohn_spin_off_payment_usd_millions\",\n  \"facts\": [\n    {\n      \"name\": \"expected_future_upjohn_spin_off_costs\",\n      \"aliases\": [\n        \"expected to pay to spin off Upjohn\",\n        \"future payments related to the Upjohn spin-off\",\n        \"future separation costs\",\n        \"costs associated with the separation of Upjohn\",\n        \"Upjohn separation costs\",\n        \"costs to separate Upjohn\"\n      ],\n      \"period\": \"future as of the reporting date\",\n      \"statement\": \"notes\"\n    }\n  ],\n  \"reason\": \"The question asks for a single reported estimate of Pfizer's future payment related to the Upjohn spin-off, so retrieve the note disclosure describing expected future separation or spin-off costs.\"\n}",
+  "usage": {
+    "prompt_tokens": 4697,
+    "completion_tokens": 301,
+    "total_tokens": 4998,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 127
+    }
+  },
+  "response_id": "resp_0412da9fd3c5170d016aedbd14029087d09f1959f4443f6a9e",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

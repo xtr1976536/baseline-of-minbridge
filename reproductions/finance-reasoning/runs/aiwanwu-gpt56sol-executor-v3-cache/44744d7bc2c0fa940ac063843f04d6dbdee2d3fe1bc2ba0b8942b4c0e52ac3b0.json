@@ -1,0 +1,21 @@
+{
+  "identity": "44744d7bc2c0fa940ac063843f04d6dbdee2d3fe1bc2ba0b8942b4c0e52ac3b0",
+  "response_digest": "63695eeb89cef7011a7c1640746d147c6476621270d8fc645806de522bae132a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    price_changes = [\n        1.2, -0.8, 0.5, 2.3, -1.0, -0.4, 1.8,\n        0.6, -1.5, 3.0, -0.2, -0.9, 2.1, 0.7\n    ]\n    period = 14\n\n    # Do math calculation to get the answer\n    gains = [max(change, 0) for change in price_changes]\n    losses = [abs(min(change, 0)) for change in price_changes]\n\n    average_gain = sum(gains[:period]) / period\n    average_loss = sum(losses[:period]) / period\n\n    if average_loss == 0:\n        rsi = 100.0\n    else:\n        relative_strength = average_gain / average_loss\n        rsi = 100 - (100 / (1 + relative_strength))\n\n    # Return the RSI as a percentage rounded to two decimal places\n    return round(rsi, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5462,
+      "completion_tokens": 356,
+      "total_tokens": 5818,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 112
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

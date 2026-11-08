@@ -1,0 +1,85 @@
+{
+  "time": "2026-11-06T21:18:25+08:00",
+  "execution_protocol": "question-unit-aware-v3",
+  "judge_protocol": "candidate-ids-v2",
+  "scope": "Uniform rules for every one of the 238 original Hard questions",
+  "development_inputs": "Previous failed generated programs, original question unit instructions, standard Python NormalDist documentation, author evaluator formatting behavior, and synthetic tests only.",
+  "gold_values_or_standard_solutions_used_to_adjust_rules": false,
+  "fixes": [
+    "Permit statistics.NormalDist under the existing math-only import policy",
+    "Accept a single finite numeric percent literal only when the original question explicitly requests percentage output",
+    "Preserve displayed percentage magnitude and raw return; never multiply/divide by 100 or match scales against gold"
+  ],
+  "unchanged": [
+    "All query, judge and PoT prompts and structured selector schema",
+    "Model, endpoint, sampling and token parameters",
+    "All questions, contexts, labels, function library and retrieval index",
+    "Program calculations and 0.2% relative-error scoring",
+    "No generation repair, fallback or answer-dependent retries"
+  ],
+  "source": {
+    "__init__.py": "55d978cf02985a9e51b329374551e5feafc35381f3de6e3d546d9dec616a09f9",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "assets.py": "4169c05c1afee9e59e1a8e5ac037ac6717826e4ed318f48b463264e50a12b1ed",
+    "cli.py": "35158daed6d53d38a307a9344139b52225c280d19bf8f5d30e731ff6ef5af02f",
+    "client.py": "a6a5fa71c4a58ec278e16c4139ff1950da27cbab45dc08b6925547815c0334f0",
+    "common.py": "939a5b2272413f1bdafe7b8e553bc8a8db27b5deb8df0fbc11bd479453fe21df",
+    "execution.py": "d327a9e0a553cfb66aec7758c1a11a1a456285f43981ccb09cbf436b4feff422",
+    "metrics.py": "0366114f2d183fe9ece82b7f20dc821bd6c39f2973d4979d87084c4140f48ec4",
+    "prompts.py": "f51509ae70dbff1f8e56741219d113679a61e68130d969ea335b6327f42bc129",
+    "retrieval.py": "37606ad983fbff3e7a926b2312bf29cb14dc649b748ee5d59d0e81c2f102a10a",
+    "runner.py": "c5b497263440ca31f35e89e03a7ce5f8ec096001fc5bc29c269244d14226ddbc",
+    "worker.py": "cb016b159ce70e2bdbaed536b30bd2217aadae793572e50d15f64d69dc5a398e"
+  },
+  "changed_source_files": [
+    "execution.py",
+    "runner.py",
+    "worker.py"
+  ],
+  "asset_lock_sha256": "4c95c98e40d093dd1708a733f7f100719cbc21cf382207c645ccfe59b2fb1c1d",
+  "original_templates_sha256": "8e8cbd67e1ae8785a2cbdf7dfb866b1744ad83f76309cbbca3b31fc6c9e690e8",
+  "index_manifest_sha256": "91008c24b9fa37db80b5aa26cd5d70a33709a23735d16f9ee716c13c1de290f1",
+  "config": {
+    "method": "table5-gpt4o-instructed-function-judge-pot-v1",
+    "data_dir": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\finance_reasoning\\data",
+    "output_dir": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\finance_reasoning\\runs\\aiwanwu-gpt56sol-executor-v3",
+    "cache_dir": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\finance_reasoning\\runs\\aiwanwu-gpt56sol-executor-v3-cache",
+    "example_concurrency": 8,
+    "execution_timeout_seconds": 10,
+    "retriever": {
+      "model": "facebook/contriever-msmarco",
+      "revision": "abe8c1493371369031bcb1e02acb754cf4e162fa",
+      "pooling": "masked_mean",
+      "similarity": "inner_product",
+      "max_length": 512,
+      "batch_size": 16,
+      "cpu_threads": 4,
+      "top_k": 30,
+      "selected_k": 3
+    },
+    "llm": {
+      "model": "gpt-5.6-sol",
+      "base_url": "https://aiwanwu.cc/v1",
+      "base_url_env": "FR_GPT56SOL_BASE_URL",
+      "api_key_env": "FR_GPT56SOL_API_KEY",
+      "concurrency": 8,
+      "requests_per_minute": 30,
+      "timeout_seconds": 180,
+      "retries": 3,
+      "parameters": {
+        "temperature": 1.0,
+        "top_p": 1.0,
+        "max_tokens": 8192
+      }
+    },
+    "backbone_note": "User explicitly requested gpt-5.6-sol on 2026-11-06. Paper used gpt-4o-2024-11-20; do not claim identical-backbone replication.",
+    "judge_protocol": "candidate-ids-v2",
+    "rerun_policy": "Fresh three-stage inference for all 238 questions. Units come only from explicit original question instructions. No previous response reuse, no gold-guided changes, no answer-dependent or format-repair retries.",
+    "execution_protocol": "question-unit-aware-v3"
+  },
+  "tests_passed": 105,
+  "five_old_failures_execution_check": "research/executor_v3_failure_diagnosis.json",
+  "fresh_cache_empty_before_run": true,
+  "fresh_output_empty_before_run": true,
+  "scoring_timing": "Only after all new predictions are saved. No interim accuracy used for changes."
+}

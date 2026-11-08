@@ -1,0 +1,21 @@
+{
+  "identity": "162f802ad8cb1a969acae2d4aeadcdbb56ca07d8ffbc903d35706d935efae13d",
+  "response_digest": "e3ce84cfcf70025fa79f7d0e8526da215a6b7957c3a92ba4c353d6ba597de56f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    asset_returns = [2.5, -1.2, 3.8, 1.7, 4.0]\n    market_returns = [1.8, -0.5, 2.1, 1.3, 3.5]\n\n    # Do math calculation to get the answer\n    asset_mean = sum(asset_returns) / len(asset_returns)\n    market_mean = sum(market_returns) / len(market_returns)\n\n    covariance = sum(\n        (asset - asset_mean) * (market - market_mean)\n        for asset, market in zip(asset_returns, market_returns)\n    )\n\n    market_variance = sum(\n        (market - market_mean) ** 2\n        for market in market_returns\n    )\n\n    beta = covariance / market_variance\n\n    # Return answer rounded to two decimal places\n    return round(beta, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5852,
+      "completion_tokens": 437,
+      "total_tokens": 6289,
+      "prompt_tokens_details": {
+        "cached_tokens": 3943
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 232
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,48 @@
+% Formal method figure (minimal): reconstruct from the filing, then check.
+% Requires: \usepackage{tikz} + libraries below; \usepackage{amsmath, xcolor}.
+% Compile standalone by uncommenting the documentclass block.
+
+% \documentclass[tikz,border=6pt]{standalone}
+% \usepackage{amsmath,xcolor}
+% \begin{document}
+
+\usetikzlibrary{positioning,arrows.meta}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small, >=Latex, node distance=9mm,
+  step/.style={draw, rounded corners=2pt, align=center, inner sep=6pt, minimum height=12mm},
+  flow/.style={-{Latex[length=5pt]}, thick, black!70},
+]
+
+\node[step, fill=black!3] (in) {Given\\ $\langle q,\,F,\,c\rangle$};
+
+\node[step, right=of in, fill=teal!8, draw=teal!45!black] (rec)
+  {reconstruct from $F$\\[2pt] $m^\star=\sum_i w_i\,\nu(\chi_i)$};
+
+\node[step, right=of rec, fill=blue!5, draw=blue!45!black] (chk)
+  {check\\[2pt] $\lvert c-m^\star\rvert\le\tau$};
+
+\node[right=of chk, align=left, font=\footnotesize] (verd)
+  {\textcolor{green!45!black}{$\checkmark$ \textsc{Verified}}\\[3pt]
+   \textcolor{red!55!black}{$\times$ \textsc{Violated}},\ correction $c^\star{=}m^\star$};
+
+\draw[flow] (in) -- (rec);
+\draw[flow] (rec) -- (chk);
+\draw[flow] (chk) -- (verd);
+
+\end{tikzpicture}
+
+\caption{\textbf{Verify by reconstruction.} Given a question $q$, a filing $F$,
+and a model's claimed value $c$, the verifier reconstructs the queried subtotal
+from the filing alone, $m^\star=\sum_i w_i\,\nu(\chi_i)$, using the operand values
+$\nu$ and weights $w_i$ from $F$'s calculation structure, and accepts $c$ iff
+$\lvert c-m^\star\rvert\le\tau$. Since $m^\star$ comes only from $F$,
+\textsc{Verified} certifies $c$ against the filing itself, never the model; on
+\textsc{Violated}, $m^\star$ is returned as the certified correction $c^\star$.
+(If the subtotal cannot be grounded in $F$, the verifier abstains.)}
+\label{fig:formal}
+\end{figure}
+
+% \end{document}

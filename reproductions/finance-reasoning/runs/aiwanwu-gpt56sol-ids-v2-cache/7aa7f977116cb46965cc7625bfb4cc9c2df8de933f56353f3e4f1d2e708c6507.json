@@ -1,0 +1,21 @@
+{
+  "identity": "7aa7f977116cb46965cc7625bfb4cc9c2df8de933f56353f3e4f1d2e708c6507",
+  "response_digest": "26febdce6532f816d4b0edc8775696f414746053c08d95cae629c1a65de102ae",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    trades = [\n        {\"trade_price\": 25.20, \"bid_price\": 25.17, \"ask_price\": 25.20},\n        {\"trade_price\": 25.22, \"bid_price\": 25.19, \"ask_price\": 25.22},\n        {\"trade_price\": 25.27, \"bid_price\": 25.22, \"ask_price\": 25.26},\n    ]\n\n    # Do math calculation to get the answer\n    effective_spreads = []\n    for trade in trades:\n        midpoint = (trade[\"bid_price\"] + trade[\"ask_price\"]) / 2\n        effective_spread = 2 * abs(trade[\"trade_price\"] - midpoint)\n        effective_spreads.append(effective_spread)\n\n    average_effective_spread = sum(effective_spreads) / len(effective_spreads)\n    answer = round(average_effective_spread, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 4777,
+      "completion_tokens": 358,
+      "total_tokens": 5135,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 135
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2207",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the standard deviation (volatility) of a two-asset portfolio using asset weights, individual return standard deviations, and the pairwise correlation or covariance, with the result expressed as a percentage?",
+        "usage": {
+          "prompt_tokens": 5044,
+          "completion_tokens": 45,
+          "total_tokens": 5089
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15419,
+          "completion_tokens": 613,
+          "total_tokens": 16032,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    weight_1 = 0.30\n    weight_2 = 0.70\n    std_dev_1 = 0.12\n    std_dev_2 = 0.25\n    correlation = 0.20\n\n    # Do math calculation to get the answer\n    covariance = correlation * std_dev_1 * std_dev_2\n    portfolio_variance = (\n        weight_1**2 * std_dev_1**2\n        + weight_2**2 * std_dev_2**2\n        + 2 * weight_1 * weight_2 * covariance\n    )\n    portfolio_std_dev_percentage = portfolio_variance**0.5 * 100\n    answer = round(portfolio_std_dev_percentage, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5935,
+          "completion_tokens": 275,
+          "total_tokens": 6210,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 88
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1292",
+        "score": 1.880237340927124
+      },
+      {
+        "function_id": "article-1294",
+        "score": 1.7790836095809937
+      },
+      {
+        "function_id": "article-922",
+        "score": 1.7286831140518188
+      },
+      {
+        "function_id": "article-1590",
+        "score": 1.7282713651657104
+      },
+      {
+        "function_id": "article-1013",
+        "score": 1.7131824493408203
+      },
+      {
+        "function_id": "article-1580",
+        "score": 1.7040410041809082
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.6934010982513428
+      },
+      {
+        "function_id": "article-325",
+        "score": 1.68831205368042
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.688236951828003
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.658769130706787
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.6493792533874512
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.6446239948272705
+      },
+      {
+        "function_id": "article-264",
+        "score": 1.6412259340286255
+      },
+      {
+        "function_id": "article-213",
+        "score": 1.628422498703003
+      },
+      {
+        "function_id": "article-921",
+        "score": 1.6250121593475342
+      },
+      {
+        "function_id": "article-1570",
+        "score": 1.6248388290405273
+      },
+      {
+        "function_id": "article-1289",
+        "score": 1.6034067869186401
+      },
+      {
+        "function_id": "article-2760",
+        "score": 1.5975487232208252
+      },
+      {
+        "function_id": "article-61",
+        "score": 1.5862380266189575
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.5857796669006348
+      },
+      {
+        "function_id": "article-1925",
+        "score": 1.5831279754638672
+      },
+      {
+        "function_id": "article-1014",
+        "score": 1.5754215717315674
+      },
+      {
+        "function_id": "article-326",
+        "score": 1.574519395828247
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.5734703540802002
+      },
+      {
+        "function_id": "article-1978",
+        "score": 1.5719594955444336
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.569507122039795
+      },
+      {
+        "function_id": "article-2414",
+        "score": 1.5636309385299683
+      },
+      {
+        "function_id": "article-1035",
+        "score": 1.5578186511993408
+      },
+      {
+        "function_id": "article-2783",
+        "score": 1.5533761978149414
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.5517525672912598
+      }
+    ],
+    "selected_ids": [
+      "article-1292",
+      "article-1294",
+      "article-922"
+    ],
+    "status": "ok",
+    "answer": 18.56,
+    "code": "def solution():\n    # Define variables name and value\n    weight_1 = 0.30\n    weight_2 = 0.70\n    std_dev_1 = 0.12\n    std_dev_2 = 0.25\n    correlation = 0.20\n\n    # Do math calculation to get the answer\n    covariance = correlation * std_dev_1 * std_dev_2\n    portfolio_variance = (\n        weight_1**2 * std_dev_1**2\n        + weight_2**2 * std_dev_2**2\n        + 2 * weight_1 * weight_2 * covariance\n    )\n    portfolio_std_dev_percentage = portfolio_variance**0.5 * 100\n    answer = round(portfolio_std_dev_percentage, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "97da9fafea2bed67787cbcf67b6b055a7c8871425302fea7868d7681fc4223c5"
+}

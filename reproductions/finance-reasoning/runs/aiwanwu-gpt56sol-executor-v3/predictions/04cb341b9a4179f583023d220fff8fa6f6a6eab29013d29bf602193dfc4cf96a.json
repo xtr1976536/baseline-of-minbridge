@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2080",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates cumulative intraday Volume-Weighted Average Price (VWAP) across sequential trading sessions using high, low, and closing prices with volume weights, returning the final session’s VWAP rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5142,
+          "completion_tokens": 48,
+          "total_tokens": 5190,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C16\"]}",
+        "usage": {
+          "prompt_tokens": 16038,
+          "completion_tokens": 160,
+          "total_tokens": 16198,
+          "completion_tokens_details": {
+            "reasoning_tokens": 136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    high_prices = [150, 152, 153]\n    low_prices = [145, 148, 149]\n    closing_prices = [148, 150, 151]\n    volumes = [2000, 3500, 5000]\n\n    typical_prices = [\n        (high + low + close) / 3\n        for high, low, close in zip(high_prices, low_prices, closing_prices)\n    ]\n    total_value = sum(price * volume for price, volume in zip(typical_prices, volumes))\n    total_volume = sum(volumes)\n    answer = round(total_value / total_volume, 2)\n\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5796,
+          "completion_tokens": 210,
+          "total_tokens": 6006,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 60
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-334",
+        "score": 2.111692428588867,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-340",
+        "score": 2.05391526222229,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.7470815181732178,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.723125696182251,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.680506706237793,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.663923978805542,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.6629613637924194,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.6464985609054565,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1619",
+        "score": 1.6185117959976196,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.615653395652771,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.6081528663635254,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.5994638204574585,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2145",
+        "score": 1.595910906791687,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.592470407485962,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-333",
+        "score": 1.5920683145523071,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.5839048624038696,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5804468393325806,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-754",
+        "score": 1.5527381896972656,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.547001838684082,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-755",
+        "score": 1.5455849170684814,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1329",
+        "score": 1.5449453592300415,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.5385541915893555,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.5374680757522583,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-752",
+        "score": 1.5371015071868896,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1154",
+        "score": 1.5343151092529297,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2466",
+        "score": 1.530489444732666,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.5251641273498535,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1805",
+        "score": 1.523752212524414,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.518044114112854,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.509812355041504,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-334",
+      "article-340",
+      "article-940"
+    ],
+    "status": "ok",
+    "answer": 150.03,
+    "code": "def solution():\n    high_prices = [150, 152, 153]\n    low_prices = [145, 148, 149]\n    closing_prices = [148, 150, 151]\n    volumes = [2000, 3500, 5000]\n\n    typical_prices = [\n        (high + low + close) / 3\n        for high, low, close in zip(high_prices, low_prices, closing_prices)\n    ]\n    total_value = sum(price * volume for price, volume in zip(typical_prices, volumes))\n    total_volume = sum(volumes)\n    answer = round(total_value / total_volume, 2)\n\n    return answer\n"
+  },
+  "digest": "422c6437b1520ddf38f99ad659e91da05e5958532f79468064d6d9345fb4ebdf"
+}

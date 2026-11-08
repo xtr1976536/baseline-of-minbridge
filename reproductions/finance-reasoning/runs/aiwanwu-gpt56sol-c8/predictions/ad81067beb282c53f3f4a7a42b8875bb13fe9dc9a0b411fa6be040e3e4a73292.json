@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2201",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Pearson correlation coefficient between two equal-length series of paired monthly stock prices to measure the strength and direction of their linear relationship, returning a value that can be rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5104,
+          "completion_tokens": 44,
+          "total_tokens": 5148,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15205,
+          "completion_tokens": 975,
+          "total_tokens": 16180,
+          "completion_tokens_details": {
+            "reasoning_tokens": 878
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    company_a_prices = [120, 125, 130, 128, 135, 138, 140, 142, 145, 147, 150, 152]\n    company_b_prices = [100, 105, 110, 107, 112, 115, 118, 120, 123, 125, 130, 132]\n\n    # Do math calculation to get the answer\n    n = len(company_a_prices)\n    sum_a = sum(company_a_prices)\n    sum_b = sum(company_b_prices)\n    sum_ab = sum(a * b for a, b in zip(company_a_prices, company_b_prices))\n    sum_a_squared = sum(a ** 2 for a in company_a_prices)\n    sum_b_squared = sum(b ** 2 for b in company_b_prices)\n\n    numerator = n * sum_ab - sum_a * sum_b\n    denominator = (\n        (n * sum_a_squared - sum_a ** 2)\n        * (n * sum_b_squared - sum_b ** 2)\n    ) ** 0.5\n\n    correlation_coefficient = numerator / denominator\n    answer = round(correlation_coefficient, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 6053,
+          "completion_tokens": 506,
+          "total_tokens": 6559,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 226
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-176",
+        "score": 1.830363392829895
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.7930893898010254
+      },
+      {
+        "function_id": "article-1960",
+        "score": 1.7589908838272095
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.6747807264328003
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.5865534543991089
+      },
+      {
+        "function_id": "article-2873",
+        "score": 1.5761680603027344
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.5736907720565796
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.5434809923171997
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.5264955759048462
+      },
+      {
+        "function_id": "article-1587",
+        "score": 1.526390790939331
+      },
+      {
+        "function_id": "article-1335",
+        "score": 1.4975007772445679
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.4957609176635742
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.4896385669708252
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.4881346225738525
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.4752519130706787
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.4750598669052124
+      },
+      {
+        "function_id": "article-229",
+        "score": 1.4732754230499268
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.4732146263122559
+      },
+      {
+        "function_id": "article-717",
+        "score": 1.4693284034729004
+      },
+      {
+        "function_id": "article-2652",
+        "score": 1.4646896123886108
+      },
+      {
+        "function_id": "article-3065",
+        "score": 1.4640635251998901
+      },
+      {
+        "function_id": "article-1043",
+        "score": 1.4629795551300049
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.4624967575073242
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.4604839086532593
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.4593842029571533
+      },
+      {
+        "function_id": "article-213",
+        "score": 1.4549758434295654
+      },
+      {
+        "function_id": "article-857",
+        "score": 1.451606035232544
+      },
+      {
+        "function_id": "article-1130",
+        "score": 1.4514775276184082
+      },
+      {
+        "function_id": "article-2754",
+        "score": 1.4504741430282593
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.4497053623199463
+      }
+    ],
+    "selected_ids": [
+      "article-176",
+      "article-177",
+      "article-1960"
+    ],
+    "status": "ok",
+    "answer": 0.99,
+    "code": "def solution():\n    # Define variables name and value\n    company_a_prices = [120, 125, 130, 128, 135, 138, 140, 142, 145, 147, 150, 152]\n    company_b_prices = [100, 105, 110, 107, 112, 115, 118, 120, 123, 125, 130, 132]\n\n    # Do math calculation to get the answer\n    n = len(company_a_prices)\n    sum_a = sum(company_a_prices)\n    sum_b = sum(company_b_prices)\n    sum_ab = sum(a * b for a, b in zip(company_a_prices, company_b_prices))\n    sum_a_squared = sum(a ** 2 for a in company_a_prices)\n    sum_b_squared = sum(b ** 2 for b in company_b_prices)\n\n    numerator = n * sum_ab - sum_a * sum_b\n    denominator = (\n        (n * sum_a_squared - sum_a ** 2)\n        * (n * sum_b_squared - sum_b ** 2)\n    ) ** 0.5\n\n    correlation_coefficient = numerator / denominator\n    answer = round(correlation_coefficient, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "ad606bca60f828d295d4ac8ef7a5c13a8b2f6f421de30708f5d291ca1a728ac5"
+}

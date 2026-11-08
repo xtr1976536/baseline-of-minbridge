@@ -1,0 +1,21 @@
+{
+  "identity": "bf88bf723a6d5c8afb1a7789a159e821d8319d89a7bbd5ccff141023948e7437",
+  "response_digest": "25504d06199eb0649bbb535783a4002069bee17396c3efffe3eb5b03f8e21e80",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 20000\n    annual_interest_rate = 0.065\n    loan_term_years = 5\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n\n    total_interest = monthly_payment * total_payments - principal\n\n    # Return answer rounded to the nearest dollar\n    return round(total_interest)\n```",
+    "usage": {
+      "prompt_tokens": 5494,
+      "completion_tokens": 298,
+      "total_tokens": 5792,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 155
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

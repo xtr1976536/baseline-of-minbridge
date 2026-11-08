@@ -1,0 +1,21 @@
+{
+  "identity": "234016d2b29ac878572fad7e8d1f5de2c2e774890b736b4b9890a2a785b78c28",
+  "response_digest": "b92d68e60971c3060281d6e742e7a1f86baf5980b98f32539af7bb3dfca9ba32",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    principal = 1_300_000_000\n    pre_tax_profit_rate = 0.07\n    operating_cost = 6_000_000\n    deposit_interest_rate = 0.05\n    expected_loss_rate = 0.003\n    unexpected_loss_rate = 0.08\n    risk_free_rate = 0.015\n    tax_rate = 0.25\n\n    # Calculate portfolio revenue and funding cost\n    revenue = principal * pre_tax_profit_rate\n    funding_cost = principal * deposit_interest_rate\n\n    # Calculate expected loss and economic capital\n    expected_loss = principal * expected_loss_rate\n    capital = principal * unexpected_loss_rate\n\n    # Calculate after-tax risk-adjusted earnings\n    pre_tax_risk_adjusted_earnings = (\n        revenue\n        - operating_cost\n        - funding_cost\n        - expected_loss\n    )\n    after_tax_earnings = pre_tax_risk_adjusted_earnings * (1 - tax_rate)\n\n    # Add risk-free income earned on economic capital\n    income_from_capital = capital * risk_free_rate\n\n    # Calculate RAROC as a percentage\n    raroc = (\n        (after_tax_earnings + income_from_capital) / capital\n    ) * 100\n\n    # Return the answer rounded to three decimal places\n    return round(raroc, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5108,
+      "completion_tokens": 779,
+      "total_tokens": 5887,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 475
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

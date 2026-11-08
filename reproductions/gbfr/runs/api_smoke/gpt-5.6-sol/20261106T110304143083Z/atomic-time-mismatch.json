@@ -1,0 +1,73 @@
+{
+  "case": {
+    "id": "atomic-time-mismatch",
+    "question": "What was Company A's Stock Price in 2024, in USD?",
+    "context": "Company A's Stock Price in 2023 was USD 25. No stock price for any other year is provided.",
+    "expected": "abstained"
+  },
+  "prediction": {
+    "status": "abstained",
+    "value": null,
+    "meta": {},
+    "precision": "unknown",
+    "trace": {
+      "events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "reasoning_type": "DirectRetrieval",
+            "operator": "sum",
+            "subgoals": [
+              {
+                "metric": "Stock Price",
+                "constraints": {
+                  "temporal_scope": "2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": "USD",
+                    "scale": "unknown",
+                    "unit": "unknown"
+                  }
+                }
+              }
+            ],
+            "precision": "unknown"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Stock Price",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "unknown",
+                "unit": "unknown"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Stock Price for Company A in 2024 is not directly stated; the context only provides a stock price for 2023."
+          }
+        }
+      ],
+      "subgoal_results": [
+        {
+          "value": null,
+          "meta": {},
+          "paths": [],
+          "reason": "Stock Price for Company A in 2024 is not directly stated; the context only provides a stock price for 2023."
+        }
+      ]
+    },
+    "reason": "At least one required subgoal could not be grounded"
+  },
+  "passed": true
+}

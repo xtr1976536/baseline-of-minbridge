@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2158",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a stock’s continuously compounded implied dividend yield from European call and put prices using put-call parity, given the spot price, strike price, continuously compounded risk-free rate, and common time to maturity?",
+        "usage": {
+          "prompt_tokens": 5016,
+          "completion_tokens": 46,
+          "total_tokens": 5062,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[]}",
+        "usage": {
+          "prompt_tokens": 14533,
+          "completion_tokens": 164,
+          "total_tokens": 14697,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 149
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    import math\n\n    S = 85\n    K = 90\n    r = 0.05\n    T = 5\n    c = 10\n    p = 15\n\n    # Do math calculation to get the answer\n    discounted_strike = K * math.exp(-r * T)\n    dividend_discount_factor = (c - p + discounted_strike) / S\n    implied_dividend_yield = -math.log(dividend_discount_factor) / T\n    answer = round(implied_dividend_yield * 100, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 4683,
+          "completion_tokens": 240,
+          "total_tokens": 4923,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 92
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1408",
+        "score": 1.8355669975280762,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3060",
+        "score": 1.730087161064148,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-606",
+        "score": 1.7152771949768066,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1033",
+        "score": 1.6945940256118774,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1032",
+        "score": 1.6896555423736572,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.685994267463684,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-86",
+        "score": 1.6846438646316528,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1761",
+        "score": 1.682974100112915,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.676094889640808,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.6725927591323853,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1754",
+        "score": 1.659617304801941,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1328",
+        "score": 1.6458876132965088,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.644188404083252,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-3130",
+        "score": 1.6428951025009155,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-935",
+        "score": 1.6418569087982178,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-15",
+        "score": 1.6392842531204224,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-605",
+        "score": 1.6388554573059082,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-13",
+        "score": 1.6348869800567627,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1768",
+        "score": 1.6310770511627197,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-3061",
+        "score": 1.627776861190796,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-758",
+        "score": 1.622917652130127,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1755",
+        "score": 1.6212784051895142,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-729",
+        "score": 1.6147308349609375,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1516",
+        "score": 1.6135382652282715,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1240",
+        "score": 1.6115658283233643,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.6098504066467285,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1301",
+        "score": 1.6085669994354248,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1238",
+        "score": 1.6033567190170288,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2649",
+        "score": 1.5976389646530151,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2146",
+        "score": 1.592409610748291,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [],
+    "status": "ok",
+    "answer": 5.337,
+    "code": "def solution():\n    # Define variables name and value\n    import math\n\n    S = 85\n    K = 90\n    r = 0.05\n    T = 5\n    c = 10\n    p = 15\n\n    # Do math calculation to get the answer\n    discounted_strike = K * math.exp(-r * T)\n    dividend_discount_factor = (c - p + discounted_strike) / S\n    implied_dividend_yield = -math.log(dividend_discount_factor) / T\n    answer = round(implied_dividend_yield * 100, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "74c5a01af9e0e98e19dad1e739fd4a8e8088cc3d267e23d91e89cc803c814e17"
+}

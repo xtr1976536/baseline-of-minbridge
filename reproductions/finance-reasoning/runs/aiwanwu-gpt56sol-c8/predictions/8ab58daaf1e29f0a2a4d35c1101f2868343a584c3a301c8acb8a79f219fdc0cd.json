@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2232",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Vortex Indicator positive line (VI+) from high, low, and close price series using a configurable lookback length, including rolling positive and true-range movement sums, and returns the latest value rounded to four decimal places?",
+        "usage": {
+          "prompt_tokens": 5206,
+          "completion_tokens": 52,
+          "total_tokens": 5258,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 17898,
+          "completion_tokens": 254,
+          "total_tokens": 18152,
+          "prompt_tokens_details": {
+            "cached_tokens": 17664
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 157
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    highs = [120, 122, 125, 123, 126, 124, 127, 129, 130, 128, 131, 133, 134, 135, 136, 137, 138, 139]\n    lows = [118, 120, 121, 119, 123, 122, 124, 126, 127, 126, 128, 130, 131, 132, 133, 134, 135, 136]\n    closes = [119, 121, 123, 120, 125, 123, 126, 128, 129, 127, 130, 132, 133, 134, 135, 136, 137, 138]\n    parameter_length = 14\n\n    true_ranges = []\n    vm_plus = []\n\n    for i in range(1, len(highs)):\n        true_range = max(\n            highs[i] - lows[i],\n            abs(highs[i] - closes[i - 1]),\n            abs(lows[i] - closes[i - 1])\n        )\n        true_ranges.append(true_range)\n        vm_plus.append(abs(highs[i] - lows[i - 1]))\n\n    # Calculate the final VI+ value using the last 14 periods\n    sum_tr = sum(true_ranges[-parameter_length:])\n    sum_vm_plus = sum(vm_plus[-parameter_length:])\n    vi_plus = sum_vm_plus / sum_tr\n\n    # Return the answer rounded to four decimal places\n    return round(vi_plus, 4)\n```",
+        "usage": {
+          "prompt_tokens": 5449,
+          "completion_tokens": 1235,
+          "total_tokens": 6684,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 879
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-339",
+        "score": 2.191103219985962
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.667210578918457
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.6617028713226318
+      },
+      {
+        "function_id": "article-509",
+        "score": 1.6580820083618164
+      },
+      {
+        "function_id": "article-2876",
+        "score": 1.6062438488006592
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.571374773979187
+      },
+      {
+        "function_id": "article-345",
+        "score": 1.5691921710968018
+      },
+      {
+        "function_id": "article-350",
+        "score": 1.5666868686676025
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.565629005432129
+      },
+      {
+        "function_id": "article-510",
+        "score": 1.5644512176513672
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.5570390224456787
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.5475049018859863
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.5447404384613037
+      },
+      {
+        "function_id": "article-1038",
+        "score": 1.54262113571167
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.5399821996688843
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.53580904006958
+      },
+      {
+        "function_id": "article-1285",
+        "score": 1.533168077468872
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.532629370689392
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.5323566198349
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.5243780612945557
+      },
+      {
+        "function_id": "article-2355",
+        "score": 1.5239787101745605
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.5218658447265625
+      },
+      {
+        "function_id": "article-1435",
+        "score": 1.5216317176818848
+      },
+      {
+        "function_id": "article-2402",
+        "score": 1.5202157497406006
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.5179625749588013
+      },
+      {
+        "function_id": "article-2356",
+        "score": 1.5145013332366943
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.5133150815963745
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.5111714601516724
+      },
+      {
+        "function_id": "article-347",
+        "score": 1.5044450759887695
+      },
+      {
+        "function_id": "article-851",
+        "score": 1.5013799667358398
+      }
+    ],
+    "selected_ids": [
+      "article-339"
+    ],
+    "status": "ok",
+    "answer": 1.2128,
+    "code": "def solution():\n    # Define variables name and value\n    highs = [120, 122, 125, 123, 126, 124, 127, 129, 130, 128, 131, 133, 134, 135, 136, 137, 138, 139]\n    lows = [118, 120, 121, 119, 123, 122, 124, 126, 127, 126, 128, 130, 131, 132, 133, 134, 135, 136]\n    closes = [119, 121, 123, 120, 125, 123, 126, 128, 129, 127, 130, 132, 133, 134, 135, 136, 137, 138]\n    parameter_length = 14\n\n    true_ranges = []\n    vm_plus = []\n\n    for i in range(1, len(highs)):\n        true_range = max(\n            highs[i] - lows[i],\n            abs(highs[i] - closes[i - 1]),\n            abs(lows[i] - closes[i - 1])\n        )\n        true_ranges.append(true_range)\n        vm_plus.append(abs(highs[i] - lows[i - 1]))\n\n    # Calculate the final VI+ value using the last 14 periods\n    sum_tr = sum(true_ranges[-parameter_length:])\n    sum_vm_plus = sum(vm_plus[-parameter_length:])\n    vi_plus = sum_vm_plus / sum_tr\n\n    # Return the answer rounded to four decimal places\n    return round(vi_plus, 4)\n"
+  },
+  "digest": "98b786a2bd93f237dcfb7762d32715985b686cc90f09f5ddddeedac8452ed541"
+}

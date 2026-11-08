@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:other_liabilities_noncurrent_fy2023,long_term_notes_and_loans_fy2023,accrued_income_taxes_noncurrent_fy2023)

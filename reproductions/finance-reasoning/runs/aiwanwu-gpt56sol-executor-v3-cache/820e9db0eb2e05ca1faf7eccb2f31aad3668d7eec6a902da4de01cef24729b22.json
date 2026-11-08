@@ -1,0 +1,18 @@
+{
+  "identity": "820e9db0eb2e05ca1faf7eccb2f31aad3668d7eec6a902da4de01cef24729b22",
+  "response_digest": "2f88cf0c00916e05095f0dd4ea6e5f78c7a27cb4c2a1402ac84d288f12926df7",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    income = 120000\n    tax_brackets = [\n        (10000, 0.00),\n        (40000, 0.10),\n        (90000, 0.20),\n        (float(\"inf\"), 0.30),\n    ]\n\n    # Do math calculation to get the answer\n    total_tax = 0\n    previous_limit = 0\n\n    for limit, rate in tax_brackets:\n        taxable_income = min(income, limit) - previous_limit\n        if taxable_income > 0:\n            total_tax += taxable_income * rate\n        if income <= limit:\n            break\n        previous_limit = limit\n\n    effective_tax_rate = (total_tax / income) * 100\n    answer = round(effective_tax_rate, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5885,
+      "completion_tokens": 279,
+      "total_tokens": 6164,
+      "completion_tokens_details": {
+        "reasoning_tokens": 86
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

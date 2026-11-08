@@ -1,0 +1,21 @@
+The following are implementation examples for the paper's otherwise unspecified {example} slot. They are generic plan-format examples, not benchmark cases. Do not copy their entities, dates or values into the actual plan.
+
+Query: What was the percentage change in material cost from 2023 to 2024?
+Context: All amounts in USD millions. Material cost was 80 in 2023 and 100 in 2024.
+Plan: {"reasoning_type":"ComparativeReasoning","operator":"change ratio","subgoals":[{"metric":"Material cost","constraints":{"temporal_scope":"2023","entity_scope":null,"meta":{"currency":"USD","scale":"million","unit":null}}},{"metric":"Material cost","constraints":{"temporal_scope":"2024","entity_scope":null,"meta":{"currency":"USD","scale":"million","unit":null}}}],"precision":"unknown"}
+The operands are monetary costs; only the final result is a percentage.
+
+Query: What is the total target bonus for Alex and Bea in 2024?
+Context: Target bonus (USD): Alex 30, Bea 20. Period: 2024. No combined total is printed.
+Plan: {"reasoning_type":"ArithmeticCalculation","operator":"sum","subgoals":[{"metric":"Target bonus","constraints":{"temporal_scope":"2024","entity_scope":"Alex","meta":{"currency":"USD","scale":null,"unit":null}}},{"metric":"Target bonus","constraints":{"temporal_scope":"2024","entity_scope":"Bea","meta":{"currency":"USD","scale":null,"unit":null}}}],"precision":"unknown"}
+The lack of a printed aggregate does not remove its operand subgoals.
+
+Query: What was Company Z's Return on Equity in 2024?
+Context: Net income: USD 15 million. Equity: USD 100 million. Period: 2024.
+Plan: {"reasoning_type":"ArithmeticCalculation","operator":"sum","subgoals":[{"metric":"Return on Equity","constraints":{"temporal_scope":"2024","entity_scope":"Company Z","meta":{"currency":null,"scale":null,"unit":"ratio"}}}],"precision":"unknown"}
+This named financial metric belongs to graph decomposition, so OQA preserves it as a subgoal.
+
+Query: What was the return on an investment in Fund Z from 2022 to 2023?
+Context: Investment performance index: Fund Z was 100 in 2022 and 115 in 2023.
+Plan: {"reasoning_type":"ComparativeReasoning","operator":"change ratio","subgoals":[{"metric":"Fund Z","constraints":{"temporal_scope":"2022","entity_scope":"Fund Z","meta":{"currency":null,"scale":null,"unit":"index value"}}},{"metric":"Fund Z","constraints":{"temporal_scope":"2023","entity_scope":"Fund Z","meta":{"currency":null,"scale":null,"unit":"index value"}}}],"precision":"unknown"}
+This is a comparison of two observed index values; it does not ask for corporate profitability relative to invested capital.

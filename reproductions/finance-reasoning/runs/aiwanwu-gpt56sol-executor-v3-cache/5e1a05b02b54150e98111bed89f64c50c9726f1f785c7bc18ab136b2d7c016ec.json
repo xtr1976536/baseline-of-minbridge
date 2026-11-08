@@ -1,0 +1,18 @@
+{
+  "identity": "5e1a05b02b54150e98111bed89f64c50c9726f1f785c7bc18ab136b2d7c016ec",
+  "response_digest": "4784d76482eb80e6fe63ff3d7124fe2404b51a2f8b6e7df535d0b1dd9b65a84f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 1_500_000\n    preferred_stock_par_value = 2_000_000\n    preferred_dividend_rate = 0.07\n    bond_par_value = 10_000_000\n    bond_coupon_rate = 0.04\n    tax_rate = 0.30\n    common_shares = 1_000_000\n    convertible_bond_shares = 300_000\n\n    preferred_dividends = preferred_stock_par_value * preferred_dividend_rate\n    after_tax_interest_saved = (\n        bond_par_value * bond_coupon_rate * (1 - tax_rate)\n    )\n\n    diluted_income = (\n        net_income\n        - preferred_dividends\n        + after_tax_interest_saved\n    )\n    diluted_shares = common_shares + convertible_bond_shares\n\n    diluted_eps = diluted_income / diluted_shares\n\n    # Return the answer rounded to three decimal places\n    return round(diluted_eps, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5725,
+      "completion_tokens": 333,
+      "total_tokens": 6058,
+      "completion_tokens_details": {
+        "reasoning_tokens": 109
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

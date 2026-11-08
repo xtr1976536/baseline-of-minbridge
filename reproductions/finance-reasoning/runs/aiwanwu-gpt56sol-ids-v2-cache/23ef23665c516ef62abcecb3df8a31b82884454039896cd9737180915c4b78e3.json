@@ -1,0 +1,18 @@
+{
+  "identity": "23ef23665c516ef62abcecb3df8a31b82884454039896cd9737180915c4b78e3",
+  "response_digest": "6f1ae0ea00db350cf97f3b33391d1a14593b4226405f132415f495cb09623385",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    advances = 1200\n    declines = 800\n    prior_19_day_ema = 150\n    prior_39_day_ema = 100\n\n    # Do math calculation to get the answer\n    net_advances = advances - declines\n    ema_19_day = (net_advances * 0.10) + (prior_19_day_ema * 0.90)\n    ema_39_day = (net_advances * 0.05) + (prior_39_day_ema * 0.95)\n    mcclellan_oscillator = ema_19_day - ema_39_day\n    answer = round(mcclellan_oscillator, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5094,
+      "completion_tokens": 178,
+      "total_tokens": 5272,
+      "prompt_tokens_details": {
+        "cached_tokens": 3405
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "reviewer": "AI coding agent, not the paper authors or a human annotation panel",
+  "stage": "After the frozen full run; no feedback to the model, no prediction/scoring/inference edits.",
+  "journal_sha256": "6ac15bb07aea6590008062a76a6f96335bf7d25f6b59d3c00046e09c4b4cee36",
+  "existing_35_review_reused": {
+    "path": "runs\\validation35-v1\\response_review.json",
+    "sha256": "cb706518442cf6f52ac093673bfd96a6556d306c8cdb7f44172ba210b6b98e2e"
+  },
+  "new32_initial_api_outputs_reviewed": true,
+  "new32_status_counts": {
+    "ABSTAIN": 16,
+    "VERIFIED": 13,
+    "VIOLATED": 3
+  },
+  "new13_accepted_claims_reviewed_against_question_reference_and_bound_facts": true,
+  "all45_decisions_have_separate_fact_arithmetic_and_smt_replay": true,
+  "diagnostics": [
+    {
+      "id": "financebench_id_01346",
+      "category": "semantic_unit_error_in_unresolved_rejection",
+      "bindings_unit": "percent",
+      "bound_tax_rates": [
+        "20.2",
+        "22.9"
+      ],
+      "difference_percentage_points": "2.7",
+      "frozen_formula": "(effective_tax_rate_2022 - effective_tax_rate_2021) * 100",
+      "formula_evaluates_to": "270",
+      "candidate_claim": "2.7",
+      "finding": "Both operands are already percentage points, so multiplying their difference by 100 is a duplicate conversion. The candidate difference matches bound facts, but the two-rate narrative reference stays automatically unresolved. Do not count this case as TR or infer no semantic false rejections from FR=0.",
+      "action_this_run": "Disclosed only; original VIOLATED and unresolved correctness are unchanged."
+    },
+    {
+      "id": "financebench_id_04784",
+      "category": "output_format_ingestion_failure_counted_as_abstention",
+      "cache_path": "runs\\request-cache\\5c86dbf14c82321aa519532b58a457fb72f6fa4f3b1ea7bd56ab8779d8714f33.json",
+      "cache_sha256": "c395a4376d626382e493bd26d6ee060269ae032184751441691a7934d8155d03",
+      "request_hash": "5c86dbf14c82321aa519532b58a457fb72f6fa4f3b1ea7bd56ab8779d8714f33",
+      "raw_api_text": "FY2019 margin: 21,957 / 510,329 = 4.3%; FY2018 margin: 20,437 / 495,761 = 4.1%; change: **0.2 percentage points**.",
+      "parser_failure": "no JSON object in answer",
+      "finding": "The response has a readable 0.2 percentage-point final value but violates the requested JSON wrapper. It was not an empty API response. The frozen parser discarded it before verification.",
+      "action_this_run": "No retry, response repair, fabricated prediction, or retrospective conversion to VERIFIED."
+    },
+    {
+      "id": "financebench_id_06741",
+      "category": "unresolved_DA_binding",
+      "frozen_status": "ABSTAIN",
+      "reason": "missing_or_ambiguous_filing_fact:depreciation_amortization_y1",
+      "candidate": "6.3%",
+      "reference": "6.2%",
+      "finding": "FY2018 D&A was not established; a valid source binding is required before testing the candidate. A rejection would also be coverage, but no ungrounded decision is added."
+    },
+    {
+      "id": "financebench_id_10499",
+      "category": "non_material_explanation_year_order",
+      "finding": "The answer lists 2721 and 2667 in the opposite order from the bound FY2018/FY2019 inventory pair. Their symmetric mean and final ratio are unchanged; numeric correctness does not imply every explanatory year assignment is exact."
+    },
+    {
+      "id": "financebench_id_10130",
+      "category": "correct_rejection_of_bad_arithmetic",
+      "finding": "The stated DPO operands yield 63.86 days, while the candidate concludes 62.61 days."
+    },
+    {
+      "id": "financebench_id_03849",
+      "category": "correct_rejection_of_bad_arithmetic",
+      "finding": "The stated three annual capex/revenue ratios round to 7.9%, while the candidate concludes 7.7%."
+    }
+  ],
+  "eight_scoring_disagreements_are_rounding_display_differences": true,
+  "local_rounding_policy_not_author_official_numeric_threshold": true,
+  "references_and_all_67_ids_unchanged": true,
+  "new_model_calls_for_review": 0,
+  "caution": "Proof replay checks the instantiated arithmetic, not financial semantic correctness. Structured-scoring zero FA/FR must not hide the unresolved tax unit error or the JSON ingestion failure."
+}

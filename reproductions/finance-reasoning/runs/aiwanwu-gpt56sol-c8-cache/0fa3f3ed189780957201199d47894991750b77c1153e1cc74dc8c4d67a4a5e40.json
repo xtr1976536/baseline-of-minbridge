@@ -1,0 +1,21 @@
+{
+  "identity": "0fa3f3ed189780957201199d47894991750b77c1153e1cc74dc8c4d67a4a5e40",
+  "response_digest": "85ca8b001a4b1858ba2a2f8b7b60529c7808a75bb7ac1cc53849b04659bf13ec",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 250000.0\n    annual_interest_rate = 0.0375\n    loan_term_years = 30\n    months_in_first_year = 12\n\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n\n    # Calculate the principal portion of each payment during the first 12 months\n    remaining_balance = principal\n    total_principal_paid = 0.0\n\n    for _ in range(months_in_first_year):\n        interest_payment = remaining_balance * monthly_interest_rate\n        principal_payment = monthly_payment - interest_payment\n        total_principal_paid += principal_payment\n        remaining_balance -= principal_payment\n\n    # Return the total principal paid, rounded to the nearest dollar\n    return round(total_principal_paid)\n```",
+    "usage": {
+      "prompt_tokens": 6007,
+      "completion_tokens": 1190,
+      "total_tokens": 7197,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 971
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2134",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annual z-spread by solving for the constant spread added to each Treasury spot rate such that the discounted value of a bond’s annual coupon and maturity principal cash flows equals its observed market price, using a numerical root-finding method and returning the spread as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5082,
+          "completion_tokens": 111,
+          "total_tokens": 5193,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 43
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14887,
+          "completion_tokens": 382,
+          "total_tokens": 15269,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 285
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    bond_price = 950.0\n    cash_flows = [50.0, 50.0, 1050.0]\n    spot_rates = [0.015, 0.018, 0.020]\n    periods = [1, 2, 3]\n\n    # Do math calculation to get the answer\n    from scipy.optimize import fsolve\n\n    def pv_difference(z_spread):\n        present_value = sum(\n            cash_flow / ((1 + (spot_rate + z_spread) / 2) ** (2 * period))\n            for cash_flow, spot_rate, period\n            in zip(cash_flows, spot_rates, periods)\n        )\n        return present_value - bond_price\n\n    z_spread = fsolve(pv_difference, 0.0)[0]\n    answer = round(z_spread * 100, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5171,
+          "completion_tokens": 598,
+          "total_tokens": 5769,
+          "completion_tokens_details": {
+            "reasoning_tokens": 385
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1432",
+        "score": 2.1030068397521973
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.7204508781433105
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7148252725601196
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7036614418029785
+      },
+      {
+        "function_id": "article-224",
+        "score": 1.7033772468566895
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.6996312141418457
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.6949390172958374
+      },
+      {
+        "function_id": "article-1869",
+        "score": 1.6907083988189697
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.6866899728775024
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.6815259456634521
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.6769896745681763
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6763408184051514
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.6738801002502441
+      },
+      {
+        "function_id": "article-1046",
+        "score": 1.670008659362793
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.6666029691696167
+      },
+      {
+        "function_id": "article-1424",
+        "score": 1.6658563613891602
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.6654057502746582
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.6643539667129517
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.6629414558410645
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.654994010925293
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.654372215270996
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.653244972229004
+      },
+      {
+        "function_id": "article-1955",
+        "score": 1.65317702293396
+      },
+      {
+        "function_id": "article-473",
+        "score": 1.6500929594039917
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.6480967998504639
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.647584080696106
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.6472911834716797
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.644327163696289
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.644190788269043
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.6411323547363281
+      }
+    ],
+    "selected_ids": [
+      "article-1432"
+    ],
+    "status": "ok",
+    "answer": 4.8,
+    "code": "def solution():\n    # Define variables name and value\n    bond_price = 950.0\n    cash_flows = [50.0, 50.0, 1050.0]\n    spot_rates = [0.015, 0.018, 0.020]\n    periods = [1, 2, 3]\n\n    # Do math calculation to get the answer\n    from scipy.optimize import fsolve\n\n    def pv_difference(z_spread):\n        present_value = sum(\n            cash_flow / ((1 + (spot_rate + z_spread) / 2) ** (2 * period))\n            for cash_flow, spot_rate, period\n            in zip(cash_flows, spot_rates, periods)\n        )\n        return present_value - bond_price\n\n    z_spread = fsolve(pv_difference, 0.0)[0]\n    answer = round(z_spread * 100, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "4fa0f042f822ec269ebd5c6a5b2460af82f273a95928f264969f1bd57de8b713"
+}

@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2221",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates RAROC for a loan portfolio by taking pre-tax portfolio profit, subtracting operating costs, funding expense, expected credit loss, and taxes, then dividing the resulting after-tax risk-adjusted return by economic capital based on unexpected loss, while incorporating risk-free rate and assuming no transfer-pricing adjustments?",
+        "usage": {
+          "prompt_tokens": 5120,
+          "completion_tokens": 126,
+          "total_tokens": 5246,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 57
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 13789,
+          "completion_tokens": 16,
+          "total_tokens": 13805,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    principal = 1_300_000_000\n    pre_tax_profit_rate = 0.07\n    operating_cost = 6_000_000\n    deposit_interest_rate = 0.05\n    expected_loss_rate = 0.003\n    unexpected_loss_rate = 0.08\n    risk_free_rate = 0.015\n    tax_rate = 0.25\n\n    # Calculate portfolio revenue and funding cost\n    revenue = principal * pre_tax_profit_rate\n    funding_cost = principal * deposit_interest_rate\n\n    # Calculate expected loss and economic capital\n    expected_loss = principal * expected_loss_rate\n    capital = principal * unexpected_loss_rate\n\n    # Calculate after-tax risk-adjusted earnings\n    pre_tax_risk_adjusted_earnings = (\n        revenue\n        - operating_cost\n        - funding_cost\n        - expected_loss\n    )\n    after_tax_earnings = pre_tax_risk_adjusted_earnings * (1 - tax_rate)\n\n    # Add risk-free income earned on economic capital\n    income_from_capital = capital * risk_free_rate\n\n    # Calculate RAROC as a percentage\n    raroc = (\n        (after_tax_earnings + income_from_capital) / capital\n    ) * 100\n\n    # Return the answer rounded to three decimal places\n    return round(raroc, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5108,
+          "completion_tokens": 779,
+          "total_tokens": 5887,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 475
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1575",
+        "score": 2.034170389175415,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1552",
+        "score": 1.7783281803131104,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2290",
+        "score": 1.7522038221359253,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-194",
+        "score": 1.7353602647781372,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1545",
+        "score": 1.7252836227416992,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1641",
+        "score": 1.7042837142944336,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1838",
+        "score": 1.7014048099517822,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1599",
+        "score": 1.6973637342453003,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1847",
+        "score": 1.6939918994903564,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.6929981708526611,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-61",
+        "score": 1.6895831823349,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2173",
+        "score": 1.6791536808013916,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-3084",
+        "score": 1.6778361797332764,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.6776005029678345,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1477",
+        "score": 1.676847219467163,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-226",
+        "score": 1.6757073402404785,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-921",
+        "score": 1.66936194896698,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1643",
+        "score": 1.6676363945007324,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1535",
+        "score": 1.663835048675537,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1397",
+        "score": 1.6600918769836426,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2289",
+        "score": 1.6592289209365845,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1583",
+        "score": 1.6575167179107666,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2018",
+        "score": 1.6544392108917236,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2206",
+        "score": 1.643302321434021,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1304",
+        "score": 1.6405417919158936,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-60",
+        "score": 1.6330320835113525,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1649",
+        "score": 1.6329940557479858,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1044",
+        "score": 1.6307957172393799,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-43",
+        "score": 1.627008318901062,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2933",
+        "score": 1.6253747940063477,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1575"
+    ],
+    "status": "ok",
+    "answer": 13.111,
+    "code": "def solution():\n    # Define variables\n    principal = 1_300_000_000\n    pre_tax_profit_rate = 0.07\n    operating_cost = 6_000_000\n    deposit_interest_rate = 0.05\n    expected_loss_rate = 0.003\n    unexpected_loss_rate = 0.08\n    risk_free_rate = 0.015\n    tax_rate = 0.25\n\n    # Calculate portfolio revenue and funding cost\n    revenue = principal * pre_tax_profit_rate\n    funding_cost = principal * deposit_interest_rate\n\n    # Calculate expected loss and economic capital\n    expected_loss = principal * expected_loss_rate\n    capital = principal * unexpected_loss_rate\n\n    # Calculate after-tax risk-adjusted earnings\n    pre_tax_risk_adjusted_earnings = (\n        revenue\n        - operating_cost\n        - funding_cost\n        - expected_loss\n    )\n    after_tax_earnings = pre_tax_risk_adjusted_earnings * (1 - tax_rate)\n\n    # Add risk-free income earned on economic capital\n    income_from_capital = capital * risk_free_rate\n\n    # Calculate RAROC as a percentage\n    raroc = (\n        (after_tax_earnings + income_from_capital) / capital\n    ) * 100\n\n    # Return the answer rounded to three decimal places\n    return round(raroc, 3)\n"
+  },
+  "digest": "16ddba267e183ea3a3c2f5f939d97f699985ec965a9a6e61acbd0f508c6cb51c"
+}

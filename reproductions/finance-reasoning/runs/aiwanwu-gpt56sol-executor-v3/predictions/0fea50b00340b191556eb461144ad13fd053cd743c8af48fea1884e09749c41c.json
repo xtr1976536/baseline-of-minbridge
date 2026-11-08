@@ -1,0 +1,225 @@
+{
+  "record": {
+    "question_id": "test-2211",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a publicly traded stock’s beta relative to a benchmark market index from paired historical monthly return series, using covariance of stock and market returns divided by market return variance, and supports reporting the result to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5094,
+          "completion_tokens": 49,
+          "total_tokens": 5143,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C04\",\"C10\"]}",
+        "usage": {
+          "prompt_tokens": 13733,
+          "completion_tokens": 114,
+          "total_tokens": 13847,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 90
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    xyz_returns = [0.025, -0.012, 0.038, 0.017, 0.040]\n    market_returns = [0.018, -0.005, 0.021, 0.013, 0.035]\n\n    # Do math calculation to get the answer\n    xyz_mean = sum(xyz_returns) / len(xyz_returns)\n    market_mean = sum(market_returns) / len(market_returns)\n\n    covariance = sum(\n        (xyz - xyz_mean) * (market - market_mean)\n        for xyz, market in zip(xyz_returns, market_returns)\n    )\n\n    market_variance = sum(\n        (market - market_mean) ** 2\n        for market in market_returns\n    )\n\n    beta = covariance / market_variance\n    answer = round(beta, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5852,
+          "completion_tokens": 490,
+          "total_tokens": 6342,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 282
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1594",
+        "score": 1.9436599016189575,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1744",
+        "score": 1.9190714359283447,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1035",
+        "score": 1.7765233516693115,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1296",
+        "score": 1.731688380241394,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.7248210906982422,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.7190996408462524,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2051",
+        "score": 1.7078633308410645,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.6863844394683838,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1593",
+        "score": 1.6840218305587769,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-872",
+        "score": 1.6801609992980957,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1586",
+        "score": 1.6564284563064575,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-717",
+        "score": 1.6418359279632568,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2301",
+        "score": 1.6408014297485352,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1043",
+        "score": 1.6106926202774048,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2375",
+        "score": 1.5992594957351685,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-966",
+        "score": 1.5869485139846802,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1585",
+        "score": 1.577514886856079,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1055",
+        "score": 1.5756051540374756,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.5705890655517578,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1335",
+        "score": 1.5687880516052246,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1004",
+        "score": 1.563199758529663,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.555112361907959,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1541",
+        "score": 1.5549869537353516,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.554419994354248,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2816",
+        "score": 1.5490293502807617,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1336",
+        "score": 1.5475767850875854,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-587",
+        "score": 1.5473618507385254,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1691",
+        "score": 1.5445821285247803,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2783",
+        "score": 1.5404889583587646,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1925",
+        "score": 1.5397803783416748,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1744",
+      "article-1296",
+      "article-872"
+    ],
+    "status": "ok",
+    "answer": 1.38,
+    "code": "def solution():\n    # Define variables name and value\n    xyz_returns = [0.025, -0.012, 0.038, 0.017, 0.040]\n    market_returns = [0.018, -0.005, 0.021, 0.013, 0.035]\n\n    # Do math calculation to get the answer\n    xyz_mean = sum(xyz_returns) / len(xyz_returns)\n    market_mean = sum(market_returns) / len(market_returns)\n\n    covariance = sum(\n        (xyz - xyz_mean) * (market - market_mean)\n        for xyz, market in zip(xyz_returns, market_returns)\n    )\n\n    market_variance = sum(\n        (market - market_mean) ** 2\n        for market in market_returns\n    )\n\n    beta = covariance / market_variance\n    answer = round(beta, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "94321ee9aa725b7a2c4abe85f1b4d7ef36351df96525199ac1612b99891cde0a"
+}

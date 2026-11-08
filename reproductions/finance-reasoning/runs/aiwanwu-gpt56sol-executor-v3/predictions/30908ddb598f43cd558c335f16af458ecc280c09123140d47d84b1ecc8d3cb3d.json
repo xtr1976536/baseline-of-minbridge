@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2210",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the total repayment cost of a fixed-rate amortizing loan with monthly payments when an additional fixed monthly payment is applied, using the principal, annual interest rate, loan term, and payment frequency, and returns the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5037,
+          "completion_tokens": 55,
+          "total_tokens": 5092,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 16333,
+          "completion_tokens": 336,
+          "total_tokens": 16669,
+          "completion_tokens_details": {
+            "reasoning_tokens": 312
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    loan_amount = 30000\n    annual_interest_rate = 0.06\n    loan_term_years = 5\n    additional_monthly_payment = 100\n\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    regular_monthly_payment = (\n        loan_amount * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    actual_monthly_payment = regular_monthly_payment + additional_monthly_payment\n    remaining_balance = loan_amount\n    total_paid = 0\n\n    # Calculate payments until the loan is fully repaid\n    while remaining_balance > 0:\n        interest = remaining_balance * monthly_interest_rate\n        payment = min(actual_monthly_payment, remaining_balance + interest)\n        principal = payment - interest\n\n        remaining_balance -= principal\n        total_paid += payment\n\n    # Return the total cost rounded to the nearest dollar\n    return round(total_paid)\n```",
+        "usage": {
+          "prompt_tokens": 6080,
+          "completion_tokens": 837,
+          "total_tokens": 6917,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 607
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-581",
+        "score": 1.8805694580078125,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.864508032798767,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.8496687412261963,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.8278827667236328,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.8060190677642822,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.803344964981079,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.798417091369629,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-578",
+        "score": 1.795335292816162,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1638",
+        "score": 1.7864644527435303,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.775537371635437,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.771578073501587,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.7688332796096802,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-582",
+        "score": 1.7657802104949951,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1068",
+        "score": 1.7273966073989868,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2309",
+        "score": 1.7196465730667114,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2311",
+        "score": 1.7171672582626343,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.7159545421600342,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.7117576599121094,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.7086129188537598,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.7073326110839844,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.697326421737671,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.6946203708648682,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2166",
+        "score": 1.6880521774291992,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1480",
+        "score": 1.6869481801986694,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.6864781379699707,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2132",
+        "score": 1.6797165870666504,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.6781184673309326,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-677",
+        "score": 1.6774250268936157,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-676",
+        "score": 1.6773297786712646,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.6755797863006592,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-581",
+      "article-2310",
+      "article-2308"
+    ],
+    "status": "ok",
+    "answer": 33978,
+    "code": "def solution():\n    # Define variables name and value\n    loan_amount = 30000\n    annual_interest_rate = 0.06\n    loan_term_years = 5\n    additional_monthly_payment = 100\n\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    regular_monthly_payment = (\n        loan_amount * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    actual_monthly_payment = regular_monthly_payment + additional_monthly_payment\n    remaining_balance = loan_amount\n    total_paid = 0\n\n    # Calculate payments until the loan is fully repaid\n    while remaining_balance > 0:\n        interest = remaining_balance * monthly_interest_rate\n        payment = min(actual_monthly_payment, remaining_balance + interest)\n        principal = payment - interest\n\n        remaining_balance -= principal\n        total_paid += payment\n\n    # Return the total cost rounded to the nearest dollar\n    return round(total_paid)\n"
+  },
+  "digest": "66f50fa78268a50c7ebe30db36f3aaeae3c71c7bc386eb89b5e38264a114d8ce"
+}

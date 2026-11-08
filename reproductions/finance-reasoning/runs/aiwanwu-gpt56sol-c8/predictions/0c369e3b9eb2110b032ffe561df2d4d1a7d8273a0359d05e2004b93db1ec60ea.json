@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2153",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the cash conversion cycle (net operating cycle) from annual credit sales, cost of goods sold, average accounts receivable, average inventory using beginning and ending balances, and accounts payable, returning the result in days rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5048,
+          "completion_tokens": 54,
+          "total_tokens": 5102,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USEFUL, USELESS]",
+        "usage": {
+          "prompt_tokens": 13158,
+          "completion_tokens": 1131,
+          "total_tokens": 14289,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    credit_sales = 40000\n    cogs = 30000\n    accounts_receivable = 3000\n    beginning_inventory = 1500\n    ending_inventory = 2000\n    accounts_payable = 4000\n    period_days = 365\n\n    # Do math calculation to get the answer\n    average_inventory = (beginning_inventory + ending_inventory) / 2\n    dio = (average_inventory / cogs) * period_days\n    dso = (accounts_receivable / credit_sales) * period_days\n    dpo = (accounts_payable / cogs) * period_days\n\n    cash_conversion_cycle = dio + dso - dpo\n    answer = round(cash_conversion_cycle, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5441,
+          "completion_tokens": 295,
+          "total_tokens": 5736,
+          "prompt_tokens_details": {
+            "cached_tokens": 3674
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 111
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-85",
+        "score": 2.0094521045684814
+      },
+      {
+        "function_id": "article-1976",
+        "score": 1.7761573791503906
+      },
+      {
+        "function_id": "article-2265",
+        "score": 1.7746315002441406
+      },
+      {
+        "function_id": "article-2234",
+        "score": 1.7245370149612427
+      },
+      {
+        "function_id": "article-1471",
+        "score": 1.701365351676941
+      },
+      {
+        "function_id": "article-83",
+        "score": 1.698151707649231
+      },
+      {
+        "function_id": "article-1275",
+        "score": 1.6969817876815796
+      },
+      {
+        "function_id": "article-2236",
+        "score": 1.6935923099517822
+      },
+      {
+        "function_id": "article-2389",
+        "score": 1.6873865127563477
+      },
+      {
+        "function_id": "article-2890",
+        "score": 1.687198519706726
+      },
+      {
+        "function_id": "article-2233",
+        "score": 1.6855863332748413
+      },
+      {
+        "function_id": "article-2390",
+        "score": 1.6789392232894897
+      },
+      {
+        "function_id": "article-1721",
+        "score": 1.6778194904327393
+      },
+      {
+        "function_id": "article-82",
+        "score": 1.677616000175476
+      },
+      {
+        "function_id": "article-2948",
+        "score": 1.6689300537109375
+      },
+      {
+        "function_id": "article-1626",
+        "score": 1.6641041040420532
+      },
+      {
+        "function_id": "article-3026",
+        "score": 1.6538589000701904
+      },
+      {
+        "function_id": "article-555",
+        "score": 1.65186607837677
+      },
+      {
+        "function_id": "article-3031",
+        "score": 1.6511914730072021
+      },
+      {
+        "function_id": "article-3111",
+        "score": 1.6498836278915405
+      },
+      {
+        "function_id": "article-161",
+        "score": 1.6493499279022217
+      },
+      {
+        "function_id": "article-3110",
+        "score": 1.6490271091461182
+      },
+      {
+        "function_id": "article-467",
+        "score": 1.6427104473114014
+      },
+      {
+        "function_id": "article-407",
+        "score": 1.638425588607788
+      },
+      {
+        "function_id": "article-470",
+        "score": 1.6344300508499146
+      },
+      {
+        "function_id": "article-2889",
+        "score": 1.6313202381134033
+      },
+      {
+        "function_id": "article-2221",
+        "score": 1.6312508583068848
+      },
+      {
+        "function_id": "article-80",
+        "score": 1.6308045387268066
+      },
+      {
+        "function_id": "article-2266",
+        "score": 1.627561092376709
+      },
+      {
+        "function_id": "article-1507",
+        "score": 1.6263854503631592
+      }
+    ],
+    "selected_ids": [
+      "article-85",
+      "article-82",
+      "article-1626"
+    ],
+    "status": "ok",
+    "answer": 0.0,
+    "code": "def solution():\n    # Define variables name and value\n    credit_sales = 40000\n    cogs = 30000\n    accounts_receivable = 3000\n    beginning_inventory = 1500\n    ending_inventory = 2000\n    accounts_payable = 4000\n    period_days = 365\n\n    # Do math calculation to get the answer\n    average_inventory = (beginning_inventory + ending_inventory) / 2\n    dio = (average_inventory / cogs) * period_days\n    dso = (accounts_receivable / credit_sales) * period_days\n    dpo = (accounts_payable / cogs) * period_days\n\n    cash_conversion_cycle = dio + dso - dpo\n    answer = round(cash_conversion_cycle, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "a87855c36266766bd52f6fc015e86dec59b4851260e15d4123c37aae85e64718"
+}

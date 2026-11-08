@@ -1,0 +1,18 @@
+{
+  "identity": "c5be3b56ed1101e9cca2221f3f86d74c256307cc417db1d6637cc064269871f0",
+  "response_digest": "70f99b6520e13b860dc8d1792e0895d2ce19b9e8e307ad478a7c2219405cba0a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    equity_market_value = 2_000_000\n    face_value_of_debt = 4_000_000\n    annual_coupon_rate = 0.08\n    annual_yield_to_maturity = 0.09\n    years_to_maturity = 5\n    tax_rate = 0.25\n    risk_free_rate = 0.02\n    beta = 1.2\n    equity_risk_premium = 0.04\n\n    # Calculate the market value of debt using semi-annual bond valuation\n    periods = years_to_maturity * 2\n    semiannual_coupon = face_value_of_debt * annual_coupon_rate / 2\n    semiannual_yield = annual_yield_to_maturity / 2\n\n    debt_market_value = (\n        semiannual_coupon * (1 - (1 + semiannual_yield) ** (-periods)) / semiannual_yield\n        + face_value_of_debt * (1 + semiannual_yield) ** (-periods)\n    )\n\n    # Calculate the cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * equity_risk_premium\n\n    # Calculate the pre-tax cost of debt\n    cost_of_debt = annual_yield_to_maturity\n\n    # Calculate WACC\n    total_market_value = equity_market_value + debt_market_value\n    equity_weight = equity_market_value / total_market_value\n    debt_weight = debt_market_value / total_market_value\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * cost_of_debt * (1 - tax_rate)\n    )\n\n    # Return WACC as a percentage rounded to two decimal places\n    answer = round(wacc * 100, 2)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5649,
+      "completion_tokens": 474,
+      "total_tokens": 6123,
+      "completion_tokens_details": {
+        "reasoning_tokens": 85
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

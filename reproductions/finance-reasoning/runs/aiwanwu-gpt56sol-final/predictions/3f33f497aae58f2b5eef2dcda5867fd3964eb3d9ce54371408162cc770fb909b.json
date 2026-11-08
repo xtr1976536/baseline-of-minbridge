@@ -1,0 +1,189 @@
+{
+  "record": {
+    "question_id": "test-2136",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function performs linear interpolation between adjacent quarterly bond yield observations to estimate the yield at an intermediate time point, using time-ordered numeric inputs and returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5056,
+          "completion_tokens": 44,
+          "total_tokens": 5100,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15314,
+          "completion_tokens": 255,
+          "total_tokens": 15569,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 158
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    maturities = [1, 2, 3, 4]\n    yields = [2.0, 2.5, 3.0, 3.5]\n    midpoint_q3 = 2.5\n\n    # Calculate the linearly interpolated yield between Q2 and Q3\n    estimated_yield = yields[1] + (\n        (midpoint_q3 - maturities[1])\n        * (yields[2] - yields[1])\n        / (maturities[2] - maturities[1])\n    )\n\n    # Return the answer rounded to two decimal places\n    return round(estimated_yield, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5620,
+          "completion_tokens": 235,
+          "total_tokens": 5855,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 77
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-460",
+        "score": 1.7384095191955566
+      },
+      {
+        "function_id": "article-461",
+        "score": 1.5669244527816772
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.538095235824585
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.5330110788345337
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.5294859409332275
+      },
+      {
+        "function_id": "article-737",
+        "score": 1.5288305282592773
+      },
+      {
+        "function_id": "article-2872",
+        "score": 1.5276702642440796
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.524608850479126
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.520542860031128
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.5172719955444336
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.5145634412765503
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.5131165981292725
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.5119390487670898
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.5116937160491943
+      },
+      {
+        "function_id": "article-26",
+        "score": 1.51043701171875
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.5072280168533325
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.505087971687317
+      },
+      {
+        "function_id": "article-1466",
+        "score": 1.4993600845336914
+      },
+      {
+        "function_id": "article-2243",
+        "score": 1.4971728324890137
+      },
+      {
+        "function_id": "article-27",
+        "score": 1.4963802099227905
+      },
+      {
+        "function_id": "article-1869",
+        "score": 1.490661859512329
+      },
+      {
+        "function_id": "article-2971",
+        "score": 1.4893004894256592
+      },
+      {
+        "function_id": "article-1208",
+        "score": 1.4868413209915161
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.4852687120437622
+      },
+      {
+        "function_id": "article-2557",
+        "score": 1.4797148704528809
+      },
+      {
+        "function_id": "article-744",
+        "score": 1.4787614345550537
+      },
+      {
+        "function_id": "article-1209",
+        "score": 1.4761401414871216
+      },
+      {
+        "function_id": "article-22",
+        "score": 1.47487211227417
+      },
+      {
+        "function_id": "article-1047",
+        "score": 1.4747191667556763
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.471284031867981
+      }
+    ],
+    "selected_ids": [
+      "article-460",
+      "article-461"
+    ],
+    "status": "ok",
+    "answer": 2.75,
+    "code": "def solution():\n    # Define variables\n    maturities = [1, 2, 3, 4]\n    yields = [2.0, 2.5, 3.0, 3.5]\n    midpoint_q3 = 2.5\n\n    # Calculate the linearly interpolated yield between Q2 and Q3\n    estimated_yield = yields[1] + (\n        (midpoint_q3 - maturities[1])\n        * (yields[2] - yields[1])\n        / (maturities[2] - maturities[1])\n    )\n\n    # Return the answer rounded to two decimal places\n    return round(estimated_yield, 2)\n"
+  },
+  "digest": "7251540c9d748f6e519fcde0e23d3555f11274ffae2d3e6e3686fd4165ea1abc"
+}

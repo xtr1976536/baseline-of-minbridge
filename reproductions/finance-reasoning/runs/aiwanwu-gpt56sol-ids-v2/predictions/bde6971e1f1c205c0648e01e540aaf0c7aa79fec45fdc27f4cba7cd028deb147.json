@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2088",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the standard deviation (volatility) of a multi-asset portfolio from asset weights, individual variances, and a symmetric correlation matrix, including diagonal self-correlations of 1 and covariance terms derived from correlations, and returns the result to four decimal places?",
+        "usage": {
+          "prompt_tokens": 5130,
+          "completion_tokens": 58,
+          "total_tokens": 5188,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 14787,
+          "completion_tokens": 171,
+          "total_tokens": 14958,
+          "completion_tokens_details": {
+            "reasoning_tokens": 147
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    weights = [0.40, 0.35, 0.25]\n    variances = [0.0225, 0.0156, 0.0304]\n    correlations = [\n        [1.0, 0.8, 0.4],\n        [0.8, 1.0, 0.6],\n        [0.4, 0.6, 1.0]\n    ]\n\n    # Do math calculation to get the answer\n    portfolio_variance = 0.0\n    for i in range(len(weights)):\n        for j in range(len(weights)):\n            portfolio_variance += (\n                weights[i]\n                * weights[j]\n                * correlations[i][j]\n                * (variances[i] ** 0.5)\n                * (variances[j] ** 0.5)\n            )\n\n    portfolio_standard_deviation = portfolio_variance ** 0.5\n    answer = round(portfolio_standard_deviation, 4)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5872,
+          "completion_tokens": 557,
+          "total_tokens": 6429,
+          "completion_tokens_details": {
+            "reasoning_tokens": 319
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1292",
+        "score": 1.8611512184143066,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-922",
+        "score": 1.7692160606384277,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1590",
+        "score": 1.7667343616485596,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1013",
+        "score": 1.75361967086792,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.7184134721755981,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.7064690589904785,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1294",
+        "score": 1.7033600807189941,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1580",
+        "score": 1.6891179084777832,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-325",
+        "score": 1.6673580408096313,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.6592278480529785,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.6558756828308105,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.6438610553741455,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2760",
+        "score": 1.6091679334640503,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1570",
+        "score": 1.6089606285095215,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-264",
+        "score": 1.608454704284668,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1014",
+        "score": 1.6044988632202148,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-302",
+        "score": 1.5834167003631592,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-921",
+        "score": 1.5740442276000977,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.5623247623443604,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1289",
+        "score": 1.5593937635421753,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-61",
+        "score": 1.5552808046340942,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-213",
+        "score": 1.5539499521255493,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1026",
+        "score": 1.5533653497695923,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2414",
+        "score": 1.5490741729736328,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.5441691875457764,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-326",
+        "score": 1.5441293716430664,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-865",
+        "score": 1.5313913822174072,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1925",
+        "score": 1.5258593559265137,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2783",
+        "score": 1.525448203086853,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-870",
+        "score": 1.5203903913497925,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1292",
+      "article-922",
+      "article-1013"
+    ],
+    "status": "ok",
+    "answer": 0.1264,
+    "code": "def solution():\n    # Define variables name and value\n    weights = [0.40, 0.35, 0.25]\n    variances = [0.0225, 0.0156, 0.0304]\n    correlations = [\n        [1.0, 0.8, 0.4],\n        [0.8, 1.0, 0.6],\n        [0.4, 0.6, 1.0]\n    ]\n\n    # Do math calculation to get the answer\n    portfolio_variance = 0.0\n    for i in range(len(weights)):\n        for j in range(len(weights)):\n            portfolio_variance += (\n                weights[i]\n                * weights[j]\n                * correlations[i][j]\n                * (variances[i] ** 0.5)\n                * (variances[j] ** 0.5)\n            )\n\n    portfolio_standard_deviation = portfolio_variance ** 0.5\n    answer = round(portfolio_standard_deviation, 4)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "ebdbe36ae57b870c452a1d382906b63350bb321a4219ecc4892de574df5e7652"
+}

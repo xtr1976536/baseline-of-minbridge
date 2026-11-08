@@ -1,0 +1,31 @@
+{
+  "request_hash": "319e4b305eb5bf54849916e013ea47772ac0fa3ad19b0410a3dc21c9441f4e29",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is Coca Cola's FY2022 dividend payout ratio (using total cash dividends paid and net income attributable to shareholders)? Round answer to two decimal places. Answer the question asked by assuming you only have access to information clearly displayed in the cash flow statement and the income statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"dividend_payout_ratio\",\n  \"facts\": [\n    {\n      \"name\": \"total_cash_dividends_paid\",\n      \"aliases\": [\n        \"Dividends paid\",\n        \"Cash dividends paid\",\n        \"Dividends paid to shareholders\"\n      ],\n      \"period\": \"FY2022\",\n      \"statement\": \"cash flow\"\n    },\n    {\n      \"name\": \"net_income_attributable_to_shareholders\",\n      \"aliases\": [\n        \"Net income attributable to shareowners of The Coca-Cola Company\",\n        \"Net income attributable to shareholders\",\n        \"Net income attributable to The Coca-Cola Company\"\n      ],\n      \"period\": \"FY2022\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Calculate the FY2022 dividend payout ratio as total cash dividends paid divided by net income attributable to shareholders, then multiply by 100 and round to two decimal places.\"\n}",
+  "usage": {
+    "prompt_tokens": 4733,
+    "completion_tokens": 281,
+    "total_tokens": 5014,
+    "prompt_tokens_details": {
+      "cached_tokens": 4608
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 80
+    }
+  },
+  "response_id": "resp_0669aa0b9015932e016aedb57fcdb887d0ac73021845ca3776",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

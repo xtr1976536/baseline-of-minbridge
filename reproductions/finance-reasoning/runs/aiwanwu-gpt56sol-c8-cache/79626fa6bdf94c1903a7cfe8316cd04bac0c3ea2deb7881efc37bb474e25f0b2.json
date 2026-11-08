@@ -1,0 +1,21 @@
+{
+  "identity": "79626fa6bdf94c1903a7cfe8316cd04bac0c3ea2deb7881efc37bb474e25f0b2",
+  "response_digest": "73e03569600fcd5b002c983912ef8e039db905e5d18496a52525a0949d665513",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    claim_amounts = [150000]\n    claim_paid_dates = [\"year_end\"]\n    claim_settlement_expenses = [30000]\n    reinsurance_paid_claims = [70000]\n    reinsurance_paid_expenses = [10000]\n    discount_rate = 0.05\n\n    # Calculate net liabilities after reinsurance\n    net_claims = sum(\n        claim_amounts[i] - reinsurance_paid_claims[i]\n        for i in range(len(claim_amounts))\n    )\n    net_expenses = sum(\n        claim_settlement_expenses[i] - reinsurance_paid_expenses[i]\n        for i in range(len(claim_settlement_expenses))\n    )\n\n    total_net_liabilities = net_claims + net_expenses\n\n    # Discount the reserve for one future period\n    ibnr_reserve = total_net_liabilities / ((1 + discount_rate) ** len(claim_amounts))\n\n    # Return the reserve rounded to the nearest dollar\n    return round(ibnr_reserve)\n```",
+    "usage": {
+      "prompt_tokens": 5274,
+      "completion_tokens": 313,
+      "total_tokens": 5587,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 86
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

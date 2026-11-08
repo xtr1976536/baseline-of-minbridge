@@ -1,0 +1,21 @@
+{
+  "identity": "440a0dd110ce590cd25d60b331389ecf7f9c07051eafa16d7e1bc5c1e3950c77",
+  "response_digest": "2ca90461ea27f88ea23fad9cf3afdb430b52ef18c1017b3ebdd8a6d1125a9efa",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    sales_changes = [3.5, 4.2, -1.0, 5.5, 2.1, 3.8]\n    stock_price_changes = [2.8, 5.0, -0.5, 6.0, 1.9, 4.4]\n\n    # Do math calculation to get the answer\n    n = len(sales_changes)\n    sum_x = sum(sales_changes)\n    sum_y = sum(stock_price_changes)\n    sum_xy = sum(x * y for x, y in zip(sales_changes, stock_price_changes))\n    sum_x_squared = sum(x ** 2 for x in sales_changes)\n    sum_y_squared = sum(y ** 2 for y in stock_price_changes)\n\n    numerator = n * sum_xy - sum_x * sum_y\n    denominator = (\n        (n * sum_x_squared - sum_x ** 2)\n        * (n * sum_y_squared - sum_y ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 2)\n\n    # Return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 6051,
+      "completion_tokens": 713,
+      "total_tokens": 6764,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 451
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

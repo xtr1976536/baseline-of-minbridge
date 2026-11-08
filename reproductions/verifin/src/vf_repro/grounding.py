@@ -1,0 +1,246 @@
+"""Value-blind filing-local binding; no benchmark proof or answer is accepted."""
+from __future__ import annotations
+from dataclasses import dataclass
+import ast
+from datetime import date
+from decimal import Decimal
+from pathlib import Path
+import json
+import re
+from verifiqa.policy.registry import DEFAULT_POLICY_REGISTRY as REGISTRY
+
+class Unresolved(ValueError):
+    pass
+
+def tokens(text):
+    text = re.sub(r"([a-z])([A-Z])", r"\1 \2", str(text)).lower()
+    text = text.replace("non-current", "noncurrent").replace("non current", "noncurrent")
+    singular={'inventories':'inventory','revenues':'revenue','expenditures':'expenditure',
+              'costs':'cost','charges':'charge','assets':'asset','liabilities':'liability',
+              'payments':'payment','receivables':'receivable','shares':'share'}
+    return {singular.get(x,x) for x in re.findall(r"[a-z0-9]+", text) if x not in {"the", "of", "and", "a", "in"}}
+
+def unit(text):
+    t = text.lower().replace("iso4217:", "")
+    scale = next((Decimal(v) for k, v in [("billion", "1e9"), ("million", "1e6"), ("thousand", "1e3")] if k in t), Decimal(1))
+    explicit=re.match(r'(?:iso4217:)?([A-Z]{3})(?:\b|/)',text)
+    currencies=list(dict.fromkeys([*( [explicit[1].lower()] if explicit else []),"usd", "eur", "gbp", "cny", "jpy", "cad", "aud"]))
+    for currency in currencies:
+        if currency in t or (currency == "usd" and ("$" in t or "dollar" in t)):
+            if "share" in t and ("/" in t or "per" in t): return currency+"/shares", scale
+            return currency, scale
+    if "percent" in t or "%" in t: return "pure", Decimal(".01")
+    if "share" in t: return "shares", scale
+    if any(x in t for x in ["ratio", "pure", "number", "count", "dimensionless"]) or t.strip() in {'days','day','times','multiple','x'}: return "pure", Decimal(1)
+    raise Unresolved("unknown_unit:"+text)
+
+def conversion(source, target):
+    a, sa = unit(source)
+    b, sb = unit(target)
+    if a != b:
+        raise Unresolved("unit_mismatch:"+a+":"+b)
+    return sa/sb
+
+@dataclass
+class Filing:
+    data: dict
+    @classmethod
+    def load(cls, path, *, source_rows=False):
+        path=Path(path);data=json.loads(path.read_text(encoding="utf-8"))
+        if source_rows:
+            from .common import digest
+            sidecar=path.parent.parent/'source_rows'/(data['doc_name']+'.json')
+            if sidecar.exists():
+                extra=json.loads(sidecar.read_text(encoding='utf-8'))
+                raw=path.parent.parent.parent/extra['raw_path']
+                if extra['instance_sha256']!=data['instance_sha256'] or digest(raw)!=extra['raw_sha256']:
+                    raise ValueError('issuer_row_label_source_identity_changed')
+                for qname,labels in extra['labels'].items():
+                    current=data.setdefault('labels',{}).setdefault(qname,[])
+                    current.extend(label for label in labels if label not in current)
+                data['presentation_labels_provenance']={'url':extra['source_url'],'sha256':extra['raw_sha256']}
+        return cls(data)
+
+    def period_candidates(self, period):
+        exact = re.findall(r"\d{4}-\d{2}-\d{2}", period)
+        years = re.findall(r"(?:19|20)\d{2}", period)
+        if exact: return {exact[-1]}
+        if len(set(years)) != 1:
+            raise Unresolved("ambiguous_role_period:"+period)
+        if re.search(r"q[1-4]|quarter|month|interim", period, re.I):
+            quarter=re.search(r'q([1-4])',period,re.I)
+            ordinal=re.search(r'\b(first|second|third|fourth)\s+quarter\b',period,re.I)
+            q=int(quarter[1]) if quarter else ({'first':1,'second':2,'third':3,'fourth':4}.get(ordinal[1].lower()) if ordinal else None)
+            filing_quarter=re.search(r'Q([1-4])',self.data.get('doc_name',''),re.I)
+            if (q and filing_quarter and q==int(filing_quarter[1]) and self.data.get('period_end') and self.data.get('fiscal_year')):
+                source_end=date.fromisoformat(self.data['period_end'])
+                target_year=int(years[0])+source_end.year-int(self.data['fiscal_year'])
+                try:anchor=source_end.replace(year=target_year)
+                except ValueError:anchor=date(target_year,2,28)
+                ends=set()
+                cumulative=bool(re.search(r'through|year.to.date|six months|nine months',period,re.I))
+                lo,hi=(q*90-25,q*92+25) if cumulative else (70,110)
+                for f in self.data['facts']:
+                    p=f['period'];end=p.get('instant') or p.get('end_date')
+                    if not end or abs((date.fromisoformat(end)-anchor).days)>15:continue
+                    if p.get('start_date') and not lo<=(date.fromisoformat(end)-date.fromisoformat(p['start_date'])).days<=hi:continue
+                    ends.add(end)
+                return ends
+            raise Unresolved("quarter_requires_exact_end_date_or_matching_source_quarter")
+        fy = self.data.get("fiscal_year")
+        end = self.data.get("period_end")
+        offset = int(end[:4])-int(fy) if end and fy else 0
+        calendar_year = int(years[0])+offset
+        anchor = None
+        if end:
+            try: anchor = date.fromisoformat(end).replace(year=calendar_year)
+            except ValueError: anchor = date(calendar_year,2,28)
+        ends = set()
+        for f in self.data["facts"]:
+            p = f["period"]
+            d = p.get("instant") or p.get("end_date")
+            if d and ((anchor and abs((date.fromisoformat(d)-anchor).days)<=15) or (not anchor and int(d[:4])==calendar_year)):
+                # Annual duration or year-end instant only; never a Q1 value.
+                if p.get("start_date") and not 300 <= (date.fromisoformat(d)-date.fromisoformat(p["start_date"])).days <= 400:
+                    continue
+                ends.add(d)
+        return ends
+
+    def bind(self, role, expected_unit, period, extracted=None):
+        period = role.period or period
+        ends = self.period_candidates(period)
+        if not ends: raise Unresolved("missing_reporting_period:"+period)
+        from .semantics import role_concept,field
+        from .concept_extensions import qualified_extension
+        concept=role_concept(role) if not role.concept else None
+        concept_id=field(concept,'concept_id','') if concept else ''
+        extension=qualified_extension(concept_id,self.data)
+        instant_required=concept_id in {'InventoryLike','ReceivablesLike'}
+        candidates = []
+        for f in self.data["facts"]:
+            p = f["period"]
+            if (p.get("instant") or p.get("end_date")) not in ends or p.get("dimensions"):
+                continue
+            if instant_required and not p.get('instant'):continue
+            if p.get('start_date') and not re.search(r'\d{4}-\d{2}-\d{2}',period):
+                days=(date.fromisoformat(p['end_date'])-date.fromisoformat(p['start_date'])).days
+                if re.search(r'q[1-4]|quarter',period,re.I):
+                    q=re.search(r'q([1-4])',period,re.I)
+                    ordinal=re.search(r'\b(first|second|third|fourth)\s+quarter\b',period,re.I)
+                    quarter=int(q[1]) if q else ({'first':1,'second':2,'third':3,'fourth':4}.get(ordinal[1].lower(),0) if ordinal else 0)
+                    lo,hi=(quarter*90-25,quarter*92+25) if re.search(r'through|year.to.date|six months|nine months',period,re.I) else (70,110)
+                    if not lo<=days<=hi:continue
+                elif not 300<=days<=400:continue
+            try: conversion(f["unit"], expected_unit)
+            except Unresolved: continue
+            candidates.append(f)
+        method = "linkbase_concept" if role.concept else "concept_registry"
+        if role.concept:
+            qnames = [role.concept]
+        else:
+            qnames=list(field(concept,'xbrl_concepts',[])) if concept else []
+            if extension:qnames.append(extension['qname'])
+        chosen = []
+        if qnames:
+            for qname in qnames:
+                found = [f for f in candidates if f["concept"] == qname]
+                if found:
+                    chosen = found
+                    break
+        # Stage 3 is reachable when the registry has no usable concept in this
+        # filing. A known concept at the wrong period/unit is not substituted.
+        known_in_filing=any(f['concept'] in qnames for f in self.data['facts'])
+        if not chosen and not role.concept and (not qnames or not known_in_filing):
+            method = "symbolic_label_heuristic"
+            label = getattr(extracted, "row_label", "") or (role.aliases[0] if role.aliases else role.name)
+            required = tokens(label)
+            scored = []
+            for f in candidates:
+                labels = self.data.get("labels", {}).get(f["concept"], []) or [f["concept"].split(":")[-1]]
+                scores = [len(tokens(x)-required) for x in labels if required and required <= tokens(x)]
+                if scores: scored.append((min(scores), f))
+            if scored:
+                best = min(x[0] for x in scored)
+                chosen = [f for score, f in scored if score == best]
+        unique = {}
+        for f in chosen:
+            p = f["period"]
+            k = (f["concept"], f["unit"], p.get("instant"), p.get("start_date"), p.get("end_date"), str(Decimal(f["value"])))
+            unique.setdefault(k, f)
+        if len(unique) != 1:
+            raise Unresolved("missing_or_ambiguous_filing_fact:"+role.name)
+        f = next(iter(unique.values()))
+        value = Decimal(f["value"])*conversion(f["unit"], expected_unit)
+        if method == "symbolic_label_heuristic":
+            if extracted is None: raise Unresolved("heuristic_requires_extracted_value")
+            ev = Decimal(str(extracted.value))*conversion(extracted.unit, expected_unit)
+            if (value == 0) != (ev == 0) or (value*ev < 0) or (value and not Decimal(1)/3 <= abs(ev/value) <= 3):
+                raise Unresolved("heuristic_plausibility_failed:"+role.name)
+        return {"role": role.name, "value": str(value), "unit": expected_unit, "concept": f["concept"],
+                "period": f["period"], "accession": self.data["accession"], "source_fact_id": f["id"],
+                "source_url": self.data["source_url"], "source_sha256": self.data["instance_sha256"],
+                "decimals": f.get("decimals"), "method": method,
+                'registry_extension':extension if extension and f['concept']==extension['qname'] else None,
+                'presentation_labels_provenance':self.data.get('presentation_labels_provenance')}
+
+def reporting_tolerance(question, output_unit, bindings, evidence):
+    """No candidate input: disclosed/question precision only, otherwise abstain."""
+    from verifiqa.answer_spec import answer_spec_from_question
+    spec = answer_spec_from_question(question)
+    if spec.precision_digits is not None:
+        return str(Decimal(".5")*(Decimal(10)**-spec.precision_digits)), "question_precision"
+    if re.search(r"nearest\s+(?:million|billion|thousand|dollar)", question, re.I):
+        return ".5", "question_reporting_unit"
+    if len(bindings) == 1:
+        b = bindings[0]
+        d = b.get("decimals")
+        if d == "INF": return "0", "filing_exact"
+        if d is not None and re.fullmatch(r"[+-]?\d+", str(d)):
+            currency, scale = unit(output_unit)
+            return str(Decimal(".5")*Decimal(10)**-int(d)/scale), "filing_fact_decimals"
+    # For derived monetary subtotals the disclosure's display scale is authoritative.
+    kind, scale = unit(output_unit)
+    if kind not in {"pure", "shares"}:
+        labels = re.findall(r"(?:in|amounts in|\()\s*(?:USD\s+|U\.S\.\s+|\$\s*)?(millions|thousands|billions)\b", evidence, re.I)
+        scales = {unit("USD "+x.rstrip("s"))[1] for x in labels}
+        if len(scales) == 1:
+            return str(Decimal(".5")*next(iter(scales))/scale), "filing_display_scale"
+    if kind == 'pure':
+        # Paper does not specify how to choose a reporting precision for an
+        # unreported derived ratio. Freeze two decimals, never infer from candidate.
+        return '.005', 'reproduction_assumption_derived_ratio_two_decimals'
+    raise Unresolved("reporting_precision_not_established")
+
+def validate_dimensions(formula, bindings, output_unit):
+    def dimension(label):
+        kind,_=unit(label)
+        if kind=='pure': return {}
+        if '/' in kind:
+            a,b=kind.split('/',1);return {a:1,b:-1}
+        return {kind:1}
+    dims={b['role']:dimension(b['unit']) for b in bindings}
+    def walk(n):
+        if isinstance(n,ast.Name): return dims[n.id]
+        if isinstance(n,ast.Constant): return {}
+        if isinstance(n,ast.UnaryOp): return walk(n.operand)
+        if isinstance(n,ast.BinOp):
+            a,b=walk(n.left),walk(n.right)
+            if isinstance(n.op,(ast.Add,ast.Sub)):
+                if a!=b: raise Unresolved('incompatible_operand_dimensions')
+                return a
+            if isinstance(n.op,(ast.Mult,ast.Div)):
+                out=dict(a)
+                for k,v in b.items():out[k]=out.get(k,0)+(v if isinstance(n.op,ast.Mult) else -v)
+                return {k:v for k,v in out.items() if v}
+            if isinstance(n.op,ast.Pow) and isinstance(n.right,ast.Constant) and type(n.right.value) is int:
+                return {k:v*n.right.value for k,v in a.items() if v*n.right.value}
+        if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id in {'cagr','cagr_percent','coverage_ratio'}:
+            args=[walk(x) for x in n.args]
+            if len(args)>=2 and args[0]==args[1]:return {}
+            raise Unresolved('incompatible_ratio_dimensions')
+        if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id in {'abs','min','max'}:
+            args=[walk(x) for x in n.args]
+            if args and all(a==args[0] for a in args):return args[0]
+        raise Unresolved('unsupported_dimension_expression')
+    if walk(ast.parse(formula,mode='eval').body)!=dimension(output_unit):
+        raise Unresolved('formula_output_dimension_mismatch')

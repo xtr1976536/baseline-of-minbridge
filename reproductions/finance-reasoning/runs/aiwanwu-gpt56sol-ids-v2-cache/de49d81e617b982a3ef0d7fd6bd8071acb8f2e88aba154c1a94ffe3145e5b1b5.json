@@ -1,0 +1,18 @@
+{
+  "identity": "de49d81e617b982a3ef0d7fd6bd8071acb8f2e88aba154c1a94ffe3145e5b1b5",
+  "response_digest": "5c58ed320aa44b1defd1c0e627d71af36b22fcddab5a463b7e46b63b0e94cc94",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 300000\n    annual_interest_rate = 0.045\n    loan_term_years = 30\n    annual_tax = 3600\n    annual_insurance = 1200\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    monthly_principal_and_interest = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    monthly_tax = annual_tax / 12\n    monthly_insurance = annual_insurance / 12\n\n    total_monthly_piti = (\n        monthly_principal_and_interest\n        + monthly_tax\n        + monthly_insurance\n    )\n\n    # Return the rounded answer\n    return round(total_monthly_piti)\n```",
+    "usage": {
+      "prompt_tokens": 6072,
+      "completion_tokens": 255,
+      "total_tokens": 6327,
+      "completion_tokens_details": {
+        "reasoning_tokens": 53
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

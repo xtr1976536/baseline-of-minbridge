@@ -1,0 +1,225 @@
+{
+  "record": {
+    "question_id": "test-2114",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fixed annual payment from a present investment in an ordinary annuity with end-of-year payments, a fixed annual interest rate, and a specified term, and returns the payment rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5030,
+          "completion_tokens": 47,
+          "total_tokens": 5077,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C13\",\"C19\"]}",
+        "usage": {
+          "prompt_tokens": 14598,
+          "completion_tokens": 104,
+          "total_tokens": 14702,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 80
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 500000\n    interest_rate = 0.04\n    periods = 20\n    annuity_due = False\n\n    # Do math calculation to get the answer\n    if interest_rate == 0:\n        payment = principal / periods\n    else:\n        factor = (1 + interest_rate) ** periods\n        payment = principal * (interest_rate * factor) / (factor - 1)\n        if annuity_due:\n            payment /= (1 + interest_rate)\n\n    answer = round(payment)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5655,
+          "completion_tokens": 523,
+          "total_tokens": 6178,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 385
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2333",
+        "score": 1.8715611696243286,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3073",
+        "score": 1.869903326034546,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.8565503358840942,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2334",
+        "score": 1.8480446338653564,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-369",
+        "score": 1.8384120464324951,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.8336174488067627,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2335",
+        "score": 1.8286395072937012,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2338",
+        "score": 1.8261785507202148,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.81752347946167,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.815904140472412,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-658",
+        "score": 1.813730001449585,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1313",
+        "score": 1.8128042221069336,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-12",
+        "score": 1.8124465942382812,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2091",
+        "score": 1.8097870349884033,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.7953598499298096,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-253",
+        "score": 1.7760080099105835,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2463",
+        "score": 1.7713704109191895,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.7542634010314941,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2332",
+        "score": 1.7370879650115967,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2462",
+        "score": 1.7333378791809082,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-252",
+        "score": 1.7319016456604004,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.7229313850402832,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1252",
+        "score": 1.707986831665039,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6974990367889404,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.6890590190887451,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.6861406564712524,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2209",
+        "score": 1.6848005056381226,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2665",
+        "score": 1.6739716529846191,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.665717363357544,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.6605138778686523,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2333",
+      "article-12",
+      "article-2332"
+    ],
+    "status": "ok",
+    "answer": 36791,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 500000\n    interest_rate = 0.04\n    periods = 20\n    annuity_due = False\n\n    # Do math calculation to get the answer\n    if interest_rate == 0:\n        payment = principal / periods\n    else:\n        factor = (1 + interest_rate) ** periods\n        payment = principal * (interest_rate * factor) / (factor - 1)\n        if annuity_due:\n            payment /= (1 + interest_rate)\n\n    answer = round(payment)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "385fa2663388fe4a7894cfe55e2ca40d95492b9162bd36acc5d57e89d249ae6a"
+}

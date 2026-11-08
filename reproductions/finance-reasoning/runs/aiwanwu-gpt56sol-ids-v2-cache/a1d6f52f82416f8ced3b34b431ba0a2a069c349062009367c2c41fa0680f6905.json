@@ -1,0 +1,21 @@
+{
+  "identity": "a1d6f52f82416f8ced3b34b431ba0a2a069c349062009367c2c41fa0680f6905",
+  "response_digest": "f03fddb1f0578d3259cae76ea96e15b01164ff29c6ec9310993231b7fb98e927",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    transaction_amount = 12_000_000\n    tier_limits = [1_000_000, 5_000_000, 10_000_000]\n    tier_rates = [0.05, 0.04, 0.03, 0.02]\n\n    # Do math calculation to get the answer\n    first_tier = min(transaction_amount, tier_limits[0])\n    second_tier = min(max(transaction_amount - tier_limits[0], 0), 4_000_000)\n    third_tier = min(max(transaction_amount - tier_limits[1], 0), 5_000_000)\n    fourth_tier = max(transaction_amount - tier_limits[2], 0)\n\n    total_fee = (\n        first_tier * tier_rates[0]\n        + second_tier * tier_rates[1]\n        + third_tier * tier_rates[2]\n        + fourth_tier * tier_rates[3]\n    )\n\n    # Return the answer rounded to the nearest dollar\n    return round(total_fee)\n```",
+    "usage": {
+      "prompt_tokens": 5231,
+      "completion_tokens": 330,
+      "total_tokens": 5561,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 91
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

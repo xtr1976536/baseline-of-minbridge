@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2066",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates a 5-period exponential moving average (EMA) for sequential daily stock closing prices, using the standard smoothing factor and recursively updating values through the 10th observation, with the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5060,
+          "completion_tokens": 49,
+          "total_tokens": 5109,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16626,
+          "completion_tokens": 555,
+          "total_tokens": 17181,
+          "prompt_tokens_details": {
+            "cached_tokens": 16384
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 458
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [150, 152, 149, 153, 155, 157, 160, 162, 165, 167]\n    period = 5\n\n    # Do math calculation to get the answer\n    smoothing_factor = 2 / (period + 1)\n    ema = sum(prices[:period]) / period\n\n    for price in prices[period:]:\n        ema = (price * smoothing_factor) + (ema * (1 - smoothing_factor))\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5706,
+          "completion_tokens": 227,
+          "total_tokens": 5933,
+          "completion_tokens_details": {
+            "reasoning_tokens": 85
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-962",
+        "score": 2.128509521484375
+      },
+      {
+        "function_id": "article-1225",
+        "score": 2.0769975185394287
+      },
+      {
+        "function_id": "article-1622",
+        "score": 2.034400701522827
+      },
+      {
+        "function_id": "article-2845",
+        "score": 2.014218807220459
+      },
+      {
+        "function_id": "article-2471",
+        "score": 1.9789087772369385
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.9011335372924805
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.8791399002075195
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.868622064590454
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.8353848457336426
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.8062447309494019
+      },
+      {
+        "function_id": "article-1776",
+        "score": 1.8039677143096924
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.7736032009124756
+      },
+      {
+        "function_id": "article-1958",
+        "score": 1.7493200302124023
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.7477998733520508
+      },
+      {
+        "function_id": "article-1861",
+        "score": 1.745914340019226
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.7332193851470947
+      },
+      {
+        "function_id": "article-1226",
+        "score": 1.682762861251831
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.6620053052902222
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6538190841674805
+      },
+      {
+        "function_id": "article-2145",
+        "score": 1.6138533353805542
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.6059772968292236
+      },
+      {
+        "function_id": "article-501",
+        "score": 1.6023874282836914
+      },
+      {
+        "function_id": "article-666",
+        "score": 1.6000031232833862
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.5978341102600098
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.5897512435913086
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.584904670715332
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.5698285102844238
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5690971612930298
+      },
+      {
+        "function_id": "article-852",
+        "score": 1.5690829753875732
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.5679274797439575
+      }
+    ],
+    "selected_ids": [
+      "article-962",
+      "article-1225",
+      "article-1622"
+    ],
+    "status": "ok",
+    "answer": 162.46,
+    "code": "def solution():\n    # Define variables name and value\n    prices = [150, 152, 149, 153, 155, 157, 160, 162, 165, 167]\n    period = 5\n\n    # Do math calculation to get the answer\n    smoothing_factor = 2 / (period + 1)\n    ema = sum(prices[:period]) / period\n\n    for price in prices[period:]:\n        ema = (price * smoothing_factor) + (ema * (1 - smoothing_factor))\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "c7a727399e3edd43d201ce7c7a91bba3a2202cb89889763ab0caa62e3ead0c84"
+}

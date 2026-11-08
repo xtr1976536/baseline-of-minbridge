@@ -1,0 +1,21 @@
+{
+  "identity": "50ca5559220e868aec32c52a580dd995183ff41bb8230e839f96df9cb9f0fa79",
+  "response_digest": "e310bd848242f0b23a7b1f6d67593a9f9d221e352464bf2a07455712156b4730",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define par values, bond prices, and modified durations\n    bonds = [\n        (25_000_000, 105, 7.9),\n        (25_000_000, 100, 8.5),\n        (20_000_000, 95, 6.3),\n        (30_000_000, 87, 10.2),\n    ]\n\n    # Sum each bond's PVBP using its market value and round to one decimal place\n    portfolio_pvbp = sum(\n        par_value * (price / 100) * modified_duration * 0.0001\n        for par_value, price, modified_duration in bonds\n    )\n    answer = round(portfolio_pvbp, 1)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5033,
+      "completion_tokens": 286,
+      "total_tokens": 5319,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 107
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

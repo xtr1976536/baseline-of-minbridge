@@ -1,0 +1,44 @@
+{
+  "artifact_id": "xbrlfiling-llm-judge",
+  "artifact_type": "baseline-run",
+  "candidate_pool": {
+    "answers_from": "results/mc_calc_detsmt_v2_haiku/results.jsonl",
+    "answers_from_sha256": "7f6f745f1d7c16a5041119273997b2066e25e55b3c3bdd873d7d907f5879ce98",
+    "claimed_value_note": "The baseline runner reparses the shared raw answer text; claimed_value can differ from the answers-from artifact.",
+    "raw_answer_field": "raw_answer",
+    "raw_answer_matches": 600,
+    "records": 600
+  },
+  "dataset": {
+    "id": "xbrlfiling-600",
+    "records": 600,
+    "sha256": "a63655a04251bce99cc44a77af5c4abf42fb4a4f1b3e098ce03e3668f8a385ce"
+  },
+  "files": {
+    "results": {
+      "path": "results/onepool/xbrl_judge/results.jsonl",
+      "sha256": "f9be013d093ce0ab20c8332a00ebfcef2b0d5b98a02ee17a7aaaedcc26011b9b"
+    }
+  },
+  "known_metadata_gaps": [
+    "The provider endpoint, dependency lock, and service-side configuration are not embedded in the result file."
+  ],
+  "label": "LLM judge",
+  "method": {
+    "baseline_mode": "judge",
+    "evaluator_model": "claude-haiku-4-5-20251001",
+    "implementation_path": "scripts/baselines.py",
+    "implementation_sha256": "f8fc559d9f737ac31ca515734155a7332f9274c6f3548ff559077b977f296f70",
+    "llm_mode": "claude",
+    "reported_label": "LLM judge",
+    "resume": true
+  },
+  "release_path": "results/onepool/xbrl_judge",
+  "schema_version": 1,
+  "scoring": {
+    "policy_path": "results/scoring_policy.json",
+    "policy_sha256": "00d3f5a685394812c89bfa421ca6137ea6af2815df90817e61227f118fa7bb81",
+    "scorer_path": "scripts/paper_scoring.py"
+  },
+  "source_path": "results/onepool/xbrl_judge/results.jsonl"
+}

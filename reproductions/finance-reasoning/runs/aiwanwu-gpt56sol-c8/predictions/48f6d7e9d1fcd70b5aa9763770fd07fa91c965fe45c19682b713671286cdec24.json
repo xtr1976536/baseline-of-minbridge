@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2216",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the True Strength Index (TSI) from sequential stock closing prices using double exponential moving averages of price momentum and absolute price momentum, with configurable EMA periods such as 25 and 13, returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5085,
+          "completion_tokens": 57,
+          "total_tokens": 5142,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 18354,
+          "completion_tokens": 403,
+          "total_tokens": 18757,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 306
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    current_prices = [150, 152, 151, 153, 155]\n    prior_prices = [148, 149, 150, 151, 152]\n    period1 = 25\n    period2 = 13\n\n    def calculate_ema(values, period):\n        ema = [values[0]]\n        multiplier = 2 / (period + 1)\n\n        for value in values[1:]:\n            ema.append((value - ema[-1]) * multiplier + ema[-1])\n\n        return ema\n\n    price_changes = [\n        current - prior\n        for current, prior in zip(current_prices, prior_prices)\n    ]\n    absolute_price_changes = [abs(change) for change in price_changes]\n\n    first_ema_changes = calculate_ema(price_changes, period1)\n    first_ema_absolute_changes = calculate_ema(\n        absolute_price_changes, period1\n    )\n\n    second_ema_changes = calculate_ema(first_ema_changes, period2)\n    second_ema_absolute_changes = calculate_ema(\n        first_ema_absolute_changes, period2\n    )\n\n    tsi = (\n        second_ema_changes[-1]\n        / second_ema_absolute_changes[-1]\n        * 100\n    )\n\n    # Return the TSI as a percentage rounded to two decimal places\n    return round(tsi, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5185,
+          "completion_tokens": 378,
+          "total_tokens": 5563,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 77
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1975",
+        "score": 2.1810288429260254
+      },
+      {
+        "function_id": "article-1860",
+        "score": 1.8985857963562012
+      },
+      {
+        "function_id": "article-3112",
+        "score": 1.886548638343811
+      },
+      {
+        "function_id": "article-1492",
+        "score": 1.8837766647338867
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.8795232772827148
+      },
+      {
+        "function_id": "article-1493",
+        "score": 1.8573073148727417
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.8093178272247314
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.7349698543548584
+      },
+      {
+        "function_id": "article-962",
+        "score": 1.7279987335205078
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.7242413759231567
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.7141942977905273
+      },
+      {
+        "function_id": "article-1225",
+        "score": 1.6983585357666016
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.6847140789031982
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.6778209209442139
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.6777136325836182
+      },
+      {
+        "function_id": "article-1622",
+        "score": 1.655762791633606
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6258389949798584
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.6256012916564941
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.6211236715316772
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.618373155593872
+      },
+      {
+        "function_id": "article-2471",
+        "score": 1.609797477722168
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.6029151678085327
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.5932319164276123
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.5929107666015625
+      },
+      {
+        "function_id": "article-762",
+        "score": 1.592491865158081
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.5908446311950684
+      },
+      {
+        "function_id": "article-1776",
+        "score": 1.584859013557434
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.5820297002792358
+      },
+      {
+        "function_id": "article-1260",
+        "score": 1.5812363624572754
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.5793592929840088
+      }
+    ],
+    "selected_ids": [
+      "article-1975"
+    ],
+    "status": "ok",
+    "answer": 100.0,
+    "code": "def solution():\n    # Define variables name and value\n    current_prices = [150, 152, 151, 153, 155]\n    prior_prices = [148, 149, 150, 151, 152]\n    period1 = 25\n    period2 = 13\n\n    def calculate_ema(values, period):\n        ema = [values[0]]\n        multiplier = 2 / (period + 1)\n\n        for value in values[1:]:\n            ema.append((value - ema[-1]) * multiplier + ema[-1])\n\n        return ema\n\n    price_changes = [\n        current - prior\n        for current, prior in zip(current_prices, prior_prices)\n    ]\n    absolute_price_changes = [abs(change) for change in price_changes]\n\n    first_ema_changes = calculate_ema(price_changes, period1)\n    first_ema_absolute_changes = calculate_ema(\n        absolute_price_changes, period1\n    )\n\n    second_ema_changes = calculate_ema(first_ema_changes, period2)\n    second_ema_absolute_changes = calculate_ema(\n        first_ema_absolute_changes, period2\n    )\n\n    tsi = (\n        second_ema_changes[-1]\n        / second_ema_absolute_changes[-1]\n        * 100\n    )\n\n    # Return the TSI as a percentage rounded to two decimal places\n    return round(tsi, 2)\n"
+  },
+  "digest": "1a579fc24eb0b27e79381414f21fadb3d4e950ef4365f99b88d2db484e3c2dcb"
+}

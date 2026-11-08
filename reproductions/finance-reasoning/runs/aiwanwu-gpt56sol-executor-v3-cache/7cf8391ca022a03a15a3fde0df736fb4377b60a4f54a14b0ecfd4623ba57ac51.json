@@ -1,0 +1,21 @@
+{
+  "identity": "7cf8391ca022a03a15a3fde0df736fb4377b60a4f54a14b0ecfd4623ba57ac51",
+  "response_digest": "cae82bec12871a32568a75ae6b803b08276d7c773dd6445db8b6494269ca69f3",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    highs = [120, 122, 125, 123, 126, 124, 127, 129, 130, 128, 131, 133, 134, 135, 136, 137, 138, 139]\n    lows = [118, 120, 121, 119, 123, 122, 124, 126, 127, 126, 128, 130, 131, 132, 133, 134, 135, 136]\n    closes = [119, 121, 123, 120, 125, 123, 126, 128, 129, 127, 130, 132, 133, 134, 135, 136, 137, 138]\n    parameter_length = 14\n\n    true_ranges = []\n    vm_plus = []\n\n    for i in range(1, len(highs)):\n        true_range = max(\n            highs[i] - lows[i],\n            abs(highs[i] - closes[i - 1]),\n            abs(lows[i] - closes[i - 1])\n        )\n        true_ranges.append(true_range)\n        vm_plus.append(abs(highs[i] - lows[i - 1]))\n\n    start = len(true_ranges) - parameter_length\n    sum_tr = sum(true_ranges[start:])\n    sum_vm_plus = sum(vm_plus[start:])\n\n    vi_plus = sum_vm_plus / sum_tr\n\n    # Return the last VI+ value rounded to four decimal places\n    return round(vi_plus, 4)\n```",
+    "usage": {
+      "prompt_tokens": 5449,
+      "completion_tokens": 1029,
+      "total_tokens": 6478,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 680
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2122",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the USD cash cost of terminating a six-month USD/EUR forward position after three months, using quoted spot and forward bid-ask rates, remaining-maturity forward points, and the original EUR notional, while accounting for the correct side of the market and currency conversion?",
+        "usage": {
+          "prompt_tokens": 5205,
+          "completion_tokens": 61,
+          "total_tokens": 5266,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C05\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 14385,
+          "completion_tokens": 382,
+          "total_tokens": 14767,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 361
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    euro_amount = 200_000 * 90\n    initial_six_month_forward_ask = 1.3983 - 19.0 / 10_000\n    current_three_month_forward_bid = 1.4106 - 21.6 / 10_000\n    usd_libor = 0.01266\n    remaining_years = 3 / 12\n\n    # Do math calculation to get the answer\n    termination_value = (\n        (current_three_month_forward_bid - initial_six_month_forward_ask)\n        * euro_amount\n        / (1 + usd_libor * remaining_years)\n    )\n    answer = round(termination_value, 1)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5410,
+          "completion_tokens": 844,
+          "total_tokens": 6254,
+          "completion_tokens_details": {
+            "reasoning_tokens": 670
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-607",
+        "score": 1.7427709102630615,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.7097386121749878,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.7091484069824219,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1963",
+        "score": 1.6855432987213135,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.6851457357406616,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.67940092086792,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.6552307605743408,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2975",
+        "score": 1.6547495126724243,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2621",
+        "score": 1.6498560905456543,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.648161768913269,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.6410777568817139,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-80",
+        "score": 1.6369044780731201,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.633985996246338,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.620003342628479,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.6118855476379395,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.5980699062347412,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.5967117547988892,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1733",
+        "score": 1.5951611995697021,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2079",
+        "score": 1.5927159786224365,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.5841649770736694,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.5820519924163818,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.5776782035827637,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.576026439666748,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.5701115131378174,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-617",
+        "score": 1.5687544345855713,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-450",
+        "score": 1.5657916069030762,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1886",
+        "score": 1.5610606670379639,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-79",
+        "score": 1.5530660152435303,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.5510605573654175,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.5500726699829102,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-596",
+      "article-609"
+    ],
+    "status": "ok",
+    "answer": 216036.2,
+    "code": "def solution():\n    # Define variables name and value\n    euro_amount = 200_000 * 90\n    initial_six_month_forward_ask = 1.3983 - 19.0 / 10_000\n    current_three_month_forward_bid = 1.4106 - 21.6 / 10_000\n    usd_libor = 0.01266\n    remaining_years = 3 / 12\n\n    # Do math calculation to get the answer\n    termination_value = (\n        (current_three_month_forward_bid - initial_six_month_forward_ask)\n        * euro_amount\n        / (1 + usd_libor * remaining_years)\n    )\n    answer = round(termination_value, 1)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "bffbe73ea20e10db4e906ab094470e4ae645aabdd8fb1cdf125ec7743504cb9f"
+}

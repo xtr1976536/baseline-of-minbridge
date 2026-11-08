@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:proceeds_from_sale_and_maturity_of_available_for_sale_securities_fy2023)

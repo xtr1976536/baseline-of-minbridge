@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2156",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a hedge fund’s ending investor capital after independently applying an annual management fee to end-of-period assets and an incentive fee only on profits above a prior high-water mark, given the starting assets, fee rates, prior return, and pre-fee ending value? The function should support a “2 and 30” fee structure and return the ending capital in monetary units.",
+        "usage": {
+          "prompt_tokens": 5031,
+          "completion_tokens": 80,
+          "total_tokens": 5111
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C06\"]}",
+        "usage": {
+          "prompt_tokens": 14038,
+          "completion_tokens": 474,
+          "total_tokens": 14512,
+          "completion_tokens_details": {
+            "reasoning_tokens": 450
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables in millions of dollars\n    current_value_before_fees = 320.0\n    management_fee_rate = 0.02\n    prior_year_aum = 350.0\n    prior_year_return = 0.20\n\n    # Calculate the high-water mark and fees\n    high_water_mark = prior_year_aum * (1 + prior_year_return)\n    management_fee = current_value_before_fees * management_fee_rate\n    incentive_fee = max(0.0, current_value_before_fees - high_water_mark) * 0.30\n\n    # Calculate ending capital\n    ending_capital = current_value_before_fees - management_fee - incentive_fee\n\n    return round(ending_capital, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5536,
+          "completion_tokens": 229,
+          "total_tokens": 5765,
+          "completion_tokens_details": {
+            "reasoning_tokens": 63
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1983",
+        "score": 1.9235543012619019,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.8471601009368896,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.8383498191833496,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1023",
+        "score": 1.8381341695785522,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.8083453178405762,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.8031867742538452,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.7541749477386475,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.7397290468215942,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.7358821630477905,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.7339136600494385,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.6624221801757812,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-811",
+        "score": 1.6529124975204468,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2902",
+        "score": 1.6410589218139648,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.6259868144989014,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-637",
+        "score": 1.621174931526184,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.6190037727355957,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.613614559173584,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.5887060165405273,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-77",
+        "score": 1.5878633260726929,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2188",
+        "score": 1.586749792098999,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.5827507972717285,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1870",
+        "score": 1.5800714492797852,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2810",
+        "score": 1.5757646560668945,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.5697646141052246,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-406",
+        "score": 1.5667428970336914,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.5666660070419312,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1396",
+        "score": 1.5635356903076172,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1460",
+        "score": 1.5625886917114258,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-593",
+        "score": 1.5573276281356812,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.557180404663086,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1983",
+      "article-1024",
+      "article-1984"
+    ],
+    "status": "ok",
+    "answer": 313.6,
+    "code": "def solution():\n    # Define variables in millions of dollars\n    current_value_before_fees = 320.0\n    management_fee_rate = 0.02\n    prior_year_aum = 350.0\n    prior_year_return = 0.20\n\n    # Calculate the high-water mark and fees\n    high_water_mark = prior_year_aum * (1 + prior_year_return)\n    management_fee = current_value_before_fees * management_fee_rate\n    incentive_fee = max(0.0, current_value_before_fees - high_water_mark) * 0.30\n\n    # Calculate ending capital\n    ending_capital = current_value_before_fees - management_fee - incentive_fee\n\n    return round(ending_capital, 1)\n"
+  },
+  "digest": "4c8b43e8141b76d4205c2130e2609a41ce123ecdde069e989452643fe67129ec"
+}

@@ -1,0 +1,18 @@
+{
+  "identity": "ef6fcd7eedf8c9c631a328339304fbbfefdd1f7fdbfd0f55fb1b956efcd44c85",
+  "response_digest": "4f1de806eaac3fa4c32a247088d7588b1204f85e390212147469721bcccfc661",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    ebit = 1106\n    tax_rate = 0.32\n    depreciation = 243\n    fixed_capital_investment = 535\n\n    current_assets_2012 = 1290\n    current_liabilities_2012 = 2783\n    current_assets_2011 = 1199\n    current_liabilities_2011 = 2678\n\n    net_working_capital_2012 = current_assets_2012 - current_liabilities_2012\n    net_working_capital_2011 = current_assets_2011 - current_liabilities_2011\n    investment_in_working_capital = (\n        net_working_capital_2012 - net_working_capital_2011\n    )\n\n    # Do math calculation to get the answer\n    fcff = (\n        ebit * (1 - tax_rate)\n        + depreciation\n        - fixed_capital_investment\n        - investment_in_working_capital\n    )\n\n    # Return answer rounded to three decimal places\n    return round(fcff, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5884,
+      "completion_tokens": 393,
+      "total_tokens": 6277,
+      "completion_tokens_details": {
+        "reasoning_tokens": 148
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

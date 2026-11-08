@@ -1,0 +1,21 @@
+{
+  "identity": "def43dd1b2602657f6c1fa5481a9872de170c4567efc5acae3f95fc584fd7314",
+  "response_digest": "d9079d9c8d327e86a635722fb06cefa1e3c0235ea727b302546cf06f431b4ce1",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    unlevered_firm_value = 800000\n    tax_rate = 0.28\n    debt = 300000\n    interest_rate = 0.05\n    periods = 5\n\n    # Do math calculation to get the answer\n    annual_interest = debt * interest_rate\n    annual_tax_shield = annual_interest * tax_rate\n    pv_tax_shield = annual_tax_shield * (\n        1 - (1 / (1 + interest_rate) ** periods)\n    ) / interest_rate\n\n    apv = unlevered_firm_value + pv_tax_shield\n\n    # Return answer rounded to the nearest integer\n    return round(apv)\n```",
+    "usage": {
+      "prompt_tokens": 5094,
+      "completion_tokens": 224,
+      "total_tokens": 5318,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 63
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

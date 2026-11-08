@@ -1,0 +1,21 @@
+{
+  "identity": "4aea7e7a1c88bd5232be98080d1fcde8febd1a8e20b765201830ba7cecc3df35",
+  "response_digest": "2a8327457e1594104ddebe06a8bee3a061be5ec0eea8d4e0936c26177bca8374",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    company_a = [120, 125, 130, 128, 135, 138, 140, 142, 145, 147, 150, 152]\n    company_b = [100, 105, 110, 107, 112, 115, 118, 120, 123, 125, 130, 132]\n\n    # Do math calculation to get the answer\n    correlation = calculate_pearson_correlation(company_a, company_b)\n    answer = round(correlation, 2)\n\n    # return answer\n    return answer\n\n\ndef calculate_pearson_correlation(x_values, y_values):\n    n = len(x_values)\n    numerator = n * sum(x * y for x, y in zip(x_values, y_values)) - sum(x_values) * sum(y_values)\n    denominator = (\n        (n * sum(x ** 2 for x in x_values) - sum(x_values) ** 2)\n        * (n * sum(y ** 2 for y in y_values) - sum(y_values) ** 2)\n    ) ** 0.5\n    return numerator / denominator\n```",
+    "usage": {
+      "prompt_tokens": 6053,
+      "completion_tokens": 298,
+      "total_tokens": 6351,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 35
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

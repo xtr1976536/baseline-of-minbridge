@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2124",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the percentage of total leased locations represented by Texas using state-level location counts, including all listed states and an “Other” category, and returns the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5559,
+          "completion_tokens": 43,
+          "total_tokens": 5602,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 14219,
+          "completion_tokens": 205,
+          "total_tokens": 14424,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 187
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    texas_locations = 19\n    us_locations = 57 + 26 + 22 + 19 + 9 + 8 + 7 + 63\n    international_locations = 81\n    total_leased_locations = us_locations + international_locations\n    \n    # Do math calculation to get the answer\n    texas_percentage = (texas_locations / total_leased_locations) * 100\n    answer = round(texas_percentage, 3)\n    \n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5500,
+          "completion_tokens": 229,
+          "total_tokens": 5729,
+          "completion_tokens_details": {
+            "reasoning_tokens": 105
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-917",
+        "score": 1.4232277870178223,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-58",
+        "score": 1.38796865940094,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1967",
+        "score": 1.3550729751586914,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3004",
+        "score": 1.3315917253494263,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2159",
+        "score": 1.2998104095458984,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-246",
+        "score": 1.294321894645691,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2104",
+        "score": 1.2934656143188477,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-3015",
+        "score": 1.292358160018921,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-928",
+        "score": 1.2847900390625,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-938",
+        "score": 1.2673697471618652,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-59",
+        "score": 1.2665088176727295,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-991",
+        "score": 1.2609506845474243,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2129",
+        "score": 1.253347635269165,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-3020",
+        "score": 1.2453179359436035,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2725",
+        "score": 1.2422832250595093,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-320",
+        "score": 1.232856273651123,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1874",
+        "score": 1.226928949356079,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2546",
+        "score": 1.2224574089050293,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1078",
+        "score": 1.2146183252334595,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2778",
+        "score": 1.213034987449646,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1188",
+        "score": 1.2121844291687012,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-466",
+        "score": 1.2035610675811768,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1524",
+        "score": 1.2027956247329712,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1264",
+        "score": 1.1992826461791992,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3036",
+        "score": 1.1985549926757812,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2949",
+        "score": 1.1983647346496582,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2741",
+        "score": 1.1973583698272705,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2426",
+        "score": 1.196084976196289,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2284",
+        "score": 1.1939237117767334,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-572",
+        "score": 1.1929998397827148,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2159"
+    ],
+    "status": "ok",
+    "answer": 6.507,
+    "code": "def solution():\n    # Define variables name and value\n    texas_locations = 19\n    us_locations = 57 + 26 + 22 + 19 + 9 + 8 + 7 + 63\n    international_locations = 81\n    total_leased_locations = us_locations + international_locations\n    \n    # Do math calculation to get the answer\n    texas_percentage = (texas_locations / total_leased_locations) * 100\n    answer = round(texas_percentage, 3)\n    \n    # return answer\n    return answer\n"
+  },
+  "digest": "447bcca4a50f70f37d86145cfae0f9b1414183f5df8bb35d5e6dd89b09061598"
+}

@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2013",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the average effective bid-ask spread for multiple stock trades using trade prices, contemporaneous prevailing bid and offer quotes, and buy-side trade direction, typically as twice the absolute difference between each trade price and the quote midpoint?",
+        "usage": {
+          "prompt_tokens": 5104,
+          "completion_tokens": 176,
+          "total_tokens": 5280,
+          "completion_tokens_details": {
+            "reasoning_tokens": 123
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[]}",
+        "usage": {
+          "prompt_tokens": 13947,
+          "completion_tokens": 170,
+          "total_tokens": 14117,
+          "completion_tokens_details": {
+            "reasoning_tokens": 155
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define trade prices and prevailing bid/offer prices\n    transactions = [\n        {\"trade_price\": 41.50, \"bid\": 41.45, \"offer\": 41.50},\n        {\"trade_price\": 41.75, \"bid\": 41.73, \"offer\": 41.75},\n    ]\n\n    # Calculate each transaction's effective spread:\n    # Effective spread = 2 * absolute(trade price - midpoint)\n    effective_spreads = []\n    for transaction in transactions:\n        midpoint = (transaction[\"bid\"] + transaction[\"offer\"]) / 2\n        effective_spread = 2 * abs(transaction[\"trade_price\"] - midpoint)\n        effective_spreads.append(effective_spread)\n\n    # Calculate the average effective spread\n    average_effective_spread = sum(effective_spreads) / len(effective_spreads)\n\n    # Return the answer rounded to three decimal places\n    return round(average_effective_spread, 3)\n```",
+        "usage": {
+          "prompt_tokens": 4771,
+          "completion_tokens": 379,
+          "total_tokens": 5150,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 164
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2357",
+        "score": 1.8410112857818604,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2628",
+        "score": 1.8382277488708496,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-718",
+        "score": 1.8233860731124878,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2358",
+        "score": 1.8168346881866455,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-885",
+        "score": 1.8080177307128906,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-721",
+        "score": 1.8055769205093384,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-720",
+        "score": 1.7915048599243164,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-722",
+        "score": 1.7711714506149292,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1281",
+        "score": 1.757127046585083,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-234",
+        "score": 1.7092117071151733,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2543",
+        "score": 1.7033638954162598,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2855",
+        "score": 1.6685717105865479,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-707",
+        "score": 1.6615841388702393,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-780",
+        "score": 1.6546629667282104,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.6510124206542969,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-719",
+        "score": 1.6410093307495117,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2025",
+        "score": 1.6407262086868286,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-777",
+        "score": 1.6342203617095947,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-706",
+        "score": 1.6327672004699707,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-778",
+        "score": 1.6321388483047485,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1201",
+        "score": 1.6292591094970703,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-708",
+        "score": 1.6288974285125732,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2048",
+        "score": 1.6258195638656616,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.6244120597839355,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.623171091079712,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-781",
+        "score": 1.6223516464233398,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-775",
+        "score": 1.6222705841064453,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-315",
+        "score": 1.6156326532363892,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-779",
+        "score": 1.6154069900512695,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-776",
+        "score": 1.6128730773925781,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [],
+    "status": "ok",
+    "answer": 0.035,
+    "code": "def solution():\n    # Define trade prices and prevailing bid/offer prices\n    transactions = [\n        {\"trade_price\": 41.50, \"bid\": 41.45, \"offer\": 41.50},\n        {\"trade_price\": 41.75, \"bid\": 41.73, \"offer\": 41.75},\n    ]\n\n    # Calculate each transaction's effective spread:\n    # Effective spread = 2 * absolute(trade price - midpoint)\n    effective_spreads = []\n    for transaction in transactions:\n        midpoint = (transaction[\"bid\"] + transaction[\"offer\"]) / 2\n        effective_spread = 2 * abs(transaction[\"trade_price\"] - midpoint)\n        effective_spreads.append(effective_spread)\n\n    # Calculate the average effective spread\n    average_effective_spread = sum(effective_spreads) / len(effective_spreads)\n\n    # Return the answer rounded to three decimal places\n    return round(average_effective_spread, 3)\n"
+  },
+  "digest": "b7cffe989753fdecd8ffe0b69464d5d2c0edb204d4261f538f1f38b0f6e3beb4"
+}

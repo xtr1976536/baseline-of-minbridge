@@ -1,0 +1,21 @@
+{
+  "identity": "498e9d624c37674b2417a17b4050d4c664e8b4463750b4896ac9330424dcab3b",
+  "response_digest": "876401021132ef8d07b9dc0bed07eae13054891b04803b46a6c41f3026e429b3",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    cost_of_equity = 0.08\n    after_tax_cost_of_debt = 0.04\n    equity_market_value = 2_000_000\n    debt_market_value = 1_000_000\n    corporate_tax_rate = 0.25\n\n    # Do math calculation to get the answer\n    total_market_value = equity_market_value + debt_market_value\n    equity_weight = equity_market_value / total_market_value\n    debt_weight = debt_market_value / total_market_value\n\n    # The stated 4% debt cost is already after tax, so the tax rate is not applied again.\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * after_tax_cost_of_debt\n    )\n    answer = round(wacc * 100, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5770,
+      "completion_tokens": 346,
+      "total_tokens": 6116,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 147
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

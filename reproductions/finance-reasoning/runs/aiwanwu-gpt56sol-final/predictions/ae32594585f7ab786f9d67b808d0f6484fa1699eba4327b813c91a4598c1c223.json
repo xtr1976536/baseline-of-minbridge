@@ -1,0 +1,186 @@
+{
+  "record": {
+    "question_id": "test-2222",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the money-weighted rate of return (MWRR), or internal rate of return (IRR), for an initial investment followed by irregular or periodic cash flows over multiple years, accepts an initial guess rate, and returns the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5059,
+          "completion_tokens": 61,
+          "total_tokens": 5120,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15523,
+          "completion_tokens": 613,
+          "total_tokens": 16136,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_investment = -100000\n    cash_flows = [20000, 30000, 50000, 60000]\n    rate = 0.10\n    tolerance = 1e-6\n    max_iterations = 1000\n\n    # Do math calculation to get the answer\n    for _ in range(max_iterations):\n        npv = initial_investment + sum(\n            cash_flow / ((1 + rate) ** year)\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n        npv_derivative = sum(\n            -year * cash_flow / ((1 + rate) ** (year + 1))\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n\n        if abs(npv) < tolerance:\n            break\n\n        rate -= npv / npv_derivative\n\n    answer = round(rate * 100, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5800,
+          "completion_tokens": 476,
+          "total_tokens": 6276,
+          "completion_tokens_details": {
+            "reasoning_tokens": 249
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-952",
+        "score": 2.417905330657959
+      },
+      {
+        "function_id": "article-488",
+        "score": 1.965223789215088
+      },
+      {
+        "function_id": "article-458",
+        "score": 1.9628467559814453
+      },
+      {
+        "function_id": "article-2916",
+        "score": 1.9423773288726807
+      },
+      {
+        "function_id": "article-929",
+        "score": 1.9398237466812134
+      },
+      {
+        "function_id": "article-2003",
+        "score": 1.9192622900009155
+      },
+      {
+        "function_id": "article-1444",
+        "score": 1.9038668870925903
+      },
+      {
+        "function_id": "article-1442",
+        "score": 1.8007001876831055
+      },
+      {
+        "function_id": "article-1907",
+        "score": 1.7705391645431519
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.7590398788452148
+      },
+      {
+        "function_id": "article-1062",
+        "score": 1.7386054992675781
+      },
+      {
+        "function_id": "article-1061",
+        "score": 1.7133307456970215
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.7082204818725586
+      },
+      {
+        "function_id": "article-2227",
+        "score": 1.6971112489700317
+      },
+      {
+        "function_id": "article-1095",
+        "score": 1.645027756690979
+      },
+      {
+        "function_id": "article-424",
+        "score": 1.6308307647705078
+      },
+      {
+        "function_id": "article-456",
+        "score": 1.6259268522262573
+      },
+      {
+        "function_id": "article-3052",
+        "score": 1.618464708328247
+      },
+      {
+        "function_id": "article-560",
+        "score": 1.6180205345153809
+      },
+      {
+        "function_id": "article-1064",
+        "score": 1.6144030094146729
+      },
+      {
+        "function_id": "article-2004",
+        "score": 1.6073925495147705
+      },
+      {
+        "function_id": "article-1545",
+        "score": 1.592831015586853
+      },
+      {
+        "function_id": "article-2961",
+        "score": 1.592448115348816
+      },
+      {
+        "function_id": "article-2967",
+        "score": 1.590718388557434
+      },
+      {
+        "function_id": "article-3106",
+        "score": 1.5901577472686768
+      },
+      {
+        "function_id": "article-2960",
+        "score": 1.5886682271957397
+      },
+      {
+        "function_id": "article-444",
+        "score": 1.5864486694335938
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.5751996040344238
+      },
+      {
+        "function_id": "article-1783",
+        "score": 1.5726544857025146
+      },
+      {
+        "function_id": "article-2290",
+        "score": 1.5716514587402344
+      }
+    ],
+    "selected_ids": [
+      "article-952",
+      "article-488"
+    ],
+    "status": "ok",
+    "answer": 17.95,
+    "code": "def solution():\n    # Define variables name and value\n    initial_investment = -100000\n    cash_flows = [20000, 30000, 50000, 60000]\n    rate = 0.10\n    tolerance = 1e-6\n    max_iterations = 1000\n\n    # Do math calculation to get the answer\n    for _ in range(max_iterations):\n        npv = initial_investment + sum(\n            cash_flow / ((1 + rate) ** year)\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n        npv_derivative = sum(\n            -year * cash_flow / ((1 + rate) ** (year + 1))\n            for year, cash_flow in enumerate(cash_flows, start=1)\n        )\n\n        if abs(npv) < tolerance:\n            break\n\n        rate -= npv / npv_derivative\n\n    answer = round(rate * 100, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "18504ee8c77fefeb70d5bc1b05171152d9f351842084a602cc702b7f61b5863a"
+}

@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2063",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates cost of goods sold under the periodic LIFO inventory method using beginning inventory and multiple purchase layers with unit quantities and costs, for a specified number of units sold, rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5022,
+          "completion_tokens": 45,
+          "total_tokens": 5067,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C04\",\"C09\"]}",
+        "usage": {
+          "prompt_tokens": 13693,
+          "completion_tokens": 371,
+          "total_tokens": 14064,
+          "completion_tokens_details": {
+            "reasoning_tokens": 347
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    units_sold = 50000\n    purchase_costs = [\n        (40000, 17),  # Most recent purchase\n        (30000, 15),\n        (20000, 13)   # Beginning inventory\n    ]\n\n    # Do math calculation to get the answer\n    units_remaining = units_sold\n    cogs = 0\n\n    for units, cost_per_unit in purchase_costs:\n        units_used = min(units_remaining, units)\n        cogs += units_used * cost_per_unit\n        units_remaining -= units_used\n\n        if units_remaining == 0:\n            break\n\n    # return answer\n    return round(cogs)\n```",
+        "usage": {
+          "prompt_tokens": 5829,
+          "completion_tokens": 217,
+          "total_tokens": 6046,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 56
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2098",
+        "score": 2.0558996200561523,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.9413564205169678,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.9190328121185303,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2135",
+        "score": 1.8509929180145264,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2958",
+        "score": 1.788578748703003,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.742012619972229,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2136",
+        "score": 1.7067950963974,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2396",
+        "score": 1.69942045211792,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-200",
+        "score": 1.6987391710281372,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1270",
+        "score": 1.6630234718322754,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2495",
+        "score": 1.661634087562561,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2395",
+        "score": 1.6467055082321167,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2266",
+        "score": 1.6258476972579956,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.616487979888916,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2207",
+        "score": 1.6048667430877686,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-466",
+        "score": 1.6009187698364258,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-288",
+        "score": 1.5827841758728027,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1058",
+        "score": 1.5722323656082153,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2529",
+        "score": 1.5695326328277588,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-82",
+        "score": 1.5687026977539062,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1187",
+        "score": 1.56125009059906,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-471",
+        "score": 1.5592262744903564,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2467",
+        "score": 1.5566236972808838,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1977",
+        "score": 1.5552867650985718,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3003",
+        "score": 1.5524024963378906,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1448",
+        "score": 1.5419306755065918,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-765",
+        "score": 1.5369280576705933,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.5363457202911377,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-763",
+        "score": 1.5324537754058838,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2059",
+        "score": 1.5303330421447754,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2098",
+      "article-2135",
+      "article-200"
+    ],
+    "status": "ok",
+    "answer": 830000,
+    "code": "def solution():\n    # Define variables name and value\n    units_sold = 50000\n    purchase_costs = [\n        (40000, 17),  # Most recent purchase\n        (30000, 15),\n        (20000, 13)   # Beginning inventory\n    ]\n\n    # Do math calculation to get the answer\n    units_remaining = units_sold\n    cogs = 0\n\n    for units, cost_per_unit in purchase_costs:\n        units_used = min(units_remaining, units)\n        cogs += units_used * cost_per_unit\n        units_remaining -= units_used\n\n        if units_remaining == 0:\n            break\n\n    # return answer\n    return round(cogs)\n"
+  },
+  "digest": "6620acf0e2c0a423b5f269338c6297ff54f6674bd3992f33d1ab6acc12473844"
+}

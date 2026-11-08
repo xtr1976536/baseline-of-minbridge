@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2231",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the theoretical price of a European call option using the Black-Scholes model from current stock price, strike price, time to expiration, annual risk-free interest rate, and volatility, with the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5027,
+          "completion_tokens": 51,
+          "total_tokens": 5078,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 16090,
+          "completion_tokens": 22,
+          "total_tokens": 16112
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    stock_price = 150.0\n    strike_price = 160.0\n    time_to_expiration = 0.5\n    risk_free_rate = 0.05\n    volatility = 0.20\n\n    # Calculate d1 and d2\n    import math\n\n    d1 = (\n        math.log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility ** 2) * time_to_expiration\n    ) / (volatility * math.sqrt(time_to_expiration))\n\n    d2 = d1 - volatility * math.sqrt(time_to_expiration)\n\n    # Standard normal cumulative distribution function\n    def norm_cdf(x):\n        return 0.5 * (1 + math.erf(x / math.sqrt(2)))\n\n    # Calculate the Black-Scholes call option price\n    call_price = (\n        stock_price * norm_cdf(d1)\n        - strike_price\n        * math.exp(-risk_free_rate * time_to_expiration)\n        * norm_cdf(d2)\n    )\n\n    # Return the price rounded to two decimal places\n    return round(call_price, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5959,
+          "completion_tokens": 457,
+          "total_tokens": 6416,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 202
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-729",
+        "score": 2.3741793632507324,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3060",
+        "score": 2.3357090950012207,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1032",
+        "score": 2.3229517936706543,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1033",
+        "score": 2.175468921661377,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-3061",
+        "score": 2.139378070831299,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2505",
+        "score": 2.069054365158081,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-358",
+        "score": 2.001978874206543,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.8582375049591064,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1408",
+        "score": 1.8359047174453735,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.7533454895019531,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2054",
+        "score": 1.678130865097046,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.6769405603408813,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-758",
+        "score": 1.67388117313385,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.6724367141723633,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.6720175743103027,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2435",
+        "score": 1.6636091470718384,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.6545186042785645,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.6455785036087036,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2649",
+        "score": 1.644200325012207,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.6434056758880615,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-727",
+        "score": 1.6426594257354736,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2850",
+        "score": 1.6400623321533203,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1156",
+        "score": 1.6339893341064453,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3063",
+        "score": 1.6333858966827393,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2849",
+        "score": 1.6246267557144165,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.6178574562072754,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1875",
+        "score": 1.6174110174179077,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3058",
+        "score": 1.6082816123962402,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.6056272983551025,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6033838987350464,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-729",
+      "article-3060",
+      "article-1032"
+    ],
+    "status": "ok",
+    "answer": 5.94,
+    "code": "def solution():\n    # Define variables\n    stock_price = 150.0\n    strike_price = 160.0\n    time_to_expiration = 0.5\n    risk_free_rate = 0.05\n    volatility = 0.20\n\n    # Calculate d1 and d2\n    import math\n\n    d1 = (\n        math.log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility ** 2) * time_to_expiration\n    ) / (volatility * math.sqrt(time_to_expiration))\n\n    d2 = d1 - volatility * math.sqrt(time_to_expiration)\n\n    # Standard normal cumulative distribution function\n    def norm_cdf(x):\n        return 0.5 * (1 + math.erf(x / math.sqrt(2)))\n\n    # Calculate the Black-Scholes call option price\n    call_price = (\n        stock_price * norm_cdf(d1)\n        - strike_price\n        * math.exp(-risk_free_rate * time_to_expiration)\n        * norm_cdf(d2)\n    )\n\n    # Return the price rounded to two decimal places\n    return round(call_price, 2)\n"
+  },
+  "digest": "f663384a7f3fa53d73e8535326bbd729fb6eacbc7e7dda6bb78dce296e4f4420"
+}

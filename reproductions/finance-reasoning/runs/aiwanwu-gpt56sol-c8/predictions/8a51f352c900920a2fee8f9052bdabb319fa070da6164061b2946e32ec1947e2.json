@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2180",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the price (present value) of a fixed-rate coupon bond using par value, annual coupon rate, maturity, required annual return, and semiannual coupon payments with matching periodic discounting?",
+        "usage": {
+          "prompt_tokens": 5010,
+          "completion_tokens": 44,
+          "total_tokens": 5054
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14188,
+          "completion_tokens": 613,
+          "total_tokens": 14801,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    par_value = 100\n    coupon_rate = 0.03\n    required_rate_of_return = 0.05\n    years_to_maturity = 3\n    payments_per_year = 2\n\n    period_rate = required_rate_of_return / payments_per_year\n    coupon_payment = par_value * coupon_rate / payments_per_year\n    total_periods = years_to_maturity * payments_per_year\n\n    # Do math calculation to get the answer\n    pv_coupons = sum(\n        coupon_payment / ((1 + period_rate) ** period)\n        for period in range(1, total_periods + 1)\n    )\n    pv_par_value = par_value / ((1 + period_rate) ** total_periods)\n    bond_price = pv_coupons + pv_par_value\n\n    # return answer\n    return round(bond_price, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5634,
+          "completion_tokens": 398,
+          "total_tokens": 6032,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 197
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-212",
+        "score": 1.913655161857605
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.9068571329116821
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.905588150024414
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.9017977714538574
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.8958795070648193
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.8670181035995483
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.8561677932739258
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.8540594577789307
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.8385798931121826
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.8346917629241943
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.8319510221481323
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.8197658061981201
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.818358063697815
+      },
+      {
+        "function_id": "article-1208",
+        "score": 1.8091044425964355
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.807892918586731
+      },
+      {
+        "function_id": "article-735",
+        "score": 1.8041448593139648
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.8030271530151367
+      },
+      {
+        "function_id": "article-2006",
+        "score": 1.7987351417541504
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.798354983329773
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.7849369049072266
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.779090404510498
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7684060335159302
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.7670329809188843
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.7606923580169678
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.748510479927063
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.7452312707901
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.740278959274292
+      },
+      {
+        "function_id": "article-1490",
+        "score": 1.7364641427993774
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.7361087799072266
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.7310158014297485
+      }
+    ],
+    "selected_ids": [
+      "article-741",
+      "article-734",
+      "article-575"
+    ],
+    "status": "ok",
+    "answer": 94.492,
+    "code": "def solution():\n    # Define variables name and value\n    par_value = 100\n    coupon_rate = 0.03\n    required_rate_of_return = 0.05\n    years_to_maturity = 3\n    payments_per_year = 2\n\n    period_rate = required_rate_of_return / payments_per_year\n    coupon_payment = par_value * coupon_rate / payments_per_year\n    total_periods = years_to_maturity * payments_per_year\n\n    # Do math calculation to get the answer\n    pv_coupons = sum(\n        coupon_payment / ((1 + period_rate) ** period)\n        for period in range(1, total_periods + 1)\n    )\n    pv_par_value = par_value / ((1 + period_rate) ** total_periods)\n    bond_price = pv_coupons + pv_par_value\n\n    # return answer\n    return round(bond_price, 3)\n"
+  },
+  "digest": "e72eb12bc609561fb4d8acfb5e9d90a84a9c267025298b4cd81182305009d10c"
+}

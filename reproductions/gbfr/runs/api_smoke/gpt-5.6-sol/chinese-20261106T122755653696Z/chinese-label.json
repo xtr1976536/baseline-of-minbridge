@@ -1,0 +1,203 @@
+{
+  "case": {
+    "id": "chinese-label",
+    "question": "What were Company A's Current Assets in 2024, in CNY?",
+    "context": "Company A 2024年流动资产为42元。文档未提供其他资产数值。",
+    "expected_value": 42
+  },
+  "prediction": {
+    "status": "answered",
+    "value": 42.0,
+    "meta": {
+      "currency": "CNY",
+      "scale": "units",
+      "unit": "currency"
+    },
+    "precision": "unknown",
+    "trace": {
+      "events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "reasoning_type": "DirectRetrieval",
+            "operator": "sum",
+            "subgoals": [
+              {
+                "metric": "Current Assets",
+                "constraints": {
+                  "temporal_scope": "2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": "CNY",
+                    "scale": "units",
+                    "unit": "currency"
+                  }
+                }
+              }
+            ],
+            "precision": "unknown"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Current Assets",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "CNY",
+                "scale": "units",
+                "unit": "currency"
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved Current Assets via translation of 流动资产.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": "CNY",
+                    "scale": "units",
+                    "unit": "currency"
+                  },
+                  "temporal_scope": "2024"
+                },
+                "context": "Company A 2024年流动资产为42元。",
+                "context_spans": [],
+                "label_alignment": {
+                  "explanation": "流动资产 translates to Current Assets.",
+                  "kind": "translation",
+                  "source_label": "流动资产"
+                },
+                "metric": "Current Assets",
+                "observed_meta": {
+                  "currency": "CNY",
+                  "scale": "units",
+                  "unit": "currency"
+                },
+                "value": 42
+              }
+            }
+          }
+        },
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    value = sum([vars[\"v1\"]])\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"v1\": vars[\"v1\"],\n            \"output_meta\": {\n                \"currency\": \"CNY\",\n                \"scale\": \"units\",\n                \"unit\": \"currency\"\n            }\n        }\n    }",
+          "inputs": {
+            "v1": 42.0
+          },
+          "execution": {
+            "value": 42.0,
+            "trace": {
+              "v1": 42.0,
+              "output_meta": {
+                "currency": "CNY",
+                "scale": "units",
+                "unit": "currency"
+              }
+            }
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "var_name": "v1",
+          "metric": "Current Assets",
+          "constraints": {
+            "temporal_scope": "2024",
+            "entity_scope": "Company A",
+            "meta": {
+              "currency": "CNY",
+              "scale": "units",
+              "unit": "currency"
+            }
+          },
+          "value": 42.0,
+          "meta": {
+            "currency": "CNY",
+            "scale": "units",
+            "unit": "currency"
+          },
+          "paths": [
+            {
+              "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": \"CNY\", \"scale\": \"units\", \"unit\": \"currency\"}, \"temporal_scope\": \"2024\"}, \"metric\": \"Current Assets\"}",
+              "subgoals": [
+                {
+                  "metric": "Current Assets",
+                  "constraints": {
+                    "temporal_scope": "2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": "CNY",
+                      "scale": "units",
+                      "unit": "currency"
+                    }
+                  }
+                }
+              ],
+              "evidence": {
+                "v1": {
+                  "confidence": 1.0,
+                  "constraints": {
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": "CNY",
+                      "scale": "units",
+                      "unit": "currency"
+                    },
+                    "temporal_scope": "2024"
+                  },
+                  "context": "Company A 2024年流动资产为42元。",
+                  "context_spans": [],
+                  "label_alignment": {
+                    "explanation": "流动资产 translates to Current Assets.",
+                    "kind": "translation",
+                    "source_label": "流动资产"
+                  },
+                  "metric": "Current Assets",
+                  "observed_meta": {
+                    "currency": "CNY",
+                    "scale": "units",
+                    "unit": "currency"
+                  },
+                  "value": 42
+                }
+              },
+              "computation": {
+                "kind": "direct extraction"
+              },
+              "alias_mapping": {
+                "canonical_metric": "Current Assets",
+                "matched_registered_aliases": [],
+                "source": "FMKG registered aliases",
+                "operator_notes": "Resolved Current Assets via translation of 流动资产.",
+                "explicit_label_alignment": {
+                  "explanation": "流动资产 translates to Current Assets.",
+                  "kind": "translation",
+                  "source_label": "流动资产"
+                }
+              },
+              "verified_evidence_spans": [
+                "Company A 2024年流动资产为42元。"
+              ],
+              "value": 42.0,
+              "meta": {
+                "currency": "CNY",
+                "scale": "units",
+                "unit": "currency"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "reason": ""
+  },
+  "passed": true
+}

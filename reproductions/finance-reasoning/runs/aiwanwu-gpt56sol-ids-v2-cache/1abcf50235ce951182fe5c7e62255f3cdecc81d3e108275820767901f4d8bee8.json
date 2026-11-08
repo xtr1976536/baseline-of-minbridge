@@ -1,0 +1,21 @@
+{
+  "identity": "1abcf50235ce951182fe5c7e62255f3cdecc81d3e108275820767901f4d8bee8",
+  "response_digest": "d9d05d8e00514aebaeab1471d37447f8284782cd1ca8f238364e75f0a40c512f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    retained_earnings_2016 = 110\n    retained_earnings_2017 = 125\n    dividends = 8\n    impairment_expense = 12\n\n    accounts_receivable_2016 = 45\n    accounts_receivable_2017 = 48\n    inventory_2016 = 24\n    inventory_2017 = 20\n    accounts_payable_2016 = 30\n    accounts_payable_2017 = 33\n\n    # Net income = increase in retained earnings + dividends\n    net_income = (retained_earnings_2017 - retained_earnings_2016) + dividends\n\n    # Calculate working capital adjustments\n    change_in_accounts_receivable = accounts_receivable_2017 - accounts_receivable_2016\n    change_in_inventory = inventory_2017 - inventory_2016\n    change_in_accounts_payable = accounts_payable_2017 - accounts_payable_2016\n\n    # Do math calculation to get the answer\n    operating_cash_flow = (\n        net_income\n        + impairment_expense\n        - change_in_accounts_receivable\n        - change_in_inventory\n        + change_in_accounts_payable\n    )\n\n    # return answer\n    return round(operating_cash_flow, 1)\n```",
+    "usage": {
+      "prompt_tokens": 5720,
+      "completion_tokens": 388,
+      "total_tokens": 6108,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 99
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

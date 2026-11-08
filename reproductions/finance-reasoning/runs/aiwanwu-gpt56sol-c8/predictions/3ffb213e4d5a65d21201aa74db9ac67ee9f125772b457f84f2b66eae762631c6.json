@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2044",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the present value of fixed annual lease payments over a specified term plus a terminal residual value, discounted at a constant annual interest rate, with payments assumed at the end of each year?",
+        "usage": {
+          "prompt_tokens": 5024,
+          "completion_tokens": 43,
+          "total_tokens": 5067,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14141,
+          "completion_tokens": 424,
+          "total_tokens": 14565,
+          "prompt_tokens_details": {
+            "cached_tokens": 13952
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 327
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    annual_lease_payment = 10000\n    interest_rate = 0.08\n    residual_value = 15000\n    num_periods = 5\n    lease_payments = [annual_lease_payment] * num_periods\n\n    # Calculate the present value of the lease payments and residual value\n    present_value_payments = sum(\n        payment / ((1 + interest_rate) ** period)\n        for period, payment in enumerate(lease_payments, start=1)\n    )\n    present_value_residual = residual_value / (\n        (1 + interest_rate) ** num_periods\n    )\n    answer = round(present_value_payments + present_value_residual)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5061,
+          "completion_tokens": 193,
+          "total_tokens": 5254,
+          "completion_tokens_details": {
+            "reasoning_tokens": 21
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-917",
+        "score": 2.1171445846557617
+      },
+      {
+        "function_id": "article-58",
+        "score": 1.9818451404571533
+      },
+      {
+        "function_id": "article-3020",
+        "score": 1.9187254905700684
+      },
+      {
+        "function_id": "article-2104",
+        "score": 1.8279545307159424
+      },
+      {
+        "function_id": "article-1524",
+        "score": 1.8145687580108643
+      },
+      {
+        "function_id": "article-1870",
+        "score": 1.7719436883926392
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.7380098104476929
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.736751914024353
+      },
+      {
+        "function_id": "article-1967",
+        "score": 1.7212679386138916
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.6809017658233643
+      },
+      {
+        "function_id": "article-938",
+        "score": 1.67691969871521
+      },
+      {
+        "function_id": "article-2006",
+        "score": 1.6696882247924805
+      },
+      {
+        "function_id": "article-2247",
+        "score": 1.65828537940979
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6565793752670288
+      },
+      {
+        "function_id": "article-2657",
+        "score": 1.6559863090515137
+      },
+      {
+        "function_id": "article-1525",
+        "score": 1.6547770500183105
+      },
+      {
+        "function_id": "article-939",
+        "score": 1.6543567180633545
+      },
+      {
+        "function_id": "article-569",
+        "score": 1.642707109451294
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.6405733823776245
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.6336252689361572
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.627516746520996
+      },
+      {
+        "function_id": "article-2549",
+        "score": 1.6194344758987427
+      },
+      {
+        "function_id": "article-1122",
+        "score": 1.6159448623657227
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.6155540943145752
+      },
+      {
+        "function_id": "article-2083",
+        "score": 1.6150569915771484
+      },
+      {
+        "function_id": "article-2725",
+        "score": 1.612256407737732
+      },
+      {
+        "function_id": "article-1123",
+        "score": 1.6109436750411987
+      },
+      {
+        "function_id": "article-1700",
+        "score": 1.6077544689178467
+      },
+      {
+        "function_id": "article-2205",
+        "score": 1.605565071105957
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.6051361560821533
+      }
+    ],
+    "selected_ids": [
+      "article-917"
+    ],
+    "status": "ok",
+    "answer": 50136,
+    "code": "def solution():\n    # Define variables name and value\n    annual_lease_payment = 10000\n    interest_rate = 0.08\n    residual_value = 15000\n    num_periods = 5\n    lease_payments = [annual_lease_payment] * num_periods\n\n    # Calculate the present value of the lease payments and residual value\n    present_value_payments = sum(\n        payment / ((1 + interest_rate) ** period)\n        for period, payment in enumerate(lease_payments, start=1)\n    )\n    present_value_residual = residual_value / (\n        (1 + interest_rate) ** num_periods\n    )\n    answer = round(present_value_payments + present_value_residual)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "ddfc112cd401051165bbc4908549d4565b81bf829f092761fcbe65eb72990849"
+}

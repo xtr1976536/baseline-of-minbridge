@@ -1,0 +1,21 @@
+{
+  "identity": "27ef922915604b1860caa58adbc0c8751bf2c912a650a2f241fc8b54e66bf116",
+  "response_digest": "4c153e3cfee9515365e3b3de682c39f44913a2cc8d9b4637ff9f74540f4e7cfe",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_returns = [\n        15.4, -6.2, 7.8, -14.3, 12.0, -9.1, 18.5, 25.7, -5.0, 3.3,\n        21.2, -7.6, 11.7, 29.8, -19.4, 8.9, 4.5, -11.2, 6.6, -13.7\n    ]\n    winsor_percent = 0.10\n\n    # Do math calculation to get the answer\n    sorted_returns = sorted(stock_returns)\n    n = int(len(sorted_returns) * winsor_percent)\n\n    winsorized_returns = sorted_returns[:]\n    lower_value = sorted_returns[n]\n    upper_value = sorted_returns[-n - 1]\n\n    for i in range(n):\n        winsorized_returns[i] = lower_value\n        winsorized_returns[-i - 1] = upper_value\n\n    winsorized_mean = sum(winsorized_returns) / len(winsorized_returns)\n    answer = round(winsorized_mean, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5245,
+      "completion_tokens": 671,
+      "total_tokens": 5916,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 394
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

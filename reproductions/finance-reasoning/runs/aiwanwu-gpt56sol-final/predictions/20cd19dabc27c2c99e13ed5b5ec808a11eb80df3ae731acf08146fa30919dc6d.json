@@ -1,0 +1,189 @@
+{
+  "record": {
+    "question_id": "test-2175",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function bootstraps the five-year annual-compounding spot rate from a par yield curve using the five-year par coupon rate and previously derived one- through four-year spot rates, with annual coupon payments and output expressed as a percentage to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5090,
+          "completion_tokens": 113,
+          "total_tokens": 5203,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 56
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14188,
+          "completion_tokens": 330,
+          "total_tokens": 14518,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 233
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    five_year_par_rate = 0.0437\n    prior_spot_rates = [0.0250, 0.0300, 0.0350, 0.0400]\n    prior_years = [1, 2, 3, 4]\n\n    # Calculate discount factors for years 1 through 4\n    prior_discount_factors = [\n        1 / (1 + spot_rate) ** year\n        for spot_rate, year in zip(prior_spot_rates, prior_years)\n    ]\n\n    # Bootstrap the five-year discount factor from the par bond price\n    coupon = five_year_par_rate\n    five_year_discount_factor = (\n        1 - coupon * sum(prior_discount_factors)\n    ) / (1 + coupon)\n\n    # Calculate the five-year annual-compounded spot rate\n    five_year_spot_rate = (\n        five_year_discount_factor ** (-1 / 5)\n    ) - 1\n\n    # Return the answer as a percentage rounded to three decimal places\n    return round(five_year_spot_rate * 100, 3)\n```",
+        "usage": {
+          "prompt_tokens": 4757,
+          "completion_tokens": 363,
+          "total_tokens": 5120,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 112
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1420",
+        "score": 1.8155624866485596
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.7663377523422241
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.7574923038482666
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.734076976776123
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.729214072227478
+      },
+      {
+        "function_id": "article-1208",
+        "score": 1.7264251708984375
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.7216925621032715
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.7206578254699707
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7168251276016235
+      },
+      {
+        "function_id": "article-2317",
+        "score": 1.6990036964416504
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.685088872909546
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.670691728591919
+      },
+      {
+        "function_id": "article-293",
+        "score": 1.6552058458328247
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.6478599309921265
+      },
+      {
+        "function_id": "article-745",
+        "score": 1.6477737426757812
+      },
+      {
+        "function_id": "article-1267",
+        "score": 1.647633671760559
+      },
+      {
+        "function_id": "article-3",
+        "score": 1.6420421600341797
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.6333253383636475
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.6209129095077515
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.616328239440918
+      },
+      {
+        "function_id": "article-2965",
+        "score": 1.6157419681549072
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.612602710723877
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.6112512350082397
+      },
+      {
+        "function_id": "article-432",
+        "score": 1.6096851825714111
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.5998284816741943
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.5983974933624268
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.5980111360549927
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.5968120098114014
+      },
+      {
+        "function_id": "article-2941",
+        "score": 1.5962157249450684
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.5946134328842163
+      }
+    ],
+    "selected_ids": [],
+    "status": "ok",
+    "answer": 4.453,
+    "code": "def solution():\n    # Define variables name and value\n    five_year_par_rate = 0.0437\n    prior_spot_rates = [0.0250, 0.0300, 0.0350, 0.0400]\n    prior_years = [1, 2, 3, 4]\n\n    # Calculate discount factors for years 1 through 4\n    prior_discount_factors = [\n        1 / (1 + spot_rate) ** year\n        for spot_rate, year in zip(prior_spot_rates, prior_years)\n    ]\n\n    # Bootstrap the five-year discount factor from the par bond price\n    coupon = five_year_par_rate\n    five_year_discount_factor = (\n        1 - coupon * sum(prior_discount_factors)\n    ) / (1 + coupon)\n\n    # Calculate the five-year annual-compounded spot rate\n    five_year_spot_rate = (\n        five_year_discount_factor ** (-1 / 5)\n    ) - 1\n\n    # Return the answer as a percentage rounded to three decimal places\n    return round(five_year_spot_rate * 100, 3)\n"
+  },
+  "digest": "4a10eeded5017082af5227c581a10e781421fef8b017687a2c56049419ce629d"
+}

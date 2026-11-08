@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2164",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function values a 2-year EUR zero-coupon bond using a one-period binomial interest-rate tree with equal probabilities for the 1-year rate rising or falling, incorporates a yearly duration-risk premium, and discounts the face value to calculate the bond price to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5044,
+          "completion_tokens": 60,
+          "total_tokens": 5104
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C04\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 14784,
+          "completion_tokens": 152,
+          "total_tokens": 14936,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 128
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    face_value = 1000.0\n    current_one_year_rate = 0.08\n    up_rate = 0.10\n    down_rate = 0.06\n    probability_each = 0.50\n    annual_risk_premium = 0.004\n\n    # Discount the expected year-1 bond value using the current rate,\n    # with the duration risk premium added to each year's rate.\n    expected_year1_discount_factor = (\n        probability_each / (1 + up_rate + annual_risk_premium)\n        + probability_each / (1 + down_rate + annual_risk_premium)\n    )\n    bond_value = (\n        face_value\n        * expected_year1_discount_factor\n        / (1 + current_one_year_rate + annual_risk_premium)\n    )\n\n    # Return the valuation rounded to three decimal places\n    return round(bond_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5573,
+          "completion_tokens": 518,
+          "total_tokens": 6091,
+          "completion_tokens_details": {
+            "reasoning_tokens": 313
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-742",
+        "score": 1.9352612495422363,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.9206433296203613,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.9200327396392822,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.9083517789840698,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.9015628099441528,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.834248423576355,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.812058687210083,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.7920736074447632,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.7889761924743652,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7650524377822876,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1303",
+        "score": 1.7587175369262695,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.7308781147003174,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.6882542371749878,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.6746859550476074,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.6662923097610474,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.6630862951278687,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.6625396013259888,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.6623775959014893,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.6623560190200806,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.661083698272705,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.657499074935913,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.6536287069320679,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.6476517915725708,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.6476410627365112,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.644717812538147,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2567",
+        "score": 1.6428992748260498,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.6371521949768066,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-735",
+        "score": 1.636739730834961,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1790",
+        "score": 1.6295349597930908,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.628769874572754,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-742",
+      "article-1419",
+      "article-1421"
+    ],
+    "status": "ok",
+    "answer": 851.313,
+    "code": "def solution():\n    # Define variables\n    face_value = 1000.0\n    current_one_year_rate = 0.08\n    up_rate = 0.10\n    down_rate = 0.06\n    probability_each = 0.50\n    annual_risk_premium = 0.004\n\n    # Discount the expected year-1 bond value using the current rate,\n    # with the duration risk premium added to each year's rate.\n    expected_year1_discount_factor = (\n        probability_each / (1 + up_rate + annual_risk_premium)\n        + probability_each / (1 + down_rate + annual_risk_premium)\n    )\n    bond_value = (\n        face_value\n        * expected_year1_discount_factor\n        / (1 + current_one_year_rate + annual_risk_premium)\n    )\n\n    # Return the valuation rounded to three decimal places\n    return round(bond_value, 3)\n"
+  },
+  "digest": "da27702547e2f908c67303fb914453fa41f5c7db1de6984b735bdb31d506e3de"
+}

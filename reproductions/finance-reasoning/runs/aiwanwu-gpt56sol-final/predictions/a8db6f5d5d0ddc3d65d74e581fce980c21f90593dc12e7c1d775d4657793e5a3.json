@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2187",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the stochastic oscillator (%K) for a specified lookback period using closing, highest-high, and lowest-low price series, returning the result as a percentage rounded to two decimal places for overbought/oversold analysis?",
+        "usage": {
+          "prompt_tokens": 5150,
+          "completion_tokens": 51,
+          "total_tokens": 5201,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 17328,
+          "completion_tokens": 298,
+          "total_tokens": 17626,
+          "completion_tokens_details": {
+            "reasoning_tokens": 201
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    closing_prices = [150, 152, 149, 153, 155, 154, 157, 159, 158, 160, 162, 161, 163, 164]\n    low_prices = [148, 150, 147, 150, 151, 153, 156, 156, 157, 158, 159, 160, 161, 162]\n    high_prices = [153, 155, 152, 155, 157, 156, 160, 162, 161, 164, 165, 164, 166, 167]\n    period = 14\n\n    # Do math calculation to get the answer\n    period_low = min(low_prices[-period:])\n    period_high = max(high_prices[-period:])\n    recent_close = closing_prices[-1]\n\n    stochastic_oscillator = (\n        (recent_close - period_low) / (period_high - period_low)\n    ) * 100\n\n    answer = round(stochastic_oscillator, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5256,
+          "completion_tokens": 313,
+          "total_tokens": 5569,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 61
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2637",
+        "score": 1.997809648513794
+      },
+      {
+        "function_id": "article-2638",
+        "score": 1.8826348781585693
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.8659218549728394
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.8114346265792847
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.6856077909469604
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.6587214469909668
+      },
+      {
+        "function_id": "article-2195",
+        "score": 1.6299934387207031
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.6280879974365234
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.5824759006500244
+      },
+      {
+        "function_id": "article-1050",
+        "score": 1.567199468612671
+      },
+      {
+        "function_id": "article-1051",
+        "score": 1.5603206157684326
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5508222579956055
+      },
+      {
+        "function_id": "article-1994",
+        "score": 1.5494778156280518
+      },
+      {
+        "function_id": "article-731",
+        "score": 1.548109769821167
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.539754033088684
+      },
+      {
+        "function_id": "article-2196",
+        "score": 1.5301752090454102
+      },
+      {
+        "function_id": "article-2687",
+        "score": 1.5209287405014038
+      },
+      {
+        "function_id": "article-1733",
+        "score": 1.5181057453155518
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.5146533250808716
+      },
+      {
+        "function_id": "article-2861",
+        "score": 1.5110759735107422
+      },
+      {
+        "function_id": "article-1322",
+        "score": 1.5106507539749146
+      },
+      {
+        "function_id": "article-2078",
+        "score": 1.5096995830535889
+      },
+      {
+        "function_id": "article-1772",
+        "score": 1.5059020519256592
+      },
+      {
+        "function_id": "article-1773",
+        "score": 1.49796462059021
+      },
+      {
+        "function_id": "article-2076",
+        "score": 1.497237205505371
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.4954445362091064
+      },
+      {
+        "function_id": "article-510",
+        "score": 1.4949991703033447
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.4933799505233765
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.4926115274429321
+      },
+      {
+        "function_id": "article-3060",
+        "score": 1.492194652557373
+      }
+    ],
+    "selected_ids": [
+      "article-2637"
+    ],
+    "status": "ok",
+    "answer": 85.0,
+    "code": "def solution():\n    # Define variables\n    closing_prices = [150, 152, 149, 153, 155, 154, 157, 159, 158, 160, 162, 161, 163, 164]\n    low_prices = [148, 150, 147, 150, 151, 153, 156, 156, 157, 158, 159, 160, 161, 162]\n    high_prices = [153, 155, 152, 155, 157, 156, 160, 162, 161, 164, 165, 164, 166, 167]\n    period = 14\n\n    # Do math calculation to get the answer\n    period_low = min(low_prices[-period:])\n    period_high = max(high_prices[-period:])\n    recent_close = closing_prices[-1]\n\n    stochastic_oscillator = (\n        (recent_close - period_low) / (period_high - period_low)\n    ) * 100\n\n    answer = round(stochastic_oscillator, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "3fb71ffbe237fce9480fbba871f77090a899c9f658efa10038eaab2058f82e0e"
+}

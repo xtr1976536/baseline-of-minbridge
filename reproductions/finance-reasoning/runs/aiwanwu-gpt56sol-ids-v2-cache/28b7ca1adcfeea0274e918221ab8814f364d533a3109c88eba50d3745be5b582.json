@@ -1,0 +1,21 @@
+{
+  "identity": "28b7ca1adcfeea0274e918221ab8814f364d533a3109c88eba50d3745be5b582",
+  "response_digest": "bc194b2df43e71494e79235ccc16b27c3ac24a3ebe2460371fc18ec630b085e7",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    coupon_rate = 0.03\n    market_rate = 0.05\n    years_to_maturity = 3\n    par_value = 100\n    payments_per_year = 2\n\n    # Do math calculation to get the answer\n    period_rate = market_rate / payments_per_year\n    coupon_payment = par_value * coupon_rate / payments_per_year\n    total_periods = years_to_maturity * payments_per_year\n\n    bond_price = sum(\n        coupon_payment / (1 + period_rate) ** period\n        for period in range(1, total_periods + 1)\n    ) + par_value / (1 + period_rate) ** total_periods\n\n    # Return answer rounded to three decimal places\n    return round(bond_price, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5398,
+      "completion_tokens": 480,
+      "total_tokens": 5878,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 297
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

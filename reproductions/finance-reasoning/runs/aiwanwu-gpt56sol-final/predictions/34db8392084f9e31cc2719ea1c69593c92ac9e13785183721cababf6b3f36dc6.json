@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2188",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the yield to maturity or internal rate of return for a fixed-rate coupon bond given its current market price, face value, semi-annual coupon payments, and number of remaining semi-annual periods, returning the nominal annualized yield as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5043,
+          "completion_tokens": 61,
+          "total_tokens": 5104,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15239,
+          "completion_tokens": 824,
+          "total_tokens": 16063,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 727
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    price = 950.0\n    par_value = 1000.0\n    coupon_rate = 0.06\n    periods = 20\n\n    # Do math calculation to get the answer\n    from scipy.optimize import fsolve\n\n    coupon_payment = coupon_rate * par_value / 2\n\n    def bond_price(ytm):\n        periodic_rate = ytm / 2\n        coupon_present_value = sum(\n            coupon_payment / (1 + periodic_rate) ** t\n            for t in range(1, periods + 1)\n        )\n        principal_present_value = (\n            par_value / (1 + periodic_rate) ** periods\n        )\n        return coupon_present_value + principal_present_value\n\n    ytm = fsolve(lambda rate: bond_price(rate) - price, 0.05)[0]\n\n    # Return the annual YTM as a percentage rounded to two decimal places\n    answer = round(ytm * 100, 2)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5105,
+          "completion_tokens": 643,
+          "total_tokens": 5748,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 417
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2867",
+        "score": 1.9624913930892944
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.9577510356903076
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.9568136930465698
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.9100227355957031
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.8951563835144043
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.8900587558746338
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.886594533920288
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.877913236618042
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.857742190361023
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.8419665098190308
+      },
+      {
+        "function_id": "article-732",
+        "score": 1.8399020433425903
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.839091181755066
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.8353397846221924
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.8347277641296387
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.8302218914031982
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.8277254104614258
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.8255796432495117
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.8042945861816406
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.80128812789917
+      },
+      {
+        "function_id": "article-1208",
+        "score": 1.7982429265975952
+      },
+      {
+        "function_id": "article-1490",
+        "score": 1.7964468002319336
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.7821449041366577
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.7798140048980713
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.7790839672088623
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7730425596237183
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.7665221691131592
+      },
+      {
+        "function_id": "article-16",
+        "score": 1.7603051662445068
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.755138635635376
+      },
+      {
+        "function_id": "article-744",
+        "score": 1.7529327869415283
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.7514851093292236
+      }
+    ],
+    "selected_ids": [
+      "article-30"
+    ],
+    "status": "ok",
+    "answer": 6.69,
+    "code": "def solution():\n    # Define variables name and value\n    price = 950.0\n    par_value = 1000.0\n    coupon_rate = 0.06\n    periods = 20\n\n    # Do math calculation to get the answer\n    from scipy.optimize import fsolve\n\n    coupon_payment = coupon_rate * par_value / 2\n\n    def bond_price(ytm):\n        periodic_rate = ytm / 2\n        coupon_present_value = sum(\n            coupon_payment / (1 + periodic_rate) ** t\n            for t in range(1, periods + 1)\n        )\n        principal_present_value = (\n            par_value / (1 + periodic_rate) ** periods\n        )\n        return coupon_present_value + principal_present_value\n\n    ytm = fsolve(lambda rate: bond_price(rate) - price, 0.05)[0]\n\n    # Return the annual YTM as a percentage rounded to two decimal places\n    answer = round(ytm * 100, 2)\n    return answer\n"
+  },
+  "digest": "68d9131fbc9964cb63546206868ebbbe403f028bdbf6642607ac57a7b97e9a99"
+}

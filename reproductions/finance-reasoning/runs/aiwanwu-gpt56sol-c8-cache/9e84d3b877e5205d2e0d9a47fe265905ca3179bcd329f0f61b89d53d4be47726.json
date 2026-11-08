@@ -1,0 +1,21 @@
+{
+  "identity": "9e84d3b877e5205d2e0d9a47fe265905ca3179bcd329f0f61b89d53d4be47726",
+  "response_digest": "4e19df5c7951e4380188bf16b12489e2fe66042be5c9fd7700d730e23facef1a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    starting_index_value = 121.0\n    starting_prices = [15.0, 20.0, 30.0]\n    ending_prices = [20.0, 30.0, 25.0]\n\n    # Do math calculation to get the answer\n    percentage_changes = [\n        (ending_price - starting_price) / starting_price\n        for starting_price, ending_price in zip(starting_prices, ending_prices)\n    ]\n    average_percentage_change = sum(percentage_changes) / len(percentage_changes)\n    answer = starting_index_value * (1 + average_percentage_change)\n\n    # return answer\n    return round(answer, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5470,
+      "completion_tokens": 286,
+      "total_tokens": 5756,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 129
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

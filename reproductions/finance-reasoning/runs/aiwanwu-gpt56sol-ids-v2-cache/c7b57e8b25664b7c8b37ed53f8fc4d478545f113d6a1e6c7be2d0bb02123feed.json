@@ -1,0 +1,21 @@
+{
+  "identity": "c7b57e8b25664b7c8b37ed53f8fc4d478545f113d6a1e6c7be2d0bb02123feed",
+  "response_digest": "c7d3fc8326a17b5938bdb12e7db221bd167eb111c65fc0eff296032664062543",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    roe_values = [0.1200, 0.1310, 0.1055, 0.1120, 0.1205]\n    total_assets = 2100  # millions\n    total_liabilities = 1200  # millions\n    preferred_equity = 120  # millions\n    common_shares_outstanding = 32  # millions\n\n    # Do math calculation to get the answer\n    average_roe = sum(roe_values) / len(roe_values)\n    common_equity = total_assets - total_liabilities - preferred_equity\n    normalized_net_income = average_roe * common_equity\n    normalized_eps = normalized_net_income / common_shares_outstanding\n\n    # return answer\n    return round(normalized_eps, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5525,
+      "completion_tokens": 297,
+      "total_tokens": 5822,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 111
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

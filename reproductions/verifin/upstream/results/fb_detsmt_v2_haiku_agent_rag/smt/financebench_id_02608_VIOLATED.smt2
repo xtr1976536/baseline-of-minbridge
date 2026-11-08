@@ -1,0 +1,30 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_net_profit_margin_3_year_average Real)
+(declare-const net_income_y1 Real)
+(declare-const net_income_y2 Real)
+(declare-const net_income_y3 Real)
+(declare-const revenue_y1 Real)
+(declare-const revenue_y2 Real)
+(declare-const revenue_y3 Real)
+
+(assert (! (= net_income_y1 1207) :named evidence_net_income_y1))
+(assert (! (= net_income_y2 807) :named evidence_net_income_y2))
+(assert (! (= net_income_y3 1246) :named evidence_net_income_y3))
+(assert (! (= revenue_y1 40339) :named evidence_revenue_y1))
+(assert (! (= revenue_y2 39528) :named evidence_revenue_y2))
+(assert (! (= revenue_y3 40339) :named evidence_revenue_y3))
+
+(assert (! (= computed_net_profit_margin_3_year_average (* (/ (+ (/ net_income_y1 revenue_y1) (/ net_income_y2 revenue_y2) (/ net_income_y3 revenue_y3)) 3) 100)) :named formula_net_profit_margin_3_year_average))
+(assert (! (or (> revenue_y1 0) (< revenue_y1 0)) :named domain_net_profit_margin_3_year_average_0))
+(assert (! (or (> revenue_y2 0) (< revenue_y2 0)) :named domain_net_profit_margin_3_year_average_1))
+(assert (! (or (> revenue_y3 0) (< revenue_y3 0)) :named domain_net_profit_margin_3_year_average_2))
+
+(assert (! (<= (- computed_net_profit_margin_3_year_average 3.1000000000000001) 0.050000000000000003) :named claim_upper))
+(assert (! (<= (- 3.1000000000000001 computed_net_profit_margin_3_year_average) 0.050000000000000003) :named claim_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

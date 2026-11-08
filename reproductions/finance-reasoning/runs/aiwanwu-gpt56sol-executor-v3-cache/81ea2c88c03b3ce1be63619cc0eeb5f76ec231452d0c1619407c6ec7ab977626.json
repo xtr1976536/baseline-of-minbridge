@@ -1,0 +1,18 @@
+{
+  "identity": "81ea2c88c03b3ce1be63619cc0eeb5f76ec231452d0c1619407c6ec7ab977626",
+  "response_digest": "e67febbe518b2146c613c2dd972ae3c9a03c14e277d929aaf8902c97305ae5bd",
+  "response": {
+    "content": "```python\ndef solution():\n    from scipy.optimize import brentq\n\n    bond_price = 950\n    cash_flows = [50, 50, 1050]\n    spot_rates = [0.015, 0.018, 0.020]\n    periods = [1, 2, 3]\n\n    def pv_difference(z_spread):\n        present_value = sum(\n            cash_flow / (1 + (spot_rate + z_spread) / 2) ** (2 * period)\n            for cash_flow, spot_rate, period\n            in zip(cash_flows, spot_rates, periods)\n        )\n        return present_value - bond_price\n\n    z_spread = brentq(pv_difference, -0.10, 0.20)\n    answer = round(z_spread * 100, 2)\n\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5171,
+      "completion_tokens": 279,
+      "total_tokens": 5450,
+      "completion_tokens_details": {
+        "reasoning_tokens": 92
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

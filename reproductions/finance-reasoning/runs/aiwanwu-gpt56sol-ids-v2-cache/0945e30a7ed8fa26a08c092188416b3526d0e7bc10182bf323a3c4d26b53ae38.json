@@ -1,0 +1,21 @@
+{
+  "identity": "0945e30a7ed8fa26a08c092188416b3526d0e7bc10182bf323a3c4d26b53ae38",
+  "response_digest": "d42757ffa17e9d2c868301b6741a8ae9dd2e4bc8fc3dcca6599de3e940944260",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    S = 150.0\n    K = 140.0\n    r = 0.02\n    T = 0.5\n    volatility = 0.25\n\n    # Do math calculation to get the answer\n    from math import erf, exp, log, sqrt\n\n    def norm_cdf(x):\n        return 0.5 * (1.0 + erf(x / sqrt(2.0)))\n\n    d1 = (log(S / K) + (r + 0.5 * volatility ** 2) * T) / (\n        volatility * sqrt(T)\n    )\n    d2 = d1 - volatility * sqrt(T)\n\n    put_price = K * exp(-r * T) * norm_cdf(-d2) - S * norm_cdf(-d1)\n\n    # Return the fair price rounded to two decimal places\n    return round(put_price, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5537,
+      "completion_tokens": 391,
+      "total_tokens": 5928,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 182
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

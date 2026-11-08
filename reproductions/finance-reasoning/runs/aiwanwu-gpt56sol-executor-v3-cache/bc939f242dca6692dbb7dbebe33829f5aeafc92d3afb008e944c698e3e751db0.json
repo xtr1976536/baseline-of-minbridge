@@ -1,0 +1,21 @@
+{
+  "identity": "bc939f242dca6692dbb7dbebe33829f5aeafc92d3afb008e944c698e3e751db0",
+  "response_digest": "4b95f2114963744c7e25b4c139aba524e1ec922ab0db4acec0419eddcba87cd4",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    starting_assets = 160.0\n    growth_rate = 0.25\n    high_watermark = 198.0\n    management_fee_rate = 0.02\n    hurdle_rate = 0.10\n    performance_fee_rate = 0.20\n\n    # Do math calculation to get the answer\n    ending_assets = starting_assets * (1 + growth_rate)\n    management_fee = ending_assets * management_fee_rate\n\n    # The 10% soft hurdle is net of the management fee.\n    hurdle_value = starting_assets * (1 + hurdle_rate) + management_fee\n    net_ending_assets = ending_assets - management_fee\n\n    incentive_base = max(0.0, net_ending_assets - max(high_watermark, hurdle_value))\n    performance_fee = incentive_base * performance_fee_rate\n\n    total_fees = management_fee + performance_fee\n\n    # return answer\n    return round(total_fees, 1)\n```",
+    "usage": {
+      "prompt_tokens": 5552,
+      "completion_tokens": 542,
+      "total_tokens": 6094,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 326
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "request_hash": "b07151030a223f17acaa7ffcc89c4775d470fa6213235f67f09f28cc20f88aac",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nBy drawing conclusions from the information stated only in the statement of financial position, what is General Mills's FY2020 working capital ratio? Define working capital ratio as total current assets divided by total current liabilities. Round your answer to two decimal places.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"working_capital_ratio\",\"facts\":[{\"name\":\"total_current_assets\",\"aliases\":[\"Total current assets\",\"Current assets\"],\"period\":\"FY2020\",\"statement\":\"balance sheet\"},{\"name\":\"total_current_liabilities\",\"aliases\":[\"Total current liabilities\",\"Current liabilities\"],\"period\":\"FY2020\",\"statement\":\"balance sheet\"}],\"reason\":\"Calculate FY2020 working capital ratio as total current assets divided by total current liabilities, rounded to two decimal places.\"}",
+  "usage": {
+    "prompt_tokens": 4727,
+    "completion_tokens": 167,
+    "total_tokens": 4894,
+    "completion_tokens_details": {
+      "reasoning_tokens": 68
+    }
+  },
+  "response_id": "resp_047a73d8064e5136016aedb76224cc87d29f211d4164bef138",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

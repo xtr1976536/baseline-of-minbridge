@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2109",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the number of stock index futures contracts needed to rebalance a portfolio from 80% equities and 20% bonds to 60% equities and 40% bonds, using portfolio value, equity beta, futures index level, contract multiplier, and futures beta, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5058,
+          "completion_tokens": 68,
+          "total_tokens": 5126
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 13537,
+          "completion_tokens": 540,
+          "total_tokens": 14077,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    fund_value = 100_000_000\n    current_share_weight = 0.80\n    target_share_weight = 0.60\n    share_beta = 1.20\n    futures_index_level = 1_200\n    futures_multiplier = 250\n    futures_beta = 0.95\n\n    # Calculate the equity exposure that must be removed\n    equity_reduction = fund_value * (current_share_weight - target_share_weight)\n\n    # Calculate the beta-adjusted value of one stock index futures contract\n    futures_contract_value = futures_index_level * futures_multiplier\n    beta_adjusted_contract_value = futures_contract_value * (\n        futures_beta / share_beta\n    )\n\n    # Calculate the number of stock index futures contracts\n    contracts = equity_reduction / beta_adjusted_contract_value\n\n    # Return the number of contracts, rounded to three decimal places\n    return round(contracts, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5432,
+          "completion_tokens": 822,
+          "total_tokens": 6254,
+          "completion_tokens_details": {
+            "reasoning_tokens": 615
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-659",
+        "score": 1.8530670404434204,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2691",
+        "score": 1.7779091596603394,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.7763921022415161,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-660",
+        "score": 1.7645715475082397,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-394",
+        "score": 1.7452991008758545,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2692",
+        "score": 1.7429263591766357,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.6791050434112549,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1027",
+        "score": 1.6707959175109863,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-395",
+        "score": 1.6688246726989746,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-396",
+        "score": 1.6572017669677734,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.6496703624725342,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.6484163999557495,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.647944450378418,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.6351802349090576,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-397",
+        "score": 1.6276521682739258,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1744",
+        "score": 1.615774393081665,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.60774564743042,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-663",
+        "score": 1.602001667022705,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1105",
+        "score": 1.5999841690063477,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1468",
+        "score": 1.593187928199768,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.5923540592193604,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2137",
+        "score": 1.588871717453003,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1291",
+        "score": 1.58547043800354,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-700",
+        "score": 1.5827741622924805,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-105",
+        "score": 1.580392599105835,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.5800477266311646,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1889",
+        "score": 1.5766253471374512,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.5708136558532715,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1026",
+        "score": 1.5678902864456177,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.565962314605713,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-659",
+      "article-2691",
+      "article-394"
+    ],
+    "status": "ok",
+    "answer": 84.211,
+    "code": "def solution():\n    # Define variables\n    fund_value = 100_000_000\n    current_share_weight = 0.80\n    target_share_weight = 0.60\n    share_beta = 1.20\n    futures_index_level = 1_200\n    futures_multiplier = 250\n    futures_beta = 0.95\n\n    # Calculate the equity exposure that must be removed\n    equity_reduction = fund_value * (current_share_weight - target_share_weight)\n\n    # Calculate the beta-adjusted value of one stock index futures contract\n    futures_contract_value = futures_index_level * futures_multiplier\n    beta_adjusted_contract_value = futures_contract_value * (\n        futures_beta / share_beta\n    )\n\n    # Calculate the number of stock index futures contracts\n    contracts = equity_reduction / beta_adjusted_contract_value\n\n    # Return the number of contracts, rounded to three decimal places\n    return round(contracts, 3)\n"
+  },
+  "digest": "48649f012dc7057cf209080ca41a77e08b2422c802865647ce4497fccfce3500"
+}

@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2083",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Altman Z-score for a publicly traded manufacturing company using working capital, total assets, retained earnings, EBIT, market value of equity, total liabilities, and sales, applying the standard bankruptcy-risk formula and rounding the result to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5094,
+          "completion_tokens": 56,
+          "total_tokens": 5150,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 13952,
+          "completion_tokens": 19,
+          "total_tokens": 13971,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    working_capital = 240000\n    total_assets = 1200000\n    retained_earnings = 350000\n    ebit = 150000\n    market_value_of_equity = 850000\n    total_liabilities = 600000\n    sales = 750000\n\n    # Do math calculation to get the answer\n    a = working_capital / total_assets\n    b = retained_earnings / total_assets\n    c = ebit / total_assets\n    d = market_value_of_equity / total_liabilities\n    e = sales / total_assets\n\n    z_score = 1.2 * a + 1.4 * b + 3.3 * c + 0.6 * d + e\n\n    # Return the answer rounded to two decimal places\n    return round(z_score, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5626,
+          "completion_tokens": 280,
+          "total_tokens": 5906,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 81
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2305",
+        "score": 2.2117254734039307,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1433",
+        "score": 1.8304808139801025,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.6459479331970215,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1279",
+        "score": 1.6442936658859253,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2654",
+        "score": 1.6179929971694946,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1203",
+        "score": 1.5805068016052246,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-38",
+        "score": 1.5801732540130615,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2570",
+        "score": 1.5785894393920898,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2148",
+        "score": 1.5676441192626953,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2653",
+        "score": 1.5667285919189453,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-255",
+        "score": 1.5613385438919067,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.5591087341308594,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2791",
+        "score": 1.5582926273345947,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2777",
+        "score": 1.5576235055923462,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1140",
+        "score": 1.5524834394454956,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-504",
+        "score": 1.5495836734771729,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-630",
+        "score": 1.5454726219177246,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1204",
+        "score": 1.540562629699707,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-790",
+        "score": 1.5403653383255005,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1031",
+        "score": 1.5400910377502441,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2929",
+        "score": 1.5391281843185425,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-877",
+        "score": 1.5335227251052856,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1124",
+        "score": 1.533402442932129,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3132",
+        "score": 1.5333726406097412,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2494",
+        "score": 1.5329716205596924,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1912",
+        "score": 1.5315462350845337,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1911",
+        "score": 1.5307652950286865,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2738",
+        "score": 1.530418038368225,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-789",
+        "score": 1.5303137302398682,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2826",
+        "score": 1.5289301872253418,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2305",
+      "article-1433"
+    ],
+    "status": "ok",
+    "answer": 2.54,
+    "code": "def solution():\n    # Define variables name and value\n    working_capital = 240000\n    total_assets = 1200000\n    retained_earnings = 350000\n    ebit = 150000\n    market_value_of_equity = 850000\n    total_liabilities = 600000\n    sales = 750000\n\n    # Do math calculation to get the answer\n    a = working_capital / total_assets\n    b = retained_earnings / total_assets\n    c = ebit / total_assets\n    d = market_value_of_equity / total_liabilities\n    e = sales / total_assets\n\n    z_score = 1.2 * a + 1.4 * b + 3.3 * c + 0.6 * d + e\n\n    # Return the answer rounded to two decimal places\n    return round(z_score, 2)\n"
+  },
+  "digest": "4b365f1e0c5375acf4e81b7405c6316b5279437e948f5555078a9cb05cfaa4f2"
+}

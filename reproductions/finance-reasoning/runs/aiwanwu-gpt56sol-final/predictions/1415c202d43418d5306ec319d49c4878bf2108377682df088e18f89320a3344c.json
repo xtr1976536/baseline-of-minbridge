@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2199",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function computes the slope coefficient of a simple ordinary least squares linear regression predicting a continuous dependent variable from a single independent variable using paired numerical observations, returning the result as a decimal?",
+        "usage": {
+          "prompt_tokens": 5113,
+          "completion_tokens": 40,
+          "total_tokens": 5153,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16209,
+          "completion_tokens": 679,
+          "total_tokens": 16888,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 582
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    advertising_expenditure = [3000, 4000, 5000, 6000, 7000]\n    revenue = [20000, 23000, 25000, 26000, 28000]\n\n    # Calculate the least squares regression slope\n    mean_x = sum(advertising_expenditure) / len(advertising_expenditure)\n    mean_y = sum(revenue) / len(revenue)\n\n    numerator = sum(\n        (x - mean_x) * (y - mean_y)\n        for x, y in zip(advertising_expenditure, revenue)\n    )\n    denominator = sum(\n        (x - mean_x) ** 2\n        for x in advertising_expenditure\n    )\n\n    slope = numerator / denominator\n\n    # Return the slope rounded to two decimal places\n    return round(slope, 2)\n```",
+        "usage": {
+          "prompt_tokens": 6025,
+          "completion_tokens": 334,
+          "total_tokens": 6359,
+          "prompt_tokens_details": {
+            "cached_tokens": 4122
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 138
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2105",
+        "score": 1.7431395053863525
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.7127809524536133
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.7123091220855713
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.6756513118743896
+      },
+      {
+        "function_id": "article-2526",
+        "score": 1.6741431951522827
+      },
+      {
+        "function_id": "article-2106",
+        "score": 1.6637908220291138
+      },
+      {
+        "function_id": "article-970",
+        "score": 1.651491641998291
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.6413664817810059
+      },
+      {
+        "function_id": "article-2141",
+        "score": 1.5812418460845947
+      },
+      {
+        "function_id": "article-2989",
+        "score": 1.5106894969940186
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.4904017448425293
+      },
+      {
+        "function_id": "article-2669",
+        "score": 1.4865503311157227
+      },
+      {
+        "function_id": "article-2668",
+        "score": 1.483674168586731
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.476887583732605
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.4748198986053467
+      },
+      {
+        "function_id": "article-967",
+        "score": 1.4701155424118042
+      },
+      {
+        "function_id": "article-1521",
+        "score": 1.4696223735809326
+      },
+      {
+        "function_id": "article-1523",
+        "score": 1.4685100317001343
+      },
+      {
+        "function_id": "article-1075",
+        "score": 1.4548652172088623
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.4204562902450562
+      },
+      {
+        "function_id": "article-176",
+        "score": 1.4145755767822266
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.4105037450790405
+      },
+      {
+        "function_id": "article-2565",
+        "score": 1.4077578783035278
+      },
+      {
+        "function_id": "article-2564",
+        "score": 1.4027620553970337
+      },
+      {
+        "function_id": "article-2379",
+        "score": 1.3980004787445068
+      },
+      {
+        "function_id": "article-2140",
+        "score": 1.393245816230774
+      },
+      {
+        "function_id": "article-303",
+        "score": 1.3839881420135498
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.3838064670562744
+      },
+      {
+        "function_id": "article-461",
+        "score": 1.3815289735794067
+      },
+      {
+        "function_id": "article-113",
+        "score": 1.3813350200653076
+      }
+    ],
+    "selected_ids": [
+      "article-2105",
+      "article-1484",
+      "article-2139"
+    ],
+    "status": "ok",
+    "answer": 1.9,
+    "code": "def solution():\n    # Define variables\n    advertising_expenditure = [3000, 4000, 5000, 6000, 7000]\n    revenue = [20000, 23000, 25000, 26000, 28000]\n\n    # Calculate the least squares regression slope\n    mean_x = sum(advertising_expenditure) / len(advertising_expenditure)\n    mean_y = sum(revenue) / len(revenue)\n\n    numerator = sum(\n        (x - mean_x) * (y - mean_y)\n        for x, y in zip(advertising_expenditure, revenue)\n    )\n    denominator = sum(\n        (x - mean_x) ** 2\n        for x in advertising_expenditure\n    )\n\n    slope = numerator / denominator\n\n    # Return the slope rounded to two decimal places\n    return round(slope, 2)\n"
+  },
+  "digest": "520ca662d24a6690506d36af3c23aa16a2c26a250b8db7d1346f9b2c50fcfb3e"
+}

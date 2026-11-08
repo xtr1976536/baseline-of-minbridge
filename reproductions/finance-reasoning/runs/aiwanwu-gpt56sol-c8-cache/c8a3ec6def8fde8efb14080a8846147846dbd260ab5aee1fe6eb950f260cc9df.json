@@ -1,0 +1,21 @@
+{
+  "identity": "c8a3ec6def8fde8efb14080a8846147846dbd260ab5aee1fe6eb950f260cc9df",
+  "response_digest": "2df75479e85564470cc1c0d5e315053a9d61236f7c9d00b65312b833ed70d46f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    units_sold = 50000\n    purchase_costs = [\n        (40000, 17),  # 1/23 purchase, most recent\n        (30000, 15),  # 1/20 purchase\n        (20000, 13),  # Beginning inventory\n    ]\n\n    # Do math calculation to get the answer using periodic LIFO\n    units_remaining = units_sold\n    cogs = 0\n\n    for units, cost_per_unit in purchase_costs:\n        units_used = min(units_remaining, units)\n        cogs += units_used * cost_per_unit\n        units_remaining -= units_used\n\n        if units_remaining == 0:\n            break\n\n    # Return the cost of goods sold rounded to the nearest dollar\n    answer = round(cogs)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5829,
+      "completion_tokens": 248,
+      "total_tokens": 6077,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 56
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

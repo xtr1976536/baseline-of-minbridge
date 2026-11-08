@@ -1,0 +1,21 @@
+{
+  "identity": "441ae4e87511d385677f69121c831438d038f02fe482af871c717d7b5f634a44",
+  "response_digest": "8cda0400e01e20a498a1d89ad544470663a4d1c01f7e433d3b037b89845a1f8d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    high_prices = [120, 122, 121, 119, 123, 125, 126, 127, 126, 124,\n                   123, 122, 121, 120, 119, 118, 120, 121, 122, 123]\n    low_prices = [115, 116, 117, 115, 118, 119, 120, 121, 122, 120,\n                  119, 118, 116, 115, 114, 113, 114, 115, 116, 118]\n    closing_prices = [117, 118, 119, 117, 120, 123, 124, 122, 123, 121,\n                      120, 119, 118, 117, 116, 115, 118, 120, 121, 122]\n    period = 14\n\n    # Use the most recent 14-day period\n    recent_highs = high_prices[-period:]\n    recent_lows = low_prices[-period:]\n    current_close = closing_prices[-1]\n\n    highest_high = max(recent_highs)\n    lowest_low = min(recent_lows)\n\n    # Calculate Williams %R\n    williams_r = ((highest_high - current_close) /\n                  (highest_high - lowest_low)) * -100\n\n    # Return the value rounded to two decimal places\n    return round(williams_r, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5811,
+      "completion_tokens": 462,
+      "total_tokens": 6273,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 127
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "identity": "858a48d2e7dc6168c3289d8306bc27c95d9e9a8f3e79b22e8c47a130ebc8d9c6",
+  "response_digest": "ca1c9aa7108d8d24a4f86070a15fe939955cf219755d2fac583aef4cfcfd1855",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    qualified_expenses = 8500\n    magi = 85000\n    filing_status = \"individual\"\n\n    # Calculate the credit before and after the MAGI phase-out\n    eligible_expenses = min(qualified_expenses, 10000)\n    potential_credit = eligible_expenses * 0.20\n    phase_out_factor = (90000 - magi) / (90000 - 80000)\n    credit = potential_credit * phase_out_factor\n\n    # Return the answer to two decimal places\n    return round(credit, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5279,
+      "completion_tokens": 164,
+      "total_tokens": 5443,
+      "completion_tokens_details": {
+        "reasoning_tokens": 30
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

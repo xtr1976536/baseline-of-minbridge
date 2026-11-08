@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2115",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the implied one-year forward interest rate one year from now under Expectations Theory using current one-year and two-year spot rates with annual compounding, and returns the result as a percentage?",
+        "usage": {
+          "prompt_tokens": 5021,
+          "completion_tokens": 43,
+          "total_tokens": 5064
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14424,
+          "completion_tokens": 344,
+          "total_tokens": 14768,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 247
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    two_year_rate = 0.045\n    current_one_year_rate = 0.030\n\n    # Calculate the expected one-year rate next year\n    future_one_year_rate = (\n        (1 + two_year_rate) ** 2 / (1 + current_one_year_rate)\n    ) - 1\n\n    # Convert to percentage and round to two decimal places\n    answer = round(future_one_year_rate * 100, 2)\n\n    # Return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5705,
+          "completion_tokens": 232,
+          "total_tokens": 5937,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 112
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2829",
+        "score": 1.9278794527053833
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.9097099304199219
+      },
+      {
+        "function_id": "article-2002",
+        "score": 1.9082591533660889
+      },
+      {
+        "function_id": "article-1509",
+        "score": 1.8008360862731934
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.7977707386016846
+      },
+      {
+        "function_id": "article-616",
+        "score": 1.7043209075927734
+      },
+      {
+        "function_id": "article-1727",
+        "score": 1.7040071487426758
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.6912226676940918
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.682223916053772
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.681868076324463
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.6816223859786987
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.659538984298706
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.6426608562469482
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.640693187713623
+      },
+      {
+        "function_id": "article-2315",
+        "score": 1.6398749351501465
+      },
+      {
+        "function_id": "article-2941",
+        "score": 1.6390044689178467
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.6362097263336182
+      },
+      {
+        "function_id": "article-293",
+        "score": 1.6344165802001953
+      },
+      {
+        "function_id": "article-296",
+        "score": 1.6263320446014404
+      },
+      {
+        "function_id": "article-1905",
+        "score": 1.6255290508270264
+      },
+      {
+        "function_id": "article-1267",
+        "score": 1.6250128746032715
+      },
+      {
+        "function_id": "article-159",
+        "score": 1.623464822769165
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6213300228118896
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.6213035583496094
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.619509220123291
+      },
+      {
+        "function_id": "article-2965",
+        "score": 1.615870714187622
+      },
+      {
+        "function_id": "article-432",
+        "score": 1.612021565437317
+      },
+      {
+        "function_id": "article-980",
+        "score": 1.6118625402450562
+      },
+      {
+        "function_id": "article-2420",
+        "score": 1.6086463928222656
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.6074063777923584
+      }
+    ],
+    "selected_ids": [
+      "article-2829",
+      "article-2002",
+      "article-1429"
+    ],
+    "status": "ok",
+    "answer": 6.02,
+    "code": "def solution():\n    # Define variables\n    two_year_rate = 0.045\n    current_one_year_rate = 0.030\n\n    # Calculate the expected one-year rate next year\n    future_one_year_rate = (\n        (1 + two_year_rate) ** 2 / (1 + current_one_year_rate)\n    ) - 1\n\n    # Convert to percentage and round to two decimal places\n    answer = round(future_one_year_rate * 100, 2)\n\n    # Return answer\n    return answer\n"
+  },
+  "digest": "86aa289b00c68c28a83d8705ad61eb5b883ba0b166798e6cf014fbfa1b9d115b"
+}

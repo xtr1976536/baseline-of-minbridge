@@ -1,0 +1,43 @@
+{
+  "labels_edited": false,
+  "cases": [
+    {
+      "id": "FinQA:ETR/2017/page_143.pdf-3",
+      "type": "published_answer_vs_execution_conflict_and_rate_scope_ambiguity",
+      "raw_file": "data/raw/official/FinQA.json",
+      "raw_sha256": "831dbfb2e785dbc227f895ce3f24046433467aec67b09db2bd6ac7692a8a30dc",
+      "question": "what is the amount of interest applied to the annual long-term debt maturities in 2018?",
+      "published_answer": "566808000",
+      "published_program": "multiply(760000, const_1000), multiply(#0, 7.458%)",
+      "published_execution": 56680800.0,
+      "independent_arithmetic": "760000 * 1000 * (7.458 / 100) = 56680800; frozen published answer 566808000 differs by factor 10",
+      "scope_note": "The interest rate is attached to this note; the question concerns aggregate annual maturities. Do not silently infer applicability or force the inconsistent gold."
+    },
+    {
+      "id": "TAT-QA:0dfb4455ae2e1b2066e99d9a3a05baf0_4c8709f777694f5ea71b7c56a0080bfa",
+      "type": "conflicting_year_anchors",
+      "question": "What was the amortization expense for the twelve months ended December 31, 2019 in 2018?",
+      "source_sentence": "We have debt issuance costs related to our long-term debt that are being amortized using the straight-line method over the life of the debt. Amortization expense for the twelve months ended December 31, 2019 was approximately $163 and $185 in 2018 and 2017. These costs are included in interest expense in our Consolidated Statement of Earnings.",
+      "published_answer": "163",
+      "note": "Question names both twelve months ended December 31, 2019 and in 2018; source sentence mentions three years but two values. Preserve ambiguity and all raw fields."
+    },
+    {
+      "id": "TAT-QA:f16c6fb645e7d077e776af63a85a6643_44408c045f44fc6d7f892bc6b45e0251",
+      "type": "comparison_scope_ambiguity_inferred",
+      "question": "Which year had a larger amount of restricted stock and restricted stock unit awards granted?",
+      "published_answer": "2018",
+      "r19_prediction": 2019,
+      "source_evidence": [
+        "During 2018, we granted 9.7 million shares",
+        "During 2017, we granted 5.2 million shares",
+        "The following table summarizes activity ... for the year ended December 31, 2019",
+        "Granted(1) | 9,780; Number of shares (In thousands)"
+      ],
+      "inference": "Including all three source years gives 2019 (9.78 million) rather than 2018. The reference appears to restrict comparison to 2017/2018, but the question does not explicitly name this pair. The 2019 table also has its own grant footnote; keep all qualifiers and the original score.",
+      "label_changed": false,
+      "excluded": false
+    }
+  ],
+  "metric_definition_edited": false,
+  "unit_representation_adapter_changed": true
+}

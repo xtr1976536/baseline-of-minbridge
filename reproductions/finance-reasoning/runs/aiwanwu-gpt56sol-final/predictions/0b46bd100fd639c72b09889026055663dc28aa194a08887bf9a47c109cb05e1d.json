@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2031",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the present value of a common stock using a multi-stage dividend discount model, with fixed dividends for an initial period followed by constant perpetual dividend growth, discounted at a required rate of return greater than the growth rate, and returns the equity value to specified precision?",
+        "usage": {
+          "prompt_tokens": 4984,
+          "completion_tokens": 58,
+          "total_tokens": 5042,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13901,
+          "completion_tokens": 499,
+          "total_tokens": 14400,
+          "completion_tokens_details": {
+            "reasoning_tokens": 402
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    dividend_year_1 = 0.5\n    dividend_year_2 = 0.5\n    growth_rate = 0.06\n    required_rate_of_return = 0.10\n\n    # Do math calculation to get the answer\n    dividend_year_3 = dividend_year_2 * (1 + growth_rate)\n\n    present_value_year_1 = dividend_year_1 / (1 + required_rate_of_return)\n    present_value_year_2 = dividend_year_2 / (1 + required_rate_of_return) ** 2\n\n    terminal_value = dividend_year_3 / (required_rate_of_return - growth_rate)\n    present_value_terminal_value = terminal_value / (1 + required_rate_of_return) ** 2\n\n    equity_value = (\n        present_value_year_1\n        + present_value_year_2\n        + present_value_terminal_value\n    )\n\n    # Return answer rounded to three decimal places\n    return round(equity_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5581,
+          "completion_tokens": 333,
+          "total_tokens": 5914,
+          "prompt_tokens_details": {
+            "cached_tokens": 3764
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 110
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1755",
+        "score": 1.9275511503219604
+      },
+      {
+        "function_id": "article-1758",
+        "score": 1.89732027053833
+      },
+      {
+        "function_id": "article-1511",
+        "score": 1.8628597259521484
+      },
+      {
+        "function_id": "article-1151",
+        "score": 1.8438502550125122
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.8219746351242065
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.8005341291427612
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.7624449729919434
+      },
+      {
+        "function_id": "article-1756",
+        "score": 1.7567050457000732
+      },
+      {
+        "function_id": "article-519",
+        "score": 1.750011920928955
+      },
+      {
+        "function_id": "article-605",
+        "score": 1.685025930404663
+      },
+      {
+        "function_id": "article-86",
+        "score": 1.682588815689087
+      },
+      {
+        "function_id": "article-606",
+        "score": 1.6751995086669922
+      },
+      {
+        "function_id": "article-1761",
+        "score": 1.672244906425476
+      },
+      {
+        "function_id": "article-2146",
+        "score": 1.6691837310791016
+      },
+      {
+        "function_id": "article-272",
+        "score": 1.6688809394836426
+      },
+      {
+        "function_id": "article-714",
+        "score": 1.6616356372833252
+      },
+      {
+        "function_id": "article-1754",
+        "score": 1.660048007965088
+      },
+      {
+        "function_id": "article-2943",
+        "score": 1.6594159603118896
+      },
+      {
+        "function_id": "article-1757",
+        "score": 1.6587263345718384
+      },
+      {
+        "function_id": "article-792",
+        "score": 1.657353401184082
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6552495956420898
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.6492376327514648
+      },
+      {
+        "function_id": "article-1242",
+        "score": 1.6476534605026245
+      },
+      {
+        "function_id": "article-1301",
+        "score": 1.6418322324752808
+      },
+      {
+        "function_id": "article-1299",
+        "score": 1.6418285369873047
+      },
+      {
+        "function_id": "article-15",
+        "score": 1.6415977478027344
+      },
+      {
+        "function_id": "article-1520",
+        "score": 1.6406348943710327
+      },
+      {
+        "function_id": "article-2654",
+        "score": 1.6370388269424438
+      },
+      {
+        "function_id": "article-614",
+        "score": 1.6368428468704224
+      },
+      {
+        "function_id": "article-589",
+        "score": 1.636444091796875
+      }
+    ],
+    "selected_ids": [
+      "article-1755",
+      "article-1758",
+      "article-1151"
+    ],
+    "status": "ok",
+    "answer": 11.818,
+    "code": "def solution():\n    # Define variables name and value\n    dividend_year_1 = 0.5\n    dividend_year_2 = 0.5\n    growth_rate = 0.06\n    required_rate_of_return = 0.10\n\n    # Do math calculation to get the answer\n    dividend_year_3 = dividend_year_2 * (1 + growth_rate)\n\n    present_value_year_1 = dividend_year_1 / (1 + required_rate_of_return)\n    present_value_year_2 = dividend_year_2 / (1 + required_rate_of_return) ** 2\n\n    terminal_value = dividend_year_3 / (required_rate_of_return - growth_rate)\n    present_value_terminal_value = terminal_value / (1 + required_rate_of_return) ** 2\n\n    equity_value = (\n        present_value_year_1\n        + present_value_year_2\n        + present_value_terminal_value\n    )\n\n    # Return answer rounded to three decimal places\n    return round(equity_value, 3)\n"
+  },
+  "digest": "dad97686c604049724778cf23ab29a81f8c58f349e067b98679e134a2f9a68ff"
+}

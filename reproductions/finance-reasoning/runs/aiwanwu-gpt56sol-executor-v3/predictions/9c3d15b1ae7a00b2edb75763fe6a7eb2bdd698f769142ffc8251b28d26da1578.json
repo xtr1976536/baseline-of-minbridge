@@ -1,0 +1,225 @@
+{
+  "record": {
+    "question_id": "test-2063",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates cost of goods sold under periodic LIFO inventory accounting from beginning inventory and period purchases with unit costs and quantities, given units sold, and returns the amount rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5022,
+          "completion_tokens": 43,
+          "total_tokens": 5065,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C04\",\"C07\"]}",
+        "usage": {
+          "prompt_tokens": 13632,
+          "completion_tokens": 432,
+          "total_tokens": 14064,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 408
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    units_sold = 50000\n    purchase_costs = [\n        (40000, 17),  # 1/23 purchase\n        (30000, 15),  # 1/20 purchase\n        (20000, 13),  # Beginning inventory\n    ]\n\n    # Do math calculation to get the answer using LIFO\n    units_remaining = units_sold\n    cost_of_goods_sold = 0\n\n    for units, cost_per_unit in purchase_costs:\n        units_used = min(units_remaining, units)\n        cost_of_goods_sold += units_used * cost_per_unit\n        units_remaining -= units_used\n\n        if units_remaining == 0:\n            break\n\n    # Return answer to the nearest dollar\n    return round(cost_of_goods_sold)\n```",
+        "usage": {
+          "prompt_tokens": 5829,
+          "completion_tokens": 247,
+          "total_tokens": 6076,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 60
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2098",
+        "score": 1.9539895057678223,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.8595004081726074,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.8542730808258057,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2135",
+        "score": 1.8407506942749023,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2958",
+        "score": 1.7422107458114624,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2136",
+        "score": 1.6986323595046997,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-200",
+        "score": 1.6973360776901245,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.6797391176223755,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1270",
+        "score": 1.6524105072021484,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2396",
+        "score": 1.6486427783966064,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2495",
+        "score": 1.6479524374008179,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2266",
+        "score": 1.629281759262085,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2395",
+        "score": 1.6290558576583862,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2207",
+        "score": 1.5964791774749756,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1058",
+        "score": 1.580657958984375,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-85",
+        "score": 1.5804264545440674,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-466",
+        "score": 1.5777013301849365,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.574394702911377,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-82",
+        "score": 1.5548365116119385,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.553787350654602,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-204",
+        "score": 1.5512242317199707,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1977",
+        "score": 1.5500588417053223,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-471",
+        "score": 1.5481380224227905,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-472",
+        "score": 1.5409493446350098,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1448",
+        "score": 1.5350069999694824,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2284",
+        "score": 1.5311683416366577,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-3003",
+        "score": 1.5302475690841675,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-467",
+        "score": 1.5290886163711548,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-469",
+        "score": 1.526605486869812,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2467",
+        "score": 1.5262373685836792,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2098",
+      "article-2135",
+      "article-200"
+    ],
+    "status": "ok",
+    "answer": 830000,
+    "code": "def solution():\n    # Define variables name and value\n    units_sold = 50000\n    purchase_costs = [\n        (40000, 17),  # 1/23 purchase\n        (30000, 15),  # 1/20 purchase\n        (20000, 13),  # Beginning inventory\n    ]\n\n    # Do math calculation to get the answer using LIFO\n    units_remaining = units_sold\n    cost_of_goods_sold = 0\n\n    for units, cost_per_unit in purchase_costs:\n        units_used = min(units_remaining, units)\n        cost_of_goods_sold += units_used * cost_per_unit\n        units_remaining -= units_used\n\n        if units_remaining == 0:\n            break\n\n    # Return answer to the nearest dollar\n    return round(cost_of_goods_sold)\n"
+  },
+  "digest": "a99f9401e3697aa5dd1cdc6c58adad80a13df51f8957b3993cd1053ef4ff10b7"
+}

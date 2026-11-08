@@ -1,0 +1,212 @@
+{
+  "record": {
+    "question_id": "test-2038",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the required increase in government spending to close a GDP gap using the Keynesian expenditure multiplier \\(1/(1-\\text{MPC})\\), assuming no inflation and a given marginal propensity to consume, and returns the result in billions?",
+        "usage": {
+          "prompt_tokens": 4972,
+          "completion_tokens": 54,
+          "total_tokens": 5026
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 12710,
+          "completion_tokens": 236,
+          "total_tokens": 12946,
+          "completion_tokens_details": {
+            "reasoning_tokens": 212
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    full_employment_gdp = 1.3  # trillion dollars\n    actual_gdp = 1.2  # trillion dollars\n    mpc = 0.8\n\n    # Do math calculation to get the answer\n    gdp_gap = full_employment_gdp - actual_gdp\n    fiscal_multiplier = 1 / (1 - mpc)\n    government_expenditure_increase = gdp_gap / fiscal_multiplier\n    answer = government_expenditure_increase * 1000  # convert trillion dollars to billions\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5447,
+          "completion_tokens": 179,
+          "total_tokens": 5626,
+          "completion_tokens_details": {
+            "reasoning_tokens": 38
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-565",
+        "score": 2.0412533283233643,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-483",
+        "score": 1.9230124950408936,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-972",
+        "score": 1.9187495708465576,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-839",
+        "score": 1.909194827079773,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-977",
+        "score": 1.8874201774597168,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-838",
+        "score": 1.7971950769424438,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-835",
+        "score": 1.7175248861312866,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-837",
+        "score": 1.6837944984436035,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2409",
+        "score": 1.6718720197677612,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-154",
+        "score": 1.6483995914459229,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-976",
+        "score": 1.6424908638000488,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-420",
+        "score": 1.6316313743591309,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2962",
+        "score": 1.6149110794067383,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-422",
+        "score": 1.5987834930419922,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-421",
+        "score": 1.5971674919128418,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2856",
+        "score": 1.5837972164154053,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1449",
+        "score": 1.5836589336395264,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2884",
+        "score": 1.581521987915039,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1165",
+        "score": 1.5806998014450073,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1452",
+        "score": 1.573881983757019,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1164",
+        "score": 1.5733357667922974,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-836",
+        "score": 1.5588557720184326,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1454",
+        "score": 1.5508325099945068,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2837",
+        "score": 1.546733021736145,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1453",
+        "score": 1.540623426437378,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-3103",
+        "score": 1.5362215042114258,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2787",
+        "score": 1.5360541343688965,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1114",
+        "score": 1.5343966484069824,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-564",
+        "score": 1.5339550971984863,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-110",
+        "score": 1.5327240228652954,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-565",
+      "article-483",
+      "article-972"
+    ],
+    "status": "ok",
+    "answer": 20.000000000000014,
+    "code": "def solution():\n    # Define variables name and value\n    full_employment_gdp = 1.3  # trillion dollars\n    actual_gdp = 1.2  # trillion dollars\n    mpc = 0.8\n\n    # Do math calculation to get the answer\n    gdp_gap = full_employment_gdp - actual_gdp\n    fiscal_multiplier = 1 / (1 - mpc)\n    government_expenditure_increase = gdp_gap / fiscal_multiplier\n    answer = government_expenditure_increase * 1000  # convert trillion dollars to billions\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "f2e2edb058535cde5396fa284d7ea04eacfc6782741c2751475d85af5820bab8"
+}

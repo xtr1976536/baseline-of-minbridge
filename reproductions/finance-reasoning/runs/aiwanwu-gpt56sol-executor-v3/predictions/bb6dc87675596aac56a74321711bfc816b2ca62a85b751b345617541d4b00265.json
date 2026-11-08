@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2011",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the median of a finite dataset of annual portfolio or mutual fund return rates, supports percentage-valued observations over multiple years, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5063,
+          "completion_tokens": 41,
+          "total_tokens": 5104,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C14\",\"C27\"]}",
+        "usage": {
+          "prompt_tokens": 14510,
+          "completion_tokens": 22,
+          "total_tokens": 14532
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    annual_returns = [5.2, 7.1, 2.8, 6.5, 3.9, 9.0, 4.6, 8.3, 5.7, 7.4]\n\n    # Do math calculation to get the answer\n    sorted_returns = sorted(annual_returns)\n    middle_left = sorted_returns[len(sorted_returns) // 2 - 1]\n    middle_right = sorted_returns[len(sorted_returns) // 2]\n    answer = round((middle_left + middle_right) / 2, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5571,
+          "completion_tokens": 295,
+          "total_tokens": 5866,
+          "prompt_tokens_details": {
+            "cached_tokens": 5376
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 143
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2386",
+        "score": 1.654747486114502,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-906",
+        "score": 1.580012559890747,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1980",
+        "score": 1.5772035121917725,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.5638481378555298,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2834",
+        "score": 1.559917688369751,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2410",
+        "score": 1.5593739748001099,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.5582304000854492,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.556272268295288,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.5534323453903198,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2321",
+        "score": 1.5486996173858643,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.5442793369293213,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.5403223037719727,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-266",
+        "score": 1.5400158166885376,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2685",
+        "score": 1.539029598236084,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.5381797552108765,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.5372601747512817,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1978",
+        "score": 1.5369789600372314,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1783",
+        "score": 1.5362517833709717,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.5337984561920166,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-61",
+        "score": 1.5329787731170654,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-894",
+        "score": 1.5304429531097412,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1289",
+        "score": 1.5296616554260254,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1130",
+        "score": 1.527116298675537,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1604",
+        "score": 1.5269999504089355,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2881",
+        "score": 1.5230731964111328,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-905",
+        "score": 1.5227632522583008,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1713",
+        "score": 1.5217574834823608,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-921",
+        "score": 1.5179978609085083,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2783",
+        "score": 1.5157941579818726,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1292",
+        "score": 1.5156724452972412,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-906",
+      "article-2685",
+      "article-1713"
+    ],
+    "status": "ok",
+    "answer": 6.1,
+    "code": "def solution():\n    # Define variables name and value\n    annual_returns = [5.2, 7.1, 2.8, 6.5, 3.9, 9.0, 4.6, 8.3, 5.7, 7.4]\n\n    # Do math calculation to get the answer\n    sorted_returns = sorted(annual_returns)\n    middle_left = sorted_returns[len(sorted_returns) // 2 - 1]\n    middle_right = sorted_returns[len(sorted_returns) // 2]\n    answer = round((middle_left + middle_right) / 2, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "b5dc97ae53f02ea7b6c6d6a9e392fc074c04572ec10a50e629385a2efc7aef20"
+}

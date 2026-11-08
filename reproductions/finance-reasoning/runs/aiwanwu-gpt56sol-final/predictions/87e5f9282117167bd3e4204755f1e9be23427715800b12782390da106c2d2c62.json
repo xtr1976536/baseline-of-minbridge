@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2065",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the future value of a regular monthly contribution stream with payments at the beginning of each period (annuity due), using a fixed annual interest rate compounded monthly over a specified number of years, and returns the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5021,
+          "completion_tokens": 54,
+          "total_tokens": 5075
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15058,
+          "completion_tokens": 425,
+          "total_tokens": 15483,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 328
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    monthly_contribution = 500\n    annual_interest_rate = 0.06\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_months = 10 * 12\n\n    # Do math calculation to get the answer\n    future_value = (\n        monthly_contribution\n        * (((1 + monthly_interest_rate) ** number_of_months - 1) / monthly_interest_rate)\n        * (1 + monthly_interest_rate)\n    )\n    answer = round(future_value)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5702,
+          "completion_tokens": 185,
+          "total_tokens": 5887,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 51
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2337",
+        "score": 1.9930514097213745
+      },
+      {
+        "function_id": "article-2334",
+        "score": 1.9488545656204224
+      },
+      {
+        "function_id": "article-658",
+        "score": 1.94338059425354
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.9302558898925781
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.9117714166641235
+      },
+      {
+        "function_id": "article-253",
+        "score": 1.910858392715454
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.8745784759521484
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.8675308227539062
+      },
+      {
+        "function_id": "article-369",
+        "score": 1.8663238286972046
+      },
+      {
+        "function_id": "article-3073",
+        "score": 1.8639096021652222
+      },
+      {
+        "function_id": "article-2463",
+        "score": 1.8566476106643677
+      },
+      {
+        "function_id": "article-2091",
+        "score": 1.840596318244934
+      },
+      {
+        "function_id": "article-252",
+        "score": 1.8399856090545654
+      },
+      {
+        "function_id": "article-2333",
+        "score": 1.8390541076660156
+      },
+      {
+        "function_id": "article-2335",
+        "score": 1.8292104005813599
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.8276225328445435
+      },
+      {
+        "function_id": "article-2338",
+        "score": 1.8219813108444214
+      },
+      {
+        "function_id": "article-12",
+        "score": 1.8162939548492432
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.8156596422195435
+      },
+      {
+        "function_id": "article-2462",
+        "score": 1.790931224822998
+      },
+      {
+        "function_id": "article-1313",
+        "score": 1.7903165817260742
+      },
+      {
+        "function_id": "article-2209",
+        "score": 1.7847378253936768
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.7787489891052246
+      },
+      {
+        "function_id": "article-2332",
+        "score": 1.777284026145935
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.7744121551513672
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.7706689834594727
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.7614644765853882
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.7582985162734985
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.7516533136367798
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.7493841648101807
+      }
+    ],
+    "selected_ids": [
+      "article-2337",
+      "article-2334",
+      "article-658"
+    ],
+    "status": "ok",
+    "answer": 82349,
+    "code": "def solution():\n    # Define variables name and value\n    monthly_contribution = 500\n    annual_interest_rate = 0.06\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_months = 10 * 12\n\n    # Do math calculation to get the answer\n    future_value = (\n        monthly_contribution\n        * (((1 + monthly_interest_rate) ** number_of_months - 1) / monthly_interest_rate)\n        * (1 + monthly_interest_rate)\n    )\n    answer = round(future_value)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "1d18ed1a4a4c7bd733d677ac5e743ed76fe95f54118810115c951cbca939b558"
+}

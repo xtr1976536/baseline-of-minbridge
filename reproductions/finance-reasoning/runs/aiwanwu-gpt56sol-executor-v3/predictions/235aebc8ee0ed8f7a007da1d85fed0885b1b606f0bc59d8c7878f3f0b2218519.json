@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2129",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates periodic-inventory weighted-average cost of goods sold using beginning inventory quantities and costs, purchase transactions with varying unit costs, and units sold, excluding sales revenue and returning the per-unit weighted-average cost and cost of goods sold rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 5022,
+          "completion_tokens": 56,
+          "total_tokens": 5078
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 13435,
+          "completion_tokens": 117,
+          "total_tokens": 13552,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 96
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    beginning_inventory_cost = 1250.00\n    beginning_inventory_units = 200\n    purchase_costs = [116.00, 440.00]\n    purchase_units = [20, 80]\n    units_sold = 10\n\n    # Do math calculation to get the answer\n    total_cost = beginning_inventory_cost + sum(purchase_costs)\n    total_units = beginning_inventory_units + sum(purchase_units)\n    weighted_average_cost_per_unit = total_cost / total_units\n    answer = round(weighted_average_cost_per_unit * units_sold, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5273,
+          "completion_tokens": 220,
+          "total_tokens": 5493,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 70
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2395",
+        "score": 1.8809707164764404,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2396",
+        "score": 1.7544384002685547,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.7511379718780518,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-200",
+        "score": 1.7240240573883057,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.7148396968841553,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2098",
+        "score": 1.7044271230697632,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1270",
+        "score": 1.69846510887146,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2266",
+        "score": 1.6963515281677246,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.690908432006836,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1058",
+        "score": 1.6542648077011108,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2495",
+        "score": 1.6316090822219849,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2207",
+        "score": 1.626988410949707,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1977",
+        "score": 1.626159429550171,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2467",
+        "score": 1.6256179809570312,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-466",
+        "score": 1.6246771812438965,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1401",
+        "score": 1.619276762008667,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1448",
+        "score": 1.6108399629592896,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-467",
+        "score": 1.5976253747940063,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2323",
+        "score": 1.5830097198486328,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1187",
+        "score": 1.5739457607269287,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2958",
+        "score": 1.572703242301941,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1625",
+        "score": 1.5715222358703613,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-469",
+        "score": 1.5700950622558594,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1366",
+        "score": 1.5652072429656982,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-204",
+        "score": 1.5648685693740845,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-470",
+        "score": 1.5628602504730225,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-82",
+        "score": 1.5586731433868408,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2735",
+        "score": 1.5575149059295654,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-3033",
+        "score": 1.5541844367980957,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1186",
+        "score": 1.549912452697754,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2395",
+      "article-2396"
+    ],
+    "status": "ok",
+    "answer": 60.2,
+    "code": "def solution():\n    # Define variables name and value\n    beginning_inventory_cost = 1250.00\n    beginning_inventory_units = 200\n    purchase_costs = [116.00, 440.00]\n    purchase_units = [20, 80]\n    units_sold = 10\n\n    # Do math calculation to get the answer\n    total_cost = beginning_inventory_cost + sum(purchase_costs)\n    total_units = beginning_inventory_units + sum(purchase_units)\n    weighted_average_cost_per_unit = total_cost / total_units\n    answer = round(weighted_average_cost_per_unit * units_sold, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "d3d3b4b4d1f070d6ee309a2419b47adbd749d16c47ecadd155eac423109a2ef8"
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "7e55e8afa9ab125595aeb44ea11d610ceb4854633ddd62dc98945363613bd20e",
+  "response_digest": "8ee7dca72b03f8b910e62950e4cc839845284ef5a23c9071d4dfcf2dbb77176f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    cash_flows = [50, 50, 50, 50, 1050]\n    yield_to_maturity = 0.04\n\n    # Calculate the bond price and present-value-weighted cash flows\n    present_values = [\n        cash_flow / ((1 + yield_to_maturity) ** period)\n        for period, cash_flow in enumerate(cash_flows, 1)\n    ]\n    bond_price = sum(present_values)\n\n    # Calculate Macaulay Duration\n    weighted_present_value = sum(\n        period * present_value\n        for period, present_value in enumerate(present_values, 1)\n    )\n    macaulay_duration = weighted_present_value / bond_price\n\n    # Return the answer rounded to two decimal places\n    return round(macaulay_duration, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5704,
+      "completion_tokens": 502,
+      "total_tokens": 6206,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 319
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "271030d7f214447f50572be82d131d302e18776f352e38f271669f92207b0d9a",
+  "response_digest": "0d11866d2504673a4da35286eb902f5339c1681f83dcabe3ddcde8fa3e1735f2",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    equity_proportion = 0.20\n    debt_proportion = 0.80\n    cost_of_equity = 0.10\n    pretax_cost_of_debt = 0.05\n    tax_rate = 0.21\n\n    # Do math calculation to get the answer\n    after_tax_cost_of_debt = pretax_cost_of_debt * (1 - tax_rate)\n    wacc = (\n        equity_proportion * cost_of_equity\n        + debt_proportion * after_tax_cost_of_debt\n    )\n    answer = round(wacc * 100, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5810,
+      "completion_tokens": 210,
+      "total_tokens": 6020,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 53
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

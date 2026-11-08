@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2099",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates Free Cash Flow to the Firm (FCFF) for a single fiscal year from EBIT or operating income, depreciation, income tax rate, and fixed capital investment, optionally incorporating changes in net working capital from comparative balance-sheet data, and returns the result in millions rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5381,
+          "completion_tokens": 64,
+          "total_tokens": 5445,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 14515,
+          "completion_tokens": 240,
+          "total_tokens": 14755,
+          "completion_tokens_details": {
+            "reasoning_tokens": 216
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    ebit = 1106\n    tax_rate = 0.32\n    depreciation = 243\n    fixed_capital_investment = 535\n\n    current_assets_2012 = 1290\n    current_liabilities_2012 = 2783\n    current_assets_2011 = 1199\n    current_liabilities_2011 = 2678\n\n    net_working_capital_2012 = current_assets_2012 - current_liabilities_2012\n    net_working_capital_2011 = current_assets_2011 - current_liabilities_2011\n    investment_in_working_capital = (\n        net_working_capital_2012 - net_working_capital_2011\n    )\n\n    # Do math calculation to get the answer\n    fcff = (\n        ebit * (1 - tax_rate)\n        + depreciation\n        - fixed_capital_investment\n        - investment_in_working_capital\n    )\n\n    # Return answer rounded to three decimal places\n    return round(fcff, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5884,
+          "completion_tokens": 393,
+          "total_tokens": 6277,
+          "completion_tokens_details": {
+            "reasoning_tokens": 148
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-629",
+        "score": 2.3199498653411865,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-628",
+        "score": 2.298250675201416,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-627",
+        "score": 2.242849349975586,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-626",
+        "score": 2.177701234817505,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-624",
+        "score": 2.174931764602661,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-622",
+        "score": 2.163787364959717,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-270",
+        "score": 2.1428236961364746,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1665",
+        "score": 2.123175859451294,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-51",
+        "score": 2.0300354957580566,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-625",
+        "score": 2.013092517852783,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-623",
+        "score": 1.9781235456466675,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1329",
+        "score": 1.9366352558135986,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2130",
+        "score": 1.9310157299041748,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2053",
+        "score": 1.8938751220703125,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-52",
+        "score": 1.8385326862335205,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-89",
+        "score": 1.8216462135314941,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.8003252744674683,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2700",
+        "score": 1.762363076210022,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-3026",
+        "score": 1.7557661533355713,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-407",
+        "score": 1.755103349685669,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1275",
+        "score": 1.7462280988693237,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-87",
+        "score": 1.746224284172058,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-3027",
+        "score": 1.745924711227417,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1721",
+        "score": 1.7300548553466797,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-91",
+        "score": 1.7299220561981201,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-247",
+        "score": 1.724385142326355,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-85",
+        "score": 1.7176750898361206,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-555",
+        "score": 1.7149717807769775,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1732",
+        "score": 1.708274006843567,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-3030",
+        "score": 1.7081046104431152,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-629",
+      "article-628",
+      "article-626"
+    ],
+    "status": "ok",
+    "answer": 474.08,
+    "code": "def solution():\n    # Define variables name and value\n    ebit = 1106\n    tax_rate = 0.32\n    depreciation = 243\n    fixed_capital_investment = 535\n\n    current_assets_2012 = 1290\n    current_liabilities_2012 = 2783\n    current_assets_2011 = 1199\n    current_liabilities_2011 = 2678\n\n    net_working_capital_2012 = current_assets_2012 - current_liabilities_2012\n    net_working_capital_2011 = current_assets_2011 - current_liabilities_2011\n    investment_in_working_capital = (\n        net_working_capital_2012 - net_working_capital_2011\n    )\n\n    # Do math calculation to get the answer\n    fcff = (\n        ebit * (1 - tax_rate)\n        + depreciation\n        - fixed_capital_investment\n        - investment_in_working_capital\n    )\n\n    # Return answer rounded to three decimal places\n    return round(fcff, 3)\n"
+  },
+  "digest": "6a4d3dbac36240014206d4926ea5de20259a17701a32ff6ad492b6d1b5696379"
+}

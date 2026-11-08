@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2185",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates theoretical equity value using the Merton structural credit risk model, treating equity as a European call option on company assets with debt face value due at maturity, and using asset value, debt amount, time to maturity, risk-free rate, and annual asset volatility as inputs, assuming no dividends?",
+        "usage": {
+          "prompt_tokens": 5054,
+          "completion_tokens": 64,
+          "total_tokens": 5118,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C22\"]}",
+        "usage": {
+          "prompt_tokens": 13432,
+          "completion_tokens": 19,
+          "total_tokens": 13451,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    import math\n\n    # Define variables and values (in millions, except rates and time)\n    assets = 150\n    debt = 100\n    risk_free_rate = 0.05\n    asset_volatility = 0.20\n    time_to_maturity = 3\n\n    # Calculate equity as a call option on the company's assets\n    d1 = (\n        math.log(assets / debt)\n        + (risk_free_rate + 0.5 * asset_volatility**2) * time_to_maturity\n    ) / (asset_volatility * math.sqrt(time_to_maturity))\n    d2 = d1 - asset_volatility * math.sqrt(time_to_maturity)\n\n    normal_cdf = lambda x: 0.5 * (1 + math.erf(x / math.sqrt(2)))\n    equity_value = (\n        assets * normal_cdf(d1)\n        - debt * math.exp(-risk_free_rate * time_to_maturity) * normal_cdf(d2)\n    )\n\n    # Return the value in million dollars, rounded to two decimal places\n    return round(equity_value, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5595,
+          "completion_tokens": 274,
+          "total_tokens": 5869,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 27
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-911",
+        "score": 2.497772693634033,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2796",
+        "score": 1.7700607776641846,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.749366283416748,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1651",
+        "score": 1.736098289489746,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1755",
+        "score": 1.7275276184082031,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2738",
+        "score": 1.7245473861694336,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-3125",
+        "score": 1.7194247245788574,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.7112619876861572,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-39",
+        "score": 1.709320068359375,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.7018072605133057,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1447",
+        "score": 1.7003307342529297,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-558",
+        "score": 1.697530746459961,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-3053",
+        "score": 1.6973342895507812,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2791",
+        "score": 1.695175290107727,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1643",
+        "score": 1.6929304599761963,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1117",
+        "score": 1.6864944696426392,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.6861600875854492,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.684924602508545,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2113",
+        "score": 1.6814179420471191,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2230",
+        "score": 1.6799473762512207,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2118",
+        "score": 1.6781792640686035,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3060",
+        "score": 1.6767457723617554,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2619",
+        "score": 1.6764960289001465,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1758",
+        "score": 1.6759496927261353,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1592",
+        "score": 1.6726701259613037,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.6693124771118164,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1787",
+        "score": 1.6682908535003662,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-649",
+        "score": 1.6635977029800415,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.6619834899902344,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.6612731218338013,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-911",
+      "article-3060"
+    ],
+    "status": "ok",
+    "answer": 64.83,
+    "code": "def solution():\n    import math\n\n    # Define variables and values (in millions, except rates and time)\n    assets = 150\n    debt = 100\n    risk_free_rate = 0.05\n    asset_volatility = 0.20\n    time_to_maturity = 3\n\n    # Calculate equity as a call option on the company's assets\n    d1 = (\n        math.log(assets / debt)\n        + (risk_free_rate + 0.5 * asset_volatility**2) * time_to_maturity\n    ) / (asset_volatility * math.sqrt(time_to_maturity))\n    d2 = d1 - asset_volatility * math.sqrt(time_to_maturity)\n\n    normal_cdf = lambda x: 0.5 * (1 + math.erf(x / math.sqrt(2)))\n    equity_value = (\n        assets * normal_cdf(d1)\n        - debt * math.exp(-risk_free_rate * time_to_maturity) * normal_cdf(d2)\n    )\n\n    # Return the value in million dollars, rounded to two decimal places\n    return round(equity_value, 2)\n"
+  },
+  "digest": "c4c6f6cfb91fda460d29650b0af180148687a97d5a8af2d958e627c6adf014fa"
+}

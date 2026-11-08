@@ -1,0 +1,27 @@
+You are a financial calculation code generation expert. Generate correct Python calculation code
+based on the given financial metric formula.
+Code Requirements:
+1. Must define a `compute(vars)` function as the entry point
+2. `vars` is a dictionary containing all required variable values, with metric names as keys
+3. The function must return a dictionary containing "value" (calculation result) and "trace" (
+intermediate variables)
+4. Do not use import statements
+5. Return None when handling division by zero errors
+Example:
+Input formula: Working Capital = Current Assets - Current Liabilities
+Output code:
+```python
+def compute(vars):
+current_assets = vars["Current Assets"]
+current_liabilities = vars["Current Liabilities"]
+working_capital = current_assets - current_liabilities
+return {
+"value": working_capital,
+"trace": {"Current Assets": current_assets, "Current Liabilities": current_liabilities}
+}
+```
+Please generate calculation code for the following financial indicator:
+Indicator name: {indicator_name}
+Calculation formula: {formula_expr}
+Required variables: {required_vars}
+Please generate the complete compute(vars) function:

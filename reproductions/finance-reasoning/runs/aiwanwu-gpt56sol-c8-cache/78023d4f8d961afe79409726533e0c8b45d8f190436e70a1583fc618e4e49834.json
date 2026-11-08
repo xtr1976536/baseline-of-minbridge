@@ -1,0 +1,21 @@
+{
+  "identity": "78023d4f8d961afe79409726533e0c8b45d8f190436e70a1583fc618e4e49834",
+  "response_digest": "d56bdec417c106467494c55305421ae87e8103ba1037d56cf883e8fad934ef85",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    sales = [70, 40, 25]\n    probabilities = [0.05, 0.70, 0.25]\n\n    # Do math calculation to get the answer\n    expected_sales = sum(sale * probability for sale, probability in zip(sales, probabilities))\n    variance = sum(\n        probability * (sale - expected_sales) ** 2\n        for sale, probability in zip(sales, probabilities)\n    )\n    standard_deviation = variance ** 0.5\n\n    # return answer\n    return round(standard_deviation, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5241,
+      "completion_tokens": 234,
+      "total_tokens": 5475,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 93
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

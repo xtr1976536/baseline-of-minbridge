@@ -1,0 +1,133 @@
+% Method figure: the full VerifiQA pipeline, from filing + question to verdict,
+% including the SMT proof obligation and the two repair loops.
+% Requires: \usepackage{tikz} + libraries below; \usepackage{xcolor}.
+% Compile standalone by uncommenting the documentclass block.
+
+% \documentclass[tikz,border=6pt]{standalone}
+% \usepackage{xcolor}
+% \begin{document}
+
+\usetikzlibrary{positioning,arrows.meta,fit,backgrounds,calc}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  >=Latex,
+  box/.style={rounded corners=2pt, draw, align=left, inner sep=5pt},
+  io/.style={box, fill=black!4, font=\footnotesize},
+  proc/.style={box, fill=blue!4, draw=blue!40!black, align=center, text width=25mm, minimum height=11mm, font=\footnotesize},
+  auth/.style={box, fill=teal!8, draw=teal!45!black, align=left, font=\footnotesize},
+  hdr/.style={font=\scriptsize\bfseries\sffamily, text=black!60},
+  smt/.style={box, fill=black!3, font=\ttfamily\scriptsize, align=left},
+  flow/.style={-{Latex[length=5pt]}, thick, black!70},
+  repair/.style={-{Latex[length=5pt]}, thick, dashed, orange!75!black},
+  verdict/.style={rounded corners=2pt, draw, font=\bfseries\sffamily, inner sep=4pt, minimum width=22mm, align=center},
+  good/.style={verdict, draw=green!55!black, text=green!45!black, fill=green!8},
+  bad/.style={verdict, draw=red!65!black, text=red!55!black, fill=red!6},
+  abst/.style={verdict, draw=black!45, text=black!60, fill=black!5},
+  lbl/.style={font=\scriptsize\itshape, text=black!55},
+]
+
+% ============================ INPUTS (far left) ============================
+\node[io, text width=27mm] (filing) {\textbf{Filing} (10-K)\\ \scriptsize PDF + XBRL\\ \scriptsize calculation linkbase};
+\node[io, text width=27mm, below=10mm of filing] (question) {\textbf{Question}\\ \scriptsize ``Nvidia FY26 gross profit?''};
+
+% evidence excerpt (rendered from the filing, target subtotal redacted)
+\node[smt, right=8mm of filing, yshift=2mm, text width=34mm] (evidence) {%
+\textbf{\sffamily\scriptsize Evidence (redacted)}\\[2pt]
+Revenues~~~~~~~215{,}938\\
+Cost of Rev.~~~~62{,}475\\
+Gross Profit~~~~[redacted]};
+
+% ============================ LANE A: the CLAIM ============================
+\node[proc, right=10mm of evidence, yshift=13mm, fill=black!6, draw=black!45] (gen)
+  {\textbf{LLM answer}\\[1pt]\scriptsize (reads evidence)\\[2pt] claim $c=155{,}000$};
+
+% ============================ LANE B: the CHECK ============================
+\node[auth, right=10mm of evidence, yshift=-13mm, text width=42mm] (auth) {%
+\textbf{\sffamily\scriptsize Grounding from filing structure}\\[2pt]
+1.~classify $\rightarrow$ metric \emph{gross profit}\\
+2.~locate subtotal in calc.\ linkbase\\
+3.~formula \& operands from filing:\\
+~~~~$\mathrm{GP}=\mathrm{Rev}-\mathrm{Cost}$\\
+4.~bind operands to XBRL values:\\
+~~~~$\mathrm{Rev}{=}215{,}938,\ \mathrm{Cost}{=}62{,}475$};
+
+% ============================ IR ============================
+\node[proc, right=12mm of gen, yshift=-13mm, text width=26mm, fill=violet!6, draw=violet!45!black]
+  (ir) {\textbf{IR}\\[1pt]\scriptsize formula $+$ authoritative operands $+$ claim $c$ $+$ tol.\ $\tau$};
+
+% ============================ SMT proof obligation ============================
+\node[smt, right=9mm of ir, text width=52mm] (smt) {%
+\textbf{\sffamily\scriptsize SMT proof obligation}\\[2pt]
+\textcolor{black!45}{; operands (authoritative)}\\
+(assert (= rev 215938)) (assert (= cost 62475))\\[1pt]
+\textcolor{black!45}{; identity from the filing}\\
+(assert (= gp (- rev cost)))\\[1pt]
+\textcolor{black!45}{; claim under test, within tol}\\
+(assert (<= (abs (- gp 155000)) $\tau$))\\
+(check-sat)};
+
+% ============================ Z3 + verdicts ============================
+\node[proc, right=9mm of smt, text width=14mm, fill=blue!8, draw=blue!45!black, minimum height=13mm]
+  (z3) {\textbf{Z3}\\\scriptsize one pass};
+
+\node[good, above right=5mm and 9mm of z3] (verified) {SAT $\Rightarrow$ \textsc{Verified}};
+\node[bad, right=9mm of z3] (violated) {UNSAT $\Rightarrow$ \textsc{Violated}\\[1pt]\normalfont\scriptsize computed $153{,}463 \neq 155{,}000$\\[1pt]\normalfont\scriptsize \textit{correction} $c^{*}{=}153{,}463$};
+\node[abst, below right=5mm and 9mm of z3] (abstain) {ERROR $\Rightarrow$ \textsc{Abstain}};
+
+% ============================ main flow ============================
+\draw[flow] (filing) -- (evidence);
+\draw[flow] (question.east) to[out=0,in=200] (gen.west);
+\draw[flow] (evidence.east) to[out=20,in=180] (gen.west);
+\draw[flow] (evidence.east) to[out=-20,in=180] (auth.west);
+\draw[flow] (gen.east) to[out=0,in=170] (ir.north west);
+\draw[flow] (auth.east) to[out=0,in=190] (ir.south west);
+\draw[flow] (ir) -- (smt);
+\draw[flow] (smt) -- (z3);
+\draw[flow] (z3.east) to[out=25,in=180] (verified.west);
+\draw[flow] (z3.east) -- (violated.west);
+\draw[flow] (z3.east) to[out=-25,in=180] (abstain.west);
+
+% ============================ repair loops ============================
+% (1) VIOLATED -> re-ask the LLM once with diagnostic feedback, then re-verify
+\draw[repair] (violated.north) to[out=90,in=0]
+  node[lbl, above, pos=0.25]{repair $\le 1$: re-ask LLM (diagnostic feedback, no answer leaked), re-verify}
+  ($(gen.north)+(0,3mm)$) -- (gen.north);
+% (2) INVALID SMT -> regenerate the SMT once with the parser error, then re-run
+\draw[repair] (abstain.south) to[out=-90,in=0]
+  node[lbl, below, pos=0.28]{repair $\le 1$: regenerate SMT (parser error fed back), re-run}
+  ($(smt.south)+(0,-3mm)$) -- (smt.south);
+
+% ============================ lane labels ============================
+\node[hdr, above=1mm of gen] {LANE A\,:\,CLAIM (untrusted)};
+\node[hdr, below=1mm of auth] {LANE B\,:\,CHECK (authoritative, from the filing)};
+
+% ============================ background grouping ============================
+\begin{scope}[on background layer]
+  \node[fit=(filing)(question)(evidence), rounded corners, draw=black!12, inner sep=6pt, label={[hdr]above:INPUTS}] {};
+\end{scope}
+
+\end{tikzpicture}
+
+\caption{\textbf{The VerifiQA pipeline.} From a filing and a question, two
+independent lanes are built. \textbf{Lane A} lets the language model read the
+evidence and emit a claim $c$; this lane is untrusted. \textbf{Lane B}
+reconstructs the check from the filing itself: it classifies the metric,
+locates the (redacted) subtotal in the filing's XBRL calculation linkbase, takes
+the formula and operand \emph{concepts} from that structure, and binds each
+operand to its authoritative XBRL value. The two lanes meet only at the SMT
+\emph{proof obligation}, which asserts the operands, the filing's identity, and
+the claim within tolerance $\tau$, and is discharged by Z3 in a single pass:
+\textsc{sat}$\Rightarrow$\textsc{verified}, \textsc{unsat}$\Rightarrow$\textsc{violated}
+(returning the certified correction $c^{*}$), error$\Rightarrow$\textsc{abstain}.
+Two optional, bounded repair loops (dashed) each re-verify their result, so
+soundness is preserved: on \textsc{violated} the model is re-asked once with
+diagnostic feedback that never reveals $c^{*}$; on an unparseable SMT the encoding
+is regenerated once with the solver's parse error. The verdict never depends on
+trusting the model, because the check is derived entirely from the filing.}
+\label{fig:pipeline}
+\end{figure*}
+
+% \end{document}

@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2141",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a tiered progressive tax liability on unearned income using a tax-free allowance, an individual tax rate for the intermediate income bracket, a parent’s tax rate for income exceeding the upper threshold, and rounds the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5069,
+          "completion_tokens": 54,
+          "total_tokens": 5123,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C03\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 16537,
+          "completion_tokens": 540,
+          "total_tokens": 17077,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    unearned_income = 3400\n    tax_free_threshold = 1250\n    alex_rate_threshold = 2500\n    alex_tax_rate = 0.10\n    parent_tax_rate = 0.24\n\n    # Do math calculation to get the answer\n    alex_taxable_income = alex_rate_threshold - tax_free_threshold\n    income_taxed_at_parent_rate = unearned_income - alex_rate_threshold\n\n    tax_at_alex_rate = alex_taxable_income * alex_tax_rate\n    tax_at_parent_rate = income_taxed_at_parent_rate * parent_tax_rate\n    total_kiddie_tax = tax_at_alex_rate + tax_at_parent_rate\n\n    # return answer\n    return round(total_kiddie_tax)\n```",
+        "usage": {
+          "prompt_tokens": 5806,
+          "completion_tokens": 223,
+          "total_tokens": 6029,
+          "completion_tokens_details": {
+            "reasoning_tokens": 50
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2440",
+        "score": 1.8407431840896606,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-313",
+        "score": 1.8403996229171753,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.826841115951538,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-846",
+        "score": 1.8143483400344849,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1815",
+        "score": 1.778356671333313,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.7661991119384766,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.7631032466888428,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-508",
+        "score": 1.7565429210662842,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.7349839210510254,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1842",
+        "score": 1.7106654644012451,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.6832064390182495,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1852",
+        "score": 1.6585434675216675,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.6518616676330566,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-3076",
+        "score": 1.6434557437896729,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2303",
+        "score": 1.6134322881698608,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2484",
+        "score": 1.5940606594085693,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1813",
+        "score": 1.5922091007232666,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2979",
+        "score": 1.587422490119934,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2880",
+        "score": 1.5515384674072266,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1633",
+        "score": 1.5488680601119995,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-384",
+        "score": 1.546586513519287,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1857",
+        "score": 1.5438947677612305,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1392",
+        "score": 1.5374481678009033,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1818",
+        "score": 1.5361353158950806,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2439",
+        "score": 1.5339407920837402,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1746",
+        "score": 1.5336759090423584,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1816",
+        "score": 1.532230019569397,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2851",
+        "score": 1.526059865951538,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1819",
+        "score": 1.5202897787094116,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1835",
+        "score": 1.5188169479370117,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-313",
+      "article-1834",
+      "article-846"
+    ],
+    "status": "ok",
+    "answer": 341,
+    "code": "def solution():\n    # Define variables name and value\n    unearned_income = 3400\n    tax_free_threshold = 1250\n    alex_rate_threshold = 2500\n    alex_tax_rate = 0.10\n    parent_tax_rate = 0.24\n\n    # Do math calculation to get the answer\n    alex_taxable_income = alex_rate_threshold - tax_free_threshold\n    income_taxed_at_parent_rate = unearned_income - alex_rate_threshold\n\n    tax_at_alex_rate = alex_taxable_income * alex_tax_rate\n    tax_at_parent_rate = income_taxed_at_parent_rate * parent_tax_rate\n    total_kiddie_tax = tax_at_alex_rate + tax_at_parent_rate\n\n    # return answer\n    return round(total_kiddie_tax)\n"
+  },
+  "digest": "bc33c923406bb91b309017c38e4db42e4859065fcd5566932754a40161b1236d"
+}

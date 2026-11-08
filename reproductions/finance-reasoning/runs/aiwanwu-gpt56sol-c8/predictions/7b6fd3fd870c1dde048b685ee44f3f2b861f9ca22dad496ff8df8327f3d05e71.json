@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2170",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the percentage change in operating income when production volume changes, using selling price per unit, variable cost per unit, and fixed operating costs, with operating income computed as (price − variable cost) × units − fixed costs and the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5014,
+          "completion_tokens": 59,
+          "total_tokens": 5073,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USEFUL]",
+        "usage": {
+          "prompt_tokens": 13296,
+          "completion_tokens": 1131,
+          "total_tokens": 14427,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_units = 200_000\n    new_units = 220_000\n    price_per_unit = 250\n    variable_cost_per_unit = 65\n    fixed_operating_costs = 10_000_000\n\n    # Do math calculation to get the answer\n    initial_operating_income = (\n        initial_units * (price_per_unit - variable_cost_per_unit)\n        - fixed_operating_costs\n    )\n    new_operating_income = (\n        new_units * (price_per_unit - variable_cost_per_unit)\n        - fixed_operating_costs\n    )\n\n    operating_income_change_percentage = (\n        (new_operating_income - initial_operating_income)\n        / initial_operating_income\n        * 100\n    )\n\n    answer = round(operating_income_change_percentage, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5589,
+          "completion_tokens": 295,
+          "total_tokens": 5884,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 97
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-574",
+        "score": 1.865716576576233
+      },
+      {
+        "function_id": "article-573",
+        "score": 1.7637336254119873
+      },
+      {
+        "function_id": "article-1681",
+        "score": 1.7047154903411865
+      },
+      {
+        "function_id": "article-1366",
+        "score": 1.7000112533569336
+      },
+      {
+        "function_id": "article-180",
+        "score": 1.6808006763458252
+      },
+      {
+        "function_id": "article-289",
+        "score": 1.674398422241211
+      },
+      {
+        "function_id": "article-3035",
+        "score": 1.6734552383422852
+      },
+      {
+        "function_id": "article-1371",
+        "score": 1.6716747283935547
+      },
+      {
+        "function_id": "article-3045",
+        "score": 1.6711475849151611
+      },
+      {
+        "function_id": "article-2229",
+        "score": 1.6690688133239746
+      },
+      {
+        "function_id": "article-3044",
+        "score": 1.658138632774353
+      },
+      {
+        "function_id": "article-3049",
+        "score": 1.657195806503296
+      },
+      {
+        "function_id": "article-3048",
+        "score": 1.6565067768096924
+      },
+      {
+        "function_id": "article-763",
+        "score": 1.652543306350708
+      },
+      {
+        "function_id": "article-1679",
+        "score": 1.6513633728027344
+      },
+      {
+        "function_id": "article-3033",
+        "score": 1.6456822156906128
+      },
+      {
+        "function_id": "article-769",
+        "score": 1.6417449712753296
+      },
+      {
+        "function_id": "article-3039",
+        "score": 1.640873908996582
+      },
+      {
+        "function_id": "article-3037",
+        "score": 1.6322987079620361
+      },
+      {
+        "function_id": "article-539",
+        "score": 1.631735920906067
+      },
+      {
+        "function_id": "article-2041",
+        "score": 1.6264421939849854
+      },
+      {
+        "function_id": "article-2224",
+        "score": 1.6220859289169312
+      },
+      {
+        "function_id": "article-767",
+        "score": 1.612523078918457
+      },
+      {
+        "function_id": "article-765",
+        "score": 1.6099750995635986
+      },
+      {
+        "function_id": "article-204",
+        "score": 1.6096982955932617
+      },
+      {
+        "function_id": "article-390",
+        "score": 1.6094917058944702
+      },
+      {
+        "function_id": "article-768",
+        "score": 1.608113169670105
+      },
+      {
+        "function_id": "article-164",
+        "score": 1.6060404777526855
+      },
+      {
+        "function_id": "article-1198",
+        "score": 1.6023294925689697
+      },
+      {
+        "function_id": "article-211",
+        "score": 1.6008049249649048
+      }
+    ],
+    "selected_ids": [
+      "article-574",
+      "article-1681",
+      "article-1366"
+    ],
+    "status": "ok",
+    "answer": 13.7,
+    "code": "def solution():\n    # Define variables name and value\n    initial_units = 200_000\n    new_units = 220_000\n    price_per_unit = 250\n    variable_cost_per_unit = 65\n    fixed_operating_costs = 10_000_000\n\n    # Do math calculation to get the answer\n    initial_operating_income = (\n        initial_units * (price_per_unit - variable_cost_per_unit)\n        - fixed_operating_costs\n    )\n    new_operating_income = (\n        new_units * (price_per_unit - variable_cost_per_unit)\n        - fixed_operating_costs\n    )\n\n    operating_income_change_percentage = (\n        (new_operating_income - initial_operating_income)\n        / initial_operating_income\n        * 100\n    )\n\n    answer = round(operating_income_change_percentage, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "52b99812d06374bf103b6f2247ece5dfd40226c15b4301628ca1bb8993e4b8c1"
+}

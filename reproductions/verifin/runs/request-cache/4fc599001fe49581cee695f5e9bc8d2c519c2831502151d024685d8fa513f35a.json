@@ -1,0 +1,28 @@
+{
+  "request_hash": "4fc599001fe49581cee695f5e9bc8d2c519c2831502151d024685d8fa513f35a",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is Kraft Heinz's FY2019 inventory turnover ratio? Inventory turnover ratio is defined as: (FY2019 COGS) / (average inventory between FY2018 and FY2019). Round your answer to two decimal places. Please base your judgments on the information provided primarily in the balance sheet and the P&L statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"inventory_turnover_ratio\",\n  \"facts\": [\n    {\n      \"name\": \"fy2019_cogs\",\n      \"aliases\": [\n        \"Cost of products sold\",\n        \"Cost of goods sold\",\n        \"Cost of sales\",\n        \"COGS\"\n      ],\n      \"period\": \"FY2019\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"fy2018_inventory\",\n      \"aliases\": [\n        \"Inventories\",\n        \"Inventory\"\n      ],\n      \"period\": \"FY2018 year-end\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"fy2019_inventory\",\n      \"aliases\": [\n        \"Inventories\",\n        \"Inventory\"\n      ],\n      \"period\": \"FY2019 year-end\",\n      \"statement\": \"balance sheet\"\n    }\n  ],\n  \"reason\": \"Compute average inventory as (FY2018 inventory + FY2019 inventory) / 2, then divide FY2019 COGS by that average and round to two decimal places.\"\n}",
+  "usage": {
+    "prompt_tokens": 4746,
+    "completion_tokens": 227,
+    "total_tokens": 4973,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    }
+  },
+  "response_id": "resp_0707420a8fc49f8b016aedb8cc628c87d29ad809a3c7733ca7",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:income_loss_from_discontinued_operations_net_of_tax_attributable_to_reporting_entity_fy2022)

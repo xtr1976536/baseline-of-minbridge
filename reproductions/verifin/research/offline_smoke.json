@@ -1,0 +1,216 @@
+{
+  "scripted_LLM": true,
+  "primary_source_facts": true,
+  "main_experiment_results": false,
+  "results": {
+    "paper_correct_claim": {
+      "status": "VERIFIED",
+      "solver_status": "SAT",
+      "expected": "62151",
+      "smtlib": "(declare-fun operand_0 () Real)\n(declare-fun filing_child_0 () Bool)\n(declare-fun operand_1 () Real)\n(declare-fun filing_child_1 () Bool)\n(declare-fun expected_value () Real)\n(declare-fun authorized_formula () Bool)\n(declare-fun claim_lower_bound () Bool)\n(declare-fun claim_upper_bound () Bool)\n(assert (=> filing_child_0 (= 34550.0 operand_0)))\n(assert (=> filing_child_1 (= 27601.0 operand_1)))\n(assert (=> authorized_formula\n    (= expected_value (+ (* 1.0 operand_0) (* 1.0 operand_1)))))\n(assert (=> claim_lower_bound (>= (/ 1.0 2.0) (- expected_value 62151.0))))\n(assert (=> claim_upper_bound (>= (/ 1.0 2.0) (- 62151.0 expected_value))))\n\n(assert filing_child_0)\n(assert filing_child_1)\n(assert authorized_formula)\n(assert claim_lower_bound)\n(assert claim_upper_bound)\n(check-sat)\n",
+      "claimed_value": "62151.0",
+      "claimed_unit": "USD millions",
+      "audit": {
+        "repair_attempts": 0,
+        "candidate_independent_authority": true,
+        "plan": {
+          "metric": "operating_expenses",
+          "formula": "(1.0 * child_0) + (1.0 * child_1)",
+          "roles": [
+            {
+              "name": "child_0",
+              "aliases": [
+                "Research and Development Expense"
+              ],
+              "period": "2025",
+              "concept": "us-gaap:ResearchAndDevelopmentExpense"
+            },
+            {
+              "name": "child_1",
+              "aliases": [
+                "Selling, General and Administrative Expense"
+              ],
+              "period": "2025",
+              "concept": "us-gaap:SellingGeneralAndAdministrativeExpense"
+            }
+          ],
+          "claim_unit": "USD millions",
+          "tolerance": 0.5,
+          "formula_source": "xbrl_linkbase",
+          "period": "2025",
+          "operation": null,
+          "claimed_value": null,
+          "claimed_unit": ""
+        },
+        "formula_authority": {
+          "kind": "filing_calculation_linkbase",
+          "source_id": "http://www.apple.com/role/CONSOLIDATEDSTATEMENTSOFOPERATIONS",
+          "equation": "(1.0 * child_0) + (1.0 * child_1)",
+          "source_sha256": "314091ba88cd58f392874866c19010ed9facdd643f34f0afbcf37137192c5f05",
+          "parent": "us-gaap:OperatingExpenses",
+          "children": [
+            {
+              "concept": "us-gaap:ResearchAndDevelopmentExpense",
+              "weight": "1.0"
+            },
+            {
+              "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+              "weight": "1.0"
+            }
+          ]
+        },
+        "bindings": [
+          {
+            "role": "child_0",
+            "value": "34550.000000",
+            "unit": "USD millions",
+            "concept": "us-gaap:ResearchAndDevelopmentExpense",
+            "period": {
+              "instant": "",
+              "start_date": "2024-09-29",
+              "end_date": "2025-09-27",
+              "dimensions": []
+            },
+            "accession": "0000320193-25-000079",
+            "source_fact_id": "f-93",
+            "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927_htm.xml",
+            "source_sha256": "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b",
+            "decimals": "-6",
+            "method": "linkbase_concept"
+          },
+          {
+            "role": "child_1",
+            "value": "27601.000000",
+            "unit": "USD millions",
+            "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+            "period": {
+              "instant": "",
+              "start_date": "2024-09-29",
+              "end_date": "2025-09-27",
+              "dimensions": []
+            },
+            "accession": "0000320193-25-000079",
+            "source_fact_id": "f-96",
+            "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927_htm.xml",
+            "source_sha256": "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b",
+            "decimals": "-6",
+            "method": "linkbase_concept"
+          }
+        ],
+        "tolerance": ".5",
+        "tolerance_source": "question_reporting_unit"
+      }
+    },
+    "incorrect_claim": {
+      "status": "VIOLATED",
+      "solver_status": "UNSAT",
+      "unsat_core": [
+        "filing_child_0",
+        "claim_lower_bound",
+        "authorized_formula",
+        "filing_child_1"
+      ],
+      "smtlib": "(declare-fun operand_0 () Real)\n(declare-fun filing_child_0 () Bool)\n(declare-fun operand_1 () Real)\n(declare-fun filing_child_1 () Bool)\n(declare-fun expected_value () Real)\n(declare-fun authorized_formula () Bool)\n(declare-fun claim_lower_bound () Bool)\n(declare-fun claim_upper_bound () Bool)\n(assert (=> filing_child_0 (= 34550.0 operand_0)))\n(assert (=> filing_child_1 (= 27601.0 operand_1)))\n(assert (=> authorized_formula\n    (= expected_value (+ (* 1.0 operand_0) (* 1.0 operand_1)))))\n(assert (=> claim_lower_bound (>= (/ 1.0 2.0) (- expected_value 62000.0))))\n(assert (=> claim_upper_bound (>= (/ 1.0 2.0) (- 62000.0 expected_value))))\n\n(assert filing_child_0)\n(assert filing_child_1)\n(assert authorized_formula)\n(assert claim_lower_bound)\n(assert claim_upper_bound)\n(check-sat)\n",
+      "claimed_value": "62000.0",
+      "claimed_unit": "USD millions",
+      "audit": {
+        "repair_attempts": 0,
+        "candidate_independent_authority": true,
+        "plan": {
+          "metric": "operating_expenses",
+          "formula": "(1.0 * child_0) + (1.0 * child_1)",
+          "roles": [
+            {
+              "name": "child_0",
+              "aliases": [
+                "Research and Development Expense"
+              ],
+              "period": "2025",
+              "concept": "us-gaap:ResearchAndDevelopmentExpense"
+            },
+            {
+              "name": "child_1",
+              "aliases": [
+                "Selling, General and Administrative Expense"
+              ],
+              "period": "2025",
+              "concept": "us-gaap:SellingGeneralAndAdministrativeExpense"
+            }
+          ],
+          "claim_unit": "USD millions",
+          "tolerance": 0.5,
+          "formula_source": "xbrl_linkbase",
+          "period": "2025",
+          "operation": null,
+          "claimed_value": null,
+          "claimed_unit": ""
+        },
+        "formula_authority": {
+          "kind": "filing_calculation_linkbase",
+          "source_id": "http://www.apple.com/role/CONSOLIDATEDSTATEMENTSOFOPERATIONS",
+          "equation": "(1.0 * child_0) + (1.0 * child_1)",
+          "source_sha256": "314091ba88cd58f392874866c19010ed9facdd643f34f0afbcf37137192c5f05",
+          "parent": "us-gaap:OperatingExpenses",
+          "children": [
+            {
+              "concept": "us-gaap:ResearchAndDevelopmentExpense",
+              "weight": "1.0"
+            },
+            {
+              "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+              "weight": "1.0"
+            }
+          ]
+        },
+        "bindings": [
+          {
+            "role": "child_0",
+            "value": "34550.000000",
+            "unit": "USD millions",
+            "concept": "us-gaap:ResearchAndDevelopmentExpense",
+            "period": {
+              "instant": "",
+              "start_date": "2024-09-29",
+              "end_date": "2025-09-27",
+              "dimensions": []
+            },
+            "accession": "0000320193-25-000079",
+            "source_fact_id": "f-93",
+            "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927_htm.xml",
+            "source_sha256": "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b",
+            "decimals": "-6",
+            "method": "linkbase_concept"
+          },
+          {
+            "role": "child_1",
+            "value": "27601.000000",
+            "unit": "USD millions",
+            "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+            "period": {
+              "instant": "",
+              "start_date": "2024-09-29",
+              "end_date": "2025-09-27",
+              "dimensions": []
+            },
+            "accession": "0000320193-25-000079",
+            "source_fact_id": "f-96",
+            "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927_htm.xml",
+            "source_sha256": "e1076735f1c81bc96d5c1ff6e1a9d23515d6eacf52b405cb1f7da3e379ac533b",
+            "decimals": "-6",
+            "method": "linkbase_concept"
+          }
+        ],
+        "tolerance": ".5",
+        "tolerance_source": "question_reporting_unit"
+      }
+    },
+    "missing_operand": {
+      "status": "ABSTAIN",
+      "reason": "missing_or_ambiguous_filing_fact:child_0",
+      "audit": {
+        "repair_attempts": 0,
+        "candidate_independent_authority": true
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "ad9e4c79a8da6660dfd1d1780ae43112497c829fc7f1f32343cf982cc4d71cab",
+  "response_digest": "67a7bb6d449b53ceec7107995bfb86b67b04897346d0a009db56e0bd355b50c3",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 500000\n    interest_rate = 0.04\n    periods = 20\n    annuity_due = False\n\n    # Do math calculation to get the answer\n    if interest_rate == 0:\n        payment = principal / periods\n    else:\n        factor = (1 + interest_rate) ** periods\n        payment = principal * (interest_rate * factor) / (factor - 1)\n        if annuity_due:\n            payment /= (1 + interest_rate)\n\n    answer = round(payment)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5655,
+      "completion_tokens": 523,
+      "total_tokens": 6178,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 385
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

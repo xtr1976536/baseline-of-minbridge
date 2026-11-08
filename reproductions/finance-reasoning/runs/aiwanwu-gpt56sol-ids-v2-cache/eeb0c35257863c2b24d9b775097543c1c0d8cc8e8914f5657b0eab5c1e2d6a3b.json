@@ -1,0 +1,21 @@
+{
+  "identity": "eeb0c35257863c2b24d9b775097543c1c0d8cc8e8914f5657b0eab5c1e2d6a3b",
+  "response_digest": "d0be6c6d5c3a1703372956bf6fcebc05f7cd4d0499023e98d31d1e9765441d38",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    spot_price = 50\n    risk_free_rate = 0.04\n    time_to_maturity = 3 / 12\n    present_value_advantages = 5\n    present_value_disadvantages = 6\n\n    # Do math calculation to get the answer\n    adjusted_spot_price = (\n        spot_price - present_value_advantages + present_value_disadvantages\n    )\n    forward_price = adjusted_spot_price * (1 + risk_free_rate) ** time_to_maturity\n    answer = round(forward_price, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5264,
+      "completion_tokens": 272,
+      "total_tokens": 5536,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 129
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

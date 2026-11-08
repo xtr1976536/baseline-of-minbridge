@@ -1,0 +1,29 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_net_income_loss_fy2025 Real)
+(declare-const income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2025 Real)
+(declare-const income_tax_expense_benefit_fy2025 Real)
+
+(assert (! (= income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2025 9520) :named evidence_income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2025))
+(assert (! (= income_tax_expense_benefit_fy2025 2063) :named evidence_income_tax_expense_benefit_fy2025))
+
+(assert (! (= computed_net_income_loss_fy2025 (+ (* (- 1) income_tax_expense_benefit_fy2025) income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2025)) :named formula_net_income_loss_fy2025))
+
+(assert (! (<= (- computed_net_income_loss_fy2025 -786) 0.78600000000000003) :named claim_upper))
+(assert (! (<= (- -786 computed_net_income_loss_fy2025) 0.78600000000000003) :named claim_lower))
+
+; EDGAR-companyfacts fact bindings (no calculation-linkbase constraints).
+(declare-const xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2025_02_01_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none Real)
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= income_tax_expense_benefit_fy2025 xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none) :named xbrl_bind_income_tax_expense_benefit_fy2025_edgar_2026_01_31_0001108524_26_000060))
+(assert (! (= xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none 2063) :named xbrl_instance_income_tax_expense_benefit_fy2025))
+(assert (! (= income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2025 xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2025_02_01_2026_01_31_unit_USD_dims_none) :named xbrl_bind_income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2025_edgar_2026_01_31_0001108524_26_000060))
+(assert (! (= xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2025_02_01_2026_01_31_unit_USD_dims_none 9520) :named xbrl_instance_income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2025))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

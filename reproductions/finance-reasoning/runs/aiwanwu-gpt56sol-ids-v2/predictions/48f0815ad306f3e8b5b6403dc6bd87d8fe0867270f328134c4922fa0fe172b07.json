@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2091",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function determines whether a time series of daily stock closing prices exhibits an uptrend by evaluating higher highs and higher lows over a specified rolling window, such as 5 trading days, and returns a Boolean `True` or `False`?",
+        "usage": {
+          "prompt_tokens": 5064,
+          "completion_tokens": 52,
+          "total_tokens": 5116,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14381,
+          "completion_tokens": 16,
+          "total_tokens": 14397,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [150, 152, 153, 155, 156, 158, 160, 162, 163, 165, 166, 168, 170, 172, 173]\n    window = 5\n\n    # Do math calculation to get the answer\n    if window >= len(prices) or window <= 0:\n        raise ValueError(\"Window size must be smaller than the length of price data and positive.\")\n\n    previous_high = max(prices[:window])\n    previous_low = min(prices[:window])\n\n    for i in range(window, len(prices)):\n        current_high = max(prices[i - window + 1:i + 1])\n        current_low = min(prices[i - window + 1:i + 1])\n\n        if current_high <= previous_high or current_low <= previous_low:\n            return False\n\n        previous_high = current_high\n        previous_low = current_low\n\n    # return answer\n    return True\n```",
+        "usage": {
+          "prompt_tokens": 5097,
+          "completion_tokens": 295,
+          "total_tokens": 5392,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 69
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-996",
+        "score": 1.8684896230697632,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.8125604391098022,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2076",
+        "score": 1.7698392868041992,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3025",
+        "score": 1.7182302474975586,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1038",
+        "score": 1.6569406986236572,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1050",
+        "score": 1.637150526046753,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.6299811601638794,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2017",
+        "score": 1.6245371103286743,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.6219468116760254,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.6172418594360352,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1602",
+        "score": 1.601767897605896,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1601",
+        "score": 1.596519947052002,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1887",
+        "score": 1.5951956510543823,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-851",
+        "score": 1.594604730606079,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.5872728824615479,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-232",
+        "score": 1.5860447883605957,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1051",
+        "score": 1.5838336944580078,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.5773165225982666,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.5750744342803955,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5736465454101562,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1438",
+        "score": 1.5716251134872437,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.5711283683776855,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2181",
+        "score": 1.5688118934631348,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2687",
+        "score": 1.5673577785491943,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1886",
+        "score": 1.5669184923171997,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.5596470832824707,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.5583274364471436,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2673",
+        "score": 1.5548288822174072,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2351",
+        "score": 1.5541191101074219,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-860",
+        "score": 1.55375337600708,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2076"
+    ],
+    "status": "ok",
+    "answer": true,
+    "code": "def solution():\n    # Define variables name and value\n    prices = [150, 152, 153, 155, 156, 158, 160, 162, 163, 165, 166, 168, 170, 172, 173]\n    window = 5\n\n    # Do math calculation to get the answer\n    if window >= len(prices) or window <= 0:\n        raise ValueError(\"Window size must be smaller than the length of price data and positive.\")\n\n    previous_high = max(prices[:window])\n    previous_low = min(prices[:window])\n\n    for i in range(window, len(prices)):\n        current_high = max(prices[i - window + 1:i + 1])\n        current_low = min(prices[i - window + 1:i + 1])\n\n        if current_high <= previous_high or current_low <= previous_low:\n            return False\n\n        previous_high = current_high\n        previous_low = current_low\n\n    # return answer\n    return True\n"
+  },
+  "digest": "3bdcbadf122cc742dbd4dce60b9d8a6fa06a0b415b31e4921943c301f2d606e5"
+}

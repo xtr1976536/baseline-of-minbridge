@@ -1,0 +1,28 @@
+{
+  "request_hash": "bc49d4308927a29662dba5f0e431282e57951654b89d5781fd761eef6cb4c11d",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nAs of FY2023Q1, by how many percentage points did Pepsico raise full year guidance in respect of core constant currency EPS growth?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"increase_in_core_constant_currency_eps_growth_guidance_percentage_points\",\n  \"facts\": [\n    {\n      \"name\": \"previous_full_year_core_constant_currency_eps_growth_guidance\",\n      \"aliases\": [\n        \"previous full-year core constant currency EPS growth guidance\",\n        \"previously expected core constant currency EPS growth\",\n        \"core constant currency earnings per share growth outlook\"\n      ],\n      \"period\": \"FY2023 guidance before FY2023Q1 update\",\n      \"statement\": \"other\"\n    },\n    {\n      \"name\": \"revised_full_year_core_constant_currency_eps_growth_guidance\",\n      \"aliases\": [\n        \"revised full-year core constant currency EPS growth guidance\",\n        \"now expects core constant currency EPS growth\",\n        \"updated core constant currency earnings per share growth outlook\"\n      ],\n      \"period\": \"FY2023Q1\",\n      \"statement\": \"other\"\n    }\n  ],\n  \"reason\": \"Compute the percentage-point increase by subtracting PepsiCo's previous FY2023 core constant currency EPS growth guidance from the revised guidance announced for FY2023Q1.\"\n}",
+  "usage": {
+    "prompt_tokens": 4708,
+    "completion_tokens": 234,
+    "total_tokens": 4942,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    }
+  },
+  "response_id": "resp_0d2fe8d5ca8977ba016aedbd0f598087d2b3fafc1defab001c",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

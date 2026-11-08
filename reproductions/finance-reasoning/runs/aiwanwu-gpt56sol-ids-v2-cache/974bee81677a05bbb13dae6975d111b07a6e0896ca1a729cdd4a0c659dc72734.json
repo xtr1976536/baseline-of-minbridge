@@ -1,0 +1,21 @@
+{
+  "identity": "974bee81677a05bbb13dae6975d111b07a6e0896ca1a729cdd4a0c659dc72734",
+  "response_digest": "780428dc3abc02289711f13f53015ec7d0257f9bb05e40460875bff28014d0e0",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    bond_price = 950\n    face_value = 1000\n    annual_coupon_rate = 0.06\n    payments_per_year = 2\n    years_to_maturity = 10\n\n    coupon_payment = face_value * annual_coupon_rate / payments_per_year\n    total_periods = years_to_maturity * payments_per_year\n\n    # Solve for the semi-annual yield using the bisection method\n    lower_rate = 0.0\n    upper_rate = 1.0\n\n    for _ in range(100):\n        period_rate = (lower_rate + upper_rate) / 2\n        calculated_price = sum(\n            coupon_payment / (1 + period_rate) ** period\n            for period in range(1, total_periods + 1)\n        )\n        calculated_price += face_value / (1 + period_rate) ** total_periods\n\n        if calculated_price > bond_price:\n            lower_rate = period_rate\n        else:\n            upper_rate = period_rate\n\n    semiannual_yield = (lower_rate + upper_rate) / 2\n    annual_ytm_percentage = semiannual_yield * payments_per_year * 100\n\n    # Return the nominal annual YTM as a percentage\n    return round(annual_ytm_percentage, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5667,
+      "completion_tokens": 378,
+      "total_tokens": 6045,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 89
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

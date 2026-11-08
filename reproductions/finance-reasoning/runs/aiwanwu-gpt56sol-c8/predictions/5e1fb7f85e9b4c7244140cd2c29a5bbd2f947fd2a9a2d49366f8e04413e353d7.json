@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2017",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates taxable income from an employee stock purchase plan (ESPP) share sale by computing the total gain as ordinary income when the shares are held less than the required two-year period, using share quantity, purchase price, and sale price, and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5035,
+          "completion_tokens": 195,
+          "total_tokens": 5230,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 131
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13965,
+          "completion_tokens": 496,
+          "total_tokens": 14461,
+          "completion_tokens_details": {
+            "reasoning_tokens": 399
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    purchase_price = 40\n    sale_price = 55\n    shares = 200\n    discount = 0.15\n    holding_period = 1.5\n\n    # Calculate the discounted purchase price and total gain\n    discounted_purchase_price = purchase_price * (1 - discount)\n    total_gain = (sale_price - discounted_purchase_price) * shares\n\n    # Shares held less than two years have the full gain treated as ordinary income\n    taxable_income = total_gain if holding_period < 2 else discount * purchase_price * shares\n\n    # Return taxable income rounded to the nearest dollar\n    return round(taxable_income)\n```",
+        "usage": {
+          "prompt_tokens": 5586,
+          "completion_tokens": 255,
+          "total_tokens": 5841,
+          "completion_tokens_details": {
+            "reasoning_tokens": 105
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2766",
+        "score": 2.10754656791687
+      },
+      {
+        "function_id": "article-2767",
+        "score": 2.0324854850769043
+      },
+      {
+        "function_id": "article-2765",
+        "score": 2.0084571838378906
+      },
+      {
+        "function_id": "article-2764",
+        "score": 1.7892706394195557
+      },
+      {
+        "function_id": "article-2761",
+        "score": 1.7530604600906372
+      },
+      {
+        "function_id": "article-2763",
+        "score": 1.7528661489486694
+      },
+      {
+        "function_id": "article-1402",
+        "score": 1.7027875185012817
+      },
+      {
+        "function_id": "article-2762",
+        "score": 1.6824036836624146
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.6769227981567383
+      },
+      {
+        "function_id": "article-2642",
+        "score": 1.6650469303131104
+      },
+      {
+        "function_id": "article-2242",
+        "score": 1.6648242473602295
+      },
+      {
+        "function_id": "article-695",
+        "score": 1.657534122467041
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.6539591550827026
+      },
+      {
+        "function_id": "article-1494",
+        "score": 1.6422955989837646
+      },
+      {
+        "function_id": "article-1318",
+        "score": 1.6384379863739014
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.6368896961212158
+      },
+      {
+        "function_id": "article-746",
+        "score": 1.636024832725525
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.6344321966171265
+      },
+      {
+        "function_id": "article-2711",
+        "score": 1.6332218647003174
+      },
+      {
+        "function_id": "article-2908",
+        "score": 1.6298478841781616
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.628321647644043
+      },
+      {
+        "function_id": "article-1327",
+        "score": 1.6274845600128174
+      },
+      {
+        "function_id": "article-2978",
+        "score": 1.6247045993804932
+      },
+      {
+        "function_id": "article-1278",
+        "score": 1.6246089935302734
+      },
+      {
+        "function_id": "article-1260",
+        "score": 1.6224740743637085
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.6194379329681396
+      },
+      {
+        "function_id": "article-2521",
+        "score": 1.6188966035842896
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.6167547702789307
+      },
+      {
+        "function_id": "article-2977",
+        "score": 1.6143068075180054
+      },
+      {
+        "function_id": "article-2558",
+        "score": 1.6124649047851562
+      }
+    ],
+    "selected_ids": [
+      "article-2766",
+      "article-2767",
+      "article-2765"
+    ],
+    "status": "ok",
+    "answer": 4200,
+    "code": "def solution():\n    # Define variables\n    purchase_price = 40\n    sale_price = 55\n    shares = 200\n    discount = 0.15\n    holding_period = 1.5\n\n    # Calculate the discounted purchase price and total gain\n    discounted_purchase_price = purchase_price * (1 - discount)\n    total_gain = (sale_price - discounted_purchase_price) * shares\n\n    # Shares held less than two years have the full gain treated as ordinary income\n    taxable_income = total_gain if holding_period < 2 else discount * purchase_price * shares\n\n    # Return taxable income rounded to the nearest dollar\n    return round(taxable_income)\n"
+  },
+  "digest": "42f3dd8df1656a9795b7f986369ecd286848dccbc9a5cd15fc41e73949f5d15b"
+}

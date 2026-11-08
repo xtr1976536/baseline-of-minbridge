@@ -1,0 +1,44 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_assets_current_fy2025 Real)
+(declare-const accounts_receivable_net_current_fy2025 Real)
+(declare-const available_for_sale_securities_debt_securities_current_fy2025 Real)
+(declare-const capitalized_contract_cost_net_current_fy2025 Real)
+(declare-const cash_and_cash_equivalents_at_carrying_value_fy2025 Real)
+(declare-const prepaid_expense_and_other_assets_current_fy2025 Real)
+
+(assert (! (= accounts_receivable_net_current_fy2025 14339) :named evidence_accounts_receivable_net_current_fy2025))
+(assert (! (= available_for_sale_securities_debt_securities_current_fy2025 2238) :named evidence_available_for_sale_securities_debt_securities_current_fy2025))
+(assert (! (= capitalized_contract_cost_net_current_fy2025 2075) :named evidence_capitalized_contract_cost_net_current_fy2025))
+(assert (! (= cash_and_cash_equivalents_at_carrying_value_fy2025 7327) :named evidence_cash_and_cash_equivalents_at_carrying_value_fy2025))
+(assert (! (= prepaid_expense_and_other_assets_current_fy2025 2243) :named evidence_prepaid_expense_and_other_assets_current_fy2025))
+
+(assert (! (= computed_assets_current_fy2025 (+ cash_and_cash_equivalents_at_carrying_value_fy2025 available_for_sale_securities_debt_securities_current_fy2025 accounts_receivable_net_current_fy2025 capitalized_contract_cost_net_current_fy2025 prepaid_expense_and_other_assets_current_fy2025)) :named formula_assets_current_fy2025))
+
+(assert (! (<= (- computed_assets_current_fy2025 29727) 29.727) :named claim_upper))
+(assert (! (<= (- 29727 computed_assets_current_fy2025) 29.727) :named claim_lower))
+
+; EDGAR-companyfacts fact bindings (no calculation-linkbase constraints).
+(declare-const xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AvailableForSaleSecuritiesDebtSecuritiesCurrent_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_CapitalizedContractCostNetCurrent_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_CashAndCashEquivalentsAtCarryingValue_instant_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2026_01_31_unit_USD_dims_none Real)
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= cash_and_cash_equivalents_at_carrying_value_fy2025 xbrl_fact_us_gaap_CashAndCashEquivalentsAtCarryingValue_instant_2026_01_31_unit_USD_dims_none) :named xbrl_bind_cash_and_cash_equivalents_at_carrying_value_fy2025_edgar_2026_01_31_0001108524_26_000060))
+(assert (! (= xbrl_fact_us_gaap_CashAndCashEquivalentsAtCarryingValue_instant_2026_01_31_unit_USD_dims_none 7327) :named xbrl_instance_cash_and_cash_equivalents_at_carrying_value_fy2025))
+(assert (! (= available_for_sale_securities_debt_securities_current_fy2025 xbrl_fact_us_gaap_AvailableForSaleSecuritiesDebtSecuritiesCurrent_instant_2026_01_31_unit_USD_dims_none) :named xbrl_bind_available_for_sale_securities_debt_securities_current_fy2025_edgar_2026_01_31_0001108524_26_000060))
+(assert (! (= xbrl_fact_us_gaap_AvailableForSaleSecuritiesDebtSecuritiesCurrent_instant_2026_01_31_unit_USD_dims_none 2238) :named xbrl_instance_available_for_sale_securities_debt_securities_current_fy2025))
+(assert (! (= accounts_receivable_net_current_fy2025 xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2026_01_31_unit_USD_dims_none) :named xbrl_bind_accounts_receivable_net_current_fy2025_edgar_2026_01_31_0001108524_26_000060))
+(assert (! (= xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2026_01_31_unit_USD_dims_none 14339) :named xbrl_instance_accounts_receivable_net_current_fy2025))
+(assert (! (= capitalized_contract_cost_net_current_fy2025 xbrl_fact_us_gaap_CapitalizedContractCostNetCurrent_instant_2026_01_31_unit_USD_dims_none) :named xbrl_bind_capitalized_contract_cost_net_current_fy2025_edgar_2026_01_31_0001108524_26_000060))
+(assert (! (= xbrl_fact_us_gaap_CapitalizedContractCostNetCurrent_instant_2026_01_31_unit_USD_dims_none 2075) :named xbrl_instance_capitalized_contract_cost_net_current_fy2025))
+(assert (! (= prepaid_expense_and_other_assets_current_fy2025 xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2026_01_31_unit_USD_dims_none) :named xbrl_bind_prepaid_expense_and_other_assets_current_fy2025_edgar_2026_01_31_0001108524_26_000060))
+(assert (! (= xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2026_01_31_unit_USD_dims_none 2243) :named xbrl_instance_prepaid_expense_and_other_assets_current_fy2025))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

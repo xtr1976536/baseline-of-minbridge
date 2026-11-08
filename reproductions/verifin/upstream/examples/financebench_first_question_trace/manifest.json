@@ -1,0 +1,32 @@
+{
+  "example_id": "financebench_id_03029",
+  "generated_from_existing_artifacts": true,
+  "gold_answer": "$1577.00",
+  "question": "What is the FY2018 capital expenditure amount (in USD millions) for 3M? Give a response to the question by relying on the details shown in the cash flow statement.",
+  "source_artifacts": {
+    "llm_calls_jsonl": "runs/verification_complete/llm_calls.jsonl",
+    "question_evidence_jsonl": "runs/verification_complete/question_evidence.jsonl",
+    "results_jsonl": "runs/verification_complete/results.jsonl",
+    "run_config": "runs/verification_complete/config.json",
+    "smt_file": "runs/verification_complete/smt/0001_financebench_id_03029_first.smt2",
+    "verifier_certificate": "runs/verification_complete/verifier_certificates/financebench_id_03029.json"
+  },
+  "source_corpus": "data/corpus",
+  "source_data": "data/financebench_sample/data/financebench_open_source.jsonl",
+  "source_run": "runs/verification_complete",
+  "stage_order": [
+    "00_dataset_load_and_filter",
+    "01_filing_corpus_and_retriever",
+    "02_retrieval_plan_llm",
+    "03_planned_evidence_retrieval",
+    "04_answer_llm",
+    "05_formalizer_llm_certificate",
+    "06_certificate_grounding_validator",
+    "07_typed_verification_ir",
+    "08_optional_policy_semantic_check",
+    "09_smt_generation_llm",
+    "10_smt_semantic_sanitizer",
+    "11_z3_counterexample_check",
+    "12_final_decision_and_artifacts"
+  ]
+}

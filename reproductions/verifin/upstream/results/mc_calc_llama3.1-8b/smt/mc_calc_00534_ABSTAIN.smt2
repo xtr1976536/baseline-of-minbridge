@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:proceeds_from_maturities_prepayments_and_calls_of_available_for_sale_securities_fy2025,payments_to_acquire_available_for_sale_securities_debt_fy2025)

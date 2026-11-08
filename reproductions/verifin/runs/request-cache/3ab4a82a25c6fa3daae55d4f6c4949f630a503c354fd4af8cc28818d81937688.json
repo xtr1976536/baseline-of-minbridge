@@ -1,0 +1,31 @@
+{
+  "request_hash": "3ab4a82a25c6fa3daae55d4f6c4949f630a503c354fd4af8cc28818d81937688",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nUsing the cash flow statement, answer the following question to the best of your abilities: how much did Block (formerly known as Square) generate in cash flow from operating activities in FY2020? Answer in USD millions.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"cash_flow_from_operating_activities\",\n  \"facts\": [\n    {\n      \"name\": \"cash_flow_from_operating_activities\",\n      \"aliases\": [\n        \"Net cash provided by operating activities\",\n        \"Net cash provided by operating activities (used in)\",\n        \"Cash flows from operating activities\",\n        \"Net cash flow provided by operating activities\"\n      ],\n      \"period\": \"FY2020\",\n      \"statement\": \"cash flow\"\n    }\n  ],\n  \"reason\": \"This is a direct lookup of the FY2020 cash flow statement line for cash generated from operating activities.\"\n}",
+  "usage": {
+    "prompt_tokens": 4722,
+    "completion_tokens": 191,
+    "total_tokens": 4913,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 57
+    }
+  },
+  "response_id": "resp_096a543cc18b60cb016aedb4c9ba0887d084a18980bbaea217",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

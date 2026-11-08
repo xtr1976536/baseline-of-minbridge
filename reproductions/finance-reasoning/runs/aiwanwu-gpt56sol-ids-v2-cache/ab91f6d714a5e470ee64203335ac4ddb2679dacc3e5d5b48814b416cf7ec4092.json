@@ -1,0 +1,21 @@
+{
+  "identity": "ab91f6d714a5e470ee64203335ac4ddb2679dacc3e5d5b48814b416cf7ec4092",
+  "response_digest": "b3a2e7720b69c41ccf225c83ebf70d26a4aaea58e53763392534164509b0a3c8",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    fund_value = 100_000_000\n    current_equity_allocation = 0.80\n    target_equity_allocation = 0.60\n    equity_beta = 1.20\n    futures_beta = 0.95\n    index_value = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    equity_exposure_to_adjust = (\n        fund_value\n        * (current_equity_allocation - target_equity_allocation)\n        * equity_beta\n    )\n    futures_contract_value = index_value * contract_multiplier\n    beta_adjusted_futures_value = futures_contract_value * futures_beta\n\n    number_of_contracts = equity_exposure_to_adjust / beta_adjusted_futures_value\n\n    # return answer\n    return round(number_of_contracts, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5435,
+      "completion_tokens": 711,
+      "total_tokens": 6146,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 516
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

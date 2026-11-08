@@ -1,0 +1,21 @@
+{
+  "identity": "123782cfc9ad32f2b69ba236720a5413b1d64577be89748caab8a7a63b61daee",
+  "response_digest": "67941c6ee4533febe3e5b03a56250f16e0a03071a06221ee743838b02962b303",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    maturities = [1, 2, 3, 4]\n    yields = [2.0, 2.5, 3.0, 3.5]\n    midpoint_q3 = 2.5\n\n    # Calculate the linearly interpolated yield between Q2 and Q3\n    estimated_yield = yields[1] + (\n        (midpoint_q3 - maturities[1])\n        * (yields[2] - yields[1])\n        / (maturities[2] - maturities[1])\n    )\n\n    # Return the answer rounded to two decimal places\n    return round(estimated_yield, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5620,
+      "completion_tokens": 235,
+      "total_tokens": 5855,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 77
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

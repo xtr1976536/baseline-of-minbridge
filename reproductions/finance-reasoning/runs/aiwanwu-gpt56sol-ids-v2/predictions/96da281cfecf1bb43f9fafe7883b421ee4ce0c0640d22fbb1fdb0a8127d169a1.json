@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2132",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fair forward price of an asset using annual compounding from the current spot price, risk-free interest rate, time to contract expiration, and present values of holding advantages and disadvantages, using the net benefit adjustment (advantages minus disadvantages) and returning a rounded result?",
+        "usage": {
+          "prompt_tokens": 5000,
+          "completion_tokens": 59,
+          "total_tokens": 5059,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C26\"]}",
+        "usage": {
+          "prompt_tokens": 14404,
+          "completion_tokens": 390,
+          "total_tokens": 14794,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 369
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    spot_price = 50\n    risk_free_rate = 0.04\n    time_to_maturity = 3 / 12\n    present_value_advantages = 5\n    present_value_disadvantages = 6\n\n    # Do math calculation to get the answer\n    adjusted_spot_price = (\n        spot_price - present_value_advantages + present_value_disadvantages\n    )\n    forward_price = adjusted_spot_price * (1 + risk_free_rate) ** time_to_maturity\n    answer = round(forward_price, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5264,
+          "completion_tokens": 272,
+          "total_tokens": 5536,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 129
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-612",
+        "score": 1.8913482427597046,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.7977044582366943,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.7534339427947998,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.7414000034332275,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-356",
+        "score": 1.70418381690979,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-614",
+        "score": 1.693337082862854,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2498",
+        "score": 1.691221833229065,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1030",
+        "score": 1.6891653537750244,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6682177782058716,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.6678498983383179,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.667645812034607,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.6643867492675781,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.6565241813659668,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.6457955837249756,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.6448695659637451,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.6408767700195312,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-34",
+        "score": 1.6397582292556763,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-352",
+        "score": 1.6377480030059814,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-146",
+        "score": 1.6341619491577148,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.6302237510681152,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.62235426902771,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2858",
+        "score": 1.622215747833252,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1601",
+        "score": 1.6175531148910522,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.6171345710754395,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2180",
+        "score": 1.617059350013733,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.6168192625045776,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1097",
+        "score": 1.6157188415527344,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-35",
+        "score": 1.6148154735565186,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6124213933944702,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2195",
+        "score": 1.6087875366210938,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2623",
+      "article-657"
+    ],
+    "status": "ok",
+    "answer": 51.503,
+    "code": "def solution():\n    # Define variables name and value\n    spot_price = 50\n    risk_free_rate = 0.04\n    time_to_maturity = 3 / 12\n    present_value_advantages = 5\n    present_value_disadvantages = 6\n\n    # Do math calculation to get the answer\n    adjusted_spot_price = (\n        spot_price - present_value_advantages + present_value_disadvantages\n    )\n    forward_price = adjusted_spot_price * (1 + risk_free_rate) ** time_to_maturity\n    answer = round(forward_price, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "6bc806146b785e43feb8ee8791545d59466553276cb514a6e62aa7e4666b27a8"
+}

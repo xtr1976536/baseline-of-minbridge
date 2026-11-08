@@ -1,0 +1,1171 @@
+{
+  "created_at": "2026-11-07T14:07:23.656275+00:00",
+  "agent_api_calls": 0,
+  "full_run_paused": true,
+  "files_changed": [
+    "gbfr/query_constraints.py",
+    "gbfr/types.py",
+    "tests/test_extraction_repairs_r21.py"
+  ],
+  "scoring_policy_changed": false,
+  "r20_scoring_sha256": {
+    "metrics.py": "aa76a51dda6746f8326b1f383c38e34a411398fafe5fd42b9955563b3d36cd6c",
+    "units.py": "aa04cda48a8ed0db2b6e2b92cc11498f531ebc06a707d7caae510a714a7a36ab"
+  },
+  "r20_scoring_verified_unchanged": true,
+  "data_or_gold_changed": false,
+  "changes": [
+    "Original source table headers, zero-based columns and exact source spans are quoted to OQA/OES; no target financial cell/value is preselected.",
+    "Nested year/date headers and paired-year change columns retain their source grouping; values and signs are never filled by this helper.",
+    "Empty subtotal labels and numeric-only rows are not relabelled as financial metrics. First numeric cells stay in the original D only.",
+    "Repeated annual header groups such as 2016 High/Low then 2015 High/Low are represented by source row intervals.",
+    "Plain and-year enumerations expand only if the metric does not itself express a cross-period change/return/growth/range/duration. Ranges and compound as-of/due constraints remain unchanged.",
+    "Optional hints are bounded to 6 tables, 48 row labels/table, 6 header rows/table, 24 columns, and 12000 serialized characters, with explicit omission flags. Original D is never truncated.",
+    "DirectRetrieval is never expanded by the new and-year rule; it must not silently become a sum of annual source cells.",
+    "The cross-period detector matches singular improvement as a whole word; plural asset-class Improvements/Leasehold improvements is not a change measure."
+  ],
+  "tests": {
+    "command": "python -m pytest -q tests/test_extraction_repairs_r21.py tests/test_query_constraints.py tests/test_full_metric_repairs.py tests/test_metrics.py",
+    "passed": 77,
+    "boundary_regression": {
+      "command": "python -m pytest -q tests/test_refusal_repairs_r21.py tests/test_extraction_repairs_r21.py",
+      "passed": 36
+    }
+  },
+  "cases": [
+    {
+      "id": "TAT-QA:637fab7088ea6c78a5dba55f17e833bd_70c55e39fabb49df3f4b9691eeebcd09",
+      "diagnostic_type": "proven_wrong_year_cell",
+      "question": "What was the change in the total assets from APAC between 2018 and 2019?",
+      "old_status": "answered",
+      "old_value": 0.0,
+      "original_plan": {
+        "operator": "difference",
+        "precision": "unknown",
+        "reasoning_type": "ArithmeticCalculation",
+        "subgoals": [
+          {
+            "constraints": {
+              "entity_scope": "APAC",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "temporal_scope": "2018"
+            },
+            "metric": "Total assets"
+          },
+          {
+            "constraints": {
+              "entity_scope": "APAC",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "temporal_scope": "2019"
+            },
+            "metric": "Total assets"
+          }
+        ]
+      },
+      "parsed_periods_r21": [
+        {
+          "metric": "Total assets",
+          "temporal_scope": "2018"
+        },
+        {
+          "metric": "Total assets",
+          "temporal_scope": "2019"
+        }
+      ],
+      "source_table_hints": [
+        {
+          "table_index": 0,
+          "span": [
+            1743,
+            2006
+          ],
+          "column_count": 3,
+          "header_rows": [
+            {
+              "row_index": 0,
+              "text": "|  | September 28, 2019 | September 29, 2018 |",
+              "span": [
+                1743,
+                1789
+              ],
+              "cells": [
+                {
+                  "column_index": 0,
+                  "text": ""
+                },
+                {
+                  "column_index": 1,
+                  "text": "September 28, 2019"
+                },
+                {
+                  "column_index": 2,
+                  "text": "September 29, 2018"
+                }
+              ],
+              "repeated_period_header": false,
+              "columns_truncated": false
+            }
+          ],
+          "period_columns": [
+            {
+              "header_row_index": 0,
+              "column_index": 1,
+              "text": "September 28, 2019",
+              "years": [
+                "2019"
+              ]
+            },
+            {
+              "header_row_index": 0,
+              "column_index": 2,
+              "text": "September 29, 2018",
+              "years": [
+                "2018"
+              ]
+            }
+          ],
+          "row_labels": [
+            {
+              "row_index": 2,
+              "text": "Total assets:",
+              "span": [
+                1812,
+                1825
+              ],
+              "row_span": [
+                1810,
+                1833
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 3,
+              "text": "AMER",
+              "span": [
+                1836,
+                1840
+              ],
+              "row_span": [
+                1834,
+                1865
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 4,
+              "text": "APAC",
+              "span": [
+                1868,
+                1872
+              ],
+              "row_span": [
+                1866,
+                1895
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 5,
+              "text": "EMEA",
+              "span": [
+                1898,
+                1902
+              ],
+              "row_span": [
+                1896,
+                1925
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 6,
+              "text": "Corporate and eliminations",
+              "span": [
+                1928,
+                1954
+              ],
+              "row_span": [
+                1926,
+                1975
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 7,
+              "text": "",
+              "span": [
+                1979,
+                1979
+              ],
+              "row_span": [
+                1976,
+                2006
+              ],
+              "years": [],
+              "numeric_first_column": false
+            }
+          ],
+          "footnotes": [],
+          "period_groups": [],
+          "source_header_row_count": 1,
+          "source_body_row_count": 6,
+          "truncated": {
+            "header_rows": false,
+            "row_labels": false,
+            "columns": false,
+            "period_columns": false,
+            "period_groups": false
+          },
+          "following_tables_omitted": 0,
+          "source_table_count": 1
+        }
+      ],
+      "evidence_note": "2018 APAC binding incorrectly copied the 2019 cell 958744; the 2018 column is 937510. Hints preserve both date-header column positions, without supplying an answer or changing values.",
+      "live_result": "not produced by this audit agent; root runs the actual end-to-end validation"
+    },
+    {
+      "id": "TAT-QA:7e10b02ae31ffbb6fed72213553ebe50_5bdc69be3f906fa7695fcc8c46e31bb9",
+      "diagnostic_type": "unresolved_two_scalar_years",
+      "question": "How many categories of items are there in property and equipment in both 2018 and 2019?",
+      "old_status": "abstained",
+      "old_value": null,
+      "original_plan": {
+        "operator": "counting",
+        "precision": "unknown",
+        "reasoning_type": "StatisticalAggregation",
+        "subgoals": [
+          {
+            "constraints": {
+              "entity_scope": "Property and equipment",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "category"
+              },
+              "temporal_scope": "2018 and 2019"
+            },
+            "metric": "Equipment and software"
+          },
+          {
+            "constraints": {
+              "entity_scope": "Property and equipment",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "category"
+              },
+              "temporal_scope": "2018 and 2019"
+            },
+            "metric": "Leasehold improvements"
+          },
+          {
+            "constraints": {
+              "entity_scope": "Property and equipment",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "category"
+              },
+              "temporal_scope": "2018 and 2019"
+            },
+            "metric": "Furniture and fixtures"
+          }
+        ]
+      },
+      "parsed_periods_r21": [
+        {
+          "metric": "Equipment and software",
+          "temporal_scope": "2018"
+        },
+        {
+          "metric": "Equipment and software",
+          "temporal_scope": "2019"
+        },
+        {
+          "metric": "Leasehold improvements",
+          "temporal_scope": "2018 and 2019"
+        },
+        {
+          "metric": "Furniture and fixtures",
+          "temporal_scope": "2018"
+        },
+        {
+          "metric": "Furniture and fixtures",
+          "temporal_scope": "2019"
+        }
+      ],
+      "source_table_hints": [
+        {
+          "table_index": 0,
+          "span": [
+            2532,
+            3027
+          ],
+          "column_count": 3,
+          "header_rows": [
+            {
+              "row_index": 0,
+              "text": "|  | 2019 | 2018 |",
+              "span": [
+                2532,
+                2550
+              ],
+              "cells": [
+                {
+                  "column_index": 0,
+                  "text": ""
+                },
+                {
+                  "column_index": 1,
+                  "text": "2019"
+                },
+                {
+                  "column_index": 2,
+                  "text": "2018"
+                }
+              ],
+              "repeated_period_header": false,
+              "columns_truncated": false
+            }
+          ],
+          "period_columns": [
+            {
+              "header_row_index": 0,
+              "column_index": 1,
+              "text": "2019",
+              "years": [
+                "2019"
+              ]
+            },
+            {
+              "header_row_index": 0,
+              "column_index": 2,
+              "text": "2018",
+              "years": [
+                "2018"
+              ]
+            }
+          ],
+          "row_labels": [
+            {
+              "row_index": 2,
+              "text": "Equipment and software, including equipment purchased under capital leases of $6 and $17 at December 31, 2019 and 2018, respectively",
+              "span": [
+                2573,
+                2705
+              ],
+              "row_span": [
+                2571,
+                2723
+              ],
+              "years": [
+                "2019",
+                "2018"
+              ],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 3,
+              "text": "Leasehold improvements",
+              "span": [
+                2726,
+                2748
+              ],
+              "row_span": [
+                2724,
+                2761
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 4,
+              "text": "Furniture and fixtures",
+              "span": [
+                2764,
+                2786
+              ],
+              "row_span": [
+                2762,
+                2799
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 5,
+              "text": "",
+              "span": [
+                2803,
+                2803
+              ],
+              "row_span": [
+                2800,
+                2818
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 6,
+              "text": "Less accumulated depreciation, including accumulated depreciation for equipment purchased under capital leases of $3 and $13 at December 31, 2019 and 2018, resp",
+              "span": [
+                2821,
+                2981
+              ],
+              "row_span": [
+                2819,
+                3009
+              ],
+              "years": [
+                "2019",
+                "2018"
+              ],
+              "numeric_first_column": false,
+              "full_label_span": [
+                2821,
+                2989
+              ],
+              "text_truncated": true
+            },
+            {
+              "row_index": 7,
+              "text": "",
+              "span": [
+                3013,
+                3013
+              ],
+              "row_span": [
+                3010,
+                3027
+              ],
+              "years": [],
+              "numeric_first_column": false
+            }
+          ],
+          "footnotes": [],
+          "period_groups": [],
+          "source_header_row_count": 1,
+          "source_body_row_count": 6,
+          "truncated": {
+            "header_rows": false,
+            "row_labels": false,
+            "columns": false,
+            "period_columns": false,
+            "period_groups": false
+          },
+          "following_tables_omitted": 0,
+          "source_table_count": 1
+        }
+      ],
+      "evidence_note": "Old category goals ask for one scalar over both 2018 and 2019. Pure independent-year enumeration now expands to annual scalars. Final counting must count categories meeting the condition, not six evidence objects.",
+      "live_result": "not produced by this audit agent; root runs the actual end-to-end validation"
+    },
+    {
+      "id": "TAT-QA:d80ea6ee60a1b1f11e971791784d7d6c_a23b3dcb820703a1d9aea7dc33091afb",
+      "diagnostic_type": "cross_period_label_negative_control",
+      "question": "What is the difference between the Change between Fiscal increase for 2019 and 2018 and 2018 and 2017 for Payroll and payroll-related benefits?",
+      "old_status": "answered",
+      "old_value": -26490.0,
+      "original_plan": {
+        "operator": "difference",
+        "precision": "unknown",
+        "reasoning_type": "ArithmeticCalculation",
+        "subgoals": [
+          {
+            "constraints": {
+              "entity_scope": null,
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "temporal_scope": "2019 and 2018"
+            },
+            "metric": "Change in Payroll and payroll-related benefits"
+          },
+          {
+            "constraints": {
+              "entity_scope": null,
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "temporal_scope": "2018 and 2017"
+            },
+            "metric": "Change in Payroll and payroll-related benefits"
+          }
+        ]
+      },
+      "parsed_periods_r21": [
+        {
+          "metric": "Change in Payroll and payroll-related benefits",
+          "temporal_scope": "2019 and 2018"
+        },
+        {
+          "metric": "Change in Payroll and payroll-related benefits",
+          "temporal_scope": "2018 and 2017"
+        }
+      ],
+      "source_table_hints": [
+        {
+          "table_index": 0,
+          "span": [
+            1260,
+            1738
+          ],
+          "column_count": 3,
+          "header_rows": [
+            {
+              "row_index": 0,
+              "text": "|  | Change between Fiscal increase (decrease) |  |",
+              "span": [
+                1260,
+                1311
+              ],
+              "cells": [
+                {
+                  "column_index": 0,
+                  "text": ""
+                },
+                {
+                  "column_index": 1,
+                  "text": "Change between Fiscal increase (decrease)"
+                },
+                {
+                  "column_index": 2,
+                  "text": ""
+                }
+              ],
+              "repeated_period_header": false,
+              "columns_truncated": false
+            },
+            {
+              "row_index": 2,
+              "text": "| (In thousands) | 2019 and 2018 | 2018 and 2017 |",
+              "span": [
+                1332,
+                1382
+              ],
+              "cells": [
+                {
+                  "column_index": 0,
+                  "text": "(In thousands)"
+                },
+                {
+                  "column_index": 1,
+                  "text": "2019 and 2018"
+                },
+                {
+                  "column_index": 2,
+                  "text": "2018 and 2017"
+                }
+              ],
+              "repeated_period_header": false,
+              "columns_truncated": false
+            }
+          ],
+          "period_columns": [
+            {
+              "header_row_index": 2,
+              "column_index": 1,
+              "text": "2019 and 2018",
+              "years": [
+                "2019",
+                "2018"
+              ]
+            },
+            {
+              "header_row_index": 2,
+              "column_index": 2,
+              "text": "2018 and 2017",
+              "years": [
+                "2018",
+                "2017"
+              ]
+            }
+          ],
+          "row_labels": [
+            {
+              "row_index": 3,
+              "text": "Payroll and payroll-related benefits",
+              "span": [
+                1385,
+                1421
+              ],
+              "row_span": [
+                1383,
+                1443
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 4,
+              "text": "Contract labour and consulting",
+              "span": [
+                1446,
+                1476
+              ],
+              "row_span": [
+                1444,
+                1498
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 5,
+              "text": "Share-based compensation",
+              "span": [
+                1501,
+                1525
+              ],
+              "row_span": [
+                1499,
+                1545
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 6,
+              "text": "Travel and communication",
+              "span": [
+                1548,
+                1572
+              ],
+              "row_span": [
+                1546,
+                1590
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 7,
+              "text": "Facilities",
+              "span": [
+                1593,
+                1603
+              ],
+              "row_span": [
+                1591,
+                1623
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 8,
+              "text": "Other miscellaneous",
+              "span": [
+                1626,
+                1645
+              ],
+              "row_span": [
+                1624,
+                1663
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 9,
+              "text": "Total change in research and development expenses",
+              "span": [
+                1666,
+                1715
+              ],
+              "row_span": [
+                1664,
+                1738
+              ],
+              "years": [],
+              "numeric_first_column": false
+            }
+          ],
+          "footnotes": [],
+          "period_groups": [],
+          "source_header_row_count": 2,
+          "source_body_row_count": 7,
+          "truncated": {
+            "header_rows": false,
+            "row_labels": false,
+            "columns": false,
+            "period_columns": false,
+            "period_groups": false
+          },
+          "following_tables_omitted": 0,
+          "source_table_count": 1
+        }
+      ],
+      "evidence_note": "Old extraction correctly found 12629 and 39119. Its score discrepancy is a difference/sign convention, not wrong-year extraction. Preserve each paired-year change column as one scope; do not split into annual values.",
+      "live_result": "not produced by this audit agent; root runs the actual end-to-end validation"
+    },
+    {
+      "id": "FinQA:AMT/2016/page_49.pdf-1",
+      "diagnostic_type": "repeated_header_negative_control",
+      "question": "for the quarter ended march 312015 what was the percentage change in the share price from the highest to the lowest",
+      "old_status": "answered",
+      "old_value": -8.510011778563017,
+      "original_plan": {
+        "operator": "change ratio",
+        "precision": "unknown",
+        "reasoning_type": "ComparativeReasoning",
+        "subgoals": [
+          {
+            "constraints": {
+              "entity_scope": null,
+              "meta": {
+                "currency": "$",
+                "scale": null,
+                "unit": "per share"
+              },
+              "temporal_scope": "quarter ended March 31, 2015"
+            },
+            "metric": "High share price"
+          },
+          {
+            "constraints": {
+              "entity_scope": null,
+              "meta": {
+                "currency": "$",
+                "scale": null,
+                "unit": "per share"
+              },
+              "temporal_scope": "quarter ended March 31, 2015"
+            },
+            "metric": "Low share price"
+          }
+        ]
+      },
+      "parsed_periods_r21": [
+        {
+          "metric": "High share price",
+          "temporal_scope": "quarter ended March 31, 2015"
+        },
+        {
+          "metric": "Low share price",
+          "temporal_scope": "quarter ended March 31, 2015"
+        }
+      ],
+      "source_table_hints": [
+        {
+          "table_index": 0,
+          "span": [
+            277,
+            709
+          ],
+          "column_count": 3,
+          "header_rows": [
+            {
+              "row_index": 0,
+              "text": "| 2016 | High | Low |",
+              "span": [
+                277,
+                298
+              ],
+              "cells": [
+                {
+                  "column_index": 0,
+                  "text": "2016"
+                },
+                {
+                  "column_index": 1,
+                  "text": "High"
+                },
+                {
+                  "column_index": 2,
+                  "text": "Low"
+                }
+              ],
+              "repeated_period_header": false,
+              "columns_truncated": false
+            },
+            {
+              "row_index": 6,
+              "text": "| 2015 | High | Low |",
+              "span": [
+                505,
+                526
+              ],
+              "cells": [
+                {
+                  "column_index": 0,
+                  "text": "2015"
+                },
+                {
+                  "column_index": 1,
+                  "text": "High"
+                },
+                {
+                  "column_index": 2,
+                  "text": "Low"
+                }
+              ],
+              "repeated_period_header": true,
+              "columns_truncated": false
+            }
+          ],
+          "period_columns": [
+            {
+              "header_row_index": 0,
+              "column_index": 0,
+              "text": "2016",
+              "years": [
+                "2016"
+              ]
+            },
+            {
+              "header_row_index": 6,
+              "column_index": 0,
+              "text": "2015",
+              "years": [
+                "2015"
+              ]
+            }
+          ],
+          "row_labels": [
+            {
+              "row_index": 2,
+              "text": "Quarter ended March 31",
+              "span": [
+                321,
+                343
+              ],
+              "row_span": [
+                319,
+                364
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 3,
+              "text": "Quarter ended June 30",
+              "span": [
+                367,
+                388
+              ],
+              "row_span": [
+                365,
+                408
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 4,
+              "text": "Quarter ended September 30",
+              "span": [
+                411,
+                437
+              ],
+              "row_span": [
+                409,
+                457
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 5,
+              "text": "Quarter ended December 31",
+              "span": [
+                460,
+                485
+              ],
+              "row_span": [
+                458,
+                504
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 7,
+              "text": "Quarter ended March 31",
+              "span": [
+                529,
+                551
+              ],
+              "row_span": [
+                527,
+                572
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 8,
+              "text": "Quarter ended June 30",
+              "span": [
+                575,
+                596
+              ],
+              "row_span": [
+                573,
+                614
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 9,
+              "text": "Quarter ended September 30",
+              "span": [
+                617,
+                643
+              ],
+              "row_span": [
+                615,
+                662
+              ],
+              "years": [],
+              "numeric_first_column": false
+            },
+            {
+              "row_index": 10,
+              "text": "Quarter ended December 31",
+              "span": [
+                665,
+                690
+              ],
+              "row_span": [
+                663,
+                709
+              ],
+              "years": [],
+              "numeric_first_column": false
+            }
+          ],
+          "footnotes": [],
+          "period_groups": [
+            {
+              "header_row_index": 0,
+              "period_label": "2016",
+              "header_span": [
+                277,
+                298
+              ],
+              "table_row_start": 1,
+              "table_row_end_exclusive": 6
+            },
+            {
+              "header_row_index": 6,
+              "period_label": "2015",
+              "header_span": [
+                505,
+                526
+              ],
+              "table_row_start": 7,
+              "table_row_end_exclusive": 11
+            }
+          ],
+          "source_header_row_count": 2,
+          "source_body_row_count": 8,
+          "truncated": {
+            "header_rows": false,
+            "row_labels": false,
+            "columns": false,
+            "period_columns": false,
+            "period_groups": false
+          },
+          "following_tables_omitted": 0,
+          "source_table_count": 1
+        }
+      ],
+      "evidence_note": "Source restarts High/Low at 2015 within the same Markdown block after 2016. Hints expose header groups and row intervals. The old pipeline already extracted 101.88 and 93.21 correctly; its mismatch is sign convention, so no extraction gain is claimed.",
+      "live_result": "not produced by this audit agent; root runs the actual end-to-end validation"
+    },
+    {
+      "id": "FinQA:ETR/2011/page_301.pdf-1",
+      "diagnostic_type": "numeric_only_row_negative_control",
+      "question": "what is the percentage decrease in receivables from the money pool from 2010 to 2011?",
+      "old_status": "answered",
+      "old_value": 62.54781518340396,
+      "original_plan": {
+        "operator": "change ratio",
+        "precision": "unknown",
+        "reasoning_type": "ComparativeReasoning",
+        "subgoals": [
+          {
+            "constraints": {
+              "entity_scope": "Entergy Gulf States Louisiana, L.L.C.",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "temporal_scope": "2010"
+            },
+            "metric": "Receivables from the money pool"
+          },
+          {
+            "constraints": {
+              "entity_scope": "Entergy Gulf States Louisiana, L.L.C.",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "temporal_scope": "2011"
+            },
+            "metric": "Receivables from the money pool"
+          }
+        ]
+      },
+      "parsed_periods_r21": [
+        {
+          "metric": "Receivables from the money pool",
+          "temporal_scope": "2010"
+        },
+        {
+          "metric": "Receivables from the money pool",
+          "temporal_scope": "2011"
+        }
+      ],
+      "source_table_hints": [
+        {
+          "table_index": 0,
+          "span": [
+            627,
+            743
+          ],
+          "column_count": 4,
+          "header_rows": [
+            {
+              "row_index": 0,
+              "text": "| 2011 | 2010 | 2009 | 2008 |",
+              "span": [
+                627,
+                656
+              ],
+              "cells": [
+                {
+                  "column_index": 0,
+                  "text": "2011"
+                },
+                {
+                  "column_index": 1,
+                  "text": "2010"
+                },
+                {
+                  "column_index": 2,
+                  "text": "2009"
+                },
+                {
+                  "column_index": 3,
+                  "text": "2008"
+                }
+              ],
+              "repeated_period_header": false,
+              "columns_truncated": false
+            },
+            {
+              "row_index": 2,
+              "text": "| (In Thousands) |",
+              "span": [
+                683,
+                701
+              ],
+              "cells": [
+                {
+                  "column_index": 0,
+                  "text": "(In Thousands)"
+                }
+              ],
+              "repeated_period_header": false,
+              "columns_truncated": false
+            }
+          ],
+          "period_columns": [
+            {
+              "header_row_index": 0,
+              "column_index": 0,
+              "text": "2011",
+              "years": [
+                "2011"
+              ]
+            },
+            {
+              "header_row_index": 0,
+              "column_index": 1,
+              "text": "2010",
+              "years": [
+                "2010"
+              ]
+            },
+            {
+              "header_row_index": 0,
+              "column_index": 2,
+              "text": "2009",
+              "years": [
+                "2009"
+              ]
+            },
+            {
+              "header_row_index": 0,
+              "column_index": 3,
+              "text": "2008",
+              "years": [
+                "2008"
+              ]
+            }
+          ],
+          "row_labels": [
+            {
+              "row_index": 3,
+              "text": "",
+              "span": [
+                704,
+                704
+              ],
+              "row_span": [
+                702,
+                743
+              ],
+              "years": [],
+              "numeric_first_column": true
+            }
+          ],
+          "footnotes": [],
+          "period_groups": [],
+          "source_header_row_count": 2,
+          "source_body_row_count": 1,
+          "truncated": {
+            "header_rows": false,
+            "row_labels": false,
+            "columns": false,
+            "period_columns": false,
+            "period_groups": false
+          },
+          "following_tables_omitted": 0,
+          "source_table_count": 1
+        }
+      ],
+      "evidence_note": "Source has dates as columns and one row of financial values without an explicit row label. The first money cell must not become a metric label. Old source values 23596 and 63003 are correct; old mismatch is the sign convention for decrease, not wrong extraction.",
+      "live_result": "not produced by this audit agent; root runs the actual end-to-end validation"
+    }
+  ],
+  "not_claimed": [
+    "No financial number or sign was corrected using a reference answer.",
+    "No API or end-to-end model accuracy was produced by this audit agent.",
+    "The source-correct negative controls are not reclassified as extraction failures to inflate improvement."
+  ]
+}

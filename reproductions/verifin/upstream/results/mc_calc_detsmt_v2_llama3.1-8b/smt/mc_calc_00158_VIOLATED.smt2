@@ -1,0 +1,44 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_operating_expenses_fy2026 Real)
+(declare-const depreciation_and_amortization_fy2026 Real)
+(declare-const selling_general_and_administrative_expense_fy2026 Real)
+
+(assert (! (= depreciation_and_amortization_fy2026 3273) :named evidence_depreciation_and_amortization_fy2026))
+(assert (! (= selling_general_and_administrative_expense_fy2026 30702) :named evidence_selling_general_and_administrative_expense_fy2026))
+
+(assert (! (= computed_operating_expenses_fy2026 (+ selling_general_and_administrative_expense_fy2026 depreciation_and_amortization_fy2026)) :named formula_operating_expenses_fy2026))
+
+(assert (! (<= (- computed_operating_expenses_fy2026 31782) 31.782) :named claim_upper))
+(assert (! (<= (- 31782 computed_operating_expenses_fy2026) 31.782) :named claim_lower))
+
+; XBRL calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_CostOfRevenue_duration_2025_02_03_2026_02_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_DepreciationAndAmortization_duration_2025_02_03_2026_02_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OperatingExpenses_duration_2025_02_03_2026_02_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2025_02_03_2026_02_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2025_02_03_2026_02_01_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2025_02_03_2026_02_01_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_CostOfRevenue_duration_2025_02_03_2026_02_01_unit_USD_dims_none 109818) :named evidence_xbrl_fact_us_gaap_CostOfRevenue_duration_2025_02_03_2026_02_01_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_DepreciationAndAmortization_duration_2025_02_03_2026_02_01_unit_USD_dims_none 3273) :named evidence_xbrl_fact_us_gaap_DepreciationAndAmortization_duration_2025_02_03_2026_02_01_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OperatingExpenses_duration_2025_02_03_2026_02_01_unit_USD_dims_none 33975) :named evidence_xbrl_fact_us_gaap_OperatingExpenses_duration_2025_02_03_2026_02_01_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2025_02_03_2026_02_01_unit_USD_dims_none 20890) :named evidence_xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2025_02_03_2026_02_01_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2025_02_03_2026_02_01_unit_USD_dims_none 164683) :named evidence_xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2025_02_03_2026_02_01_unit_USD_dims_none))
+
+; IR-to-XBRL bindings and independent instance-value witnesses.
+(assert (! (= selling_general_and_administrative_expense_fy2026 xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2025_02_03_2026_02_01_unit_USD_dims_none) :named xbrl_bind_selling_general_and_administrative_expense_fy2026_c_1))
+(assert (! (= xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2025_02_03_2026_02_01_unit_USD_dims_none 30702) :named xbrl_instance_selling_general_and_administrative_expense_fy2026))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_OperatingExpenses_duration_2025_02_03_2026_02_01_unit_USD_dims_none (+ xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2025_02_03_2026_02_01_unit_USD_dims_none xbrl_fact_us_gaap_DepreciationAndAmortization_duration_2025_02_03_2026_02_01_unit_USD_dims_none)) 1.5) :named xbrl_calc_8_939849317_OperatingExpenses_c_1_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_OperatingExpenses_duration_2025_02_03_2026_02_01_unit_USD_dims_none (+ xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2025_02_03_2026_02_01_unit_USD_dims_none xbrl_fact_us_gaap_DepreciationAndAmortization_duration_2025_02_03_2026_02_01_unit_USD_dims_none)) (- 1.5)) :named xbrl_calc_8_939849317_OperatingExpenses_c_1_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2025_02_03_2026_02_01_unit_USD_dims_none (+ xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2025_02_03_2026_02_01_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_CostOfRevenue_duration_2025_02_03_2026_02_01_unit_USD_dims_none) (* -1 xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2025_02_03_2026_02_01_unit_USD_dims_none) (* -1 xbrl_fact_us_gaap_DepreciationAndAmortization_duration_2025_02_03_2026_02_01_unit_USD_dims_none))) 2.5) :named xbrl_calc_18_751348759_OperatingIncomeLoss_c_1_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2025_02_03_2026_02_01_unit_USD_dims_none (+ xbrl_fact_us_gaap_RevenueFromContractWithCustomerExcludingAssessedTax_duration_2025_02_03_2026_02_01_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_CostOfRevenue_duration_2025_02_03_2026_02_01_unit_USD_dims_none) (* -1 xbrl_fact_us_gaap_SellingGeneralAndAdministrativeExpense_duration_2025_02_03_2026_02_01_unit_USD_dims_none) (* -1 xbrl_fact_us_gaap_DepreciationAndAmortization_duration_2025_02_03_2026_02_01_unit_USD_dims_none))) (- 2.5)) :named xbrl_calc_18_751348759_OperatingIncomeLoss_c_1_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

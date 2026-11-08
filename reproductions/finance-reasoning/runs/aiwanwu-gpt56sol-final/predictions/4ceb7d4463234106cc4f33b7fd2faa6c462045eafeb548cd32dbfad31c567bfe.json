@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2095",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the covariance between two equal-length sequences of periodic financial returns, such as mutual fund quarterly returns, using sample or population covariance and returning a numeric result?",
+        "usage": {
+          "prompt_tokens": 5062,
+          "completion_tokens": 37,
+          "total_tokens": 5099,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14939,
+          "completion_tokens": 269,
+          "total_tokens": 15208,
+          "completion_tokens_details": {
+            "reasoning_tokens": 172
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    returns_a = [0.05, 0.02, -0.03, 0.04]\n    returns_b = [0.06, 0.01, -0.02, 0.03]\n\n    # Do math calculation to get the answer\n    mean_a = sum(returns_a) / len(returns_a)\n    mean_b = sum(returns_b) / len(returns_b)\n\n    covariance = sum(\n        (a - mean_a) * (b - mean_b)\n        for a, b in zip(returns_a, returns_b)\n    ) / (len(returns_a) - 1)\n\n    answer = round(covariance, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5055,
+          "completion_tokens": 258,
+          "total_tokens": 5313,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 83
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-213",
+        "score": 1.6940233707427979
+      },
+      {
+        "function_id": "article-1013",
+        "score": 1.5305962562561035
+      },
+      {
+        "function_id": "article-1014",
+        "score": 1.5296833515167236
+      },
+      {
+        "function_id": "article-2386",
+        "score": 1.5230705738067627
+      },
+      {
+        "function_id": "article-264",
+        "score": 1.5218414068222046
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.5185372829437256
+      },
+      {
+        "function_id": "article-1294",
+        "score": 1.5180988311767578
+      },
+      {
+        "function_id": "article-1590",
+        "score": 1.4882392883300781
+      },
+      {
+        "function_id": "article-2376",
+        "score": 1.4881426095962524
+      },
+      {
+        "function_id": "article-1925",
+        "score": 1.4758667945861816
+      },
+      {
+        "function_id": "article-1541",
+        "score": 1.4688701629638672
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.4680588245391846
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.467099905014038
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.4667774438858032
+      },
+      {
+        "function_id": "article-140",
+        "score": 1.461037039756775
+      },
+      {
+        "function_id": "article-2410",
+        "score": 1.459287405014038
+      },
+      {
+        "function_id": "article-1130",
+        "score": 1.458923578262329
+      },
+      {
+        "function_id": "article-1310",
+        "score": 1.4579107761383057
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.4575090408325195
+      },
+      {
+        "function_id": "article-1292",
+        "score": 1.4567935466766357
+      },
+      {
+        "function_id": "article-101",
+        "score": 1.4561877250671387
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.4501674175262451
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.4457874298095703
+      },
+      {
+        "function_id": "article-971",
+        "score": 1.4455270767211914
+      },
+      {
+        "function_id": "article-1980",
+        "score": 1.444434404373169
+      },
+      {
+        "function_id": "article-176",
+        "score": 1.4440134763717651
+      },
+      {
+        "function_id": "article-968",
+        "score": 1.4430350065231323
+      },
+      {
+        "function_id": "article-2784",
+        "score": 1.440922737121582
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.4405546188354492
+      },
+      {
+        "function_id": "article-2321",
+        "score": 1.439315915107727
+      }
+    ],
+    "selected_ids": [
+      "article-213"
+    ],
+    "status": "ok",
+    "answer": 0.001,
+    "code": "def solution():\n    # Define variables name and value\n    returns_a = [0.05, 0.02, -0.03, 0.04]\n    returns_b = [0.06, 0.01, -0.02, 0.03]\n\n    # Do math calculation to get the answer\n    mean_a = sum(returns_a) / len(returns_a)\n    mean_b = sum(returns_b) / len(returns_b)\n\n    covariance = sum(\n        (a - mean_a) * (b - mean_b)\n        for a, b in zip(returns_a, returns_b)\n    ) / (len(returns_a) - 1)\n\n    answer = round(covariance, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "249965a84e333f8d468826e6474da0fb2c5e1df4909477d5d2a23069f0b15f32"
+}

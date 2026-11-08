@@ -1,0 +1,21 @@
+{
+  "identity": "bd1a2683dfa260073b497e77c1e8b01f6477ea469cae34ea9a4319ab799c200b",
+  "response_digest": "7b47bbf23dff70a35dd5a0cf33d4a07c53e6ddd7fa8200c0348b2c9f80324829",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 153, 151, 154, 155, 158, 160, 162, 164, 166, 165]\n    period = 10\n\n    # Do math calculation to get the answer\n    ema = sum(closing_prices[:period]) / period\n    multiplier = 2 / (period + 1)\n\n    for price in closing_prices[period:]:\n        ema = (price - ema) * multiplier + ema\n\n    # return answer\n    return round(ema, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5836,
+      "completion_tokens": 258,
+      "total_tokens": 6094,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 119
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

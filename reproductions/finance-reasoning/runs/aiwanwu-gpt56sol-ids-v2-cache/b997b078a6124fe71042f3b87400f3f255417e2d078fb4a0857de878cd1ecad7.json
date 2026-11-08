@@ -1,0 +1,21 @@
+{
+  "identity": "b997b078a6124fe71042f3b87400f3f255417e2d078fb4a0857de878cd1ecad7",
+  "response_digest": "1cb389e98a97cf0507f8e5bf8ca7b6611e21015460b1feab52bf41b8247f86c6",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    ana = 550\n    prior_19_day_ema = 528\n    prior_39_day_ema = 530\n\n    # Do math calculation to get the answer\n    ema_19_day = (ana * 0.10) + (prior_19_day_ema * 0.90)\n    ema_39_day = (ana * 0.05) + (prior_39_day_ema * 0.95)\n    adjusted_mcclellan_oscillator = ema_19_day - ema_39_day\n\n    # Return the answer rounded to two decimal places\n    return round(adjusted_mcclellan_oscillator, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5090,
+      "completion_tokens": 225,
+      "total_tokens": 5315,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 60
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

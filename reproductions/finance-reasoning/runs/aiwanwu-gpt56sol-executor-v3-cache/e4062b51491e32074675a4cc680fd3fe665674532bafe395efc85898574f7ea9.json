@@ -1,0 +1,21 @@
+{
+  "identity": "e4062b51491e32074675a4cc680fd3fe665674532bafe395efc85898574f7ea9",
+  "response_digest": "c9524ae9746935deb0b34acabac3d9dacfcfdd262ca37ac5f173cf18c02d347a",
+  "response": {
+    "content": "```python\ndef solution():\n    import math\n\n    # Define variables and values (in millions, except rates and time)\n    assets = 150\n    debt = 100\n    risk_free_rate = 0.05\n    asset_volatility = 0.20\n    time_to_maturity = 3\n\n    # Calculate equity as a call option on the company's assets\n    d1 = (\n        math.log(assets / debt)\n        + (risk_free_rate + 0.5 * asset_volatility**2) * time_to_maturity\n    ) / (asset_volatility * math.sqrt(time_to_maturity))\n    d2 = d1 - asset_volatility * math.sqrt(time_to_maturity)\n\n    normal_cdf = lambda x: 0.5 * (1 + math.erf(x / math.sqrt(2)))\n    equity_value = (\n        assets * normal_cdf(d1)\n        - debt * math.exp(-risk_free_rate * time_to_maturity) * normal_cdf(d2)\n    )\n\n    # Return the value in million dollars, rounded to two decimal places\n    return round(equity_value, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5595,
+      "completion_tokens": 274,
+      "total_tokens": 5869,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 27
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "identity": "e2abb76e4a5f559e830fa0972d7c67803641b7a0d8d1c19d49bb63396c78b923",
+  "response_digest": "60e50f3920298a7fd5c75f1cdc2ac1a0ea9260c85d6d70e8e944df552272ded5",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_equity_index = 100.0\n    fixed_rate = 0.03\n    notional_amount = 100_000_000.0\n    payment_frequency = 4\n\n    fixed_payment = (fixed_rate * notional_amount) / payment_frequency\n\n    # Present value factors for the three remaining quarterly payments\n    present_value_factors = [0.997506, 0.992556, 0.985222]\n\n    # The equity settlement occurs at the swap expiry\n    expiry_present_value_factor = present_value_factors[-1]\n\n    # Calculate the present value of the remaining fixed-leg payments\n    fixed_leg_present_value = fixed_payment * sum(present_value_factors)\n\n    # At zero value, the present value of the equity leg equals the fixed leg\n    required_equity_return = fixed_leg_present_value / (\n        notional_amount * expiry_present_value_factor\n    )\n\n    equity_index_level = initial_equity_index * (1 + required_equity_return)\n\n    # Return the index level rounded to three decimal places\n    return round(equity_index_level, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5698,
+      "completion_tokens": 753,
+      "total_tokens": 6451,
+      "completion_tokens_details": {
+        "reasoning_tokens": 502
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

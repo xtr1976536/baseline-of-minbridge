@@ -1,0 +1,21 @@
+{
+  "identity": "2f429802e9b8a9123027ee74e2a93b1ac38136a6a363504f2302673172c53c4f",
+  "response_digest": "04a65a4a2a372f2d37f455bc47264edfbc517ebac0e11275b121377fcfd57cbc",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    loan_amount = 300_000\n    original_rate = 0.045\n    new_rate = 0.04\n    loan_term_years = 30\n    float_down_fee_percent = 0.4\n\n    # Do math calculation to get the answer\n    total_payments = loan_term_years * 12\n\n    def monthly_payment(annual_rate):\n        monthly_rate = annual_rate / 12\n        return loan_amount * monthly_rate / (1 - (1 + monthly_rate) ** -total_payments)\n\n    payment_savings = (\n        monthly_payment(original_rate) - monthly_payment(new_rate)\n    ) * total_payments\n    fee = loan_amount * float_down_fee_percent / 100\n    answer = round(payment_savings - fee)\n\n    # Return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5847,
+      "completion_tokens": 221,
+      "total_tokens": 6068,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 31
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

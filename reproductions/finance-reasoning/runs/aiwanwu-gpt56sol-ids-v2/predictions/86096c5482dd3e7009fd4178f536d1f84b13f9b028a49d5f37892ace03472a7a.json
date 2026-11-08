@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2061",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the terminal stock value in a two-stage dividend discount model, using an initial dividend, a high-growth period with a specified growth rate and duration, followed by perpetual stable growth, and a required return greater than the stable growth rate, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5086,
+          "completion_tokens": 62,
+          "total_tokens": 5148,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 13468,
+          "completion_tokens": 170,
+          "total_tokens": 13638,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 146
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    dividend_2017 = 0.22\n    high_growth_rate = 0.12\n    stable_growth_rate = 0.06\n    required_return = 0.09\n    high_growth_years = 4\n\n    # Calculate the dividend in year 4 and the expected dividend in year 5\n    dividend_year_4 = dividend_2017 * (1 + high_growth_rate) ** high_growth_years\n    dividend_year_5 = dividend_year_4 * (1 + stable_growth_rate)\n\n    # Calculate terminal value at the end of year 4 using the Gordon Growth Model\n    terminal_value = dividend_year_5 / (required_return - stable_growth_rate)\n\n    # Return the answer rounded to three decimal places\n    return round(terminal_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5683,
+          "completion_tokens": 237,
+          "total_tokens": 5920,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 54
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1755",
+        "score": 1.9413666725158691,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1758",
+        "score": 1.8920085430145264,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1511",
+        "score": 1.8619499206542969,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1151",
+        "score": 1.8608992099761963,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.859828233718872,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1870",
+        "score": 1.7795051336288452,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1756",
+        "score": 1.7571003437042236,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.754172444343567,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.7517423629760742,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-519",
+        "score": 1.7391777038574219,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1932",
+        "score": 1.736957311630249,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.7113056182861328,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2146",
+        "score": 1.7071082592010498,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-86",
+        "score": 1.6985691785812378,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-714",
+        "score": 1.690691351890564,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.6879420280456543,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-272",
+        "score": 1.6842548847198486,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1516",
+        "score": 1.6771843433380127,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1754",
+        "score": 1.6663992404937744,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-605",
+        "score": 1.6625583171844482,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2943",
+        "score": 1.6623202562332153,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1872",
+        "score": 1.6615891456604004,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1520",
+        "score": 1.6564533710479736,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1757",
+        "score": 1.653160572052002,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1761",
+        "score": 1.651129961013794,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-606",
+        "score": 1.6456857919692993,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-463",
+        "score": 1.645604133605957,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-13",
+        "score": 1.6422357559204102,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1766",
+        "score": 1.6412155628204346,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1876",
+        "score": 1.632865309715271,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1755",
+      "article-1758",
+      "article-1151"
+    ],
+    "status": "ok",
+    "answer": 12.231,
+    "code": "def solution():\n    # Define variables\n    dividend_2017 = 0.22\n    high_growth_rate = 0.12\n    stable_growth_rate = 0.06\n    required_return = 0.09\n    high_growth_years = 4\n\n    # Calculate the dividend in year 4 and the expected dividend in year 5\n    dividend_year_4 = dividend_2017 * (1 + high_growth_rate) ** high_growth_years\n    dividend_year_5 = dividend_year_4 * (1 + stable_growth_rate)\n\n    # Calculate terminal value at the end of year 4 using the Gordon Growth Model\n    terminal_value = dividend_year_5 / (required_return - stable_growth_rate)\n\n    # Return the answer rounded to three decimal places\n    return round(terminal_value, 3)\n"
+  },
+  "digest": "af2faddac1469fd47f4ecbe5f2151c50b7e98195d0b4e7c870e562dfaa755776"
+}

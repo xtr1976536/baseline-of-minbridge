@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2189",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function computes the slope coefficient of a simple ordinary least squares linear regression between paired independent market index values and dependent mutual fund NAV changes, using numeric observations and returning the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5129,
+          "completion_tokens": 44,
+          "total_tokens": 5173,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15849,
+          "completion_tokens": 572,
+          "total_tokens": 16421,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 475
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    market_index_values = [3, 2, 4, 5, 6]\n    nav_changes = [5, 4, 6, 7, 9]\n\n    # Do math calculation to get the answer\n    mean_index = sum(market_index_values) / len(market_index_values)\n    mean_nav = sum(nav_changes) / len(nav_changes)\n\n    numerator = sum(\n        (x - mean_index) * (y - mean_nav)\n        for x, y in zip(market_index_values, nav_changes)\n    )\n    denominator = sum((x - mean_index) ** 2 for x in market_index_values)\n    slope = numerator / denominator\n\n    # return answer\n    return round(slope, 2)\n```",
+        "usage": {
+          "prompt_tokens": 6041,
+          "completion_tokens": 327,
+          "total_tokens": 6368,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 150
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2139",
+        "score": 1.691805124282837
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.6846225261688232
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.6812258958816528
+      },
+      {
+        "function_id": "article-2106",
+        "score": 1.636167049407959
+      },
+      {
+        "function_id": "article-2526",
+        "score": 1.6181076765060425
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.60292649269104
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.5955976247787476
+      },
+      {
+        "function_id": "article-970",
+        "score": 1.581308126449585
+      },
+      {
+        "function_id": "article-1043",
+        "score": 1.5402462482452393
+      },
+      {
+        "function_id": "article-176",
+        "score": 1.5089972019195557
+      },
+      {
+        "function_id": "article-967",
+        "score": 1.5037152767181396
+      },
+      {
+        "function_id": "article-2141",
+        "score": 1.4988043308258057
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.46338951587677
+      },
+      {
+        "function_id": "article-717",
+        "score": 1.4621882438659668
+      },
+      {
+        "function_id": "article-2564",
+        "score": 1.4562404155731201
+      },
+      {
+        "function_id": "article-2858",
+        "score": 1.4526867866516113
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.4519693851470947
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.451304316520691
+      },
+      {
+        "function_id": "article-2668",
+        "score": 1.4493414163589478
+      },
+      {
+        "function_id": "article-2888",
+        "score": 1.4485752582550049
+      },
+      {
+        "function_id": "article-392",
+        "score": 1.4463539123535156
+      },
+      {
+        "function_id": "article-2140",
+        "score": 1.44435715675354
+      },
+      {
+        "function_id": "article-1282",
+        "score": 1.4417788982391357
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.441129207611084
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.4328311681747437
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.430945634841919
+      },
+      {
+        "function_id": "article-2669",
+        "score": 1.429060935974121
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.4255414009094238
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.4238741397857666
+      },
+      {
+        "function_id": "article-113",
+        "score": 1.4210585355758667
+      }
+    ],
+    "selected_ids": [
+      "article-2139",
+      "article-2105",
+      "article-1484"
+    ],
+    "status": "ok",
+    "answer": 1.2,
+    "code": "def solution():\n    # Define variables name and value\n    market_index_values = [3, 2, 4, 5, 6]\n    nav_changes = [5, 4, 6, 7, 9]\n\n    # Do math calculation to get the answer\n    mean_index = sum(market_index_values) / len(market_index_values)\n    mean_nav = sum(nav_changes) / len(nav_changes)\n\n    numerator = sum(\n        (x - mean_index) * (y - mean_nav)\n        for x, y in zip(market_index_values, nav_changes)\n    )\n    denominator = sum((x - mean_index) ** 2 for x in market_index_values)\n    slope = numerator / denominator\n\n    # return answer\n    return round(slope, 2)\n"
+  },
+  "digest": "67cea2d53bce61746238554131d13ca662d25549f4ccfc045ab5f80e6f4d71e2"
+}

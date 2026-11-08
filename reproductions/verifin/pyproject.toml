@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "verifin-paper-main"
+version = "0.1.0"
+description = "Paper-first reproduction of VeriFin v3 main experiment"
+requires-python = ">=3.11"
+dependencies = ["httpx>=0.27,<1", "z3-solver>=4.12", "numpy>=1.24", "sympy>=1.13", "scipy>=1.10", "PyMuPDF>=1.23", "sentence-transformers>=3"]
+
+[project.scripts]
+verifin-main = "vf_repro.runner:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--basetemp=tmp/repro-tests"

@@ -1,0 +1,18 @@
+[
+  {
+    "task": "OPE.final",
+    "program": "def compute(vars):\n    v1 = vars[\"v1\"]\n    v2 = vars[\"v2\"]\n    total_shares_repur chased = v1 + v2\n\n    return {\n        \"value\": total_shares_repur chased,\n        \"trace\": {\n            \"v1\": v1,\n            \"v2\": v2,\n            \"total_shares_repur chased\": total_shares_repur chased,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": \"shares\"\n            }\n        }\n    }"
+  },
+  {
+    "id": "FinQA:MRO/2004/page_46.pdf-2",
+    "error": "Invalid generated Python syntax"
+  },
+  {
+    "task": "OPE.final",
+    "program": "def compute(vars):\n    threshold = 50000\n    below_threshold = {\n        \"2018\": vars[\"v1\"] < threshold,\n        \"2019\": vars[\"v2\"] < threshold,\n    }\n    year = next((year for year, is_below in below_threshold.items() if is_below), None)\n    return {\n        \"value\": year,\n        \"trace\": {\n            \"threshold\": threshold,\n            \"comparisons\": below_threshold,\n            \"output_meta\": {\"currency\": None, \"scale\": None, \"unit\": None},\n        },\n    }"
+  },
+  {
+    "id": "TAT-QA:dba93cc78c71186db1facefa72346cd5_a28369b222ac578302e90a752aa79977",
+    "error": "Only arithmetic builtins and safe container methods may be called"
+  }
+]

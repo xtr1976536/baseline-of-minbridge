@@ -1,0 +1,21 @@
+{
+  "identity": "7c2f786e41ab978eb4b75aeae2a955d3e16585c3f7cc07f54943bbc8fadea772",
+  "response_digest": "9dddb02f3cdcfdcba0e79fde2b6af989fc8921a526f28de637d09ee62108fd5d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    fund_value = 100_000_000\n    current_equity_allocation = 0.80\n    target_equity_allocation = 0.60\n    equity_beta = 1.2\n    futures_beta = 0.95\n    index_value = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    reduction_in_equity = fund_value * (current_equity_allocation - target_equity_allocation)\n    contract_value = index_value * contract_multiplier\n    contracts_to_sell = reduction_in_equity * equity_beta / (contract_value * futures_beta)\n    answer = round(contracts_to_sell, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5374,
+      "completion_tokens": 515,
+      "total_tokens": 5889,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 342
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

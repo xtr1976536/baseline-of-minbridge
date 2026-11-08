@@ -1,0 +1,18 @@
+{
+  "identity": "0480959c744209ec3dd0dd176a9bb8641a68bb1bfab95672595ee18fdd50bb88",
+  "response_digest": "9de842db5bd5799ea8620ea88646425464280351427b1a6357f7c39a1522580a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    retirement_fund = 100_000_000\n    current_equity_allocation = 0.80\n    target_equity_allocation = 0.60\n    equity_beta = 1.20\n    futures_beta = 0.95\n    stock_index_value = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    equity_value_to_hedge = (\n        retirement_fund\n        * (current_equity_allocation - target_equity_allocation)\n    )\n    futures_contract_value = stock_index_value * contract_multiplier\n    number_of_futures = (\n        equity_value_to_hedge * equity_beta\n        / (futures_contract_value * futures_beta)\n    )\n\n    # return answer\n    return round(number_of_futures, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5372,
+      "completion_tokens": 513,
+      "total_tokens": 5885,
+      "completion_tokens_details": {
+        "reasoning_tokens": 321
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "2108c2fbfdedbe2b33628abcb53b6e1995a6a0cd401dfcb98b6e3b8b29988d73",
+  "response_digest": "982e59ba85ee3cf7b457736153219708d7e3fc3190d1ef137dc718cd85c71750",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    par_value = 1000\n    annual_coupon_rate = 0.10\n    year_1_spot_rate = 0.06\n    year_1_forward_rate = 0.08\n    year_2_forward_rate = 0.10\n\n    annual_coupon = par_value * annual_coupon_rate\n\n    # Calculate discount factors from the spot and forward rates\n    discount_factor_1 = 1 / (1 + year_1_spot_rate)\n    discount_factor_2 = discount_factor_1 / (1 + year_1_forward_rate)\n    discount_factor_3 = discount_factor_2 / (1 + year_2_forward_rate)\n\n    # Calculate the bond value using the cash flows at the end of each year\n    bond_value = (\n        annual_coupon * discount_factor_1\n        + annual_coupon * discount_factor_2\n        + (annual_coupon + par_value) * discount_factor_3\n    )\n\n    # Return the answer rounded to three decimal places\n    return round(bond_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5456,
+      "completion_tokens": 298,
+      "total_tokens": 5754,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 61
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

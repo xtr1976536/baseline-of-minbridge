@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2103",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fixed monthly equated installment for an amortizing reducing-balance loan using principal, annual interest rate converted to a monthly rate, and total monthly payment periods, with payments made monthly and the result rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 5031,
+          "completion_tokens": 52,
+          "total_tokens": 5083,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16829,
+          "completion_tokens": 613,
+          "total_tokens": 17442,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 150000\n    annual_interest_rate = 0.06\n    total_payments = 10 * 12\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    emi = (\n        principal\n        * monthly_interest_rate\n        * (1 + monthly_interest_rate) ** total_payments\n        / ((1 + monthly_interest_rate) ** total_payments - 1)\n    )\n\n    # return answer\n    return round(emi, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5615,
+          "completion_tokens": 219,
+          "total_tokens": 5834,
+          "completion_tokens_details": {
+            "reasoning_tokens": 88
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2785",
+        "score": 2.1196839809417725
+      },
+      {
+        "function_id": "article-2786",
+        "score": 2.032308578491211
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.9279804229736328
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.9236232042312622
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.9085488319396973
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.8982024192810059
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.8749504089355469
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.8542054891586304
+      },
+      {
+        "function_id": "article-2309",
+        "score": 1.840987205505371
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.8381556272506714
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.8183879852294922
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.812525987625122
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.8120214939117432
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.808159589767456
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.7971830368041992
+      },
+      {
+        "function_id": "article-2311",
+        "score": 1.78887140750885
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.7843828201293945
+      },
+      {
+        "function_id": "article-582",
+        "score": 1.783224105834961
+      },
+      {
+        "function_id": "article-2273",
+        "score": 1.7721617221832275
+      },
+      {
+        "function_id": "article-676",
+        "score": 1.7629625797271729
+      },
+      {
+        "function_id": "article-1638",
+        "score": 1.7627695798873901
+      },
+      {
+        "function_id": "article-677",
+        "score": 1.7625997066497803
+      },
+      {
+        "function_id": "article-1504",
+        "score": 1.7575020790100098
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.7572510242462158
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.750099539756775
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.7495918273925781
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.7419209480285645
+      },
+      {
+        "function_id": "article-1668",
+        "score": 1.737664818763733
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.7343904972076416
+      },
+      {
+        "function_id": "article-2059",
+        "score": 1.7326302528381348
+      }
+    ],
+    "selected_ids": [
+      "article-2785",
+      "article-429",
+      "article-784"
+    ],
+    "status": "ok",
+    "answer": 1665.31,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 150000\n    annual_interest_rate = 0.06\n    total_payments = 10 * 12\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    emi = (\n        principal\n        * monthly_interest_rate\n        * (1 + monthly_interest_rate) ** total_payments\n        / ((1 + monthly_interest_rate) ** total_payments - 1)\n    )\n\n    # return answer\n    return round(emi, 2)\n"
+  },
+  "digest": "71eb4d83f13a4ae2faa726a5bd5b5aee22a96fd16c2910604ad977eac5e2ae3d"
+}

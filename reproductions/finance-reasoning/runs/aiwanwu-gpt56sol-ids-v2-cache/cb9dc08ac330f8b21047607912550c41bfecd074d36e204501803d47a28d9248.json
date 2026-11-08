@@ -1,0 +1,21 @@
+{
+  "identity": "cb9dc08ac330f8b21047607912550c41bfecd074d36e204501803d47a28d9248",
+  "response_digest": "a0814f87ee816bf816e615ecdc10d7a650d9d1d9d20c366958eae0534a68f497",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_investment = 120.0  # millions of dollars\n    gross_return_rate = 0.35\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.20\n    hurdle_rate = 0.05\n\n    # Do math calculation to get the answer\n    gross_profit = initial_investment * gross_return_rate\n    aum_end_year = initial_investment + gross_profit\n    management_fee = aum_end_year * management_fee_rate\n\n    hurdle_amount = initial_investment * hurdle_rate\n    profit_above_hurdle_net_management_fee = (\n        gross_profit - hurdle_amount - management_fee\n    )\n    incentive_fee = (\n        max(0.0, profit_above_hurdle_net_management_fee) * incentive_fee_rate\n    )\n\n    net_return = gross_profit - management_fee - incentive_fee\n    answer = round(net_return, 2)\n\n    # return answer in millions of dollars\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5550,
+      "completion_tokens": 329,
+      "total_tokens": 5879,
+      "prompt_tokens_details": {
+        "cached_tokens": 3764
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 102
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

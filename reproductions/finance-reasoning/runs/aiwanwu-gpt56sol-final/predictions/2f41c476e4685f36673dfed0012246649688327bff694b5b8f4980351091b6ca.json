@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2212",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the monthly payment for an amortizing mortgage using the principal amount, term in years, and the initial fixed annual interest rate, while ignoring later scheduled rate changes when determining the first-year payment and supporting monthly compounding and payment frequency?",
+        "usage": {
+          "prompt_tokens": 5050,
+          "completion_tokens": 53,
+          "total_tokens": 5103,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL]",
+        "usage": {
+          "prompt_tokens": 17914,
+          "completion_tokens": 890,
+          "total_tokens": 18804,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 793
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 300000\n    annual_interest_rate = 0.035\n    loan_term_years = 30\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n\n    # Return the first-year monthly payment rounded to the nearest dollar\n    return round(monthly_payment)\n```",
+        "usage": {
+          "prompt_tokens": 5723,
+          "completion_tokens": 237,
+          "total_tokens": 5960,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 102
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1069",
+        "score": 1.9705660343170166
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.9292845726013184
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.926080584526062
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.9238938093185425
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.9194819927215576
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.917832851409912
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.900654911994934
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.8853626251220703
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.8850953578948975
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.871688723564148
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.8566800355911255
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.8554333448410034
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.8547513484954834
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.8539149761199951
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.8502652645111084
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.8482420444488525
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.8466465473175049
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.8400733470916748
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.838724970817566
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.834489107131958
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.8319013118743896
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.8314536809921265
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.829784870147705
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.828293800354004
+      },
+      {
+        "function_id": "article-2311",
+        "score": 1.8211939334869385
+      },
+      {
+        "function_id": "article-2309",
+        "score": 1.820002794265747
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.817307472229004
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.7993592023849487
+      },
+      {
+        "function_id": "article-1638",
+        "score": 1.7876558303833008
+      },
+      {
+        "function_id": "article-582",
+        "score": 1.7871675491333008
+      }
+    ],
+    "selected_ids": [
+      "article-1069",
+      "article-581",
+      "article-2164"
+    ],
+    "status": "ok",
+    "answer": 1347,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 300000\n    annual_interest_rate = 0.035\n    loan_term_years = 30\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n\n    # Return the first-year monthly payment rounded to the nearest dollar\n    return round(monthly_payment)\n"
+  },
+  "digest": "9fc5eff18df7be7815a90ee7d3b8d4c7f50b5395e1a1f14e9ee785c4f4e7e519"
+}

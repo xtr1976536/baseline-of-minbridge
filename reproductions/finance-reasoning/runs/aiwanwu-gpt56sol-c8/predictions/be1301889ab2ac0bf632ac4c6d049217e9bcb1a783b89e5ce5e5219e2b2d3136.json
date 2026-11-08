@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2163",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the total expiration profit or loss of a covered call writing strategy, accounting for the number of contracts, shares per contract, premium received per share, strike price, underlying stock purchase price, and expiration stock price?",
+        "usage": {
+          "prompt_tokens": 5020,
+          "completion_tokens": 49,
+          "total_tokens": 5069,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15439,
+          "completion_tokens": 401,
+          "total_tokens": 15840,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 304
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    contracts = 5\n    shares_per_contract = 100\n    premium_received = 2.50\n    strike_price = 150\n    market_price = 158\n    shares_bought_price = 140\n\n    # Calculate the covered call profit: stock gain up to the strike plus premium\n    shares = contracts * shares_per_contract\n    total_premium = premium_received * shares\n    stock_sale_price = min(market_price, strike_price)\n    stock_profit = (stock_sale_price - shares_bought_price) * shares\n    answer = round(total_premium + stock_profit)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5142,
+          "completion_tokens": 225,
+          "total_tokens": 5367,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 72
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-217",
+        "score": 1.9671375751495361
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.9286092519760132
+      },
+      {
+        "function_id": "article-218",
+        "score": 1.9148093461990356
+      },
+      {
+        "function_id": "article-2435",
+        "score": 1.9080760478973389
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.8821802139282227
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.8809998035430908
+      },
+      {
+        "function_id": "article-2054",
+        "score": 1.8724346160888672
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.8679611682891846
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.8668103218078613
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.8578752279281616
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.853464126586914
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.8197262287139893
+      },
+      {
+        "function_id": "article-706",
+        "score": 1.8167517185211182
+      },
+      {
+        "function_id": "article-2502",
+        "score": 1.8152447938919067
+      },
+      {
+        "function_id": "article-315",
+        "score": 1.7731139659881592
+      },
+      {
+        "function_id": "article-2850",
+        "score": 1.7702562808990479
+      },
+      {
+        "function_id": "article-2579",
+        "score": 1.7637200355529785
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.754279375076294
+      },
+      {
+        "function_id": "article-796",
+        "score": 1.7541147470474243
+      },
+      {
+        "function_id": "article-363",
+        "score": 1.7540518045425415
+      },
+      {
+        "function_id": "article-3063",
+        "score": 1.728806495666504
+      },
+      {
+        "function_id": "article-2849",
+        "score": 1.7278743982315063
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.7219979763031006
+      },
+      {
+        "function_id": "article-777",
+        "score": 1.7180304527282715
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.7137856483459473
+      },
+      {
+        "function_id": "article-778",
+        "score": 1.7098233699798584
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.7016971111297607
+      },
+      {
+        "function_id": "article-3105",
+        "score": 1.7000434398651123
+      },
+      {
+        "function_id": "article-3066",
+        "score": 1.6994463205337524
+      },
+      {
+        "function_id": "article-780",
+        "score": 1.6971092224121094
+      }
+    ],
+    "selected_ids": [
+      "article-2502"
+    ],
+    "status": "ok",
+    "answer": 6250,
+    "code": "def solution():\n    # Define variables name and value\n    contracts = 5\n    shares_per_contract = 100\n    premium_received = 2.50\n    strike_price = 150\n    market_price = 158\n    shares_bought_price = 140\n\n    # Calculate the covered call profit: stock gain up to the strike plus premium\n    shares = contracts * shares_per_contract\n    total_premium = premium_received * shares\n    stock_sale_price = min(market_price, strike_price)\n    stock_profit = (stock_sale_price - shares_bought_price) * shares\n    answer = round(total_premium + stock_profit)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "0bb752a58ddcea59bb80ca05823e075d27de6e68a0bcddfd1a6878f8af84a4fc"
+}

@@ -1,0 +1,18 @@
+{
+  "identity": "c11528d2322b431d750231c991c9b820a3041c00982997f184a947ac5f2d78fb",
+  "response_digest": "e5e64fdd6ac385257a92add406423e3d73b452ee9cd492e37ed5bb7de9d43396",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    bid_rates = [6.2, 6.4, 6.1, 6.5, 6.3, 6.4, 6.0, 6.1]\n    offer_rates = [6.6, 6.7, 6.5, 6.8, 6.7, 6.8, 6.4, 6.5]\n\n    # Calculate mid-rates\n    mid_rates = [(bid + offer) / 2 for bid, offer in zip(bid_rates, offer_rates)]\n\n    # Sort and remove the two lowest and two highest mid-rates\n    mid_rates.sort()\n    trimmed_mid_rates = mid_rates[2:-2]\n\n    # Calculate the JIBAR rate and round to two decimal places\n    jibar_rate = round(sum(trimmed_mid_rates) / len(trimmed_mid_rates), 2)\n\n    # Return answer\n    return jibar_rate\n```",
+    "usage": {
+      "prompt_tokens": 5197,
+      "completion_tokens": 352,
+      "total_tokens": 5549,
+      "completion_tokens_details": {
+        "reasoning_tokens": 134
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

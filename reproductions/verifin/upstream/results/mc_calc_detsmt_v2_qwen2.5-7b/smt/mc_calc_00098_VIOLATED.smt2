@@ -1,0 +1,47 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_assets_current_fy2025 Real)
+(declare-const accounts_receivable_net_current_fy2025 Real)
+(declare-const cash_and_cash_equivalents_at_carrying_value_fy2025 Real)
+(declare-const prepaid_expense_and_other_assets_current_fy2025 Real)
+(declare-const short_term_investments_fy2025 Real)
+
+(assert (! (= accounts_receivable_net_current_fy2025 2344) :named evidence_accounts_receivable_net_current_fy2025))
+(assert (! (= cash_and_cash_equivalents_at_carrying_value_fy2025 5431) :named evidence_cash_and_cash_equivalents_at_carrying_value_fy2025))
+(assert (! (= prepaid_expense_and_other_assets_current_fy2025 1224) :named evidence_prepaid_expense_and_other_assets_current_fy2025))
+(assert (! (= short_term_investments_fy2025 1164) :named evidence_short_term_investments_fy2025))
+
+(assert (! (= computed_assets_current_fy2025 (+ cash_and_cash_equivalents_at_carrying_value_fy2025 short_term_investments_fy2025 accounts_receivable_net_current_fy2025 prepaid_expense_and_other_assets_current_fy2025)) :named formula_assets_current_fy2025))
+
+(assert (! (<= (- computed_assets_current_fy2025 15355) 15.355) :named claim_upper))
+(assert (! (<= (- 15355 computed_assets_current_fy2025) 15.355) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2025_11_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AssetsCurrent_instant_2025_11_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_CashAndCashEquivalentsAtCarryingValue_instant_2025_11_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2025_11_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_ShortTermInvestments_instant_2025_11_28_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_AssetsCurrent_instant_2025_11_28_unit_USD_dims_none 10163) :named evidence_xbrl_fact_us_gaap_AssetsCurrent_instant_2025_11_28_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= cash_and_cash_equivalents_at_carrying_value_fy2025 xbrl_fact_us_gaap_CashAndCashEquivalentsAtCarryingValue_instant_2025_11_28_unit_USD_dims_none) :named xbrl_bind_cash_and_cash_equivalents_at_carrying_value_fy2025_edgar_2025_11_28_0000796343_26_000003))
+(assert (! (= xbrl_fact_us_gaap_CashAndCashEquivalentsAtCarryingValue_instant_2025_11_28_unit_USD_dims_none 5431) :named xbrl_instance_cash_and_cash_equivalents_at_carrying_value_fy2025))
+(assert (! (= short_term_investments_fy2025 xbrl_fact_us_gaap_ShortTermInvestments_instant_2025_11_28_unit_USD_dims_none) :named xbrl_bind_short_term_investments_fy2025_edgar_2025_11_28_0000796343_26_000003))
+(assert (! (= xbrl_fact_us_gaap_ShortTermInvestments_instant_2025_11_28_unit_USD_dims_none 1164) :named xbrl_instance_short_term_investments_fy2025))
+(assert (! (= accounts_receivable_net_current_fy2025 xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2025_11_28_unit_USD_dims_none) :named xbrl_bind_accounts_receivable_net_current_fy2025_edgar_2025_11_28_0000796343_26_000003))
+(assert (! (= xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2025_11_28_unit_USD_dims_none 2344) :named xbrl_instance_accounts_receivable_net_current_fy2025))
+(assert (! (= prepaid_expense_and_other_assets_current_fy2025 xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2025_11_28_unit_USD_dims_none) :named xbrl_bind_prepaid_expense_and_other_assets_current_fy2025_edgar_2025_11_28_0000796343_26_000003))
+(assert (! (= xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2025_11_28_unit_USD_dims_none 1224) :named xbrl_instance_prepaid_expense_and_other_assets_current_fy2025))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_AssetsCurrent_instant_2025_11_28_unit_USD_dims_none (+ xbrl_fact_us_gaap_CashAndCashEquivalentsAtCarryingValue_instant_2025_11_28_unit_USD_dims_none xbrl_fact_us_gaap_ShortTermInvestments_instant_2025_11_28_unit_USD_dims_none xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2025_11_28_unit_USD_dims_none xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2025_11_28_unit_USD_dims_none)) 2.5) :named xbrl_calc_4_857209937_AssetsCurrent_c_4_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_AssetsCurrent_instant_2025_11_28_unit_USD_dims_none (+ xbrl_fact_us_gaap_CashAndCashEquivalentsAtCarryingValue_instant_2025_11_28_unit_USD_dims_none xbrl_fact_us_gaap_ShortTermInvestments_instant_2025_11_28_unit_USD_dims_none xbrl_fact_us_gaap_AccountsReceivableNetCurrent_instant_2025_11_28_unit_USD_dims_none xbrl_fact_us_gaap_PrepaidExpenseAndOtherAssetsCurrent_instant_2025_11_28_unit_USD_dims_none)) (- 2.5)) :named xbrl_calc_4_857209937_AssetsCurrent_c_4_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

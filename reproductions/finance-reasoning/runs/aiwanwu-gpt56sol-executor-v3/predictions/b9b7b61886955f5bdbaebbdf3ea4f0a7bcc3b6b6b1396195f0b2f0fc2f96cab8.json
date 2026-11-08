@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2135",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the standard deviation (volatility) of a two-asset portfolio from asset weights, individual standard deviations, and their correlation coefficient, returning the result as a percentage?",
+        "usage": {
+          "prompt_tokens": 4995,
+          "completion_tokens": 40,
+          "total_tokens": 5035,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14349,
+          "completion_tokens": 97,
+          "total_tokens": 14446,
+          "completion_tokens_details": {
+            "reasoning_tokens": 73
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    weight_x = 0.30\n    weight_y = 0.70\n    std_x = 0.25\n    std_y = 0.10\n    correlation = 0.80\n\n    # Calculate covariance\n    covariance_xy = correlation * std_x * std_y\n\n    # Calculate portfolio variance and standard deviation\n    portfolio_variance = (\n        (weight_x ** 2 * std_x ** 2)\n        + (weight_y ** 2 * std_y ** 2)\n        + (2 * weight_x * weight_y * covariance_xy)\n    )\n    portfolio_std_dev = portfolio_variance ** 0.5\n\n    # Convert to percentage and round to two decimal places\n    answer = round(portfolio_std_dev * 100, 2)\n\n    # Return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5886,
+          "completion_tokens": 273,
+          "total_tokens": 6159,
+          "completion_tokens_details": {
+            "reasoning_tokens": 84
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1292",
+        "score": 1.8246185779571533,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-922",
+        "score": 1.7210252285003662,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1294",
+        "score": 1.7063345909118652,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1590",
+        "score": 1.6776893138885498,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1580",
+        "score": 1.6692709922790527,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-325",
+        "score": 1.6659471988677979,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.6578490734100342,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.6570792198181152,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.6491549015045166,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.6245445013046265,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1013",
+        "score": 1.6240015029907227,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.6078548431396484,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2760",
+        "score": 1.60652494430542,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1570",
+        "score": 1.585766077041626,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-921",
+        "score": 1.5777324438095093,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1978",
+        "score": 1.5684716701507568,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1289",
+        "score": 1.5660513639450073,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-326",
+        "score": 1.5648722648620605,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-61",
+        "score": 1.5594403743743896,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.5533356666564941,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2414",
+        "score": 1.551112413406372,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.5415410995483398,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-865",
+        "score": 1.5364990234375,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1035",
+        "score": 1.5359976291656494,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-302",
+        "score": 1.5329456329345703,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.5275927782058716,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.5244592428207397,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2461",
+        "score": 1.5231447219848633,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.5216503143310547,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1043",
+        "score": 1.5188506841659546,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1292",
+      "article-922",
+      "article-1294"
+    ],
+    "status": "ok",
+    "answer": 13.76,
+    "code": "def solution():\n    # Define variables\n    weight_x = 0.30\n    weight_y = 0.70\n    std_x = 0.25\n    std_y = 0.10\n    correlation = 0.80\n\n    # Calculate covariance\n    covariance_xy = correlation * std_x * std_y\n\n    # Calculate portfolio variance and standard deviation\n    portfolio_variance = (\n        (weight_x ** 2 * std_x ** 2)\n        + (weight_y ** 2 * std_y ** 2)\n        + (2 * weight_x * weight_y * covariance_xy)\n    )\n    portfolio_std_dev = portfolio_variance ** 0.5\n\n    # Convert to percentage and round to two decimal places\n    answer = round(portfolio_std_dev * 100, 2)\n\n    # Return answer\n    return answer\n"
+  },
+  "digest": "bde0522f3593e53c36add4b0f451be70ba7e644b1a3346d2712162a3e1a76f9f"
+}

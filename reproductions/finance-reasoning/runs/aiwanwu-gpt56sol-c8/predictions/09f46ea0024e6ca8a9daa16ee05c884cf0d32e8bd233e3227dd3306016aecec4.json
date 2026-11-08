@@ -1,0 +1,193 @@
+{
+  "record": {
+    "question_id": "test-2145",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the mark-to-market value of a GBP/EUR foreign-exchange forward contract with a remaining three-month maturity, using current spot bid/offer rates and GBP/EUR forward points, applies the correct bid/offer rate for the contract’s EUR-to-GBP settlement direction, discounts the resulting GBP cash flow at the GBP three-month LIBOR rate, and returns the gain or loss relative to the original contracted rate for a EUR notional?",
+        "usage": {
+          "prompt_tokens": 5317,
+          "completion_tokens": 194,
+          "total_tokens": 5511,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 98
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14554,
+          "completion_tokens": 1649,
+          "total_tokens": 16203,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1552
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    euro_notional = 5_000_000\n    contracted_gbp_per_eur = 0.7400\n    current_spot_gbp_per_eur = 0.7343\n    three_month_forward_points_bid = 14.0\n    gbp_90_day_libor = 0.0058\n    days = 90\n    day_count = 360\n\n    # Use the bid rate because the firm would sell EUR to close its EUR-receivable forward\n    current_forward_gbp_per_eur = (\n        current_spot_gbp_per_eur\n        + three_month_forward_points_bid / 10_000\n    )\n\n    # Calculate the GBP gain at the three-month settlement date\n    settlement_gain = (\n        contracted_gbp_per_eur - current_forward_gbp_per_eur\n    ) * euro_notional\n\n    # Discount the future gain to its current mark-to-market value\n    discount_factor = 1 + gbp_90_day_libor * days / day_count\n    mark_to_market_gain = settlement_gain / discount_factor\n\n    # return answer\n    return round(mark_to_market_gain, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5763,
+          "completion_tokens": 573,
+          "total_tokens": 6336,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 311
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-607",
+        "score": 1.9007070064544678
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.8927375078201294
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.864635944366455
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.827905535697937
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.8076543807983398
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.7925928831100464
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.7826812267303467
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.7799984216690063
+      },
+      {
+        "function_id": "article-601",
+        "score": 1.7634869813919067
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.7490525245666504
+      },
+      {
+        "function_id": "article-1963",
+        "score": 1.7487759590148926
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.7437429428100586
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.7389750480651855
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.7356884479522705
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.7339321374893188
+      },
+      {
+        "function_id": "article-450",
+        "score": 1.7327862977981567
+      },
+      {
+        "function_id": "article-2975",
+        "score": 1.7242834568023682
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.7141033411026
+      },
+      {
+        "function_id": "article-603",
+        "score": 1.712153673171997
+      },
+      {
+        "function_id": "article-604",
+        "score": 1.702713131904602
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.6894197463989258
+      },
+      {
+        "function_id": "article-2005",
+        "score": 1.6879510879516602
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6707651615142822
+      },
+      {
+        "function_id": "article-616",
+        "score": 1.6612827777862549
+      },
+      {
+        "function_id": "article-2691",
+        "score": 1.6579227447509766
+      },
+      {
+        "function_id": "article-595",
+        "score": 1.6570895910263062
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.6506657600402832
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.648510456085205
+      },
+      {
+        "function_id": "article-1863",
+        "score": 1.640413522720337
+      },
+      {
+        "function_id": "article-1022",
+        "score": 1.6397392749786377
+      }
+    ],
+    "selected_ids": [
+      "article-609",
+      "article-601",
+      "article-604"
+    ],
+    "status": "ok",
+    "answer": 21468.87,
+    "code": "def solution():\n    # Define variables name and value\n    euro_notional = 5_000_000\n    contracted_gbp_per_eur = 0.7400\n    current_spot_gbp_per_eur = 0.7343\n    three_month_forward_points_bid = 14.0\n    gbp_90_day_libor = 0.0058\n    days = 90\n    day_count = 360\n\n    # Use the bid rate because the firm would sell EUR to close its EUR-receivable forward\n    current_forward_gbp_per_eur = (\n        current_spot_gbp_per_eur\n        + three_month_forward_points_bid / 10_000\n    )\n\n    # Calculate the GBP gain at the three-month settlement date\n    settlement_gain = (\n        contracted_gbp_per_eur - current_forward_gbp_per_eur\n    ) * euro_notional\n\n    # Discount the future gain to its current mark-to-market value\n    discount_factor = 1 + gbp_90_day_libor * days / day_count\n    mark_to_market_gain = settlement_gain / discount_factor\n\n    # return answer\n    return round(mark_to_market_gain, 3)\n"
+  },
+  "digest": "37ffb1251706f926861a4927359205ed2008ec20e099080cab0c5f77902c3b06"
+}

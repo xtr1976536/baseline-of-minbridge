@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2134",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a fixed-rate corporate bond’s z-spread by solving for the constant yield spread added to maturity-matched Treasury spot rates so that the discounted annual coupon and principal cash flows equal the observed market price?",
+        "usage": {
+          "prompt_tokens": 5082,
+          "completion_tokens": 47,
+          "total_tokens": 5129,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14519,
+          "completion_tokens": 16,
+          "total_tokens": 14535,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    bond_price = 950.0\n    cash_flows = [50.0, 50.0, 1050.0]\n    spot_rates = [0.015, 0.018, 0.020]\n    periods = [1, 2, 3]\n\n    # Do math calculation to get the answer\n    from scipy.optimize import fsolve\n\n    def pv_difference(z_spread):\n        present_value = sum(\n            cash_flow / ((1 + (spot_rate + z_spread) / 2) ** (2 * period))\n            for cash_flow, spot_rate, period\n            in zip(cash_flows, spot_rates, periods)\n        )\n        return present_value - bond_price\n\n    z_spread = fsolve(pv_difference, 0.0)[0]\n    answer = round(z_spread * 100, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5171,
+          "completion_tokens": 530,
+          "total_tokens": 5701,
+          "prompt_tokens_details": {
+            "cached_tokens": 3495
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 317
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1432",
+        "score": 2.049441337585449,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-224",
+        "score": 1.7744877338409424,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1046",
+        "score": 1.723883867263794,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.7127890586853027,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.6733437776565552,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.665205478668213,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.6602976322174072,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.6566262245178223,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1869",
+        "score": 1.6552040576934814,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-473",
+        "score": 1.6530722379684448,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.6512659788131714,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1424",
+        "score": 1.650740385055542,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.6488255262374878,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.645534634590149,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1643",
+        "score": 1.6452412605285645,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.6449823379516602,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6419953107833862,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2629",
+        "score": 1.6419148445129395,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.638655185699463,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.633044719696045,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.6304192543029785,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.6256507635116577,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.6255120038986206,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.6243693828582764,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.6205756664276123,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-398",
+        "score": 1.6183968782424927,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2917",
+        "score": 1.618127465248108,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.6153550148010254,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1583",
+        "score": 1.6135410070419312,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.6110048294067383,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1432"
+    ],
+    "status": "ok",
+    "answer": 4.8,
+    "code": "def solution():\n    # Define variables name and value\n    bond_price = 950.0\n    cash_flows = [50.0, 50.0, 1050.0]\n    spot_rates = [0.015, 0.018, 0.020]\n    periods = [1, 2, 3]\n\n    # Do math calculation to get the answer\n    from scipy.optimize import fsolve\n\n    def pv_difference(z_spread):\n        present_value = sum(\n            cash_flow / ((1 + (spot_rate + z_spread) / 2) ** (2 * period))\n            for cash_flow, spot_rate, period\n            in zip(cash_flows, spot_rates, periods)\n        )\n        return present_value - bond_price\n\n    z_spread = fsolve(pv_difference, 0.0)[0]\n    answer = round(z_spread * 100, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "3f09060d3fb9382af97754ec0c516045c34101d624bea9b3ccf666608401f16c"
+}

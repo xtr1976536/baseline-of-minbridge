@@ -1,0 +1,28 @@
+{
+  "request_hash": "77241ec37b96dadd839533dc8d1d9d85eac579f69725a6b1bcc7023393baeb7a",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the FY2017 - FY2019 3 year average of capex as a % of revenue for Activision Blizzard? Answer in units of percents and round to one decimal place. Calculate (or extract) the answer from the statement of income and the cash flow statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"three_year_average_capex_as_percent_of_revenue\",\"facts\":[{\"name\":\"capital_expenditures_fy2017\",\"aliases\":[\"capital expenditures\",\"capital expenditure\",\"purchases of property and equipment\",\"purchases of property and equipment, net\",\"additions to property and equipment\",\"investments in property and equipment\"],\"period\":\"FY2017\",\"statement\":\"cash flow\"},{\"name\":\"revenue_fy2017\",\"aliases\":[\"revenue\",\"revenues\",\"net revenues\",\"total revenues\"],\"period\":\"FY2017\",\"statement\":\"income statement\"},{\"name\":\"capital_expenditures_fy2018\",\"aliases\":[\"capital expenditures\",\"capital expenditure\",\"purchases of property and equipment\",\"purchases of property and equipment, net\",\"additions to property and equipment\",\"investments in property and equipment\"],\"period\":\"FY2018\",\"statement\":\"cash flow\"},{\"name\":\"revenue_fy2018\",\"aliases\":[\"revenue\",\"revenues\",\"net revenues\",\"total revenues\"],\"period\":\"FY2018\",\"statement\":\"income statement\"},{\"name\":\"capital_expenditures_fy2019\",\"aliases\":[\"capital expenditures\",\"capital expenditure\",\"purchases of property and equipment\",\"purchases of property and equipment, net\",\"additions to property and equipment\",\"investments in property and equipment\"],\"period\":\"FY2019\",\"statement\":\"cash flow\"},{\"name\":\"revenue_fy2019\",\"aliases\":[\"revenue\",\"revenues\",\"net revenues\",\"total revenues\"],\"period\":\"FY2019\",\"statement\":\"income statement\"}],\"reason\":\"Calculate ((FY2017 capex/revenue) + (FY2018 capex/revenue) + (FY2019 capex/revenue)) / 3, then express the result as a percentage rounded to one decimal place.\"}",
+  "usage": {
+    "prompt_tokens": 4736,
+    "completion_tokens": 360,
+    "total_tokens": 5096,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    }
+  },
+  "response_id": "resp_091169a2f463ddb9016aedaf3f612887d2bd4a4f2a2df8d23c",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2210",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the total amount paid and loan payoff duration for a fixed-rate amortizing loan given principal, annual interest rate, term in years, regular monthly payments, and an additional fixed monthly payment, accounting for accelerated repayment and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5037,
+          "completion_tokens": 57,
+          "total_tokens": 5094,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL]",
+        "usage": {
+          "prompt_tokens": 16824,
+          "completion_tokens": 1117,
+          "total_tokens": 17941,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1020
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 30000\n    annual_interest_rate = 0.06\n    loan_term_years = 5\n    additional_monthly_payment = 100\n\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    # Calculate the required monthly payment\n    regular_monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    monthly_payment = regular_monthly_payment + additional_monthly_payment\n\n    # Calculate the total paid, including the final partial payment\n    balance = principal\n    total_paid = 0\n\n    while balance > 0:\n        interest = balance * monthly_interest_rate\n        payment = min(monthly_payment, balance + interest)\n        balance = balance + interest - payment\n        total_paid += payment\n\n    # Return the total cost rounded to the nearest dollar\n    return round(total_paid)\n```",
+        "usage": {
+          "prompt_tokens": 5640,
+          "completion_tokens": 400,
+          "total_tokens": 6040,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 175
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-581",
+        "score": 1.8777449131011963
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.863081693649292
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.8210721015930176
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.814042091369629
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.8124010562896729
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.7872639894485474
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.7856786251068115
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.7804924249649048
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.7726690769195557
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.765063762664795
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.7617131471633911
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.7614190578460693
+      },
+      {
+        "function_id": "article-1503",
+        "score": 1.760000467300415
+      },
+      {
+        "function_id": "article-578",
+        "score": 1.7587413787841797
+      },
+      {
+        "function_id": "article-2311",
+        "score": 1.7525080442428589
+      },
+      {
+        "function_id": "article-582",
+        "score": 1.748584270477295
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.7408803701400757
+      },
+      {
+        "function_id": "article-2309",
+        "score": 1.7404568195343018
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.7390629053115845
+      },
+      {
+        "function_id": "article-1638",
+        "score": 1.7369155883789062
+      },
+      {
+        "function_id": "article-292",
+        "score": 1.7331326007843018
+      },
+      {
+        "function_id": "article-1068",
+        "score": 1.7313646078109741
+      },
+      {
+        "function_id": "article-676",
+        "score": 1.7141284942626953
+      },
+      {
+        "function_id": "article-677",
+        "score": 1.7136908769607544
+      },
+      {
+        "function_id": "article-2273",
+        "score": 1.7134147882461548
+      },
+      {
+        "function_id": "article-2456",
+        "score": 1.7081620693206787
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.6996843814849854
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.6991311311721802
+      },
+      {
+        "function_id": "article-1480",
+        "score": 1.6953623294830322
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.6934070587158203
+      }
+    ],
+    "selected_ids": [
+      "article-581",
+      "article-2164",
+      "article-784"
+    ],
+    "status": "ok",
+    "answer": 33978,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 30000\n    annual_interest_rate = 0.06\n    loan_term_years = 5\n    additional_monthly_payment = 100\n\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    # Calculate the required monthly payment\n    regular_monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    monthly_payment = regular_monthly_payment + additional_monthly_payment\n\n    # Calculate the total paid, including the final partial payment\n    balance = principal\n    total_paid = 0\n\n    while balance > 0:\n        interest = balance * monthly_interest_rate\n        payment = min(monthly_payment, balance + interest)\n        balance = balance + interest - payment\n        total_paid += payment\n\n    # Return the total cost rounded to the nearest dollar\n    return round(total_paid)\n"
+  },
+  "digest": "bcd83d819c2a3f7be7237e5f5be914b6be9c87063f7f338168e8a42cca2baa79"
+}

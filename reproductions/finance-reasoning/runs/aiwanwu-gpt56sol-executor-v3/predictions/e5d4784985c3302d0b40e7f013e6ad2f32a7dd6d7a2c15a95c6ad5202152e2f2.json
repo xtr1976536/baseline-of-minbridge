@@ -1,0 +1,213 @@
+{
+  "record": {
+    "question_id": "test-2236",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the final upper Keltner Channel band from a historical price series using a 10-period exponential moving average, a 10-period average true range, and a configurable multiplier of 1.5, returning the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5144,
+          "completion_tokens": 56,
+          "total_tokens": 5200,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C06\",\"C10\"]}",
+        "usage": {
+          "prompt_tokens": 17439,
+          "completion_tokens": 22,
+          "total_tokens": 17461
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    prices = [\n        120, 122, 121, 124, 125, 127, 126, 129, 130, 128,\n        131, 132, 134, 135, 137, 136, 138, 139, 140, 142,\n        141, 143, 144, 146, 145\n    ]\n    period_ema = 10\n    period_atr = 10\n    multiplier = 1.5\n\n    # The provided Keltner Channel method treats each price change as\n    # the true range, using Wilder smoothing for the ATR.\n    ema = sum(prices[:period_ema]) / period_ema\n    smoothing_factor = 2 / (period_ema + 1)\n    for price in prices[period_ema:]:\n        ema = (price - ema) * smoothing_factor + ema\n\n    true_ranges = [\n        abs(current - previous)\n        for previous, current in zip(prices[:-1], prices[1:])\n    ]\n    atr = sum(true_ranges[:period_atr]) / period_atr\n    for true_range in true_ranges[period_atr:]:\n        atr = (atr * (period_atr - 1) + true_range) / period_atr\n\n    answer = round(ema + multiplier * atr, 2)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 6147,
+          "completion_tokens": 302,
+          "total_tokens": 6449
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-501",
+        "score": 2.1703548431396484,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-731",
+        "score": 1.7470468282699585,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1772",
+        "score": 1.718406319618225,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1862",
+        "score": 1.7074427604675293,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.596754550933838,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-962",
+        "score": 1.5919616222381592,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1865",
+        "score": 1.5723578929901123,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.5696630477905273,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-509",
+        "score": 1.565406322479248,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1225",
+        "score": 1.5594030618667603,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.5355277061462402,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.5338231325149536,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.530409336090088,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.5263471603393555,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2253",
+        "score": 1.5104544162750244,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2466",
+        "score": 1.510229229927063,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-964",
+        "score": 1.5048357248306274,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2077",
+        "score": 1.501663088798523,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1438",
+        "score": 1.5006129741668701,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.4964350461959839,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.4937915802001953,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.492364525794983,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2351",
+        "score": 1.4875879287719727,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-341",
+        "score": 1.4805673360824585,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2350",
+        "score": 1.4803138971328735,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1435",
+        "score": 1.4759068489074707,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-345",
+        "score": 1.475771188735962,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2470",
+        "score": 1.4748196601867676,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.4718166589736938,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-510",
+        "score": 1.4657834768295288,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-501",
+      "article-962",
+      "article-1225"
+    ],
+    "status": "ok",
+    "answer": 143.66,
+    "code": "def solution():\n    prices = [\n        120, 122, 121, 124, 125, 127, 126, 129, 130, 128,\n        131, 132, 134, 135, 137, 136, 138, 139, 140, 142,\n        141, 143, 144, 146, 145\n    ]\n    period_ema = 10\n    period_atr = 10\n    multiplier = 1.5\n\n    # The provided Keltner Channel method treats each price change as\n    # the true range, using Wilder smoothing for the ATR.\n    ema = sum(prices[:period_ema]) / period_ema\n    smoothing_factor = 2 / (period_ema + 1)\n    for price in prices[period_ema:]:\n        ema = (price - ema) * smoothing_factor + ema\n\n    true_ranges = [\n        abs(current - previous)\n        for previous, current in zip(prices[:-1], prices[1:])\n    ]\n    atr = sum(true_ranges[:period_atr]) / period_atr\n    for true_range in true_ranges[period_atr:]:\n        atr = (atr * (period_atr - 1) + true_range) / period_atr\n\n    answer = round(ema + multiplier * atr, 2)\n    return answer\n"
+  },
+  "digest": "40ea74b5f7015dcc7d42f6e843b2cb86656f5f6d5f61adc6194c05ae5fd1b9a9"
+}

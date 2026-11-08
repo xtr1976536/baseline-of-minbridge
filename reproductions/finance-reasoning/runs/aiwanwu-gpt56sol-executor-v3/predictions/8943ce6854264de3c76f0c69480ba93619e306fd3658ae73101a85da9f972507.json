@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2004",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annual after-tax real rate of return from a nominal investment return, income tax rate, and inflation rate, accounting for the effects of both taxes and inflation and returning the result as a percentage?",
+        "usage": {
+          "prompt_tokens": 5017,
+          "completion_tokens": 46,
+          "total_tokens": 5063
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 13269,
+          "completion_tokens": 145,
+          "total_tokens": 13414,
+          "completion_tokens_details": {
+            "reasoning_tokens": 127
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    nominal_return = 0.08\n    tax_rate = 0.20\n    inflation_rate = 0.025\n\n    # Do math calculation to get the answer\n    after_tax_return = nominal_return * (1 - tax_rate)\n    after_tax_real_rate = (1 + after_tax_return) / (1 + inflation_rate) - 1\n    answer = round(after_tax_real_rate * 100, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5055,
+          "completion_tokens": 188,
+          "total_tokens": 5243,
+          "completion_tokens_details": {
+            "reasoning_tokens": 68
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2290",
+        "score": 2.0503687858581543,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-417",
+        "score": 1.9034627676010132,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2960",
+        "score": 1.838926076889038,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-399",
+        "score": 1.8213883638381958,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2967",
+        "score": 1.8087787628173828,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-416",
+        "score": 1.8049790859222412,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1459",
+        "score": 1.8002021312713623,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1532",
+        "score": 1.778066873550415,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2969",
+        "score": 1.7494990825653076,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1455",
+        "score": 1.7386218309402466,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2959",
+        "score": 1.72044038772583,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1345",
+        "score": 1.7109686136245728,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1533",
+        "score": 1.7000312805175781,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1868",
+        "score": 1.6961604356765747,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-404",
+        "score": 1.6952803134918213,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1405",
+        "score": 1.6803083419799805,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1458",
+        "score": 1.675904631614685,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1583",
+        "score": 1.6743531227111816,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2966",
+        "score": 1.674286127090454,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1457",
+        "score": 1.6682542562484741,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-194",
+        "score": 1.65278959274292,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6485868692398071,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1948",
+        "score": 1.6386077404022217,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-126",
+        "score": 1.6304714679718018,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.6268575191497803,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-432",
+        "score": 1.6214925050735474,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-95",
+        "score": 1.620774269104004,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1442",
+        "score": 1.6197707653045654,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1456",
+        "score": 1.6180856227874756,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.6170716285705566,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2290"
+    ],
+    "status": "ok",
+    "answer": 3.8,
+    "code": "def solution():\n    # Define variables name and value\n    nominal_return = 0.08\n    tax_rate = 0.20\n    inflation_rate = 0.025\n\n    # Do math calculation to get the answer\n    after_tax_return = nominal_return * (1 - tax_rate)\n    after_tax_real_rate = (1 + after_tax_return) / (1 + inflation_rate) - 1\n    answer = round(after_tax_real_rate * 100, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "ddbcb460698ca5985567917806ee285655b426514cee6e6bf8ad5dc3b89da16a"
+}

@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2048",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fixed monthly payment for a fully amortizing mortgage or loan given the principal amount, annual interest rate, loan term in years, and monthly payment frequency?",
+        "usage": {
+          "prompt_tokens": 5022,
+          "completion_tokens": 38,
+          "total_tokens": 5060,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 17238,
+          "completion_tokens": 902,
+          "total_tokens": 18140,
+          "completion_tokens_details": {
+            "reasoning_tokens": 805
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    house_price = 300000\n    down_payment = 60000\n    annual_interest_rate = 0.045\n    loan_term_years = 30\n\n    # Do math calculation to get the answer\n    principal = house_price - down_payment\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n    answer = round(monthly_payment)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5856,
+          "completion_tokens": 195,
+          "total_tokens": 6051,
+          "completion_tokens_details": {
+            "reasoning_tokens": 46
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1069",
+        "score": 1.9700794219970703
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.9393763542175293
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.8897672891616821
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.8892840147018433
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.8833822011947632
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.8827731609344482
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.8816548585891724
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.8807425498962402
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.845495343208313
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.8415286540985107
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.8321865797042847
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.822439432144165
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.8185464143753052
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.813132405281067
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.803176999092102
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.8026149272918701
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.801780104637146
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.8014520406723022
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.8006641864776611
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.7855849266052246
+      },
+      {
+        "function_id": "article-1638",
+        "score": 1.7707209587097168
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.7653923034667969
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.7577372789382935
+      },
+      {
+        "function_id": "article-2311",
+        "score": 1.7566511631011963
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.7566336393356323
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.7560162544250488
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.7546303272247314
+      },
+      {
+        "function_id": "article-2309",
+        "score": 1.7523387670516968
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.7518081665039062
+      },
+      {
+        "function_id": "article-299",
+        "score": 1.7495028972625732
+      }
+    ],
+    "selected_ids": [
+      "article-1069",
+      "article-581",
+      "article-641"
+    ],
+    "status": "ok",
+    "answer": 1216,
+    "code": "def solution():\n    # Define variables name and value\n    house_price = 300000\n    down_payment = 60000\n    annual_interest_rate = 0.045\n    loan_term_years = 30\n\n    # Do math calculation to get the answer\n    principal = house_price - down_payment\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n    answer = round(monthly_payment)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "599e483cb685d1d19fdae354604e11bcbd615d06ce2a8a8d517b02725f505b59"
+}

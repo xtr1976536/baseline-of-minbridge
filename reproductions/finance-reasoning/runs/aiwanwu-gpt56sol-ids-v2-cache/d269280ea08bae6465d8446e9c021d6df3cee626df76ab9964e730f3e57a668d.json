@@ -1,0 +1,21 @@
+{
+  "identity": "d269280ea08bae6465d8446e9c021d6df3cee626df76ab9964e730f3e57a668d",
+  "response_digest": "acf9952549b63008df67f05259e8c44b282caec54a1de600fcdb7e42e61c62a5",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    closing_prices = [144, 145, 147, 146, 148, 150, 151, 150, 149, 148, 147, 150, 151, 153, 155]\n    period = 14\n\n    # Calculate the 14 daily price changes\n    price_changes = [\n        closing_prices[i] - closing_prices[i - 1]\n        for i in range(1, len(closing_prices))\n    ]\n\n    gains = [max(change, 0) for change in price_changes[:period]]\n    losses = [abs(min(change, 0)) for change in price_changes[:period]]\n\n    average_gain = sum(gains) / period\n    average_loss = sum(losses) / period\n\n    # Do math calculation to get the answer\n    relative_strength = average_gain / average_loss\n    rsi = 100 - (100 / (1 + relative_strength))\n\n    # Return the RSI as a percentage rounded to two decimal places\n    return round(rsi, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5978,
+      "completion_tokens": 483,
+      "total_tokens": 6461,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 246
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

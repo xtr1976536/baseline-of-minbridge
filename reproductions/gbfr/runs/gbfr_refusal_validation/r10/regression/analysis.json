@@ -1,0 +1,1153 @@
+{
+  "FinQA": {
+    "metrics": {
+      "n": 33,
+      "predictions": 33,
+      "missing": 0,
+      "errors": 0,
+      "correct": 24,
+      "unanswerable": 3,
+      "correct_abstentions": 3,
+      "total_accuracy": 72.72727272727273,
+      "abstention_accuracy": 100.0,
+      "complete": true,
+      "answerable_controls": 30,
+      "answerable_answered": 29,
+      "answerable_correct": 21,
+      "false_abstentions": 1,
+      "reference": {
+        "total_accuracy": 84.98,
+        "abstention_accuracy": 98.8
+      },
+      "refusal_checks_passed": true,
+      "main_thresholds_passed": false,
+      "fixed_two_decimal_diagnostic": {
+        "n": 33,
+        "predictions": 33,
+        "missing": 0,
+        "errors": 0,
+        "correct": 13,
+        "unanswerable": 3,
+        "correct_abstentions": 3,
+        "total_accuracy": 39.39393939393939,
+        "abstention_accuracy": 100.0,
+        "complete": true
+      }
+    },
+    "categories": {
+      "incorrect_numeric_answer": 8,
+      "correct_answer": 21,
+      "false_abstention": 1,
+      "correct_abstention": 3
+    },
+    "counterfactuals": [
+      {
+        "id": "FinQA:counterfactual:65",
+        "question": "As of December 31, 2007, for Chevron Corporation, how much unrecognized compensation cost related to restricted stock awards is expected to be recognized in 1 year, in millions?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "division",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Chevron Corporation",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "As of December 31, 2007"
+              },
+              "metric": "Unrecognized compensation cost related to restricted stock awards"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Chevron Corporation",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "year"
+                },
+                "temporal_scope": "As of December 31, 2007"
+              },
+              "metric": "Weighted average recognition period for unrecognized compensation cost related to restricted stock awards"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "The context states $37 million of unrecognized compensation cost related to restricted stock awards for Marathon, not Chevron Corporation; the entity constraint is not satisfied.",
+          "The 1.4-year weighted average recognition period is stated for Marathon Oil, not Chevron Corporation, so it does not match the requested entity scope."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:53",
+        "question": "By how much did MKTX's market capitalization increase from 2011 to March 2012?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "MKTX",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2011"
+              },
+              "metric": "Market Capitalization"
+            },
+            {
+              "constraints": {
+                "entity_scope": "MKTX",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "March 2012"
+              },
+              "metric": "Market Capitalization"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Market Capitalization for MKTX in 2011 is not directly stated in the context. The context provides quarterly high and low common stock prices, but no explicitly labeled market capitalization value.",
+          "Total Shares Outstanding for MKTX in 2011 is not directly stated. The context gives holders of record and per-share dividends, but not a share count.",
+          "Market Capitalization for MKTX in March 2012 is not directly stated; the context only gives share-price ranges and other stockholder information.",
+          "Enterprise Value for MKTX in 2011 is not directly stated in the context; only 2011 quarterly high and low common stock prices are provided.",
+          "The context lists multiple 2011 quarterly high and low prices, but does not identify one value as the 2011 Share Price. The specifically stated closing price is from 2013, outside the requested period.",
+          "Market Value of Debt for MKTX in 2011 is not directly stated in the context; the context only provides common stock price ranges, dividends, and related stockholder information.",
+          "Shares Outstanding for MKTX in 2011 is not directly stated in the context; it only provides stock price information, holder count, and dividends.",
+          "Stock Price for 2011 is not stated as a single value. The context provides multiple quarterly high and low prices, so the requested price is ambiguous.",
+          "Share Price for March 2012 is not directly stated as a single value. The context only provides a quarterly closing-price range for January 1, 2012 to March 31, 2012, with High of $37.79 and Low of $29.26; selecting either value would be ambiguous.",
+          "Price per Share for 2011 is not stated as a single value. The context gives quarterly High and Low stock prices, which are distinct qualified metrics and do not identify the requested value.",
+          "Total Shares Outstanding for MKTX in March 2012 is not directly stated in the context; the context only provides stock price ranges, holders of record, and dividend information.",
+          "Enterprise Value for MKTX in March 2012 is not directly stated in the context; stock-price information and dividends do not provide an explicitly labeled Enterprise Value.",
+          "Shares Outstanding for MKTX in March 2012 is not directly stated in the context. The context provides common stock closing-price ranges, dividends per share, and 33 holders of record as of February 20, 2013, but no labeled outstanding-share count for March 2012.",
+          "Market Value of Debt for MKTX in March 2012 is not directly stated in the context.",
+          "EBITDA/EV Multiple for MKTX in 2011 is not directly stated in the context. The context only provides common stock prices, holder information, and dividend amounts.",
+          "EV/2P Ratio for MKTX in 2011 is not directly stated in the context. The context only provides common stock prices, dividend information, and holder data.",
+          "A specific March 2012 Price per Share is not directly stated; the table only gives High ($37.79) and Low ($29.26) for the full January 1 to March 31, 2012 period.",
+          "Stock Price for March 2012 is not stated as a single value. The context only provides the January 1, 2012 to March 31, 2012 trading range, with separate High ($37.79) and Low ($29.26), which is ambiguous for the requested metric.",
+          "Earnings Yield for MKTX in 2011 is not directly stated in the context. The context provides common stock price ranges and dividend information, but no explicitly labeled Earnings Yield, E/P ratio, or EBIT Yield value.",
+          "Enterprise Multiple (EV/EBITDA) for MKTX in 2011 is not directly stated in the context. The context only provides common-stock closing price ranges, dividends, and holder information.",
+          "Enterprise Value Multiple for MKTX in 2011 is not directly stated in the context; only stock price ranges and dividend information are provided.",
+          "EV/Sales Ratio for 2011 is not directly stated in the context.",
+          "Enterprise Value to EBITDA Ratio for MKTX in 2011 is not stated in the context; it contains stock-price and dividend information only.",
+          "Market Capitalization for MKTX in 2011 is not directly stated in the context; only stock price information and holder counts are provided.",
+          "Present Value of Expected Economic Profit for MKTX in 2011 is not directly stated in the context; only stock price ranges, closing price, holders, and dividends are provided.",
+          "Enterprise-Value-to-Revenue Multiple (EV/R) for MKTX in 2011 is not directly stated in the context; only stock price ranges, dividends, and related market information are provided.",
+          "Cash Flow for MKTX in 2011 is not directly stated in the context. The context contains stock price ranges and dividend information only.",
+          "Equity Value for MKTX in 2011 is not directly stated in the context; only quarterly high and low stock prices, dividends, and holder counts are provided.",
+          "Debt Value for MKTX in 2011 is not directly stated in the context; it only provides stock-price ranges, dividends, and shareholder information.",
+          "Present Value of Forecast Period Cash Flows for MKTX in 2011 is not directly stated in the context. The context only provides common stock closing-price ranges, dividends, and holder information.",
+          "Cost of Capital for MKTX in 2011 is not directly stated in the context.",
+          "Growth Rate for MKTX in 2011 is not directly stated; the context provides stock price ranges and dividends, not a growth rate.",
+          "Initial Invested Capital for MKTX in 2011 is not directly stated in the context; it contains stock prices and dividend information only.",
+          "Free Cash Flow to Firm for MKTX in 2011 is not stated in the context; it only contains stock-price and dividend information.",
+          "Weighted Average Cost of Capital (WACC) for MKTX in 2011 is not directly stated in the context; the context only provides stock price ranges and dividend information.",
+          "Preferred Stock is not directly stated in the context. The context only discusses common stock and common-stock dividends for 2011.",
+          "Total Debt for MKTX in 2011 is not directly stated in the context; it contains stock price and dividend information only.",
+          "Minority Interest for MKTX in 2011 is not directly stated in the context; the context only provides stock price ranges, dividends, and related stockholder information.",
+          "Debt Market Value Added for MKTX in 2011 is not directly stated in the context. The context provides common stock prices, dividend information, and stockholder data, but no labeled Debt Market Value Added value.",
+          "Market Value Added for MKTX in 2011 is not directly stated in the context. The context provides common stock closing-price ranges and dividend information, but no explicitly labeled Market Value Added value.",
+          "Cash and Cash Equivalents for MKTX in 2011 is not stated in the context; only stock price and dividend information is provided.",
+          "Equity Market Value Proportion for MKTX in 2011 is not directly stated; the context only provides historical stock prices and dividend information.",
+          "Debt Market Value Proportion for MKTX in 2011 is not stated in the context; it only reports common stock price ranges and dividend information.",
+          "Market Trading Price of Debt is not stated; the context reports MKTX common stock trading prices, which are a different metric.",
+          "Total Capital Market Value for MKTX in 2011 is not directly stated; the context provides stock price and dividend information, not total market value of equity and debt.",
+          "EBITDA/EV Multiple for MKTX in March 2012 is not directly stated; context only provides stock-price ranges and dividend information.",
+          "Total Market Value of Long-term Bonds for MKTX in 2011 is not stated in the context; it only provides common stock price ranges and dividend information.",
+          "Earnings Yield for MKTX in March 2012 is not directly stated in the context. The context provides common stock high and low prices for January 1, 2012 to March 31, 2012, but no explicitly labeled Earnings Yield, E/P ratio, or EBIT yield value.",
+          "EV/2P Ratio for MKTX in March 2012 is not stated; the context only provides common-stock price information and dividends.",
+          "Enterprise Value Multiple (EV/EBIT) for MKTX in March 2012 is not directly stated in the context. The context only provides common stock closing price ranges and dividend information.",
+          "EV/Sales Ratio for March 2012 is not directly stated in the context; stock prices and dividend information are provided, but not this ratio.",
+          "Enterprise Multiple for MKTX in March 2012 is not stated in the context; it contains stock price information and dividends, not EV/EBITDA.",
+          "Enterprise Value to EBITDA Ratio for MKTX in March 2012 is not directly stated in the context; it contains stock-price information and dividend details only.",
+          "Present Value of Expected Economic Profit for MKTX in March 2012 is not directly stated in the context. The context provides common stock prices and dividends, which are different financial metrics.",
+          "Enterprise-Value-to-Revenue Multiple (EV/R) for March 2012 is not directly stated; the context provides stock prices and dividends only.",
+          "Equity Value for MKTX in March 2012 is not directly stated. The context only provides the common stock high and low closing prices for January 1, 2012 to March 31, 2012; no labeled equity value or market value of equity is printed.",
+          "Market Capitalization for MKTX in March 2012 is not directly stated; the context provides share-price ranges but no market capitalization value.",
+          "Cash Flow for March 2012 is not directly stated in the context; it contains stock price information and dividends, not cash flow evidence.",
+          "Cost of Capital for MKTX in March 2012 is not directly stated in the context. The context provides common stock high and low prices for January 1, 2012 to March 31, 2012, but no explicitly labeled Cost of Capital value.",
+          "Present Value of Forecast Period Cash Flows for MKTX in March 2012 is not directly stated in the context. The context provides common stock high and low prices and dividend information, but no DCF or present value of forecasted cash flows metric.",
+          "Growth Rate for MKTX in March 2012 is not directly stated in the context. The table provides high and low common stock prices, but calculating a growth rate from those values is prohibited.",
+          "Present Value of Economic Profit for MKTX in March 2012 is not directly stated in the context. The context provides common-stock price ranges and dividend information only.",
+          "Debt Value for MKTX in March 2012 is not directly stated in the context; only stock price ranges and dividend information are provided.",
+          "Perpetual Growth Rate for MKTX in March 2012 is not directly stated in the context. The table provides common stock high and low prices, and the surrounding text provides dividend information, but no labeled perpetual or constant growth rate.",
+          "Total Debt for MKTX in March 2012 is not stated in the context; it contains stock price ranges, dividends, and other unrelated information.",
+          "Free Cash Flow to Firm for MKTX in March 2012 is not directly stated in the context; it only contains stock price, dividend, and share price range information.",
+          "Preferred Stock for MKTX in March 2012 is not directly stated in the context; the document only provides common stock price and dividend information.",
+          "Weighted Average Cost of Capital for MKTX in March 2012 is not directly stated in the context; it only provides common-stock price and dividend information.",
+          "Cash and Cash Equivalents for MKTX in March 2012 is not directly stated in the context. The table only provides common stock high and low prices.",
+          "Debt Market Value Added for MKTX in March 2012 is not directly stated in the context; only stock price ranges, dividends, and related equity information are provided.",
+          "Equity Market Value Proportion for MKTX in March 2012 is not directly stated in the context. The table provides common stock high and low closing prices, but no explicitly labeled equity market value proportion or equity weight.",
+          "Minority Interest for March 2012 is not stated in the provided context; it contains stock price and dividend information.",
+          "Debt Capital Proportion for MKTX in March 2012 is not directly stated in the context; the table only provides common stock high and low prices.",
+          "Debt Market Value Proportion for MKTX in March 2012 is not stated in the context; it only provides common-stock price and dividend information.",
+          "Face Value of Debt for MKTX in March 2012 is not directly stated. The context provides common stock closing-price ranges, dividends, and holder information, but no labeled debt face value, nominal value, par value, or principal amount.",
+          "Market Value Added for MKTX in March 2012 is not directly stated in the context; it contains stock price ranges and dividend information only.",
+          "Total Market Value of Short-term Debt for MKTX in March 2012 is not stated in the context; it only gives common-stock price information and dividends.",
+          "Present Value of Perpetuity for MKTX in 2011 is not directly stated in the context.",
+          "Cash Flow to Debt Ratio for MKTX in 2011 is not stated in the context; it only provides stock price, dividend, and holder information.",
+          "Depreciation for MKTX in 2011 is not directly stated in the context.",
+          "Net Income for MKTX in 2011 is not directly stated in the context.",
+          "After-tax Operating Profit for MKTX in 2011 is not directly stated in the context; it only gives stock price ranges and dividend information.",
+          "Total Revenue for MKTX in 2011 is not directly stated in the context; it contains stock prices and dividend information.",
+          "Net Cash Flow from Operating Activities for MKTX in 2011 is not stated; the context contains stock prices and dividend information, not operating cash flow.",
+          "Total Expenses for 2011 is not directly stated in the context; it contains stock-price information and dividend amounts, not expense data.",
+          "Total Assets for MKTX in 2011 is not directly stated in the context; it contains stock price and dividend information only.",
+          "Debt/Equity Swap Ratio for MKTX in 2011 is not stated in the context.",
+          "Total Liabilities for MKTX in 2011 is not stated in the context; it contains stock price and dividend information, not liabilities.",
+          "Asset Value for MKTX in 2011 is not directly stated in the context; the context provides stock prices and dividend information, not asset value.",
+          "Liabilities for MKTX in 2011 are not stated in the context; the text contains stock price and dividend information.",
+          "Present Value of Forecast Period Equity Cash Flows is not directly stated in the context; it only reports stock prices and dividend amounts, which cannot be used to calculate the requested metric.",
+          "Present Value of Growth Period Cash Flows for 2011 is not directly stated in the context; it only provides stock price ranges and dividend information.",
+          "Minority Interest Value for MKTX in 2011 is not stated in the context; it only provides common stock prices and dividend information.",
+          "Bonds Payable for MKTX in 2011 is not directly stated in the context; the context only provides stock price ranges, dividends, and shareholder information.",
+          "Entity Value for MKTX in 2011 is not directly stated in the context; the context provides stock prices and dividend information only.",
+          "Short-term Borrowings for MKTX in 2011 are not stated in the context; it only provides stock price ranges and dividend information.",
+          "Discounted Cash Flows is not directly stated in the context; the context only provides stock price ranges, dividends, and related equity information.",
+          "Economic Profit for MKTX in 2011 is not directly stated in the context.",
+          "Incremental Resource Occupation is not directly stated in the context; the context only provides stock price ranges, dividends, and related equity information for MKTX in 2011 and 2012.",
+          "Economic Value Added for MKTX in 2011 is not directly stated in the context.",
+          "Shareholder Value Added (SVA) for MKTX in 2011 is not directly stated in the context; it contains stock-price ranges and dividend information only.",
+          "Present Value of After-Tax Terminal Asset Cash Flow is not directly stated in the context; only stock prices and dividend information are provided.",
+          "Residual Income for MKTX in 2011 is not directly stated; the context only provides stock price ranges, dividends, and holder information.",
+          "Financing Costs for MKTX in 2011 are not directly stated in the context. The context only provides common-stock closing price ranges, dividend amounts, and holder information.",
+          "Capital Occupancy Fee is not directly stated in the context. The context provides common stock closing price ranges, dividends, and stockholder information for MKTX, including 2011 data, but no value labeled Capital Occupancy Fee.",
+          "Total Funds Raised for MKTX in 2011 is not directly stated in the context.",
+          "Long-Term Debt to Capitalization Ratio for MKTX in 2011 is not directly stated in the context; it contains stock price and dividend information only.",
+          "Tangible Book Value Per Share for MKTX in 2011 is not directly stated in the context; it only provides stock prices and dividend information.",
+          "Tier 1 Common Capital Ratio for MKTX in 2011 is not stated in the context; the context contains common-stock price and dividend information.",
+          "Net Current Asset Value per Share for MKTX in 2011 is not directly stated in the context; it only provides stock price and dividend information.",
+          "Annual Preferred Dividend for 2011 is not directly stated; the context gives quarterly cash dividends per common share.",
+          "Par Value Per Share is not directly stated in the context; the stated stock prices and dividends are different metrics.",
+          "Debt to Equity Ratio for MKTX in 2011 is not directly stated in the context. The context only provides common stock prices, holder counts, and dividend information.",
+          "Asset Coverage Ratio for MKTX in 2011 is not stated in the context; it contains stock-price and dividend information, not asset coverage data.",
+          "Debt-to-Total-Assets Ratio for MKTX in 2011 is not directly stated in the context. The context provides common stock prices, dividends, and holder information, but no labelled debt-to-assets ratio.",
+          "Total Capital for MKTX in 2011 is not directly stated in the context. The context provides common stock closing-price ranges and dividend information only.",
+          "Debt Ratio for MKTX in 2011 is not stated in the context; it contains stock-price and dividend information only.",
+          "Total Debt-to-Total Assets Ratio for MKTX in 2011 is not directly stated in the context. The context contains stock prices, dividends, and holder information, but no labeled debt-to-assets ratio.",
+          "Debt-to-Assets Ratio for MKTX in 2011 is not stated in the context; it contains stock price and dividend information only.",
+          "Non-current Liabilities for MKTX in 2011 is not directly stated in the context. The context only provides common stock prices, dividend information, and related stockholder matters.",
+          "Invested Capital for MKTX in 2011 is not directly stated in the context; the context only provides stock prices, dividends, and shareholder information.",
+          "Debt/Equity Swap Ratio for MKTX in March 2012 is not directly stated in the context. The table provides common stock high and low prices, while the narrative provides dividends and other stockholder information; none is labeled as a debt-for-equity swap ratio or a clear alias.",
+          "Current Liabilities for MKTX in 2011 are not directly stated in the context; the context only provides stock price ranges, dividends, and related stockholder information.",
+          "Net Debt for MKTX in 2011 is not directly stated in the context; it contains stock-price and dividend information only.",
+          "Net Debt at Period End for MKTX in 2011 is not directly stated in the context; it contains stock-price and dividend information only.",
+          "Asset Value for MKTX in March 2012 is not directly stated. The context only provides common-stock closing price ranges and dividend information.",
+          "Minority Interest Value for MKTX in March 2012 is not directly stated in the context; the context provides stock prices and dividend information only.",
+          "Total Assets for MKTX in March 2012 is not directly stated in the context; it only contains stock-price and dividend information.",
+          "Total Liabilities for MKTX in March 2012 is not stated in the context; it contains stock-price and dividend information, not liabilities data.",
+          "Present Value of Terminal Value is not directly stated in the context. The March 2012 table only provides high and low common stock prices.",
+          "Present Value of Transition Period Cash Flows for MKTX in March 2012 is not directly stated in the context. The context only provides common stock price ranges, dividends, and holder information.",
+          "Net Income for MKTX in March 2012 is not stated in the context; it contains stock-price data and dividend information only.",
+          "Cash Flow to Debt Ratio for MKTX in March 2012 is not directly stated in the context; the context provides stock-price and dividend information only.",
+          "Depreciation for March 2012 is not directly stated in the provided context.",
+          "After-tax Operating Profit for MKTX in March 2012 is not directly stated in the context. The context provides stock price ranges and dividend information only.",
+          "Present Value of Perpetuity for MKTX in March 2012 is not directly stated in the context; the context only provides stock prices, dividends, and holder information.",
+          "Total Revenue for MKTX in March 2012 is not directly stated in the context; the context only provides stock price ranges, dividends, and related stockholder information.",
+          "Net Cash Flow from Investing Activities for MKTX in March 2012 is not directly stated in the provided context; only stock price and dividend information are provided.",
+          "Total Expenses for MKTX in March 2012 is not directly stated. The context provides stock-price information, dividends, and shareholder counts, not expense data.",
+          "Net Cash Flow from Financing Activities for March 2012 is not stated; the context contains stock price ranges and dividend information, not financing cash flow.",
+          "Net Cash Flow from Operating Activities for MKTX in March 2012 is not directly stated in the provided context; only stock price and dividend information is available.",
+          "Discounted Cash Flows for March 2012 are not directly stated in the context; it contains stock-price ranges and dividend information instead.",
+          "Economic Profit for MKTX in March 2012 is not directly stated in the context; it contains stock price, dividend, and related shareholder information only.",
+          "Economic Value Added for MKTX in March 2012 is not directly stated in the context.",
+          "Incremental Resource Occupation for MKTX in March 2012 is not stated in the context; it contains stock-price and dividend information only.",
+          "Residual Income for MKTX in March 2012 is not directly stated in the context; it contains stock prices and dividends, not residual income.",
+          "Annual Cost of Funds for MKTX in March 2012 is not directly stated in the context. The context provides common-stock price ranges and dividend amounts, but no explicitly labeled annual cost of funds or clear alias.",
+          "Present Value of After-Tax Terminal Asset Cash Flow is not directly stated in the context; the context only provides stock price ranges, closing price, and dividends.",
+          "Total Funds Raised for MKTX in March 2012 is not directly stated in the context; the context only provides common stock prices, holder counts, and dividend information.",
+          "Shareholder Value Added (SVA) for March 2012 is not directly stated in the context.",
+          "Long-term Borrowings for MKTX in March 2012 is not directly stated in the context. The context only provides common stock prices, dividends, and holder information.",
+          "Entity Value (EV) for MKTX in March 2012 is not directly stated in the context; only stock price range and dividend information are provided.",
+          "Annual Debt Service for MKTX in March 2012 is not directly stated in the context. The March 2012 table row only provides common stock high and low closing prices.",
+          "Short-term Borrowings for MKTX in March 2012 are not stated; the context reports stock prices, dividends, and record holders.",
+          "Asset Coverage Ratio for MKTX in March 2012 is not directly stated in the context; only stock price highs and lows are provided.",
+          "Debt Ratio for MKTX in March 2012 is not directly stated in the context. The context only provides common stock price ranges and dividend information.",
+          "Annual Sinking Fund Payment for MKTX in March 2012 is not directly stated; the context contains stock price ranges, dividends, and stockholder information.",
+          "Debt-to-Assets Ratio for MKTX in March 2012 is not directly stated in the context. The context provides common stock price ranges and dividend information, but no debt-to-assets ratio.",
+          "Debt to Total Capital Ratio for MKTX in March 2012 is not stated in the context; it contains stock-price and dividend information only.",
+          "Debt to Equity Ratio for MKTX in March 2012 is not directly stated in the context.",
+          "Debt/EBITDA Ratio for MKTX in March 2012 is not directly stated in the context. The context provides common stock price ranges and dividend information only.",
+          "Debt-to-EBITDA Ratio is not stated in the context; it contains stock price and dividend information only.",
+          "Debt-to-Capitalization Ratio for MKTX in March 2012 is not directly stated in the context; only stock price ranges and dividend information are provided.",
+          "Debt-to-Total-Assets Ratio for MKTX in March 2012 is not directly stated in the context.",
+          "Pre-tax Cost of Debt for MKTX in March 2012 is not directly stated in the context. The context provides common stock prices and dividends, not a borrowing rate or debt cost.",
+          "Total Capital for MKTX in March 2012 is not directly stated in the context. The context only provides common-stock closing price ranges, dividend information, and holder counts.",
+          "Gearing Ratio for MKTX in March 2012 is not directly stated in the context; it contains stock price and dividend information, not a debt-to-equity ratio.",
+          "Earnings Power Value (Equity) for MKTX in March 2012 is not directly stated in the context; only stock price ranges and dividend information are provided.",
+          "Total Debt-to-Total Assets Ratio for MKTX in March 2012 is not directly stated in the context. The context only provides common stock price ranges, dividend information, and holder information.",
+          "Total Debt-to-Capitalization for March 2012 is not stated in the context.",
+          "Final Equity for MKTX as of March 2012 is not directly stated in the context. The table contains common stock high and low closing prices, not shareholders' equity or total equity.",
+          "External Claims for MKTX in March 2012 are not stated in the context; it only provides stock prices, dividends, and holder information.",
+          "Current Liabilities for MKTX in March 2012 are not stated in the context; it contains stock price and dividend information.",
+          "Invested Capital for MKTX in March 2012 is not directly stated in the context. The table provides common stock high and low closing prices for January 1, 2012 to March 31, 2012, which are different financial metrics.",
+          "Net Debt for MKTX in March 2012 is not stated in the context; it contains stock price and dividend information instead.",
+          "Solvency Ratio for MKTX in 2011 is not directly stated in the context. The context provides common stock prices and dividends but no labeled solvency ratio or clear alias.",
+          "Net Current Asset Value per Share for MKTX in March 2012 is not stated in the context; it only provides stock price ranges and dividend information.",
+          "Net Debt at Period End for March 2012 is not directly stated; the context contains stock-price and dividend information, not net debt.",
+          "Adjusted Total Assets for MKTX in 2011 is not directly stated in the context; the provided table contains only common stock high and low closing prices.",
+          "Asset Turnover for MKTX in 2011 is not directly stated in the context. The context only provides common stock prices, dividends, and holder information.",
+          "Return on Assets for MKTX in 2011 is not directly stated in the context; it contains stock-price and dividend information only.",
+          "Asset Turnover Ratio for MKTX in 2011 is not directly stated in the context; the context only provides common stock price ranges and dividend information.",
+          "Return on Assets for MKTX in 2011 is not directly stated in the context; it contains stock-price and dividend information only.",
+          "Assets/Sales for MKTX in 2011 is not directly stated in the context. The context only provides common stock prices, dividend amounts, and holder information.",
+          "Asset-to-Sales Percentage for MKTX in 2011 is not directly stated; the context provides stock-price ranges and dividend information, not operating assets or sales.",
+          "Average Capital Employed for MKTX in 2011 is not directly stated in the context; only stock price ranges and dividend information are provided.",
+          "Asset-Based Value for MKTX in 2011 is not directly stated in the context; the context only provides 2011 stock price ranges and dividend information.",
+          "Book Value for MKTX in 2011 is not directly stated; the context only provides stock-price ranges, dividends, and related information.",
+          "Book Value Per Share for MKTX in 2011 is not directly stated in the context. The context provides quarterly common stock high and low prices and dividend amounts, but no book value per share, BVPS, NAVS, net asset value per share, or equivalent labeled value.",
+          "Capital Employed for MKTX in 2011 is not stated in the context; it contains stock price and dividend information only.",
+          "Debt Book Value Ratio for MKTX in 2011 is not directly stated in the context; it contains stock price and dividend information only.",
+          "Common Shareholders' Equity for MKTX in 2011 is not directly stated; the context provides common stock prices, dividends, and holders of record, not shareholders' equity.",
+          "Debt-to-Capital Ratio for MKTX in 2011 is not directly stated in the context. The context contains common stock prices and dividend information only.",
+          "Capital Structure for MKTX in 2011 is not directly stated in the context; it contains stock-price and dividend information, not the company's funding mix.",
+          "Equity Ratio for MKTX in 2011 is not directly stated in the context. The context only provides common stock closing price ranges, dividends, and holder information; no labeled equity ratio value is present.",
+          "Equity Multiplier for MKTX in 2011 is not directly stated in the context; only stock price ranges and dividend information are provided.",
+          "Ending Shareholders' Equity for MKTX in 2011 is not directly stated in the context; it only provides stock price ranges, dividends, and holder information.",
+          "Limited Partnership is not directly stated in the context for MKTX in 2011; the context only contains stock price, holder, dividend, and equity compensation information.",
+          "Indicative Net Asset Value for MKTX in 2011 is not stated. The context provides common stock price ranges, dividends, and a 2013 closing price, which are different metrics or periods.",
+          "Long-Term Debt to Total Assets Ratio for MKTX in 2011 is not directly stated in the context.",
+          "Mutual Fund is not stated in the context; it contains stock price and dividend information for MKTX, not mutual fund data.",
+          "Net Asset Value at Period End for MKTX in 2011 is not directly stated in the context. The context provides common-stock closing price ranges and dividend information, but no net asset value or owners' equity figure.",
+          "Net Assets for MKTX in 2011 are not directly stated in the context; it contains stock prices and dividends, not net assets.",
+          "Net Operating Assets for MKTX in 2011 is not directly stated in the context; it contains stock price and dividend information only.",
+          "Net Tangible Assets for MKTX in 2011 is not stated in the context; the available information concerns stock prices, holders, and dividends.",
+          "Non-operating Assets for MKTX in 2011 are not stated in the context; it contains stock price and dividend information, not asset data.",
+          "Net Worth for MKTX in 2011 is not directly stated; the context only reports stock prices and dividends.",
+          "Net Assets Employed is not directly stated in the context; the context only provides stock price, dividends, holders, and trading-range data for 2011 and 2012.",
+          "Portfolio Turnover Ratio for MKTX in 2011 is not directly stated in the context. The table contains quarterly common stock high and low prices, not portfolio turnover data.",
+          "Operating Long-term Assets for MKTX in 2011 are not directly stated in the context; only stock price ranges, dividends, and related stockholder information are provided.",
+          "Return on Capital Employed (ROCE) for 2011 is not directly stated in the context; the context only provides stock price ranges, dividends, and related stockholder information.",
+          "Overall Liquidity Ratio is not directly stated in the context; the context only provides stock price ranges, dividends, and holder information for MKTX in 2011 and 2012.",
+          "Tangible Net Worth for MKTX in 2011 is not directly stated in the context; the context only provides common stock prices, holders, and dividend information.",
+          "Shareholder Equity Ratio for MKTX in 2011 is not directly stated in the context; the context only provides stock price ranges and dividend information.",
+          "Private Equity Fund for MKTX in 2011 is not stated; context discusses common stock prices, holders, and dividends.",
+          "Target Company Net Assets for MKTX in 2011 are not directly stated in the context; it contains stock-price and dividend information, but no net assets or shareholders' equity value.",
+          "Total Asset Turnover for MKTX in 2011 is not directly stated in the context; it contains stock price and dividend information only.",
+          "Total Assets to Revenue Ratio for MKTX in 2011 is not directly stated in the context; only stock price ranges and dividend information are provided.",
+          "Tier 1 Leverage Ratio for MKTX in 2011 is not directly stated in the context; the context only provides common stock price ranges and dividend information.",
+          "Total Asset Turnover Ratio for MKTX in 2011 is not directly stated; the context provides stock-price and dividend information, not the ratio.",
+          "Total Shareholders' Equity for MKTX in 2011 is not directly stated in the context. The context only provides common-stock price ranges, dividends, and holder information.",
+          "Total Owner's Equity for MKTX in 2011 is not directly stated in the context.",
+          "Total Shareholders' Equity for MKTX in 2011 is not directly stated in the context. The context only provides common-stock closing prices, holder counts, and dividend information.",
+          "Total Liabilities for the Current Period for MKTX in 2011 is not stated; the context contains stock-price and dividend information only.",
+          "Year-end Net Asset Value for MKTX in 2011 is not directly stated in the context. The context provides common stock price ranges and dividend information, but no owners' equity, shareholders' equity, or year-end net asset value figure.",
+          "Non-current Assets for MKTX in 2011 are not directly stated in the context; the context only provides stock price ranges, dividends, and stockholder information.",
+          "Current Assets for MKTX in 2011 are not directly stated in the context; it only provides stock-price and dividend information.",
+          "Total Operating Assets for MKTX in 2011 is not directly stated in the context; the context only provides stock price ranges, dividends, and related stockholder information.",
+          "Asset Turnover for MKTX in March 2012 is not directly stated in the context; it contains stock price and dividend information, not asset turnover.",
+          "Asset-Based Value for MKTX in March 2012 is not stated; the context contains stock-price and dividend information, not net asset value or the required assets and liabilities.",
+          "Adjusted Total Assets for March 2012 is not directly stated in the context; it contains stock-price and dividend information instead.",
+          "Asset Turnover Ratio for MKTX in March 2012 is not directly stated in the context; it contains stock price and dividend information only.",
+          "Average Capital Employed for MKTX in March 2012 is not directly stated in the context; the context only provides common stock price ranges, dividends, and stockholder information.",
+          "Book Value for MKTX in March 2012 is not directly stated in the context. The table only provides the common stock high and low closing prices for January 1, 2012 to March 31, 2012.",
+          "Assets/Sales for MKTX in March 2012 is not directly stated; the context contains stock-price and dividend information, not total assets or sales revenue.",
+          "Asset-to-Sales Percentage for March 2012 is not stated; the context contains stock prices and dividend information, not operating assets or sales revenue.",
+          "Capital Employed for MKTX in March 2012 is not directly stated in the context; the context only provides stock price ranges and dividend information.",
+          "Book Value Per Share is not directly stated in the context; the listed values are common stock prices and dividends.",
+          "Debt Book Value Ratio for MKTX in March 2012 is not directly stated in the context; it contains stock price and dividend information, not the requested ratio.",
+          "Debt-to-Capital Ratio for MKTX in March 2012 is not directly stated in the context; the context contains stock-price and dividend information only.",
+          "Capital Structure is not directly stated in the context; the text only provides stock price, holders, and dividend information.",
+          "Common Shareholders' Equity for MKTX in March 2012 is not directly stated in the context; only common stock price ranges and dividend information are provided.",
+          "Equity Ratio for MKTX in March 2012 is not directly stated in the context; the context only provides stock prices, dividends, and related stockholder information.",
+          "Ending Shareholders' Equity for MKTX in March 2012 is not directly stated; the context provides common stock price ranges and dividend information, not shareholders' equity.",
+          "Indicative Net Asset Value for MKTX in March 2012 is not directly stated in the context; it contains common stock price ranges and dividend information instead.",
+          "Limited Partnership is not directly stated in the context; the March 2012 table reports stock price highs and lows, not limited partnership information.",
+          "Long-Term Debt to Total Assets Ratio for March 2012 is not stated in the context; it contains stock-price and dividend information only.",
+          "Mutual Fund for MKTX in March 2012 is not stated; the context provides common-stock price ranges, not mutual fund data.",
+          "Net Asset Value at Period End for MKTX in March 2012 is not directly stated. The context only provides common stock high and low closing prices for January 1, 2012 to March 31, 2012.",
+          "Net Operating Assets for MKTX in March 2012 is not directly stated in the context. The context only provides common stock price ranges, dividends, and stockholder information.",
+          "Net Tangible Assets for MKTX in March 2012 is not directly stated in the context; the table only provides common stock high and low prices.",
+          "Net Assets for MKTX in March 2012 are not directly stated; the context only provides stock-price information, dividends, and holders of record.",
+          "Equity Multiplier for MKTX in March 2012 is not directly stated in the context; it contains stock price information and dividends, not the requested metric.",
+          "Net Assets Employed for MKTX in March 2012 is not directly stated; the context contains stock-price information and dividend amounts only.",
+          "Net Worth for MKTX in March 2012 is not directly stated in the context; the context only provides common stock price ranges and dividend information.",
+          "Operating Long-term Assets for MKTX in March 2012 is not directly stated in the context. The table only provides common stock high and low prices for January 1, 2012 to March 31, 2012.",
+          "Portfolio Turnover Ratio for MKTX in March 2012 is not directly stated in the context; the context only provides stock price ranges and dividend information.",
+          "Non-operating Assets for MKTX in March 2012 are not directly stated in the context; it contains stock-price and dividend information, not non-operating asset data.",
+          "Private Equity Fund is not directly stated in the context. The March 2012 table contains MKTX common stock high and low closing prices, not a private equity fund value.",
+          "Overall Liquidity Ratio for MKTX in March 2012 is not stated in the context; the context contains stock-price and dividend information.",
+          "Return on Assets for MKTX in March 2012 is not stated; the context contains common-stock price information, not ROA.",
+          "Return on Assets for MKTX in March 2012 is not stated; the context contains stock prices and dividend information only.",
+          "Return on Capital Employed (ROCE) for March 2012 is not directly stated in the context; it contains stock price information and dividend details.",
+          "Shareholder Equity Ratio for MKTX in March 2012 is not stated in the provided context; it contains stock prices and dividend information, not equity or total assets.",
+          "Tangible Net Worth for MKTX in March 2012 is not directly stated in the context; it only reports stock price information and dividends.",
+          "Tier 1 Leverage Ratio for MKTX in March 2012 is not stated in the context.",
+          "Target Company Net Assets for MKTX in March 2012 are not directly stated; the context provides stock-price ranges and dividend information, not net assets.",
+          "Total Asset Turnover for MKTX in March 2012 is not directly stated in the context; it contains stock price information and dividends, not the requested ratio.",
+          "Total Liabilities for the Current Period is not directly stated in the context. The March 2012 table only provides the common stock closing price range (High and Low), not liabilities.",
+          "Total Assets to Revenue Ratio for MKTX in March 2012 is not directly stated in the context; it only provides stock-price and dividend information.",
+          "Total Asset Turnover Ratio for MKTX in March 2012 is not stated in the context; it contains stock price and dividend information only.",
+          "Total Shareholders' Equity for MKTX as of March 2012 is not directly stated in the context. The table provides common stock high and low closing prices, not shareholders' equity.",
+          "Total Operating Assets for MKTX in March 2012 is not directly stated in the provided context; it contains stock price and dividend information only.",
+          "Year-end Net Asset Value for MKTX in March 2012 is not directly stated in the provided context; it contains stock-price and dividend information, not year-end equity or net asset value.",
+          "Total Shareholders' Equity for MKTX in March 2012 is not stated in the context; it contains stock price and dividend information, not shareholders' equity.",
+          "Current Assets for MKTX in March 2012 is not directly stated in the context. The table only provides common stock high and low closing prices for January 1, 2012 to March 31, 2012.",
+          "Total Owner's Equity for MKTX in March 2012 is not directly stated. The context only provides common-stock closing-price ranges, dividends, and holder information.",
+          "Owners' Equity for MKTX in March 2012 is not directly stated in the context; it contains stock-price information and dividend amounts, not owners' equity.",
+          "Contributed Capital is not directly stated in the context; it contains stock prices and dividend information, not contributed capital."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:51",
+        "question": "What is the price return (excluding dividends) if $100,000 are invested in Applied Materials in 2008 and sold in 2011?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "change ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Applied Materials, Inc.",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": "price per share"
+                },
+                "temporal_scope": "10/26/2008"
+              },
+              "metric": "Applied Materials share price"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Applied Materials, Inc.",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": "price per share"
+                },
+                "temporal_scope": "10/30/2011"
+              },
+              "metric": "Applied Materials share price"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Applied Materials share price on 10/26/2008 is not directly stated. The printed value 100.00 is a cumulative total stockholder return index based on an assumed $100 investment with reinvested dividends, not a share price in currency per share.",
+          "Applied Materials share price on 10/30/2011 is not directly stated. The table gives cumulative total-return index values, not share prices; dividend-per-share amounts are a different metric and do not match the requested date."
+        ]
+      }
+    ],
+    "failed_cases": [
+      {
+        "id": "FinQA:JPM/2009/page_175.pdf-3",
+        "question": "in 2008 what was the ratio of the trading assets derivatives - receivables to the payables",
+        "status": "answered",
+        "value": 1.3027575107296137,
+        "gold": "1.72",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "JPMorgan Chase & Co.",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2008"
+              },
+              "metric": "Trading assets – derivative receivables"
+            },
+            {
+              "constraints": {
+                "entity_scope": "JPMorgan Chase & Co.",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2008"
+              },
+              "metric": "Trading liabilities – derivative payables"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "incorrect_numeric_answer"
+      },
+      {
+        "id": "FinQA:AMT/2008/page_107.pdf-2",
+        "question": "in 2006 what was percentage change in the employee separations liabilities",
+        "status": "answered",
+        "value": -65.04794161141058,
+        "gold": "-65.1%",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "change ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "American Tower Corporation and subsidiaries; employee separations",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 31, 2005"
+              },
+              "metric": "Employee separations liability"
+            },
+            {
+              "constraints": {
+                "entity_scope": "American Tower Corporation and subsidiaries; employee separations",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 31, 2006"
+              },
+              "metric": "Employee separations liability"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "incorrect_numeric_answer"
+      },
+      {
+        "id": "FinQA:BKNG/2016/page_33.pdf-1",
+        "question": "at the measurement point december 312016 what was the ratio of the the priceline group inc . . to the nasdaqcomposite index",
+        "status": "answered",
+        "value": 1.4475385610048952,
+        "gold": "1.44",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "The Priceline Group Inc.",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "index value"
+                },
+                "temporal_scope": "December 31, 2016"
+              },
+              "metric": "The Priceline Group Inc. measurement point"
+            },
+            {
+              "constraints": {
+                "entity_scope": "NASDAQ Composite Index",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "index value"
+                },
+                "temporal_scope": "December 31, 2016"
+              },
+              "metric": "NASDAQ Composite Index measurement point"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "incorrect_numeric_answer"
+      },
+      {
+        "id": "FinQA:ETR/2016/page_150.pdf-4",
+        "question": "what are the payments for the next three years on the entergy new orleans storm recovery bonds ( in millions? )",
+        "status": "answered",
+        "value": 32.8,
+        "gold": "44.4",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Entergy New Orleans storm recovery bonds",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2017"
+              },
+              "metric": "Principal payments"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Entergy New Orleans storm recovery bonds",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Principal payments"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Entergy New Orleans storm recovery bonds",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Principal payments"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "incorrect_numeric_answer"
+      },
+      {
+        "id": "FinQA:SNA/2013/page_34.pdf-2",
+        "question": "what is the return on investment if $ 100 are invested in s&p500 at the end of 2008 and sold at the end of 2010?",
+        "status": "answered",
+        "value": 0.4550999999999999,
+        "gold": "45.51",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "change ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "S&P 500",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "index value"
+                },
+                "temporal_scope": "December 31, 2008"
+              },
+              "metric": "S&P 500 cumulative total shareholder return"
+            },
+            {
+              "constraints": {
+                "entity_scope": "S&P 500",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "index value"
+                },
+                "temporal_scope": "December 31, 2010"
+              },
+              "metric": "S&P 500 cumulative total shareholder return"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "incorrect_numeric_answer"
+      },
+      {
+        "id": "FinQA:ANSS/2016/page_47.pdf-1",
+        "question": "as of december 31 , 2016 what was the percent of the company's significant contractual obligations for the global headquarters operating lease due in 2016",
+        "status": "answered",
+        "value": 10.29181802872471,
+        "gold": "29.4%",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Company; Global headquarters operating lease",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "Within 1 year as of December 31, 2016"
+              },
+              "metric": "Global headquarters operating lease payments due"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Company; total contractual obligations",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "Within 1 year as of December 31, 2016"
+              },
+              "metric": "Total contractual obligations payments due"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "incorrect_numeric_answer"
+      },
+      {
+        "id": "FinQA:MRK/2013/page_125.pdf-2",
+        "question": "considering the years 2011-2013 , what is the average value of settlements?",
+        "status": "answered",
+        "value": -309.6666666666667,
+        "gold": "309.67",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "average",
+          "precision": "unknown",
+          "reasoning_type": "StatisticalAggregation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2011"
+              },
+              "metric": "Settlements"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2012"
+              },
+              "metric": "Settlements"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2013"
+              },
+              "metric": "Settlements"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "incorrect_numeric_answer"
+      },
+      {
+        "id": "FinQA:SNA/2013/page_84.pdf-3",
+        "question": "what percentage of trade and other accounts receivable are considered as doubtful receivables in 2013",
+        "status": "answered",
+        "value": 2.72644098810613,
+        "gold": "2.9%",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Snap-on Incorporated",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2013 year end"
+              },
+              "metric": "Allowances for doubtful accounts"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Snap-on Incorporated",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2013 year end"
+              },
+              "metric": "Trade and other accounts receivable"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "incorrect_numeric_answer"
+      },
+      {
+        "id": "FinQA:STT/2014/page_54.pdf-2",
+        "question": "what is the roi of an investment in state street corporation from 20011 to 2012?",
+        "status": "abstained",
+        "value": null,
+        "gold": "-11.4%",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "change ratio",
+          "precision": null,
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "State Street Corporation",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "index value"
+                },
+                "temporal_scope": "2011"
+              },
+              "metric": "State Street Corporation performance index"
+            },
+            {
+              "constraints": {
+                "entity_scope": "State Street Corporation",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "index value"
+                },
+                "temporal_scope": "2012"
+              },
+              "metric": "State Street Corporation performance index"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "The 2011 value for State Street Corporation is shown, but the context does not label the table metric as a performance index, so the requested metric cannot be confirmed."
+        ],
+        "category": "false_abstention"
+      }
+    ],
+    "api_calls": {
+      "new": 408
+    },
+    "api_usage_available": true
+  },
+  "TAT-QA": {
+    "metrics": {
+      "n": 33,
+      "predictions": 33,
+      "missing": 0,
+      "errors": 0,
+      "correct": 32,
+      "unanswerable": 3,
+      "correct_abstentions": 3,
+      "total_accuracy": 96.96969696969697,
+      "abstention_accuracy": 100.0,
+      "complete": true,
+      "answerable_controls": 30,
+      "answerable_answered": 29,
+      "answerable_correct": 29,
+      "false_abstentions": 1,
+      "reference": {
+        "total_accuracy": 95.75,
+        "abstention_accuracy": 96.69
+      },
+      "refusal_checks_passed": true,
+      "main_thresholds_passed": true,
+      "fixed_two_decimal_diagnostic": {
+        "n": 33,
+        "predictions": 33,
+        "missing": 0,
+        "errors": 0,
+        "correct": 32,
+        "unanswerable": 3,
+        "correct_abstentions": 3,
+        "total_accuracy": 96.96969696969697,
+        "abstention_accuracy": 100.0,
+        "complete": true
+      }
+    },
+    "categories": {
+      "correct_answer": 29,
+      "false_abstention": 1,
+      "correct_abstention": 3
+    },
+    "counterfactuals": [
+      {
+        "id": "TAT-QA:counterfactual:148",
+        "question": "What was the inflation-adjusted (real) percentage change in Other financial income in 2018/2019 versus 2017/2018 using Eurozone CPI as the deflator?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "change ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "€",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2017/2018"
+              },
+              "metric": "Other financial income"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "€",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2018/2019"
+              },
+              "metric": "Other financial income"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Eurozone",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "index value"
+                },
+                "temporal_scope": "2017/2018"
+              },
+              "metric": "Eurozone CPI"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Eurozone",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "index value"
+                },
+                "temporal_scope": "2018/2019"
+              },
+              "metric": "Eurozone CPI"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Eurozone CPI for 2017/2018 is not stated; the context reports other financial income, expenses, and results.",
+          "Eurozone CPI for 2018/2019 is not stated in the context; the context reports other financial income, expenses, and results."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:107",
+        "question": "What was VMware's gross margin percentage in Q1 2020?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "VMware",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": "Q1 2020"
+              },
+              "metric": "Gross Margin"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Gross Margin is not directly stated in the context; only total revenue, net income, and per-share amounts are provided.",
+          "Gross Margin Return on Investment (GMROI) is not directly stated in the context; the quarterly financial data lists revenue, net income, and earnings per share only.",
+          "Cost of Sales is not directly stated in the context; it provides quarterly total revenue, net income, and per-share data only.",
+          "Gross Profit is not directly stated in the context; only total revenue and net income figures are provided.",
+          "Accounts Payable Turnover Period (Days Payable Outstanding) for Q1 2020 is not directly stated in the context; only quarterly revenue, net income, and earnings per share are provided.",
+          "Annual Average Accounts Payable is not directly stated in the context; only quarterly total revenue, net income, and earnings per share are provided.",
+          "Average Age of Inventory (Days) is not directly stated in the context; only quarterly revenue, net income, and earnings per share are provided.",
+          "Cash Paid for Goods and Services is not stated; the context only provides selected quarterly financial data, including revenue, net income, and earnings per share.",
+          "Cost of Revenue is not directly stated in the context; only Total revenue and net income metrics are provided for Q1 2020.",
+          "Days Inventory Outstanding for VMware in Q1 2020 is not stated; the context only provides quarterly revenue, net income, and earnings per share.",
+          "Days Payable Outstanding is not directly stated in the context; only quarterly total revenue, net income, and earnings per share are provided.",
+          "Days Sales of Inventory is not directly stated in the context for Q1 2020; only revenue, net income, and earnings-per-share values are provided.",
+          "Earnings Before Tax for VMware in Q1 2020 is not directly stated; the context provides total revenue and net income, which are not aliases for EBT.",
+          "Gross Business Income is not directly stated in the context; the table provides total revenue and net income metrics.",
+          "Gross Earnings is not directly stated for Q1 2020; the context provides total revenue and net income, not gross earnings.",
+          "Gross Profit Amount is not directly stated in the context; only Total revenue and net income metrics are provided.",
+          "Income from Operations for VMware in Q1 2020 is not directly stated in the context; only Total revenue and Net income are provided, so it cannot be calculated or inferred.",
+          "Inventory Turnover for VMware in Q1 2020 is not directly stated in the context. The table only provides total revenue, net income, and net income per weighted-average share.",
+          "Inventory Turnover Ratio for VMware in Q1 2020 is not stated; the context contains quarterly revenue, net income, and per-share data only.",
+          "Net Burn Rate for VMware in Q1 2020 is not directly stated in the context; only total revenue, net income, and earnings per share are provided.",
+          "Net Operating Income for Q1 2020 is not directly stated; the context reports total revenue and net income, which are different metrics.",
+          "Operating Profit for VMware in Q1 2020 is not directly stated; the context contains total revenue, net income, and per-share data.",
+          "Operating Ratio for VMware in Q1 2020 is not directly stated in the context; only total revenue, net income, and per-share amounts are provided.",
+          "Ordinary Income is not directly stated in the context; only Total revenue, Net income, and earnings-per-share figures are provided.",
+          "Prepaid Expenses Turnover Days is not directly stated in the context; only quarterly revenue, net income, and per-share data are provided.",
+          "Qualified Production Activities Income (QPAI) for VMware in Q1 2020 is not directly stated; the context provides total revenue and net income figures, which are different metrics.",
+          "Total Cost and Expense for Q1 2020 is not directly stated; the context provides total revenue, net income, and per-share data only.",
+          "Income Statement is not directly stated in the context; only individual Q1 2020 financial data items such as Total revenue, Net income, and per-share amounts are provided.",
+          "Operating Income for Q1 2020 is not directly stated in the context; only Total revenue, Net income, and earnings per share are provided.",
+          "Operating Loss for VMware in Q1 2020 is not directly stated in the context; only total revenue, net income, and earnings per share are provided.",
+          "Royalty Amount is not directly stated in the context; it contains quarterly revenue and net income data.",
+          "Net Sales is not directly stated in the context. The table reports Total revenue, which is a different metric and cannot be treated as an alias without further evidence.",
+          "Gross Profit Margin for Q1 2020 is not directly stated in the context; only total revenue, net income, and earnings per share are provided.",
+          "Ending Inventory is not directly stated in the context; the table provides quarterly revenue, net income, and earnings per share data only.",
+          "Average Cost per Unit is not directly stated in the context; the table only provides total revenue, net income, and earnings per share.",
+          "Purchases During the Period is not directly stated in the context; the table reports total revenue and income metrics.",
+          "Total Cost of Goods Sold is not directly stated in the context; only Total revenue and net income figures are provided.",
+          "Cost of Principal Operations is not directly stated in the context."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:126",
+        "question": "What was the change in the total wholesale TV subscribers?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "subscribers"
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Total wholesale TV subscribers"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "subscribers"
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Total wholesale TV subscribers"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Total wholesale TV subscribers for 2018 are not directly stated; the context only says wholesale subscribers were no longer reported and provides retail subscriber figures.",
+          "Total wholesale TV subscribers for 2019 are not stated; the context says wholesale subscribers are no longer reported in the TV subscriber base."
+        ]
+      }
+    ],
+    "failed_cases": [
+      {
+        "id": "TAT-QA:771fd661a72d5018797f3ea240571013_c22c73c764d0e502810da5391f4538ad",
+        "question": "What is the incentive compensation received by Messrs Richard, Robert and Bruce Leeds respectively?",
+        "status": "abstained",
+        "value": null,
+        "gold": "0",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "DirectRetrieval",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Richard Leeds",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Incentive compensation received"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Robert Leeds",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Incentive compensation received"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Bruce Leeds",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Incentive compensation received"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Incentive compensation received for Richard Leeds in 2019 is not directly stated. The context only says that Richard Leeds no longer participates in incentive compensation.",
+          "Incentive compensation received for Robert Leeds in 2019 is not directly stated; the context only says that he no longer participates in incentive compensation.",
+          "The context says Bruce Leeds no longer participates in incentive compensation, but does not state an amount of incentive compensation received."
+        ],
+        "category": "false_abstention"
+      }
+    ],
+    "api_calls": {
+      "new": 127,
+      "cache": 42
+    },
+    "api_usage_available": true
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2235",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates accrued interest on a fixed-rate bond using principal amount, annual coupon rate, start and end dates, and the actual/365 day-count convention, returning the result rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 5053,
+          "completion_tokens": 45,
+          "total_tokens": 5098
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14755,
+          "completion_tokens": 1131,
+          "total_tokens": 15886,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    from datetime import date\n\n    start_date = date(2023, 3, 1)\n    end_date = date(2023, 9, 1)\n    nominal_rate = 0.07\n    principal = 200000\n    days_in_year = 365\n\n    # Do math calculation to get the answer\n    days_accrued = (end_date - start_date).days\n    accrued_interest = principal * nominal_rate * days_accrued / days_in_year\n    answer = round(accrued_interest, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 6007,
+          "completion_tokens": 261,
+          "total_tokens": 6268,
+          "completion_tokens_details": {
+            "reasoning_tokens": 116
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1623",
+        "score": 2.0337295532226562
+      },
+      {
+        "function_id": "article-2246",
+        "score": 1.9584839344024658
+      },
+      {
+        "function_id": "article-1352",
+        "score": 1.90414297580719
+      },
+      {
+        "function_id": "article-2599",
+        "score": 1.8393362760543823
+      },
+      {
+        "function_id": "article-1725",
+        "score": 1.838068962097168
+      },
+      {
+        "function_id": "article-1344",
+        "score": 1.7553514242172241
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.7384107112884521
+      },
+      {
+        "function_id": "article-1343",
+        "score": 1.7161169052124023
+      },
+      {
+        "function_id": "article-431",
+        "score": 1.7087422609329224
+      },
+      {
+        "function_id": "article-138",
+        "score": 1.6909904479980469
+      },
+      {
+        "function_id": "article-1182",
+        "score": 1.6834869384765625
+      },
+      {
+        "function_id": "article-1342",
+        "score": 1.6718225479125977
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.6690360307693481
+      },
+      {
+        "function_id": "article-292",
+        "score": 1.6668946743011475
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6639032363891602
+      },
+      {
+        "function_id": "article-2405",
+        "score": 1.663508415222168
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.6594374179840088
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.6591689586639404
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.6576511859893799
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.654771327972412
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.6489953994750977
+      },
+      {
+        "function_id": "article-2743",
+        "score": 1.6415890455245972
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.6413851976394653
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.6409612894058228
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.6390845775604248
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.6384738683700562
+      },
+      {
+        "function_id": "article-810",
+        "score": 1.6371433734893799
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.6351830959320068
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.6297149658203125
+      },
+      {
+        "function_id": "article-291",
+        "score": 1.6264876127243042
+      }
+    ],
+    "selected_ids": [
+      "article-1623",
+      "article-2246",
+      "article-1352"
+    ],
+    "status": "ok",
+    "answer": 7057.53,
+    "code": "def solution():\n    # Define variables name and value\n    from datetime import date\n\n    start_date = date(2023, 3, 1)\n    end_date = date(2023, 9, 1)\n    nominal_rate = 0.07\n    principal = 200000\n    days_in_year = 365\n\n    # Do math calculation to get the answer\n    days_accrued = (end_date - start_date).days\n    accrued_interest = principal * nominal_rate * days_accrued / days_in_year\n    answer = round(accrued_interest, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "40cce5852f2d2ce8201f8f818455b0d76344dc9ffd4a0cfb1b0ee5e6cd9d702e"
+}

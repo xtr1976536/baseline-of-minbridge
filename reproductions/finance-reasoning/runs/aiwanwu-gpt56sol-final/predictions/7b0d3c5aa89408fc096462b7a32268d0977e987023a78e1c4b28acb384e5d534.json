@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2008",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the expiration profit or loss of a purchased call option on a bond yield as max(strike yield minus expiration yield, 0) times a standard multiplier, less the upfront premium, with results rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5023,
+          "completion_tokens": 232,
+          "total_tokens": 5255,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 179
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15510,
+          "completion_tokens": 613,
+          "total_tokens": 16123,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    option_type = \"call\"\n    strike_price = 0.03\n    premium = 0.015\n    yield_at_expiry = 0.035\n    multiplier = 100\n\n    # Calculate the option's intrinsic value and net profit/loss\n    intrinsic_value = max(\n        0,\n        (yield_at_expiry - strike_price) * multiplier\n    )\n    profit_loss = intrinsic_value - (premium * multiplier)\n\n    # Return the result rounded to the nearest integer\n    return round(profit_loss)\n```",
+        "usage": {
+          "prompt_tokens": 5118,
+          "completion_tokens": 190,
+          "total_tokens": 5308,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 62
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-449",
+        "score": 2.0875511169433594
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.9444003105163574
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.9260669946670532
+      },
+      {
+        "function_id": "article-2435",
+        "score": 1.876095175743103
+      },
+      {
+        "function_id": "article-218",
+        "score": 1.8681409358978271
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.857475757598877
+      },
+      {
+        "function_id": "article-217",
+        "score": 1.852294683456421
+      },
+      {
+        "function_id": "article-759",
+        "score": 1.84877610206604
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.848734736442566
+      },
+      {
+        "function_id": "article-315",
+        "score": 1.8437135219573975
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.834343433380127
+      },
+      {
+        "function_id": "article-706",
+        "score": 1.828131914138794
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.8263156414031982
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.8164093494415283
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.809739589691162
+      },
+      {
+        "function_id": "article-2054",
+        "score": 1.8092001676559448
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.8084971904754639
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.8046915531158447
+      },
+      {
+        "function_id": "article-778",
+        "score": 1.8018624782562256
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.7912496328353882
+      },
+      {
+        "function_id": "article-893",
+        "score": 1.7896792888641357
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.7889814376831055
+      },
+      {
+        "function_id": "article-777",
+        "score": 1.7847150564193726
+      },
+      {
+        "function_id": "article-760",
+        "score": 1.7805429697036743
+      },
+      {
+        "function_id": "article-2849",
+        "score": 1.7789770364761353
+      },
+      {
+        "function_id": "article-1601",
+        "score": 1.7784028053283691
+      },
+      {
+        "function_id": "article-2850",
+        "score": 1.77705717086792
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.776580810546875
+      },
+      {
+        "function_id": "article-703",
+        "score": 1.776099443435669
+      },
+      {
+        "function_id": "article-780",
+        "score": 1.7745758295059204
+      }
+    ],
+    "selected_ids": [
+      "article-449"
+    ],
+    "status": "ok",
+    "answer": -1,
+    "code": "def solution():\n    # Define variables\n    option_type = \"call\"\n    strike_price = 0.03\n    premium = 0.015\n    yield_at_expiry = 0.035\n    multiplier = 100\n\n    # Calculate the option's intrinsic value and net profit/loss\n    intrinsic_value = max(\n        0,\n        (yield_at_expiry - strike_price) * multiplier\n    )\n    profit_loss = intrinsic_value - (premium * multiplier)\n\n    # Return the result rounded to the nearest integer\n    return round(profit_loss)\n"
+  },
+  "digest": "5e9f0670b3aa7aec66d5ce7234d0304026bb2b8afeac73e63e0d054cbe44635b"
+}

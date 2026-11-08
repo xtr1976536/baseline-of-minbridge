@@ -1,0 +1,31 @@
+{
+  "request_hash": "907608569baf6e2b5de96b6134e7929554cd159932cb006931370cf158299748",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is Amazon's year-over-year change in revenue from FY2016 to FY2017 (in units of percents and round to one decimal place)? Calculate what was asked by utilizing the line items clearly shown in the statement of income.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"year_over_year_revenue_change_percent\",\n  \"facts\": [\n    {\n      \"name\": \"revenue_fy2016\",\n      \"aliases\": [\"Net sales\", \"Sales\", \"Revenue\"],\n      \"period\": \"FY2016\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"revenue_fy2017\",\n      \"aliases\": [\"Net sales\", \"Sales\", \"Revenue\"],\n      \"period\": \"FY2017\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Calculate ((FY2017 revenue - FY2016 revenue) / FY2016 revenue) * 100 and round to one decimal place using the reported income statement revenue line item.\"\n}",
+  "usage": {
+    "prompt_tokens": 4726,
+    "completion_tokens": 197,
+    "total_tokens": 4923,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 34
+    }
+  },
+  "response_id": "resp_0743960989a22d67016aedb16678ac87d0b35e7cf4af97b764",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,31 @@
+{
+  "request_hash": "1309aadd44cbf4b1ac60090c2b3113df7871fb40588f5a3d33c403b83c9acbb2",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is Amcor's year end FY2020 net AR (in USD millions)? Address the question by adopting the perspective of a financial analyst who can only use the details shown within the balance sheet.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"net_accounts_receivable\",\n  \"facts\": [\n    {\n      \"name\": \"net_accounts_receivable\",\n      \"aliases\": [\n        \"Accounts receivable, net\",\n        \"Trade accounts receivable, net\",\n        \"Trade receivables, net\",\n        \"Accounts and notes receivable, net\",\n        \"Accounts receivable less allowance for doubtful accounts\"\n      ],\n      \"period\": \"FY2020 year end\",\n      \"statement\": \"balance sheet\"\n    }\n  ],\n  \"reason\": \"The question asks for a direct balance-sheet lookup of Amcor's year-end FY2020 net accounts receivable, reported in USD millions.\"\n}",
+  "usage": {
+    "prompt_tokens": 4718,
+    "completion_tokens": 222,
+    "total_tokens": 4940,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 77
+    }
+  },
+  "response_id": "resp_0ff553af92996bc7016aedb1bff84087d0897a5494763d0527",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

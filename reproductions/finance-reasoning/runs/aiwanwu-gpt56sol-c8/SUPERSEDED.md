@@ -1,0 +1,1 @@
+This is the retained original execution report. The final report uniformly corrects six executor failures without new model calls. See ../aiwanwu-gpt56sol-final/ and ../../research/execution_replay_audit.json.

@@ -1,0 +1,31 @@
+{
+  "request_hash": "3f2ab805b844494187252110d0b516459a5322b6dc55c00b5eca4c1db8759899",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nAnswer the following question as if you are an equity research analyst and have lost internet connection so you do not have access to financial metric providers. According to the details clearly outlined within the P&L statement and the statement of cash flows, what is the FY2015 depreciation and amortization (D&A from cash flow statement) % margin for AMD?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"fy2015_depreciation_and_amortization_margin\",\n  \"facts\": [\n    {\n      \"name\": \"fy2015_depreciation_and_amortization\",\n      \"aliases\": [\n        \"Depreciation and amortization\",\n        \"Depreciation and amortization expense\",\n        \"Depreciation and amortization from cash flow statement\",\n        \"Depreciation and amortization\"\n      ],\n      \"period\": \"FY2015\",\n      \"statement\": \"cash flow\"\n    },\n    {\n      \"name\": \"fy2015_revenue\",\n      \"aliases\": [\n        \"Revenue\",\n        \"Net revenue\",\n        \"Total revenue\",\n        \"Sales\"\n      ],\n      \"period\": \"FY2015\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Calculate the FY2015 D&A margin as depreciation and amortization reported in the cash flow statement divided by FY2015 revenue from the P&L statement, multiplied by 100.\"\n}",
+  "usage": {
+    "prompt_tokens": 4748,
+    "completion_tokens": 273,
+    "total_tokens": 5021,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 57
+    }
+  },
+  "response_id": "resp_0342f8605a4d7931016aedb2712edc87d0b545006ac3f6fde9",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,18 @@
+{
+  "identity": "5a0134056f3a2206b83c13cbb8d6af96a2bd0dc109b2c55c8e118fdff362951f",
+  "response_digest": "98b2d9b43ef94b658084100bb4a185674d98bdf04a69a53cf76e3b8c15f2f67e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    assets_under_management = 350.0\n    prior_year_return = 0.20\n    current_year_value_before_fees = 320.0\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.30\n\n    # The prior year's ending value establishes the high water mark\n    high_water_mark = assets_under_management * (1 + prior_year_return)\n\n    # Management fee is calculated independently using the end-of-period value\n    management_fee = current_year_value_before_fees * management_fee_rate\n\n    # No incentive fee applies because the current value is below the high water mark\n    incentive_fee = 0.0\n    if current_year_value_before_fees > high_water_mark:\n        incentive_fee = (\n            current_year_value_before_fees - high_water_mark\n        ) * incentive_fee_rate\n\n    # Calculate the ending capital position\n    ending_capital_position = (\n        current_year_value_before_fees - management_fee - incentive_fee\n    )\n\n    # Return the answer in millions of dollars to one decimal place\n    return round(ending_capital_position, 1)\n```",
+    "usage": {
+      "prompt_tokens": 5536,
+      "completion_tokens": 343,
+      "total_tokens": 5879,
+      "completion_tokens_details": {
+        "reasoning_tokens": 91
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

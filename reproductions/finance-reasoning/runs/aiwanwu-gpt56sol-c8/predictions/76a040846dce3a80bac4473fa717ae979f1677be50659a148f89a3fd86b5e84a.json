@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2159",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates total tax liability for a given taxable income using progressive, tiered tax brackets with marginal rates, applying each rate only to the income within its bracket and returning the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5051,
+          "completion_tokens": 46,
+          "total_tokens": 5097,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16752,
+          "completion_tokens": 1489,
+          "total_tokens": 18241,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1392
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    taxable_income = 82000\n    tax_brackets = [\n        (0, 10000, 0.10),\n        (10000, 30000, 0.20),\n        (30000, 60000, 0.30),\n        (60000, float(\"inf\"), 0.40),\n    ]\n\n    # Do math calculation to get the answer\n    total_tax = 0.0\n\n    for lower_bound, upper_bound, tax_rate in tax_brackets:\n        taxable_amount = max(0, min(taxable_income, upper_bound) - lower_bound)\n        total_tax += taxable_amount * tax_rate\n\n    # Return answer rounded to the nearest dollar\n    answer = round(total_tax)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5700,
+          "completion_tokens": 249,
+          "total_tokens": 5949,
+          "completion_tokens_details": {
+            "reasoning_tokens": 71
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-846",
+        "score": 2.113553047180176
+      },
+      {
+        "function_id": "article-3076",
+        "score": 1.9831013679504395
+      },
+      {
+        "function_id": "article-1815",
+        "score": 1.945695400238037
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.9353212118148804
+      },
+      {
+        "function_id": "article-313",
+        "score": 1.9039485454559326
+      },
+      {
+        "function_id": "article-1852",
+        "score": 1.8635191917419434
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.8415669202804565
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.8342623710632324
+      },
+      {
+        "function_id": "article-2440",
+        "score": 1.8031036853790283
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.7740602493286133
+      },
+      {
+        "function_id": "article-2979",
+        "score": 1.7649552822113037
+      },
+      {
+        "function_id": "article-1813",
+        "score": 1.762754201889038
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.7558493614196777
+      },
+      {
+        "function_id": "article-1819",
+        "score": 1.7434388399124146
+      },
+      {
+        "function_id": "article-1842",
+        "score": 1.7217210531234741
+      },
+      {
+        "function_id": "article-1839",
+        "score": 1.712949514389038
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.7055044174194336
+      },
+      {
+        "function_id": "article-1821",
+        "score": 1.6929060220718384
+      },
+      {
+        "function_id": "article-1671",
+        "score": 1.6923377513885498
+      },
+      {
+        "function_id": "article-1816",
+        "score": 1.6876875162124634
+      },
+      {
+        "function_id": "article-384",
+        "score": 1.686516523361206
+      },
+      {
+        "function_id": "article-1850",
+        "score": 1.6726548671722412
+      },
+      {
+        "function_id": "article-1633",
+        "score": 1.6644446849822998
+      },
+      {
+        "function_id": "article-1835",
+        "score": 1.655930519104004
+      },
+      {
+        "function_id": "article-2303",
+        "score": 1.6483588218688965
+      },
+      {
+        "function_id": "article-1148",
+        "score": 1.645317792892456
+      },
+      {
+        "function_id": "article-2484",
+        "score": 1.6448278427124023
+      },
+      {
+        "function_id": "article-1667",
+        "score": 1.64040207862854
+      },
+      {
+        "function_id": "article-1841",
+        "score": 1.6380622386932373
+      },
+      {
+        "function_id": "article-528",
+        "score": 1.6346739530563354
+      }
+    ],
+    "selected_ids": [
+      "article-846",
+      "article-3076",
+      "article-1815"
+    ],
+    "status": "ok",
+    "answer": 22800,
+    "code": "def solution():\n    # Define variables name and value\n    taxable_income = 82000\n    tax_brackets = [\n        (0, 10000, 0.10),\n        (10000, 30000, 0.20),\n        (30000, 60000, 0.30),\n        (60000, float(\"inf\"), 0.40),\n    ]\n\n    # Do math calculation to get the answer\n    total_tax = 0.0\n\n    for lower_bound, upper_bound, tax_rate in tax_brackets:\n        taxable_amount = max(0, min(taxable_income, upper_bound) - lower_bound)\n        total_tax += taxable_amount * tax_rate\n\n    # Return answer rounded to the nearest dollar\n    answer = round(total_tax)\n    return answer\n"
+  },
+  "digest": "99568e2be8c57aa1e622298e9dd9d6271c827f18ff68e018ceef1cedc83be4f6"
+}

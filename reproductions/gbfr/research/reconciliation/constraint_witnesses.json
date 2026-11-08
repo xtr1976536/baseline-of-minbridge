@@ -1,0 +1,55 @@
+{
+  "scope": "Evidence that current released snapshots do not satisfy every stated single-scalar dataset requirement; no assumptions about private author assets",
+  "TAT-QA": {
+    "source_uid": "54f286bcdaeeba724ae2f2d2aecceddb_8af2135a1b3d73f3cb033d1458e429ca",
+    "record": {
+      "source_index": 1609,
+      "uid": "54f286bcdaeeba724ae2f2d2aecceddb_8af2135a1b3d73f3cb033d1458e429ca",
+      "question": "What are the financial covenants to be maintained as per the credit agreement?",
+      "answer": "(i) a minimum working capital ratio of 2.00 to 1.00 and (ii) an annual limit on capital expenditures of $100.0 million",
+      "reason": "retained_historical_label_not_supported_scalar"
+    },
+    "requirements_in_tension": [
+      "Preserve the recovered 1119 positive sample identities",
+      "Return one real-valued answer or abstention",
+      "Do not discard a requested financial quantity or invent an aggregation"
+    ],
+    "source_requested_quantities": [
+      "minimum working capital ratio 2.00:1.00",
+      "annual capital expenditure limit USD 100.0 million"
+    ],
+    "author_information_needed": "Actual inclusion, label representation and evaluation rule for this UID"
+  },
+  "CFBenchmark": {
+    "record": {
+      "file": "金融数值提取.json",
+      "index": 16,
+      "id": "16",
+      "question": "你是一个金融分析师。请根据提供的基金分类的数据，回答问题。",
+      "official_answer": "偏股混合型基金",
+      "gbfr_answer": "偏股混合型基金",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    "requirements_in_tension": [
+      "Preserve the released 140 positive records",
+      "Exclude non-numerical answers as described in E.2",
+      "Return a real-valued financial answer"
+    ],
+    "author_information_needed": "Final selected source IDs and answer/evaluation schema"
+  },
+  "graph_statistics": {
+    "assumption": "In/out degree averaged over all nodes of the same directed graph and same dependency edges",
+    "nodes": 7521,
+    "edges": 20152,
+    "required_average_in_degree": "2.679430926738465629570535833",
+    "required_average_out_degree": "2.679430926738465629570535833",
+    "required_at_one_decimal": "2.7",
+    "reported_average_in_degree": "1.6",
+    "reported_average_out_degree": "2.3",
+    "consistent_under_stated_assumption": false,
+    "identity": "sum(indegree)=sum(outdegree)=number_of_directed_edges",
+    "needed_clarification": "If different subgraphs/edge filters or averaging populations were used, those definitions are required"
+  },
+  "no_scoring_labels_or_graph_edges_changed_by_this_audit": true,
+  "clarification_packet_sha256": "aa6439ce0bfa06180f901b98f5ce38aca6c281ea339f136b0042364314713ac9"
+}

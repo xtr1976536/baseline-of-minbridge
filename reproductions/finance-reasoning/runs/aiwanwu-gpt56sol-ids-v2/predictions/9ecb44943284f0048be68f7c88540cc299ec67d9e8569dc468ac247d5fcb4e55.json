@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2177",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates gross profit for a LIFO inventory liquidation by determining COGS from multiple inventory layers consumed in last-in-first-out order, then subtracting COGS from sales revenue based on units sold and selling price, with results rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5107,
+          "completion_tokens": 57,
+          "total_tokens": 5164,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C06\"]}",
+        "usage": {
+          "prompt_tokens": 13404,
+          "completion_tokens": 178,
+          "total_tokens": 13582,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 154
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    units_sold = 350\n    selling_price = 40\n    inventory = [(200, 30), (150, 25), (100, 20)]  # newest batch first\n\n    revenue = units_sold * selling_price\n    remaining_units = units_sold\n    cogs = 0\n\n    for quantity, unit_cost in inventory:\n        units_from_batch = min(remaining_units, quantity)\n        cogs += units_from_batch * unit_cost\n        remaining_units -= units_from_batch\n        if remaining_units == 0:\n            break\n\n    gross_profit = revenue - cogs\n    return round(gross_profit)\n```",
+        "usage": {
+          "prompt_tokens": 5856,
+          "completion_tokens": 184,
+          "total_tokens": 6040,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 37
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2135",
+        "score": 2.3692901134490967,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2098",
+        "score": 2.204784631729126,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-562",
+        "score": 2.0887603759765625,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2099",
+        "score": 2.0803909301757812,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2958",
+        "score": 1.9542975425720215,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1367",
+        "score": 1.9338746070861816,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-3046",
+        "score": 1.9017597436904907,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1194",
+        "score": 1.8935229778289795,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1271",
+        "score": 1.8874268531799316,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1366",
+        "score": 1.8866145610809326,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.8754892349243164,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-200",
+        "score": 1.8732610940933228,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2396",
+        "score": 1.8565723896026611,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1169",
+        "score": 1.8376902341842651,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-3045",
+        "score": 1.8351837396621704,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1270",
+        "score": 1.8283741474151611,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1195",
+        "score": 1.827563762664795,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2266",
+        "score": 1.8237665891647339,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1058",
+        "score": 1.8183456659317017,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2136",
+        "score": 1.814269781112671,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1362",
+        "score": 1.7931581735610962,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1196",
+        "score": 1.7921674251556396,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1185",
+        "score": 1.7697018384933472,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1186",
+        "score": 1.7642589807510376,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1446",
+        "score": 1.7422093152999878,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.737872838973999,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1370",
+        "score": 1.7357944250106812,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2223",
+        "score": 1.7276527881622314,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-3033",
+        "score": 1.7188647985458374,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2148",
+        "score": 1.7148303985595703,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2135",
+      "article-2098",
+      "article-1367"
+    ],
+    "status": "ok",
+    "answer": 4250,
+    "code": "def solution():\n    units_sold = 350\n    selling_price = 40\n    inventory = [(200, 30), (150, 25), (100, 20)]  # newest batch first\n\n    revenue = units_sold * selling_price\n    remaining_units = units_sold\n    cogs = 0\n\n    for quantity, unit_cost in inventory:\n        units_from_batch = min(remaining_units, quantity)\n        cogs += units_from_batch * unit_cost\n        remaining_units -= units_from_batch\n        if remaining_units == 0:\n            break\n\n    gross_profit = revenue - cogs\n    return round(gross_profit)\n"
+  },
+  "digest": "7f0d27027242f034cb0e7e11d3a50b7799394ca917d9a54abcd37e5df699bd2d"
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "5d553ef721db0e19a6fabfd8aa3c228cfa60a2115bccd4c97f5cead9612095bb",
+  "response_digest": "e2c74a1a5e3b1fe98c0372adfeb499ab5fc31263ff1e157fed6e7231635db503",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 1000\n    coupon_rate = 0.05\n    market_yield = 0.07\n    years = 15\n\n    # Do math calculation to get the answer\n    annual_coupon = face_value * coupon_rate\n    present_value_coupons = sum(\n        annual_coupon / ((1 + market_yield) ** year)\n        for year in range(1, years + 1)\n    )\n    present_value_face_value = face_value / ((1 + market_yield) ** years)\n    bond_price = present_value_coupons + present_value_face_value\n    answer = round(bond_price, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5373,
+      "completion_tokens": 290,
+      "total_tokens": 5663,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 124
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2035",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annualized geometric mean return over multiple periods from a sequence of percentage returns, accounting for compounding across positive and negative returns and returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 4994,
+          "completion_tokens": 45,
+          "total_tokens": 5039,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C14\"]}",
+        "usage": {
+          "prompt_tokens": 13448,
+          "completion_tokens": 226,
+          "total_tokens": 13674,
+          "completion_tokens_details": {
+            "reasoning_tokens": 202
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    returns = [0.20, -0.30, 0.15]\n    periods = 3\n\n    # Do math calculation to get the answer\n    compounded_growth = 1\n    for r in returns:\n        compounded_growth *= (1 + r)\n\n    yearly_geometric_mean = (compounded_growth ** (1 / periods) - 1) * 100\n    answer = round(yearly_geometric_mean, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5483,
+          "completion_tokens": 167,
+          "total_tokens": 5650,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 44
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2330",
+        "score": 1.7620768547058105,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1130",
+        "score": 1.6549664735794067,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2331",
+        "score": 1.6419352293014526,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.6011371612548828,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-323",
+        "score": 1.5931907892227173,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.5929628610610962,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.580855131149292,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.5792560577392578,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2410",
+        "score": 1.5634212493896484,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2324",
+        "score": 1.5594063997268677,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.54984450340271,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1609",
+        "score": 1.5462769269943237,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2317",
+        "score": 1.5410950183868408,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.538372278213501,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-140",
+        "score": 1.5364677906036377,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1608",
+        "score": 1.5327413082122803,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2",
+        "score": 1.5323511362075806,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.531707525253296,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2319",
+        "score": 1.5264405012130737,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-7",
+        "score": 1.5193583965301514,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-3",
+        "score": 1.5183924436569214,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-477",
+        "score": 1.5183048248291016,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1617",
+        "score": 1.5156644582748413,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-325",
+        "score": 1.513625979423523,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2327",
+        "score": 1.5131232738494873,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.5114045143127441,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.5104976892471313,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.507619023323059,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1103",
+        "score": 1.5060088634490967,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.5059826374053955,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2330",
+      "article-1130",
+      "article-1063"
+    ],
+    "status": "ok",
+    "answer": -1.15,
+    "code": "def solution():\n    # Define variables name and value\n    returns = [0.20, -0.30, 0.15]\n    periods = 3\n\n    # Do math calculation to get the answer\n    compounded_growth = 1\n    for r in returns:\n        compounded_growth *= (1 + r)\n\n    yearly_geometric_mean = (compounded_growth ** (1 / periods) - 1) * 100\n    answer = round(yearly_geometric_mean, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "6321291051a1ad49a61b46db3d48f489573cad99acbd4bf3cf1b68bf7cf973c8"
+}

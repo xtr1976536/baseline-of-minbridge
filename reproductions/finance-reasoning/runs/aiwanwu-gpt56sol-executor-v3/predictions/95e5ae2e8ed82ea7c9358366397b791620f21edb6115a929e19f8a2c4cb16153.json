@@ -1,0 +1,212 @@
+{
+  "record": {
+    "question_id": "test-2094",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the On-Balance Volume (OBV) indicator from chronological daily closing prices and trading volumes, updating cumulative volume according to each day's price change and returning the final integer OBV for a short trading period?",
+        "usage": {
+          "prompt_tokens": 5070,
+          "completion_tokens": 48,
+          "total_tokens": 5118
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 15274,
+          "completion_tokens": 19,
+          "total_tokens": 15293
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    closing_prices = [150, 155, 153, 157, 160]\n    volumes = [1000, 1500, 1200, 1800, 2000]\n\n    obv = 0\n    for i in range(1, len(closing_prices)):\n        if closing_prices[i] > closing_prices[i - 1]:\n            obv += volumes[i]\n        elif closing_prices[i] < closing_prices[i - 1]:\n            obv -= volumes[i]\n\n    return obv\n```",
+        "usage": {
+          "prompt_tokens": 5440,
+          "completion_tokens": 168,
+          "total_tokens": 5608,
+          "completion_tokens_details": {
+            "reasoning_tokens": 46
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-3014",
+        "score": 2.3915483951568604,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-853",
+        "score": 2.2642836570739746,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.8853931427001953,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.8309905529022217,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.79021418094635,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.718977451324463,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.683318853378296,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.6701171398162842,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.6527719497680664,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.6483324766159058,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6406893730163574,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.6344550848007202,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.5998752117156982,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.5741252899169922,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2954",
+        "score": 1.5633177757263184,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.554246425628662,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2075",
+        "score": 1.552970290184021,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.5461161136627197,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.53777015209198,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.5367971658706665,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2107",
+        "score": 1.5367884635925293,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.5361491441726685,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.532762050628662,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-672",
+        "score": 1.5282827615737915,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-509",
+        "score": 1.522796392440796,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.5200459957122803,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-340",
+        "score": 1.5187000036239624,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.5141171216964722,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-762",
+        "score": 1.5115619897842407,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-851",
+        "score": 1.5076334476470947,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-3014",
+      "article-853"
+    ],
+    "status": "ok",
+    "answer": 4100,
+    "code": "def solution():\n    closing_prices = [150, 155, 153, 157, 160]\n    volumes = [1000, 1500, 1200, 1800, 2000]\n\n    obv = 0\n    for i in range(1, len(closing_prices)):\n        if closing_prices[i] > closing_prices[i - 1]:\n            obv += volumes[i]\n        elif closing_prices[i] < closing_prices[i - 1]:\n            obv -= volumes[i]\n\n    return obv\n"
+  },
+  "digest": "31a5c78cf9b81f1232950165c60fde78017bd066199abf5bfc902232f4010d2f"
+}

@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2211",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates a stock’s beta relative to a benchmark by estimating the covariance of paired historical periodic returns divided by the benchmark’s return variance, supporting short monthly return series and rounding the result to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5094,
+          "completion_tokens": 46,
+          "total_tokens": 5140,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS]",
+        "usage": {
+          "prompt_tokens": 14309,
+          "completion_tokens": 400,
+          "total_tokens": 14709,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 303
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_returns = [0.025, -0.012, 0.038, 0.017, 0.040]\n    market_returns = [0.018, -0.005, 0.021, 0.013, 0.035]\n\n    # Do math calculation to get the answer\n    stock_mean = sum(stock_returns) / len(stock_returns)\n    market_mean = sum(market_returns) / len(market_returns)\n\n    covariance = sum(\n        (stock - stock_mean) * (market - market_mean)\n        for stock, market in zip(stock_returns, market_returns)\n    )\n    market_variance = sum(\n        (market - market_mean) ** 2 for market in market_returns\n    )\n\n    beta = covariance / market_variance\n    answer = round(beta, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5672,
+          "completion_tokens": 378,
+          "total_tokens": 6050,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 175
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1594",
+        "score": 1.9484398365020752
+      },
+      {
+        "function_id": "article-1744",
+        "score": 1.9254109859466553
+      },
+      {
+        "function_id": "article-1035",
+        "score": 1.8033366203308105
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.7477567195892334
+      },
+      {
+        "function_id": "article-1296",
+        "score": 1.7440507411956787
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.7162630558013916
+      },
+      {
+        "function_id": "article-2051",
+        "score": 1.713869571685791
+      },
+      {
+        "function_id": "article-872",
+        "score": 1.7035555839538574
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.702803611755371
+      },
+      {
+        "function_id": "article-1593",
+        "score": 1.6793482303619385
+      },
+      {
+        "function_id": "article-1586",
+        "score": 1.6749242544174194
+      },
+      {
+        "function_id": "article-2301",
+        "score": 1.648337721824646
+      },
+      {
+        "function_id": "article-717",
+        "score": 1.6395847797393799
+      },
+      {
+        "function_id": "article-1043",
+        "score": 1.6318944692611694
+      },
+      {
+        "function_id": "article-2375",
+        "score": 1.621023178100586
+      },
+      {
+        "function_id": "article-2215",
+        "score": 1.5919146537780762
+      },
+      {
+        "function_id": "article-1055",
+        "score": 1.5880887508392334
+      },
+      {
+        "function_id": "article-1004",
+        "score": 1.5839931964874268
+      },
+      {
+        "function_id": "article-1585",
+        "score": 1.5813298225402832
+      },
+      {
+        "function_id": "article-1691",
+        "score": 1.5809142589569092
+      },
+      {
+        "function_id": "article-264",
+        "score": 1.5732821226119995
+      },
+      {
+        "function_id": "article-2816",
+        "score": 1.5697269439697266
+      },
+      {
+        "function_id": "article-1925",
+        "score": 1.5674381256103516
+      },
+      {
+        "function_id": "article-1294",
+        "score": 1.5658156871795654
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.5635931491851807
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.560950756072998
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.555715560913086
+      },
+      {
+        "function_id": "article-966",
+        "score": 1.5541480779647827
+      },
+      {
+        "function_id": "article-213",
+        "score": 1.5535677671432495
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.5527172088623047
+      }
+    ],
+    "selected_ids": [
+      "article-1594",
+      "article-1744",
+      "article-1296"
+    ],
+    "status": "ok",
+    "answer": 1.38,
+    "code": "def solution():\n    # Define variables name and value\n    stock_returns = [0.025, -0.012, 0.038, 0.017, 0.040]\n    market_returns = [0.018, -0.005, 0.021, 0.013, 0.035]\n\n    # Do math calculation to get the answer\n    stock_mean = sum(stock_returns) / len(stock_returns)\n    market_mean = sum(market_returns) / len(market_returns)\n\n    covariance = sum(\n        (stock - stock_mean) * (market - market_mean)\n        for stock, market in zip(stock_returns, market_returns)\n    )\n    market_variance = sum(\n        (market - market_mean) ** 2 for market in market_returns\n    )\n\n    beta = covariance / market_variance\n    answer = round(beta, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "feab5bdf23a21d6b471d86d63a5dcd8dbcc6cb53e5dc8c88e2382eced5bbc041"
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "e271891c8f622d2b8961027a869b5376234342f8384f03eed0c4b2201484d225",
+  "response_digest": "bc1aabf232c0d2eda2f9e51daf6e0b7164ff84228fecc9dee5310cb54e30a058",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [144, 145, 147, 146, 148, 150, 151, 150, 149, 148, 147, 150, 151, 153, 155]\n    period = 14\n\n    # Calculate the 14 price changes\n    price_changes = [\n        prices[i] - prices[i - 1]\n        for i in range(1, len(prices))\n    ]\n\n    gains = [max(change, 0) for change in price_changes[:period]]\n    losses = [abs(min(change, 0)) for change in price_changes[:period]]\n\n    avg_gain = sum(gains) / period\n    avg_loss = sum(losses) / period\n\n    # Do math calculation to get the answer\n    if avg_loss == 0:\n        rsi = 100.0\n    else:\n        relative_strength = avg_gain / avg_loss\n        rsi = 100 - (100 / (1 + relative_strength))\n\n    answer = round(rsi, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5964,
+      "completion_tokens": 472,
+      "total_tokens": 6436,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 224
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

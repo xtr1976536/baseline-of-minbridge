@@ -1,0 +1,189 @@
+{
+  "record": {
+    "question_id": "test-2130",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates a health insurance member’s total out-of-pocket cost for a medical bill by applying a deductible, coinsurance percentage to the remaining covered expenses, and an out-of-pocket maximum cap, returning the result as a rounded dollar amount?",
+        "usage": {
+          "prompt_tokens": 5026,
+          "completion_tokens": 52,
+          "total_tokens": 5078,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13838,
+          "completion_tokens": 313,
+          "total_tokens": 14151,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 216
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    total_billed_amount = 10000\n    deductible = 1200\n    coinsurance_rate = 0.20\n    out_of_pocket_max = 3000\n\n    # Do math calculation to get the answer\n    remaining_cost = max(total_billed_amount - deductible, 0)\n    coinsurance_cost = remaining_cost * coinsurance_rate\n    total_out_of_pocket = min(\n        deductible + coinsurance_cost,\n        out_of_pocket_max\n    )\n\n    # return answer\n    return round(total_out_of_pocket)\n```",
+        "usage": {
+          "prompt_tokens": 5519,
+          "completion_tokens": 170,
+          "total_tokens": 5689,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 35
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-3100",
+        "score": 2.0573487281799316
+      },
+      {
+        "function_id": "article-3099",
+        "score": 1.9542129039764404
+      },
+      {
+        "function_id": "article-114",
+        "score": 1.9140597581863403
+      },
+      {
+        "function_id": "article-3097",
+        "score": 1.7899324893951416
+      },
+      {
+        "function_id": "article-3098",
+        "score": 1.6010085344314575
+      },
+      {
+        "function_id": "article-2939",
+        "score": 1.554917812347412
+      },
+      {
+        "function_id": "article-2295",
+        "score": 1.54908287525177
+      },
+      {
+        "function_id": "article-2293",
+        "score": 1.539809226989746
+      },
+      {
+        "function_id": "article-907",
+        "score": 1.539354681968689
+      },
+      {
+        "function_id": "article-1098",
+        "score": 1.5290734767913818
+      },
+      {
+        "function_id": "article-2935",
+        "score": 1.5279279947280884
+      },
+      {
+        "function_id": "article-2294",
+        "score": 1.523870587348938
+      },
+      {
+        "function_id": "article-2508",
+        "score": 1.5165108442306519
+      },
+      {
+        "function_id": "article-2695",
+        "score": 1.5075409412384033
+      },
+      {
+        "function_id": "article-2937",
+        "score": 1.503997564315796
+      },
+      {
+        "function_id": "article-1192",
+        "score": 1.5009565353393555
+      },
+      {
+        "function_id": "article-2938",
+        "score": 1.4905520677566528
+      },
+      {
+        "function_id": "article-2028",
+        "score": 1.4880867004394531
+      },
+      {
+        "function_id": "article-2023",
+        "score": 1.4635337591171265
+      },
+      {
+        "function_id": "article-1993",
+        "score": 1.4542208909988403
+      },
+      {
+        "function_id": "article-2696",
+        "score": 1.4537690877914429
+      },
+      {
+        "function_id": "article-2830",
+        "score": 1.4525246620178223
+      },
+      {
+        "function_id": "article-2542",
+        "score": 1.4372780323028564
+      },
+      {
+        "function_id": "article-2936",
+        "score": 1.4369937181472778
+      },
+      {
+        "function_id": "article-435",
+        "score": 1.4352593421936035
+      },
+      {
+        "function_id": "article-2863",
+        "score": 1.432539701461792
+      },
+      {
+        "function_id": "article-1992",
+        "score": 1.4307836294174194
+      },
+      {
+        "function_id": "article-335",
+        "score": 1.4246165752410889
+      },
+      {
+        "function_id": "article-2201",
+        "score": 1.4225568771362305
+      },
+      {
+        "function_id": "article-2540",
+        "score": 1.4202947616577148
+      }
+    ],
+    "selected_ids": [
+      "article-3100",
+      "article-114"
+    ],
+    "status": "ok",
+    "answer": 2960,
+    "code": "def solution():\n    # Define variables name and value\n    total_billed_amount = 10000\n    deductible = 1200\n    coinsurance_rate = 0.20\n    out_of_pocket_max = 3000\n\n    # Do math calculation to get the answer\n    remaining_cost = max(total_billed_amount - deductible, 0)\n    coinsurance_cost = remaining_cost * coinsurance_rate\n    total_out_of_pocket = min(\n        deductible + coinsurance_cost,\n        out_of_pocket_max\n    )\n\n    # return answer\n    return round(total_out_of_pocket)\n"
+  },
+  "digest": "7252ac6dd7ff849e0c8212664c38c524bfdb3a385e6e51e9fa9342dd6081479c"
+}

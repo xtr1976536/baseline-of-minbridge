@@ -1,0 +1,21 @@
+{
+  "identity": "ae372db5137459d0799fe4063377e9e1e07eaa6211301e84e01c056209ee4d31",
+  "response_digest": "48017434f82eadea4233d48c35a9001190d55100985058c8dff91005c3b7f428",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    shares = 200_000\n    price_per_share_eur = 90\n    euro_notional = shares * price_per_share_eur\n\n    initial_spot_bid = 1.3935\n    initial_six_month_forward_points_bid = -0.0190\n    initial_forward_rate = initial_spot_bid + initial_six_month_forward_points_bid\n\n    three_month_spot_ask = 1.4210\n    three_month_three_month_forward_points_ask = -0.0210\n    current_forward_rate = three_month_spot_ask + three_month_three_month_forward_points_ask\n\n    usd_libor = 0.01266\n    remaining_time = 3 / 12\n\n    # Do math calculation to get the answer\n    usd_value_at_maturity = euro_notional * (initial_forward_rate - current_forward_rate)\n    mark_to_market_value = usd_value_at_maturity / (1 + usd_libor * remaining_time)\n\n    # return answer\n    return round(mark_to_market_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5784,
+      "completion_tokens": 996,
+      "total_tokens": 6780,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 759
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

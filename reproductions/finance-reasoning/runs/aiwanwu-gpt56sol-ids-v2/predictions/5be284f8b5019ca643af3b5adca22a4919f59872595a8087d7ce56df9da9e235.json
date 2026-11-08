@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2110",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the cumulative gain or loss to the fixed-rate payer in a plain-vanilla interest rate swap by netting annual fixed-leg payments against floating-leg payments based on a series of reference rates plus a fixed spread, using a constant notional principal over a specified multi-year term, with the result returned in currency units?",
+        "usage": {
+          "prompt_tokens": 5130,
+          "completion_tokens": 70,
+          "total_tokens": 5200,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 14749,
+          "completion_tokens": 169,
+          "total_tokens": 14918,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 145
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    sofr_changes = [0.014, 0.016, 0.018, 0.020, 0.022]\n    notional_principal = 1_000_000\n    fixed_rate = 0.025\n    basis_points = 0.0035\n    years = 5\n\n    # Do math calculation to get the answer\n    total_gain_or_loss = 0\n\n    for year in range(years):\n        variable_rate = sofr_changes[year] + basis_points\n        annual_gain_or_loss = notional_principal * (variable_rate - fixed_rate)\n        total_gain_or_loss += annual_gain_or_loss\n\n    # return answer\n    return round(total_gain_or_loss)\n```",
+        "usage": {
+          "prompt_tokens": 5942,
+          "completion_tokens": 295,
+          "total_tokens": 6237,
+          "prompt_tokens_details": {
+            "cached_tokens": 4032
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 125
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2677",
+        "score": 1.9592671394348145,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2679",
+        "score": 1.855912208557129,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-419",
+        "score": 1.8398542404174805,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2678",
+        "score": 1.8357431888580322,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1424",
+        "score": 1.7793160676956177,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-237",
+        "score": 1.744856595993042,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.7128788232803345,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2525",
+        "score": 1.665839672088623,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.6543785333633423,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-432",
+        "score": 1.6359148025512695,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-586",
+        "score": 1.6355680227279663,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-293",
+        "score": 1.6326866149902344,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.626877784729004,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2202",
+        "score": 1.626787543296814,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-298",
+        "score": 1.622870922088623,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2965",
+        "score": 1.622266411781311,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-291",
+        "score": 1.6204674243927002,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1921",
+        "score": 1.6197564601898193,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.6072531938552856,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2941",
+        "score": 1.60706627368927,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2315",
+        "score": 1.6069283485412598,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3127",
+        "score": 1.6058450937271118,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1477",
+        "score": 1.6053546667099,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-296",
+        "score": 1.6043000221252441,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1478",
+        "score": 1.6035934686660767,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1425",
+        "score": 1.6034553050994873,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.6006839275360107,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-292",
+        "score": 1.5963869094848633,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-585",
+        "score": 1.595304250717163,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.5949373245239258,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2677",
+      "article-2679",
+      "article-2678"
+    ],
+    "status": "ok",
+    "answer": -17500,
+    "code": "def solution():\n    # Define variables name and value\n    sofr_changes = [0.014, 0.016, 0.018, 0.020, 0.022]\n    notional_principal = 1_000_000\n    fixed_rate = 0.025\n    basis_points = 0.0035\n    years = 5\n\n    # Do math calculation to get the answer\n    total_gain_or_loss = 0\n\n    for year in range(years):\n        variable_rate = sofr_changes[year] + basis_points\n        annual_gain_or_loss = notional_principal * (variable_rate - fixed_rate)\n        total_gain_or_loss += annual_gain_or_loss\n\n    # return answer\n    return round(total_gain_or_loss)\n"
+  },
+  "digest": "92e08c9c70463c4a0e7148d793a436255ee471be2f6b79f9baaca4c1d000eb54"
+}

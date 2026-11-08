@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2102",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates total executed quantity in a stock exchange order book by matching buy and sell orders using price-priority and FIFO time-priority rules, subject to compatible bid-ask prices and partial fills, and returns the aggregate number of shares traded?",
+        "usage": {
+          "prompt_tokens": 5076,
+          "completion_tokens": 53,
+          "total_tokens": 5129,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14620,
+          "completion_tokens": 16,
+          "total_tokens": 14636,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define buy and sell orders in price-time priority order\n    buy_orders = [\n        {\"quantity\": 100, \"price\": 50},\n        {\"quantity\": 150, \"price\": 48},\n    ]\n    sell_orders = [\n        {\"quantity\": 50, \"price\": 48},\n        {\"quantity\": 200, \"price\": 50},\n    ]\n\n    # Match orders using FIFO and price conditions\n    buy_index = 0\n    sell_index = 0\n    total_executed_quantity = 0\n\n    while buy_index < len(buy_orders) and sell_index < len(sell_orders):\n        buy_order = buy_orders[buy_index]\n        sell_order = sell_orders[sell_index]\n\n        if buy_order[\"price\"] < sell_order[\"price\"]:\n            break\n\n        executed_quantity = min(\n            buy_order[\"quantity\"],\n            sell_order[\"quantity\"]\n        )\n        total_executed_quantity += executed_quantity\n\n        buy_order[\"quantity\"] -= executed_quantity\n        sell_order[\"quantity\"] -= executed_quantity\n\n        if buy_order[\"quantity\"] == 0:\n            buy_index += 1\n        if sell_order[\"quantity\"] == 0:\n            sell_index += 1\n\n    # Return the total number of matched shares\n    return round(total_executed_quantity)\n```",
+        "usage": {
+          "prompt_tokens": 5170,
+          "completion_tokens": 417,
+          "total_tokens": 5587,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 131
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-891",
+        "score": 1.9268418550491333,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.679535984992981,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.6672112941741943,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-723",
+        "score": 1.633036732673645,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.6256065368652344,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-892",
+        "score": 1.6212878227233887,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-796",
+        "score": 1.6194689273834229,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2820",
+        "score": 1.6163241863250732,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.6101272106170654,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.608588695526123,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.6019700765609741,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.5950384140014648,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1060",
+        "score": 1.5917096138000488,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2495",
+        "score": 1.590450406074524,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.5880879163742065,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2735",
+        "score": 1.5876140594482422,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2098",
+        "score": 1.5870001316070557,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1160",
+        "score": 1.5768697261810303,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-468",
+        "score": 1.5747504234313965,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-491",
+        "score": 1.5717017650604248,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1986",
+        "score": 1.562410831451416,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1766",
+        "score": 1.5619995594024658,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-750",
+        "score": 1.559901475906372,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2050",
+        "score": 1.5559182167053223,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-639",
+        "score": 1.5547552108764648,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-162",
+        "score": 1.5476350784301758,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-755",
+        "score": 1.5467318296432495,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-466",
+        "score": 1.5450382232666016,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2652",
+        "score": 1.5442616939544678,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1805",
+        "score": 1.5417290925979614,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-891"
+    ],
+    "status": "ok",
+    "answer": 100,
+    "code": "def solution():\n    # Define buy and sell orders in price-time priority order\n    buy_orders = [\n        {\"quantity\": 100, \"price\": 50},\n        {\"quantity\": 150, \"price\": 48},\n    ]\n    sell_orders = [\n        {\"quantity\": 50, \"price\": 48},\n        {\"quantity\": 200, \"price\": 50},\n    ]\n\n    # Match orders using FIFO and price conditions\n    buy_index = 0\n    sell_index = 0\n    total_executed_quantity = 0\n\n    while buy_index < len(buy_orders) and sell_index < len(sell_orders):\n        buy_order = buy_orders[buy_index]\n        sell_order = sell_orders[sell_index]\n\n        if buy_order[\"price\"] < sell_order[\"price\"]:\n            break\n\n        executed_quantity = min(\n            buy_order[\"quantity\"],\n            sell_order[\"quantity\"]\n        )\n        total_executed_quantity += executed_quantity\n\n        buy_order[\"quantity\"] -= executed_quantity\n        sell_order[\"quantity\"] -= executed_quantity\n\n        if buy_order[\"quantity\"] == 0:\n            buy_index += 1\n        if sell_order[\"quantity\"] == 0:\n            sell_index += 1\n\n    # Return the total number of matched shares\n    return round(total_executed_quantity)\n"
+  },
+  "digest": "04e76f14c8dd476e7e5f4af350ec0220a406417414733ca2f3f7c65ca12218f2"
+}

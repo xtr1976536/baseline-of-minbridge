@@ -1,0 +1,71 @@
+{
+  "scope": "verifin-main-user-backbone",
+  "datasets": [
+    "FinanceBench"
+  ],
+  "data_policy": "paper-method-source-reconstruction-v1",
+  "output_dir": "runs/financebench-full-post35-v1",
+  "concurrency": {
+    "samples": 4,
+    "api_requests": 4
+  },
+  "retrieval": {
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "embedding_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "reranker_model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "reranker_revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "lexical_weight": 0.2,
+    "top_k": 16,
+    "first_stage_k": 30,
+    "chunk_words": 200,
+    "chunk_overlap_words": 40,
+    "table_aware": true,
+    "table_row_lexical": true,
+    "expand_registry_roles": true,
+    "preserve_operand_rows": true,
+    "html_table_rows": true,
+    "primary_statements": true
+  },
+  "models": {
+    "GPT-5.6-Sol": {
+      "provider": "openai-compatible",
+      "model": "gpt-5.6-sol",
+      "base_url": "https://aiwanwu.cc/v1",
+      "base_url_env": "VF_AIWANWU_BASE_URL",
+      "api_key_env": "VF_AIWANWU_API_KEY",
+      "token_parameter": "max_completion_tokens",
+      "max_tokens": 8192,
+      "temperature": null,
+      "parameters": {
+        "reasoning_effort": "low"
+      },
+      "timeout_seconds": 240,
+      "retries": 3
+    }
+  },
+  "backbone_override": {
+    "source": "explicit_user_request",
+    "requested_model": "gpt-5.6-sol",
+    "original_paper_model_equivalence": false,
+    "provider": "aiwanwu.cc"
+  },
+  "retrieval_implementation_note": "CPU-compatible checkpoint choice made before formal inference; paper does not name exact embedding/cross-encoder checkpoints. Hybrid scoring and reranking unchanged.",
+  "run_mode": "main_full",
+  "comparison_reference_run": "runs/financebench-revised-v1",
+  "revision_basis": "HTML table cell preservation, primary statement scope, qualified taxonomy mappings, explicit ratio/percent representation and question-scoped addbacks; initial precision-preserving generation",
+  "source_rows": true,
+  "generation": {
+    "preserve_precision": true
+  },
+  "evaluation": {
+    "secondary_financebench_rounding": true,
+    "primary_scoring_policy": "financebench_currency_padding_v1",
+    "secondary_scoring_policy": "financebench_currency_padding_v1",
+    "secondary_is_local_operationalization_not_official_numeric_threshold": true,
+    "selection_basis": "stated default to recommended clarification option after no reply; both scoring rules frozen before this 35-question run; legacy scores retained"
+  },
+  "full_inputs_lock": "research/financebench_full_post35_inputs.lock.json",
+  "full_inputs_lock_sha256": "cd43a069ffcc5497656f3e11561933d9dd1898cfb7b2ea0bc4fab30cfc5dd177",
+  "full_run_authorization": "explicit user instruction: start the full FinanceBench run",
+  "continuation_from": "runs/validation35-v1"
+}

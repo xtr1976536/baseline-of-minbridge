@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2131",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the variance of a two-asset portfolio using asset weights, individual variances, and pairwise covariance, including the weighted covariance term, and returns the result as a decimal rounded to four decimal places?",
+        "usage": {
+          "prompt_tokens": 5045,
+          "completion_tokens": 47,
+          "total_tokens": 5092,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15437,
+          "completion_tokens": 519,
+          "total_tokens": 15956,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 422
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    weight_a = 0.40\n    weight_b = 0.60\n    variance_a = 0.04\n    variance_b = 0.09\n    covariance_ab = 0.02\n\n    # Do math calculation to get the answer\n    portfolio_variance = (\n        (weight_a ** 2 * variance_a)\n        + (weight_b ** 2 * variance_b)\n        + (2 * weight_a * weight_b * covariance_ab)\n    )\n    answer = round(portfolio_variance, 4)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5755,
+          "completion_tokens": 192,
+          "total_tokens": 5947,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 50
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1294",
+        "score": 1.9841424226760864
+      },
+      {
+        "function_id": "article-1013",
+        "score": 1.865624189376831
+      },
+      {
+        "function_id": "article-1590",
+        "score": 1.7426278591156006
+      },
+      {
+        "function_id": "article-264",
+        "score": 1.707383155822754
+      },
+      {
+        "function_id": "article-213",
+        "score": 1.6888189315795898
+      },
+      {
+        "function_id": "article-922",
+        "score": 1.6731832027435303
+      },
+      {
+        "function_id": "article-2783",
+        "score": 1.6420655250549316
+      },
+      {
+        "function_id": "article-1292",
+        "score": 1.6369574069976807
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.6324487924575806
+      },
+      {
+        "function_id": "article-1289",
+        "score": 1.6254948377609253
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.6126515865325928
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.591386318206787
+      },
+      {
+        "function_id": "article-865",
+        "score": 1.5905451774597168
+      },
+      {
+        "function_id": "article-921",
+        "score": 1.581606388092041
+      },
+      {
+        "function_id": "article-905",
+        "score": 1.568941354751587
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.5586143732070923
+      },
+      {
+        "function_id": "article-1014",
+        "score": 1.5577607154846191
+      },
+      {
+        "function_id": "article-2834",
+        "score": 1.557715892791748
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.5557470321655273
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.5458085536956787
+      },
+      {
+        "function_id": "article-870",
+        "score": 1.541617512702942
+      },
+      {
+        "function_id": "article-2461",
+        "score": 1.5395094156265259
+      },
+      {
+        "function_id": "article-2782",
+        "score": 1.5281199216842651
+      },
+      {
+        "function_id": "article-1035",
+        "score": 1.5268863439559937
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.5267236232757568
+      },
+      {
+        "function_id": "article-2784",
+        "score": 1.524137258529663
+      },
+      {
+        "function_id": "article-1925",
+        "score": 1.5237782001495361
+      },
+      {
+        "function_id": "article-1355",
+        "score": 1.5145013332366943
+      },
+      {
+        "function_id": "article-2060",
+        "score": 1.5101981163024902
+      },
+      {
+        "function_id": "article-2460",
+        "score": 1.5085054636001587
+      }
+    ],
+    "selected_ids": [
+      "article-1294",
+      "article-1013",
+      "article-922"
+    ],
+    "status": "ok",
+    "answer": 0.0484,
+    "code": "def solution():\n    # Define variables name and value\n    weight_a = 0.40\n    weight_b = 0.60\n    variance_a = 0.04\n    variance_b = 0.09\n    covariance_ab = 0.02\n\n    # Do math calculation to get the answer\n    portfolio_variance = (\n        (weight_a ** 2 * variance_a)\n        + (weight_b ** 2 * variance_b)\n        + (2 * weight_a * weight_b * covariance_ab)\n    )\n    answer = round(portfolio_variance, 4)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "a0fcd9833a048066b07b9839bf02ed990e15e0e21414acec6308edd0d1c0641c"
+}

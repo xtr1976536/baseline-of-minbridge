@@ -1,0 +1,18 @@
+{
+  "identity": "256cf708025d9c9c151958b6573eeb09c27d829b37d8a4b5a1d380bede631655",
+  "response_digest": "61135e1169907791ca92580d0ea93b84b6001776793996421d10cb53c656eaff",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 100\n    coupon_rate = 0.08\n    coupon_payment = face_value * coupon_rate\n\n    spot_rate_1 = 0.07\n    spot_rate_2 = 0.08\n    spot_rate_3 = 0.09\n\n    # Do math calculation to get the answer\n    bond_price = (\n        coupon_payment / (1 + spot_rate_1)\n        + coupon_payment / ((1 + spot_rate_2) ** 2)\n        + (coupon_payment + face_value) / ((1 + spot_rate_3) ** 3)\n    )\n\n    answer = round(bond_price, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5555,
+      "completion_tokens": 219,
+      "total_tokens": 5774,
+      "completion_tokens_details": {
+        "reasoning_tokens": 51
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

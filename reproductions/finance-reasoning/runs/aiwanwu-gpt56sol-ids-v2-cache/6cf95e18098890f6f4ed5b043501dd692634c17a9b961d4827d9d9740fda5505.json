@@ -1,0 +1,18 @@
+{
+  "identity": "6cf95e18098890f6f4ed5b043501dd692634c17a9b961d4827d9d9740fda5505",
+  "response_digest": "e9b34b664cd9b2c05cbd4c71c038d58aa819f0bf0e5fb37634065acffd20d4c0",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    asset_value = 120000\n    salvage_value = 10000\n    useful_life_years = 5\n    target_year = 3\n\n    # Do math calculation to get the answer\n    depreciation_rate = 2 / useful_life_years\n    book_value = asset_value\n\n    for _ in range(1, target_year):\n        depreciation = min(\n            book_value * depreciation_rate,\n            book_value - salvage_value\n        )\n        book_value -= depreciation\n\n    third_year_depreciation = min(\n        book_value * depreciation_rate,\n        book_value - salvage_value\n    )\n    answer = round(third_year_depreciation)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5816,
+      "completion_tokens": 165,
+      "total_tokens": 5981,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:increase_decrease_in_other_operating_capital_net_fy2022,gains_losses_on_extinguishment_of_debt_fy2022)

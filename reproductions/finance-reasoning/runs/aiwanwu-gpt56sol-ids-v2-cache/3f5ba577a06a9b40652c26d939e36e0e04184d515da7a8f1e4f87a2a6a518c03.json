@@ -1,0 +1,21 @@
+{
+  "identity": "3f5ba577a06a9b40652c26d939e36e0e04184d515da7a8f1e4f87a2a6a518c03",
+  "response_digest": "d4ad32384b1a764be7a8c6f15e1a2ab0fbb38ceae7d629084974de45a72a76da",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    actual_values = [\n        150.2, 149.8, 150.5, 151.0, 150.7,\n        151.5, 152.0, 151.8, 152.3, 152.1\n    ]\n    expected_values = [\n        150.0, 150.1, 150.3, 150.9, 150.6,\n        151.3, 152.1, 151.9, 152.5, 152.0\n    ]\n\n    # Calculate residuals\n    residuals = [\n        actual - expected\n        for actual, expected in zip(actual_values, expected_values)\n    ]\n\n    # Calculate the Durbin-Watson statistic\n    squared_error_sum = sum(residual ** 2 for residual in residuals)\n    squared_difference_sum = sum(\n        (residuals[i] - residuals[i - 1]) ** 2\n        for i in range(1, len(residuals))\n    )\n    durbin_watson = squared_difference_sum / squared_error_sum\n\n    # Return the answer rounded to two decimal places\n    return round(durbin_watson, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5478,
+      "completion_tokens": 412,
+      "total_tokens": 5890,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 134
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

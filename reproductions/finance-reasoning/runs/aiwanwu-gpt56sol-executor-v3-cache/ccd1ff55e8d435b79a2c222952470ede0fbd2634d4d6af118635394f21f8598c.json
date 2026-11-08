@@ -1,0 +1,21 @@
+{
+  "identity": "ccd1ff55e8d435b79a2c222952470ede0fbd2634d4d6af118635394f21f8598c",
+  "response_digest": "816c3351708b4f96bebf0e943d777e12596bab5552dda488dcbb4c9ec64b798a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    open_prices = [150, 152, 153, 151, 152, 150, 149, 151, 150, 148, 147, 146, 148, 149, 147]\n    close_prices = [152, 150, 152, 153, 151, 152, 150, 149, 151, 150, 149, 148, 146, 147, 148]\n    period = 14\n\n    # Do math calculation to get the answer\n    gains = []\n    losses = []\n\n    for opening, closing in zip(open_prices, close_prices):\n        if closing > opening:\n            gains.append(closing - opening)\n            losses.append(0)\n        else:\n            gains.append(0)\n            losses.append(opening - closing)\n\n    sum_gains = sum(gains[-period:])\n    sum_losses = sum(losses[-period:])\n    imi = (sum_gains / (sum_gains + sum_losses)) * 100\n\n    # return answer\n    return round(imi, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5325,
+      "completion_tokens": 522,
+      "total_tokens": 5847,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 274
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "f6950d69fe171aeed1c287cb3294e761430877902bf589bd10b8e6ed4b374ddc",
+  "response_digest": "7a7ff2635de53886dc18a364d89d5e485528bbc5b31aaaec56d88055e1ddc9b2",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    open_prices = [150, 152, 153, 151, 152, 150, 149, 151, 150, 148, 147, 146, 148, 149, 147]\n    close_prices = [152, 150, 152, 153, 151, 152, 150, 149, 151, 150, 149, 148, 146, 147, 148]\n    period = 14\n\n    # Calculate gains and losses for each day\n    gains = []\n    losses = []\n\n    for opening, closing in zip(open_prices, close_prices):\n        if closing > opening:\n            gains.append(closing - opening)\n            losses.append(0)\n        else:\n            gains.append(0)\n            losses.append(opening - closing)\n\n    # Use the most recent 14 days ending on day 15\n    recent_gains = sum(gains[-period:])\n    recent_losses = sum(losses[-period:])\n\n    # Calculate IMI as a percentage\n    total_movement = recent_gains + recent_losses\n    imi = (recent_gains / total_movement) * 100 if total_movement else 0\n\n    # Return the answer rounded to two decimal places\n    return round(imi, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5325,
+      "completion_tokens": 536,
+      "total_tokens": 5861,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 245
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

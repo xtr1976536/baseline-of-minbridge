@@ -1,0 +1,21 @@
+{
+  "identity": "e79808dc540bfb5f96f1520f0ea8c6ae61f123739829d596d669604991cde5d6",
+  "response_digest": "8b88ea10ff168881d28b535fb750515b1a24efd8c1a5c6aced8cfeb70ad6dcff",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    annual_after_tax_returns = [0.09, 0.05, 0.08]\n    embedded_gain_rate = 0.10\n    capital_gains_tax_rate = 0.25\n    initial_value = 1.0\n    years = len(annual_after_tax_returns)\n\n    # Do math calculation to get the answer\n    closing_value = initial_value\n    for annual_return in annual_after_tax_returns:\n        closing_value *= 1 + annual_return\n\n    liquidation_tax = closing_value * embedded_gain_rate * capital_gains_tax_rate\n    post_liquidation_value = closing_value - liquidation_tax\n    annualized_post_liquidation_return = (\n        (post_liquidation_value / initial_value) ** (1 / years) - 1\n    )\n    answer = round(annualized_post_liquidation_return * 100, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5489,
+      "completion_tokens": 316,
+      "total_tokens": 5805,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 105
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

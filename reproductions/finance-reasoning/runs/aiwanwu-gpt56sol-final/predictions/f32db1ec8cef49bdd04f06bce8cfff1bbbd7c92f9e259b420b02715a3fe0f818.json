@@ -1,0 +1,193 @@
+{
+  "record": {
+    "question_id": "test-2122",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the mark-to-market cash cost of terminating a six-month USD/EUR forward contract after three months, using quoted spot rates, forward points, contract notional, and bid-ask conventions to determine the USD settlement amount?",
+        "usage": {
+          "prompt_tokens": 5205,
+          "completion_tokens": 103,
+          "total_tokens": 5308,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 50
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14986,
+          "completion_tokens": 1131,
+          "total_tokens": 16117,
+          "prompt_tokens_details": {
+            "cached_tokens": 14848
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    shares = 200_000\n    price_per_share_eur = 90\n    euro_amount = shares * price_per_share_eur\n\n    initiation_spot_ask = 1.3983\n    initiation_forward_point_ask = -0.0183\n    three_month_forward_ask = 1.4210\n    three_month_forward_point_ask = -0.0210\n    usd_libor = 0.01266\n    days_remaining = 90\n\n    original_forward_rate = initiation_spot_ask + initiation_forward_point_ask\n    current_forward_rate = three_month_forward_ask + three_month_forward_point_ask\n\n    # Calculate the USD settlement cost, discounted for the remaining three months\n    undiscounted_cost = (current_forward_rate - original_forward_rate) * euro_amount\n    discount_factor = 1 + usd_libor * (days_remaining / 360)\n    cash_expenditure = undiscounted_cost / discount_factor\n\n    # Return the answer rounded to one decimal place\n    return round(cash_expenditure, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5762,
+          "completion_tokens": 607,
+          "total_tokens": 6369,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 363
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2975",
+        "score": 1.852462887763977
+      },
+      {
+        "function_id": "article-604",
+        "score": 1.7824116945266724
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.760557770729065
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.759933590888977
+      },
+      {
+        "function_id": "article-2976",
+        "score": 1.7089546918869019
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.7079646587371826
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.6989459991455078
+      },
+      {
+        "function_id": "article-601",
+        "score": 1.6984424591064453
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.692313551902771
+      },
+      {
+        "function_id": "article-603",
+        "score": 1.6775977611541748
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.6670026779174805
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.6592891216278076
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.659006953239441
+      },
+      {
+        "function_id": "article-617",
+        "score": 1.658273458480835
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.6436209678649902
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.643038034439087
+      },
+      {
+        "function_id": "article-1793",
+        "score": 1.6400766372680664
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.6360013484954834
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.6136678457260132
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.6105852127075195
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.6069401502609253
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.5975251197814941
+      },
+      {
+        "function_id": "article-1963",
+        "score": 1.593024730682373
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.591951847076416
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.5908973217010498
+      },
+      {
+        "function_id": "article-2180",
+        "score": 1.5862112045288086
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.5844438076019287
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.5800540447235107
+      },
+      {
+        "function_id": "article-127",
+        "score": 1.5794016122817993
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.5768804550170898
+      }
+    ],
+    "selected_ids": [
+      "article-604",
+      "article-607",
+      "article-596"
+    ],
+    "status": "ok",
+    "answer": 358864.2,
+    "code": "def solution():\n    # Define variables name and value\n    shares = 200_000\n    price_per_share_eur = 90\n    euro_amount = shares * price_per_share_eur\n\n    initiation_spot_ask = 1.3983\n    initiation_forward_point_ask = -0.0183\n    three_month_forward_ask = 1.4210\n    three_month_forward_point_ask = -0.0210\n    usd_libor = 0.01266\n    days_remaining = 90\n\n    original_forward_rate = initiation_spot_ask + initiation_forward_point_ask\n    current_forward_rate = three_month_forward_ask + three_month_forward_point_ask\n\n    # Calculate the USD settlement cost, discounted for the remaining three months\n    undiscounted_cost = (current_forward_rate - original_forward_rate) * euro_amount\n    discount_factor = 1 + usd_libor * (days_remaining / 360)\n    cash_expenditure = undiscounted_cost / discount_factor\n\n    # Return the answer rounded to one decimal place\n    return round(cash_expenditure, 1)\n"
+  },
+  "digest": "c37860b53ab1226abb3a1f97cdea8aca3b074e0da305988c80af2b9bf79805bb"
+}

@@ -1,0 +1,182 @@
+{
+  "record": {
+    "question_id": "test-2105",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the expiration profit or loss of a bull put spread from the short put strike and premium, long put strike and premium, and underlying stock price at expiration, including net premiums received and capped downside risk, with the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5019,
+          "completion_tokens": 56,
+          "total_tokens": 5075,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15151,
+          "completion_tokens": 613,
+          "total_tokens": 15764,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    sell_premium = 6\n    buy_premium = 2\n    sell_strike = 110\n    stock_price_at_expiry = 105\n    contract_multiplier = 100\n\n    # Calculate the net credit and loss from the short put\n    net_credit = sell_premium - buy_premium\n    profit_loss_per_share = net_credit - (sell_strike - stock_price_at_expiry)\n    answer = round(profit_loss_per_share * contract_multiplier)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5153,
+          "completion_tokens": 127,
+          "total_tokens": 5280,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-777",
+        "score": 2.1162447929382324
+      },
+      {
+        "function_id": "article-706",
+        "score": 2.0770113468170166
+      },
+      {
+        "function_id": "article-316",
+        "score": 2.031998634338379
+      },
+      {
+        "function_id": "article-779",
+        "score": 2.000115156173706
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.9812482595443726
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.9500184059143066
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.9387283325195312
+      },
+      {
+        "function_id": "article-778",
+        "score": 1.9380724430084229
+      },
+      {
+        "function_id": "article-780",
+        "score": 1.926994800567627
+      },
+      {
+        "function_id": "article-781",
+        "score": 1.9267973899841309
+      },
+      {
+        "function_id": "article-707",
+        "score": 1.9217348098754883
+      },
+      {
+        "function_id": "article-317",
+        "score": 1.916015625
+      },
+      {
+        "function_id": "article-774",
+        "score": 1.903689980506897
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.8975636959075928
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.891019344329834
+      },
+      {
+        "function_id": "article-315",
+        "score": 1.8718136548995972
+      },
+      {
+        "function_id": "article-775",
+        "score": 1.864579439163208
+      },
+      {
+        "function_id": "article-708",
+        "score": 1.8552160263061523
+      },
+      {
+        "function_id": "article-759",
+        "score": 1.8396552801132202
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.837275743484497
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.8316679000854492
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.829928994178772
+      },
+      {
+        "function_id": "article-776",
+        "score": 1.816239595413208
+      },
+      {
+        "function_id": "article-2586",
+        "score": 1.8133195638656616
+      },
+      {
+        "function_id": "article-2659",
+        "score": 1.8111140727996826
+      },
+      {
+        "function_id": "article-793",
+        "score": 1.8066985607147217
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.8032619953155518
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.7996346950531006
+      },
+      {
+        "function_id": "article-703",
+        "score": 1.7965853214263916
+      },
+      {
+        "function_id": "article-3105",
+        "score": 1.7947438955307007
+      }
+    ],
+    "selected_ids": [
+      "article-777"
+    ],
+    "status": "ok",
+    "answer": -100,
+    "code": "def solution():\n    # Define variables name and value\n    sell_premium = 6\n    buy_premium = 2\n    sell_strike = 110\n    stock_price_at_expiry = 105\n    contract_multiplier = 100\n\n    # Calculate the net credit and loss from the short put\n    net_credit = sell_premium - buy_premium\n    profit_loss_per_share = net_credit - (sell_strike - stock_price_at_expiry)\n    answer = round(profit_loss_per_share * contract_multiplier)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "8e21a61caebdcbddbef7a6eb232a7b012a70fd4b8e207f1a0673afa467e562b7"
+}

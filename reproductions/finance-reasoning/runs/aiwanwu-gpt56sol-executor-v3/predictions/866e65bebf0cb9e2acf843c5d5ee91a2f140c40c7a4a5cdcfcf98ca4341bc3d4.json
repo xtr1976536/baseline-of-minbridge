@@ -1,0 +1,223 @@
+{
+  "record": {
+    "question_id": "test-2198",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the percentage or probability of normally distributed financial returns falling within one standard deviation of the mean, using the normal cumulative distribution function or empirical range counting, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5084,
+          "completion_tokens": 46,
+          "total_tokens": 5130,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14264,
+          "completion_tokens": 360,
+          "total_tokens": 14624,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 342
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    mean = 9\n    std_dev = 2\n    data_points = [5, 8, 13, 12, 7, 9, 10, 6, 11, 7]\n\n    # Do math calculation to get the answer\n    lower_bound = mean - std_dev\n    upper_bound = mean + std_dev\n    within_one_std_dev = sum(\n        lower_bound <= value <= upper_bound for value in data_points\n    )\n    answer = (within_one_std_dev / len(data_points)) * 100\n\n    # return answer\n    return round(answer, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5204,
+          "completion_tokens": 241,
+          "total_tokens": 5445,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 91
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-711",
+        "score": 1.6615409851074219,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.6165249347686768,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.5990946292877197,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.5923857688903809,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2758",
+        "score": 1.5660055875778198,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1580",
+        "score": 1.5350420475006104,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.5335235595703125,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2832",
+        "score": 1.5327601432800293,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1292",
+        "score": 1.5246975421905518,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2039",
+        "score": 1.5237739086151123,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2686",
+        "score": 1.523411750793457,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-302",
+        "score": 1.510351300239563,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.507286787033081,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-705",
+        "score": 1.5014448165893555,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.5005466938018799,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1570",
+        "score": 1.4958033561706543,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-719",
+        "score": 1.48996901512146,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-61",
+        "score": 1.4881635904312134,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2176",
+        "score": 1.4880380630493164,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1740",
+        "score": 1.4880365133285522,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2990",
+        "score": 1.487426519393921,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-500",
+        "score": 1.4869768619537354,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-325",
+        "score": 1.481391191482544,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1786",
+        "score": 1.4804255962371826,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2410",
+        "score": 1.4772651195526123,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-266",
+        "score": 1.4684746265411377,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.4678094387054443,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.4671900272369385,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2299",
+        "score": 1.4656604528427124,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2834",
+        "score": 1.4656583070755005,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-711"
+    ],
+    "status": "ok",
+    "answer": 60.0,
+    "code": "def solution():\n    # Define variables name and value\n    mean = 9\n    std_dev = 2\n    data_points = [5, 8, 13, 12, 7, 9, 10, 6, 11, 7]\n\n    # Do math calculation to get the answer\n    lower_bound = mean - std_dev\n    upper_bound = mean + std_dev\n    within_one_std_dev = sum(\n        lower_bound <= value <= upper_bound for value in data_points\n    )\n    answer = (within_one_std_dev / len(data_points)) * 100\n\n    # return answer\n    return round(answer, 2)\n"
+  },
+  "digest": "b404dcb2788a65fb3976e8f49cacbf49a0560ae61a3582b703f57a6eeb63a2ed"
+}

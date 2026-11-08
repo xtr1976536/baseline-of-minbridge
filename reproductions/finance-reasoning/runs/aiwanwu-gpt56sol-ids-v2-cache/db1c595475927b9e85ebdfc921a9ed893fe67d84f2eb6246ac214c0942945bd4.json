@@ -1,0 +1,21 @@
+{
+  "identity": "db1c595475927b9e85ebdfc921a9ed893fe67d84f2eb6246ac214c0942945bd4",
+  "response_digest": "85119fd848f8ee84b4b7d12933e00d5a6c72b965ae1b8c514db71956c895d901",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    open_prices = [150, 152, 153, 151, 152, 150, 149, 151, 150, 148, 147, 146, 148, 149, 147]\n    close_prices = [152, 150, 152, 153, 151, 152, 150, 149, 151, 150, 149, 148, 146, 147, 148]\n    period = 14\n\n    # Do math calculation to get the answer\n    gains = [max(close_prices[i] - open_prices[i], 0) for i in range(1, len(open_prices))]\n    losses = [max(open_prices[i] - close_prices[i], 0) for i in range(1, len(open_prices))]\n    total_gains = sum(gains[-period:])\n    total_losses = sum(losses[-period:])\n    answer = round(total_gains / (total_gains + total_losses) * 100, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5325,
+      "completion_tokens": 443,
+      "total_tokens": 5768,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 199
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

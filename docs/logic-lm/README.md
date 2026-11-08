@@ -98,3 +98,7 @@ cp .env.example .env
 ```
 
 `*.json.gz`/`*.jsonl.gz`采用标准gzip以减少重复prompt占用空间，Python `gzip`或`gzip -dc`即可读取。依赖安装外的上述检查不发送模型请求。`summary.json`是发布成绩，`recorded-summary.json`是原运行冻结成绩，`current-policy-summary.json`是最新代码的离线复验。请求日志没有Authorization headers；本机路径已脱敏，响应内容和提示词不改。
+
+## 2026-11-08 仓库扩展
+
+仓库现收录七个模型，新增 FinanceReasoning、GBFR、VeriFin。此目录原有结果与范围保持原记录；最新模型范围、结果限制及导航见[仓库总览](../../README.md)。

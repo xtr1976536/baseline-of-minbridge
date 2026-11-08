@@ -1,0 +1,226 @@
+{
+  "record": {
+    "question_id": "test-2040",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the percentage contribution of a component value to a total value, such as interest rate derivative receivables divided by total net derivative receivables, and rounds the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 6050,
+          "completion_tokens": 105,
+          "total_tokens": 6155,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 58
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C25\"]}",
+        "usage": {
+          "prompt_tokens": 13992,
+          "completion_tokens": 207,
+          "total_tokens": 14199,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 189
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    interest_rate_derivatives = 26363\n    net_total_derivatives = 59677\n\n    # Do math calculation to get the answer\n    answer = (interest_rate_derivatives / net_total_derivatives) * 100\n\n    # return answer\n    return round(answer, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5957,
+          "completion_tokens": 123,
+          "total_tokens": 6080,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 41
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2949",
+        "score": 1.6734970808029175,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-9",
+        "score": 1.6054236888885498,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-209",
+        "score": 1.5955815315246582,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-165",
+        "score": 1.5876294374465942,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2598",
+        "score": 1.5857162475585938,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-767",
+        "score": 1.568662405014038,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.5668432712554932,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2948",
+        "score": 1.5634390115737915,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-768",
+        "score": 1.55751371383667,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1298",
+        "score": 1.5550816059112549,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1921",
+        "score": 1.5501723289489746,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-164",
+        "score": 1.5435575246810913,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2236",
+        "score": 1.541132926940918,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.5389881134033203,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1181",
+        "score": 1.5375597476959229,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2299",
+        "score": 1.5357508659362793,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-77",
+        "score": 1.53326416015625,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2913",
+        "score": 1.5322779417037964,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-179",
+        "score": 1.5313355922698975,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-161",
+        "score": 1.5282745361328125,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2984",
+        "score": 1.5260539054870605,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.525972604751587,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.525209903717041,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-516",
+        "score": 1.5175315141677856,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-542",
+        "score": 1.5175092220306396,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2583",
+        "score": 1.515621304512024,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.515363335609436,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-163",
+        "score": 1.5150585174560547,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1118",
+        "score": 1.5126947164535522,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-159",
+        "score": 1.5119118690490723,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-542"
+    ],
+    "status": "ok",
+    "answer": 44.176,
+    "code": "def solution():\n    # Define variables name and value\n    interest_rate_derivatives = 26363\n    net_total_derivatives = 59677\n\n    # Do math calculation to get the answer\n    answer = (interest_rate_derivatives / net_total_derivatives) * 100\n\n    # return answer\n    return round(answer, 3)\n"
+  },
+  "digest": "395b7783db2ac159eac3a1c97bb169b34cc6ab80593b19a29fd27d32584c959a"
+}

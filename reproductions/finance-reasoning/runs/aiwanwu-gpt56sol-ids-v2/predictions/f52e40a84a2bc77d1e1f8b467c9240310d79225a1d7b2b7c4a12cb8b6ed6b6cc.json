@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2073",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the arc (midpoint) price elasticity of demand between two price-quantity observations, using percentage changes based on average price and average quantity, and returns the elasticity as a decimal rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5031,
+          "completion_tokens": 48,
+          "total_tokens": 5079,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 13608,
+          "completion_tokens": 157,
+          "total_tokens": 13765,
+          "completion_tokens_details": {
+            "reasoning_tokens": 139
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_quantity = 150\n    final_quantity = 200\n    initial_price = 5\n    final_price = 4\n\n    # Do math calculation to get the answer\n    midpoint_quantity = (initial_quantity + final_quantity) / 2\n    midpoint_price = (initial_price + final_price) / 2\n\n    percent_change_in_quantity = (\n        final_quantity - initial_quantity\n    ) / midpoint_quantity\n    percent_change_in_price = (\n        final_price - initial_price\n    ) / midpoint_price\n\n    arc_elasticity = percent_change_in_quantity / percent_change_in_price\n    answer = round(arc_elasticity, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5009,
+          "completion_tokens": 224,
+          "total_tokens": 5233,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 57
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2346",
+        "score": 1.9624191522598267,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2345",
+        "score": 1.853208065032959,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1694",
+        "score": 1.8089489936828613,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2754",
+        "score": 1.8032829761505127,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1321",
+        "score": 1.797560214996338,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2752",
+        "score": 1.7968192100524902,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2749",
+        "score": 1.7878711223602295,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-229",
+        "score": 1.7859625816345215,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2751",
+        "score": 1.7819002866744995,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1880",
+        "score": 1.77942955493927,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2755",
+        "score": 1.7738003730773926,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1692",
+        "score": 1.7643141746520996,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2672",
+        "score": 1.7285614013671875,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-372",
+        "score": 1.66831374168396,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2750",
+        "score": 1.6631364822387695,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2753",
+        "score": 1.6600064039230347,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2991",
+        "score": 1.6599316596984863,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2773",
+        "score": 1.564723253250122,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1832",
+        "score": 1.5501151084899902,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2790",
+        "score": 1.5409274101257324,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1879",
+        "score": 1.5354381799697876,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2871",
+        "score": 1.5177741050720215,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1833",
+        "score": 1.5160062313079834,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2292",
+        "score": 1.5139007568359375,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-718",
+        "score": 1.5063869953155518,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.4993772506713867,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1322",
+        "score": 1.49253511428833,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-468",
+        "score": 1.4852912425994873,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-509",
+        "score": 1.4815889596939087,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2872",
+        "score": 1.4754159450531006,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2346"
+    ],
+    "status": "ok",
+    "answer": -1.29,
+    "code": "def solution():\n    # Define variables name and value\n    initial_quantity = 150\n    final_quantity = 200\n    initial_price = 5\n    final_price = 4\n\n    # Do math calculation to get the answer\n    midpoint_quantity = (initial_quantity + final_quantity) / 2\n    midpoint_price = (initial_price + final_price) / 2\n\n    percent_change_in_quantity = (\n        final_quantity - initial_quantity\n    ) / midpoint_quantity\n    percent_change_in_price = (\n        final_price - initial_price\n    ) / midpoint_price\n\n    arc_elasticity = percent_change_in_quantity / percent_change_in_price\n    answer = round(arc_elasticity, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "490b789cd4dffc802796340764e57cd81d18799396444aa224b66b73205a7a7f"
+}

@@ -1,0 +1,18 @@
+{
+  "identity": "874804ff89fcf63cafc73e5fab5f17324a9e9a2e4f676ae08e162dcaf877782a",
+  "response_digest": "6160d27cae6982aa5afc4bf5897cf23b0106bb552765f601f67432084b47f65c",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    current_value_before_fees = 320.0\n    management_fee_rate = 0.02\n    performance_fee_rate = 0.30\n    previous_high_water_mark = 350.0 * (1 + 0.20)\n\n    # Do math calculation to get the answer\n    management_fee = current_value_before_fees * management_fee_rate\n\n    # The current value is below the high water mark, so no incentive fee applies.\n    performance_fee = 0.0\n    ending_capital_position = (\n        current_value_before_fees - management_fee - performance_fee\n    )\n\n    # Return answer in millions of dollars to one decimal place\n    return round(ending_capital_position, 1)\n```",
+    "usage": {
+      "prompt_tokens": 5582,
+      "completion_tokens": 341,
+      "total_tokens": 5923,
+      "completion_tokens_details": {
+        "reasoning_tokens": 171
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

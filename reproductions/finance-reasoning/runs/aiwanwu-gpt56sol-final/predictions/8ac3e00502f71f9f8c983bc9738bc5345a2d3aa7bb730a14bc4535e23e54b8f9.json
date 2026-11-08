@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2101",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the ending value of an equal-weighted stock price index from an initial index value and the average percentage price changes of multiple shares over two dates, excluding market capitalization and share-count weighting, and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5099,
+          "completion_tokens": 53,
+          "total_tokens": 5152,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USEFUL, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14006,
+          "completion_tokens": 453,
+          "total_tokens": 14459,
+          "completion_tokens_details": {
+            "reasoning_tokens": 356
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    starting_index_value = 121.0\n    starting_prices = [15.0, 20.0, 30.0]\n    ending_prices = [20.0, 30.0, 25.0]\n\n    # Do math calculation to get the answer\n    percentage_changes = [\n        (ending_price - starting_price) / starting_price\n        for starting_price, ending_price in zip(starting_prices, ending_prices)\n    ]\n    average_percentage_change = sum(percentage_changes) / len(percentage_changes)\n    answer = starting_index_value * (1 + average_percentage_change)\n\n    # return answer\n    return round(answer, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5470,
+          "completion_tokens": 286,
+          "total_tokens": 5756,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 129
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1336",
+        "score": 1.7919108867645264
+      },
+      {
+        "function_id": "article-1337",
+        "score": 1.7778669595718384
+      },
+      {
+        "function_id": "article-1335",
+        "score": 1.7602885961532593
+      },
+      {
+        "function_id": "article-2545",
+        "score": 1.7302565574645996
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.7079156637191772
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.696108341217041
+      },
+      {
+        "function_id": "article-2458",
+        "score": 1.6800817251205444
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.670466423034668
+      },
+      {
+        "function_id": "article-788",
+        "score": 1.664303183555603
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.662164568901062
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.6604535579681396
+      },
+      {
+        "function_id": "article-2281",
+        "score": 1.6545109748840332
+      },
+      {
+        "function_id": "article-2279",
+        "score": 1.6518630981445312
+      },
+      {
+        "function_id": "article-2573",
+        "score": 1.6492334604263306
+      },
+      {
+        "function_id": "article-643",
+        "score": 1.6492130756378174
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.6455540657043457
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.644425630569458
+      },
+      {
+        "function_id": "article-705",
+        "score": 1.6402931213378906
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.6394078731536865
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.6380383968353271
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.6370600461959839
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.6365894079208374
+      },
+      {
+        "function_id": "article-1154",
+        "score": 1.6351425647735596
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.631669282913208
+      },
+      {
+        "function_id": "article-880",
+        "score": 1.6260786056518555
+      },
+      {
+        "function_id": "article-2652",
+        "score": 1.6257683038711548
+      },
+      {
+        "function_id": "article-1401",
+        "score": 1.6249538660049438
+      },
+      {
+        "function_id": "article-393",
+        "score": 1.6188528537750244
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6172239780426025
+      },
+      {
+        "function_id": "article-2438",
+        "score": 1.6165415048599243
+      }
+    ],
+    "selected_ids": [
+      "article-1337",
+      "article-274",
+      "article-2892"
+    ],
+    "status": "ok",
+    "answer": 147.889,
+    "code": "def solution():\n    # Define variables name and value\n    starting_index_value = 121.0\n    starting_prices = [15.0, 20.0, 30.0]\n    ending_prices = [20.0, 30.0, 25.0]\n\n    # Do math calculation to get the answer\n    percentage_changes = [\n        (ending_price - starting_price) / starting_price\n        for starting_price, ending_price in zip(starting_prices, ending_prices)\n    ]\n    average_percentage_change = sum(percentage_changes) / len(percentage_changes)\n    answer = starting_index_value * (1 + average_percentage_change)\n\n    # return answer\n    return round(answer, 3)\n"
+  },
+  "digest": "6686288fc23be47852a6be9bcb2b1a1f1e4841d7ba459d579a7374854183df85"
+}

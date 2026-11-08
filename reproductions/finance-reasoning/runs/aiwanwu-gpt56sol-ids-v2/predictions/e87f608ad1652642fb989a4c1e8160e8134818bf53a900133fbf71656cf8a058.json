@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2226",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Welch’s t-statistic for comparing the means of two independent samples using their sample means, variances, and unequal sample sizes, assuming unequal variances and returning the t-value rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5065,
+          "completion_tokens": 98,
+          "total_tokens": 5163,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 47
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 15122,
+          "completion_tokens": 16,
+          "total_tokens": 15138,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    mean_1 = 8.0\n    mean_2 = 6.0\n    var_1 = 1.5\n    var_2 = 2.0\n    n1 = 18\n    n2 = 22\n\n    # Do math calculation to get the answer\n    standard_error = ((var_1 / n1) + (var_2 / n2)) ** 0.5\n    t_value = (mean_1 - mean_2) / standard_error\n\n    # return answer\n    return round(t_value, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5181,
+          "completion_tokens": 329,
+          "total_tokens": 5510,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 186
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1798",
+        "score": 2.0850586891174316,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1797",
+        "score": 1.6777524948120117,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1794",
+        "score": 1.6112682819366455,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1144",
+        "score": 1.552701711654663,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1143",
+        "score": 1.5493849515914917,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1796",
+        "score": 1.5382057428359985,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.4973080158233643,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-106",
+        "score": 1.4960002899169922,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1795",
+        "score": 1.4907276630401611,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1145",
+        "score": 1.4745407104492188,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1988",
+        "score": 1.468138575553894,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.45918869972229,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1142",
+        "score": 1.451112985610962,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1683",
+        "score": 1.4290649890899658,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.4192142486572266,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.4171617031097412,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2667",
+        "score": 1.4103299379348755,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2553",
+        "score": 1.4070119857788086,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1987",
+        "score": 1.4027996063232422,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.4008212089538574,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2565",
+        "score": 1.397416591644287,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2660",
+        "score": 1.394654631614685,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1712",
+        "score": 1.3942257165908813,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1413",
+        "score": 1.3921773433685303,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2668",
+        "score": 1.3897881507873535,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-113",
+        "score": 1.37959885597229,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.3794639110565186,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1437",
+        "score": 1.3790534734725952,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.3781088590621948,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.3760967254638672,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1798"
+    ],
+    "status": "ok",
+    "answer": 4.79,
+    "code": "def solution():\n    # Define variables name and value\n    mean_1 = 8.0\n    mean_2 = 6.0\n    var_1 = 1.5\n    var_2 = 2.0\n    n1 = 18\n    n2 = 22\n\n    # Do math calculation to get the answer\n    standard_error = ((var_1 / n1) + (var_2 / n2)) ** 0.5\n    t_value = (mean_1 - mean_2) / standard_error\n\n    # return answer\n    return round(t_value, 2)\n"
+  },
+  "digest": "bf37d624f6a6ec65acf35128b537831a1eaaac725facba36fc50ac4f03be4e62"
+}

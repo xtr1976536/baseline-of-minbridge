@@ -1,0 +1,223 @@
+{
+  "record": {
+    "question_id": "test-2173",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates annual Free Cash Flow to Equity (FCFE) from two years of financial statements, using net income, depreciation, changes in working capital, capital expenditures based on changes in gross fixed assets, and net borrowing, with the result expressed in millions and rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5313,
+          "completion_tokens": 62,
+          "total_tokens": 5375,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14576,
+          "completion_tokens": 336,
+          "total_tokens": 14912,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 318
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 875\n    depreciation = 400\n    increase_accounts_receivable = 800 - 750\n    increase_inventories = 850 - 720\n    increase_accounts_payable = 400 - 300\n    increase_accrued_expenses = 120 - 90\n    capital_expenditures = 5000 - 4250\n    net_debt_issued = (550 - 500) + (1500 - 1400)\n\n    # Do math calculation to get the answer\n    cash_from_operations = (\n        net_income\n        + depreciation\n        - increase_accounts_receivable\n        - increase_inventories\n        + increase_accounts_payable\n        + increase_accrued_expenses\n    )\n    answer = cash_from_operations - capital_expenditures + net_debt_issued\n\n    # Return answer rounded to one decimal place\n    return round(answer, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5566,
+          "completion_tokens": 306,
+          "total_tokens": 5872,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 94
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-625",
+        "score": 2.309793710708618,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-51",
+        "score": 2.3043272495269775,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-623",
+        "score": 2.28913950920105,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-270",
+        "score": 2.1152467727661133,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-622",
+        "score": 2.113905191421509,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1665",
+        "score": 2.0952000617980957,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-629",
+        "score": 2.048679828643799,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-627",
+        "score": 2.047119140625,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-624",
+        "score": 2.0402092933654785,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-628",
+        "score": 2.008556365966797,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2130",
+        "score": 1.9713447093963623,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-626",
+        "score": 1.961523413658142,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1329",
+        "score": 1.9566104412078857,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2053",
+        "score": 1.89676833152771,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-89",
+        "score": 1.853982925415039,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-52",
+        "score": 1.8031575679779053,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.7812020778656006,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-87",
+        "score": 1.7599869966506958,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1275",
+        "score": 1.7312510013580322,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2738",
+        "score": 1.7173285484313965,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2700",
+        "score": 1.71327543258667,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3027",
+        "score": 1.7071058750152588,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-630",
+        "score": 1.6915117502212524,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-247",
+        "score": 1.6875360012054443,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3026",
+        "score": 1.687286376953125,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1732",
+        "score": 1.682465672492981,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-238",
+        "score": 1.6821361780166626,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-88",
+        "score": 1.6809439659118652,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-389",
+        "score": 1.6719138622283936,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1721",
+        "score": 1.6702646017074585,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-625"
+    ],
+    "status": "ok",
+    "answer": 625,
+    "code": "def solution():\n    # Define variables name and value\n    net_income = 875\n    depreciation = 400\n    increase_accounts_receivable = 800 - 750\n    increase_inventories = 850 - 720\n    increase_accounts_payable = 400 - 300\n    increase_accrued_expenses = 120 - 90\n    capital_expenditures = 5000 - 4250\n    net_debt_issued = (550 - 500) + (1500 - 1400)\n\n    # Do math calculation to get the answer\n    cash_from_operations = (\n        net_income\n        + depreciation\n        - increase_accounts_receivable\n        - increase_inventories\n        + increase_accounts_payable\n        + increase_accrued_expenses\n    )\n    answer = cash_from_operations - capital_expenditures + net_debt_issued\n\n    # Return answer rounded to one decimal place\n    return round(answer, 1)\n"
+  },
+  "digest": "fcadcaddece0a1484aa7a026ad5f5f0812c3147a792ec8791759b8d38764ce57"
+}

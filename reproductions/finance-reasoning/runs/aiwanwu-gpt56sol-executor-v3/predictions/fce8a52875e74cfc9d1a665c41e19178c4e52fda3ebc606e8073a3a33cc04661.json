@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2133",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function converts a money market instrument’s add-on rate into a bond equivalent yield using a 360-day year and specified days to maturity, returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 4955,
+          "completion_tokens": 44,
+          "total_tokens": 4999,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C25\"]}",
+        "usage": {
+          "prompt_tokens": 15536,
+          "completion_tokens": 16,
+          "total_tokens": 15552,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    add_on_rate = 6.50\n    days_in_year = 360\n    days_in_bond_year = 365\n\n    # Do math calculation to get the answer\n    bond_equivalent_yield = add_on_rate * days_in_bond_year / days_in_year\n    answer = round(bond_equivalent_yield, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 4920,
+          "completion_tokens": 182,
+          "total_tokens": 5102,
+          "completion_tokens_details": {
+            "reasoning_tokens": 79
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-948",
+        "score": 1.6487152576446533,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2557",
+        "score": 1.6215142011642456,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.617294192314148,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.6027567386627197,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.5997741222381592,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.5961265563964844,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.5937440395355225,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1623",
+        "score": 1.5878649950027466,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.5818554162979126,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1956",
+        "score": 1.5720468759536743,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2080",
+        "score": 1.5718293190002441,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.5688904523849487,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.5652170181274414,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-732",
+        "score": 1.5648193359375,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.5590617656707764,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.5584526062011719,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.5573912858963013,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1829",
+        "score": 1.5492299795150757,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-102",
+        "score": 1.5458786487579346,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.5454820394515991,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.5454059839248657,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1955",
+        "score": 1.5412176847457886,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2567",
+        "score": 1.5377476215362549,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1869",
+        "score": 1.5362937450408936,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-737",
+        "score": 1.5358901023864746,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.5327811241149902,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.5295166969299316,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2606",
+        "score": 1.5284157991409302,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-28",
+        "score": 1.5263110399246216,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1466",
+        "score": 1.521681308746338,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-737"
+    ],
+    "status": "ok",
+    "answer": 6.59,
+    "code": "def solution():\n    # Define variables name and value\n    add_on_rate = 6.50\n    days_in_year = 360\n    days_in_bond_year = 365\n\n    # Do math calculation to get the answer\n    bond_equivalent_yield = add_on_rate * days_in_bond_year / days_in_year\n    answer = round(bond_equivalent_yield, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "abdcf9cb9db1653d850a5d999cfdbc93f06e02e03765b3c21a9314c7a8cb3f59"
+}

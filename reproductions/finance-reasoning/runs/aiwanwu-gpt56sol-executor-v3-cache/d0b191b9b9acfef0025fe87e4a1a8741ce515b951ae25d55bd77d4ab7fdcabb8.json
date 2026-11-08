@@ -1,0 +1,21 @@
+{
+  "identity": "d0b191b9b9acfef0025fe87e4a1a8741ce515b951ae25d55bd77d4ab7fdcabb8",
+  "response_digest": "39d63882b1f69adccb5b83e56fe4273c000d64d6b9fd7ac652c2ee2f38a88602",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    prices = [120, 123, 121, 125, 130]\n    volumes = [1500, 1600, 1550, 1700, 1800]\n\n    # Calculate the cumulative Volume Price Trend\n    vpt = 0\n    for i in range(1, len(prices)):\n        price_change = (prices[i] - prices[i - 1]) / prices[i - 1]\n        vpt += price_change * volumes[i]\n\n    # Return the VPT at the end of the fifth day\n    return round(vpt, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5086,
+      "completion_tokens": 273,
+      "total_tokens": 5359,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 131
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

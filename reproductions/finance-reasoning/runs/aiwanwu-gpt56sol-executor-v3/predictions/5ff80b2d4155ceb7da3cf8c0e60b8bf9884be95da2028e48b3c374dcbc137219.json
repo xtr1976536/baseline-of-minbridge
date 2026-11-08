@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2186",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the monthly PITI mortgage payment by combining principal and interest for a fixed-rate, fully amortizing loan with monthly payments and term in years, plus monthly property taxes and homeowner’s insurance derived from annual costs, and returns the total rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5052,
+          "completion_tokens": 58,
+          "total_tokens": 5110,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 16378,
+          "completion_tokens": 16,
+          "total_tokens": 16394,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 300000\n    annual_interest_rate = 0.045\n    loan_term_years = 30\n    annual_tax = 3600\n    annual_insurance = 1200\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    num_payments = loan_term_years * 12\n\n    monthly_principal_and_interest = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -num_payments)\n    )\n\n    monthly_tax = annual_tax / 12\n    monthly_insurance = annual_insurance / 12\n\n    total_monthly_piti = (\n        monthly_principal_and_interest\n        + monthly_tax\n        + monthly_insurance\n    )\n\n    # Return the rounded answer\n    return round(total_monthly_piti)\n\n\n```",
+        "usage": {
+          "prompt_tokens": 5150,
+          "completion_tokens": 270,
+          "total_tokens": 5420,
+          "completion_tokens_details": {
+            "reasoning_tokens": 70
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1347",
+        "score": 2.2644388675689697,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.8927817344665527,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.8852856159210205,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1348",
+        "score": 1.8798174858093262,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.8722611665725708,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.8485602140426636,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.8452411890029907,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.8325281143188477,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.8314433097839355,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.830606460571289,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.8272721767425537,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.8236864805221558,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1349",
+        "score": 1.8126568794250488,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.8068398237228394,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.8034520149230957,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.7991101741790771,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.7868292331695557,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.7866958379745483,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2497",
+        "score": 1.7857036590576172,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.7835863828659058,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.7743356227874756,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2132",
+        "score": 1.7728135585784912,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-299",
+        "score": 1.7694655656814575,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.768841028213501,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.7683589458465576,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.7667641639709473,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.7601945400238037,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-322",
+        "score": 1.7527081966400146,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.7522339820861816,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.7516640424728394,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1347"
+    ],
+    "status": "ok",
+    "answer": 1920,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 300000\n    annual_interest_rate = 0.045\n    loan_term_years = 30\n    annual_tax = 3600\n    annual_insurance = 1200\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    num_payments = loan_term_years * 12\n\n    monthly_principal_and_interest = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -num_payments)\n    )\n\n    monthly_tax = annual_tax / 12\n    monthly_insurance = annual_insurance / 12\n\n    total_monthly_piti = (\n        monthly_principal_and_interest\n        + monthly_tax\n        + monthly_insurance\n    )\n\n    # Return the rounded answer\n    return round(total_monthly_piti)\n\n\n"
+  },
+  "digest": "a9c0bd0571496f7e87d6adcb46d86e170ac6ede02da8c675d6c6bb0a4fe88daf"
+}

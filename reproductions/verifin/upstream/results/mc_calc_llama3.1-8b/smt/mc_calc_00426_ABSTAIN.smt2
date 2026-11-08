@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:payments_related_to_tax_withholding_for_share_based_compensation_fy2024)

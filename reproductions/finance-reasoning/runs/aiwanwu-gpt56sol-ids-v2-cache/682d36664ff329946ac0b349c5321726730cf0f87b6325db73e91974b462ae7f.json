@@ -1,0 +1,21 @@
+{
+  "identity": "682d36664ff329946ac0b349c5321726730cf0f87b6325db73e91974b462ae7f",
+  "response_digest": "532af769866dfaa0426514e5740fc9993be91d7c4b7abd3976a21b7fb78c31f2",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    price_changes = [\n        1.2, -0.8, 0.5, 2.3, -1.0, -0.4, 1.8,\n        0.6, -1.5, 3.0, -0.2, -0.9, 2.1, 0.7\n    ]\n    period = 14\n\n    # Do math calculation to get the answer\n    gains = [max(change, 0) for change in price_changes]\n    losses = [abs(min(change, 0)) for change in price_changes]\n\n    avg_gain = sum(gains[:period]) / period\n    avg_loss = sum(losses[:period]) / period\n\n    if avg_loss == 0:\n        rsi = 100.0\n    else:\n        relative_strength = avg_gain / avg_loss\n        rsi = 100 - (100 / (1 + relative_strength))\n\n    # return answer\n    return round(rsi, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5462,
+      "completion_tokens": 394,
+      "total_tokens": 5856,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 159
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

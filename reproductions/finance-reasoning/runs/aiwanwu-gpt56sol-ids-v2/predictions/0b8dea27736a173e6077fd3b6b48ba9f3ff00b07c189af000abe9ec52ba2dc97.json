@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2220",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annualized yield or zero-coupon rate of a zero-coupon bond from its current price, par value, and time to maturity, assuming no interim coupon payments, and returns the result as an annual percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5020,
+          "completion_tokens": 55,
+          "total_tokens": 5075,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 14547,
+          "completion_tokens": 358,
+          "total_tokens": 14905,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 337
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    face_value = 1000\n    purchase_price = 850\n    years_to_maturity = 5\n\n    annual_yield = ((face_value / purchase_price) ** (1 / years_to_maturity) - 1) * 100\n    answer = round(annual_yield, 2)\n\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5327,
+          "completion_tokens": 99,
+          "total_tokens": 5426,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 17
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1953",
+        "score": 2.083280324935913,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1420",
+        "score": 2.0208940505981445,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.9882030487060547,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.9720566272735596,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.9612700939178467,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.9528818130493164,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.9435033798217773,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.914098858833313,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.904496669769287,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.893801212310791,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.8710670471191406,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1208",
+        "score": 1.8692141771316528,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.8556790351867676,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.8449337482452393,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.8401072025299072,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.831496238708496,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.8312486410140991,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.8158597946166992,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.8048293590545654,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.7962746620178223,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7961112260818481,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.7916014194488525,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.7876243591308594,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.780738115310669,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7713840007781982,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.7699267864227295,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.7666172981262207,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-732",
+        "score": 1.7633798122406006,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.7611461877822876,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.7589683532714844,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1953",
+      "article-1420"
+    ],
+    "status": "ok",
+    "answer": 3.3,
+    "code": "def solution():\n    face_value = 1000\n    purchase_price = 850\n    years_to_maturity = 5\n\n    annual_yield = ((face_value / purchase_price) ** (1 / years_to_maturity) - 1) * 100\n    answer = round(annual_yield, 2)\n\n    return answer\n"
+  },
+  "digest": "783e13e14bb534e88f8a243703ef0436cb99b93cdb57f1357e3886e6c25560a9"
+}

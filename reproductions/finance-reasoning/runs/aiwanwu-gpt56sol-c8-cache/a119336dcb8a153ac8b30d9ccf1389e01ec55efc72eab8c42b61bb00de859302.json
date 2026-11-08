@@ -1,0 +1,21 @@
+{
+  "identity": "a119336dcb8a153ac8b30d9ccf1389e01ec55efc72eab8c42b61bb00de859302",
+  "response_digest": "0d21ed7575a0c9fc23734730a2235807600c8581b233e22a2ae2f889b0cd6379",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables and values as decimals\n    expected_income_return = 0.024\n    expected_real_earnings_growth = 0.050\n    expected_inflation = 0.023\n    current_pe = 14.5\n    expected_pe = 14.0\n\n    # Calculate expected nominal earnings growth\n    expected_nominal_earnings_growth = (\n        expected_real_earnings_growth + expected_inflation\n    )\n\n    # Calculate the expected percentage change in the P/E ratio\n    expected_pe_change = (expected_pe / current_pe) - 1\n\n    # Apply the Grinold-Kroner model\n    expected_equity_return = (\n        expected_income_return\n        + expected_nominal_earnings_growth\n        + expected_pe_change\n    )\n\n    # Return the answer as a percentage rounded to three decimal places\n    return round(expected_equity_return * 100, 3)\n```",
+    "usage": {
+      "prompt_tokens": 4889,
+      "completion_tokens": 361,
+      "total_tokens": 5250,
+      "prompt_tokens_details": {
+        "cached_tokens": 3316
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 155
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

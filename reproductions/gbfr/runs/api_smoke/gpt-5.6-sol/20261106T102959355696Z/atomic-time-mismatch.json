@@ -1,0 +1,73 @@
+{
+  "case": {
+    "id": "atomic-time-mismatch",
+    "question": "What was Company A's Stock Price in 2024, in USD?",
+    "context": "Company A's Stock Price in 2023 was USD 25. No stock price for any other year is provided.",
+    "expected": "abstained"
+  },
+  "prediction": {
+    "status": "abstained",
+    "value": null,
+    "meta": {},
+    "precision": "unknown",
+    "trace": {
+      "events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "reasoning_type": "DirectRetrieval",
+            "operator": "compare",
+            "subgoals": [
+              {
+                "metric": "stock price",
+                "constraints": {
+                  "temporal_scope": "2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": "USD",
+                    "scale": "unknown",
+                    "unit": "price"
+                  }
+                }
+              }
+            ],
+            "precision": "unknown"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "stock price",
+            "constraints": {
+              "temporal_scope": "2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": "USD",
+                "scale": "unknown",
+                "unit": "price"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Stock price for Company A in 2024 is not stated; only the 2023 stock price is provided."
+          }
+        }
+      ],
+      "subgoal_results": [
+        {
+          "value": null,
+          "meta": {},
+          "paths": [],
+          "reason": "Stock price for Company A in 2024 is not stated; only the 2023 stock price is provided."
+        }
+      ]
+    },
+    "reason": "At least one required subgoal could not be grounded"
+  },
+  "passed": true
+}

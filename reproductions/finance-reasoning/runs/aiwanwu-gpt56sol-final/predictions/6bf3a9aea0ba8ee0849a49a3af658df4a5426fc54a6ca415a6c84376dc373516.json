@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2118",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the McClellan Oscillator from daily advancing and declining stock counts using prior 19-day and 39-day exponential moving averages of net advances, updating both EMAs with today’s net advances and returning the oscillator as the difference between the short-term and long-term EMAs rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5033,
+          "completion_tokens": 68,
+          "total_tokens": 5101,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16224,
+          "completion_tokens": 333,
+          "total_tokens": 16557,
+          "prompt_tokens_details": {
+            "cached_tokens": 16000
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 236
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    advances = 1200\n    declines = 800\n    prior_19_day_ema = 150\n    prior_39_day_ema = 100\n\n    # Do math calculation to get the answer\n    net_advances = advances - declines\n    ema_19_day = (net_advances * 0.10) + (prior_19_day_ema * 0.90)\n    ema_39_day = (net_advances * 0.05) + (prior_39_day_ema * 0.95)\n    answer = round(ema_19_day - ema_39_day, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5094,
+          "completion_tokens": 160,
+          "total_tokens": 5254,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-896",
+        "score": 2.412287712097168
+      },
+      {
+        "function_id": "article-898",
+        "score": 2.0706262588500977
+      },
+      {
+        "function_id": "article-897",
+        "score": 1.9165436029434204
+      },
+      {
+        "function_id": "article-1051",
+        "score": 1.8056145906448364
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.7196186780929565
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.6658146381378174
+      },
+      {
+        "function_id": "article-1050",
+        "score": 1.6433804035186768
+      },
+      {
+        "function_id": "article-2288",
+        "score": 1.6334489583969116
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.6100858449935913
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.6033010482788086
+      },
+      {
+        "function_id": "article-962",
+        "score": 1.594813585281372
+      },
+      {
+        "function_id": "article-1225",
+        "score": 1.5923078060150146
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.5834721326828003
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.5833100080490112
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5765881538391113
+      },
+      {
+        "function_id": "article-1622",
+        "score": 1.5704386234283447
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.5675104856491089
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.5654222965240479
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.5576587915420532
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.557584524154663
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.5542572736740112
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5528268814086914
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.547255277633667
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.536550521850586
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.5364817380905151
+      },
+      {
+        "function_id": "article-1994",
+        "score": 1.5362030267715454
+      },
+      {
+        "function_id": "article-850",
+        "score": 1.5338671207427979
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.5302698612213135
+      },
+      {
+        "function_id": "article-859",
+        "score": 1.5299391746520996
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.526341199874878
+      }
+    ],
+    "selected_ids": [
+      "article-896"
+    ],
+    "status": "ok",
+    "answer": 60.0,
+    "code": "def solution():\n    # Define variables name and value\n    advances = 1200\n    declines = 800\n    prior_19_day_ema = 150\n    prior_39_day_ema = 100\n\n    # Do math calculation to get the answer\n    net_advances = advances - declines\n    ema_19_day = (net_advances * 0.10) + (prior_19_day_ema * 0.90)\n    ema_39_day = (net_advances * 0.05) + (prior_39_day_ema * 0.95)\n    answer = round(ema_19_day - ema_39_day, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "26526569b1e82e783bfa0a2b9a37e134633655730dbd1e73c3517bcc926317a5"
+}

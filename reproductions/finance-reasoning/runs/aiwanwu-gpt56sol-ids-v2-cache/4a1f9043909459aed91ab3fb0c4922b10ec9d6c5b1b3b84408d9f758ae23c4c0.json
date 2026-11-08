@@ -1,0 +1,21 @@
+{
+  "identity": "4a1f9043909459aed91ab3fb0c4922b10ec9d6c5b1b3b84408d9f758ae23c4c0",
+  "response_digest": "70763c5502a9e8e15932d8f8c24461cc1edb718298f7dbe3e5c5507e62aeb7e4",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    buy_orders = [\n        {\"quantity\": 100, \"price\": 50},\n        {\"quantity\": 150, \"price\": 48},\n    ]\n    sell_orders = [\n        {\"quantity\": 50, \"price\": 48},\n        {\"quantity\": 200, \"price\": 50},\n    ]\n\n    buy_index = 0\n    sell_index = 0\n    total_executed_quantity = 0\n\n    # Match orders using price-time priority\n    while buy_index < len(buy_orders) and sell_index < len(sell_orders):\n        buy_order = buy_orders[buy_index]\n        sell_order = sell_orders[sell_index]\n\n        if buy_order[\"price\"] < sell_order[\"price\"]:\n            break\n\n        executed_quantity = min(\n            buy_order[\"quantity\"],\n            sell_order[\"quantity\"]\n        )\n        total_executed_quantity += executed_quantity\n\n        buy_order[\"quantity\"] -= executed_quantity\n        sell_order[\"quantity\"] -= executed_quantity\n\n        if buy_order[\"quantity\"] == 0:\n            buy_index += 1\n        if sell_order[\"quantity\"] == 0:\n            sell_index += 1\n\n    # Return the total number of matched shares\n    return round(total_executed_quantity)\n```",
+    "usage": {
+      "prompt_tokens": 5170,
+      "completion_tokens": 378,
+      "total_tokens": 5548,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 98
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

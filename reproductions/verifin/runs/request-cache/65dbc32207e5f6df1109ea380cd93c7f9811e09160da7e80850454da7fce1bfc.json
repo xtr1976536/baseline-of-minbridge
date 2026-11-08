@@ -1,0 +1,28 @@
+{
+  "request_hash": "65dbc32207e5f6df1109ea380cd93c7f9811e09160da7e80850454da7fce1bfc",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the FY2018 - FY2020 3 year average of capex as a % of revenue for MGM Resorts? Answer in units of percents and round to one decimal place. Please utilize information provided primarily within the statement of cash flows and the statement of income.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"three_year_average_capex_as_percent_of_revenue\",\n  \"facts\": [\n    {\n      \"name\": \"capital_expenditures\",\n      \"aliases\": [\n        \"Capital expenditures\",\n        \"Capital expenditures, net\",\n        \"Purchases of property and equipment\",\n        \"Additions to property and equipment\",\n        \"Property and equipment additions\"\n      ],\n      \"period\": \"FY2018, FY2019, FY2020\",\n      \"statement\": \"cash flow\"\n    },\n    {\n      \"name\": \"revenue\",\n      \"aliases\": [\n        \"Revenues\",\n        \"Revenue\",\n        \"Net revenues\",\n        \"Casino, rooms, food and beverage and other revenue\"\n      ],\n      \"period\": \"FY2018, FY2019, FY2020\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Calculate capex as a percentage of revenue for each of FY2018, FY2019, and FY2020 using capital expenditures from the statement of cash flows and revenue from the statement of income, then take the arithmetic average of the three annual percentages and round to one decimal place.\"\n}",
+  "usage": {
+    "prompt_tokens": 4734,
+    "completion_tokens": 245,
+    "total_tokens": 4979,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    }
+  },
+  "response_id": "resp_000cdfe44beffa5a016aedba010c7887d2b5afcd5191e97471",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

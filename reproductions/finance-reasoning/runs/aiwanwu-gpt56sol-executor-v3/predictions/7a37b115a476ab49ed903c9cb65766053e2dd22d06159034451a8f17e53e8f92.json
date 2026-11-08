@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2162",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the total return of a fully collateralized long futures position over a specified holding period, combining the futures price return from the initial contract price and the roll from near-term to deferred futures prices with collateral interest income at an annualized rate, and expresses the result as a percentage?",
+        "usage": {
+          "prompt_tokens": 5072,
+          "completion_tokens": 62,
+          "total_tokens": 5134,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C07\",\"C19\",\"C30\"]}",
+        "usage": {
+          "prompt_tokens": 13845,
+          "completion_tokens": 540,
+          "total_tokens": 14385,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_futures_price = 865.0\n    roll_short_term_price = 877.0\n    roll_long_term_price = 883.0\n    collateral_annual_rate = 0.006\n    holding_period_years = 3 / 12\n\n    # Do math calculation to get the answer\n    futures_price_return = (\n        (roll_short_term_price - initial_futures_price)\n        / initial_futures_price\n    )\n    roll_return = (\n        (roll_short_term_price - roll_long_term_price)\n        / roll_short_term_price\n    )\n    collateral_return = collateral_annual_rate * holding_period_years\n\n    total_return = (\n        futures_price_return\n        + roll_return\n        + collateral_return\n    ) * 100\n\n    # return answer\n    return round(total_return, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5566,
+          "completion_tokens": 621,
+          "total_tokens": 6187,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 427
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1601",
+        "score": 1.8272154331207275,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.7300969362258911,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-659",
+        "score": 1.6864757537841797,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.682466745376587,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-128",
+        "score": 1.6570966243743896,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.6423505544662476,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.6405696868896484,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2659",
+        "score": 1.640386939048767,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-159",
+        "score": 1.6334736347198486,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1465",
+        "score": 1.6294115781784058,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1567",
+        "score": 1.622880220413208,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6210187673568726,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-105",
+        "score": 1.616811752319336,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2180",
+        "score": 1.609938144683838,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2191",
+        "score": 1.6095632314682007,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.6092727184295654,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.6070303916931152,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2178",
+        "score": 1.6069161891937256,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-127",
+        "score": 1.6063077449798584,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.6053581237792969,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1602",
+        "score": 1.602907657623291,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1733",
+        "score": 1.601773738861084,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.6014978885650635,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-477",
+        "score": 1.6010199785232544,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.5993008613586426,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1870",
+        "score": 1.598684310913086,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1001",
+        "score": 1.5982173681259155,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2192",
+        "score": 1.5975656509399414,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.596436858177185,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1062",
+        "score": 1.5961129665374756,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1904",
+      "article-127",
+      "article-1062"
+    ],
+    "status": "ok",
+    "answer": 0.853,
+    "code": "def solution():\n    # Define variables name and value\n    initial_futures_price = 865.0\n    roll_short_term_price = 877.0\n    roll_long_term_price = 883.0\n    collateral_annual_rate = 0.006\n    holding_period_years = 3 / 12\n\n    # Do math calculation to get the answer\n    futures_price_return = (\n        (roll_short_term_price - initial_futures_price)\n        / initial_futures_price\n    )\n    roll_return = (\n        (roll_short_term_price - roll_long_term_price)\n        / roll_short_term_price\n    )\n    collateral_return = collateral_annual_rate * holding_period_years\n\n    total_return = (\n        futures_price_return\n        + roll_return\n        + collateral_return\n    ) * 100\n\n    # return answer\n    return round(total_return, 3)\n"
+  },
+  "digest": "972088dc00473595c65a6c5b4e247208c007f2ba8cf9959a43997ef26330f5c2"
+}

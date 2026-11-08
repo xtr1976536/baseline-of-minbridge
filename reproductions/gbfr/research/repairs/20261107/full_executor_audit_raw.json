@@ -1,0 +1,304 @@
+{
+  "api_requests": 0,
+  "cache_only": true,
+  "cases": [
+    {
+      "dataset": "FinQA",
+      "id": "FinQA:AMT/2014/page_160.pdf-2",
+      "question": "what portion of future lease payments are due after 5 years?",
+      "frozen_gold": "61%",
+      "original_error": "Unsupported scale: ratio",
+      "replay_error": {
+        "type": "ValueError",
+        "message": "Unsupported scale: ratio"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    try:\n        thereafter = vars[\"v1\"]\n        total = vars[\"v2\"]\n        portion = thereafter / total\n    except ZeroDivisionError:\n        return None\n\n    return {\n        \"value\": portion,\n        \"trace\": {\n            \"thereafter\": thereafter,\n            \"total\": total,\n            \"portion\": portion,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": \"ratio\",\n                \"unit\": \"ratio\"\n            }\n        }\n    }",
+          "inputs": {
+            "v1": 4214600.0,
+            "v2": 6903188.0
+          },
+          "allow_boolean_result": false,
+          "program_sha256": "7f68adcde7e80fabc1345759ccc98459b38f42d269a749534442b1ec61bb8d24",
+          "old_result": {
+            "value": 0.6105295118719062,
+            "trace": {
+              "thereafter": 4214600.0,
+              "total": 6903188.0,
+              "portion": 0.6105295118719062,
+              "output_meta": {
+                "currency": null,
+                "scale": "ratio",
+                "unit": "ratio"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "FinQA",
+      "id": "FinQA:CB/2008/page_229.pdf-2",
+      "question": "what was the average amortization expense from 2006 to 2008",
+      "frozen_gold": "77",
+      "original_error": "Invalid generated Python syntax",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "Invalid generated Python syntax"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    values = [vars[\"v1\"], vars[\"v2\"], vars[\"v3\"]]\n    result = sum(values) / len(values)\n    return {\n        \"value\": result,\n        \"trace\": {\n            \"values\": values,\n            \"count\": len(values),\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    } }",
+          "inputs": {
+            "v1": 64.0,
+            "v2": 77.0,
+            "v3": 90.0
+          },
+          "allow_boolean_result": false,
+          "program_sha256": "01a928dd6dee134f4d398d2aac60a6b6db88067a4dc6d17ca2ccc423a7dc868e",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "Invalid generated Python syntax"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "FinQA",
+      "id": "FinQA:SNA/2007/page_49.pdf-2",
+      "question": "based on the cash dividends paid , how many common stock shares were outstanding?",
+      "frozen_gold": "58909091",
+      "original_error": "Only one compute(vars) function is permitted",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "Only one compute(vars) function is permitted"
+      },
+      "executions": [
+        {
+          "program": "{\"code\":\"def compute(vars):\\n    cash_dividends_paid = vars[\\\"v1\\\"]\\n    dividends_per_common_share = vars[\\\"v2\\\"]\\n\\n    if dividends_per_common_share == 0:\\n        return None\\n\\n    shares_outstanding = cash_dividends_paid / dividends_per_common_share\\n    return {\\n        \\\"value\\\": shares_outstanding,\\n        \\\"trace\\\": {\\n            \\\"cash_dividends_paid\\\": cash_dividends_paid,\\n            \\\"dividends_per_common_share\\\": dividends_per_common_share,\\n            \\\"output_meta\\\": {\\n                \\\"currency\\\": None,\\n                \\\"scale\\\": \\\"million\\\",\\n                \\\"unit\\\": \\\"shares\\\"\\n            }\\n        }\\n    }\"}",
+          "inputs": {
+            "v1": 64.8,
+            "v2": 1.11
+          },
+          "allow_boolean_result": false,
+          "program_sha256": "0bae7864b9ca72f0dfa5d82e961b848b75eb12b15e55b6e2273ccfae886fdaa1",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "Only one compute(vars) function is permitted"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "TAT-QA",
+      "id": "TAT-QA:4bf6297fe4aaf51d58b160a778fadc6f_82d14c3d4fe3414597b638431b2eeffc",
+      "question": "In which year was the net loss less -10,000?",
+      "frozen_gold": "2017",
+      "original_error": "Only arithmetic builtins and safe container methods may be called",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "Only arithmetic builtins and safe container methods may be called"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    losses = {\n        \"2019\": vars[\"v1\"],\n        \"2018\": vars[\"v2\"],\n        \"2017\": vars[\"v3\"],\n    }\n    threshold = -10000\n    matching_years = [year for year, loss in losses.items() if loss < threshold]\n    result = \" and \".join(matching_years) if matching_years else None\n\n    return {\n        \"value\": result,\n        \"trace\": {\n            \"losses\": losses,\n            \"threshold\": threshold,\n            \"matching_years\": matching_years,\n            \"output_meta\": {\"currency\": None, \"scale\": None, \"unit\": \"year\"},\n        },\n    }",
+          "inputs": {
+            "v1": -19898.0,
+            "v2": -26199.0,
+            "v3": -9187.0
+          },
+          "allow_boolean_result": true,
+          "program_sha256": "0447c2d78b0f9c9646902d9af58415c2f36253b6a58dac028cb770fbe694f018",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "Only arithmetic builtins and safe container methods may be called"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "TAT-QA",
+      "id": "TAT-QA:3e2109c375cbf670d40c77b22b430b20_0a5bf43b11e96289f11f5f5105b1da4a",
+      "question": "In which year was intangible assets negative?",
+      "frozen_gold": "2018",
+      "original_error": "compute returned non-scalar text",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "compute returned non-scalar text"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    v1 = vars[\"v1\"]\n    v2 = vars[\"v2\"]\n    if v1 < 0 and v2 >= 0:\n        value = \"September 27, 2019\"\n    elif v2 < 0 and v1 >= 0:\n        value = \"September 28, 2018\"\n    elif v1 < 0 and v2 < 0:\n        value = \"Both years\"\n    else:\n        value = \"Neither year\"\n\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"v1\": v1,\n            \"v2\": v2,\n            \"output_meta\": {\"currency\": None, \"scale\": None, \"unit\": None}\n        }\n    }",
+          "inputs": {
+            "v1": 9887.0,
+            "v2": -94929.0
+          },
+          "allow_boolean_result": true,
+          "program_sha256": "d2d6aadb1087069867b6ae479edf6294002e49354ccaa6563f6b988aa6310ae4",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "compute returned non-scalar text"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "TAT-QA",
+      "id": "TAT-QA:8c79671b7ad782c9d32167f2c04a1af5_6ad0bde371cfef66faf1970bb0c767cd",
+      "question": "In which year is the Diluted average shares outstanding is the highest?",
+      "frozen_gold": "2017",
+      "original_error": "compute returned non-scalar text",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "compute returned non-scalar text"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    values = {\n        \"year ended June 30, 2019\": vars[\"v1\"],\n        \"year ended June 24, 2018\": vars[\"v2\"],\n        \"year ended June 25, 2017\": vars[\"v3\"],\n    }\n    highest_year = max(values, key=values.get)\n    return {\n        \"value\": highest_year,\n        \"trace\": {\n            \"values_by_year\": values,\n            \"highest_value\": values[highest_year],\n            \"output_meta\": {\"currency\": None, \"scale\": None, \"unit\": \"year\"},\n        },\n    }",
+          "inputs": {
+            "v1": 159915.0,
+            "v2": 180782.0,
+            "v3": 183770.0
+          },
+          "allow_boolean_result": true,
+          "program_sha256": "9c0157fe2b0ba2a03bb1bbc7ce2ae98cd120865091e3958b29f3e2184ae3eb9d",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "compute returned non-scalar text"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "TAT-QA",
+      "id": "TAT-QA:902a9a9cf29ffa7b1434e0e604e0c8ea_16fb06cce05c75e5d065387003ae6622",
+      "question": "What is the amount of tax paid in 2019?",
+      "frozen_gold": "$5.6 million",
+      "original_error": "Invalid generated Python syntax",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "Invalid generated Python syntax"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    value = vars[\"v1\"]\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    } }",
+          "inputs": {
+            "v1": -5.6
+          },
+          "allow_boolean_result": false,
+          "program_sha256": "569b2d532fb4a693eb8797f13e5a192734ecbb351ab3d6aa71ce54276ea9d561",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "Invalid generated Python syntax"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "TAT-QA",
+      "id": "TAT-QA:7399b5db48b8dc118aa8f0c7336fffa3_445534e20d1dd84e1c0a6a94e107fed8",
+      "question": "In which year was the amount of financial assets larger?",
+      "frozen_gold": "2019",
+      "original_error": "compute returned non-scalar text",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "compute returned non-scalar text"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    old = vars[\"v1\"]\n    new = vars[\"v2\"]\n\n    if old > new:\n        value = \"30/9/2018\"\n    elif new > old:\n        value = \"30/9/2019\"\n    else:\n        value = None\n\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"financial_assets_30_9_2018\": old,\n            \"financial_assets_30_9_2019\": new,\n            \"comparison\": \"larger\" if old != new else \"equal\",\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": \"year\"\n            }\n        }\n    }",
+          "inputs": {
+            "v1": 88.0,
+            "v2": 97.0
+          },
+          "allow_boolean_result": true,
+          "program_sha256": "653fffa42fa352a8cc6fdcf2f782097d1d19a3702c47c99c0c47659509e5fcc0",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "compute returned non-scalar text"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "TAT-QA",
+      "id": "TAT-QA:73842f616f18b30fe624ac4a4281a91d_56ff97230978b4ccbb32b8df028391c3",
+      "question": "How much was the landholder duty on acquisition of APDC properties in 2019?",
+      "frozen_gold": "3,498",
+      "original_error": "Invalid generated Python syntax",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "Invalid generated Python syntax"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    value = vars[\"v1\"]\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"output_meta\": {\n                \"currency\": \"$\",\n                \"scale\": \"thousand\",\n                \"unit\": None\n            }\n        }\n    }⏎",
+          "inputs": {
+            "v1": -3498.0
+          },
+          "allow_boolean_result": false,
+          "program_sha256": "d896a0cf77def3b2da64c1f43c0021f68ec2426d9eef6b7483b407aa14afd18b",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "Invalid generated Python syntax"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "TAT-QA",
+      "id": "TAT-QA:e0e0f21500e31cabc36158bb0c05826a_4c76b32b0cbd412cb80e188a064343dc",
+      "question": "What is the year with Charges included in discontinued operations?",
+      "frozen_gold": "2017",
+      "original_error": "Only arithmetic builtins and safe container methods may be called",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "Only arithmetic builtins and safe container methods may be called"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    values = {\n        \"2019\": vars[\"v1\"],\n        \"2018\": vars[\"v2\"],\n        \"2017\": vars[\"v3\"],\n    }\n    highest = max(values.values())\n    years = [year for year, value in values.items() if value == highest]\n    result = \" and \".join(years)\n\n    return {\n        \"value\": result,\n        \"trace\": {\n            \"values_by_year\": values,\n            \"highest_value\": highest,\n            \"matching_years\": years,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": \"year\",\n            },\n        },\n    }",
+          "inputs": {
+            "v1": 2014.0,
+            "v2": 2014.0,
+            "v3": 2.4
+          },
+          "allow_boolean_result": true,
+          "program_sha256": "1bb7efd834e506af34575891e75d397a1ba0ad9a4a1ef8adefd7bf26d3acf8e6",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "Only arithmetic builtins and safe container methods may be called"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "TAT-QA",
+      "id": "TAT-QA:057149f07d2fad98ce7387e82475f309_77361e6295e37b679affaa3fd5295dc5",
+      "question": "Which year has the highest amount of Restricted Share Awards (“RSAs”)?",
+      "frozen_gold": "2019",
+      "original_error": "compute returned non-scalar text",
+      "replay_error": {
+        "type": "ProtocolError",
+        "message": "compute returned non-scalar text"
+      },
+      "executions": [
+        {
+          "program": "def compute(vars):\n    values = {\n        \"December 27, 2019\": vars[\"v1\"],\n        \"December 28, 2018\": vars[\"v2\"],\n        \"December 29, 2017\": vars[\"v3\"],\n    }\n    highest_year = max(values, key=values.get)\n    return {\n        \"value\": highest_year,\n        \"trace\": {\n            \"values\": values,\n            \"highest_amount\": values[highest_year],\n            \"output_meta\": {\"currency\": None, \"scale\": None, \"unit\": \"year\"},\n        },\n    }",
+          "inputs": {
+            "v1": 132861.0,
+            "v2": 42.0,
+            "v3": 84511.0
+          },
+          "allow_boolean_result": true,
+          "program_sha256": "eb53c87660495c453057bac54139a9f04408678a4e4f9f7c78724cf1b1034220",
+          "old_error": {
+            "type": "ProtocolError",
+            "message": "compute returned non-scalar text"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "identity": "8eef2cd476f2ea7795dcee5042f9b20e89c0703510c8cb578bbd64539801e407",
+  "response_digest": "32377728b80cdd6cbfa1b45869dbabaf14fff157cf2e3066867ad7949c7708da",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    market_value_equity = 2_000_000\n    face_value_debt = 4_000_000\n    annual_coupon_rate = 0.08\n    annual_yield_to_maturity = 0.09\n    years_to_maturity = 5\n    tax_rate = 0.25\n    risk_free_rate = 0.02\n    beta = 1.2\n    equity_risk_premium = 0.04\n\n    payments_per_year = 2\n    coupon_payment = face_value_debt * annual_coupon_rate / payments_per_year\n    periodic_yield = annual_yield_to_maturity / payments_per_year\n    number_of_periods = years_to_maturity * payments_per_year\n\n    # Calculate the market value of debt\n    debt_market_value = (\n        coupon_payment\n        * (1 - (1 + periodic_yield) ** (-number_of_periods))\n        / periodic_yield\n        + face_value_debt * (1 + periodic_yield) ** (-number_of_periods)\n    )\n\n    # Calculate the cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * equity_risk_premium\n\n    # Calculate the after-tax cost of debt\n    after_tax_cost_of_debt = annual_yield_to_maturity * (1 - tax_rate)\n\n    # Calculate capital weights\n    total_market_value = market_value_equity + debt_market_value\n    equity_weight = market_value_equity / total_market_value\n    debt_weight = debt_market_value / total_market_value\n\n    # Calculate WACC\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * after_tax_cost_of_debt\n    )\n\n    # Return WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5529,
+      "completion_tokens": 657,
+      "total_tokens": 6186,
+      "completion_tokens_details": {
+        "reasoning_tokens": 251
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

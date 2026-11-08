@@ -1,0 +1,228 @@
+{
+  "record": {
+    "question_id": "test-2150",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the issue price and bonds-payable carrying amount for a three-year bond using the present value of face value and annual coupon payments, given a $5,000,000 face value, a 2.5% annual coupon rate, and a 3% market discount rate, and identifies whether the bond is issued at a discount or premium?",
+        "usage": {
+          "prompt_tokens": 5001,
+          "completion_tokens": 143,
+          "total_tokens": 5144,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 65
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C12\"]}",
+        "usage": {
+          "prompt_tokens": 14551,
+          "completion_tokens": 202,
+          "total_tokens": 14753,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 178
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 5_000_000\n    coupon_rate = 0.025\n    market_rate = 0.03\n    years = 3\n\n    # Do math calculation to get the answer\n    annual_coupon = face_value * coupon_rate\n    bond_value = sum(\n        annual_coupon / ((1 + market_rate) ** period)\n        for period in range(1, years + 1)\n    )\n    bond_value += face_value / ((1 + market_rate) ** years)\n\n    # return answer\n    return round(bond_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5744,
+          "completion_tokens": 399,
+          "total_tokens": 6143,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 258
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-741",
+        "score": 2.002985715866089,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.9649326801300049,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.9631205797195435,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1303",
+        "score": 1.9510239362716675,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.9022849798202515,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.8893423080444336,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-3086",
+        "score": 1.8758810758590698,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.855259895324707,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.8430287837982178,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-739",
+        "score": 1.8386921882629395,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.8381472826004028,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.8161474466323853,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.8078374862670898,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.8013029098510742,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1998",
+        "score": 1.8002220392227173,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.786555528640747,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.7847665548324585,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.7730673551559448,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.7701869010925293,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.7699661254882812,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-810",
+        "score": 1.7683417797088623,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.7656981945037842,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.7594674825668335,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2742",
+        "score": 1.7588541507720947,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.7569375038146973,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.7552509307861328,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.7518310546875,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.7513288259506226,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.7513258457183838,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2606",
+        "score": 1.744687795639038,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-741",
+      "article-2968",
+      "article-734"
+    ],
+    "status": "ok",
+    "answer": 4929284.716,
+    "code": "def solution():\n    # Define variables name and value\n    face_value = 5_000_000\n    coupon_rate = 0.025\n    market_rate = 0.03\n    years = 3\n\n    # Do math calculation to get the answer\n    annual_coupon = face_value * coupon_rate\n    bond_value = sum(\n        annual_coupon / ((1 + market_rate) ** period)\n        for period in range(1, years + 1)\n    )\n    bond_value += face_value / ((1 + market_rate) ** years)\n\n    # return answer\n    return round(bond_value, 3)\n"
+  },
+  "digest": "26e3262a1878cb7989d3e4cde5ef5b0660dff3b4768475af05fc6b4f445995c0"
+}

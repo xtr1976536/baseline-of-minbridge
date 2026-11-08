@@ -1,0 +1,21 @@
+{
+  "identity": "69133b977452f6b702d37c5b51c09cc07d895644f43486b7de26ca1b1c88bd63",
+  "response_digest": "2273d1dbc7957b8ccba2277b43e1f361b17a878b715bf341397d882840e88579",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [150, 152, 153, 155, 156, 158, 160, 162, 163, 165, 166, 168, 170, 172, 173]\n    window = 5\n\n    # Do math calculation to get the answer\n    if window >= len(prices) or window <= 0:\n        raise ValueError(\"Window size must be smaller than the length of price data and positive.\")\n\n    previous_high = max(prices[:window])\n    previous_low = min(prices[:window])\n\n    for i in range(window, len(prices)):\n        current_high = max(prices[i - window + 1:i + 1])\n        current_low = min(prices[i - window + 1:i + 1])\n\n        if current_high <= previous_high or current_low <= previous_low:\n            return False\n\n        previous_high = current_high\n        previous_low = current_low\n\n    # return answer\n    return True\n```",
+    "usage": {
+      "prompt_tokens": 5097,
+      "completion_tokens": 295,
+      "total_tokens": 5392,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 69
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

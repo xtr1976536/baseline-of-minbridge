@@ -1,0 +1,21 @@
+{
+  "identity": "e32d3d42c2db3c15ba190b1a08f2f49a10fa00a9e0acceba723715d66d97b184",
+  "response_digest": "7b69f2b4237bf654fcb28567e90d5a9c252d5d53bbc6ad32d9eba16cd4ecbc52",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    credit_sales = 40000\n    cost_of_goods_sold = 30000\n    accounts_receivable = 3000\n    beginning_inventory = 1500\n    ending_inventory = 2000\n    accounts_payable = 4000\n    days_in_year = 365\n\n    # Do math calculation to get the answer\n    average_inventory = (beginning_inventory + ending_inventory) / 2\n    days_inventory_outstanding = (\n        average_inventory / cost_of_goods_sold\n    ) * days_in_year\n    days_sales_outstanding = (\n        accounts_receivable / credit_sales\n    ) * days_in_year\n    days_payable_outstanding = (\n        accounts_payable / cost_of_goods_sold\n    ) * days_in_year\n\n    cash_conversion_cycle = (\n        days_inventory_outstanding\n        + days_sales_outstanding\n        - days_payable_outstanding\n    )\n    answer = round(cash_conversion_cycle, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5359,
+      "completion_tokens": 348,
+      "total_tokens": 5707,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 118
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

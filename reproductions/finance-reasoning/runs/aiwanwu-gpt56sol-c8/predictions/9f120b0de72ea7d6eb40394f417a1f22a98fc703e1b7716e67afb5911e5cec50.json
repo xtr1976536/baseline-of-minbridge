@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2108",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates overall net gain or loss by combining ordinary income and expenses with short-term and long-term capital gains and losses, netting capital gains against losses by holding period, applying allowable net capital loss deductions against ordinary income subject to annual limits, and returning the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5086,
+          "completion_tokens": 63,
+          "total_tokens": 5149,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14730,
+          "completion_tokens": 1541,
+          "total_tokens": 16271,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1444
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    ordinary_income = 150000\n    ordinary_expenses = 120000\n    short_term_gain = 12000\n    short_term_loss = 18000\n    long_term_gain = 5000\n    long_term_loss = 9000\n    capital_loss_deduction_limit = 3000\n\n    # Do math calculation to get the answer\n    net_ordinary_gain = ordinary_income - ordinary_expenses\n    net_short_term_capital = short_term_gain - short_term_loss\n    net_long_term_capital = long_term_gain - long_term_loss\n    net_capital = net_short_term_capital + net_long_term_capital\n\n    allowable_capital_deduction = max(\n        net_capital,\n        -capital_loss_deduction_limit\n    )\n    answer = round(net_ordinary_gain + allowable_capital_deduction)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5828,
+          "completion_tokens": 205,
+          "total_tokens": 6033
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-3078",
+        "score": 2.053727388381958
+      },
+      {
+        "function_id": "article-1102",
+        "score": 1.9536799192428589
+      },
+      {
+        "function_id": "article-1837",
+        "score": 1.9107239246368408
+      },
+      {
+        "function_id": "article-2188",
+        "score": 1.895915150642395
+      },
+      {
+        "function_id": "article-60",
+        "score": 1.885047197341919
+      },
+      {
+        "function_id": "article-56",
+        "score": 1.8762985467910767
+      },
+      {
+        "function_id": "article-2925",
+        "score": 1.8746187686920166
+      },
+      {
+        "function_id": "article-2189",
+        "score": 1.8642115592956543
+      },
+      {
+        "function_id": "article-1847",
+        "score": 1.8577419519424438
+      },
+      {
+        "function_id": "article-1841",
+        "score": 1.846269130706787
+      },
+      {
+        "function_id": "article-1838",
+        "score": 1.836722493171692
+      },
+      {
+        "function_id": "article-2978",
+        "score": 1.8150582313537598
+      },
+      {
+        "function_id": "article-3084",
+        "score": 1.810945749282837
+      },
+      {
+        "function_id": "article-376",
+        "score": 1.8071712255477905
+      },
+      {
+        "function_id": "article-1464",
+        "score": 1.7956830263137817
+      },
+      {
+        "function_id": "article-2392",
+        "score": 1.770202398300171
+      },
+      {
+        "function_id": "article-1992",
+        "score": 1.7621121406555176
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.7595561742782593
+      },
+      {
+        "function_id": "article-1836",
+        "score": 1.747955560684204
+      },
+      {
+        "function_id": "article-2200",
+        "score": 1.7393693923950195
+      },
+      {
+        "function_id": "article-54",
+        "score": 1.7343430519104004
+      },
+      {
+        "function_id": "article-2932",
+        "score": 1.728869915008545
+      },
+      {
+        "function_id": "article-1477",
+        "score": 1.7263352870941162
+      },
+      {
+        "function_id": "article-1365",
+        "score": 1.7214200496673584
+      },
+      {
+        "function_id": "article-600",
+        "score": 1.718860149383545
+      },
+      {
+        "function_id": "article-1839",
+        "score": 1.717532753944397
+      },
+      {
+        "function_id": "article-2190",
+        "score": 1.7135999202728271
+      },
+      {
+        "function_id": "article-1181",
+        "score": 1.7003111839294434
+      },
+      {
+        "function_id": "article-1364",
+        "score": 1.693347692489624
+      },
+      {
+        "function_id": "article-161",
+        "score": 1.6921613216400146
+      }
+    ],
+    "selected_ids": [
+      "article-3078",
+      "article-1102",
+      "article-1837"
+    ],
+    "status": "ok",
+    "answer": 27000,
+    "code": "def solution():\n    # Define variables name and value\n    ordinary_income = 150000\n    ordinary_expenses = 120000\n    short_term_gain = 12000\n    short_term_loss = 18000\n    long_term_gain = 5000\n    long_term_loss = 9000\n    capital_loss_deduction_limit = 3000\n\n    # Do math calculation to get the answer\n    net_ordinary_gain = ordinary_income - ordinary_expenses\n    net_short_term_capital = short_term_gain - short_term_loss\n    net_long_term_capital = long_term_gain - long_term_loss\n    net_capital = net_short_term_capital + net_long_term_capital\n\n    allowable_capital_deduction = max(\n        net_capital,\n        -capital_loss_deduction_limit\n    )\n    answer = round(net_ordinary_gain + allowable_capital_deduction)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "9761be1717497b6a7bd85038fac1888c542daf1d4b60b96d0059de53d3a61ec1"
+}

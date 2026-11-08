@@ -1,0 +1,18 @@
+{
+  "identity": "4c2b05f68e53314ec3cc602219c78085a22448af545ae3f1e704ba4755291bfd",
+  "response_digest": "501ff0fbd4a2bb323fc78f8512f7447dfe7de83c59afc7d940393ba75a1c9cfb",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    purchase_price = 50.00\n    shares = 100\n    commission_per_share = 0.05\n    leverage_ratio = 2.0\n    call_money_rate = 0.06\n    ending_price = 70.00\n    dividend_per_share = 0.50\n\n    # Do math calculation to get the answer\n    stock_cost = purchase_price * shares\n    commission = commission_per_share * shares\n    initial_equity = stock_cost / leverage_ratio + commission\n    borrowed_amount = stock_cost - stock_cost / leverage_ratio\n    interest = borrowed_amount * call_money_rate\n    ending_value = ending_price * shares\n    dividends = dividend_per_share * shares\n    net_profit = ending_value + dividends - stock_cost - commission - interest\n    total_return = net_profit / initial_equity * 100\n\n    # return answer\n    return round(total_return, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5418,
+      "completion_tokens": 464,
+      "total_tokens": 5882,
+      "completion_tokens_details": {
+        "reasoning_tokens": 254
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

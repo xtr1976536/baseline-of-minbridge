@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2084",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the portfolio’s price value of a basis point (PVBP) from multiple bonds’ par values, market prices, and modified or effective durations, aggregating each bond’s interest-rate sensitivity and returning the result to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5095,
+          "completion_tokens": 53,
+          "total_tokens": 5148
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 13906,
+          "completion_tokens": 195,
+          "total_tokens": 14101,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 177
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define par values, bond prices, and modified durations\n    bonds = [\n        (25_000_000, 105, 7.9),\n        (25_000_000, 100, 8.5),\n        (20_000_000, 95, 6.3),\n        (30_000_000, 87, 10.2),\n    ]\n\n    # Sum each bond's PVBP using its market value and round to one decimal place\n    portfolio_pvbp = sum(\n        par_value * (price / 100) * modified_duration * 0.0001\n        for par_value, price, modified_duration in bonds\n    )\n    answer = round(portfolio_pvbp, 1)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5033,
+          "completion_tokens": 286,
+          "total_tokens": 5319,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 107
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1334",
+        "score": 2.122638702392578,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-782",
+        "score": 1.8096747398376465,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.7767717838287354,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.7572450637817383,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.743066430091858,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.733018159866333,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.709886074066162,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2872",
+        "score": 1.7091333866119385,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1309",
+        "score": 1.697039246559143,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-735",
+        "score": 1.6897261142730713,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.6836180686950684,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.6805753707885742,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.674859881401062,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1272",
+        "score": 1.6709413528442383,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.666892170906067,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.657534122467041,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1905",
+        "score": 1.6548124551773071,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-927",
+        "score": 1.6491203308105469,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.6489834785461426,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-252",
+        "score": 1.647841453552246,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2858",
+        "score": 1.6475715637207031,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.644955039024353,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1230",
+        "score": 1.6420553922653198,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3073",
+        "score": 1.640875220298767,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1805",
+        "score": 1.637059211730957,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-148",
+        "score": 1.6352123022079468,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-755",
+        "score": 1.6335095167160034,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2888",
+        "score": 1.633212685585022,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-247",
+        "score": 1.632399559020996,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1432",
+        "score": 1.630930781364441,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1334"
+    ],
+    "status": "ok",
+    "answer": 80579.5,
+    "code": "def solution():\n    # Define par values, bond prices, and modified durations\n    bonds = [\n        (25_000_000, 105, 7.9),\n        (25_000_000, 100, 8.5),\n        (20_000_000, 95, 6.3),\n        (30_000_000, 87, 10.2),\n    ]\n\n    # Sum each bond's PVBP using its market value and round to one decimal place\n    portfolio_pvbp = sum(\n        par_value * (price / 100) * modified_duration * 0.0001\n        for par_value, price, modified_duration in bonds\n    )\n    answer = round(portfolio_pvbp, 1)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "40b8898155c8563fa6450bd463cec38499a16dfc307061750c770e520f124335"
+}

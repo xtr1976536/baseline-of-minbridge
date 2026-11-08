@@ -1,0 +1,21 @@
+{
+  "identity": "73cbbf4448dd8a7d1c28cfbaa5720463c305629e23bcaa2a8695d131ec03baa9",
+  "response_digest": "99f8cc1c8ce3273a94aff9b88c45ed45a6b54537a21822008a274ef1da549d86",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    rsi_values = [\n        40.5, 42.3, 41.8, 45.2, 47.6,\n        49.0, 51.3, 48.7, 46.8, 44.9,\n        42.1, 39.5, 37.2, 36.4, 35.0\n    ]\n    lookback_period = 5\n\n    # Use the final 5-day RSI window\n    final_window = rsi_values[-lookback_period:]\n    min_rsi = min(final_window)\n    max_rsi = max(final_window)\n    current_rsi = final_window[-1]\n\n    # Do math calculation to get the answer\n    if max_rsi == min_rsi:\n        stoch_rsi = 0.0\n    else:\n        stoch_rsi = (current_rsi - min_rsi) / (max_rsi - min_rsi)\n\n    answer = round(stoch_rsi, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5253,
+      "completion_tokens": 314,
+      "total_tokens": 5567,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 68
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2062",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates normalized EPS for a cyclical company by averaging multi-year ROE over a complete business cycle, applying it to common equity (total assets minus total liabilities minus preferred equity), and dividing normalized earnings by common shares outstanding, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5168,
+          "completion_tokens": 145,
+          "total_tokens": 5313,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 84
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C05\",\"C07\"]}",
+        "usage": {
+          "prompt_tokens": 13479,
+          "completion_tokens": 540,
+          "total_tokens": 14019,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    roe_values = [0.12, 0.131, 0.1055, 0.112, 0.1205]\n    total_assets = 2100  # million\n    total_liabilities = 1200  # million\n    preferred_equity = 120  # million\n    common_shares = 32  # million\n\n    # Do math calculation to get the answer\n    average_roe = sum(roe_values) / len(roe_values)\n    common_equity = total_assets - total_liabilities - preferred_equity\n    normalized_eps = average_roe * common_equity / common_shares\n\n    # Return answer rounded to three decimal places\n    return round(normalized_eps, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5524,
+          "completion_tokens": 349,
+          "total_tokens": 5873,
+          "completion_tokens_details": {
+            "reasoning_tokens": 174
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-40",
+        "score": 1.7862725257873535,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2711",
+        "score": 1.7787268161773682,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-695",
+        "score": 1.770254135131836,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1543",
+        "score": 1.7701119184494019,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.765777826309204,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1260",
+        "score": 1.760075569152832,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2908",
+        "score": 1.7555354833602905,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2268",
+        "score": 1.7547653913497925,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1787",
+        "score": 1.7538409233093262,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2697",
+        "score": 1.7501552104949951,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.7488117218017578,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-507",
+        "score": 1.7204400300979614,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-642",
+        "score": 1.7091313600540161,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.7075040340423584,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2714",
+        "score": 1.7043733596801758,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.701490879058838,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1494",
+        "score": 1.7010056972503662,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.6997935771942139,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-37",
+        "score": 1.6995766162872314,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2996",
+        "score": 1.6960965394973755,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.695124864578247,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1327",
+        "score": 1.6942851543426514,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2717",
+        "score": 1.691098928451538,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1379",
+        "score": 1.6856571435928345,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2242",
+        "score": 1.6842081546783447,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.6821508407592773,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1685",
+        "score": 1.6814110279083252,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2712",
+        "score": 1.6719632148742676,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1215",
+        "score": 1.6716643571853638,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.6714646816253662,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2711",
+      "article-378",
+      "article-2908"
+    ],
+    "status": "ok",
+    "answer": 2.871,
+    "code": "def solution():\n    # Define variables name and value\n    roe_values = [0.12, 0.131, 0.1055, 0.112, 0.1205]\n    total_assets = 2100  # million\n    total_liabilities = 1200  # million\n    preferred_equity = 120  # million\n    common_shares = 32  # million\n\n    # Do math calculation to get the answer\n    average_roe = sum(roe_values) / len(roe_values)\n    common_equity = total_assets - total_liabilities - preferred_equity\n    normalized_eps = average_roe * common_equity / common_shares\n\n    # Return answer rounded to three decimal places\n    return round(normalized_eps, 3)\n"
+  },
+  "digest": "b008eec4af5d8d2b00f0f1147facd71420ed76a6bc2985bce0a6b26dab763016"
+}

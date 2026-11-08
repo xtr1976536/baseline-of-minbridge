@@ -1,0 +1,21 @@
+{
+  "identity": "97cc3164222e994ce2700fd59002bff9a487a4385f42b761a3e73a4519194cee",
+  "response_digest": "67cbc9246e4eb4914f715ced14610f955dc0d124d4111c75a8ab1ecb24d07b79",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 100_000\n    coupon_rate = 0.05\n    initial_market_rate = coupon_rate\n    new_market_rate = 0.06\n    years_to_maturity = 10\n\n    # Calculate the bond price at each market rate\n    annual_coupon = face_value * coupon_rate\n\n    initial_price = sum(\n        annual_coupon / ((1 + initial_market_rate) ** year)\n        for year in range(1, years_to_maturity + 1)\n    ) + face_value / ((1 + initial_market_rate) ** years_to_maturity)\n\n    new_price = sum(\n        annual_coupon / ((1 + new_market_rate) ** year)\n        for year in range(1, years_to_maturity + 1)\n    ) + face_value / ((1 + new_market_rate) ** years_to_maturity)\n\n    # Calculate percentage price change\n    percentage_change = ((new_price - initial_price) / initial_price) * 100\n\n    # Return the percentage change rounded to two decimal places\n    return round(percentage_change, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5787,
+      "completion_tokens": 349,
+      "total_tokens": 6136,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 104
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

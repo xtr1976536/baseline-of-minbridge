@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2102",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function matches buy and sell limit orders in a price-time-priority FIFO order book, permits execution when the highest bid is at least the lowest ask, supports partial fills, and returns the total executed share quantity?",
+        "usage": {
+          "prompt_tokens": 5076,
+          "completion_tokens": 47,
+          "total_tokens": 5123,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14704,
+          "completion_tokens": 151,
+          "total_tokens": 14855,
+          "completion_tokens_details": {
+            "reasoning_tokens": 133
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    buy_orders = [\n        {\"quantity\": 100, \"price\": 50},\n        {\"quantity\": 150, \"price\": 48},\n    ]\n    sell_orders = [\n        {\"quantity\": 50, \"price\": 48},\n        {\"quantity\": 200, \"price\": 50},\n    ]\n\n    buy_index = 0\n    sell_index = 0\n    total_executed_quantity = 0\n\n    # Match orders using price-time priority\n    while buy_index < len(buy_orders) and sell_index < len(sell_orders):\n        buy_order = buy_orders[buy_index]\n        sell_order = sell_orders[sell_index]\n\n        if buy_order[\"price\"] < sell_order[\"price\"]:\n            break\n\n        executed_quantity = min(\n            buy_order[\"quantity\"],\n            sell_order[\"quantity\"]\n        )\n        total_executed_quantity += executed_quantity\n\n        buy_order[\"quantity\"] -= executed_quantity\n        sell_order[\"quantity\"] -= executed_quantity\n\n        if buy_order[\"quantity\"] == 0:\n            buy_index += 1\n        if sell_order[\"quantity\"] == 0:\n            sell_index += 1\n\n    # Return the total number of matched shares\n    return round(total_executed_quantity)\n```",
+        "usage": {
+          "prompt_tokens": 5170,
+          "completion_tokens": 378,
+          "total_tokens": 5548,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 98
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-891",
+        "score": 2.1867642402648926,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-892",
+        "score": 1.7363488674163818,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1160",
+        "score": 1.5487511157989502,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.4815759658813477,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.4641135931015015,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-796",
+        "score": 1.4272806644439697,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1238",
+        "score": 1.42433500289917,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.4150285720825195,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2136",
+        "score": 1.402895212173462,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-723",
+        "score": 1.3982619047164917,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1439",
+        "score": 1.3925381898880005,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1887",
+        "score": 1.3919140100479126,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.388735294342041,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.3825061321258545,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1081",
+        "score": 1.38150954246521,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.379989743232727,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.3771525621414185,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2958",
+        "score": 1.373820424079895,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-217",
+        "score": 1.3681154251098633,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2137",
+        "score": 1.3675763607025146,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.3674358129501343,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1038",
+        "score": 1.3663864135742188,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-815",
+        "score": 1.3637651205062866,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-778",
+        "score": 1.3626517057418823,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3030",
+        "score": 1.3604353666305542,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1986",
+        "score": 1.3576996326446533,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2098",
+        "score": 1.3576433658599854,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.3541464805603027,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.3509814739227295,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2855",
+        "score": 1.3454500436782837,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-891"
+    ],
+    "status": "ok",
+    "answer": 100,
+    "code": "def solution():\n    # Define variables name and value\n    buy_orders = [\n        {\"quantity\": 100, \"price\": 50},\n        {\"quantity\": 150, \"price\": 48},\n    ]\n    sell_orders = [\n        {\"quantity\": 50, \"price\": 48},\n        {\"quantity\": 200, \"price\": 50},\n    ]\n\n    buy_index = 0\n    sell_index = 0\n    total_executed_quantity = 0\n\n    # Match orders using price-time priority\n    while buy_index < len(buy_orders) and sell_index < len(sell_orders):\n        buy_order = buy_orders[buy_index]\n        sell_order = sell_orders[sell_index]\n\n        if buy_order[\"price\"] < sell_order[\"price\"]:\n            break\n\n        executed_quantity = min(\n            buy_order[\"quantity\"],\n            sell_order[\"quantity\"]\n        )\n        total_executed_quantity += executed_quantity\n\n        buy_order[\"quantity\"] -= executed_quantity\n        sell_order[\"quantity\"] -= executed_quantity\n\n        if buy_order[\"quantity\"] == 0:\n            buy_index += 1\n        if sell_order[\"quantity\"] == 0:\n            sell_index += 1\n\n    # Return the total number of matched shares\n    return round(total_executed_quantity)\n"
+  },
+  "digest": "7534d921bb03783c0fde92e5ec98642699ff91cf93758a003854df749246780d"
+}

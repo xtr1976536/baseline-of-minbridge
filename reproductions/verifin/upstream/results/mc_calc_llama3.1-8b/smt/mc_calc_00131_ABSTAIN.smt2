@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:other_assets_current_fy2025,receivables_net_current_fy2025,energy_related_inventory_fy2025)

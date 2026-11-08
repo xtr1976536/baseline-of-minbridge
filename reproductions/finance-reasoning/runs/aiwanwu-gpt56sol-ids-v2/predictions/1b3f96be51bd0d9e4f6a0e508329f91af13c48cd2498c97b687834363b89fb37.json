@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2025",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fully amortizing monthly payment for an adjustable-rate mortgage after a rate reset, using the remaining principal balance, new annual interest rate, and remaining term in months, with monthly compounding and cent-level rounding?",
+        "usage": {
+          "prompt_tokens": 5014,
+          "completion_tokens": 49,
+          "total_tokens": 5063
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 15749,
+          "completion_tokens": 129,
+          "total_tokens": 15878,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 105
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 350000\n    fully_indexed_rate = 0.05\n    loan_term_months = 240\n\n    # Calculate the monthly payment using the amortization formula\n    monthly_rate = fully_indexed_rate / 12\n    monthly_payment = principal * (\n        monthly_rate * (1 + monthly_rate) ** loan_term_months\n    ) / ((1 + monthly_rate) ** loan_term_months - 1)\n\n    # Return the answer rounded to the nearest cent\n    return round(monthly_payment, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5731,
+          "completion_tokens": 154,
+          "total_tokens": 5885,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 20
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-994",
+        "score": 1.9790242910385132,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.9348238706588745,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.899529218673706,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.8846372365951538,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-299",
+        "score": 1.860471248626709,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1099",
+        "score": 1.858945608139038,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.8508411645889282,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.8463441133499146,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.8236685991287231,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.8084218502044678,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2497",
+        "score": 1.802527666091919,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.8014249801635742,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.79829740524292,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.7973381280899048,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.7964457273483276,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-586",
+        "score": 1.793226957321167,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.7931982278823853,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.787704348564148,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.7825433015823364,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.7793947458267212,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-816",
+        "score": 1.772907018661499,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.769176721572876,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1480",
+        "score": 1.767224669456482,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-993",
+        "score": 1.7666518688201904,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-298",
+        "score": 1.766567349433899,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.7657345533370972,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.760807752609253,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.758631944656372,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1478",
+        "score": 1.7544786930084229,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.750775933265686,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-994",
+      "article-959",
+      "article-1069"
+    ],
+    "status": "ok",
+    "answer": 2309.85,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 350000\n    fully_indexed_rate = 0.05\n    loan_term_months = 240\n\n    # Calculate the monthly payment using the amortization formula\n    monthly_rate = fully_indexed_rate / 12\n    monthly_payment = principal * (\n        monthly_rate * (1 + monthly_rate) ** loan_term_months\n    ) / ((1 + monthly_rate) ** loan_term_months - 1)\n\n    # Return the answer rounded to the nearest cent\n    return round(monthly_payment, 2)\n"
+  },
+  "digest": "94515bf95db78772b46457f22928e753d0e9bc75815fa03024d9fc5bfaa7c6ae"
+}

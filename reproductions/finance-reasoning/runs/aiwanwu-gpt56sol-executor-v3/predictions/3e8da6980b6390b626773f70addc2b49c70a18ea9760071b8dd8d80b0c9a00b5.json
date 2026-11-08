@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2014",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the deductible mortgage interest for a single taxpayer by applying the applicable tax-year mortgage debt limit to total interest paid, distinguishing acquisition debt from excess mortgage balance, and returning the deductible amount rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5023,
+          "completion_tokens": 48,
+          "total_tokens": 5071
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 15631,
+          "completion_tokens": 78,
+          "total_tokens": 15709,
+          "completion_tokens_details": {
+            "reasoning_tokens": 60
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    interest_paid = 36_000\n    mortgage_debt = 900_000\n    applicable_debt_limit = 750_000  # Purchased after Dec. 15, 2017; single filer\n\n    # Do math calculation to get the answer\n    deductible_interest = interest_paid * applicable_debt_limit / mortgage_debt\n\n    # Return the answer rounded to the nearest dollar\n    return round(deductible_interest)\n```",
+        "usage": {
+          "prompt_tokens": 5180,
+          "completion_tokens": 139,
+          "total_tokens": 5319,
+          "completion_tokens_details": {
+            "reasoning_tokens": 28
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1824",
+        "score": 2.1551599502563477,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1073",
+        "score": 2.0128939151763916,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-3005",
+        "score": 1.7874457836151123,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1823",
+        "score": 1.7643558979034424,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.759473204612732,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2162",
+        "score": 1.7454440593719482,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1649",
+        "score": 1.7149497270584106,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2132",
+        "score": 1.7035887241363525,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.69046151638031,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2067",
+        "score": 1.6871542930603027,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-989",
+        "score": 1.68068528175354,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2341",
+        "score": 1.672118067741394,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.6500871181488037,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.630702018737793,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.6284714937210083,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.6226212978363037,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.6217255592346191,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-438",
+        "score": 1.6188784837722778,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.6169395446777344,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.6157399415969849,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2189",
+        "score": 1.6153841018676758,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.6123253107070923,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-3098",
+        "score": 1.605170726776123,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.605153203010559,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3093",
+        "score": 1.5930964946746826,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1774",
+        "score": 1.590933918952942,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-446",
+        "score": 1.5905084609985352,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1181",
+        "score": 1.5869348049163818,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-382",
+        "score": 1.5833840370178223,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1153",
+        "score": 1.582932949066162,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1824"
+    ],
+    "status": "ok",
+    "answer": 30000,
+    "code": "def solution():\n    # Define variables name and value\n    interest_paid = 36_000\n    mortgage_debt = 900_000\n    applicable_debt_limit = 750_000  # Purchased after Dec. 15, 2017; single filer\n\n    # Do math calculation to get the answer\n    deductible_interest = interest_paid * applicable_debt_limit / mortgage_debt\n\n    # Return the answer rounded to the nearest dollar\n    return round(deductible_interest)\n"
+  },
+  "digest": "d7b73a6168c5dbeed469aff8b4c485be665788a9d9da8c49b618eeca3ce78074"
+}

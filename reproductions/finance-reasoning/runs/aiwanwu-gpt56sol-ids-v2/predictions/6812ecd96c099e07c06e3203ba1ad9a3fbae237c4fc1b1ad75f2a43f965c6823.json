@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2112",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the expiration profit or loss of a bear put spread using the long put and short put strike prices, net option premiums, expiration stock price, and contract multiplier, including intrinsic value and limited-risk payoff for a standard 100-share contract?",
+        "usage": {
+          "prompt_tokens": 5037,
+          "completion_tokens": 54,
+          "total_tokens": 5091
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C10\",\"C11\"]}",
+        "usage": {
+          "prompt_tokens": 15085,
+          "completion_tokens": 22,
+          "total_tokens": 15107,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    higher_strike_price = 155\n    lower_strike_price = 145\n    cost_of_higher_strike = 5\n    revenue_from_lower_strike = 2\n    underlying_at_expiration = 140\n    shares_per_contract = 100\n\n    # Do math calculation to get the answer\n    net_cost_of_spread = (\n        cost_of_higher_strike - revenue_from_lower_strike\n    ) * shares_per_contract\n\n    spread_value_at_expiration = (\n        higher_strike_price - lower_strike_price\n    ) * shares_per_contract\n\n    profit_or_loss = spread_value_at_expiration - net_cost_of_spread\n\n    # return answer\n    return round(profit_or_loss)\n```",
+        "usage": {
+          "prompt_tokens": 5904,
+          "completion_tokens": 215,
+          "total_tokens": 6119,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 43
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-706",
+        "score": 2.203988552093506,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-317",
+        "score": 2.0547306537628174,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-707",
+        "score": 2.0519609451293945,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-708",
+        "score": 2.0115277767181396,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-315",
+        "score": 2.0092291831970215,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-777",
+        "score": 2.0044991970062256,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.985779047012329,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.961538553237915,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-703",
+        "score": 1.9409739971160889,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.9328787326812744,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.9289257526397705,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-316",
+        "score": 1.9273515939712524,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.8866665363311768,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.8746886253356934,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-779",
+        "score": 1.874281406402588,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-793",
+        "score": 1.869368553161621,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.8685319423675537,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-710",
+        "score": 1.8652197122573853,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-759",
+        "score": 1.861255168914795,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.855156421661377,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.8365193605422974,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.8337582349777222,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.8329241275787354,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-778",
+        "score": 1.8217408657073975,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-363",
+        "score": 1.8082925081253052,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2658",
+        "score": 1.8065900802612305,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.8055706024169922,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2586",
+        "score": 1.8048019409179688,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.804604411125183,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-774",
+        "score": 1.7992159128189087,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-706",
+      "article-3067",
+      "article-2182"
+    ],
+    "status": "ok",
+    "answer": 700,
+    "code": "def solution():\n    # Define variables name and value\n    higher_strike_price = 155\n    lower_strike_price = 145\n    cost_of_higher_strike = 5\n    revenue_from_lower_strike = 2\n    underlying_at_expiration = 140\n    shares_per_contract = 100\n\n    # Do math calculation to get the answer\n    net_cost_of_spread = (\n        cost_of_higher_strike - revenue_from_lower_strike\n    ) * shares_per_contract\n\n    spread_value_at_expiration = (\n        higher_strike_price - lower_strike_price\n    ) * shares_per_contract\n\n    profit_or_loss = spread_value_at_expiration - net_cost_of_spread\n\n    # return answer\n    return round(profit_or_loss)\n"
+  },
+  "digest": "f9f2157e42a0111efbea792334e6682faefdb524afc67239c06090ce7e03e5bc"
+}

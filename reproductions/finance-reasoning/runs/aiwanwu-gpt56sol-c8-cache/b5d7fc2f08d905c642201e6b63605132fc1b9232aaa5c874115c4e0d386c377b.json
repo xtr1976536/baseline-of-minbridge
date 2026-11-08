@@ -1,0 +1,18 @@
+{
+  "identity": "b5d7fc2f08d905c642201e6b63605132fc1b9232aaa5c874115c4e0d386c377b",
+  "response_digest": "0296aeb35894cebb3bbfe698e04c5f27cd3ab944c1b6da43231d5ab36732324a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    months = [1, 2, 3, 4, 5]\n    stock_prices = [150, 155, 147, 160, 166]\n    n = len(months)\n\n    # Do math calculation to get the answer\n    sum_x = sum(months)\n    sum_y = sum(stock_prices)\n    sum_xy = sum(x * y for x, y in zip(months, stock_prices))\n    sum_x_squared = sum(x ** 2 for x in months)\n\n    slope = (\n        (n * sum_xy - sum_x * sum_y)\n        / (n * sum_x_squared - sum_x ** 2)\n    )\n    answer = round(slope, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5893,
+      "completion_tokens": 365,
+      "total_tokens": 6258,
+      "completion_tokens_details": {
+        "reasoning_tokens": 186
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

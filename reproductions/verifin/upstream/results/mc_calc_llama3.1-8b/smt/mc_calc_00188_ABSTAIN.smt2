@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:accrued_income_taxes_current_fy2024,accrued_liabilities_current_fy2024,accounts_payable_current_fy2024,short_term_borrowings_fy2024)

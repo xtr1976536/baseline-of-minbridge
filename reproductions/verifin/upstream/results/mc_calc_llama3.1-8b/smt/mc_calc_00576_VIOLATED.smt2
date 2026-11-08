@@ -1,0 +1,39 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_income_before_income_taxes Real)
+(declare-const income_from_continuing_operations_before_income_2022 Real)
+(declare-const income_from_continuing_operations_before_income_2023 Real)
+
+(assert (! (= income_from_continuing_operations_before_income_2022 -15622.0) :named evidence_income_from_continuing_operations_before_income_2022))
+(assert (! (= income_from_continuing_operations_before_income_2023 -15622.0) :named evidence_income_from_continuing_operations_before_income_2023))
+
+(assert (! (= computed_income_before_income_taxes (- 15622.0 1011)) :named formula_income_before_income_taxes))
+
+(assert (! (or (> 15622.0 0) (< 15622.0 0)) :named denom_nonzero))
+(assert (! (or (> 1011.0 0) (< 1011.0 0)) :named denom2_nonzero))
+
+(assert (! (<= (- computed_income_before_income_taxes -15622.0) 156.22) :named claim_upper))
+(assert (! (<= (- -15622.0 computed_income_before_income_taxes) 156.22) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic_duration_2023_01_01_2023_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2023_01_01_2023_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign_duration_2023_01_01_2023_12_31_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2023_01_01_2023_12_31_unit_USD_dims_none 1889) :named evidence_xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2023_01_01_2023_12_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign_duration_2023_01_01_2023_12_31_unit_USD_dims_none 17511) :named evidence_xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign_duration_2023_01_01_2023_12_31_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= income_from_continuing_operations_before_income_2023 xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic_duration_2023_01_01_2023_12_31_unit_USD_dims_none) :named xbrl_bind_income_from_continuing_operations_before_income_2023_edgar_2023_12_31_0001628280_24_006850))
+(assert (! (= xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic_duration_2023_01_01_2023_12_31_unit_USD_dims_none -15622) :named xbrl_instance_income_from_continuing_operations_before_income_2023))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2023_01_01_2023_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic_duration_2023_01_01_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign_duration_2023_01_01_2023_12_31_unit_USD_dims_none)) 1.5) :named xbrl_calc_55_710484618_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_c_1_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2023_01_01_2023_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic_duration_2023_01_01_2023_12_31_unit_USD_dims_none xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign_duration_2023_01_01_2023_12_31_unit_USD_dims_none)) (- 1.5)) :named xbrl_calc_55_710484618_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_c_1_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

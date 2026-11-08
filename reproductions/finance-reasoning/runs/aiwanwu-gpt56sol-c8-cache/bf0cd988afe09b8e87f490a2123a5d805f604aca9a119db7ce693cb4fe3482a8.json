@@ -1,0 +1,21 @@
+{
+  "identity": "bf0cd988afe09b8e87f490a2123a5d805f604aca9a119db7ce693cb4fe3482a8",
+  "response_digest": "73a0937785f0b9ee7cb075e27b9980aae7f9b8203b150dc20a13991b149b20d4",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    dividend_year_1 = 0.5\n    dividend_year_2 = 0.5\n    growth_rate = 0.06\n    required_rate_of_return = 0.10\n\n    # Do math calculation to get the answer\n    dividend_year_3 = dividend_year_2 * (1 + growth_rate)\n\n    present_value_year_1 = dividend_year_1 / (1 + required_rate_of_return)\n    present_value_year_2 = dividend_year_2 / (1 + required_rate_of_return) ** 2\n\n    terminal_value = dividend_year_3 / (required_rate_of_return - growth_rate)\n    present_value_terminal_value = terminal_value / (1 + required_rate_of_return) ** 2\n\n    equity_value = (\n        present_value_year_1\n        + present_value_year_2\n        + present_value_terminal_value\n    )\n\n    # Return answer rounded to three decimal places\n    return round(equity_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5581,
+      "completion_tokens": 333,
+      "total_tokens": 5914,
+      "prompt_tokens_details": {
+        "cached_tokens": 3764
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 110
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2072",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates total tax liability under a progressive marginal income tax system by applying bracket-specific rates to taxable income, summing taxes across income brackets, and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5026,
+          "completion_tokens": 42,
+          "total_tokens": 5068,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16760,
+          "completion_tokens": 613,
+          "total_tokens": 17373,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    income = 75000\n    first_bracket_limit = 20000\n    second_bracket_limit = 50000\n    first_rate = 0.10\n    second_rate = 0.15\n    third_rate = 0.20\n\n    # Do math calculation to get the answer\n    first_bracket_tax = first_bracket_limit * first_rate\n    second_bracket_tax = (second_bracket_limit - first_bracket_limit) * second_rate\n    third_bracket_tax = (income - second_bracket_limit) * third_rate\n    total_tax = first_bracket_tax + second_bracket_tax + third_bracket_tax\n\n    # Return answer rounded to the nearest dollar\n    return round(total_tax)\n```",
+        "usage": {
+          "prompt_tokens": 5726,
+          "completion_tokens": 266,
+          "total_tokens": 5992,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 93
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-846",
+        "score": 2.0834426879882812
+      },
+      {
+        "function_id": "article-313",
+        "score": 1.9490373134613037
+      },
+      {
+        "function_id": "article-1815",
+        "score": 1.9194025993347168
+      },
+      {
+        "function_id": "article-3076",
+        "score": 1.9192397594451904
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.8673955202102661
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.8299046754837036
+      },
+      {
+        "function_id": "article-2440",
+        "score": 1.8272385597229004
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.80881667137146
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.7752206325531006
+      },
+      {
+        "function_id": "article-1852",
+        "score": 1.7574067115783691
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.7394909858703613
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.736664891242981
+      },
+      {
+        "function_id": "article-1842",
+        "score": 1.7343196868896484
+      },
+      {
+        "function_id": "article-1813",
+        "score": 1.6894614696502686
+      },
+      {
+        "function_id": "article-2979",
+        "score": 1.677781581878662
+      },
+      {
+        "function_id": "article-1839",
+        "score": 1.6677215099334717
+      },
+      {
+        "function_id": "article-1819",
+        "score": 1.6629751920700073
+      },
+      {
+        "function_id": "article-2303",
+        "score": 1.6397452354431152
+      },
+      {
+        "function_id": "article-384",
+        "score": 1.6257374286651611
+      },
+      {
+        "function_id": "article-1671",
+        "score": 1.6223350763320923
+      },
+      {
+        "function_id": "article-1148",
+        "score": 1.6189134120941162
+      },
+      {
+        "function_id": "article-2484",
+        "score": 1.6153371334075928
+      },
+      {
+        "function_id": "article-1835",
+        "score": 1.611040711402893
+      },
+      {
+        "function_id": "article-1816",
+        "score": 1.6109023094177246
+      },
+      {
+        "function_id": "article-1841",
+        "score": 1.6083459854125977
+      },
+      {
+        "function_id": "article-1850",
+        "score": 1.5999269485473633
+      },
+      {
+        "function_id": "article-1821",
+        "score": 1.5956716537475586
+      },
+      {
+        "function_id": "article-2953",
+        "score": 1.5951802730560303
+      },
+      {
+        "function_id": "article-1633",
+        "score": 1.5904872417449951
+      },
+      {
+        "function_id": "article-1392",
+        "score": 1.5903671979904175
+      }
+    ],
+    "selected_ids": [
+      "article-846",
+      "article-313",
+      "article-1815"
+    ],
+    "status": "ok",
+    "answer": 11500,
+    "code": "def solution():\n    # Define variables name and value\n    income = 75000\n    first_bracket_limit = 20000\n    second_bracket_limit = 50000\n    first_rate = 0.10\n    second_rate = 0.15\n    third_rate = 0.20\n\n    # Do math calculation to get the answer\n    first_bracket_tax = first_bracket_limit * first_rate\n    second_bracket_tax = (second_bracket_limit - first_bracket_limit) * second_rate\n    third_bracket_tax = (income - second_bracket_limit) * third_rate\n    total_tax = first_bracket_tax + second_bracket_tax + third_bracket_tax\n\n    # Return answer rounded to the nearest dollar\n    return round(total_tax)\n"
+  },
+  "digest": "ec8250fa7162055c9e3a556094db4d377f9e2e092b1e358e8d3cee2231666c0a"
+}

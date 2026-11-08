@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2179",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Human Development Index (HDI) from life expectancy, mean years of schooling, expected years of schooling, and PPP-adjusted GNI per capita using normalized health, education, and income indices, returning a value between 0 and 1 rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5058,
+          "completion_tokens": 62,
+          "total_tokens": 5120,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14768,
+          "completion_tokens": 242,
+          "total_tokens": 15010,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 145
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    life_expectancy = 75\n    mean_years_school = 10\n    expected_years_school = 16\n    gni_per_capita = 35000\n\n    # Do math calculation to get the answer\n    life_expectancy_index = (life_expectancy - 20) / (85 - 20)\n    education_index = (\n        (mean_years_school / 15) + (expected_years_school / 18)\n    ) / 2\n    gni_index = (gni_per_capita - 100) / (75000 - 100)\n\n    hdi = (life_expectancy_index * education_index * gni_index) ** (1 / 3)\n    answer = round(hdi, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5198,
+          "completion_tokens": 436,
+          "total_tokens": 5634,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 250
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1091",
+        "score": 2.1526126861572266
+      },
+      {
+        "function_id": "article-1129",
+        "score": 1.5477328300476074
+      },
+      {
+        "function_id": "article-1137",
+        "score": 1.4463820457458496
+      },
+      {
+        "function_id": "article-1695",
+        "score": 1.4247057437896729
+      },
+      {
+        "function_id": "article-374",
+        "score": 1.4143885374069214
+      },
+      {
+        "function_id": "article-1163",
+        "score": 1.4136979579925537
+      },
+      {
+        "function_id": "article-1031",
+        "score": 1.3955751657485962
+      },
+      {
+        "function_id": "article-2198",
+        "score": 1.3941209316253662
+      },
+      {
+        "function_id": "article-1189",
+        "score": 1.3893237113952637
+      },
+      {
+        "function_id": "article-1090",
+        "score": 1.3874728679656982
+      },
+      {
+        "function_id": "article-1092",
+        "score": 1.3867485523223877
+      },
+      {
+        "function_id": "article-1088",
+        "score": 1.3840082883834839
+      },
+      {
+        "function_id": "article-2197",
+        "score": 1.3816218376159668
+      },
+      {
+        "function_id": "article-6",
+        "score": 1.3774733543395996
+      },
+      {
+        "function_id": "article-686",
+        "score": 1.3759732246398926
+      },
+      {
+        "function_id": "article-2853",
+        "score": 1.373208999633789
+      },
+      {
+        "function_id": "article-2383",
+        "score": 1.3718745708465576
+      },
+      {
+        "function_id": "article-2456",
+        "score": 1.3652065992355347
+      },
+      {
+        "function_id": "article-2734",
+        "score": 1.3633003234863281
+      },
+      {
+        "function_id": "article-2770",
+        "score": 1.360949158668518
+      },
+      {
+        "function_id": "article-2165",
+        "score": 1.3578104972839355
+      },
+      {
+        "function_id": "article-1212",
+        "score": 1.3572969436645508
+      },
+      {
+        "function_id": "article-1166",
+        "score": 1.3528575897216797
+      },
+      {
+        "function_id": "article-2110",
+        "score": 1.340240478515625
+      },
+      {
+        "function_id": "article-1191",
+        "score": 1.3400077819824219
+      },
+      {
+        "function_id": "article-1262",
+        "score": 1.3398152589797974
+      },
+      {
+        "function_id": "article-1647",
+        "score": 1.3355424404144287
+      },
+      {
+        "function_id": "article-4",
+        "score": 1.333740472793579
+      },
+      {
+        "function_id": "article-2676",
+        "score": 1.3324558734893799
+      },
+      {
+        "function_id": "article-701",
+        "score": 1.332455039024353
+      }
+    ],
+    "selected_ids": [
+      "article-1091"
+    ],
+    "status": "ok",
+    "answer": 0.674,
+    "code": "def solution():\n    # Define variables name and value\n    life_expectancy = 75\n    mean_years_school = 10\n    expected_years_school = 16\n    gni_per_capita = 35000\n\n    # Do math calculation to get the answer\n    life_expectancy_index = (life_expectancy - 20) / (85 - 20)\n    education_index = (\n        (mean_years_school / 15) + (expected_years_school / 18)\n    ) / 2\n    gni_index = (gni_per_capita - 100) / (75000 - 100)\n\n    hdi = (life_expectancy_index * education_index * gni_index) ** (1 / 3)\n    answer = round(hdi, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "350243abd6b33dd97b103fd0af876b251fcf7be9b4692452456b5f48b7d50e3b"
+}

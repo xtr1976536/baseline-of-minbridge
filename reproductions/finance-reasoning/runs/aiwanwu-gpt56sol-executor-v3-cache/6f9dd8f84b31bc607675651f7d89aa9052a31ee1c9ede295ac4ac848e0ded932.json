@@ -1,0 +1,21 @@
+{
+  "identity": "6f9dd8f84b31bc607675651f7d89aa9052a31ee1c9ede295ac4ac848e0ded932",
+  "response_digest": "27dad45e38f01a522e89de45e66f6b0d7b2c068515657560a30f0e02d277b1e6",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables and values\n    principal = 300_000\n    annual_interest_rate = 0.045\n    years = 30\n\n    # Calculate total payments using the fixed-rate mortgage formula\n    monthly_rate = annual_interest_rate / 12\n    number_of_payments = years * 12\n    monthly_payment = principal * monthly_rate / (1 - (1 + monthly_rate) ** -number_of_payments)\n    total_cost = monthly_payment * number_of_payments\n\n    # Return the total cost rounded to the nearest dollar\n    return round(total_cost)\n```",
+    "usage": {
+      "prompt_tokens": 5573,
+      "completion_tokens": 160,
+      "total_tokens": 5733,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 27
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

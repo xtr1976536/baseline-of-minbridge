@@ -1,0 +1,21 @@
+{
+  "identity": "23c5ca48bb2836119bc7be877570df123dfd6008eb3def721a49052a69c825e1",
+  "response_digest": "1d28e821ec59aa9702bbc0afd752e50e2a2db9035c513ec93326e6770e6d06dd",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    taxable_income = 115000\n    brackets = [\n        (0, 10000, 0.10),\n        (10000, 40000, 0.15),\n        (40000, 90000, 0.20),\n        (90000, float(\"inf\"), 0.25),\n    ]\n\n    # Do math calculation to get the answer\n    total_tax = 0.0\n    for lower_bound, upper_bound, rate in brackets:\n        taxable_amount = max(0, min(taxable_income, upper_bound) - lower_bound)\n        total_tax += taxable_amount * rate\n\n    answer = round(total_tax)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5767,
+      "completion_tokens": 234,
+      "total_tokens": 6001,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 67
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

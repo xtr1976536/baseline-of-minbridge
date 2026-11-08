@@ -1,0 +1,18 @@
+{
+  "identity": "292c5a3a638a2025aedf07962a3f0d3f34909d8bfd5d89fb02643287d335ecf1",
+  "response_digest": "eb296fdc309825acb3968232a8a6b046c45a2fed50461bfc5f7cbc22d7f94d35",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 1000\n    annual_coupon = 50\n    term_years = 5\n    yield_to_maturity = 0.04\n\n    cash_flows = [annual_coupon] * (term_years - 1)\n    cash_flows.append(annual_coupon + face_value)\n\n    # Calculate the bond price and present-value-weighted cash flows\n    present_values = [\n        cash_flow / ((1 + yield_to_maturity) ** year)\n        for year, cash_flow in enumerate(cash_flows, start=1)\n    ]\n    bond_price = sum(present_values)\n\n    weighted_present_value = sum(\n        year * present_value\n        for year, present_value in enumerate(present_values, start=1)\n    )\n\n    # Calculate Macaulay duration\n    macaulay_duration = weighted_present_value / bond_price\n\n    # Return the answer rounded to two decimal places\n    return round(macaulay_duration, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5704,
+      "completion_tokens": 659,
+      "total_tokens": 6363,
+      "completion_tokens_details": {
+        "reasoning_tokens": 439
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

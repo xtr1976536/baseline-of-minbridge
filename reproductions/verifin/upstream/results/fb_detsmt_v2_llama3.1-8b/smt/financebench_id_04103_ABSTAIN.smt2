@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:average_accounts_receivable_between_fy2018_and_fy2019,average_inventory_between_fy2018_and_fy2019,fy2019_cogs + change_in_inventory_between_fy2018_and_fy2019)

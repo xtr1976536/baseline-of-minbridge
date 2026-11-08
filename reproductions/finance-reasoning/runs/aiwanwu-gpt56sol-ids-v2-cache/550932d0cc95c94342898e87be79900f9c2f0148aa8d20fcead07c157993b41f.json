@@ -1,0 +1,21 @@
+{
+  "identity": "550932d0cc95c94342898e87be79900f9c2f0148aa8d20fcead07c157993b41f",
+  "response_digest": "a552743b6572759efd523cec65159b1c4345736f6f7e17858eabd34f422ff6f1",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    months = [1, 2, 3, 4, 5]\n    stock_prices = [150, 155, 147, 160, 166]\n\n    # Calculate the slope using the least squares method\n    n = len(months)\n    sum_x = sum(months)\n    sum_y = sum(stock_prices)\n    sum_xy = sum(x * y for x, y in zip(months, stock_prices))\n    sum_x_squared = sum(x ** 2 for x in months)\n\n    slope = (\n        n * sum_xy - sum_x * sum_y\n    ) / (\n        n * sum_x_squared - sum_x ** 2\n    )\n\n    # Return the slope rounded to two decimal places\n    return round(slope, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5980,
+      "completion_tokens": 296,
+      "total_tokens": 6276,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 117
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

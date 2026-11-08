@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2160",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates excess kurtosis (kurtosis minus 3) for a small sample of numerical daily stock returns, using sample-based statistical estimation and returning the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5067,
+          "completion_tokens": 43,
+          "total_tokens": 5110,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14112,
+          "completion_tokens": 16,
+          "total_tokens": 14128,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define the daily returns in percentage points\n    returns = [1.5, -0.5, 3.2, -2.0, 0.8]\n\n    # Calculate excess kurtosis using the provided population-moment formula\n    n = len(returns)\n    mean = sum(returns) / n\n    m2 = sum((x - mean) ** 2 for x in returns) / n\n    m4 = sum((x - mean) ** 4 for x in returns) / n\n    excess_kurtosis = (m4 / (m2 ** 2)) - 3\n\n    # Return the answer to two decimal places\n    return round(excess_kurtosis, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5102,
+          "completion_tokens": 329,
+          "total_tokens": 5431,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 162
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-514",
+        "score": 1.7797138690948486,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.5565214157104492,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2815",
+        "score": 1.471994161605835,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.427000641822815,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1593",
+        "score": 1.4086016416549683,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.4047274589538574,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-499",
+        "score": 1.4031174182891846,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.392911672592163,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1050",
+        "score": 1.3904223442077637,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2521",
+        "score": 1.3832765817642212,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2650",
+        "score": 1.3831377029418945,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.3820785284042358,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2811",
+        "score": 1.3819544315338135,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.3791425228118896,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.3739638328552246,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-859",
+        "score": 1.3739252090454102,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-587",
+        "score": 1.372741460800171,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1042",
+        "score": 1.3714463710784912,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2812",
+        "score": 1.3710076808929443,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2809",
+        "score": 1.370145559310913,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2831",
+        "score": 1.3686400651931763,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.3684042692184448,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.36089289188385,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1962",
+        "score": 1.3604538440704346,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.3598041534423828,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1043",
+        "score": 1.3563123941421509,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2582",
+        "score": 1.350654125213623,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2443",
+        "score": 1.3464715480804443,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.3460938930511475,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.345900297164917,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-514"
+    ],
+    "status": "ok",
+    "answer": -1.07,
+    "code": "def solution():\n    # Define the daily returns in percentage points\n    returns = [1.5, -0.5, 3.2, -2.0, 0.8]\n\n    # Calculate excess kurtosis using the provided population-moment formula\n    n = len(returns)\n    mean = sum(returns) / n\n    m2 = sum((x - mean) ** 2 for x in returns) / n\n    m4 = sum((x - mean) ** 4 for x in returns) / n\n    excess_kurtosis = (m4 / (m2 ** 2)) - 3\n\n    # Return the answer to two decimal places\n    return round(excess_kurtosis, 2)\n"
+  },
+  "digest": "d6250ba023a29048a15c6259d352a5e34148cd13f7089cb5784a4e6dff8723b5"
+}

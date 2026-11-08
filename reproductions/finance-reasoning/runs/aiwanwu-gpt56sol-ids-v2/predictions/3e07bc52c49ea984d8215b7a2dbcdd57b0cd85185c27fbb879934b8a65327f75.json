@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2093",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the On-Balance Volume (OBV) indicator from sequential daily closing prices and trading volumes, cumulatively adding volume when the close increases and subtracting it when the close decreases, and returns the OBV for the fifth day in thousands of shares?",
+        "usage": {
+          "prompt_tokens": 5043,
+          "completion_tokens": 57,
+          "total_tokens": 5100,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 14920,
+          "completion_tokens": 19,
+          "total_tokens": 14939
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    closing_prices = [150, 152, 151, 153, 154]\n    volumes = [200, 220, 210, 230, 240]\n\n    # Calculate OBV, starting from zero\n    obv = 0\n    for i in range(1, len(closing_prices)):\n        if closing_prices[i] > closing_prices[i - 1]:\n            obv += volumes[i]\n        elif closing_prices[i] < closing_prices[i - 1]:\n            obv -= volumes[i]\n\n    # Return the OBV on the fifth day in thousands of shares\n    return obv\n```",
+        "usage": {
+          "prompt_tokens": 5413,
+          "completion_tokens": 210,
+          "total_tokens": 5623,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 63
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-3014",
+        "score": 2.4551661014556885,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-853",
+        "score": 2.2744574546813965,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.914410948753357,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.8627017736434937,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.843151330947876,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.7489798069000244,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.7471559047698975,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.723754644393921,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.709439754486084,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.7028627395629883,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.6891944408416748,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.6665611267089844,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.6167470216751099,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2017",
+        "score": 1.606419324874878,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6030319929122925,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.5998131036758423,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2075",
+        "score": 1.59645676612854,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.595070242881775,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.592628002166748,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2627",
+        "score": 1.5902668237686157,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2279",
+        "score": 1.588780164718628,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.5876805782318115,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1154",
+        "score": 1.5803242921829224,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.5786556005477905,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-406",
+        "score": 1.5783532857894897,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.5749616622924805,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-851",
+        "score": 1.5728726387023926,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.5723012685775757,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-491",
+        "score": 1.5675699710845947,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.5659077167510986,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-3014",
+      "article-853"
+    ],
+    "status": "ok",
+    "answer": 480,
+    "code": "def solution():\n    # Define variables\n    closing_prices = [150, 152, 151, 153, 154]\n    volumes = [200, 220, 210, 230, 240]\n\n    # Calculate OBV, starting from zero\n    obv = 0\n    for i in range(1, len(closing_prices)):\n        if closing_prices[i] > closing_prices[i - 1]:\n            obv += volumes[i]\n        elif closing_prices[i] < closing_prices[i - 1]:\n            obv -= volumes[i]\n\n    # Return the OBV on the fifth day in thousands of shares\n    return obv\n"
+  },
+  "digest": "d89500159cc66d8bcb6bb41f161fbb2d4c24e560ba81f7fa9834ac3ad4cad66a"
+}

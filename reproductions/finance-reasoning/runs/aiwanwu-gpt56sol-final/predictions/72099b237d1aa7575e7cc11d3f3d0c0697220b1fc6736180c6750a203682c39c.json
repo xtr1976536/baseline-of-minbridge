@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2102",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates total executed share quantity by matching buy and sell orders in a limit order book using price-priority and FIFO time-priority, subject to compatible buy-price and sell-price conditions, and aggregates the quantities of all matched orders?",
+        "usage": {
+          "prompt_tokens": 5076,
+          "completion_tokens": 51,
+          "total_tokens": 5127
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15545,
+          "completion_tokens": 270,
+          "total_tokens": 15815,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 173
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define buy and sell orders in FIFO price-time priority order\n    buy_orders = [\n        {\"quantity\": 100, \"price\": 50},\n        {\"quantity\": 150, \"price\": 48},\n    ]\n    sell_orders = [\n        {\"quantity\": 50, \"price\": 48},\n        {\"quantity\": 200, \"price\": 50},\n    ]\n\n    # Match orders while the buy price meets or exceeds the sell price\n    buy_index = 0\n    sell_index = 0\n    total_executed_quantity = 0\n\n    while buy_index < len(buy_orders) and sell_index < len(sell_orders):\n        buy_order = buy_orders[buy_index]\n        sell_order = sell_orders[sell_index]\n\n        if buy_order[\"price\"] < sell_order[\"price\"]:\n            break\n\n        matched_quantity = min(\n            buy_order[\"quantity\"],\n            sell_order[\"quantity\"]\n        )\n        total_executed_quantity += matched_quantity\n\n        buy_order[\"quantity\"] -= matched_quantity\n        sell_order[\"quantity\"] -= matched_quantity\n\n        if buy_order[\"quantity\"] == 0:\n            buy_index += 1\n        if sell_order[\"quantity\"] == 0:\n            sell_index += 1\n\n    # Return the total number of shares matched\n    return round(total_executed_quantity)\n```",
+        "usage": {
+          "prompt_tokens": 5170,
+          "completion_tokens": 377,
+          "total_tokens": 5547,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 85
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-891",
+        "score": 1.9923386573791504
+      },
+      {
+        "function_id": "article-2393",
+        "score": 1.7001651525497437
+      },
+      {
+        "function_id": "article-892",
+        "score": 1.675318717956543
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.6713099479675293
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.6412376165390015
+      },
+      {
+        "function_id": "article-723",
+        "score": 1.6402586698532104
+      },
+      {
+        "function_id": "article-2394",
+        "score": 1.6305501461029053
+      },
+      {
+        "function_id": "article-796",
+        "score": 1.6236157417297363
+      },
+      {
+        "function_id": "article-755",
+        "score": 1.6205284595489502
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.6064801216125488
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.6036195755004883
+      },
+      {
+        "function_id": "article-639",
+        "score": 1.5992381572723389
+      },
+      {
+        "function_id": "article-754",
+        "score": 1.588193416595459
+      },
+      {
+        "function_id": "article-2820",
+        "score": 1.5725948810577393
+      },
+      {
+        "function_id": "article-2098",
+        "score": 1.5609703063964844
+      },
+      {
+        "function_id": "article-2050",
+        "score": 1.5593395233154297
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.558265209197998
+      },
+      {
+        "function_id": "article-491",
+        "score": 1.5567814111709595
+      },
+      {
+        "function_id": "article-1805",
+        "score": 1.555112600326538
+      },
+      {
+        "function_id": "article-1766",
+        "score": 1.5527108907699585
+      },
+      {
+        "function_id": "article-163",
+        "score": 1.5504505634307861
+      },
+      {
+        "function_id": "article-1227",
+        "score": 1.545747995376587
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.5392206907272339
+      },
+      {
+        "function_id": "article-2135",
+        "score": 1.534919023513794
+      },
+      {
+        "function_id": "article-1986",
+        "score": 1.533989429473877
+      },
+      {
+        "function_id": "article-1689",
+        "score": 1.5336415767669678
+      },
+      {
+        "function_id": "article-1160",
+        "score": 1.5296798944473267
+      },
+      {
+        "function_id": "article-1951",
+        "score": 1.5283544063568115
+      },
+      {
+        "function_id": "article-752",
+        "score": 1.527625322341919
+      },
+      {
+        "function_id": "article-1767",
+        "score": 1.5275402069091797
+      }
+    ],
+    "selected_ids": [
+      "article-891"
+    ],
+    "status": "ok",
+    "answer": 100,
+    "code": "def solution():\n    # Define buy and sell orders in FIFO price-time priority order\n    buy_orders = [\n        {\"quantity\": 100, \"price\": 50},\n        {\"quantity\": 150, \"price\": 48},\n    ]\n    sell_orders = [\n        {\"quantity\": 50, \"price\": 48},\n        {\"quantity\": 200, \"price\": 50},\n    ]\n\n    # Match orders while the buy price meets or exceeds the sell price\n    buy_index = 0\n    sell_index = 0\n    total_executed_quantity = 0\n\n    while buy_index < len(buy_orders) and sell_index < len(sell_orders):\n        buy_order = buy_orders[buy_index]\n        sell_order = sell_orders[sell_index]\n\n        if buy_order[\"price\"] < sell_order[\"price\"]:\n            break\n\n        matched_quantity = min(\n            buy_order[\"quantity\"],\n            sell_order[\"quantity\"]\n        )\n        total_executed_quantity += matched_quantity\n\n        buy_order[\"quantity\"] -= matched_quantity\n        sell_order[\"quantity\"] -= matched_quantity\n\n        if buy_order[\"quantity\"] == 0:\n            buy_index += 1\n        if sell_order[\"quantity\"] == 0:\n            sell_index += 1\n\n    # Return the total number of shares matched\n    return round(total_executed_quantity)\n"
+  },
+  "digest": "30af588a6f66a46f94ac974e4f75b0f6f87b171bd313c240eddf9293abcf99c4"
+}

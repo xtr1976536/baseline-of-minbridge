@@ -1,0 +1,31 @@
+{
+  "request_hash": "0d7e42a7477acc1f6ffa01b9e9d83d372b0cacc74d107c3c7d8bdb1a5cff0ca1",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nAs of May 26, 2023, what is the total amount Pepsico may borrow under its unsecured revolving credit agreements?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"total_amount_available_under_unsecured_revolving_credit_agreements\",\"facts\":[{\"name\":\"total_amount_pepsico_may_borrow_under_unsecured_revolving_credit_agreements\",\"aliases\":[\"unsecured revolving credit agreements\",\"unsecured revolving credit facilities\",\"may borrow\",\"available borrowing capacity\",\"aggregate borrowing capacity\",\"committed credit facilities\",\"revolving credit agreements\"],\"period\":\"May 26, 2023\",\"statement\":\"notes\"}],\"reason\":\"Direct lookup of the aggregate borrowing amount disclosed in PepsiCo's debt or credit facilities notes as of May 26, 2023.\"}",
+  "usage": {
+    "prompt_tokens": 4705,
+    "completion_tokens": 208,
+    "total_tokens": 4913,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 83
+    }
+  },
+  "response_id": "resp_00b65b688382fd2a016aedbd06d67087d0ba0295d036adcb01",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

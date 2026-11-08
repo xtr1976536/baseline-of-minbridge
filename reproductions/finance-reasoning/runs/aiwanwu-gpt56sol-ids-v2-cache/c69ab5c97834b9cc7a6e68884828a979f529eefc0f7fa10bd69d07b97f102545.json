@@ -1,0 +1,21 @@
+{
+  "identity": "c69ab5c97834b9cc7a6e68884828a979f529eefc0f7fa10bd69d07b97f102545",
+  "response_digest": "d4e215e991cdffa148d43bf1e3e3220cfbaf87fab31af261f74be1a4007111ae",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    risk_free_rate = 0.03\n    beta = 1.1\n    market_risk_premium = 0.05\n    dividend_year_1 = 1.13\n    dividend_year_2 = 1.22\n    long_term_growth_rate = 0.05\n\n    # Do math calculation to get the answer\n    cost_of_equity = risk_free_rate + beta * market_risk_premium\n    dividend_year_3 = dividend_year_2 * (1 + long_term_growth_rate)\n    terminal_value_year_2 = dividend_year_3 / (\n        cost_of_equity - long_term_growth_rate\n    )\n\n    intrinsic_value = (\n        dividend_year_1 / (1 + cost_of_equity)\n        + (dividend_year_2 + terminal_value_year_2)\n        / (1 + cost_of_equity) ** 2\n    )\n\n    # return answer\n    return round(intrinsic_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5666,
+      "completion_tokens": 304,
+      "total_tokens": 5970,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 81
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2056",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the total amortization of a bond discount over its remaining periods using the effective interest rate method, based on face value, coupon rate, purchase price, market yield, and maturity, with annual coupon payments and rounding to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5040,
+          "completion_tokens": 54,
+          "total_tokens": 5094,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15066,
+          "completion_tokens": 482,
+          "total_tokens": 15548,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 385
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    purchase_price = 95000\n    face_value = 100000\n    num_periods = 4\n    coupon_rate = 5\n    market_rate = 6\n\n    # Do math calculation to get the answer\n    book_value = purchase_price\n    total_amortization = 0\n\n    for _ in range(num_periods):\n        coupon_payment = face_value * coupon_rate / 100\n        interest_expense = book_value * market_rate / 100\n        amortization = interest_expense - coupon_payment\n        total_amortization += amortization\n        book_value += amortization\n\n    answer = round(total_amortization)\n\n    # Return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5096,
+          "completion_tokens": 434,
+          "total_tokens": 5530,
+          "completion_tokens_details": {
+            "reasoning_tokens": 268
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2743",
+        "score": 2.0835628509521484
+      },
+      {
+        "function_id": "article-2306",
+        "score": 2.056318521499634
+      },
+      {
+        "function_id": "article-2313",
+        "score": 2.0048489570617676
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.939464807510376
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.921430230140686
+      },
+      {
+        "function_id": "article-1998",
+        "score": 1.8844343423843384
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.854036569595337
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.8353660106658936
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.8215597867965698
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.8178520202636719
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.811606764793396
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.8107222318649292
+      },
+      {
+        "function_id": "article-2742",
+        "score": 1.8106722831726074
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.8085912466049194
+      },
+      {
+        "function_id": "article-1352",
+        "score": 1.8041090965270996
+      },
+      {
+        "function_id": "article-1490",
+        "score": 1.8038971424102783
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.8034460544586182
+      },
+      {
+        "function_id": "article-1303",
+        "score": 1.8034207820892334
+      },
+      {
+        "function_id": "article-2311",
+        "score": 1.7991113662719727
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.796079158782959
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7945278882980347
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.7891875505447388
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.787019968032837
+      },
+      {
+        "function_id": "article-1997",
+        "score": 1.7862203121185303
+      },
+      {
+        "function_id": "article-2000",
+        "score": 1.785291314125061
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.784839391708374
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.7802329063415527
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.7792823314666748
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.7785899639129639
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.7718616724014282
+      }
+    ],
+    "selected_ids": [
+      "article-2743"
+    ],
+    "status": "invalid_program",
+    "answer": null,
+    "error": "Unsupported program name"
+  },
+  "digest": "f3d6a5d1883ae44ef785148882234ac19eda553119696d0ac9678da1ca9ad550"
+}

@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2208",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fair value of a European put option using the Black-Scholes model from spot price, strike price, time to maturity, continuously compounded risk-free interest rate, and annualized volatility, returning the option premium in currency units?",
+        "usage": {
+          "prompt_tokens": 5033,
+          "completion_tokens": 52,
+          "total_tokens": 5085,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16260,
+          "completion_tokens": 591,
+          "total_tokens": 16851,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 494
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_price = 150\n    strike_price = 140\n    time_to_maturity = 0.5\n    risk_free_rate = 0.02\n    volatility = 0.25\n\n    # Do math calculation to get the answer\n    from math import erf, exp, log, sqrt\n\n    def normal_cdf(value):\n        return 0.5 * (1 + erf(value / sqrt(2)))\n\n    d1 = (\n        log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility**2) * time_to_maturity\n    ) / (volatility * sqrt(time_to_maturity))\n    d2 = d1 - volatility * sqrt(time_to_maturity)\n\n    put_price = (\n        strike_price\n        * exp(-risk_free_rate * time_to_maturity)\n        * normal_cdf(-d2)\n        - stock_price * normal_cdf(-d1)\n    )\n    answer = round(put_price, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5807,
+          "completion_tokens": 271,
+          "total_tokens": 6078,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 33
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1033",
+        "score": 2.244713068008423
+      },
+      {
+        "function_id": "article-3060",
+        "score": 2.1933035850524902
+      },
+      {
+        "function_id": "article-729",
+        "score": 2.148956298828125
+      },
+      {
+        "function_id": "article-1032",
+        "score": 2.1421642303466797
+      },
+      {
+        "function_id": "article-2505",
+        "score": 2.1331424713134766
+      },
+      {
+        "function_id": "article-3061",
+        "score": 2.0951287746429443
+      },
+      {
+        "function_id": "article-358",
+        "score": 1.948410987854004
+      },
+      {
+        "function_id": "article-1408",
+        "score": 1.8996200561523438
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.8263795375823975
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.6766010522842407
+      },
+      {
+        "function_id": "article-758",
+        "score": 1.663956642150879
+      },
+      {
+        "function_id": "article-890",
+        "score": 1.6621801853179932
+      },
+      {
+        "function_id": "article-2588",
+        "score": 1.6572723388671875
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.6571924686431885
+      },
+      {
+        "function_id": "article-2586",
+        "score": 1.6567810773849487
+      },
+      {
+        "function_id": "article-1406",
+        "score": 1.6515259742736816
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.6510883569717407
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.6469964981079102
+      },
+      {
+        "function_id": "article-3105",
+        "score": 1.6465229988098145
+      },
+      {
+        "function_id": "article-1410",
+        "score": 1.6451823711395264
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6381795406341553
+      },
+      {
+        "function_id": "article-1903",
+        "score": 1.6317529678344727
+      },
+      {
+        "function_id": "article-2587",
+        "score": 1.616653323173523
+      },
+      {
+        "function_id": "article-2663",
+        "score": 1.6139768362045288
+      },
+      {
+        "function_id": "article-2196",
+        "score": 1.6136375665664673
+      },
+      {
+        "function_id": "article-1407",
+        "score": 1.6114462614059448
+      },
+      {
+        "function_id": "article-1898",
+        "score": 1.6112189292907715
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.6093289852142334
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.6049578189849854
+      },
+      {
+        "function_id": "article-3058",
+        "score": 1.6032593250274658
+      }
+    ],
+    "selected_ids": [
+      "article-1033",
+      "article-3060",
+      "article-1408"
+    ],
+    "status": "ok",
+    "answer": 5.46,
+    "code": "def solution():\n    # Define variables name and value\n    stock_price = 150\n    strike_price = 140\n    time_to_maturity = 0.5\n    risk_free_rate = 0.02\n    volatility = 0.25\n\n    # Do math calculation to get the answer\n    from math import erf, exp, log, sqrt\n\n    def normal_cdf(value):\n        return 0.5 * (1 + erf(value / sqrt(2)))\n\n    d1 = (\n        log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility**2) * time_to_maturity\n    ) / (volatility * sqrt(time_to_maturity))\n    d2 = d1 - volatility * sqrt(time_to_maturity)\n\n    put_price = (\n        strike_price\n        * exp(-risk_free_rate * time_to_maturity)\n        * normal_cdf(-d2)\n        - stock_price * normal_cdf(-d1)\n    )\n    answer = round(put_price, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "c1767aaed7e1dbb536b23d64674339c2bceed45363190272363b555a01ac5df7"
+}

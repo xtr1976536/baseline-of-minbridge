@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:long_term_debt_and_capital_lease_obligations_fy2025,liabilities_current_fy2025)

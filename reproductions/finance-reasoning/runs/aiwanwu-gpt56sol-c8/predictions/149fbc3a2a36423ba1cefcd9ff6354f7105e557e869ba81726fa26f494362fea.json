@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2218",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the interest portion of a fixed-rate mortgage payment for a specified period, given the loan principal, annual interest rate, term in years, and monthly payment frequency, including the first payment period?",
+        "usage": {
+          "prompt_tokens": 5016,
+          "completion_tokens": 45,
+          "total_tokens": 5061,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16053,
+          "completion_tokens": 1131,
+          "total_tokens": 17184,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    loan_amount = 200000\n    annual_interest_rate = 0.0375\n    months_per_year = 12\n\n    # Do math calculation to get the answer\n    first_month_interest = loan_amount * annual_interest_rate / months_per_year\n\n    # return answer\n    return round(first_month_interest, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5513,
+          "completion_tokens": 117,
+          "total_tokens": 5630,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 28
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-990",
+        "score": 1.9661333560943604
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.9355111122131348
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.8982563018798828
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.8802366256713867
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.8755744695663452
+      },
+      {
+        "function_id": "article-292",
+        "score": 1.873450756072998
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.8727926015853882
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.8660105466842651
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.8610730171203613
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.8535221815109253
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.8414889574050903
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.8298581838607788
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.826462745666504
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.8210569620132446
+      },
+      {
+        "function_id": "article-438",
+        "score": 1.8176604509353638
+      },
+      {
+        "function_id": "article-581",
+        "score": 1.8116357326507568
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.8085582256317139
+      },
+      {
+        "function_id": "article-1068",
+        "score": 1.8053650856018066
+      },
+      {
+        "function_id": "article-299",
+        "score": 1.799882411956787
+      },
+      {
+        "function_id": "article-677",
+        "score": 1.7922972440719604
+      },
+      {
+        "function_id": "article-578",
+        "score": 1.7901575565338135
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.7743520736694336
+      },
+      {
+        "function_id": "article-1153",
+        "score": 1.7626882791519165
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.7566708326339722
+      },
+      {
+        "function_id": "article-1480",
+        "score": 1.7565585374832153
+      },
+      {
+        "function_id": "article-586",
+        "score": 1.7521283626556396
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.7356852293014526
+      },
+      {
+        "function_id": "article-2132",
+        "score": 1.7259352207183838
+      },
+      {
+        "function_id": "article-1503",
+        "score": 1.7193293571472168
+      },
+      {
+        "function_id": "article-1099",
+        "score": 1.7189435958862305
+      }
+    ],
+    "selected_ids": [
+      "article-292",
+      "article-1071",
+      "article-438"
+    ],
+    "status": "ok",
+    "answer": 625.0,
+    "code": "def solution():\n    # Define variables name and value\n    loan_amount = 200000\n    annual_interest_rate = 0.0375\n    months_per_year = 12\n\n    # Do math calculation to get the answer\n    first_month_interest = loan_amount * annual_interest_rate / months_per_year\n\n    # return answer\n    return round(first_month_interest, 2)\n"
+  },
+  "digest": "5a9fca30e109bb4b4f678ebdde12dc5af27fc8dbd034e6396d5764a1e2a1cce4"
+}

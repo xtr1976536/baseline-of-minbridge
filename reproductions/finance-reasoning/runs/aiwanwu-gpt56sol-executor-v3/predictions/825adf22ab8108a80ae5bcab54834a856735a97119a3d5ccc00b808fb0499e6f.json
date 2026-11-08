@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2193",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Brinson-Fachler portfolio performance attribution security-selection (choice) effect as the sum of benchmark category weights multiplied by portfolio-minus-benchmark returns across asset classes, returning the result as a percentage rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5054,
+          "completion_tokens": 158,
+          "total_tokens": 5212,
+          "completion_tokens_details": {
+            "reasoning_tokens": 104
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[]}",
+        "usage": {
+          "prompt_tokens": 14875,
+          "completion_tokens": 183,
+          "total_tokens": 15058,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 168
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    portfolio_returns = [0.25, 0.09, 0.15]\n    benchmark_returns = [0.15, 0.05, 0.18]\n    benchmark_weights = [0.35, 0.35, 0.30]\n\n    # Do math calculation to get the answer\n    security_selection = sum(\n        weight * (portfolio_return - benchmark_return)\n        for weight, portfolio_return, benchmark_return in zip(\n            benchmark_weights, portfolio_returns, benchmark_returns\n        )\n    )\n    answer = round(security_selection * 100, 1)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 4721,
+          "completion_tokens": 309,
+          "total_tokens": 5030,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 156
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2022",
+        "score": 1.7163505554199219,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-520",
+        "score": 1.659274935722351,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1925",
+        "score": 1.6466565132141113,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.6422665119171143,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1289",
+        "score": 1.6296461820602417,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1604",
+        "score": 1.6271809339523315,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1590",
+        "score": 1.6261788606643677,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.6201953887939453,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2782",
+        "score": 1.6160643100738525,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2460",
+        "score": 1.6104989051818848,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2783",
+        "score": 1.609986424446106,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-148",
+        "score": 1.6040232181549072,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1783",
+        "score": 1.6021313667297363,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2620",
+        "score": 1.5930503606796265,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-921",
+        "score": 1.5923488140106201,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1744",
+        "score": 1.5922292470932007,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.5795395374298096,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.5788631439208984,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2375",
+        "score": 1.5749232769012451,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-925",
+        "score": 1.5711193084716797,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-870",
+        "score": 1.57106614112854,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-905",
+        "score": 1.568882942199707,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.5683833360671997,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.5668772459030151,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.560805082321167,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-966",
+        "score": 1.5560208559036255,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-266",
+        "score": 1.5542216300964355,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-865",
+        "score": 1.5498685836791992,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-858",
+        "score": 1.548609972000122,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1460",
+        "score": 1.5467513799667358,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [],
+    "status": "ok",
+    "answer": 4.0,
+    "code": "def solution():\n    # Define variables name and value\n    portfolio_returns = [0.25, 0.09, 0.15]\n    benchmark_returns = [0.15, 0.05, 0.18]\n    benchmark_weights = [0.35, 0.35, 0.30]\n\n    # Do math calculation to get the answer\n    security_selection = sum(\n        weight * (portfolio_return - benchmark_return)\n        for weight, portfolio_return, benchmark_return in zip(\n            benchmark_weights, portfolio_returns, benchmark_returns\n        )\n    )\n    answer = round(security_selection * 100, 1)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "dcfe6332656bf80a7d15d3ae59bb3edc8ae4a9878f1759cb1afe9577fee84445"
+}

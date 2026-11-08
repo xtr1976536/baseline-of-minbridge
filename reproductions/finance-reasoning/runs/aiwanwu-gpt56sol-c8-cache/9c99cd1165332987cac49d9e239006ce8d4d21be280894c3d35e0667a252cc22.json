@@ -1,0 +1,21 @@
+{
+  "identity": "9c99cd1165332987cac49d9e239006ce8d4d21be280894c3d35e0667a252cc22",
+  "response_digest": "4a6f5a3b6eb67572c1f75d909bb0800061be250ed2628d818e98bbbc42dbf4ff",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    spot_rate_short = 0.025\n    spot_rate_long = 0.035\n    period_short = 2\n    period_long = 5\n\n    # Calculate the annualized forward rate for the 3-year period\n    forward_rate = (\n        ((1 + spot_rate_long) ** period_long\n         / (1 + spot_rate_short) ** period_short)\n        ** (1 / (period_long - period_short))\n        - 1\n    )\n\n    # Convert to a percentage and round to two decimal places\n    answer = round(forward_rate * 100, 2)\n\n    # Return the answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5400,
+      "completion_tokens": 309,
+      "total_tokens": 5709,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 156
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

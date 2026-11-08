@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2124",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a category’s percentage of a total from tabular counts, using the Texas location count divided by the sum of all listed domestic leased locations, and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5559,
+          "completion_tokens": 44,
+          "total_tokens": 5603,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C14\"]}",
+        "usage": {
+          "prompt_tokens": 14720,
+          "completion_tokens": 16,
+          "total_tokens": 14736
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    texas_locations = 19\n    domestic_locations = 57 + 26 + 22 + 19 + 9 + 8 + 7 + 63\n    international_locations = 81\n    total_locations = domestic_locations + international_locations\n\n    # Do math calculation to get the answer\n    percentage = round((texas_locations / total_locations) * 100, 3)\n\n    # Return answer\n    return percentage\n```",
+        "usage": {
+          "prompt_tokens": 5496,
+          "completion_tokens": 206,
+          "total_tokens": 5702,
+          "completion_tokens_details": {
+            "reasoning_tokens": 95
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2159",
+        "score": 1.397454023361206,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-466",
+        "score": 1.3660222291946411,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-58",
+        "score": 1.347217082977295,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1188",
+        "score": 1.3381493091583252,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-928",
+        "score": 1.3346238136291504,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-917",
+        "score": 1.334241509437561,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-991",
+        "score": 1.3260653018951416,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2778",
+        "score": 1.3237426280975342,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2539",
+        "score": 1.320263385772705,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2395",
+        "score": 1.3183643817901611,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2546",
+        "score": 1.3129935264587402,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-320",
+        "score": 1.3102798461914062,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2949",
+        "score": 1.3098944425582886,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-3004",
+        "score": 1.3072316646575928,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2646",
+        "score": 1.3039767742156982,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-988",
+        "score": 1.300064206123352,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1654",
+        "score": 1.2991054058074951,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2583",
+        "score": 1.2963333129882812,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2228",
+        "score": 1.2947721481323242,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-562",
+        "score": 1.2943856716156006,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2160",
+        "score": 1.291011095046997,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2584",
+        "score": 1.290899634361267,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1058",
+        "score": 1.2897965908050537,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2099",
+        "score": 1.2896361351013184,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.286852240562439,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2098",
+        "score": 1.2850275039672852,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1967",
+        "score": 1.2834810018539429,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1765",
+        "score": 1.2821125984191895,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-469",
+        "score": 1.282080054283142,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2831",
+        "score": 1.2807650566101074,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-3004"
+    ],
+    "status": "ok",
+    "answer": 6.507,
+    "code": "def solution():\n    # Define variables name and value\n    texas_locations = 19\n    domestic_locations = 57 + 26 + 22 + 19 + 9 + 8 + 7 + 63\n    international_locations = 81\n    total_locations = domestic_locations + international_locations\n\n    # Do math calculation to get the answer\n    percentage = round((texas_locations / total_locations) * 100, 3)\n\n    # Return answer\n    return percentage\n"
+  },
+  "digest": "b48cf0a2d70ee88325aa02637fef4caedc7d6dc671f4a57d3866dfefdd377cc9"
+}

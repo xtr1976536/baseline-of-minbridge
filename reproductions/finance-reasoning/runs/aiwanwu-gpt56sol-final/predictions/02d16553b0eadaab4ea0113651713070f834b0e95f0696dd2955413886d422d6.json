@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2062",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates normalized EPS for a cyclical company by averaging historical ROE over a complete business cycle, applying the average ROE to common equity (total assets minus total liabilities minus preferred equity), and dividing normalized earnings by common shares outstanding, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5168,
+          "completion_tokens": 148,
+          "total_tokens": 5316,
+          "completion_tokens_details": {
+            "reasoning_tokens": 85
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13619,
+          "completion_tokens": 1131,
+          "total_tokens": 14750,
+          "prompt_tokens_details": {
+            "cached_tokens": 13440
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    roe_values = [0.12, 0.131, 0.1055, 0.112, 0.1205]\n    total_assets = 2100  # millions\n    total_liabilities = 1200  # millions\n    preferred_equity = 120  # millions\n    common_shares_outstanding = 32  # millions\n\n    # Do math calculation to get the answer\n    average_roe = sum(roe_values) / len(roe_values)\n    common_equity = total_assets - total_liabilities - preferred_equity\n    normalized_net_income = average_roe * common_equity\n    normalized_eps = normalized_net_income / common_shares_outstanding\n\n    # return answer\n    return round(normalized_eps, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5525,
+          "completion_tokens": 300,
+          "total_tokens": 5825,
+          "completion_tokens_details": {
+            "reasoning_tokens": 117
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-40",
+        "score": 1.7923943996429443
+      },
+      {
+        "function_id": "article-1543",
+        "score": 1.7800066471099854
+      },
+      {
+        "function_id": "article-1787",
+        "score": 1.7678788900375366
+      },
+      {
+        "function_id": "article-2711",
+        "score": 1.7546131610870361
+      },
+      {
+        "function_id": "article-2268",
+        "score": 1.7519501447677612
+      },
+      {
+        "function_id": "article-695",
+        "score": 1.7480251789093018
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.747701644897461
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.7377264499664307
+      },
+      {
+        "function_id": "article-2908",
+        "score": 1.73191499710083
+      },
+      {
+        "function_id": "article-2697",
+        "score": 1.7283663749694824
+      },
+      {
+        "function_id": "article-507",
+        "score": 1.7242028713226318
+      },
+      {
+        "function_id": "article-1260",
+        "score": 1.716774344444275
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.7057571411132812
+      },
+      {
+        "function_id": "article-1494",
+        "score": 1.6942741870880127
+      },
+      {
+        "function_id": "article-1327",
+        "score": 1.6878697872161865
+      },
+      {
+        "function_id": "article-642",
+        "score": 1.6851121187210083
+      },
+      {
+        "function_id": "article-1379",
+        "score": 1.6834908723831177
+      },
+      {
+        "function_id": "article-1685",
+        "score": 1.6830674409866333
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.6826748847961426
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.6777209043502808
+      },
+      {
+        "function_id": "article-37",
+        "score": 1.6713594198226929
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.6713478565216064
+      },
+      {
+        "function_id": "article-651",
+        "score": 1.6672041416168213
+      },
+      {
+        "function_id": "article-1215",
+        "score": 1.6659730672836304
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.6644970178604126
+      },
+      {
+        "function_id": "article-2717",
+        "score": 1.6643515825271606
+      },
+      {
+        "function_id": "article-2714",
+        "score": 1.6626636981964111
+      },
+      {
+        "function_id": "article-556",
+        "score": 1.6568968296051025
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.6564183235168457
+      },
+      {
+        "function_id": "article-2712",
+        "score": 1.65494966506958
+      }
+    ],
+    "selected_ids": [
+      "article-378",
+      "article-2908",
+      "article-2697"
+    ],
+    "status": "ok",
+    "answer": 2.871,
+    "code": "def solution():\n    # Define variables name and value\n    roe_values = [0.12, 0.131, 0.1055, 0.112, 0.1205]\n    total_assets = 2100  # millions\n    total_liabilities = 1200  # millions\n    preferred_equity = 120  # millions\n    common_shares_outstanding = 32  # millions\n\n    # Do math calculation to get the answer\n    average_roe = sum(roe_values) / len(roe_values)\n    common_equity = total_assets - total_liabilities - preferred_equity\n    normalized_net_income = average_roe * common_equity\n    normalized_eps = normalized_net_income / common_shares_outstanding\n\n    # return answer\n    return round(normalized_eps, 3)\n"
+  },
+  "digest": "1329da91bc6fc292b91783cd5c22f50730cc761c367ac0f0566afd31a9d01cf0"
+}

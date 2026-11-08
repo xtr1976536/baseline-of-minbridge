@@ -1,0 +1,21 @@
+{
+  "identity": "d02cfb4cab69afb56c12a051e6c9a4dfc1b4eb53420056068921c1fe15835bc9",
+  "response_digest": "0452855e45b87bb0f967c9c85c768fdc9697e55cbbb492919954a04d29492fba",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    daily_returns = [1.5, -0.5, 3.2, -2.0, 0.8]\n    n = len(daily_returns)\n\n    # Do math calculation to get the excess kurtosis\n    mean_return = sum(daily_returns) / n\n    m2 = sum((x - mean_return) ** 2 for x in daily_returns) / n\n    m4 = sum((x - mean_return) ** 4 for x in daily_returns) / n\n    excess_kurtosis = (m4 / (m2 ** 2)) - 3\n    answer = round(excess_kurtosis, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5102,
+      "completion_tokens": 365,
+      "total_tokens": 5467,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 194
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

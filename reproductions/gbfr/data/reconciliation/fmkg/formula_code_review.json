@@ -1,0 +1,4878 @@
+{
+  "paper_alias_sets": {
+    "Net Income": [
+      "Net Earnings",
+      "Net Income",
+      "Net Profit"
+    ],
+    "Cost of Sales": [
+      "COGS",
+      "Cost of Goods Sold",
+      "Cost of Products Sold",
+      "Cost of Sales"
+    ]
+  },
+  "paper_alias_sources": {
+    "Net Income": "Section 3.2 alias mapping",
+    "Cost of Sales": "Appendix A, Figure 4"
+  },
+  "reviews": [
+    {
+      "source_record": 3,
+      "source_formula_index": 0,
+      "target": "Cash Ratio",
+      "source_formula": "Cash Ratio = (Cash + Cash Equivalents) ÷ Current Liabilities",
+      "formula_expression": "(x0 + x1) / x2",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 5,
+      "source_formula_index": 0,
+      "target": "Debt-to-Asset Ratio",
+      "source_formula": "Debt-to-Asset Ratio = (Total Liabilities ÷ Total Assets) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 8,
+      "source_formula_index": 1,
+      "target": "Interest Coverage Ratio",
+      "source_formula": "Interest Coverage Ratio = (Net Profit + Interest Expense + Income Tax Expense) ÷ Interest Expense",
+      "formula_expression": "(x0 + x1 + x2) / x1",
+      "code_expression": "(x0 + x1 + x2) / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 10,
+      "source_formula_index": 0,
+      "target": "Cash Flow to Debt Ratio",
+      "source_formula": "Cash Flow to Debt Ratio = (Operating Cash Flow ÷ Total Debt) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 11,
+      "source_formula_index": 0,
+      "target": "Accounts Receivable Turnover",
+      "source_formula": "Accounts Receivable Turnover = Net Credit Sales ÷ Average Accounts Receivable",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 18,
+      "source_formula_index": 1,
+      "target": "Days of Current Assets Turnover",
+      "source_formula": "Days of Current Assets Turnover = 365 ÷ Current Assets Turnover Ratio",
+      "formula_expression": "365 / x0",
+      "code_expression": "365 / x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 24,
+      "source_formula_index": 0,
+      "target": "Days of Total Asset Turnover",
+      "source_formula": "Days of Total Asset Turnover = 365 ÷ (Sales Revenue ÷ Average Total Assets)",
+      "formula_expression": "365 / (x0 / x1)",
+      "code_expression": "365 / (x0 / x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 24,
+      "source_formula_index": 1,
+      "target": "Days of Total Asset Turnover",
+      "source_formula": "Days of Total Asset Turnover = 365 ÷ Total Asset Turnover Ratio",
+      "formula_expression": "365 / x0",
+      "code_expression": "365 / x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 25,
+      "source_formula_index": 1,
+      "target": "Total Assets to Revenue Ratio",
+      "source_formula": "Total Assets to Revenue Ratio = 1 ÷ Total Asset Turnover",
+      "formula_expression": "1 / x0",
+      "code_expression": "1 / x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 26,
+      "source_formula_index": 0,
+      "target": "Net Profit Margin",
+      "source_formula": "Net Profit Margin = (Net Profit ÷ Sales Revenue) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 27,
+      "source_formula_index": 0,
+      "target": "Return on Assets (ROA)",
+      "source_formula": "Return on Assets = Net Profit ÷ Total Assets",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 27,
+      "source_formula_index": 1,
+      "target": "Return on Assets (ROA)",
+      "source_formula": "Return on Assets = (Net Profit ÷ Sales Revenue) × (Sales Revenue ÷ Total Assets)",
+      "formula_expression": "(x0 / x1) * (x1 / x2)",
+      "code_expression": "x0 / x1 * (x1 / x2)",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 31,
+      "source_formula_index": 0,
+      "target": "Net Interest Expense",
+      "source_formula": "Net Interest Expense = Interest Expense × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 34,
+      "source_formula_index": 0,
+      "target": "Sales Percentage",
+      "source_formula": "Sales Percentage = (Cost of Sales ÷ Total Sales) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 35,
+      "source_formula_index": 1,
+      "target": "Operating Assets",
+      "source_formula": "Operating Assets = Total Assets - Total Financial Assets",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 36,
+      "source_formula_index": 1,
+      "target": "Change in Retained Earnings",
+      "source_formula": "Change in Retained Earnings = Net Profit × (1 - Dividend Payout Ratio)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 53,
+      "source_formula_index": 0,
+      "target": "Perpetual Bond Value",
+      "source_formula": "Perpetual Bond Value = Annual Interest Amount ÷ Discount Rate",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 62,
+      "source_formula_index": 0,
+      "target": "Payback Period",
+      "source_formula": "Payback Period = Original Investment Amount ÷ Annual Net Cash Inflow",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 63,
+      "source_formula_index": 1,
+      "target": "Operating Cash Inflow",
+      "source_formula": "Operating Cash Inflow = Sales Revenue - (Cost of Sales - Depreciation)",
+      "formula_expression": "x0 - (x1 - x2)",
+      "code_expression": "x0 - x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 63,
+      "source_formula_index": 2,
+      "target": "Operating Cash Inflow",
+      "source_formula": "Operating Cash Inflow = After-tax Profit + Depreciation",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 67,
+      "source_formula_index": 3,
+      "target": "Operating Cash Flow",
+      "source_formula": "Operating Cash Flow = Sales Revenue - Fixed Costs",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 83,
+      "source_formula_index": 2,
+      "target": "Pre-tax Profit/Loss from Credit Period Change",
+      "source_formula": "Pre-tax Profit/Loss from Credit Period Change = Incremental Contribution Margin - Incremental Bad Debt Cost - Incremental Accounts Receivable Opportunity Cost",
+      "formula_expression": "x0 - x1 - x2",
+      "code_expression": "x0 - x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 117,
+      "source_formula_index": 0,
+      "target": "Cost of Forgoing Cash Discount",
+      "source_formula": "Cost of Forgoing Cash Discount = Discount Percentage ÷ (1 - Discount Percentage) × 360 ÷ (Credit Period - Discount Period)",
+      "formula_expression": "x0 / (1 - x0) * 360 / (x1 - x2)",
+      "code_expression": "x0 / (1 - x0) * 360 / (x1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 129,
+      "source_formula_index": 0,
+      "target": "Current Period Total Investment",
+      "source_formula": "Current Period Total Investment = Increase in Operating Working Capital + Capital Expenditures",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 194,
+      "source_formula_index": 1,
+      "target": "Profit",
+      "source_formula": "Profit = Unit Price × Sales Volume - Unit Variable Cost × Sales Volume - Fixed Cost",
+      "formula_expression": "x0 * x1 - x2 * x1 - x3",
+      "code_expression": "x0 * x1 - x2 * x1 - x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 195,
+      "source_formula_index": 1,
+      "target": "Total Cost",
+      "source_formula": "Total Cost = Unit Variable Cost × Sales Volume + Fixed Costs",
+      "formula_expression": "x0 * x1 + x2",
+      "code_expression": "x0 * x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 196,
+      "source_formula_index": 0,
+      "target": "Sales Volume",
+      "source_formula": "Sales Volume = (Fixed Costs + Profit) ÷ (Unit Price - Unit Variable Cost)",
+      "formula_expression": "(x0 + x1) / (x2 - x3)",
+      "code_expression": "(x0 + x1) / (x2 - x3)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 197,
+      "source_formula_index": 0,
+      "target": "Break-even Point Sales Volume",
+      "source_formula": "Break-even Point Sales Volume = Fixed Costs ÷ (Unit Price - Unit Variable Cost)",
+      "formula_expression": "x0 / (x1 - x2)",
+      "code_expression": "x0 / (x1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 197,
+      "source_formula_index": 1,
+      "target": "Break-even Point Sales Volume",
+      "source_formula": "Break-even Point Sales Volume = Fixed Costs ÷ Unit Contribution Margin",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 198,
+      "source_formula_index": 0,
+      "target": "Break-even Sales",
+      "source_formula": "Break-even Sales = Fixed Costs ÷ Contribution Margin Ratio",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 214,
+      "source_formula_index": 0,
+      "target": "Variable Overhead Efficiency Variance",
+      "source_formula": "Variable Overhead Efficiency Variance = (Actual Hours - Standard Hours) × Standard Variable Overhead Rate",
+      "formula_expression": "(x0 - x1) * x2",
+      "code_expression": "(x0 - x1) * x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 267,
+      "source_formula_index": 0,
+      "target": "Gross Profit Margin",
+      "source_formula": "Gross Profit Margin = (Revenue - Cost of Goods Sold) / Revenue × 100%",
+      "formula_expression": "(x0 - x1) / x0 * 100/100",
+      "code_expression": "(x0 - x1) / x0 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Cost of Goods Sold": {
+          "canonical": "Cost of Sales",
+          "paper_source": "Appendix A, Figure 4"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 268,
+      "source_formula_index": 0,
+      "target": "Gross Profit",
+      "source_formula": "Gross Profit = Net Sales - Cost of Sales",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Cost of Goods Sold": {
+          "canonical": "Cost of Sales",
+          "paper_source": "Appendix A, Figure 4"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 278,
+      "source_formula_index": 0,
+      "target": "Investment",
+      "source_formula": "Investment = Capital Expenditure + Increase in Working Capital",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 384,
+      "source_formula_index": 0,
+      "target": "Net Profit Margin",
+      "source_formula": "Net Profit Margin = Net Profit ÷ Sales Revenue × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 396,
+      "source_formula_index": 0,
+      "target": "Up Percentage",
+      "source_formula": "Up Percentage = (New Value - Original Value) ÷ Original Value × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 398,
+      "source_formula_index": 1,
+      "target": "Next Period Equity Cash Flow",
+      "source_formula": "Next Period Equity Cash Flow = Dividend Distribution - Stock Issuance + Stock Repurchase",
+      "formula_expression": "x0 - x1 + x2",
+      "code_expression": "x0 - x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 400,
+      "source_formula_index": 1,
+      "target": "Downside Probability",
+      "source_formula": "Downside Probability = 1 - Upside Probability",
+      "formula_expression": "1 - x0",
+      "code_expression": "1 - x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 427,
+      "source_formula_index": 2,
+      "target": "Increase in Net Operating Assets",
+      "source_formula": "Increase in Net Operating Assets = Net Operating Profit After Tax - Free Cash Flow to the Firm",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 458,
+      "source_formula_index": 1,
+      "target": "Incremental Contribution Margin",
+      "source_formula": "Incremental Contribution Margin = Additional Sales Volume × Unit Contribution Margin",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 460,
+      "source_formula_index": 0,
+      "target": "Long Call Option Expiration Value",
+      "source_formula": "Long Call Option Expiration Value = max(Stock Market Price - Strike Price, 0)",
+      "formula_expression": "max(x0 - x1, 0)",
+      "code_expression": "max(x0 - x1, 0)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 464,
+      "source_formula_index": 0,
+      "target": "Actual Price-to-Book Ratio",
+      "source_formula": "Actual Price-to-Book Ratio = Stock Price ÷ Net Asset Value per Share",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 469,
+      "source_formula_index": 1,
+      "target": "Required Rate of Return on Market Portfolio",
+      "source_formula": "Required Rate of Return on Market Portfolio = Historical Average Return of Market Portfolio",
+      "formula_expression": "x0",
+      "code_expression": "x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 481,
+      "source_formula_index": 0,
+      "target": "Annual Order Frequency",
+      "source_formula": "Annual Order Frequency = Annual Demand ÷ Order Quantity per Order",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 493,
+      "source_formula_index": 0,
+      "target": "Earnings Before Interest and Taxes",
+      "source_formula": "EBIT = Operating Revenue - Cost of Goods Sold - Operating Expenses",
+      "formula_expression": "x0 - x1 - x2",
+      "code_expression": "x0 - x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Cost of Goods Sold": {
+          "canonical": "Cost of Sales",
+          "paper_source": "Appendix A, Figure 4"
+        }
+      }
+    },
+    {
+      "source_record": 496,
+      "source_formula_index": 0,
+      "target": "Component Company Adjusted Stock Price",
+      "source_formula": "Component Company Adjusted Stock Price = Historical Stock Price × Adjustment Factor",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 504,
+      "source_formula_index": 0,
+      "target": "Investment Amortization",
+      "source_formula": "Investment Amortization = (Original Asset Value - Estimated Net Residual Value) ÷ Estimated Useful Life",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 504,
+      "source_formula_index": 1,
+      "target": "Investment Amortization",
+      "source_formula": "Investment Amortization = Beginning Net Book Value of Asset × (2 ÷ Estimated Useful Life)",
+      "formula_expression": "x0 * (2 / x1)",
+      "code_expression": "x0 * (2 / x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 515,
+      "source_formula_index": 3,
+      "target": "Retention Ratio",
+      "source_formula": "Retention Ratio = 1 - Dividend Payout Ratio",
+      "formula_expression": "1 - x0",
+      "code_expression": "(1 - x0) * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 520,
+      "source_formula_index": 1,
+      "target": "Ordinary Annuity Future Value Factor",
+      "source_formula": "Ordinary Annuity Future Value Factor = Future Value of Annuity ÷ Periodic Annuity Payment",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 526,
+      "source_formula_index": 0,
+      "target": "Final Real GDP",
+      "source_formula": "Final Real GDP = Nominal Gross Domestic Product ÷ GDP Deflator",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 526,
+      "source_formula_index": 1,
+      "target": "Final Real GDP",
+      "source_formula": "Final Real GDP = Nominal Gross Domestic Product ÷ Price Index",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 534,
+      "source_formula_index": 1,
+      "target": "Terminal Value",
+      "source_formula": "Terminal Value = Beginning Book Value - Current Period Depreciation Expense",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 534,
+      "source_formula_index": 2,
+      "target": "Terminal Value",
+      "source_formula": "Terminal Value = Beginning Actual Cost + Accrued Interest - Interest Received",
+      "formula_expression": "x0 + x1 - x2",
+      "code_expression": "x0 + x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 535,
+      "source_formula_index": 0,
+      "target": "Ending Net Operating Assets",
+      "source_formula": "Ending Net Operating Assets = Ending Operating Assets - Ending Operating Liabilities",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 540,
+      "source_formula_index": 0,
+      "target": "Present Value of Future Cash Flows",
+      "source_formula": "Present Value of Future Cash Flows = Future Cash Flow ÷ (1 + Discount Rate) ^ Number of Periods",
+      "formula_expression": "x0 / (1 + x1) ** x2",
+      "code_expression": "x0 / (1 + x1) ** x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 544,
+      "source_formula_index": 0,
+      "target": "Current Year Cost of Capital",
+      "source_formula": "Current Year Cost of Capital = (Market Value of Equity ÷ Total Market Value) × Cost of Equity + (Market Value of Debt ÷ Total Market Value) × Cost of Debt × (1 - Income Tax Rate)",
+      "formula_expression": "(x0 / x1) * x2 + (x3 / x1) * x4 * (1 - x5)",
+      "code_expression": "x0 / x1 * x2 + x3 / x1 * x4 * (1 - x5)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 548,
+      "source_formula_index": 0,
+      "target": "Equity Value Added",
+      "source_formula": "Equity Value Added = Market Value Added - Debt Market Value Added",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 552,
+      "source_formula_index": 0,
+      "target": "Standard Unit Fixed Cost",
+      "source_formula": "Standard Unit Fixed Cost = Total Fixed Costs ÷ Total Output",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 552,
+      "source_formula_index": 1,
+      "target": "Standard Unit Fixed Cost",
+      "source_formula": "Standard Unit Fixed Cost = Total Fixed Costs ÷ Total Activity Volume",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 560,
+      "source_formula_index": 1,
+      "target": "Book Value Per Share",
+      "source_formula": "Book Value Per Share = (Total Assets - Total Liabilities) ÷ Number of Common Shares Outstanding",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 562,
+      "source_formula_index": 0,
+      "target": "Perpetual Growth Rate",
+      "source_formula": "Perpetual Growth Rate = Cost of Equity - (Next Period Dividend Cash Flow ÷ Equity Value)",
+      "formula_expression": "x0 - (x1 / x2)",
+      "code_expression": "x0 - x1 / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 567,
+      "source_formula_index": 0,
+      "target": "Target Value Change Percentage",
+      "source_formula": "Target Value Change Percentage = (New Target Value - Benchmark Target Value) ÷ Benchmark Target Value × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 573,
+      "source_formula_index": 0,
+      "target": "After-tax Interest Expense",
+      "source_formula": "After-tax Interest Expense = Interest Expense × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 575,
+      "source_formula_index": 0,
+      "target": "Net Operating Profit After Tax",
+      "source_formula": "Net Operating Profit After Tax = Operating Profit × (1 - Average Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 575,
+      "source_formula_index": 3,
+      "target": "Net Operating Profit After Tax",
+      "source_formula": "Net Operating Profit After Tax = (Net Profit + Income Tax Expense + Interest Expense) × (1 - Average Income Tax Rate)",
+      "formula_expression": "(x0 + x1 + x2) * (1 - x3)",
+      "code_expression": "(x0 + x1 + x2) * (1 - x3)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 577,
+      "source_formula_index": 0,
+      "target": "Short Call Option Value at Expiration",
+      "source_formula": "Short Call Option Value at Expiration = -max(Stock Market Price - Strike Price, 0)",
+      "formula_expression": "-max(x0 - x1, 0)",
+      "code_expression": "-max(x0 - x1, 0)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 585,
+      "source_formula_index": 0,
+      "target": "Operating Working Capital Percentage",
+      "source_formula": "Operating Working Capital Percentage = Operating Working Capital ÷ Total Assets × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 585,
+      "source_formula_index": 1,
+      "target": "Operating Working Capital Percentage",
+      "source_formula": "Operating Working Capital Percentage = (Operating Current Assets - Operating Current Liabilities) ÷ Total Assets × 100%",
+      "formula_expression": "(x0 - x1) / x2 * 100/100",
+      "code_expression": "(x0 - x1) / x2 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 586,
+      "source_formula_index": 1,
+      "target": "Operating Liabilities to Sales Percentage",
+      "source_formula": "Operating Liabilities to Sales Percentage = (Total Assets - Total Financial Liabilities) ÷ Sales Revenue",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 589,
+      "source_formula_index": 0,
+      "target": "Comprehensive Income",
+      "source_formula": "Comprehensive Income = Net Profit + Other Comprehensive Income",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 590,
+      "source_formula_index": 0,
+      "target": "Return on Equity (ROE)",
+      "source_formula": "Return on Equity = Net Profit ÷ Shareholders' Equity × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 590,
+      "source_formula_index": 3,
+      "target": "Return on Equity (ROE)",
+      "source_formula": "Return on Equity = Net Profit Margin × Asset Turnover × Equity Multiplier",
+      "formula_expression": "x0 * x1 * x2",
+      "code_expression": "x0 * x1 * x2 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 594,
+      "source_formula_index": 0,
+      "target": "Stock Price Increase Percentage",
+      "source_formula": "Stock Price Increase Percentage = (Current Stock Price - Original Stock Price) ÷ Original Stock Price × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 596,
+      "source_formula_index": 2,
+      "target": "Dividend Growth Rate",
+      "source_formula": "Dividend Growth Rate = Sustainable Growth Rate",
+      "formula_expression": "x0",
+      "code_expression": "x0 * x1 * x2 * x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 601,
+      "source_formula_index": 0,
+      "target": "Stock Dividend Payout Ratio",
+      "source_formula": "Stock Dividend Payout Ratio = Total Stock Dividends ÷ Net Profit × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 608,
+      "source_formula_index": 0,
+      "target": "Working Capital Management",
+      "source_formula": "Working Capital Management = Total Current Assets - Total Current Liabilities",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 612,
+      "source_formula_index": 0,
+      "target": "Debt-to-Equity Ratio",
+      "source_formula": "Debt-to-Equity Ratio = Total Liabilities ÷ Total Shareholders' Equity",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 612,
+      "source_formula_index": 2,
+      "target": "Debt-to-Equity Ratio",
+      "source_formula": "Debt-to-Equity Ratio = Debt-to-Assets Ratio ÷ (1 - Debt-to-Assets Ratio)",
+      "formula_expression": "x0 / (1 - x0)",
+      "code_expression": "x0 / (1 - x0)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 614,
+      "source_formula_index": 2,
+      "target": "Debt Ratio",
+      "source_formula": "Debt Ratio = Equity Ratio ÷ (1 + Equity Ratio)",
+      "formula_expression": "x0 / (1 + x0)",
+      "code_expression": "x0 / (1 + x0)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 615,
+      "source_formula_index": 0,
+      "target": "After-tax Cost of Debt",
+      "source_formula": "After-tax Cost of Debt = Pre-tax Cost of Debt × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 616,
+      "source_formula_index": 0,
+      "target": "Debt-to-Sales Percentage",
+      "source_formula": "Debt-to-Sales Percentage = Total Liabilities ÷ Sales Revenue",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 630,
+      "source_formula_index": 1,
+      "target": "Sales Increase",
+      "source_formula": "Sales Increase = Base Period Sales Revenue × Projected Sales Growth Rate",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 633,
+      "source_formula_index": 0,
+      "target": "Long-term Capital",
+      "source_formula": "Long-term Capital = Long-term Liabilities + Total Shareholders' Equity",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 635,
+      "source_formula_index": 1,
+      "target": "Non-operating Profit",
+      "source_formula": "Non-operating Profit = Net Operating Income - Operating Profit",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 683,
+      "source_formula_index": 0,
+      "target": "Next Period Depreciation and Amortization",
+      "source_formula": "Next Period Depreciation and Amortization = (Original Value of Fixed Assets - Estimated Net Residual Value) ÷ Estimated Useful Life",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 690,
+      "source_formula_index": 3,
+      "target": "Next Period Capital Expenditure",
+      "source_formula": "Next Period Capital Expenditure = Net Operating Cash Flow - Equity Cash Flow",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 691,
+      "source_formula_index": 0,
+      "target": "Down-state Option Value",
+      "source_formula": "Down-state Option Value = max(Down-state Stock Price - Strike Price, 0)",
+      "formula_expression": "max(x0 - x1, 0)",
+      "code_expression": "max(x0 - x1, 0)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 691,
+      "source_formula_index": 1,
+      "target": "Down-state Option Value",
+      "source_formula": "Down-state Option Value = max(Strike Price - Down-state Stock Price, 0)",
+      "formula_expression": "max(x0 - x1, 0)",
+      "code_expression": "max(x0 - x1, 0)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 694,
+      "source_formula_index": 0,
+      "target": "Downward Probability",
+      "source_formula": "Downward Probability = 1 - Upward Probability",
+      "formula_expression": "1 - x0",
+      "code_expression": "1 - x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 705,
+      "source_formula_index": 0,
+      "target": "Equity Ratio",
+      "source_formula": "Equity Ratio = Total Liabilities ÷ Total Shareholders' Equity × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 705,
+      "source_formula_index": 2,
+      "target": "Equity Ratio",
+      "source_formula": "Equity Ratio = (Equity Multiplier - 1) × 100%",
+      "formula_expression": "(x0 - 1) * 100/100",
+      "code_expression": "(x0 - 1) * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 708,
+      "source_formula_index": 0,
+      "target": "Price Decrease Value",
+      "source_formula": "Price Decrease Value = Previous Period Price - Current Period Price",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 708,
+      "source_formula_index": 1,
+      "target": "Price Decrease Value",
+      "source_formula": "Price Decrease Value = (Previous Period Price - Current Period Price) ÷ Previous Period Price × 100%",
+      "formula_expression": "(x0 - x1) / x0 * 100/100",
+      "code_expression": "(x0 - x1) / x0 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 711,
+      "source_formula_index": 0,
+      "target": "Free Cash Flow to Firm",
+      "source_formula": "Free Cash Flow to Firm = Free Cash Flow to Equity + Free Cash Flow to Debt",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 713,
+      "source_formula_index": 0,
+      "target": "Preferred Stock Dividend",
+      "source_formula": "Preferred Stock Dividend = Par Value of Preferred Stock × Fixed Dividend Rate",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 716,
+      "source_formula_index": 0,
+      "target": "Yield to Maturity (YTM)",
+      "source_formula": "Yield to Maturity = (Face Value - Purchase Price + Total Interest) ÷ (Purchase Price × Time to Maturity) × 100%",
+      "formula_expression": "(x0 - x1 + x2) / (x1 * x3) * 100/100",
+      "code_expression": "(x0 - x1 + x2) / (x1 * x3) * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 716,
+      "source_formula_index": 1,
+      "target": "Yield to Maturity (YTM)",
+      "source_formula": "Yield to Maturity = [Annual Interest + (Face Value - Purchase Price) ÷ Remaining Years to Maturity] ÷ Purchase Price × 100%",
+      "formula_expression": "(x0 + (x1 - x2) / x3) / x2 * 100/100",
+      "code_expression": "(x0 + (x1 - x2) / x3) / x2 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 717,
+      "source_formula_index": 1,
+      "target": "Debt Interest Rate",
+      "source_formula": "Debt Interest Rate = Interest ÷ Total Liabilities × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 722,
+      "source_formula_index": 0,
+      "target": "Total Debt Financing",
+      "source_formula": "Total Debt Financing = Long-term Debt + Short-term Debt + Bonds Payable - Cash and Cash Equivalents",
+      "formula_expression": "x0 + x1 + x2 - x3",
+      "code_expression": "x0 + x1 + x2 - x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 724,
+      "source_formula_index": 0,
+      "target": "Debt-to-Capital Ratio",
+      "source_formula": "Debt-to-Capital Ratio = Total Debt ÷ (Total Debt + Shareholders' Equity)",
+      "formula_expression": "x0 / (x0 + x1)",
+      "code_expression": "x0 / (x0 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 724,
+      "source_formula_index": 1,
+      "target": "Debt-to-Capital Ratio",
+      "source_formula": "Debt-to-Capital Ratio = Total Debt ÷ Total Assets",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 724,
+      "source_formula_index": 2,
+      "target": "Debt-to-Capital Ratio",
+      "source_formula": "Debt-to-Capital Ratio = Debt-to-Equity Ratio ÷ (1 + Debt-to-Equity Ratio)",
+      "formula_expression": "x0 / (1 + x0)",
+      "code_expression": "x0 / (1 + x0)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 724,
+      "source_formula_index": 3,
+      "target": "Debt-to-Capital Ratio",
+      "source_formula": "Debt-to-Capital Ratio = 1 - (Shareholders' Equity ÷ Total Assets)",
+      "formula_expression": "1 - (x0 / x1)",
+      "code_expression": "1 - x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 734,
+      "source_formula_index": 0,
+      "target": "Net Operating Profit",
+      "source_formula": "Net Operating Profit = Operating Profit × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 734,
+      "source_formula_index": 1,
+      "target": "Net Operating Profit",
+      "source_formula": "Net Operating Profit = Operating Revenue - Operating Costs - Operating Expenses - Taxes and Surcharges - Income Tax Expense",
+      "formula_expression": "x0 - x1 - x2 - x3 - x4",
+      "code_expression": "x0 - x1 - x2 - x3 - x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 735,
+      "source_formula_index": 0,
+      "target": "Net Operating Income",
+      "source_formula": "Net Operating Income = Operating Revenue - Cost of Sales - Operating Expenses - Taxes and Surcharges - Income Tax Expense",
+      "formula_expression": "x0 - x1 - x2 - x3 - x4",
+      "code_expression": "x0 - x1 - x2 - x3 - x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 738,
+      "source_formula_index": 1,
+      "target": "Beginning Net Operating Assets",
+      "source_formula": "Beginning Net Operating Assets = Ending Net Operating Assets - Increase in Net Operating Assets",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 754,
+      "source_formula_index": 0,
+      "target": "Spot Rate",
+      "source_formula": "Spot Rate = (Maturity Value ÷ Current Market Price) ^ (1 ÷ Term) - 1",
+      "formula_expression": "(x0 / x1) ** (1 / x2) - 1",
+      "code_expression": "(x0 / x1) ** (1 / x2) - 1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 758,
+      "source_formula_index": 0,
+      "target": "Percentage Change in Parameter Value",
+      "source_formula": "Percentage Change in Parameter Value = (Analysis Item Amount - Analysis Benchmark Amount) ÷ Analysis Benchmark Amount × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 767,
+      "source_formula_index": 0,
+      "target": "Unit Price per Product",
+      "source_formula": "Unit Price per Product = (Profit + Fixed Costs) ÷ Sales Volume + Unit Variable Cost",
+      "formula_expression": "(x0 + x1) / x2 + x3",
+      "code_expression": "(x0 + x1) / x2 + x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 768,
+      "source_formula_index": 2,
+      "target": "Unit Variable Cost per Product",
+      "source_formula": "Unit Variable Cost per Product = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "formula_expression": "x0 - ((x1 + x2) / x3)",
+      "code_expression": "x0 - (x1 + x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 780,
+      "source_formula_index": 3,
+      "target": "Periodic Equity Cash Flow",
+      "source_formula": "Periodic Equity Cash Flow = Net Income - Net Operating Asset Investment × (1 - Debt Ratio)",
+      "formula_expression": "x0 - x1 * (1 - x2)",
+      "code_expression": "x0 - x1 * (1 - x2)",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 784,
+      "source_formula_index": 0,
+      "target": "Current Price Value Added by Industry",
+      "source_formula": "Current Price Value Added by Industry = Gross Output - Intermediate Input",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 786,
+      "source_formula_index": 0,
+      "target": "Asset Weights",
+      "source_formula": "Asset Weight = Individual Asset Market Value ÷ Total Portfolio Market Value",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 787,
+      "source_formula_index": 1,
+      "target": "Nominal Gross Domestic Product",
+      "source_formula": "Nominal GDP = Final Consumption Expenditure + Gross Capital Formation + Net Exports",
+      "formula_expression": "x0 + x1 + x2",
+      "code_expression": "x0 + x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 809,
+      "source_formula_index": 0,
+      "target": "Value Added Ratio",
+      "source_formula": "Value Added Ratio = Value Added ÷ Gross Output Value",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 809,
+      "source_formula_index": 1,
+      "target": "Value Added Ratio",
+      "source_formula": "Value Added Ratio = Economic Value Added ÷ Invested Capital × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 821,
+      "source_formula_index": 1,
+      "target": "Total Liabilities of Subsidiary",
+      "source_formula": "Total Liabilities of Subsidiary = Subsidiary Debt-to-Asset Ratio × Total Assets of Subsidiary",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 821,
+      "source_formula_index": 2,
+      "target": "Total Liabilities of Subsidiary",
+      "source_formula": "Total Liabilities of Subsidiary = Total Assets of Subsidiary - Total Shareholders' Equity of Subsidiary",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 827,
+      "source_formula_index": 0,
+      "target": "Interest Received",
+      "source_formula": "Interest Received = Principal × Interest Rate × Deposit Term × (1 - Tax Rate)",
+      "formula_expression": "x0 * x1 * x2 * (1 - x3)",
+      "code_expression": "x0 * x1 * x2 * (1 - x3)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 828,
+      "source_formula_index": 0,
+      "target": "Corresponding Discount Factor",
+      "source_formula": "Corresponding Discount Factor = 1 ÷ (1 + Discount Rate) ^ Number of Periods",
+      "formula_expression": "1 / (1 + x0) ** x1",
+      "code_expression": "1 / (1 + x0) ** x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 853,
+      "source_formula_index": 0,
+      "target": "Average Daily Net Cash Flow",
+      "source_formula": "Average Daily Net Cash Flow = Net Cash Flow ÷ Number of Days in Period",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 853,
+      "source_formula_index": 2,
+      "target": "Average Daily Net Cash Flow",
+      "source_formula": "Average Daily Net Cash Flow = (Net Profit + Depreciation) ÷ Number of Days in Period",
+      "formula_expression": "(x0 + x1) / x2",
+      "code_expression": "(x0 + x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 858,
+      "source_formula_index": 0,
+      "target": "Beginning Owner's Equity",
+      "source_formula": "Beginning Owner's Equity = Total Assets at Beginning of Year - Total Liabilities at Beginning of Year",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 861,
+      "source_formula_index": 1,
+      "target": "Annual Depreciation Expense",
+      "source_formula": "Annual Depreciation Expense = Beginning Net Book Value of Asset × (2 ÷ Estimated Useful Life)",
+      "formula_expression": "x0 * (2 / x1)",
+      "code_expression": "x0 * (2 / x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 861,
+      "source_formula_index": 2,
+      "target": "Annual Depreciation Expense",
+      "source_formula": "Annual Depreciation Expense = (Beginning Net Book Value of Asset - Estimated Net Residual Value) ÷ 2",
+      "formula_expression": "(x0 - x1) / 2",
+      "code_expression": "(x0 - x1) / 2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 872,
+      "source_formula_index": 0,
+      "target": "Increase in Accounts Receivable",
+      "source_formula": "Increase in Accounts Receivable = Ending Accounts Receivable Balance - Beginning Accounts Receivable Balance",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 872,
+      "source_formula_index": 1,
+      "target": "Increase in Accounts Receivable",
+      "source_formula": "Increase in Accounts Receivable = Beginning Accounts Receivable Balance × Accounts Receivable Growth Rate",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 877,
+      "source_formula_index": 0,
+      "target": "Current Market Price per Share",
+      "source_formula": "Current Market Price per Share = Total Market Capitalization ÷ Number of Shares Outstanding",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 877,
+      "source_formula_index": 2,
+      "target": "Current Market Price per Share",
+      "source_formula": "Current Market Price per Share = Expected Dividend per Share ÷ (Cost of Equity Capital - Growth Rate)",
+      "formula_expression": "x0 / (x1 - x2)",
+      "code_expression": "x0 / (x1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 890,
+      "source_formula_index": 1,
+      "target": "Total Fixed Cost",
+      "source_formula": "Total Fixed Cost = Total Cost - Unit Variable Cost × Activity Level",
+      "formula_expression": "x0 - x1 * x2",
+      "code_expression": "x0 - x1 * x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 900,
+      "source_formula_index": 0,
+      "target": "Earnings Before Interest and Taxes",
+      "source_formula": "EBIT = Net Profit + Interest Expense + Income Tax",
+      "formula_expression": "x0 + x1 + x2",
+      "code_expression": "x0 + x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 908,
+      "source_formula_index": 0,
+      "target": "Invested Capital",
+      "source_formula": "Invested Capital = Equity Capital Invested + Debt Capital Invested",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 913,
+      "source_formula_index": 0,
+      "target": "Cash Flow from Investing Activities",
+      "source_formula": "Cash Flow from Investing Activities = Cash Inflows from Investing Activities - Cash Outflows from Investing Activities",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 976,
+      "source_formula_index": 1,
+      "target": "Ending Non-current Assets",
+      "source_formula": "Ending Non-current Assets = Ending Total Assets - Ending Current Assets",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 977,
+      "source_formula_index": 1,
+      "target": "Periodic Rate of Return",
+      "source_formula": "Periodic Rate of Return = (Ending Price - Beginning Price + Periodic Cash Flow) ÷ Beginning Price",
+      "formula_expression": "(x0 - x1 + x2) / x1",
+      "code_expression": "(x0 - x1 + x2) / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 977,
+      "source_formula_index": 2,
+      "target": "Periodic Rate of Return",
+      "source_formula": "Periodic Rate of Return = Return ÷ Principal × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 979,
+      "source_formula_index": 2,
+      "target": "Retained Earnings",
+      "source_formula": "Retained Earnings = Beginning Retained Earnings + Net Profit",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 986,
+      "source_formula_index": 0,
+      "target": "Current Period Preferred Stock Dividends",
+      "source_formula": "Current Period Preferred Stock Dividends = Par Value of Preferred Stock × Fixed Dividend Rate",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 993,
+      "source_formula_index": 0,
+      "target": "Current Period Depreciation Expense",
+      "source_formula": "Current Period Depreciation Expense = (Original Cost of Fixed Assets - Estimated Net Residual Value) ÷ Estimated Useful Life",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 993,
+      "source_formula_index": 3,
+      "target": "Current Period Depreciation Expense",
+      "source_formula": "Current Period Depreciation Expense = Beginning Book Value of Fixed Assets × (2 ÷ Estimated Useful Life)",
+      "formula_expression": "x0 * (2 / x1)",
+      "code_expression": "x0 * (2 / x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1003,
+      "source_formula_index": 0,
+      "target": "Current Period Sales Revenue",
+      "source_formula": "Current Period Sales Revenue = Sales Volume × Unit Selling Price",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1006,
+      "source_formula_index": 0,
+      "target": "Equity Multiplier",
+      "source_formula": "Equity Multiplier = Total Assets ÷ Total Shareholders' Equity",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1006,
+      "source_formula_index": 1,
+      "target": "Equity Multiplier",
+      "source_formula": "Equity Multiplier = 1 ÷ (1 - Debt-to-Asset Ratio)",
+      "formula_expression": "1 / (1 - x0)",
+      "code_expression": "1 / (1 - x0)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1006,
+      "source_formula_index": 2,
+      "target": "Equity Multiplier",
+      "source_formula": "Equity Multiplier = 1 + Equity Ratio",
+      "formula_expression": "1 + x0",
+      "code_expression": "1 + x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1007,
+      "source_formula_index": 1,
+      "target": "Equity Value",
+      "source_formula": "Equity Value = Net Profit ÷ Cost of Equity Capital",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 1011,
+      "source_formula_index": 0,
+      "target": "Book Value of Equity Ratio",
+      "source_formula": "Book Value of Equity Ratio = Total Shareholders' Equity ÷ Total Assets",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1012,
+      "source_formula_index": 0,
+      "target": "Equity Capital Ratio",
+      "source_formula": "Equity Capital Ratio = Total Shareholders' Equity ÷ Total Assets",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1012,
+      "source_formula_index": 1,
+      "target": "Equity Capital Ratio",
+      "source_formula": "Equity Capital Ratio = 1 - Debt-to-Asset Ratio",
+      "formula_expression": "1 - x0",
+      "code_expression": "1 - x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1012,
+      "source_formula_index": 2,
+      "target": "Equity Capital Ratio",
+      "source_formula": "Equity Capital Ratio = 1 ÷ (1 + Equity Multiplier)",
+      "formula_expression": "1 / (1 + x0)",
+      "code_expression": "1 / (1 + x0)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1018,
+      "source_formula_index": 0,
+      "target": "Underlying Asset Price Appreciation Rate",
+      "source_formula": "Underlying Asset Price Appreciation Rate = (Ending Value - Beginning Value) ÷ Beginning Value × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1019,
+      "source_formula_index": 0,
+      "target": "Underlying Asset Price Change",
+      "source_formula": "Underlying Asset Price Change = Current Underlying Asset Price - Previous Underlying Asset Price",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1033,
+      "source_formula_index": 0,
+      "target": "Depreciation and Amortization per Share",
+      "source_formula": "Depreciation and Amortization per Share = (Depreciation Expense + Amortization Expense) ÷ Number of Common Shares Outstanding",
+      "formula_expression": "(x0 + x1) / x2",
+      "code_expression": "(x0 + x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1057,
+      "source_formula_index": 1,
+      "target": "Ending Balance of Cash and Cash Equivalents",
+      "source_formula": "Ending Balance of Cash and Cash Equivalents = Beginning Balance of Cash and Cash Equivalents + Net Cash Flow from Operating Activities + Net Cash Flow from Investing Activities + Net Cash Flow from Financing Activities",
+      "formula_expression": "x0 + x1 + x2 + x3",
+      "code_expression": "x0 + x1 + x2 + x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1071,
+      "source_formula_index": 1,
+      "target": "Lease Payment",
+      "source_formula": "Lease Payment = Cost of Leased Asset × [Discount Rate × (1 + Discount Rate) ^ Lease Term] ÷ [(1 + Discount Rate) ^ Lease Term - 1]",
+      "formula_expression": "x0 * (x1 * (1 + x1) ** x2) / ((1 + x1) ** x2 - 1)",
+      "code_expression": "x0 * (x1 * (1 + x1) ** x2) / ((1 + x1) ** x2 - 1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1080,
+      "source_formula_index": 0,
+      "target": "Net Operating Profit After Tax",
+      "source_formula": "Net Operating Profit After Tax = Operating Profit × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1081,
+      "source_formula_index": 1,
+      "target": "After-tax Interest Rate",
+      "source_formula": "After-tax Interest Rate = [Interest Expense × (1 - Income Tax Rate)] ÷ Net Debt",
+      "formula_expression": "(x0 * (1 - x1)) / x2",
+      "code_expression": "x0 * (1 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1090,
+      "source_formula_index": 0,
+      "target": "Depreciation of Fixed Assets in the Tertiary Industry",
+      "source_formula": "Depreciation of Fixed Assets in the Tertiary Industry = (Original Value of Fixed Assets - Estimated Net Residual Value) ÷ Estimated Useful Life",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1090,
+      "source_formula_index": 1,
+      "target": "Depreciation of Fixed Assets in the Tertiary Industry",
+      "source_formula": "Depreciation of Fixed Assets in the Tertiary Industry = (Original Value of Fixed Assets - Accumulated Depreciation) × 2 ÷ Estimated Useful Life",
+      "formula_expression": "(x0 - x1) * 2 / x2",
+      "code_expression": "(x0 - x1) * 2 / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1095,
+      "source_formula_index": 0,
+      "target": "Fixed Asset Depreciation of the Secondary Industry",
+      "source_formula": "Fixed Asset Depreciation of the Secondary Industry = (Original Value of Fixed Assets - Estimated Net Residual Value) ÷ Estimated Useful Life",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1100,
+      "source_formula_index": 0,
+      "target": "Financing Cost Rate",
+      "source_formula": "Financing Cost Rate = Financing Expenses ÷ Total Financing Amount",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1126,
+      "source_formula_index": 0,
+      "target": "Stock Price",
+      "source_formula": "Stock Price = Par Value × Dividend Yield ÷ Interest Rate",
+      "formula_expression": "x0 * x1 / x2",
+      "code_expression": "x0 * x1 / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1134,
+      "source_formula_index": 2,
+      "target": "Free Cash Flow",
+      "source_formula": "Free Cash Flow = Cash Flow from Operating Activities - Capital Expenditures",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1164,
+      "source_formula_index": 0,
+      "target": "Adjustment Factor",
+      "source_formula": "Adjustment Factor = Adjusted Stock Price ÷ Original Stock Price",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1174,
+      "source_formula_index": 0,
+      "target": "Return on Assets",
+      "source_formula": "Return on Assets = Net Profit ÷ Average Total Assets × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1174,
+      "source_formula_index": 1,
+      "target": "Return on Assets",
+      "source_formula": "Return on Assets = Profit Margin × Asset Turnover",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1179,
+      "source_formula_index": 2,
+      "target": "Credit Sales",
+      "source_formula": "Credit Sales = Average Accounts Receivable Balance × (365 ÷ Days Sales Outstanding)",
+      "formula_expression": "x0 * (365 / x1)",
+      "code_expression": "x0 * (365 / x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1215,
+      "source_formula_index": 0,
+      "target": "Expected Other Comprehensive Income Per Share",
+      "source_formula": "Expected Other Comprehensive Income Per Share = Expected Other Comprehensive Income ÷ Expected Weighted Average Number of Common Shares Outstanding",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1217,
+      "source_formula_index": 1,
+      "target": "Expected Dividend Per Share",
+      "source_formula": "Expected Dividend Per Share = Expected Earnings Per Share × Dividend Payout Ratio",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1222,
+      "source_formula_index": 0,
+      "target": "Expected First-Year Dividend",
+      "source_formula": "Expected First-Year Dividend = Base Period Dividend × (1 + Expected Dividend Growth Rate)",
+      "formula_expression": "x0 * (1 + x1)",
+      "code_expression": "x0 * (1 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1225,
+      "source_formula_index": 2,
+      "target": "Expected Dividend",
+      "source_formula": "Expected Dividend = Expected Earnings Per Share × Expected Dividend Payout Ratio",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1227,
+      "source_formula_index": 1,
+      "target": "Forecast Period Free Cash Flow to the Firm",
+      "source_formula": "Forecast Period Free Cash Flow to the Firm = Net Operating Profit After Tax - Increase in Net Operating Assets",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1230,
+      "source_formula_index": 0,
+      "target": "Budgeted Production Volume",
+      "source_formula": "Budgeted Production Volume = Budgeted Sales Volume + Expected Ending Inventory - Beginning Inventory",
+      "formula_expression": "x0 + x1 - x2",
+      "code_expression": "x0 + x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1237,
+      "source_formula_index": 1,
+      "target": "High Discount Rate",
+      "source_formula": "High Discount Rate = (Future Value ÷ Present Value - 1) × 100%",
+      "formula_expression": "(x0 / x1 - 1) * 100/100",
+      "code_expression": "(x0 / x1 - 1) * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1242,
+      "source_formula_index": 1,
+      "target": "Stock Price After Rise",
+      "source_formula": "Stock Price After Rise = Next Period Dividend ÷ (Required Rate of Return for Shareholders - Constant Dividend Growth Rate)",
+      "formula_expression": "x0 / (x1 - x2)",
+      "code_expression": "x0 / (x1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1250,
+      "source_formula_index": 0,
+      "target": "Average Collection Period (Previous Period)",
+      "source_formula": "Average Collection Period (Previous Period) = Days in Year ÷ Accounts Receivable Turnover Ratio",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1277,
+      "source_formula_index": 0,
+      "target": "Next Period After-tax Interest Expense",
+      "source_formula": "Next Period After-tax Interest Expense = Next Period Interest Expense × (1 - Next Period Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1284,
+      "source_formula_index": 0,
+      "target": "Downside Price",
+      "source_formula": "Downside Price = Original Price × (1 - Downward Adjustment Ratio)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1284,
+      "source_formula_index": 1,
+      "target": "Downside Price",
+      "source_formula": "Downside Price = Original Price - Downward Adjustment Amount",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1285,
+      "source_formula_index": 0,
+      "target": "Downside Price Ratio",
+      "source_formula": "Downside Price Ratio = (Current Period Indicator - Previous Period Indicator) ÷ Previous Period Indicator × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1301,
+      "source_formula_index": 1,
+      "target": "Individual Asset Return Rate",
+      "source_formula": "Individual Asset Return Rate = Net Profit Margin × Asset Turnover Ratio",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1303,
+      "source_formula_index": 1,
+      "target": "Intermediate Consumption",
+      "source_formula": "Intermediate Consumption = Gross Output - Value Added",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1313,
+      "source_formula_index": 1,
+      "target": "Per Capita Consumption Expenditure",
+      "source_formula": "Per Capita Consumption Expenditure = Total Consumption Expenditure ÷ Average Population",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1317,
+      "source_formula_index": 0,
+      "target": "Cash Product Cost",
+      "source_formula": "Cash Product Cost = Manufacturing Cost - Depreciation",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1323,
+      "source_formula_index": 0,
+      "target": "Corporate Growth Rate",
+      "source_formula": "Corporate Growth Rate = (Current Period Amount - Previous Period Amount) ÷ Previous Period Amount × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1324,
+      "source_formula_index": 0,
+      "target": "Enterprise Market Value",
+      "source_formula": "Enterprise Market Value = Market Value of Equity + Market Value of Net Debt",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1338,
+      "source_formula_index": 0,
+      "target": "Debt-to-Equity Ratio",
+      "source_formula": "Debt-to-Equity Ratio = Total Liabilities ÷ Total Shareholders' Equity",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1342,
+      "source_formula_index": 0,
+      "target": "Market Value of Debt",
+      "source_formula": "Market Value of Debt = Total Market Value - Market Value of Equity",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1342,
+      "source_formula_index": 1,
+      "target": "Market Value of Debt",
+      "source_formula": "Market Value of Debt = Market Value of Equity × Debt-to-Equity Ratio",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1343,
+      "source_formula_index": 2,
+      "target": "Debt Free Cash Flow",
+      "source_formula": "Debt Free Cash Flow = Free Cash Flow to the Firm - Free Cash Flow to Equity",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1344,
+      "source_formula_index": 1,
+      "target": "Incremental Shares from Assumed Conversion",
+      "source_formula": "Incremental Shares from Assumed Conversion = Total Face Value of Convertible Bonds ÷ Conversion Price",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1351,
+      "source_formula_index": 2,
+      "target": "Enterprise Value",
+      "source_formula": "Enterprise Value = Net Profit × (8.5 + Corporate Growth Rate ÷ 3%)",
+      "formula_expression": "x0 * (8.5 + x1 / 3/100)",
+      "code_expression": "x0 * (8.5 + x1 / 3)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 1356,
+      "source_formula_index": 0,
+      "target": "Total Other Expenses",
+      "source_formula": "Total Other Expenses = Total Costs and Expenses - Total Costs",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1359,
+      "source_formula_index": 1,
+      "target": "Net Worth",
+      "source_formula": "Net Worth = Total Assets - (Current Liabilities + Long-term Liabilities)",
+      "formula_expression": "x0 - (x1 + x2)",
+      "code_expression": "x0 - (x1 + x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1365,
+      "source_formula_index": 1,
+      "target": "Net Operating Assets Growth Rate",
+      "source_formula": "Net Operating Assets Growth Rate = (Ending Net Assets - Beginning Net Assets) ÷ Beginning Net Assets × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1371,
+      "source_formula_index": 1,
+      "target": "Net Consumption Quantity",
+      "source_formula": "Net Consumption Quantity = Consumption Quantity - Loss Quantity",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1393,
+      "source_formula_index": 1,
+      "target": "Utilization Rate",
+      "source_formula": "Utilization Rate = Available Assets ÷ Total Assets × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1394,
+      "source_formula_index": 3,
+      "target": "Terminal Value",
+      "source_formula": "Terminal Value = Expected Investment Return ÷ Investment Principal",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1406,
+      "source_formula_index": 2,
+      "target": "Individual Asset Market Value",
+      "source_formula": "Individual Asset Market Value = Asset Replacement Cost - Physical Depreciation - Functional Obsolescence - Economic Obsolescence",
+      "formula_expression": "x0 - x1 - x2 - x3",
+      "code_expression": "x0 - x1 - x2 - x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1407,
+      "source_formula_index": 1,
+      "target": "Unit Product Price",
+      "source_formula": "Unit Product Price = (Unit Cost + Unit Profit) ÷ (1 - Applicable Tax Rate)",
+      "formula_expression": "(x0 + x1) / (1 - x2)",
+      "code_expression": "(x0 + x1) / (1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1407,
+      "source_formula_index": 2,
+      "target": "Unit Product Price",
+      "source_formula": "Unit Product Price = Production or Procurement Cost + Domestic Expenses + Net Profit",
+      "formula_expression": "x0 + x1 + x2",
+      "code_expression": "x0 + x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 1407,
+      "source_formula_index": 3,
+      "target": "Unit Product Price",
+      "source_formula": "Unit Product Price = Production or Procurement Cost + Domestic Expenses + International Freight + Net Profit",
+      "formula_expression": "x0 + x1 + x2 + x3",
+      "code_expression": "x0 + x1 + x2 + x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 1408,
+      "source_formula_index": 1,
+      "target": "Variable Cost per Unit",
+      "source_formula": "Variable Cost per Unit = Unit Price - [(Total Revenue - Total Expenses + Fixed Costs) ÷ Sales Volume]",
+      "formula_expression": "x0 - ((x1 - x2 + x3) / x4)",
+      "code_expression": "x0 - (x1 - x2 + x3) / x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1408,
+      "source_formula_index": 2,
+      "target": "Variable Cost per Unit",
+      "source_formula": "Variable Cost per Unit = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "formula_expression": "x0 - ((x1 + x2) / x3)",
+      "code_expression": "x0 - (x1 + x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1425,
+      "source_formula_index": 1,
+      "target": "Present Value of Initial Investment",
+      "source_formula": "Present Value of Initial Investment = Net Present Value - Present Value of Future Net Cash Flows",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1427,
+      "source_formula_index": 0,
+      "target": "Double Declining Balance Depreciation Rate",
+      "source_formula": "Double Declining Balance Depreciation Rate = 2 ÷ Estimated Useful Life × 100%",
+      "formula_expression": "2 / x0 * 100/100",
+      "code_expression": "2 / x0 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1445,
+      "source_formula_index": 3,
+      "target": "Periodic Interest",
+      "source_formula": "Periodic Interest = Principal × Annual Interest Rate ÷ Number of Compounding Periods per Year",
+      "formula_expression": "x0 * x1 / x2",
+      "code_expression": "x0 * x1 / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1446,
+      "source_formula_index": 0,
+      "target": "Periodic Return Rate",
+      "source_formula": "Periodic Return Rate = (Ending Asset Value + Periodic Cash Inflows - Beginning Asset Value) ÷ Beginning Asset Value",
+      "formula_expression": "(x0 + x1 - x2) / x2",
+      "code_expression": "(x0 + x1 - x2) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1459,
+      "source_formula_index": 0,
+      "target": "Return on Assets (ROA)",
+      "source_formula": "Return on Assets = (Total Profit + Interest Expense) ÷ Average Total Assets × 100%",
+      "formula_expression": "(x0 + x1) / x2 * 100/100",
+      "code_expression": "(x0 + x1) / x2 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1473,
+      "source_formula_index": 1,
+      "target": "Tax-inclusive Sales Revenue",
+      "source_formula": "Tax-inclusive Sales Revenue = Sales Quantity × Unit Selling Price × (1 + VAT Rate)",
+      "formula_expression": "x0 * x1 * (1 + x2)",
+      "code_expression": "x0 * x1 * (1 + x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1475,
+      "source_formula_index": 1,
+      "target": "Merchandise Markup",
+      "source_formula": "Merchandise Markup = Current Period Sales Revenue × Markup Rate",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1477,
+      "source_formula_index": 1,
+      "target": "Recovery Amount",
+      "source_formula": "Recovery Amount = Initial Investment × Capital Recovery Factor",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * (x1 / (1 - (1 + x1) ** (-x2)))",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1477,
+      "source_formula_index": 2,
+      "target": "Recovery Amount",
+      "source_formula": "Recovery Amount = Initial Investment ÷ Present Value Annuity Factor",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / ((1 - (1 + x1) ** (-x2)) / x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1483,
+      "source_formula_index": 1,
+      "target": "Factor Change Percentage",
+      "source_formula": "Factor Change Percentage = (Actual Indicator - Benchmark Indicator) ÷ Benchmark Indicator × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1510,
+      "source_formula_index": 0,
+      "target": "Value-Added Tax Payable",
+      "source_formula": "Value-Added Tax Payable = Output VAT for the Current Period - Input VAT for the Current Period",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1515,
+      "source_formula_index": 0,
+      "target": "Growth Amount",
+      "source_formula": "Growth Amount = Current Period Indicator Value - Prior Period Indicator Value",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1517,
+      "source_formula_index": 0,
+      "target": "Disposal Proceeds",
+      "source_formula": "Disposal Proceeds = Net Sales Revenue - Disposal Costs - Other Related Expenses",
+      "formula_expression": "x0 - x1 - x2",
+      "code_expression": "x0 - x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1527,
+      "source_formula_index": 0,
+      "target": "Inventory Turnover Ratio",
+      "source_formula": "Inventory Turnover Ratio = Cost of Goods Sold ÷ Average Inventory Balance",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Cost of Goods Sold": {
+          "canonical": "Cost of Sales",
+          "paper_source": "Appendix A, Figure 4"
+        }
+      }
+    },
+    {
+      "source_record": 1573,
+      "source_formula_index": 0,
+      "target": "Average Accounts Receivable",
+      "source_formula": "Average Accounts Receivable = (Beginning Accounts Receivable Balance + Ending Accounts Receivable Balance) ÷ 2",
+      "formula_expression": "(x0 + x1) / 2",
+      "code_expression": "(x0 + x1) / 2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1574,
+      "source_formula_index": 0,
+      "target": "Average Accounts Receivable Balance",
+      "source_formula": "Average Accounts Receivable Balance = (Beginning Accounts Receivable Balance + Ending Accounts Receivable Balance) ÷ 2",
+      "formula_expression": "(x0 + x1) / 2",
+      "code_expression": "(x0 + x1) / 2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1586,
+      "source_formula_index": 1,
+      "target": "Annual Average Accounts Payable",
+      "source_formula": "Annual Average Accounts Payable = Cost of Sales ÷ Accounts Payable Turnover",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Cost of Goods Sold": {
+          "canonical": "Cost of Sales",
+          "paper_source": "Appendix A, Figure 4"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 1600,
+      "source_formula_index": 0,
+      "target": "Income Tax Payable",
+      "source_formula": "Income Tax Payable = Taxable Income × Income Tax Rate",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1601,
+      "source_formula_index": 3,
+      "target": "Taxes Payable",
+      "source_formula": "Taxes Payable = Taxable Income × Applicable Tax Rate - Quick Deduction",
+      "formula_expression": "x0 * x1 - x2",
+      "code_expression": "x0 * x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1602,
+      "source_formula_index": 0,
+      "target": "Net Increase in Notes Receivable",
+      "source_formula": "Net Increase in Notes Receivable = Ending Balance of Notes Receivable - Beginning Balance of Notes Receivable",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1603,
+      "source_formula_index": 0,
+      "target": "Net Accounts Receivable",
+      "source_formula": "Net Accounts Receivable = Total Accounts Receivable - Allowance for Doubtful Accounts",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1607,
+      "source_formula_index": 1,
+      "target": "Days Sales Outstanding",
+      "source_formula": "Days Sales Outstanding = 365 ÷ Accounts Receivable Turnover Ratio",
+      "formula_expression": "365 / x0",
+      "code_expression": "365 / x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1608,
+      "source_formula_index": 0,
+      "target": "Average Days Sales Outstanding",
+      "source_formula": "Average Days Sales Outstanding = 365 ÷ Accounts Receivable Turnover Ratio",
+      "formula_expression": "365 / x0",
+      "code_expression": "365 / x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1608,
+      "source_formula_index": 1,
+      "target": "Average Days Sales Outstanding",
+      "source_formula": "Average Days Sales Outstanding = Average Accounts Receivable Balance × 365 ÷ Sales Revenue",
+      "formula_expression": "x0 * 365 / x1",
+      "code_expression": "x0 * 365 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1608,
+      "source_formula_index": 2,
+      "target": "Average Days Sales Outstanding",
+      "source_formula": "Average Days Sales Outstanding = Average Accounts Receivable Balance ÷ Average Daily Sales",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1623,
+      "source_formula_index": 2,
+      "target": "Current Period Net Profit",
+      "source_formula": "Current Period Net Profit = Operating Revenue - Operating Costs - Taxes and Surcharges - Selling Expenses - Administrative Expenses - Financial Expenses - Income Tax Expense",
+      "formula_expression": "x0 - x1 - x2 - x3 - x4 - x5 - x6",
+      "code_expression": "x0 - x1 - x2 - x3 - x4 - x5 - x6",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1627,
+      "source_formula_index": 0,
+      "target": "Current Income Tax",
+      "source_formula": "Current Income Tax = Taxable Income × Income Tax Rate",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1632,
+      "source_formula_index": 0,
+      "target": "Holding Gain from Price Changes in Current Period",
+      "source_formula": "Holding Gain from Price Changes in Current Period = (Selling Price - Purchase Price + Interest Income) ÷ Purchase Price × 100%",
+      "formula_expression": "(x0 - x1 + x2) / x1 * 100/100",
+      "code_expression": "(x0 - x1 + x2) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1633,
+      "source_formula_index": 0,
+      "target": "Current Dividend",
+      "source_formula": "Current Dividend = Total Cash Dividend - Preferred Stock Dividend",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1643,
+      "source_formula_index": 0,
+      "target": "Overall Ratio",
+      "source_formula": "Overall Ratio = Specific Item Amount ÷ Total Base Amount × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1647,
+      "source_formula_index": 0,
+      "target": "Total Variable Cost",
+      "source_formula": "Total Variable Cost = Variable Cost per Unit × Total Output",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1651,
+      "source_formula_index": 2,
+      "target": "Total Investment Amount",
+      "source_formula": "Total Investment Amount = (Purchase Unit Price × Purchase Quantity) + Transaction Fees + Stamp Duty",
+      "formula_expression": "(x0 * x1) + x2 + x3",
+      "code_expression": "x0 * x1 + x2 + x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1657,
+      "source_formula_index": 0,
+      "target": "Average Total Assets",
+      "source_formula": "Average Total Assets = (Total Assets at Beginning of Period + Total Assets at End of Period) ÷ 2",
+      "formula_expression": "(x0 + x1) / 2",
+      "code_expression": "(x0 + x1) / 2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1658,
+      "source_formula_index": 1,
+      "target": "After-Tax Operating Profit Before Interest",
+      "source_formula": "After-Tax Operating Profit Before Interest = (Operating Revenue - Cost of Sales - Operating Expenses) × (1 - Effective Corporate Income Tax Rate)",
+      "formula_expression": "(x0 - x1 - x2) * (1 - x3)",
+      "code_expression": "(x0 - x1 - x2) * (1 - x3)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1661,
+      "source_formula_index": 0,
+      "target": "Total Cost and Expense",
+      "source_formula": "Total Cost and Expense = Cost of Revenue + Business Taxes and Surcharges + Selling Expenses + Administrative Expenses + Financial Expenses",
+      "formula_expression": "x0 + x1 + x2 + x3 + x4",
+      "code_expression": "x0 + x1 + x2 + x3 + x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1661,
+      "source_formula_index": 1,
+      "target": "Total Cost and Expense",
+      "source_formula": "Total Cost and Expense = Cost of Revenue + Business Taxes and Surcharges + Selling Expenses + Administrative Expenses + Financial Expenses + Asset Impairment Loss",
+      "formula_expression": "x0 + x1 + x2 + x3 + x4 + x5",
+      "code_expression": "x0 + x1 + x2 + x3 + x4 + x5",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1667,
+      "source_formula_index": 0,
+      "target": "Deduction Rate",
+      "source_formula": "Deduction Rate = (Deduction Amount ÷ Original Amount) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1670,
+      "source_formula_index": 0,
+      "target": "Invested Capital",
+      "source_formula": "Invested Capital = Equity Capital Invested + Debt Capital Invested",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1674,
+      "source_formula_index": 1,
+      "target": "Investment Cost",
+      "source_formula": "Investment Cost = Initial Investment Amount + Transaction Costs + Financing Costs",
+      "formula_expression": "x0 + x1 + x2",
+      "code_expression": "x0 + x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1676,
+      "source_formula_index": 0,
+      "target": "Return on Investment",
+      "source_formula": "Return on Investment = Annual EBIT ÷ Total Project Investment × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1676,
+      "source_formula_index": 1,
+      "target": "Return on Investment",
+      "source_formula": "Return on Investment = Average Annual EBIT ÷ Total Project Investment × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1676,
+      "source_formula_index": 2,
+      "target": "Return on Investment",
+      "source_formula": "Return on Investment = Investment Income ÷ Investment Cost × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1688,
+      "source_formula_index": 0,
+      "target": "Depreciation and Amortization",
+      "source_formula": "Depreciation and Amortization = (Original Value of Fixed Assets - Estimated Net Residual Value) ÷ Estimated Useful Life",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1688,
+      "source_formula_index": 4,
+      "target": "Depreciation and Amortization",
+      "source_formula": "Depreciation and Amortization = Net Book Value of Fixed Assets × (2 ÷ Estimated Useful Life)",
+      "formula_expression": "x0 * (2 / x1)",
+      "code_expression": "x0 * (2 / x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1692,
+      "source_formula_index": 0,
+      "target": "Holding Period Risk-Free Rate",
+      "source_formula": "Holding Period Risk-Free Rate = Holding Period Risk-Free Return ÷ Total Investment",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1693,
+      "source_formula_index": 1,
+      "target": "Holding Period Return",
+      "source_formula": "Holding Period Return = (Dividend Income + Capital Gain) ÷ Purchase Price",
+      "formula_expression": "(x0 + x1) / x2",
+      "code_expression": "(x0 + x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1695,
+      "source_formula_index": 4,
+      "target": "Wastage Rate",
+      "source_formula": "Wastage Rate = (Actual Usage - Planned Usage) ÷ Planned Usage × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1699,
+      "source_formula_index": 0,
+      "target": "Amortization",
+      "source_formula": "Amortization = (Original Asset Value - Estimated Net Residual Value) ÷ Estimated Useful Life",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1713,
+      "source_formula_index": 0,
+      "target": "Data Points",
+      "source_formula": "Data Points = Sales Volume",
+      "formula_expression": "x0",
+      "code_expression": "x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1717,
+      "source_formula_index": 0,
+      "target": "Interest Rate",
+      "source_formula": "Interest Rate = Interest Amount ÷ (Principal × Number of Interest Periods) × 100%",
+      "formula_expression": "x0 / (x1 * x2) * 100/100",
+      "code_expression": "x0 / (x1 * x2) * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1720,
+      "source_formula_index": 1,
+      "target": "Average Collection Period",
+      "source_formula": "Average Collection Period = 360 ÷ Accounts Receivable Turnover Ratio",
+      "formula_expression": "360 / x0",
+      "code_expression": "360 / x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1727,
+      "source_formula_index": 1,
+      "target": "Old Average Collection Period",
+      "source_formula": "Old Average Collection Period = 360 ÷ Accounts Receivable Turnover Ratio",
+      "formula_expression": "360 / x0",
+      "code_expression": "360 / x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1732,
+      "source_formula_index": 1,
+      "target": "Annual Growth Rate of Common Dividends",
+      "source_formula": "Annual Growth Rate of Common Dividends = (Expected First-Period Dividend ÷ Current Market Price of Common Stock) - Cost of Common Equity",
+      "formula_expression": "(x0 / x1) - x2",
+      "code_expression": "x2 - x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1732,
+      "source_formula_index": 2,
+      "target": "Annual Growth Rate of Common Dividends",
+      "source_formula": "Annual Growth Rate of Common Dividends = Cost of Common Equity - (Expected First-Period Dividend ÷ Current Market Price of Common Stock)",
+      "formula_expression": "x0 - (x1 / x2)",
+      "code_expression": "x0 - x1 / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1740,
+      "source_formula_index": 0,
+      "target": "Total Cost at Highest Activity Level",
+      "source_formula": "Total Cost at Highest Activity Level = Total Fixed Costs + Variable Cost per Unit × Highest Activity Level",
+      "formula_expression": "x0 + x1 * x2",
+      "code_expression": "x0 + x1 * x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1751,
+      "source_formula_index": 0,
+      "target": "Total Equity at Period End",
+      "source_formula": "Total Equity at Period End = Total Assets at Period End - Total Liabilities at Period End",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1759,
+      "source_formula_index": 0,
+      "target": "Total Shareholders' Equity at Period End",
+      "source_formula": "Total Shareholders' Equity at Period End = Total Assets at Period End - Total Liabilities at Period End",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1776,
+      "source_formula_index": 1,
+      "target": "Other Comprehensive Income for the Period",
+      "source_formula": "Other Comprehensive Income for the Period = Total Comprehensive Income - Net Profit for the Period",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1778,
+      "source_formula_index": 2,
+      "target": "Increase for the Period",
+      "source_formula": "Increase for the Period = Base Period Operating Revenue × Net Profit Margin × Retention Ratio",
+      "formula_expression": "x0 * x1 * x2",
+      "code_expression": "x0 * x1 * x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1783,
+      "source_formula_index": 0,
+      "target": "Current Period Accounts Receivable Turnover Ratio",
+      "source_formula": "Current Period Accounts Receivable Turnover Ratio = Net Sales Revenue ÷ Average Accounts Receivable Balance",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1783,
+      "source_formula_index": 1,
+      "target": "Current Period Accounts Receivable Turnover Ratio",
+      "source_formula": "Current Period Accounts Receivable Turnover Ratio = Net Credit Sales ÷ Average Accounts Receivable Balance",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1783,
+      "source_formula_index": 2,
+      "target": "Current Period Accounts Receivable Turnover Ratio",
+      "source_formula": "Current Period Accounts Receivable Turnover Ratio = Accounts Receivable Collections ÷ Average Accounts Receivable Balance",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1785,
+      "source_formula_index": 5,
+      "target": "Current Period Indicators",
+      "source_formula": "Current Period Indicator = Net Operating Revenue ÷ Average Accounts Receivable Balance",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1790,
+      "source_formula_index": 1,
+      "target": "Current Period Equity Per Share",
+      "source_formula": "Current Period Equity Per Share = (Total Assets - Total Liabilities) ÷ Total Share Capital",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1810,
+      "source_formula_index": 1,
+      "target": "Equity Market Value Added",
+      "source_formula": "Equity Market Value Added = Market Value of Equity - Equity Capital",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1810,
+      "source_formula_index": 2,
+      "target": "Equity Market Value Added",
+      "source_formula": "Equity Market Value Added = (Net Profit ÷ Cost of Equity Capital) - Equity Capital",
+      "formula_expression": "(x0 / x1) - x2",
+      "code_expression": "x0 / x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 1813,
+      "source_formula_index": 0,
+      "target": "Market Value of Equity",
+      "source_formula": "Market Value of Equity = Net Profit ÷ Cost of Equity Capital",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 1816,
+      "source_formula_index": 0,
+      "target": "Market Value of Equity",
+      "source_formula": "Market Value of Equity = Net Profit ÷ Cost of Equity Capital",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 1821,
+      "source_formula_index": 0,
+      "target": "Material Cost Variance",
+      "source_formula": "Material Cost Variance = Actual Cost - Standard Cost",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1824,
+      "source_formula_index": 0,
+      "target": "Standardized Random Variable Value",
+      "source_formula": "Standardized Random Variable Value = (Random Variable Value - Population Mean of Random Variable) ÷ Population Standard Deviation of Random Variable",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "(x0 - x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1837,
+      "source_formula_index": 1,
+      "target": "Daily Cash Operating Cost",
+      "source_formula": "Daily Cash Operating Cost = Cash Operating Cost ÷ Period Days",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1839,
+      "source_formula_index": 0,
+      "target": "Daily Income Tax",
+      "source_formula": "Daily Income Tax = (Taxable Income × Applicable Tax Rate - Quick Deduction) ÷ Number of Days in Period",
+      "formula_expression": "(x0 * x1 - x2) / x3",
+      "code_expression": "(x0 * x1 - x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1844,
+      "source_formula_index": 0,
+      "target": "Periodic Payment Amount",
+      "source_formula": "Periodic Payment Amount = [Loan Principal × Periodic Interest Rate × (1 + Periodic Interest Rate) ^ Number of Payment Periods] ÷ [(1 + Periodic Interest Rate) ^ Number of Payment Periods - 1]",
+      "formula_expression": "(x0 * x1 * (1 + x1) ** x2) / ((1 + x1) ** x2 - 1)",
+      "code_expression": "x0 * x1 * (1 + x1) ** x2 / ((1 + x1) ** x2 - 1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1846,
+      "source_formula_index": 0,
+      "target": "Return in Each Scenario",
+      "source_formula": "Return in Each Scenario = (Gain ÷ Principal) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1850,
+      "source_formula_index": 0,
+      "target": "Gross Profit Amount",
+      "source_formula": "Gross Profit Amount = Sales Revenue - Cost of Sales",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Cost of Goods Sold": {
+          "canonical": "Cost of Sales",
+          "paper_source": "Appendix A, Figure 4"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 1863,
+      "source_formula_index": 0,
+      "target": "Waste Rate",
+      "source_formula": "Waste Rate = (Actual Usage - Planned Usage) ÷ Planned Usage × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1881,
+      "source_formula_index": 0,
+      "target": "Retention Ratio",
+      "source_formula": "Retention Ratio = Retained Earnings ÷ Net Profit × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 1881,
+      "source_formula_index": 1,
+      "target": "Retention Ratio",
+      "source_formula": "Retention Ratio = (Net Profit - Profit Distributed to Shareholders) ÷ Net Profit × 100%",
+      "formula_expression": "(x0 - x1) / x0 * 100/100",
+      "code_expression": "(x0 - x1) / x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 1885,
+      "source_formula_index": 0,
+      "target": "Target Company Sales Per Share",
+      "source_formula": "Target Company Sales Per Share = Sales Revenue ÷ Total Share Capital",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1885,
+      "source_formula_index": 1,
+      "target": "Target Company Sales Per Share",
+      "source_formula": "Target Company Sales Per Share = Total Revenue ÷ Weighted Average Number of Common Shares Outstanding",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1887,
+      "source_formula_index": 0,
+      "target": "Target Investment Profit Margin",
+      "source_formula": "Target Investment Profit Margin = Total Annual Profit ÷ Total Project Investment × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1903,
+      "source_formula_index": 0,
+      "target": "Net Operating Profit After Tax",
+      "source_formula": "Net Operating Profit After Tax = Operating Profit × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1904,
+      "source_formula_index": 0,
+      "target": "After-Tax Operating Income",
+      "source_formula": "After-Tax Operating Income = Operating Profit × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1928,
+      "source_formula_index": 0,
+      "target": "Operating Net Profit",
+      "source_formula": "Operating Net Profit = Sales Revenue - Cost of Goods Sold - Operating Expenses - Administrative Expenses - Financial Expenses - Income Tax",
+      "formula_expression": "x0 - x1 - x2 - x3 - x4 - x5",
+      "code_expression": "x0 - x1 - x2 - x3 - x4 - x5",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Cost of Goods Sold": {
+          "canonical": "Cost of Sales",
+          "paper_source": "Appendix A, Figure 4"
+        }
+      }
+    },
+    {
+      "source_record": 1929,
+      "source_formula_index": 0,
+      "target": "Operating Net Income",
+      "source_formula": "Operating Net Income = Operating Revenue - Cost of Revenue - Operating Expenses - Taxes and Surcharges - Income Tax Expense",
+      "formula_expression": "x0 - x1 - x2 - x3 - x4",
+      "code_expression": "x0 - x1 - x2 - x3 - x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1960,
+      "source_formula_index": 0,
+      "target": "Dividends Paid",
+      "source_formula": "Dividends Paid = Beginning Retained Earnings Balance + Net Income - Ending Retained Earnings Balance",
+      "formula_expression": "x0 + x1 - x2",
+      "code_expression": "x0 + x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1965,
+      "source_formula_index": 0,
+      "target": "Dividend Yield",
+      "source_formula": "Dividend Yield = (Annual Dividend Per Share ÷ Stock Purchase Price) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1965,
+      "source_formula_index": 1,
+      "target": "Dividend Yield",
+      "source_formula": "Dividend Yield = (Annual Dividend Per Share ÷ Stock Current Price) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1970,
+      "source_formula_index": 0,
+      "target": "Stock Upward Price",
+      "source_formula": "Stock Upward Price = Current Stock Price × Upward Multiplier",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1977,
+      "source_formula_index": 0,
+      "target": "Net Profit Margin",
+      "source_formula": "Net Profit Margin = Net Profit ÷ Operating Revenue × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 1980,
+      "source_formula_index": 0,
+      "target": "Operating Cash Flow Ratio",
+      "source_formula": "Operating Cash Flow Ratio = Net Cash Flow from Operating Activities ÷ Total Net Cash Flow × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1981,
+      "source_formula_index": 0,
+      "target": "Business Tax and Surcharges",
+      "source_formula": "Business Tax and Surcharges = Consumption Tax + Urban Maintenance and Construction Tax + Education Surcharge + Resource Tax + Property Tax + Land Use Tax + Vehicle and Vessel Usage Tax + Stamp Duty",
+      "formula_expression": "x0 + x1 + x2 + x3 + x4 + x5 + x6 + x7",
+      "code_expression": "x0 + x1 + x2 + x3 + x4 + x5 + x6 + x7",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1991,
+      "source_formula_index": 0,
+      "target": "Planned Variable Cost Per Unit",
+      "source_formula": "Planned Variable Cost Per Unit = Unit Price - [(Total Revenue - Total Expenses + Fixed Costs) ÷ Sales Volume]",
+      "formula_expression": "x0 - ((x1 - x2 + x3) / x4)",
+      "code_expression": "x0 - (x1 - x2 + x3) / x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 1991,
+      "source_formula_index": 1,
+      "target": "Planned Variable Cost Per Unit",
+      "source_formula": "Planned Variable Cost Per Unit = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "formula_expression": "x0 - ((x1 + x2) / x3)",
+      "code_expression": "x0 - (x1 + x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2016,
+      "source_formula_index": 0,
+      "target": "Discount Interest",
+      "source_formula": "Discount Interest = Face Amount × Discount Rate × Discount Period",
+      "formula_expression": "x0 * x1 * x2",
+      "code_expression": "x0 * x1 * x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2024,
+      "source_formula_index": 0,
+      "target": "Return on Assets (ROA)",
+      "source_formula": "Return on Assets = Net Profit ÷ Average Total Assets × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 2024,
+      "source_formula_index": 1,
+      "target": "Return on Assets (ROA)",
+      "source_formula": "Return on Assets = Net Profit ÷ [(Beginning Total Assets + Ending Total Assets) ÷ 2] × 100%",
+      "formula_expression": "x0 / ((x1 + x2) / 2) * 100/100",
+      "code_expression": "x0 / ((x1 + x2) / 2) * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 2026,
+      "source_formula_index": 0,
+      "target": "Historical Average Return on Assets",
+      "source_formula": "Historical Average Return on Assets = Net Profit ÷ Average Total Assets",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 2030,
+      "source_formula_index": 1,
+      "target": "Expected Return on Assets",
+      "source_formula": "Expected Return on Assets = Net Profit ÷ Average Total Assets",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 2032,
+      "source_formula_index": 1,
+      "target": "Market Value Weight of Assets",
+      "source_formula": "Market Value Weight of Assets = Market Value of Equity ÷ (Market Value of Equity + Market Value of Debt)",
+      "formula_expression": "x0 / (x0 + x1)",
+      "code_expression": "x0 / (x0 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2032,
+      "source_formula_index": 2,
+      "target": "Market Value Weight of Assets",
+      "source_formula": "Market Value Weight of Assets = Market Value of Debt ÷ (Market Value of Equity + Market Value of Debt)",
+      "formula_expression": "x0 / (x1 + x0)",
+      "code_expression": "x1 / (x0 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2033,
+      "source_formula_index": 0,
+      "target": "Replacement Cost of Assets",
+      "source_formula": "Replacement Cost of Assets = Historical Cost of Assets × Price Index Adjustment Factor",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2039,
+      "source_formula_index": 0,
+      "target": "Capital Gains Yield Series",
+      "source_formula": "Capital Gains Yield Series = (Net Profit ÷ Average Capital) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 2064,
+      "source_formula_index": 1,
+      "target": "Partial Current Period Amount",
+      "source_formula": "Partial Current Period Amount = Base Period Amount × (1 + Growth Rate)",
+      "formula_expression": "x0 * (1 + x1)",
+      "code_expression": "x0 * (1 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2076,
+      "source_formula_index": 0,
+      "target": "Net Sales Revenue",
+      "source_formula": "Net Sales Revenue = Gross Sales Revenue - Sales Discounts and Allowances - Sales Returns",
+      "formula_expression": "x0 - x1 - x2",
+      "code_expression": "x0 - x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2084,
+      "source_formula_index": 0,
+      "target": "Long-term Government Bond Yield to Maturity",
+      "source_formula": "Long-term Government Bond Yield to Maturity = [Annual Interest Income + (Face Value - Purchase Price) ÷ Years to Maturity] ÷ Purchase Price × 100%",
+      "formula_expression": "(x0 + (x1 - x2) / x3) / x2 * 100/100",
+      "code_expression": "(x0 + (x1 - x2) / x3) / x2 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2090,
+      "source_formula_index": 0,
+      "target": "Overhead Rate",
+      "source_formula": "Overhead Rate = Total Indirect Costs to be Allocated ÷ Total Allocation Base",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2093,
+      "source_formula_index": 0,
+      "target": "Deviation of Random Variable X from Its Expected Value",
+      "source_formula": "Deviation of Random Variable X from Its Expected Value = Observed Value of Random Variable X - Mathematical Expectation of Random Variable X",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2097,
+      "source_formula_index": 0,
+      "target": "Standard Deviation of Random Variable X",
+      "source_formula": "Standard Deviation of Random Variable X = √(Variance of Random Variable X)",
+      "formula_expression": "sqrt(x0)",
+      "code_expression": "x0 ** 0.5",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2098,
+      "source_formula_index": 0,
+      "target": "Deviation of Random Variable Y from Its Expected Value",
+      "source_formula": "Deviation of Random Variable Y from Its Expected Value = Random Variable Y - Mathematical Expectation of Random Variable Y",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2100,
+      "source_formula_index": 0,
+      "target": "Standard Deviation of Random Variable Y",
+      "source_formula": "Standard Deviation of Random Variable Y = √[Variance of Random Variable Y]",
+      "formula_expression": "sqrt(x0)",
+      "code_expression": "x0 ** 0.5",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2118,
+      "source_formula_index": 0,
+      "target": "Expected Next Period Dividend",
+      "source_formula": "Expected Next Period Dividend = Current Period Dividend × (1 + Expected Dividend Growth Rate)",
+      "formula_expression": "x0 * (1 + x1)",
+      "code_expression": "x0 * (1 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2125,
+      "source_formula_index": 0,
+      "target": "Forward Price-to-Earnings Ratio",
+      "source_formula": "Forward P/E Ratio = Dividend Payout Ratio ÷ (Cost of Equity - Growth Rate)",
+      "formula_expression": "x0 / (x1 - x2)",
+      "code_expression": "x0 / (x1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2149,
+      "source_formula_index": 1,
+      "target": "Expected Capital Gains Yield",
+      "source_formula": "Expected Capital Gains Yield = (Net Profit ÷ Average Capital) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 2151,
+      "source_formula_index": 0,
+      "target": "Expected Profit Margin on Sales",
+      "source_formula": "Expected Profit Margin on Sales = Expected Total Profit ÷ Expected Operating Revenue × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 2157,
+      "source_formula_index": 0,
+      "target": "Standard Total Hours at Budgeted Production Level",
+      "source_formula": "Standard Total Hours at Budgeted Production Level = Budgeted Production Volume × Standard Hours per Unit",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2162,
+      "source_formula_index": 1,
+      "target": "Estimated Variable Cost Per Unit",
+      "source_formula": "Estimated Variable Cost Per Unit = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "formula_expression": "x0 - ((x1 + x2) / x3)",
+      "code_expression": "x0 - (x1 + x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2173,
+      "source_formula_index": 0,
+      "target": "Expected Dividend",
+      "source_formula": "Expected Dividend = Base Period Dividend × (1 + Dividend Growth Rate)",
+      "formula_expression": "x0 * (1 + x1)",
+      "code_expression": "x0 * (1 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2175,
+      "source_formula_index": 0,
+      "target": "Estimated Operating Costs",
+      "source_formula": "Estimated Operating Costs = Estimated Sales Volume × Unit Product Cost",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2175,
+      "source_formula_index": 1,
+      "target": "Estimated Operating Costs",
+      "source_formula": "Estimated Operating Costs = Estimated Sales Volume × (Unit Variable Cost + Unit Fixed Cost)",
+      "formula_expression": "x0 * (x1 + x2)",
+      "code_expression": "x0 * (x1 + x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2175,
+      "source_formula_index": 2,
+      "target": "Estimated Operating Costs",
+      "source_formula": "Estimated Operating Costs = Estimated Sales Volume × Unit Variable Cost + Total Estimated Fixed Manufacturing Overhead",
+      "formula_expression": "x0 * x1 + x2",
+      "code_expression": "x0 * x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 2176,
+      "source_formula_index": 0,
+      "target": "Projected Net Profit Margin",
+      "source_formula": "Projected Net Profit Margin = (Net Profit ÷ Sales Revenue) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 2184,
+      "source_formula_index": 1,
+      "target": "Risk Premium",
+      "source_formula": "Risk Premium = Beta Coefficient × Market Risk Premium",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3020,
+      "source_formula_index": 0,
+      "target": "Sustainable Growth Rate",
+      "source_formula": "Sustainable Growth Rate = (Increase in Sales ÷ Base Period Sales)",
+      "formula_expression": "(x0 / x1)",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3029,
+      "source_formula_index": 0,
+      "target": "Weighted Average Cost of Capital",
+      "source_formula": "Weighted Average Cost of Capital = Debt × Interest Rate × (1 - Income Tax Rate) + Owners' Equity × Cost of Equity",
+      "formula_expression": "x0 * x1 * (1 - x2) + x3 * x4",
+      "code_expression": "(x0 * x1 * (1 - x2) + x3 * x4) / (x0 + x3)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3029,
+      "source_formula_index": 5,
+      "target": "Weighted Average Cost of Capital",
+      "source_formula": "Weighted Average Cost of Capital = Equity Weight × Cost of Equity Capital + Debt Weight × Cost of Debt Capital × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * x1 + x2 * x3 * (1 - x4)",
+      "code_expression": "x0 * x1 + x2 * x3 * (1 - x4)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3031,
+      "source_formula_index": 1,
+      "target": "Accounting Rate of Return",
+      "source_formula": "Accounting Rate of Return = Net Profit ÷ Average Capital Employed × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3043,
+      "source_formula_index": 3,
+      "target": "Degree of Operating Leverage",
+      "source_formula": "Degree of Operating Leverage = (Sales Volume × Unit Contribution Margin) ÷ (Sales Volume × Unit Contribution Margin - Total Fixed Costs)",
+      "formula_expression": "(x0 * x1) / (x0 * x1 - x2)",
+      "code_expression": "x0 * x1 / (x0 * x1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3048,
+      "source_formula_index": 3,
+      "target": "Economic Profit",
+      "source_formula": "Economic Profit = Net Profit After Tax - Equity Charge",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3049,
+      "source_formula_index": 4,
+      "target": "Enterprise Value",
+      "source_formula": "Enterprise Value = Net Profit × (8.5 + Corporate Growth Rate ÷ 3%)",
+      "formula_expression": "x0 * (8.5 + x1 / 3/100)",
+      "code_expression": "x0 * (8.5 + x1 / 0.03)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 3051,
+      "source_formula_index": 0,
+      "target": "Equity Value",
+      "source_formula": "Equity Value = Entity Value - Debt Value",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3051,
+      "source_formula_index": 2,
+      "target": "Equity Value",
+      "source_formula": "Equity Value = Next Period Equity Cash Flow ÷ (Cost of Equity - Perpetual Growth Rate)",
+      "formula_expression": "x0 / (x1 - x2)",
+      "code_expression": "x0 / (x1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3051,
+      "source_formula_index": 3,
+      "target": "Equity Value",
+      "source_formula": "Equity Value = Next Period Equity Cash Flow ÷ Cost of Equity",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3054,
+      "source_formula_index": 1,
+      "target": "Gross Operating Cash Flow",
+      "source_formula": "Gross Operating Cash Flow = Net Cash Flow from Operating Activities + Increase in Operating Working Capital",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3055,
+      "source_formula_index": 1,
+      "target": "Free Cash Flow to Firm",
+      "source_formula": "Free Cash Flow to Firm = Net Operating Profit After Tax - Increase in Net Operating Assets",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3060,
+      "source_formula_index": 0,
+      "target": "Terminal Value",
+      "source_formula": "Terminal Value = Cash Flow ÷ (Cost of Capital - Cash Flow Growth Rate)",
+      "formula_expression": "x0 / (x1 - x2)",
+      "code_expression": "x0 / (x1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3067,
+      "source_formula_index": 0,
+      "target": "Total Invested Capital",
+      "source_formula": "Total Invested Capital = Owners' Equity + Net Debt",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3071,
+      "source_formula_index": 0,
+      "target": "Option Value",
+      "source_formula": "Option Value = Intrinsic Value + Time Premium",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3079,
+      "source_formula_index": 1,
+      "target": "Upward Return Rate",
+      "source_formula": "Upward Return Rate = Upward Multiplier - 1",
+      "formula_expression": "x0 - 1",
+      "code_expression": "x0 - 1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3086,
+      "source_formula_index": 1,
+      "target": "Unit Variable Cost",
+      "source_formula": "Unit Variable Cost = Unit Price - (Fixed Costs + Profit) ÷ Sales Volume",
+      "formula_expression": "x0 - (x1 + x2) / x3",
+      "code_expression": "x0 - (x1 + x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3086,
+      "source_formula_index": 4,
+      "target": "Unit Variable Cost",
+      "source_formula": "Unit Variable Cost = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Quantity]",
+      "formula_expression": "x0 - ((x1 + x2) / x3)",
+      "code_expression": "x0 - (x1 + x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3087,
+      "source_formula_index": 2,
+      "target": "Fixed Cost",
+      "source_formula": "Fixed Cost = Unit Price × Sales Volume - Unit Variable Cost × Sales Volume - Profit",
+      "formula_expression": "x0 * x1 - x2 * x1 - x3",
+      "code_expression": "x0 * x1 - x2 * x1 - x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3087,
+      "source_formula_index": 5,
+      "target": "Fixed Cost",
+      "source_formula": "Fixed Cost = Total Cost - Unit Variable Cost × Production Volume",
+      "formula_expression": "x0 - x1 * x2",
+      "code_expression": "x0 - x1 * x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3088,
+      "source_formula_index": 0,
+      "target": "Sales Revenue",
+      "source_formula": "Sales Revenue = Unit Price × Sales Volume",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3088,
+      "source_formula_index": 1,
+      "target": "Sales Revenue",
+      "source_formula": "Sales Revenue = (Fixed Costs + Profit) ÷ Contribution Margin Ratio",
+      "formula_expression": "(x0 + x1) / x2",
+      "code_expression": "(x0 + x1) / (x2 / 100)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3089,
+      "source_formula_index": 0,
+      "target": "Unit Price",
+      "source_formula": "Unit Price = (Fixed Costs + Profit) ÷ Sales Volume + Unit Variable Cost",
+      "formula_expression": "(x0 + x1) / x2 + x3",
+      "code_expression": "(x0 + x1) / x2 + x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3089,
+      "source_formula_index": 3,
+      "target": "Unit Price",
+      "source_formula": "Unit Price = (Total Fixed Costs + Total Variable Costs) ÷ Quantity",
+      "formula_expression": "(x0 + x1) / x2",
+      "code_expression": "(x0 + x1) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3090,
+      "source_formula_index": 1,
+      "target": "After-tax Profit",
+      "source_formula": "After-tax Profit = Total Profit × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3090,
+      "source_formula_index": 2,
+      "target": "After-tax Profit",
+      "source_formula": "After-tax Profit = (Unit Price × Sales Volume - Unit Variable Cost × Sales Volume - Fixed Costs) × (1 - Income Tax Rate)",
+      "formula_expression": "(x0 * x1 - x2 * x1 - x3) * (1 - x4)",
+      "code_expression": "(x0 * x1 - x2 * x1 - x3) * (1 - x4)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3091,
+      "source_formula_index": 3,
+      "target": "Contribution Margin",
+      "source_formula": "Contribution Margin = Fixed Costs + Profit",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3093,
+      "source_formula_index": 0,
+      "target": "Contribution Margin Ratio",
+      "source_formula": "Contribution Margin Ratio = Contribution Margin ÷ Sales Revenue × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3093,
+      "source_formula_index": 1,
+      "target": "Contribution Margin Ratio",
+      "source_formula": "Contribution Margin Ratio = (Unit Contribution Margin × Sales Volume) ÷ (Unit Price × Sales Volume) × 100%",
+      "formula_expression": "(x0 * x1) / (x2 * x1) * 100/100",
+      "code_expression": "x0 * x1 / (x2 * x1) * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3093,
+      "source_formula_index": 2,
+      "target": "Contribution Margin Ratio",
+      "source_formula": "Contribution Margin Ratio = (Fixed Costs + Profit) ÷ Sales Revenue × 100%",
+      "formula_expression": "(x0 + x1) / x2 * 100/100",
+      "code_expression": "(x0 + x1) / x2 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3093,
+      "source_formula_index": 3,
+      "target": "Contribution Margin Ratio",
+      "source_formula": "Contribution Margin Ratio = 1 - Variable Cost Ratio",
+      "formula_expression": "1 - x0",
+      "code_expression": "(1 - x0) * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3094,
+      "source_formula_index": 1,
+      "target": "Variable Cost Ratio",
+      "source_formula": "Variable Cost Ratio = (Unit Variable Cost × Sales Volume) ÷ (Unit Price × Sales Volume) × 100%",
+      "formula_expression": "(x0 * x1) / (x2 * x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3100,
+      "source_formula_index": 2,
+      "target": "Market Value Added (MVA)",
+      "source_formula": "Market Value Added = (Return on Invested Capital - Cost of Capital) × Invested Capital ÷ (Cost of Capital - Growth Rate)",
+      "formula_expression": "(x0 - x1) * x2 / (x1 - x3)",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3101,
+      "source_formula_index": 3,
+      "target": "Cash Flow",
+      "source_formula": "Cash Flow = Operating Revenue - Cash Operating Costs - Income Tax",
+      "formula_expression": "x0 - x1 - x2",
+      "code_expression": "x0 - x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3103,
+      "source_formula_index": 4,
+      "target": "Return on Invested Capital",
+      "source_formula": "Return on Invested Capital = (Net Income - Taxes) ÷ Total Capital",
+      "formula_expression": "(x0 - x1) / x2",
+      "code_expression": "x0 / x1 * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 3104,
+      "source_formula_index": 2,
+      "target": "Growth Rate",
+      "source_formula": "Growth Rate = (Current Period Data - Same Period Last Year Data) ÷ Same Period Last Year Data × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3104,
+      "source_formula_index": 3,
+      "target": "Growth Rate",
+      "source_formula": "Growth Rate = Return on Equity × Retention Ratio ÷ (1 - Return on Equity × Retention Ratio)",
+      "formula_expression": "x0 * x1 / (1 - x0 * x1)",
+      "code_expression": "x0 * x1 / (1 - x0 * x1) * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3105,
+      "source_formula_index": 3,
+      "target": "Cost of Capital",
+      "source_formula": "Cost of Capital = Cost of Debt Capital × (1 - Income Tax Rate) × (Debt Capital ÷ Total Capital) + Cost of Equity Capital × (Equity Capital ÷ Total Capital)",
+      "formula_expression": "x0 * (1 - x1) * (x2 / x3) + x4 * (x5 / x3)",
+      "code_expression": "x0 * (1 - x1) * (x2 / x3) + x4 * (x5 / x3)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3109,
+      "source_formula_index": 2,
+      "target": "Cost of Sales",
+      "source_formula": "Cost of Sales = Production Cost of Inventory Goods",
+      "formula_expression": "x0",
+      "code_expression": "x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3111,
+      "source_formula_index": 1,
+      "target": "EBITDA",
+      "source_formula": "EBITDA = Net Profit + Income Tax + Interest Expense + Depreciation + Amortization",
+      "formula_expression": "x0 + x1 + x2 + x3 + x4",
+      "code_expression": "x0 + x1 + x2 + x3 + x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 3113,
+      "source_formula_index": 3,
+      "target": "Fair Value",
+      "source_formula": "Fair Value = Market price of comparable assets",
+      "formula_expression": "x0",
+      "code_expression": "x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3117,
+      "source_formula_index": 5,
+      "target": "Net Operating Income",
+      "source_formula": "Net Operating Income = Operating Revenue - Cost of Sales - Operating Expenses - Taxes and Surcharges - Income Tax Expense",
+      "formula_expression": "x0 - x1 - x2 - x3 - x4",
+      "code_expression": "x0 - x1 - x2 - x3 - x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3117,
+      "source_formula_index": 6,
+      "target": "Net Operating Income",
+      "source_formula": "Net Operating Income = Operating Revenue - Cost of Sales - Business Taxes and Surcharges - Selling Expenses - Administrative Expenses - Financial Expenses",
+      "formula_expression": "x0 - x1 - x2 - x3 - x4 - x5",
+      "code_expression": "x0 - x1 - x2 - x3 - x4 - x5",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3118,
+      "source_formula_index": 4,
+      "target": "Operating Profit",
+      "source_formula": "Operating Profit = Operating Revenue - Cost of Sales - Marketing Expenses - Administrative Expenses - Financial Expenses - Depreciation and Amortization",
+      "formula_expression": "x0 - x1 - x2 - x3 - x4 - x5",
+      "code_expression": "x0 - x1 - x2 - x3 - x4 - x5",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3119,
+      "source_formula_index": 0,
+      "target": "Other Comprehensive Income",
+      "source_formula": "Other Comprehensive Income = Comprehensive Income - Net Profit",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 3120,
+      "source_formula_index": 1,
+      "target": "Accounts Receivable Turnover Ratio",
+      "source_formula": "Accounts Receivable Turnover Ratio = Operating Revenue ÷ Average Accounts Receivable Balance",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3120,
+      "source_formula_index": 2,
+      "target": "Accounts Receivable Turnover Ratio",
+      "source_formula": "Accounts Receivable Turnover Ratio = Net Sales Revenue ÷ Average Accounts Receivable Balance",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3121,
+      "source_formula_index": 1,
+      "target": "Return on Common Equity",
+      "source_formula": "Return on Common Equity = Net Profit ÷ Average Common Shareholders' Equity",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "equivalent_under_explicit_paper_aliases",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "financial_definition_validation": "not_asserted_by_algebra_only"
+    },
+    {
+      "source_record": 3127,
+      "source_formula_index": 1,
+      "target": "Debt Service Coverage Ratio",
+      "source_formula": "Debt Service Coverage Ratio = Total Liabilities ÷ Net Cash Flow from Operating Activities",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3144,
+      "source_formula_index": 1,
+      "target": "Cost of Debt",
+      "source_formula": "Cost of Debt = (Interest Expense ÷ Total Debt) × (1 - Corporate Income Tax Rate)",
+      "formula_expression": "(x0 / x1) * (1 - x2)",
+      "code_expression": "x0 / x1 * (1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3148,
+      "source_formula_index": 0,
+      "target": "Interest Rate",
+      "source_formula": "Interest Rate = Interest ÷ Principal ÷ Time × 100%",
+      "formula_expression": "x0 / x1 / x2 * 100/100",
+      "code_expression": "x0 / x1 / x2 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3152,
+      "source_formula_index": 0,
+      "target": "Initial Investment",
+      "source_formula": "Initial Investment = Initial Outlay + Working Capital",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3153,
+      "source_formula_index": 0,
+      "target": "Total Variable Cost",
+      "source_formula": "Total Variable Cost = Variable Cost Per Unit × Activity Volume",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3154,
+      "source_formula_index": 0,
+      "target": "Revenue by Product",
+      "source_formula": "Revenue by Product = Sales Volume × Unit Selling Price",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3155,
+      "source_formula_index": 0,
+      "target": "Fixed Interest Rate",
+      "source_formula": "Fixed Interest Rate = Interest ÷ Principal ÷ Time × 100%",
+      "formula_expression": "x0 / x1 / x2 * 100/100",
+      "code_expression": "x0 / x1 / x2 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3159,
+      "source_formula_index": 1,
+      "target": "Market Value",
+      "source_formula": "Market Value = Stock Price × Number of Shares Outstanding + Debt Market Value",
+      "formula_expression": "x0 * x1 + x2",
+      "code_expression": "x0 * x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3166,
+      "source_formula_index": 0,
+      "target": "Total Liabilities",
+      "source_formula": "Total Liabilities = Current Liabilities + Long-term Liabilities",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3178,
+      "source_formula_index": 0,
+      "target": "Market Value of Equity",
+      "source_formula": "Market Value of Equity = Net Profit ÷ Cost of Equity Capital",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      }
+    },
+    {
+      "source_record": 3188,
+      "source_formula_index": 0,
+      "target": "Current Assets",
+      "source_formula": "Current Assets = Monetary Funds + Notes Receivable + Accounts Receivable + Other Receivables + Inventory",
+      "formula_expression": "x0 + x1 + x2 + x3 + x4",
+      "code_expression": "x0 + x1 + x2 + x3 + x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3190,
+      "source_formula_index": 0,
+      "target": "After-tax Cost of Debt",
+      "source_formula": "After-tax Cost of Debt = Debt Interest × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3193,
+      "source_formula_index": 0,
+      "target": "After-tax Interest Expense",
+      "source_formula": "After-tax Interest Expense = Interest Expense × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3201,
+      "source_formula_index": 1,
+      "target": "Operating Revenue",
+      "source_formula": "Operating Revenue = Sales Volume × Unit Selling Price",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3210,
+      "source_formula_index": 1,
+      "target": "Replacement Cost",
+      "source_formula": "Replacement Cost = Direct Costs + Indirect Costs",
+      "formula_expression": "x0 + x1",
+      "code_expression": "x0 + x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3214,
+      "source_formula_index": 0,
+      "target": "Expected Net Profit Margin",
+      "source_formula": "Expected Net Profit Margin = (Expected Net Profit ÷ Expected Sales Revenue) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3223,
+      "source_formula_index": 1,
+      "target": "Downside Factor",
+      "source_formula": "Downside Factor = (Current Period Indicator - Previous Period Indicator) ÷ Previous Period Indicator",
+      "formula_expression": "(x0 - x1) / x1",
+      "code_expression": "(x0 - x1) / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3227,
+      "source_formula_index": 1,
+      "target": "Trading Revenue",
+      "source_formula": "Trading Revenue = Sales Volume × Unit Selling Price",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3229,
+      "source_formula_index": 0,
+      "target": "Price",
+      "source_formula": "Price = Unit Variable Cost + (Fixed Costs + Target Profit) ÷ Sales Volume",
+      "formula_expression": "x0 + (x1 + x2) / x3",
+      "code_expression": "x0 + (x1 + x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3230,
+      "source_formula_index": 0,
+      "target": "Percentage Price Change",
+      "source_formula": "Percentage Price Change = (New Price - Old Price) ÷ Old Price × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3230,
+      "source_formula_index": 1,
+      "target": "Percentage Price Change",
+      "source_formula": "Percentage Price Change = (Log Price - Log Old Price) × 100%",
+      "formula_expression": "(x0 - x1) * 100/100",
+      "code_expression": "(log(x0) - log(x1)) * 100",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3232,
+      "source_formula_index": 1,
+      "target": "Price Variance",
+      "source_formula": "Price Variance = Actual Cost at Actual Output - Standard Cost at Actual Output",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3235,
+      "source_formula_index": 1,
+      "target": "Low Discount Rate",
+      "source_formula": "Low Discount Rate = (Future Cash Flow - Present Value) ÷ Future Cash Flow × 100%",
+      "formula_expression": "(x0 - x1) / x0 * 100/100",
+      "code_expression": "(x0 - x1) / x0 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3242,
+      "source_formula_index": 0,
+      "target": "Total Capital Cost",
+      "source_formula": "Total Capital Cost = Cost of Debt × (1 - Income Tax Rate) × (Debt Capital ÷ Total Capital) + Cost of Equity × (Equity Capital ÷ Total Capital)",
+      "formula_expression": "x0 * (1 - x1) * (x2 / x3) + x4 * (x5 / x3)",
+      "code_expression": "x0 * (1 - x1) * (x2 / x3) + x4 * (x5 / x3)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3245,
+      "source_formula_index": 2,
+      "target": "Decision Price",
+      "source_formula": "Decision Price = Unit Variable Cost + (Total Fixed Costs + Target Profit) ÷ Estimated Sales Volume",
+      "formula_expression": "x0 + (x1 + x2) / x3",
+      "code_expression": "x0 + (x1 + x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3255,
+      "source_formula_index": 0,
+      "target": "Maturity Value",
+      "source_formula": "Maturity Value = Face Value × (1 + Coupon Rate × Term)",
+      "formula_expression": "x0 * (1 + x1 * x2)",
+      "code_expression": "x0 * (1 + x1 * x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3256,
+      "source_formula_index": 0,
+      "target": "Unit Price",
+      "source_formula": "Unit Price = (Unit Cost + Unit Profit) ÷ (1 - Applicable Tax Rate)",
+      "formula_expression": "(x0 + x1) / (1 - x2)",
+      "code_expression": "(x0 + x1) / (1 - x2)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3262,
+      "source_formula_index": 1,
+      "target": "Historical Average Return",
+      "source_formula": "Historical Average Return = Amount of Return ÷ Amount of Investment",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3263,
+      "source_formula_index": 1,
+      "target": "Percentage Change in Parameter Value",
+      "source_formula": "Percentage Change in Parameter Value = (Analysis Item Amount - Analysis Base Amount) ÷ Analysis Base Amount × 100%",
+      "formula_expression": "(x0 - x1) / x1 * 100/100",
+      "code_expression": "(x0 - x1) / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3285,
+      "source_formula_index": 2,
+      "target": "Total Fixed Costs",
+      "source_formula": "Total Fixed Costs = Total Cost - Unit Variable Cost × Activity Level",
+      "formula_expression": "x0 - x1 * x2",
+      "code_expression": "x0 - x1 * x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3299,
+      "source_formula_index": 0,
+      "target": "Actual Wage Rate",
+      "source_formula": "Actual Wage Rate = Actual Labor Cost ÷ Actual Hours Worked",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3303,
+      "source_formula_index": 0,
+      "target": "Dividends Paid",
+      "source_formula": "Dividends Paid = Beginning Retained Earnings Balance + Current Period Net Profit - Ending Retained Earnings Balance",
+      "formula_expression": "x0 + x1 - x2",
+      "code_expression": "x0 + x1 - x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3307,
+      "source_formula_index": 1,
+      "target": "Market Interest Rate",
+      "source_formula": "Market Interest Rate = Interest Amount ÷ Principal Amount × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3310,
+      "source_formula_index": 0,
+      "target": "Annual Preferred Stock Dividend",
+      "source_formula": "Annual Preferred Stock Dividend = Par Value of Preferred Stock × Fixed Dividend Rate",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3311,
+      "source_formula_index": 1,
+      "target": "Annual Net Income",
+      "source_formula": "Annual Net Income = Total Profit for the Year - Current Income Tax Expense",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3311,
+      "source_formula_index": 2,
+      "target": "Annual Net Income",
+      "source_formula": "Annual Net Income = Total Profit for the Year × (1 - Income Tax Rate)",
+      "formula_expression": "x0 * (1 - x1)",
+      "code_expression": "x0 * (1 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3312,
+      "source_formula_index": 0,
+      "target": "Annual Interest Rate",
+      "source_formula": "Annual Interest Rate = Annual Interest Amount ÷ Principal",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3321,
+      "source_formula_index": 1,
+      "target": "Total Interest",
+      "source_formula": "Total Interest = Principal × [(1 + Annual Interest Rate) ^ Number of Interest Periods - 1]",
+      "formula_expression": "x0 * ((1 + x1) ** x2 - 1)",
+      "code_expression": "x0 * ((1 + x1) ** x2 - 1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3333,
+      "source_formula_index": 0,
+      "target": "Discount Percentage",
+      "source_formula": "Discount Percentage = (Original Price - Current Price) ÷ Original Price × 100%",
+      "formula_expression": "(x0 - x1) / x0 * 100/100",
+      "code_expression": "(x0 - x1) / x0 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3333,
+      "source_formula_index": 1,
+      "target": "Discount Percentage",
+      "source_formula": "Discount Percentage = Discount Amount ÷ Original Price × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3335,
+      "source_formula_index": 0,
+      "target": "Rate of Return",
+      "source_formula": "Rate of Return = Total Return ÷ Total Investment × 100%",
+      "formula_expression": "x0 / x1 * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3343,
+      "source_formula_index": 1,
+      "target": "Daily Sales",
+      "source_formula": "Daily Sales = (Daily Sales Quantity × Unit Selling Price) + Daily Other Income",
+      "formula_expression": "(x0 * x1) + x2",
+      "code_expression": "x0 * x1 + x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3343,
+      "source_formula_index": 2,
+      "target": "Daily Sales",
+      "source_formula": "Daily Sales = Average Accounts Receivable Balance ÷ Days Sales Outstanding",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3354,
+      "source_formula_index": 1,
+      "target": "Terminal Value Per Share",
+      "source_formula": "Terminal Value Per Share = (Enterprise Value - Market Value of Debt - Preferred Stock Value) ÷ Total Shares Outstanding at Period End",
+      "formula_expression": "(x0 - x1 - x2) / x3",
+      "code_expression": "(x0 - x1 - x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3366,
+      "source_formula_index": 0,
+      "target": "Standard Variable Cost per Unit",
+      "source_formula": "Standard Variable Cost per Unit = Unit Price - [(Total Revenue - Total Expenditure + Fixed Costs) ÷ Sales Volume]",
+      "formula_expression": "x0 - ((x1 - x2 + x3) / x4)",
+      "code_expression": "x0 - (x1 - x2 + x3) / x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3366,
+      "source_formula_index": 1,
+      "target": "Standard Variable Cost per Unit",
+      "source_formula": "Standard Variable Cost per Unit = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "formula_expression": "x0 - ((x1 + x2) / x3)",
+      "code_expression": "x0 - (x1 + x2) / x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3370,
+      "source_formula_index": 1,
+      "target": "Salvage Value",
+      "source_formula": "Salvage Value = Original Asset Value - Accumulated Depreciation",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3376,
+      "source_formula_index": 1,
+      "target": "Periodic Interest Amount",
+      "source_formula": "Periodic Interest Amount = Periodic Payment Amount - (Total Principal ÷ Total Number of Periods)",
+      "formula_expression": "x0 - (x1 / x2)",
+      "code_expression": "x0 - x1 / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3379,
+      "source_formula_index": 1,
+      "target": "Fixed Cost per Transaction",
+      "source_formula": "Fixed Cost per Transaction = (Total Cost - Variable Cost × Number of Transactions) ÷ Number of Transactions",
+      "formula_expression": "(x0 - x1 * x2) / x2",
+      "code_expression": "(x0 - x1 * x2) / x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3408,
+      "source_formula_index": 0,
+      "target": "First Period Dividend",
+      "source_formula": "First Period Dividend = Base Period Dividend × (1 + Dividend Growth Rate)",
+      "formula_expression": "x0 * (1 + x1)",
+      "code_expression": "x0 * (1 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3428,
+      "source_formula_index": 0,
+      "target": "Debt Ratio",
+      "source_formula": "Debt Ratio = (Total Liabilities ÷ Total Assets) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3428,
+      "source_formula_index": 1,
+      "target": "Debt Ratio",
+      "source_formula": "Debt Ratio = Total Liabilities ÷ Total Net Assets",
+      "formula_expression": "x0 / x1",
+      "code_expression": "x0 / x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3429,
+      "source_formula_index": 0,
+      "target": "Acquisition Cost",
+      "source_formula": "Acquisition Cost = Ordering Cost + Material Cost + Carrying Cost + Shortage Cost",
+      "formula_expression": "x0 + x1 + x2 + x3",
+      "code_expression": "x0 + x1 + x2 + x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3432,
+      "source_formula_index": 0,
+      "target": "Capital Gains Yield",
+      "source_formula": "Capital Gains Yield = (Net Profit ÷ Average Capital) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {
+        "Net Profit": {
+          "canonical": "Net Income",
+          "paper_source": "Section 3.2 alias mapping"
+        }
+      },
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3442,
+      "source_formula_index": 0,
+      "target": "Procurement Cost",
+      "source_formula": "Procurement Cost = Ordering Cost + Material Cost + Carrying Cost + Shortage Cost",
+      "formula_expression": "x0 + x1 + x2 + x3",
+      "code_expression": "x0 + x1 + x2 + x3",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3449,
+      "source_formula_index": 0,
+      "target": "Sales Revenue Ratio",
+      "source_formula": "Sales Revenue Ratio = (Sales Revenue ÷ Total Revenue) × 100%",
+      "formula_expression": "(x0 / x1) * 100/100",
+      "code_expression": "x0 / x1 * 100",
+      "category": "constant_factor_needs_unit_review",
+      "reference_code_divided_by_formula": "100",
+      "paper_alias_bindings": {},
+      "automatic_conversion_applied": false
+    },
+    {
+      "source_record": 3462,
+      "source_formula_index": 0,
+      "target": "Expected Annual Dividend",
+      "source_formula": "Expected Annual Dividend = Most Recent Dividend × (1 + Dividend Growth Rate)",
+      "formula_expression": "x0 * (1 + x1)",
+      "code_expression": "x0 * (1 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 3465,
+      "source_formula_index": 0,
+      "target": "Estimated Activity-Based Cost",
+      "source_formula": "Estimated Activity-Based Cost = Budgeted Activity Cost Allocation Rate × Estimated Cost Driver Quantity",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 6579,
+      "source_formula_index": 0,
+      "target": "Senkou Span A",
+      "source_formula": "Senkou Span A = (Tenkan-sen + Kijun-sen) ÷ 2",
+      "formula_expression": "(x0 + x1) / 2",
+      "code_expression": "(x0 + x1) / 2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 6738,
+      "source_formula_index": 0,
+      "target": "Inflation-Adjusted Amount",
+      "source_formula": "Inflation-Adjusted Amount = Original Amount × (1 + Inflation Rate)",
+      "formula_expression": "x0 * (1 + x1)",
+      "code_expression": "x0 * (1 + x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 6754,
+      "source_formula_index": 0,
+      "target": "Real Interest Rate",
+      "source_formula": "Real Interest Rate = Nominal Interest Rate - Inflation Rate",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 7051,
+      "source_formula_index": 0,
+      "target": "Price Deviation",
+      "source_formula": "Price Deviation = Price - Mean Price",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 7706,
+      "source_formula_index": 0,
+      "target": "Deferred Tax Liability",
+      "source_formula": "Deferred Tax Liability = Income Tax Expense - Income Tax Payable",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 7708,
+      "source_formula_index": 0,
+      "target": "Budget Deficit",
+      "source_formula": "Budget Deficit = Total Expenditure - Total Revenue",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x1 - x0",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 7830,
+      "source_formula_index": 0,
+      "target": "Tax Shield",
+      "source_formula": "Tax Shield = Tax Deduction × Marginal Tax Rate",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x1 * x2",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 8397,
+      "source_formula_index": 0,
+      "target": "Weighted Average Cost of Capital (WACC)",
+      "source_formula": "WACC = (Market Value of Equity ÷ (Market Value of Equity + Market Value of Debt)) × Cost of Equity + (Market Value of Debt ÷ (Market Value of Equity + Market Value of Debt)) × Cost of Debt × (1 - Tax Rate)",
+      "formula_expression": "(x0 / (x0 + x1)) * x2 + (x1 / (x0 + x1)) * x3 * (1 - x4)",
+      "code_expression": "x0 / (x0 + x1) * x2 + x1 / (x0 + x1) * (x3 * (1 - x4))",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 8501,
+      "source_formula_index": 0,
+      "target": "Market Capitalization",
+      "source_formula": "Market Capitalization = Shares Outstanding × Share Price",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 8536,
+      "source_formula_index": 0,
+      "target": "Shareholders' Equity",
+      "source_formula": "Shareholders' Equity = Total Assets - Total Liabilities",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 8616,
+      "source_formula_index": 0,
+      "target": "Earnings Before Interest, Taxes, Depreciation and Amortization (EBITDA)",
+      "source_formula": "EBITDA = Net Income + Income Tax Expense + Interest Expense + Depreciation + Amortization",
+      "formula_expression": "x0 + x1 + x2 + x3 + x4",
+      "code_expression": "x0 + x1 + x2 + x3 + x4",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 8681,
+      "source_formula_index": 0,
+      "target": "Market Capitalization",
+      "source_formula": "Market Capitalization = Shares Outstanding × Share Price",
+      "formula_expression": "x0 * x1",
+      "code_expression": "x0 * x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 8844,
+      "source_formula_index": 0,
+      "target": "Real Interest Rate",
+      "source_formula": "Real Interest Rate = Nominal Interest Rate - Inflation Rate",
+      "formula_expression": "x0 - x1",
+      "code_expression": "x0 - x1",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    },
+    {
+      "source_record": 8922,
+      "source_formula_index": 0,
+      "target": "Option Extrinsic Value",
+      "source_formula": "Extrinsic Value = max(0, Option Premium - Intrinsic Value)",
+      "formula_expression": "max(0, x0 - x1)",
+      "code_expression": "max(0, x0 - x1)",
+      "category": "input_metric_identity_needs_review",
+      "paper_alias_bindings": {}
+    }
+  ],
+  "automatic_graph_or_unit_changes_applied": false
+}

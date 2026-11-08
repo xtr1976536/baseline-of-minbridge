@@ -1,0 +1,21 @@
+{
+  "identity": "4c8d301bfe67ee3be48f5c7b20a8bcb7bdffb505971d1ee32c9f9db7e268269d",
+  "response_digest": "847304870ff4b6ebcea8ffb5580bf23d08f4799670602e0130eab5128fe8a05c",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    dirty_spot_price = 104.17\n    annual_coupon_rate = 0.02\n    days_since_last_coupon = 30\n    days_to_futures_expiration = 90\n    days_in_coupon_period = 180\n    annual_risk_free_rate = 0.0165\n    days_in_year = 360\n    conversion_factor = 0.7025\n\n    # Calculate the financed dirty price at futures expiration\n    financing_period = days_to_futures_expiration / days_in_year\n    future_dirty_price = dirty_spot_price * (\n        1 + annual_risk_free_rate * financing_period\n    )\n\n    # Subtract accrued interest at futures expiration to obtain the clean price\n    accrued_days_at_expiration = (\n        days_since_last_coupon + days_to_futures_expiration\n    )\n    semiannual_coupon = annual_coupon_rate * 100 / 2\n    accrued_interest_at_expiration = semiannual_coupon * (\n        accrued_days_at_expiration / days_in_coupon_period\n    )\n    future_clean_price = future_dirty_price - accrued_interest_at_expiration\n\n    # Adjust the clean price by the Treasury futures conversion factor\n    equilibrium_quoted_price = future_clean_price / conversion_factor\n\n    # return answer\n    return round(equilibrium_quoted_price, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5715,
+      "completion_tokens": 671,
+      "total_tokens": 6386,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 379
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

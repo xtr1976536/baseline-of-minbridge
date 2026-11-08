@@ -8,3 +8,7 @@
 | Self-Refine | [完整说明](../reproductions/self-refine/README.md) | [最终GSM配置](../reproductions/self-refine/results/gsm-full-final-20261102/config.json) |
 
 四模型均采用gpt-5.6-sol，具体参数、作者参考模型和适配范围分别记录。密钥只读取本机.env或环境变量。各模型独立配置，不将不同运行的输出混写。模型成绩见[统一总览](../README.md)。
+
+## 2026-11-08 仓库扩展
+
+仓库现收录七个模型，新增 FinanceReasoning、GBFR、VeriFin。此目录原有结果与范围保持原记录；最新模型范围、结果限制及导航见[仓库总览](../README.md)。

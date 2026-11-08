@@ -1,0 +1,58 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_liabilities_fy2024 Real)
+(declare-const liabilities_current_fy2024 Real)
+(declare-const liabilities_noncurrent_fy2024 Real)
+
+(assert (! (= liabilities_current_fy2024 176392.0) :named evidence_liabilities_current_fy2024))
+(assert (! (= liabilities_noncurrent_fy2024 131638.0) :named evidence_liabilities_noncurrent_fy2024))
+
+(assert (! (= computed_liabilities_fy2024 (+ liabilities_current_fy2024 liabilities_noncurrent_fy2024)) :named formula_liabilities_fy2024))
+
+(assert (! (or (> liabilities_current_fy2024 0) (< liabilities_current_fy2024 0)) :named denom_nonzero))
+(assert (! (or (> liabilities_noncurrent_fy2024 0) (< liabilities_noncurrent_fy2024 0)) :named denom_nonzero_2))
+
+(assert (! (<= (- computed_liabilities_fy2024 307.0) 0.01) :named claim_upper))
+(assert (! (<= (- 307.0 computed_liabilities_fy2024) 0.01) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2024_09_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_CommercialPaper_instant_2024_09_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2024_09_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_Liabilities_instant_2024_09_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2024_09_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2024_09_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2024_09_28_unit_USD_dims_none 68960) :named evidence_xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2024_09_28_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_CommercialPaper_instant_2024_09_28_unit_USD_dims_none 9967) :named evidence_xbrl_fact_us_gaap_CommercialPaper_instant_2024_09_28_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2024_09_28_unit_USD_dims_none 8249) :named evidence_xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2024_09_28_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_Liabilities_instant_2024_09_28_unit_USD_dims_none 308030) :named evidence_xbrl_fact_us_gaap_Liabilities_instant_2024_09_28_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2024_09_28_unit_USD_dims_none 10912) :named evidence_xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2024_09_28_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2024_09_28_unit_USD_dims_none 85750) :named evidence_xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2024_09_28_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none 78304) :named evidence_xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none 45888) :named evidence_xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= liabilities_noncurrent_fy2024 xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none) :named xbrl_bind_liabilities_noncurrent_fy2024_edgar_2024_09_28_0000320193_24_000123))
+(assert (! (= xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none 131638) :named xbrl_instance_liabilities_noncurrent_fy2024))
+(assert (! (= liabilities_current_fy2024 xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none) :named xbrl_bind_liabilities_current_fy2024_edgar_2024_09_28_0000320193_24_000123))
+(assert (! (= xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none 176392) :named xbrl_instance_liabilities_current_fy2024))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_Liabilities_instant_2024_09_28_unit_USD_dims_none (+ xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none)) 1.5) :named xbrl_calc_12_745565710_Liabilities_c_21_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_Liabilities_instant_2024_09_28_unit_USD_dims_none (+ xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none)) (- 1.5)) :named xbrl_calc_12_745565710_Liabilities_c_21_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none (+ xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none)) 1.5) :named xbrl_calc_13_745565710_LiabilitiesNoncurrent_c_21_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_LiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none (+ xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesNoncurrent_instant_2024_09_28_unit_USD_dims_none)) (- 1.5)) :named xbrl_calc_13_745565710_LiabilitiesNoncurrent_c_21_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none (+ xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_CommercialPaper_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2024_09_28_unit_USD_dims_none)) 3) :named xbrl_calc_15_745565710_LiabilitiesCurrent_c_21_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none (+ xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_ContractWithCustomerLiabilityCurrent_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_CommercialPaper_instant_2024_09_28_unit_USD_dims_none xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2024_09_28_unit_USD_dims_none)) (- 3)) :named xbrl_calc_15_745565710_LiabilitiesCurrent_c_21_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

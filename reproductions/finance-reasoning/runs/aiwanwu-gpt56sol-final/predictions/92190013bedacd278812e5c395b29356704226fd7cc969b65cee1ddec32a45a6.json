@@ -1,0 +1,191 @@
+{
+  "record": {
+    "question_id": "test-2084",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates a bond portfolio’s price value of a basis point (PVBP/DV01) by summing each bond’s market value (par value × quoted price/100) multiplied by its modified duration and 0.0001, and returns the result rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5095,
+          "completion_tokens": 147,
+          "total_tokens": 5242,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 82
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14369,
+          "completion_tokens": 326,
+          "total_tokens": 14695,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 229
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables: par value, bond price, and modified duration\n    bonds = [\n        {\"par_value\": 25_000_000, \"price\": 105, \"modified_duration\": 7.9},\n        {\"par_value\": 25_000_000, \"price\": 100, \"modified_duration\": 8.5},\n        {\"par_value\": 20_000_000, \"price\": 95, \"modified_duration\": 6.3},\n        {\"par_value\": 30_000_000, \"price\": 87, \"modified_duration\": 10.2},\n    ]\n\n    # Calculate the collection's total price value of a basis point\n    total_pvbp = 0.0\n    for bond in bonds:\n        market_value = bond[\"par_value\"] * bond[\"price\"] / 100\n        pvbp = bond[\"modified_duration\"] * market_value * 0.0001\n        total_pvbp += pvbp\n\n    # Return the answer to one decimal place\n    return round(total_pvbp, 1)\n```",
+        "usage": {
+          "prompt_tokens": 5033,
+          "completion_tokens": 362,
+          "total_tokens": 5395,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 122
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1334",
+        "score": 2.066861152648926
+      },
+      {
+        "function_id": "article-782",
+        "score": 1.8420110940933228
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.7728149890899658
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.7495450973510742
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.7427304983139038
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.7367620468139648
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.7258107662200928
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.7187025547027588
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.7161638736724854
+      },
+      {
+        "function_id": "article-735",
+        "score": 1.7042443752288818
+      },
+      {
+        "function_id": "article-755",
+        "score": 1.6887227296829224
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.6851282119750977
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.6850533485412598
+      },
+      {
+        "function_id": "article-1309",
+        "score": 1.6835989952087402
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.6823949813842773
+      },
+      {
+        "function_id": "article-1230",
+        "score": 1.674653172492981
+      },
+      {
+        "function_id": "article-2872",
+        "score": 1.670698642730713
+      },
+      {
+        "function_id": "article-1329",
+        "score": 1.6697763204574585
+      },
+      {
+        "function_id": "article-1790",
+        "score": 1.6638069152832031
+      },
+      {
+        "function_id": "article-754",
+        "score": 1.6587159633636475
+      },
+      {
+        "function_id": "article-1432",
+        "score": 1.6587119102478027
+      },
+      {
+        "function_id": "article-2858",
+        "score": 1.6484819650650024
+      },
+      {
+        "function_id": "article-1272",
+        "score": 1.646458625793457
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.6442956924438477
+      },
+      {
+        "function_id": "article-927",
+        "score": 1.6385736465454102
+      },
+      {
+        "function_id": "article-1905",
+        "score": 1.6383087635040283
+      },
+      {
+        "function_id": "article-148",
+        "score": 1.6369937658309937
+      },
+      {
+        "function_id": "article-2888",
+        "score": 1.6364413499832153
+      },
+      {
+        "function_id": "article-340",
+        "score": 1.635664701461792
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.6348538398742676
+      }
+    ],
+    "selected_ids": [
+      "article-1334"
+    ],
+    "status": "ok",
+    "answer": 80579.5,
+    "code": "def solution():\n    # Define variables: par value, bond price, and modified duration\n    bonds = [\n        {\"par_value\": 25_000_000, \"price\": 105, \"modified_duration\": 7.9},\n        {\"par_value\": 25_000_000, \"price\": 100, \"modified_duration\": 8.5},\n        {\"par_value\": 20_000_000, \"price\": 95, \"modified_duration\": 6.3},\n        {\"par_value\": 30_000_000, \"price\": 87, \"modified_duration\": 10.2},\n    ]\n\n    # Calculate the collection's total price value of a basis point\n    total_pvbp = 0.0\n    for bond in bonds:\n        market_value = bond[\"par_value\"] * bond[\"price\"] / 100\n        pvbp = bond[\"modified_duration\"] * market_value * 0.0001\n        total_pvbp += pvbp\n\n    # Return the answer to one decimal place\n    return round(total_pvbp, 1)\n"
+  },
+  "digest": "c3d2c7ae7b5da808617a341d0f2242629e0f2fac7abac322d3162e7d47bf2f44"
+}

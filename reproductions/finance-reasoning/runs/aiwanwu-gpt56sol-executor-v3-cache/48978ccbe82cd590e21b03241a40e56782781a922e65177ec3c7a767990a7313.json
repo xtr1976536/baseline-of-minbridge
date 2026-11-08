@@ -1,0 +1,18 @@
+{
+  "identity": "48978ccbe82cd590e21b03241a40e56782781a922e65177ec3c7a767990a7313",
+  "response_digest": "7c13bb170902acf8de16b1224c3aee3472825907c94875997e2007b5ee2a6b79",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    weight_x = 0.30\n    weight_y = 0.70\n    std_x = 0.25\n    std_y = 0.10\n    correlation = 0.80\n\n    # Calculate covariance\n    covariance_xy = correlation * std_x * std_y\n\n    # Calculate portfolio variance and standard deviation\n    portfolio_variance = (\n        (weight_x ** 2 * std_x ** 2)\n        + (weight_y ** 2 * std_y ** 2)\n        + (2 * weight_x * weight_y * covariance_xy)\n    )\n    portfolio_std_dev = portfolio_variance ** 0.5\n\n    # Convert to percentage and round to two decimal places\n    answer = round(portfolio_std_dev * 100, 2)\n\n    # Return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5886,
+      "completion_tokens": 273,
+      "total_tokens": 6159,
+      "completion_tokens_details": {
+        "reasoning_tokens": 84
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

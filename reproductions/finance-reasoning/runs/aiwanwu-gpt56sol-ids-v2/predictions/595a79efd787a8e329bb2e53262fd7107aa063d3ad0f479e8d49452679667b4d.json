@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2185",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a company’s theoretical equity value using the Merton structural credit risk model, treating equity as a European call option on firm assets with asset value, face value of zero-coupon debt, time to maturity, risk-free interest rate, asset volatility, and zero dividends as inputs, and returns the result in monetary units?",
+        "usage": {
+          "prompt_tokens": 5054,
+          "completion_tokens": 70,
+          "total_tokens": 5124,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C22\"]}",
+        "usage": {
+          "prompt_tokens": 13761,
+          "completion_tokens": 106,
+          "total_tokens": 13867,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 85
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\nimport math\nfrom scipy.stats import norm\n\ndef solution():\n    # Define variables name and value\n    asset_value = 150.0\n    debt_value = 100.0\n    risk_free_rate = 0.05\n    asset_volatility = 0.20\n    time_to_maturity = 3.0\n\n    # Do math calculation to get the answer\n    d1 = (\n        math.log(asset_value / debt_value)\n        + (risk_free_rate + 0.5 * asset_volatility**2) * time_to_maturity\n    ) / (asset_volatility * math.sqrt(time_to_maturity))\n\n    d2 = d1 - asset_volatility * math.sqrt(time_to_maturity)\n\n    equity_value = (\n        asset_value * norm.cdf(d1)\n        - debt_value\n        * math.exp(-risk_free_rate * time_to_maturity)\n        * norm.cdf(d2)\n    )\n\n    answer = round(equity_value, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5595,
+          "completion_tokens": 582,
+          "total_tokens": 6177,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 357
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-911",
+        "score": 2.531203269958496,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.801090121269226,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2796",
+        "score": 1.7925547361373901,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.7741789817810059,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2738",
+        "score": 1.7653191089630127,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.7577183246612549,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.741711139678955,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1755",
+        "score": 1.7406977415084839,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.7341052293777466,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.7289223670959473,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-3125",
+        "score": 1.7279361486434937,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1651",
+        "score": 1.7265623807907104,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-39",
+        "score": 1.7214868068695068,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1787",
+        "score": 1.7175040245056152,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2791",
+        "score": 1.7109686136245728,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.7085808515548706,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1583",
+        "score": 1.7085307836532593,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1806",
+        "score": 1.707969307899475,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1592",
+        "score": 1.7010297775268555,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1447",
+        "score": 1.7005316019058228,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1643",
+        "score": 1.6974756717681885,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3060",
+        "score": 1.6970970630645752,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-558",
+        "score": 1.6958630084991455,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2570",
+        "score": 1.6955041885375977,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3053",
+        "score": 1.6941320896148682,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.6892855167388916,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1758",
+        "score": 1.6850244998931885,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2113",
+        "score": 1.6806094646453857,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.6803972721099854,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6755471229553223,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-911",
+      "article-3060"
+    ],
+    "status": "ok",
+    "answer": 64.83,
+    "code": "import math\nfrom scipy.stats import norm\n\ndef solution():\n    # Define variables name and value\n    asset_value = 150.0\n    debt_value = 100.0\n    risk_free_rate = 0.05\n    asset_volatility = 0.20\n    time_to_maturity = 3.0\n\n    # Do math calculation to get the answer\n    d1 = (\n        math.log(asset_value / debt_value)\n        + (risk_free_rate + 0.5 * asset_volatility**2) * time_to_maturity\n    ) / (asset_volatility * math.sqrt(time_to_maturity))\n\n    d2 = d1 - asset_volatility * math.sqrt(time_to_maturity)\n\n    equity_value = (\n        asset_value * norm.cdf(d1)\n        - debt_value\n        * math.exp(-risk_free_rate * time_to_maturity)\n        * norm.cdf(d2)\n    )\n\n    answer = round(equity_value, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "9c9d20140c51ac928aa62d7c859cbb61333c9376d61f6f16df272ee5e563e758"
+}

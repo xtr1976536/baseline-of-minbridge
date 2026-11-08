@@ -1,0 +1,923 @@
+{
+  "audit": "R21 four numerical failures; read-only source and trace review",
+  "source_edit_count": 0,
+  "api_call_count": 0,
+  "gold_or_precision_changes": false,
+  "rescoring_performed": false,
+  "cases": [
+    {
+      "group": "evaluation",
+      "dataset": "FinQA",
+      "id": "FinQA:KHC/2018/page_132.pdf-1",
+      "category": "stock_flow_planning_and_extraction_error",
+      "diagnosis": "Period issuance was replaced by year-end cumulative issued-share balances. The selected cells are real but measure the wrong temporal quantity. Arithmetic itself is correct for the wrong operands.",
+      "source_supported_math": {
+        "activity_sum": "5 + 2 + 3 = 10 million shares",
+        "rollforward_difference": "1224 - 1214 = 10 million shares"
+      },
+      "recommendation": "Represent balance-at-date versus activity-during-period explicitly in goals and source row roles. Do not sum consecutive cumulative balances as a period issuance flow. Retain opening/closing date boundaries and reconcile source-supported roll-forward rows.",
+      "do_not": "Do not choose an arbitrary subtraction merely because it reproduces the reference; both opening/closing balance and three flow rows independently support the same period change.",
+      "input_file": "data/validation/gbfr_live_r21/evaluation/FinQA.jsonl",
+      "prediction_file": "runs/gbfr_e2e_validation/r21/evaluation/GPT-5.6 Sol/FinQA/predictions.jsonl",
+      "question": "how many shares were issued during the period of 2016 to 2018 , in millions?",
+      "reference_answer": "10",
+      "reference_meta": {},
+      "prediction": {
+        "status": "answered",
+        "value": 3664.0,
+        "meta": {
+          "currency": null,
+          "scale": "million",
+          "unit": "shares"
+        },
+        "precision": "unknown"
+      },
+      "oqa": [
+        {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": "million",
+                  "unit": "shares"
+                },
+                "temporal_scope": "2016"
+              },
+              "metric": "Shares issued"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": "million",
+                  "unit": "shares"
+                },
+                "temporal_scope": "2017"
+              },
+              "metric": "Shares issued"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": "million",
+                  "unit": "shares"
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Shares issued"
+            }
+          ]
+        }
+      ],
+      "oes_bindings": [
+        {
+          "goal": {
+            "metric": "Shares issued",
+            "constraints": {
+              "temporal_scope": "2018",
+              "entity_scope": null,
+              "meta": {
+                "currency": null,
+                "scale": "million",
+                "unit": "shares"
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": "million",
+                  "unit": "shares"
+                },
+                "temporal_scope": "2018"
+              },
+              "context": "Shares Issued: 1,224 (Balance at December 29, 2018)",
+              "context_spans": [
+                "|  | Shares Issued | Treasury Shares | Shares Outstanding |",
+                "| Balance at December 29, 2018 | 1,224 | (4) | 1,220 |"
+              ],
+              "metric": "Shares issued",
+              "observed_meta": {
+                "currency": null,
+                "scale": "million",
+                "unit": "shares"
+              },
+              "source_label": "Shares Issued",
+              "value": 1224
+            }
+          },
+          "notes": null
+        },
+        {
+          "goal": {
+            "metric": "Shares issued",
+            "constraints": {
+              "temporal_scope": "2016",
+              "entity_scope": null,
+              "meta": {
+                "currency": null,
+                "scale": "million",
+                "unit": "shares"
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": "million",
+                  "unit": "shares"
+                },
+                "temporal_scope": "2016"
+              },
+              "context": "Balance at December 31, 2016 | Shares Issued: 1,219",
+              "context_spans": [
+                "shares of common stock issued, in treasury, and outstanding were (in millions of shares):",
+                "|  | Shares Issued | Treasury Shares | Shares Outstanding |",
+                "| Balance at December 31, 2016 | 1,219 | (2) | 1,217 |"
+              ],
+              "metric": "Shares issued",
+              "observed_meta": {
+                "currency": null,
+                "scale": "million",
+                "unit": "shares"
+              },
+              "source_label": "Shares Issued",
+              "value": 1219
+            }
+          },
+          "notes": null
+        },
+        {
+          "goal": {
+            "metric": "Shares issued",
+            "constraints": {
+              "temporal_scope": "2017",
+              "entity_scope": null,
+              "meta": {
+                "currency": null,
+                "scale": "million",
+                "unit": "shares"
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": "million",
+                  "unit": "shares"
+                },
+                "temporal_scope": "2017"
+              },
+              "context": "Shares Issued: 1,221 (in millions of shares), Balance at December 30, 2017",
+              "context_spans": [
+                "|  | Shares Issued | Treasury Shares | Shares Outstanding |",
+                "| Balance at December 30, 2017 | 1,221 | (2) | 1,219 |"
+              ],
+              "metric": "Shares issued",
+              "observed_meta": {
+                "currency": null,
+                "scale": "million",
+                "unit": "shares"
+              },
+              "source_label": "Shares Issued",
+              "value": 1221.0
+            }
+          },
+          "notes": null
+        }
+      ],
+      "final_program": [
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    v1 = vars[\"v1\"]\n    v2 = vars[\"v2\"]\n    v3 = vars[\"v3\"]\n    total = v1 + v2 + v3\n\n    return {\n        \"value\": total,\n        \"trace\": {\n            \"v1\": v1,\n            \"v2\": v2,\n            \"v3\": v3,\n            \"total_shares_issued\": total,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": \"million\",\n                \"unit\": \"shares\"\n            }\n        }\n    }",
+          "inputs": {
+            "v1": 1219.0,
+            "v2": 1221.0,
+            "v3": 1224.0
+          },
+          "execution": {
+            "value": 3664.0,
+            "trace": {
+              "v1": 1219.0,
+              "v2": 1221.0,
+              "v3": 1224.0,
+              "total_shares_issued": 3664.0,
+              "output_meta": {
+                "currency": null,
+                "scale": "million",
+                "unit": "shares"
+              }
+            }
+          }
+        }
+      ],
+      "source_context": "debt issuance costs : debt issuance costs are reflected as a direct deduction of our long-term debt balance on the consolidated balance sheets .\nwe incurred debt issuance costs of $ 15 million in 2018 and $ 53 million in 2016 .\ndebt issuance costs in 2017 were insignificant .\nunamortized debt issuance costs were $ 115 million at december 29 , 2018 , $ 114 million at december 30 , 2017 , and $ 124 million at december 31 , 2016 .\namortization of debt issuance costs was $ 16 million in 2018 , $ 16 million in 2017 , and $ 14 million in 2016 .\ndebt premium : unamortized debt premiums are presented on the consolidated balance sheets as a direct addition to the carrying amount of debt .\nunamortized debt premium , net , was $ 430 million at december 29 , 2018 and $ 505 million at december 30 , 2017 .\namortization of our debt premium , net , was $ 65 million in 2018 , $ 81 million in 2017 , and $ 88 million in 2016 .\ndebt repayments : in july and august 2018 , we repaid $ 2.7 billion aggregate principal amount of senior notes that matured in the period .\nwe funded these long-term debt repayments primarily with proceeds from the new notes issued in june 2018 .\nadditionally , in june 2017 , we repaid $ 2.0 billion aggregate principal amount of senior notes that matured in the period .\nwe funded these long-term debt repayments primarily with cash on hand and our commercial paper programs .\nfair value of debt : at december 29 , 2018 , the aggregate fair value of our total debt was $ 30.1 billion as compared with a carrying value of $ 31.2 billion .\nat december 30 , 2017 , the aggregate fair value of our total debt was $ 33.0 billion as compared with a carrying value of $ 31.5 billion .\nour short-term debt and commercial paper had carrying values that approximated their fair values at december 29 , 2018 and december 30 , 2017 .\nwe determined the fair value of our long-term debt using level 2 inputs .\nfair values are generally estimated based on quoted market prices for identical or similar instruments .\nnote 20 .\ncapital stock preferred stock our second amended and restated certificate of incorporation authorizes the issuance of up to 920000 shares of preferred stock .\non june 7 , 2016 , we redeemed all 80000 outstanding shares of our series a preferred stock for $ 8.3 billion .\nwe funded this redemption primarily through the issuance of long-term debt in may 2016 , as well as other sources of liquidity , including our u.s .\ncommercial paper program , u.s .\nsecuritization program , and cash on hand .\nin connection with the redemption , all series a preferred stock was canceled and automatically retired .\ncommon stock our second amended and restated certificate of incorporation authorizes the issuance of up to 5.0 billion shares of common stock .\nshares of common stock issued , in treasury , and outstanding were ( in millions of shares ) : shares issued treasury shares shares outstanding .\n|  | Shares Issued | Treasury Shares | Shares Outstanding |\n| --- | --- | --- | --- |\n| Balance at January 3, 2016 | 1,214 | — | 1,214 |\n| Exercise of stock options, issuance of other stock awards, and other | 5 | (2) | 3 |\n| Balance at December 31, 2016 | 1,219 | (2) | 1,217 |\n| Exercise of stock options, issuance of other stock awards, and other | 2 | — | 2 |\n| Balance at December 30, 2017 | 1,221 | (2) | 1,219 |\n| Exercise of stock options, issuance of other stock awards, and other | 3 | (2) | 1 |\n| Balance at December 29, 2018 | 1,224 | (4) | 1,220 |\n.",
+      "official_annotation_for_audit_only": {
+        "program": "subtract(1224, 1214)",
+        "steps": [
+          {
+            "op": "minus1-1",
+            "arg1": "1224",
+            "arg2": "1214",
+            "res": "10"
+          }
+        ],
+        "exe_ans": 10.0
+      }
+    },
+    {
+      "group": "evaluation",
+      "dataset": "FinQA",
+      "id": "FinQA:CDNS/2018/page_66.pdf-2",
+      "category": "percentage_baseline_semantics_not_cell_extraction",
+      "diagnosis": "All extracted amounts are supported. Model computes net adjustment as share of adjusted retained earnings; official program computes percentage change relative to previously reported retained earnings. Wording mentions balance as adjusted, so denominator qualification must be interpreted rather than silently overwritten.",
+      "source_supported_math": {
+        "net_adjustment": "91640 + 2638 - 8349 = 85929",
+        "share_of_adjusted": "85929 / 426932 * 100 = 20.12709283914066%",
+        "change_from_previous": 25.198898543414572
+      },
+      "recommendation": "At query planning, distinguish percent change/effect relative to a pre-adjustment baseline from share of the post-adjustment balance. Preserve original and adjusted source qualifiers and justify the baseline from the question.",
+      "do_not": "Do not relabel adjusted as previously reported in OES or patch the scorer to accept either denominator. The official intermediate annotation also contains an arithmetic typo (85959), while the executable official program uses subtraction and yields 85929.",
+      "input_file": "data/validation/gbfr_live_r21/evaluation/FinQA.jsonl",
+      "prediction_file": "runs/gbfr_e2e_validation/r21/evaluation/GPT-5.6 Sol/FinQA/predictions.jsonl",
+      "question": "what is the percentage net effect of the cumulative effect adjustments , net of income tax effects , to beginning retained earnings for new accounting standards adopted by cadence on the retained earnings balance as adjusted for december 30 , 2017?",
+      "reference_answer": "25%",
+      "reference_meta": {},
+      "prediction": {
+        "status": "answered",
+        "value": 20.12709283914066,
+        "meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        },
+        "precision": "unknown"
+      },
+      "oqa": [
+        {
+          "operator": "ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Cadence",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 30, 2017"
+              },
+              "metric": "Cumulative effect adjustment to beginning retained earnings from adoption of Revenue from Contracts with Customers (Topic 606)"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Cadence",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 30, 2017"
+              },
+              "metric": "Cumulative effect adjustment to beginning retained earnings from adoption of Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Cadence",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 30, 2017"
+              },
+              "metric": "Cumulative effect adjustment to beginning retained earnings from adoption of Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Cadence",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 30, 2017"
+              },
+              "metric": "Retained earnings balance, as adjusted"
+            }
+          ]
+        }
+      ],
+      "oes_bindings": [
+        {
+          "goal": {
+            "metric": "Retained earnings balance, as adjusted",
+            "constraints": {
+              "temporal_scope": "December 30, 2017",
+              "entity_scope": "Cadence",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": "Cadence",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 30, 2017"
+              },
+              "context": "|  | Retained Earnings (In thousands) |\n| Balance, December 30, 2017, as adjusted | 426,932 |",
+              "context_spans": [
+                "|  | Retained Earnings (In thousands) |",
+                "| Balance, December 30, 2017, as adjusted | 426,932 |"
+              ],
+              "metric": "Retained earnings balance, as adjusted",
+              "observed_meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "source_label": "Balance, December 30, 2017, as adjusted",
+              "value": 426932
+            }
+          },
+          "notes": "Resolved \"Retained earnings balance, as adjusted\" via the table row \"Balance, December 30, 2017, as adjusted\"; the table header identifies the values as in thousands."
+        },
+        {
+          "goal": {
+            "metric": "Cumulative effect adjustment to beginning retained earnings from adoption of Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory",
+            "constraints": {
+              "temporal_scope": "December 30, 2017",
+              "entity_scope": "Cadence",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": "Cadence",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 30, 2017"
+              },
+              "context": "Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory: (8,349)",
+              "context_spans": [
+                "|  | Retained Earnings (In thousands) |",
+                "| Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory | (8,349) |"
+              ],
+              "metric": "Cumulative effect adjustment to beginning retained earnings from adoption of Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory",
+              "observed_meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "source_label": "Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory",
+              "value": -8349
+            }
+          },
+          "notes": "The table's cumulative-effect-adjustment section and retained-earnings column provide the requested beginning retained earnings adjustment; the parenthesized value denotes a negative adjustment."
+        },
+        {
+          "goal": {
+            "metric": "Cumulative effect adjustment to beginning retained earnings from adoption of Revenue from Contracts with Customers (Topic 606)",
+            "constraints": {
+              "temporal_scope": "December 30, 2017",
+              "entity_scope": "Cadence",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 0.98,
+              "constraints": {
+                "entity_scope": "Cadence",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 30, 2017"
+              },
+              "context": "Cumulative effect adjustment from the adoption of new accounting standards: Revenue from Contracts with Customers (Topic 606)* | 91,640",
+              "context_spans": [
+                "|  | Retained Earnings (In thousands) |",
+                "| Revenue from Contracts with Customers (Topic 606)* | 91,640 |"
+              ],
+              "metric": "Cumulative effect adjustment to beginning retained earnings from adoption of Revenue from Contracts with Customers (Topic 606)",
+              "observed_meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "source_label": "Revenue from Contracts with Customers (Topic 606)*",
+              "value": 91640
+            }
+          },
+          "notes": "Resolved the requested adjustment via the table's parent label, “Cumulative effect adjustment from the adoption of new accounting standards,” and the row “Revenue from Contracts with Customers (Topic 606)*”. The table reports beginning retained earnings adjustments as of December 30, 2017 for Cadence."
+        },
+        {
+          "goal": {
+            "metric": "Cumulative effect adjustment to beginning retained earnings from adoption of Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities",
+            "constraints": {
+              "temporal_scope": "December 30, 2017",
+              "entity_scope": "Cadence",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 0.99,
+              "constraints": {
+                "entity_scope": "Cadence",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 30, 2017"
+              },
+              "context": "Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities | 2,638",
+              "context_spans": [
+                "|  | Retained Earnings (In thousands) |",
+                "| Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities | 2,638 |"
+              ],
+              "metric": "Cumulative effect adjustment to beginning retained earnings from adoption of Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities",
+              "observed_meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "source_label": "Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities",
+              "value": 2638
+            }
+          },
+          "notes": "The table's cumulative-effect-adjustment section identifies this row as the adjustment from adoption of the requested Financial Instruments standard; the surrounding text identifies Cadence as the reporting entity."
+        }
+      ],
+      "final_program": [
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    revenue_adjustment = vars[\"v1\"]\n    financial_instruments_adjustment = vars[\"v2\"]\n    income_tax_adjustment = vars[\"v3\"]\n    adjusted_retained_earnings = vars[\"v4\"]\n\n    net_adjustment = (\n        revenue_adjustment\n        + financial_instruments_adjustment\n        + income_tax_adjustment\n    )\n\n    trace = {\n        \"revenue_adjustment\": revenue_adjustment,\n        \"financial_instruments_adjustment\": financial_instruments_adjustment,\n        \"income_tax_adjustment\": income_tax_adjustment,\n        \"net_adjustment\": net_adjustment,\n        \"adjusted_retained_earnings\": adjusted_retained_earnings,\n        \"output_meta\": {\n            \"currency\": None,\n            \"scale\": None,\n            \"unit\": \"percentage\",\n        },\n    }\n\n    if adjusted_retained_earnings == 0:\n        return {\"value\": None, \"trace\": trace}\n\n    percentage_net_effect = (net_adjustment / adjusted_retained_earnings) * 100\n    trace[\"percentage_net_effect\"] = percentage_net_effect\n\n    return {\"value\": percentage_net_effect, \"trace\": trace}",
+          "inputs": {
+            "v1": 91640.0,
+            "v2": 2638.0,
+            "v3": -8349.0,
+            "v4": 426932.0
+          },
+          "execution": {
+            "value": 20.12709283914066,
+            "trace": {
+              "revenue_adjustment": 91640.0,
+              "financial_instruments_adjustment": 2638.0,
+              "income_tax_adjustment": -8349.0,
+              "net_adjustment": 85929.0,
+              "adjusted_retained_earnings": 426932.0,
+              "output_meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "percentage"
+              },
+              "percentage_net_effect": 20.12709283914066
+            }
+          }
+        }
+      ],
+      "source_context": "entity transfers of inventory , the income tax effects will continue to be deferred until the inventory has been sold to a third party .\ncadence adopted the new standard on the first day of fiscal 2018 using the modified retrospective transition approach and recorded a cumulative-effect adjustment to decrease retained earnings in the amount of $ 8.3 million .\nthe cumulative-effect adjustment includes the write-off of income tax consequences deferred from prior intra-entity transfers involving assets other than inventory and new deferred tax assets for amounts not recognized under u.s .\ngaap .\nwe anticipate the potential for increased volatility in future effective tax rates from the adoption of this guidance .\nstock-based compensation in may 2017 , the fasb issued asu 2017-09 , 201ccompensation 2014stock compensation ( topic 718 ) : scope of modification accounting , 201d that provides guidance about which changes to the terms or conditions of a share-based payment award require an entity to apply modification accounting .\ncadence adopted the standard on the first day of fiscal 2018 .\nthe adoption of this standard did not impact cadence 2019s consolidated financial statements or the related disclosures .\ncumulative effect adjustments to retained earnings the following table presents the cumulative effect adjustments , net of income tax effects , to beginning retained earnings for new accounting standards adopted by cadence on the first day of fiscal 2018 : retained earnings ( in thousands ) .\n|  | Retained Earnings (In thousands) |\n| --- | --- |\n| Balance, December 30, 2017, as previously reported | $341,003 |\n| Cumulative effect adjustment from the adoption of new accounting standards: |  |\n| Revenue from Contracts with Customers (Topic 606)* | 91,640 |\n| Financial Instruments—Overall (Subtopic 825-10): Recognition and Measurement of Financial Assets and Financial Liabilities | 2,638 |\n| Income taxes (Topic 740): Intra-entity Transfers of Assets Other Than Inventory | (8,349) |\n| Balance, December 30, 2017, as adjusted | 426,932 |\n| Net Income | 345,777 |\n| Balance, December 29, 2018 | $772,709 |\n* the cumulative effect adjustment from the adoption of revenue from contracts with customers ( topic 606 ) is presented net of the related income tax effect of $ 17.5 million .\nnew accounting standards not yet adopted leases in february 2016 , the fasb issued asu 2016-02 , 201cleases ( topic 842 ) , 201d requiring , among other things , the recognition of lease liabilities and corresponding right-of-use assets on the balance sheet by lessees for all leases with a term longer than 12 months .\nthe new standard is effective for cadence in the first quarter of fiscal 2019 .\na modified retrospective approach is required , applying the new standard to leases existing as of the date of initial application .\nan entity may choose to apply the standard as of either its effective date or the beginning of the earliest comparative period presented in the financial statements .\ncadence adopted the new standard on december 30 , 2018 , the first day of fiscal 2019 , and used the effective date as the date of initial application .\nconsequently , financial information will not be updated and the disclosures required under the new standard will not be provided for dates and periods prior to the first quarter of fiscal 2019 .\ncadence elected certain practical expedients permitted under the transition guidance within the new standard , which among other things , allowed cadence to carry forward its prior conclusions about lease identification and classification. .",
+      "official_annotation_for_audit_only": {
+        "program": "subtract(426932, 341003), divide(#0, 341003)",
+        "steps": [
+          {
+            "op": "minus2-1",
+            "arg1": "426932",
+            "arg2": "341003",
+            "res": "85959"
+          },
+          {
+            "op": "divide2-2",
+            "arg1": "#0",
+            "arg2": "341003",
+            "res": "25%"
+          }
+        ],
+        "exe_ans": 0.25199
+      }
+    },
+    {
+      "group": "repair",
+      "dataset": "FinQA",
+      "id": "FinQA:AWK/2012/page_117.pdf-3",
+      "category": "unsupported_unit_conversion_and_reference_unit_conflict",
+      "diagnosis": "Opening and closing balances were extracted correctly. Source scale remains null in both bindings. OPE calls their difference dollars and divides by 1e6 without source evidence of base-dollar scale. Selected document lacks an explicit reporting multiplier, while question says in millions and reference preserves raw difference. This is not a principal/rate inversion.",
+      "source_supported_math": {
+        "raw_difference": "158578 - 118314 = 40264",
+        "model_conversion": "40264 / 1000000 = 0.040264 million"
+      },
+      "recommendation": "Keep unknown source scale distinct from explicit ones. A magnitude conversion needs source-backed source and target scales. If an essential conversion is not grounded, propagate unknown unit information or identify insufficient scale evidence; do not invent a multiplier.",
+      "do_not": "Do not multiply the prediction to the reference or change official target scale solely for score improvement. External filing scale has not been verified from the provided context.",
+      "input_file": "data/validation/gbfr_live_r21/repair/FinQA.jsonl",
+      "prediction_file": "runs/gbfr_e2e_validation/r21/repair/GPT-5.6 Sol/FinQA/predictions.jsonl",
+      "question": "what was total change in unrecognized tax benefits in millions from january 1 2011 to december 31 2011?",
+      "reference_answer": "40264",
+      "reference_meta": {},
+      "prediction": {
+        "status": "answered",
+        "value": 0.040264,
+        "meta": {
+          "currency": "USD",
+          "scale": "million",
+          "unit": null
+        },
+        "precision": "millions"
+      },
+      "oqa": [
+        {
+          "operator": "difference",
+          "precision": "millions",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "the company",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": "currency"
+                },
+                "temporal_scope": "January 1, 2011"
+              },
+              "metric": "Gross liability for unrecognized tax benefits"
+            },
+            {
+              "constraints": {
+                "entity_scope": "the company",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": "currency"
+                },
+                "temporal_scope": "December 31, 2011"
+              },
+              "metric": "Gross liability for unrecognized tax benefits"
+            }
+          ]
+        }
+      ],
+      "oes_bindings": [
+        {
+          "goal": {
+            "metric": "Gross liability for unrecognized tax benefits",
+            "constraints": {
+              "temporal_scope": "December 31, 2011",
+              "entity_scope": "the company",
+              "meta": {
+                "currency": "$",
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": "the company",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "December 31, 2011"
+              },
+              "context": "Balance at December 31, 2011: $158,578",
+              "context_spans": [
+                "| Balance at January 1, 2011 | $118,314 |",
+                "| Balance at December 31, 2011 | 158,578 |"
+              ],
+              "metric": "Gross liability for unrecognized tax benefits",
+              "observed_meta": {
+                "currency": "$",
+                "scale": null,
+                "unit": null
+              },
+              "source_label": "Balance at December 31, 2011",
+              "value": 158578
+            }
+          },
+          "notes": null
+        },
+        {
+          "goal": {
+            "metric": "Gross liability for unrecognized tax benefits",
+            "constraints": {
+              "temporal_scope": "January 1, 2011",
+              "entity_scope": "the company",
+              "meta": {
+                "currency": "$",
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 0.99,
+              "constraints": {
+                "entity_scope": "the company",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "January 1, 2011"
+              },
+              "context": "| Balance at January 1, 2011 | $118,314 |",
+              "context_spans": [
+                "| Balance at January 1, 2011 | $118,314 |"
+              ],
+              "metric": "Gross liability for unrecognized tax benefits",
+              "observed_meta": {
+                "currency": "$",
+                "scale": null,
+                "unit": null
+              },
+              "source_label": "Balance at January 1, 2011",
+              "value": 118314
+            }
+          },
+          "notes": "Resolved the gross-liability metric from the table introduction, which describes the table as changes in the company’s gross liability for unrecognized tax benefits; the January 1, 2011 row is the opening balance. The unqualified “the company” refers to the requested entity."
+        }
+      ],
+      "final_program": [
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    try:\n        change_dollars = vars[\"v2\"] - vars[\"v1\"]\n        change_millions = change_dollars / 1000000\n        return {\n            \"value\": change_millions,\n            \"trace\": {\n                \"change_dollars\": change_dollars,\n                \"output_meta\": {\n                    \"currency\": \"USD\",\n                    \"scale\": \"millions\",\n                    \"unit\": \"currency\"\n                }\n            }\n        }\n    except ZeroDivisionError:\n        return None",
+          "inputs": {
+            "v1": 118314.0,
+            "v2": 158578.0
+          },
+          "execution": {
+            "value": 0.040264,
+            "trace": {
+              "change_dollars": 40264.0,
+              "output_meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": "currency"
+              },
+              "effective_output_meta": {
+                "currency": "USD",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          }
+        }
+      ],
+      "source_context": "the company had capital loss carryforwards for federal income tax purposes of $ 4357 at december 31 , 2012 and 2011 , respectively .\nthe company has recognized a full valuation allowance for the capital loss carryforwards because the company does not believe these losses are more likely than not to be recovered .\nthe company files income tax returns in the united states federal jurisdiction and various state and foreign jurisdictions .\nwith few exceptions , the company is no longer subject to u.s .\nfederal , state or local or non-u.s income tax examinations by tax authorities for years before 2007 .\nthe company has state income tax examinations in progress and does not expect material adjustments to result .\nthe patient protection and affordable care act ( the 201cppaca 201d ) became law on march 23 , 2010 , and the health care and education reconciliation act of 2010 became law on march 30 , 2010 , which makes various amendments to certain aspects of the ppaca ( together , the 201cacts 201d ) .\nthe ppaca effectively changes the tax treatment of federal subsidies paid to sponsors of retiree health benefit plans that provide a benefit that is at least actuarially equivalent to the benefits under medicare part d .\nthe acts effectively make the subsidy payments taxable in tax years beginning after december 31 , 2012 and as a result , the company followed its original accounting for the underfunded status of the other postretirement benefits for the medicare part d adjustment and recorded a reduction in deferred tax assets and an increase in its regulatory assets amounting to $ 6432 .\nthe following table summarizes the changes in the company 2019s gross liability , excluding interest and penalties , for unrecognized tax benefits: .\n| Balance at January 1, 2011 | $118,314 |\n| --- | --- |\n| Increases in current period tax positions | 46,961 |\n| Decreases in prior period measurement of tax positions | (6,697) |\n| Balance at December 31, 2011 | 158,578 |\n| Increases in current period tax positions | 40,620 |\n| Decreases in prior period measurement of tax positions | (18,205) |\n| Balance at December 31, 2012 | $180,993 |\nthe liability balance includes amounts reflected as other long-term liabilities in the accompanying consolidated balance sheets totaling $ 74360 and $ 46961 as of december 31 , 2012 and 2011 , respectively .\nthe total balance in the table above does not include interest and penalties of $ 260 and $ 214 as of december 31 , 2012 and 2011 , respectively , which is recorded as a component of income tax expense .\nthe majority of the increased tax position is attributable to temporary differences .\nthe increase in 2012 current period tax positions related primarily to the company 2019s change in tax accounting method filed in 2008 for repair and maintenance costs on its utility assets .\nthe company does not anticipate material changes to its unrecognized tax benefits within the next year .\nif the company sustains all of its positions at december 31 , 2012 and 2011 , an unrecognized tax benefit of $ 7532 and $ 6644 , respectively , excluding interest and penalties , would impact the company 2019s effective tax rate. .",
+      "official_annotation_for_audit_only": {
+        "program": "subtract(158578, 118314)",
+        "steps": [
+          {
+            "op": "minus2-1",
+            "arg1": "158578",
+            "arg2": "118314",
+            "res": "40264"
+          }
+        ],
+        "exe_ans": 40264.0
+      }
+    },
+    {
+      "group": "repair",
+      "dataset": "TAT-QA",
+      "id": "TAT-QA:d8c8ea72ed23e9f7d91c970e088a9413_6f1652507bcbc0845aa582d579321209",
+      "category": "symmetric_gap_vs_signed_difference_semantics",
+      "diagnosis": "Both 2019 cells and thousand-unit scale are correctly extracted. Program subtracts accrued from unearned, following subgoal order, and returns -748. Reference uses the positive magnitude of the gap. No cell selection, sign parsing, or arithmetic execution error is shown.",
+      "source_supported_math": {
+        "ordered_subtraction": "27069 - 27817 = -748 thousand USD",
+        "gap_magnitude": "abs(27069 - 27817) = 748 thousand USD"
+      },
+      "recommendation": "Represent unqualified symmetric difference/gap separately from ordered A-minus-B and signed temporal change. A symmetric gap should not inherit arbitrary subgoal list order. Preserve explicit direction and signs for temporal changes and ordered subtraction.",
+      "do_not": "Do not globally apply abs to difference results. This would erase genuine decreases and explicitly requested signed differences.",
+      "input_file": "data/validation/gbfr_live_r21/repair/TAT-QA.jsonl",
+      "prediction_file": "runs/gbfr_e2e_validation/r21/repair/GPT-5.6 Sol/TAT-QA/predictions.jsonl",
+      "question": "How much was the difference in unearned revenue and accrued revenue in 2019?",
+      "reference_answer": 748,
+      "reference_meta": {
+        "scale": "thousand"
+      },
+      "prediction": {
+        "status": "answered",
+        "value": -748.0,
+        "meta": {
+          "currency": "USD",
+          "scale": "thousand",
+          "unit": null
+        },
+        "precision": "unknown"
+      },
+      "oqa": [
+        {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Unearned revenue"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Accrued revenue"
+            }
+          ]
+        }
+      ],
+      "oes_bindings": [
+        {
+          "goal": {
+            "metric": "Unearned revenue",
+            "constraints": {
+              "temporal_scope": "2019",
+              "entity_scope": null,
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "context": "Unearned revenue | 2019: $’000 27,069",
+              "context_spans": [
+                "|  | 2019 | 2018 |",
+                "|  | $’000 | $’000 |",
+                "| Unearned revenue | 27,069 | 22,914 |"
+              ],
+              "metric": "Unearned revenue",
+              "observed_meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "source_label": "Unearned revenue",
+              "value": 27069
+            }
+          },
+          "notes": null
+        },
+        {
+          "goal": {
+            "metric": "Accrued revenue",
+            "constraints": {
+              "temporal_scope": "2019",
+              "entity_scope": null,
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "context": "Accrued revenue: 27,817 ($’000) for 2019",
+              "context_spans": [
+                "|  | 2019 | 2018 |",
+                "|  | $’000 | $’000 |",
+                "| Accrued revenue | 27,817 | 5,824 |"
+              ],
+              "metric": "Accrued revenue",
+              "observed_meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "source_label": "Accrued revenue",
+              "value": 27817
+            }
+          },
+          "notes": null
+        }
+      ],
+      "final_program": [
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    unearned_revenue = vars[\"v1\"]\n    accrued_revenue = vars[\"v2\"]\n    difference = unearned_revenue - accrued_revenue\n    return {\n        \"value\": difference,\n        \"trace\": {\n            \"unearned_revenue\": unearned_revenue,\n            \"accrued_revenue\": accrued_revenue,\n            \"difference\": difference,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"thousand\",\n                \"unit\": None\n            }\n        }\n    }",
+          "inputs": {
+            "v1": 27069.0,
+            "v2": 27817.0
+          },
+          "execution": {
+            "value": -748.0,
+            "trace": {
+              "unearned_revenue": 27069.0,
+              "accrued_revenue": 27817.0,
+              "difference": -748.0,
+              "output_meta": {
+                "currency": "USD",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          }
+        }
+      ],
+      "source_context": "(iii) Contract balances\nIncreases in the balance of accrued and unearned revenue during the year relate to the acquisition of Sigma Systems (refer to Note 24). Additionally, the increase in accrued revenue was a result of software licences deployed on contract inception but have yet to be billed to the customer.\nRevenues recognised in the current reporting period that was included in deferred revenue at the beginning of the reporting period was $22,251,000, representing support and maintenance performed during the period.\n|  | 2019 | 2018 |\n| --- | --- | --- |\n|  | $’000 | $’000 |\n| Accrued revenue | 27,817 | 5,824 |\n| Unearned revenue | 27,069 | 22,914 |"
+    }
+  ],
+  "summary": {
+    "clear_stock_flow_error": 1,
+    "unsupported_scale_conversion_with_reference_unit_conflict": 1,
+    "baseline_semantics": 1,
+    "difference_direction_semantics": 1
+  },
+  "limits": [
+    "This review does not claim the four cases have been fixed.",
+    "Official programs were inspected only after source/trace diagnosis for attribution; they are not model inputs or inference-time selectors.",
+    "Full experiment remains paused; no execution or API task was started."
+  ]
+}

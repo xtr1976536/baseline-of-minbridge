@@ -1,0 +1,18 @@
+{
+  "identity": "e07210e72aff803b69f44f351aef0202d6a5266ffa1bee9efdc60bc8a3911edf",
+  "response_digest": "1d4d1694c548dd927238b4f5f7f4193aa7272ba477b0170ef354ca81e132a407",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define yearly contributions and limits\n    contributions = [6000, 7500, 6000]\n    annual_limit = 5500\n    monthly_penalty_rate = 0.01\n    penalty_months = 12\n\n    # Calculate the total penalty on annual over-contributions\n    total_over_contribution = sum(\n        max(0, contribution - annual_limit)\n        for contribution in contributions\n    )\n    total_penalty = total_over_contribution * monthly_penalty_rate * penalty_months\n\n    # Return the answer rounded to two decimal places\n    return round(total_penalty, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5156,
+      "completion_tokens": 171,
+      "total_tokens": 5327,
+      "completion_tokens_details": {
+        "reasoning_tokens": 30
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

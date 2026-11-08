@@ -1,0 +1,184 @@
+[
+  {
+    "id": "financebench_id_01490",
+    "question": "What is the amount of the gain accruing to JnJ as a result of the separation of its Consumer Health business segment, as of August 30, 2023?",
+    "reference": {
+      "answer": "JnJ will make a gain of approximately $20 billion from the separation of its Consumer Health business segment.",
+      "unit": null
+    },
+    "raw_answer": "The retrieved evidence does not provide the amount of the gain accruing to JnJ from the Consumer Health business separation as of August 30, 2023.",
+    "status": "ABSTAIN",
+    "claimed_value": null,
+    "unit": null,
+    "expected": null,
+    "primary_correct": null,
+    "legacy_correct": null,
+    "reason": "missing_reporting_period:August 30, 2023",
+    "formula_authority": {
+      "cash_sign_normalization": null,
+      "checked_question_subdefinitions": [],
+      "equation": "separation_gain / 1000",
+      "kind": "curated_metric_registry",
+      "question_composition": null,
+      "role_map": {
+        "separation_gain": "separation_gain"
+      },
+      "source_id": "financebench_consumer_health_separation_gain",
+      "source_refs": [
+        {
+          "title": "FinanceBench dataset metric definition",
+          "url": "https://github.com/patronus-ai/financebench"
+        }
+      ],
+      "template": "separation_gain / 1000"
+    },
+    "bindings": null,
+    "tolerance": null,
+    "tolerance_source": null
+  },
+  {
+    "id": "financebench_id_02119",
+    "question": "If JPM went bankrupted by the end by 2021 Q1 and liquidated all of its assets to pay its shareholders, how much could each shareholder get?",
+    "reference": {
+      "answer": "They could receive $66.56 per share.",
+      "unit": null
+    },
+    "raw_answer": "$66.56 per common share, using JPMorgan's reported tangible book value per share at March 31, 2021.",
+    "status": "ABSTAIN",
+    "claimed_value": null,
+    "unit": null,
+    "expected": null,
+    "primary_correct": null,
+    "legacy_correct": null,
+    "reason": "formula_authority_not_established",
+    "formula_authority": null,
+    "bindings": null,
+    "tolerance": null,
+    "tolerance_source": null
+  },
+  {
+    "id": "financebench_id_01328",
+    "question": "What is the quantity of restructuring costs directly outlined in Pepsico's income statements for FY2022? If restructuring costs are not explicitly outlined then state 0.",
+    "reference": {
+      "answer": "Pepsico's restructuring costs in FY2022 amounted to $411 million .",
+      "unit": null
+    },
+    "raw_answer": "$0 million; restructuring costs are not explicitly outlined as a line item in PepsiCo's FY2022 income statement.",
+    "status": "ABSTAIN",
+    "claimed_value": null,
+    "unit": null,
+    "expected": null,
+    "primary_correct": null,
+    "legacy_correct": null,
+    "reason": "requested_income_statement_line_not_established",
+    "formula_authority": {
+      "cash_sign_normalization": null,
+      "checked_question_subdefinitions": [],
+      "equation": "restructuring_costs",
+      "kind": "curated_metric_registry",
+      "question_composition": null,
+      "role_map": {
+        "restructuring_costs": "restructuring_costs"
+      },
+      "source_id": "financebench_restructuring_costs_income_statement",
+      "source_refs": [
+        {
+          "title": "FinanceBench dataset metric definition",
+          "url": "https://github.com/patronus-ai/financebench"
+        },
+        {
+          "title": "FASB US GAAP Financial Reporting Taxonomy - RestructuringCharges",
+          "url": "https://xbrl.fasb.org/us-gaap/2025/"
+        }
+      ],
+      "template": "restructuring_costs"
+    },
+    "bindings": [
+      {
+        "accession": "0000077476-23-000007",
+        "concept": "us-gaap:RestructuringCostsAndAssetImpairmentCharges",
+        "decimals": "-6",
+        "method": "concept_registry",
+        "period": {
+          "dimensions": [],
+          "end_date": "2022-12-31",
+          "instant": "",
+          "start_date": "2021-12-26"
+        },
+        "presentation_labels_provenance": {
+          "sha256": "7dab6e288ec099c698a5f95259761988586aa7634e2955d71427a4cfb8dbdcd9",
+          "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747623000007/pep-20221231.htm"
+        },
+        "registry_extension": null,
+        "role": "restructuring_costs",
+        "source_fact_id": "id3VybDovL2RvY3MudjEvZG9jOmNmZjVlNjYyYWY4OTQxN2ZhNzNjMjc1OTE3NWZjYzI4L3NlYzpjZmY1ZTY2MmFmODk0MTdmYTczYzI3NTkxNzVmY2MyOF8xOTYvZnJhZzo5MzdlMjVmMmQ2MWM0OTA1YWY3MDViYzAxOTc3MzNmMi90YWJsZToyZTA1ZjFhYjk1OTQ0NjU3YjEwNWQxODI5NjVkZmU2NC90YWJsZXJhbmdlOjJlMDVmMWFiOTU5NDQ2NTdiMTA1ZDE4Mjk2NWRmZTY0XzgtMS0xLTEtMjQ2MzY3_ece4363a-d61f-46a1-aac1-b2d13f00645b",
+        "source_sha256": "f80840e5d4e378ef00e594bb07ae8a960d324dcc01f8fe9d589fa813bb25e9d9",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747623000007/pep-20221231_htm.xml",
+        "unit": "USD millions",
+        "value": "411.000000"
+      }
+    ],
+    "tolerance": null,
+    "tolerance_source": null
+  },
+  {
+    "id": "financebench_id_01482",
+    "question": "At the Pepsico AGM held on May 3, 2023, what was the outcome of the shareholder vote on the shareholder proposal for a congruency report by Pepsico on net-zero emissions policies?",
+    "reference": {
+      "answer": "The shareholder proposal for a congruency report by Pepsico on net-zero emissions policies was defeated.",
+      "unit": null
+    },
+    "raw_answer": "The shareholder proposal was defeated: 19,718,780 votes for, 977,228,788 against, 23,200,321 abstained, and 172,969,325 broker non-votes.",
+    "status": "ABSTAIN",
+    "claimed_value": null,
+    "unit": null,
+    "expected": null,
+    "primary_correct": null,
+    "legacy_correct": null,
+    "reason": "verification_plan_has_no_roles",
+    "formula_authority": null,
+    "bindings": null,
+    "tolerance": null,
+    "tolerance_source": null
+  },
+  {
+    "id": "financebench_id_00882",
+    "question": "As of May 26, 2023, what is the total amount Pepsico may borrow under its unsecured revolving credit agreements?",
+    "reference": {
+      "answer": "Total amount Pepsico may borrow under unsecured revolving credit agreements = $8,400,000,000.",
+      "unit": null
+    },
+    "raw_answer": "PepsiCo may borrow up to $8,400,000,000 total: $4,200,000,000 under each of the 364-day and five-year unsecured revolving credit agreements.",
+    "status": "ABSTAIN",
+    "claimed_value": null,
+    "unit": null,
+    "expected": null,
+    "primary_correct": null,
+    "legacy_correct": null,
+    "reason": "formula_authority_not_established",
+    "formula_authority": null,
+    "bindings": null,
+    "tolerance": null,
+    "tolerance_source": null
+  },
+  {
+    "id": "financebench_id_01476",
+    "question": "As of FY2023Q1, by how many percentage points did Pepsico raise full year guidance in respect of core constant currency EPS growth?",
+    "reference": {
+      "answer": "Pepsico raised full year guidance in respect of core constant currency EPS growth by 1 percentage point.",
+      "unit": null
+    },
+    "raw_answer": "1 percentage point (9% revised guidance - 8% previous guidance = 1 percentage point).",
+    "status": "ABSTAIN",
+    "claimed_value": null,
+    "unit": null,
+    "expected": null,
+    "primary_correct": null,
+    "legacy_correct": null,
+    "reason": "ambiguous_or_unresolved_registry_formula:financebench_guidance_increase_percentage_points",
+    "formula_authority": null,
+    "bindings": null,
+    "tolerance": null,
+    "tolerance_source": null
+  }
+]

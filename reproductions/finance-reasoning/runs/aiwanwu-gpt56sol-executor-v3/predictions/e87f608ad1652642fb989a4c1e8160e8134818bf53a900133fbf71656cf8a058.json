@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2226",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function computes the Welch two-sample t-statistic for comparing the means of two independent samples with unequal variances and potentially different sample sizes, using each sample’s mean, variance, and count?",
+        "usage": {
+          "prompt_tokens": 5065,
+          "completion_tokens": 44,
+          "total_tokens": 5109
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 15147,
+          "completion_tokens": 16,
+          "total_tokens": 15163
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    mean_1 = 8.0\n    mean_2 = 6.0\n    var_1 = 1.5\n    var_2 = 2.0\n    n1 = 18\n    n2 = 22\n\n    # Calculate the Welch's t-value\n    standard_error = ((var_1 / n1) + (var_2 / n2)) ** 0.5\n    t_value = (mean_1 - mean_2) / standard_error\n\n    # Return the t-value rounded to two decimal places\n    return round(t_value, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5181,
+          "completion_tokens": 371,
+          "total_tokens": 5552,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 225
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1798",
+        "score": 1.9657704830169678,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1797",
+        "score": 1.5876679420471191,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1988",
+        "score": 1.5392707586288452,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1794",
+        "score": 1.5306373834609985,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1143",
+        "score": 1.5175650119781494,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1144",
+        "score": 1.5141839981079102,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1796",
+        "score": 1.4717507362365723,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1145",
+        "score": 1.46623694896698,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.4550002813339233,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-106",
+        "score": 1.4468393325805664,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1142",
+        "score": 1.3942296504974365,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1795",
+        "score": 1.391089677810669,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.3750803470611572,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2565",
+        "score": 1.3735086917877197,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1683",
+        "score": 1.3593714237213135,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2421",
+        "score": 1.3591760396957397,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.357356071472168,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.3550575971603394,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2553",
+        "score": 1.3502273559570312,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1987",
+        "score": 1.3427180051803589,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.342032790184021,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2667",
+        "score": 1.3386911153793335,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.3384087085723877,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1413",
+        "score": 1.3346776962280273,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.3339484930038452,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1712",
+        "score": 1.3334791660308838,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.331727385520935,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2633",
+        "score": 1.3295025825500488,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2481",
+        "score": 1.3247969150543213,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-301",
+        "score": 1.3244478702545166,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1798"
+    ],
+    "status": "ok",
+    "answer": 4.79,
+    "code": "def solution():\n    # Define variables\n    mean_1 = 8.0\n    mean_2 = 6.0\n    var_1 = 1.5\n    var_2 = 2.0\n    n1 = 18\n    n2 = 22\n\n    # Calculate the Welch's t-value\n    standard_error = ((var_1 / n1) + (var_2 / n2)) ** 0.5\n    t_value = (mean_1 - mean_2) / standard_error\n\n    # Return the t-value rounded to two decimal places\n    return round(t_value, 2)\n"
+  },
+  "digest": "8543ae44a8af878c10851c37788e0630b8689df96eb2b1ccee41a2ba131ee3d1"
+}

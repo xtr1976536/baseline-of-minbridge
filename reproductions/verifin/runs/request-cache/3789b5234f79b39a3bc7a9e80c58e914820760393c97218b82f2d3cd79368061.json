@@ -1,0 +1,28 @@
+{
+  "request_hash": "3789b5234f79b39a3bc7a9e80c58e914820760393c97218b82f2d3cd79368061",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the FY2018 - FY2020 3 year average unadjusted EBITDA % margin for Walmart? Define unadjusted EBITDA as unadjusted operating income + depreciation and amortization from the cash flow statement. Answer in units of percents and round to one decimal place. Calculate what was asked by utilizing the line items clearly shown in the P&L statement and the cash flow statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"three_year_average_unadjusted_ebitda_margin\",\n  \"facts\": [\n    {\n      \"name\": \"unadjusted_operating_income\",\n      \"aliases\": [\"Operating income\", \"Operating income (loss)\"],\n      \"period\": \"FY2018, FY2019, FY2020\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"depreciation_and_amortization\",\n      \"aliases\": [\"Depreciation and amortization\", \"Depreciation and amortization expenses\"],\n      \"period\": \"FY2018, FY2019, FY2020\",\n      \"statement\": \"cash flow\"\n    },\n    {\n      \"name\": \"net_sales\",\n      \"aliases\": [\"Net sales\", \"Net sales revenue\", \"Total revenue\"],\n      \"period\": \"FY2018, FY2019, FY2020\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"For each fiscal year, calculate (unadjusted operating income + cash-flow-statement depreciation and amortization) / net sales, then average the three annual margins.\"\n}",
+  "usage": {
+    "prompt_tokens": 4759,
+    "completion_tokens": 241,
+    "total_tokens": 5000,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    }
+  },
+  "response_id": "resp_025c2396edce61a2016aedbda75cd087d0ba11d0e0aebbec49",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,760 @@
+{
+  "at": "2026-11-06T18:46:37.715153+00:00",
+  "round": "r4",
+  "precision_policy": "reference_display",
+  "full_run_authorized": false,
+  "datasets": {
+    "FinQA": {
+      "metrics": {
+        "n": 33,
+        "predictions": 19,
+        "missing": 14,
+        "errors": 0,
+        "correct": 9,
+        "unanswerable": 3,
+        "correct_abstentions": 0,
+        "total_accuracy": 27.272727272727273,
+        "abstention_accuracy": 0.0,
+        "complete": false
+      },
+      "categories": {
+        "incorrect_numeric_answer": 7,
+        "false_abstention": 3,
+        "correct_answer": 9,
+        "missing": 14
+      },
+      "supplementary_audit_warnings": {
+        "An unregistered alias needs its explanation in notes": 5,
+        "Alias requires an explicit quoted source label": 3,
+        "OES returned a computed or unquoted number": 1
+      },
+      "fixed_two_decimal_diagnostic": {
+        "n": 33,
+        "predictions": 19,
+        "missing": 14,
+        "errors": 0,
+        "correct": 5,
+        "unanswerable": 3,
+        "correct_abstentions": 0,
+        "total_accuracy": 15.151515151515152,
+        "abstention_accuracy": 0.0,
+        "complete": false
+      },
+      "failed_cases": [
+        {
+          "id": "FinQA:JPM/2009/page_175.pdf-3",
+          "question": "in 2008 what was the ratio of the trading assets derivatives - receivables to the payables",
+          "gold": "1.72",
+          "unanswerable": false,
+          "status": "answered",
+          "value": 1.3027575107296137,
+          "meta": {
+            "currency": null,
+            "scale": "ones",
+            "unit": null
+          },
+          "category": "incorrect_numeric_answer",
+          "error": null,
+          "reason": "",
+          "oes_missing": [],
+          "oqa": {
+            "operator": "ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "JPMorgan Chase & Co.",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2008"
+                },
+                "metric": "Trading assets - derivative receivables"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "JPMorgan Chase & Co.",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2008"
+                },
+                "metric": "Trading liabilities - derivative payables"
+              }
+            ]
+          }
+        },
+        {
+          "id": "FinQA:RCL/2016/page_6.pdf-2",
+          "question": "what was the anticipated percentage increase in the global cruise fleet berths from 2017 to 2021",
+          "gold": "34.4%",
+          "unanswerable": false,
+          "status": "abstained",
+          "value": null,
+          "meta": {},
+          "category": "false_abstention",
+          "error": null,
+          "reason": "At least one required subgoal could not be grounded",
+          "oes_missing": [
+            "Global cruise fleet berths for 2017 are not directly stated. The context gives approximately 503000 berths at the end of 2016 and approximately 173000 berths expected to enter service between 2017 and 2021.",
+            "Global cruise fleet berths for 2021 are not directly stated; the context only states approximately 173000 berths expected to be placed in service between 2017 and 2021."
+          ],
+          "oqa": {
+            "operator": "change ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "global cruise fleet",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "berths"
+                  },
+                  "temporal_scope": "2017"
+                },
+                "metric": "Global cruise fleet berths"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "global cruise fleet",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "berths"
+                  },
+                  "temporal_scope": "2021"
+                },
+                "metric": "Global cruise fleet berths"
+              }
+            ]
+          }
+        },
+        {
+          "id": "FinQA:AMT/2008/page_107.pdf-2",
+          "question": "in 2006 what was percentage change in the employee separations liabilities",
+          "gold": "-65.1%",
+          "unanswerable": false,
+          "status": "answered",
+          "value": -65.04794161141058,
+          "meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          },
+          "category": "incorrect_numeric_answer",
+          "error": null,
+          "reason": "",
+          "oes_missing": [],
+          "oqa": {
+            "operator": "change ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "American Tower Corporation and subsidiaries",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "December 31, 2005"
+                },
+                "metric": "Employee separations liability"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "American Tower Corporation and subsidiaries",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "December 31, 2006"
+                },
+                "metric": "Employee separations liability"
+              }
+            ]
+          }
+        },
+        {
+          "id": "FinQA:BKNG/2016/page_33.pdf-1",
+          "question": "at the measurement point december 312016 what was the ratio of the the priceline group inc . . to the nasdaqcomposite index",
+          "gold": "1.44",
+          "unanswerable": false,
+          "status": "answered",
+          "value": 1.4475385610048952,
+          "meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "ratio"
+          },
+          "category": "incorrect_numeric_answer",
+          "error": null,
+          "reason": "",
+          "oes_missing": [],
+          "oqa": {
+            "operator": "ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "The Priceline Group Inc.",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "index value"
+                  },
+                  "temporal_scope": "December 31, 2016"
+                },
+                "metric": "The Priceline Group Inc."
+              },
+              {
+                "constraints": {
+                  "entity_scope": "NASDAQ Composite Index",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "index value"
+                  },
+                  "temporal_scope": "December 31, 2016"
+                },
+                "metric": "NASDAQ Composite Index"
+              }
+            ]
+          }
+        },
+        {
+          "id": "FinQA:BLK/2012/page_33.pdf-2",
+          "question": "what is the percent change in equity component changes from 12/31/2011 to 12/31/2012?",
+          "gold": "27.4%",
+          "unanswerable": false,
+          "status": "answered",
+          "value": 27.40300869055477,
+          "meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": "percentage"
+          },
+          "category": "incorrect_numeric_answer",
+          "error": null,
+          "reason": "",
+          "oes_missing": [],
+          "oqa": {
+            "operator": "change ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "iShares",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "12/31/2011"
+                },
+                "metric": "Equity component in iShares AUM"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "iShares",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "12/31/2012"
+                },
+                "metric": "Equity component in iShares AUM"
+              }
+            ]
+          }
+        },
+        {
+          "id": "FinQA:ETR/2016/page_150.pdf-4",
+          "question": "what are the payments for the next three years on the entergy new orleans storm recovery bonds ( in millions? )",
+          "gold": "44.4",
+          "unanswerable": false,
+          "status": "answered",
+          "value": 32.8,
+          "meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          },
+          "category": "incorrect_numeric_answer",
+          "error": null,
+          "reason": "",
+          "oes_missing": [],
+          "oqa": {
+            "operator": "sum",
+            "precision": "unknown",
+            "reasoning_type": "ArithmeticCalculation",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "Entergy New Orleans storm recovery bonds",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2017"
+                },
+                "metric": "Principal payments on storm recovery bonds"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Entergy New Orleans storm recovery bonds",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2018"
+                },
+                "metric": "Principal payments on storm recovery bonds"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Entergy New Orleans storm recovery bonds",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2019"
+                },
+                "metric": "Principal payments on storm recovery bonds"
+              }
+            ]
+          }
+        },
+        {
+          "id": "FinQA:SNA/2013/page_34.pdf-2",
+          "question": "what is the return on investment if $ 100 are invested in s&p500 at the end of 2008 and sold at the end of 2010?",
+          "gold": "45.51",
+          "unanswerable": false,
+          "status": "answered",
+          "value": 45.50999999999999,
+          "meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          },
+          "category": "incorrect_numeric_answer",
+          "error": null,
+          "reason": "",
+          "oes_missing": [],
+          "oqa": {
+            "operator": "change ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "S&P 500",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "index value"
+                  },
+                  "temporal_scope": "December 31, 2008"
+                },
+                "metric": "S&P 500 Index"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "S&P 500",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "index value"
+                  },
+                  "temporal_scope": "December 31, 2010"
+                },
+                "metric": "S&P 500 Index"
+              }
+            ]
+          }
+        },
+        {
+          "id": "FinQA:ANSS/2016/page_47.pdf-1",
+          "question": "as of december 31 , 2016 what was the percent of the company's significant contractual obligations for the global headquarters operating lease due in 2016",
+          "gold": "29.4%",
+          "unanswerable": false,
+          "status": "abstained",
+          "value": null,
+          "meta": {},
+          "category": "false_abstention",
+          "error": null,
+          "reason": "At least one required subgoal could not be grounded",
+          "oes_missing": [
+            "The table reports payments due within 1 year as of December 31, 2016, but does not label them as due in 2016; the temporal constraint cannot be confirmed."
+          ],
+          "oqa": {
+            "operator": "ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "ANSYS",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "as of December 31, 2016; due in 2016"
+                },
+                "metric": "Contractual obligations for global headquarters operating lease due within 1 year"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "ANSYS",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "as of December 31, 2016; due in 2016"
+                },
+                "metric": "Total contractual obligations due within 1 year"
+              }
+            ]
+          }
+        },
+        {
+          "id": "FinQA:MRK/2013/page_125.pdf-2",
+          "question": "considering the years 2011-2013 , what is the average value of settlements?",
+          "gold": "309.67",
+          "unanswerable": false,
+          "status": "abstained",
+          "value": null,
+          "meta": {},
+          "category": "false_abstention",
+          "error": null,
+          "reason": "At least one required subgoal could not be grounded",
+          "oes_missing": [
+            "Settlements for 2012 is shown as (67), but the table does not explicitly state the required million scale for this value.",
+            "The 2013 Settlements cell is explicitly shown as (603), but the table does not state a million scale, so the scale constraint cannot be verified."
+          ],
+          "oqa": {
+            "operator": "average",
+            "precision": "unknown",
+            "reasoning_type": "StatisticalAggregation",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "Merck",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2011"
+                },
+                "metric": "Settlements"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Merck",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2012"
+                },
+                "metric": "Settlements"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Merck",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2013"
+                },
+                "metric": "Settlements"
+              }
+            ]
+          }
+        },
+        {
+          "id": "FinQA:SNA/2013/page_84.pdf-3",
+          "question": "what percentage of trade and other accounts receivable are considered as doubtful receivables in 2013",
+          "gold": "2.9%",
+          "unanswerable": false,
+          "status": "answered",
+          "value": 2.72644098810613,
+          "meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": "percentage"
+          },
+          "category": "incorrect_numeric_answer",
+          "error": null,
+          "reason": "",
+          "oes_missing": [],
+          "oqa": {
+            "operator": "ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "Snap-on",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2013"
+                },
+                "metric": "Allowances for doubtful accounts"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Snap-on",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2013"
+                },
+                "metric": "Trade and other accounts receivable"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "TAT-QA": {
+      "metrics": {
+        "n": 33,
+        "predictions": 18,
+        "missing": 15,
+        "errors": 0,
+        "correct": 14,
+        "unanswerable": 3,
+        "correct_abstentions": 0,
+        "total_accuracy": 42.42424242424242,
+        "abstention_accuracy": 0.0,
+        "complete": false
+      },
+      "categories": {
+        "correct_answer": 14,
+        "false_abstention": 3,
+        "incorrect_numeric_answer": 1,
+        "missing": 15
+      },
+      "supplementary_audit_warnings": {
+        "An unregistered alias needs its explanation in notes": 1
+      },
+      "fixed_two_decimal_diagnostic": {
+        "n": 33,
+        "predictions": 18,
+        "missing": 15,
+        "errors": 0,
+        "correct": 14,
+        "unanswerable": 3,
+        "correct_abstentions": 0,
+        "total_accuracy": 42.42424242424242,
+        "abstention_accuracy": 0.0,
+        "complete": false
+      },
+      "failed_cases": [
+        {
+          "id": "TAT-QA:771fd661a72d5018797f3ea240571013_c22c73c764d0e502810da5391f4538ad",
+          "question": "What is the incentive compensation received by Messrs Richard, Robert and Bruce Leeds respectively?",
+          "gold": "0",
+          "unanswerable": false,
+          "status": "abstained",
+          "value": null,
+          "meta": {},
+          "category": "false_abstention",
+          "error": null,
+          "reason": "At least one required subgoal could not be grounded",
+          "oes_missing": [
+            "Incentive compensation received for Richard Leeds in 2019 is not directly stated; the context only says he no longer participated in incentive compensation.",
+            "Incentive compensation received for Robert Leeds in 2019 is not directly stated; the context only says he no longer participated in incentive compensation.",
+            "Incentive compensation received for Bruce Leeds is not directly stated in the context; the context only states that he no longer participates in incentive compensation."
+          ],
+          "oqa": {
+            "operator": "compare",
+            "precision": "unknown",
+            "reasoning_type": "DirectRetrieval",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "Richard Leeds",
+                  "meta": {
+                    "currency": "$",
+                    "scale": null,
+                    "unit": null
+                  },
+                  "temporal_scope": "2019"
+                },
+                "metric": "Incentive compensation received"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Robert Leeds",
+                  "meta": {
+                    "currency": "$",
+                    "scale": null,
+                    "unit": null
+                  },
+                  "temporal_scope": "2019"
+                },
+                "metric": "Incentive compensation received"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Bruce Leeds",
+                  "meta": {
+                    "currency": "$",
+                    "scale": null,
+                    "unit": null
+                  },
+                  "temporal_scope": "2019"
+                },
+                "metric": "Incentive compensation received"
+              }
+            ]
+          }
+        },
+        {
+          "id": "TAT-QA:37473c2794aadea84bf6a32fac8dbf59_a128d314dd89d86359ca8f3d53d20f07",
+          "question": "What is the percentage change in total segment net revenues between 2018 and 2019?",
+          "gold": -12.67,
+          "unanswerable": false,
+          "status": "answered",
+          "value": -12.670080468178494,
+          "meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": "percentage"
+          },
+          "category": "incorrect_numeric_answer",
+          "error": null,
+          "reason": "",
+          "oes_missing": [],
+          "oqa": {
+            "operator": "change ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "Total",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2018"
+                },
+                "metric": "Total segment net revenues"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Total",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2019"
+                },
+                "metric": "Total segment net revenues"
+              }
+            ]
+          }
+        },
+        {
+          "id": "TAT-QA:7f4f100eb8ea1c0d35ea646699df8978_56a23fdad76c4c725741a0689cbaf57a",
+          "question": "What was the total gross receivables for credit ratings 1 to 4 in 2019?",
+          "gold": "5,984",
+          "unanswerable": false,
+          "status": "abstained",
+          "value": null,
+          "meta": {},
+          "category": "false_abstention",
+          "error": null,
+          "reason": "At least one required subgoal could not be grounded",
+          "oes_missing": [
+            "Metric is 'unknown'; no specific requested metric can be matched to a labeled value in the context."
+          ],
+          "oqa": {
+            "operator": "sum",
+            "precision": "unknown",
+            "reasoning_type": "DirectRetrieval",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": null,
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  },
+                  "temporal_scope": null
+                },
+                "metric": "unknown"
+              }
+            ]
+          }
+        },
+        {
+          "id": "TAT-QA:a8c11cade3237853c6a6869143f7ec37_32533d1bd67d1ad3e0d03442495e23f0",
+          "question": "What was the percentage change in the retail satellite TV net customer losses from 2018 to 2019?",
+          "gold": "4.3%",
+          "unanswerable": false,
+          "status": "abstained",
+          "value": null,
+          "meta": {},
+          "category": "false_abstention",
+          "error": null,
+          "reason": "At least one required subgoal could not be grounded",
+          "oes_missing": [
+            "The requested metric is \"unknown\" and cannot be matched to an explicitly labeled value in the context."
+          ],
+          "oqa": {
+            "operator": "sum",
+            "precision": "unknown",
+            "reasoning_type": "DirectRetrieval",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": null,
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  },
+                  "temporal_scope": null
+                },
+                "metric": "unknown"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

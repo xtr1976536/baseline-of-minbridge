@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2167",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Worden Stochastic oscillator as a percentage from historical closing prices using a specified lookback period, including the most recent trading day and supporting a 5-day window?",
+        "usage": {
+          "prompt_tokens": 5080,
+          "completion_tokens": 41,
+          "total_tokens": 5121
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 17045,
+          "completion_tokens": 301,
+          "total_tokens": 17346,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 204
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 155, 151, 154, 156, 157, 158, 160, 162, 161, 159]\n    lookback_period = 5\n\n    # Do math calculation to get the answer\n    window = closing_prices[-lookback_period:]\n    rank = sorted(window).index(closing_prices[-1]) + 1\n    answer = (100 / (lookback_period - 1)) * (rank - 1)\n\n    # return answer\n    return round(answer, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5173,
+          "completion_tokens": 206,
+          "total_tokens": 5379,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 66
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2485",
+        "score": 2.132129192352295
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.77683687210083
+      },
+      {
+        "function_id": "article-1051",
+        "score": 1.669190764427185
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.6426291465759277
+      },
+      {
+        "function_id": "article-1050",
+        "score": 1.6092267036437988
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.603211760520935
+      },
+      {
+        "function_id": "article-2638",
+        "score": 1.6030439138412476
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.5938706398010254
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.5643346309661865
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.527103304862976
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.5027216672897339
+      },
+      {
+        "function_id": "article-1994",
+        "score": 1.4864802360534668
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.47541344165802
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.4603129625320435
+      },
+      {
+        "function_id": "article-2137",
+        "score": 1.4576666355133057
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.45584237575531
+      },
+      {
+        "function_id": "article-345",
+        "score": 1.4528229236602783
+      },
+      {
+        "function_id": "article-1897",
+        "score": 1.4518098831176758
+      },
+      {
+        "function_id": "article-3065",
+        "score": 1.4500761032104492
+      },
+      {
+        "function_id": "article-2658",
+        "score": 1.4457755088806152
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.4451730251312256
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.44395112991333
+      },
+      {
+        "function_id": "article-2195",
+        "score": 1.4415404796600342
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.4360114336013794
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.421201229095459
+      },
+      {
+        "function_id": "article-2196",
+        "score": 1.420584797859192
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.4187368154525757
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.4182579517364502
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.4177730083465576
+      },
+      {
+        "function_id": "article-3025",
+        "score": 1.4167687892913818
+      }
+    ],
+    "selected_ids": [
+      "article-2485"
+    ],
+    "status": "ok",
+    "answer": 25.0,
+    "code": "def solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 155, 151, 154, 156, 157, 158, 160, 162, 161, 159]\n    lookback_period = 5\n\n    # Do math calculation to get the answer\n    window = closing_prices[-lookback_period:]\n    rank = sorted(window).index(closing_prices[-1]) + 1\n    answer = (100 / (lookback_period - 1)) * (rank - 1)\n\n    # return answer\n    return round(answer, 2)\n"
+  },
+  "digest": "4ca5b4f7bf61fe1f6ec0cb1838f2a1a3245a0a189a44f076c379297053259c79"
+}

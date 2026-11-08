@@ -1,0 +1,21 @@
+{
+  "identity": "06aedee2dd1a49bf33c9ba8203b50fce0e4ea0d67c5f250c9344b22ae585fefc",
+  "response_digest": "d788771eaf0f7c4cf6124f5d1cc6a5e440117d602a87a14a930c5042d152d452",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    starting_assets = 515.0\n    ending_assets = 602.5\n    high_water_mark = 540.0\n    hurdle_rate = 0.05\n    management_fee_rate = 0.02\n    performance_fee_rate = 0.20\n\n    # Do math calculation to get the answer\n    hurdle_value = starting_assets * (1 + hurdle_rate)\n    performance_fee_threshold = max(high_water_mark, hurdle_value)\n    management_fee = ending_assets * management_fee_rate\n    performance_fee = max(0.0, ending_assets - performance_fee_threshold) * performance_fee_rate\n    net_ending_assets = ending_assets - management_fee - performance_fee\n    answer = (net_ending_assets / starting_assets - 1) * 100\n\n    # return answer\n    return round(answer, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5644,
+      "completion_tokens": 304,
+      "total_tokens": 5948,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 110
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

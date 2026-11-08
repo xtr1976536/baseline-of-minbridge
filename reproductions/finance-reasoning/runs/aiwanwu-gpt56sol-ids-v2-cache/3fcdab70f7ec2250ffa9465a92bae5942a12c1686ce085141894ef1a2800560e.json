@@ -1,0 +1,21 @@
+{
+  "identity": "3fcdab70f7ec2250ffa9465a92bae5942a12c1686ce085141894ef1a2800560e",
+  "response_digest": "022b15651529563ac86fac3d109e7c068f15ec81fd088c3ab9ee60d98361ceb9",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    close_prices = [\n        145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159, 160,\n        162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173, 175,\n        176, 177, 178, 180\n    ]\n\n    low_prices = [\n        140, 145, 148, 147, 149, 150, 152, 153, 154, 155, 156, 157,\n        159, 158, 160, 162, 163, 164, 165, 167, 168, 169, 170, 172,\n        173, 174, 175, 177\n    ]\n\n    high_prices = [\n        150, 151, 153, 155, 156, 158, 159, 160, 161, 162, 163, 164,\n        165, 167, 168, 169, 170, 171, 172, 174, 175, 176, 177, 179,\n        180, 181, 182, 183\n    ]\n\n    prior_close_prices = [\n        144, 145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159,\n        160, 162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173,\n        175, 176, 177, 178\n    ]\n\n    # Calculate buying pressure and true range\n    bp_values = []\n    tr_values = []\n\n    for close, low, high, prior_close in zip(\n        close_prices, low_prices, high_prices, prior_close_prices\n    ):\n        minimum_price = min(low, prior_close)\n        maximum_price = max(high, prior_close)\n\n        bp_values.append(close - minimum_price)\n        tr_values.append(maximum_price - minimum_price)\n\n    # Calculate weighted averages for the 7, 14, and 28 period windows\n    def average(period):\n        buying_pressure = sum(bp_values[-period:])\n        true_range = sum(tr_values[-period:])\n        return buying_pressure / true_range if true_range else 0\n\n    average_7 = average(7)\n    average_14 = average(14)\n    average_28 = average(28)\n\n    # Calculate and round the Ultimate Oscillator\n    ultimate_oscillator = (\n        (average_7 * 4 + average_14 * 2 + average_28) / 7\n    ) * 100\n\n    answer = round(ultimate_oscillator, 2)\n\n    # Return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5522,
+      "completion_tokens": 692,
+      "total_tokens": 6214,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 52
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

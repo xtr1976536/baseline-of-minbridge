@@ -1,0 +1,21 @@
+{
+  "identity": "d3a9b0982f161473fc1d4ee79793fdfd634a5bb6443179830fed16e5f7aab237",
+  "response_digest": "83e929c498c916c4ee6070d3591e4e093f3074d4e5bc524ba59c1addb268f3d7",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    sofr_changes = [0.014, 0.016, 0.018, 0.020, 0.022]\n    notional_principal = 1_000_000\n    fixed_rate = 0.025\n    basis_points = 0.0035\n    years = 5\n\n    # Do math calculation to get the answer\n    total_gain_or_loss = 0\n\n    for year in range(years):\n        variable_rate = sofr_changes[year] + basis_points\n        annual_gain_or_loss = notional_principal * (\n            variable_rate - fixed_rate\n        )\n        total_gain_or_loss += annual_gain_or_loss\n\n    # return answer\n    return round(total_gain_or_loss)\n```",
+    "usage": {
+      "prompt_tokens": 5942,
+      "completion_tokens": 318,
+      "total_tokens": 6260,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 145
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

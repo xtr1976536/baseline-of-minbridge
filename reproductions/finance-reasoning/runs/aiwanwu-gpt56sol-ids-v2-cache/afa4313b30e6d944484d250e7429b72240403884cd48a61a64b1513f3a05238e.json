@@ -1,0 +1,21 @@
+{
+  "identity": "afa4313b30e6d944484d250e7429b72240403884cd48a61a64b1513f3a05238e",
+  "response_digest": "647445b5b89c40358fa87fdfe14a1f140ebde961dade11e0f48088972a4e6754",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    mean_1 = 8\n    mean_2 = 6\n    var_1 = 4\n    var_2 = 3\n    n1 = 5\n    n2 = 5\n\n    # Calculate pooled variance according to the provided function\n    pooled_variance = (\n        ((n1 - 1) * var_1 ** 2) +\n        ((n2 - 1) * var_2 ** 2)\n    ) / (n1 + n2 - 2)\n\n    # Calculate the equal variance t-value\n    t_value = (mean_1 - mean_2) / (\n        pooled_variance * (1 / n1 + 1 / n2)\n    ) ** 0.5\n\n    # Return the t-value rounded to two decimal places\n    return round(t_value, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5150,
+      "completion_tokens": 380,
+      "total_tokens": 5530,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 183
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

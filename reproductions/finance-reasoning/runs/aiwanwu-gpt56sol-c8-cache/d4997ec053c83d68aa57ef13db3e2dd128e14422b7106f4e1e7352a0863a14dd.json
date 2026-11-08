@@ -1,0 +1,21 @@
+{
+  "identity": "d4997ec053c83d68aa57ef13db3e2dd128e14422b7106f4e1e7352a0863a14dd",
+  "response_digest": "77cceedc1311988e099e6636722f556b4996464901556f4293fca0971a130f06",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    ana = 550\n    prior_19_day_ema = 528\n    prior_39_day_ema = 530\n\n    # Calculate the current EMAs\n    ema_19_day = (ana * 0.10) + (prior_19_day_ema * 0.90)\n    ema_39_day = (ana * 0.05) + (prior_39_day_ema * 0.95)\n\n    # Calculate the adjusted McClellan Oscillator\n    adjusted_mcclellan_oscillator = ema_19_day - ema_39_day\n\n    # Return the answer to two decimal places\n    return f\"{adjusted_mcclellan_oscillator:.2f}\"\n```",
+    "usage": {
+      "prompt_tokens": 5090,
+      "completion_tokens": 292,
+      "total_tokens": 5382,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 121
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "record": {
+    "question_id": "test-2110",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the total undiscounted gain or loss over a multi-year interest rate swap by summing annual net cash flows on a fixed notional principal, where one counterparty pays a fixed annual rate and receives a floating benchmark rate plus a basis-point spread, using a series of annual benchmark rates and returning the result in USD rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5130,
+          "completion_tokens": 169,
+          "total_tokens": 5299,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 91
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15194,
+          "completion_tokens": 359,
+          "total_tokens": 15553,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 262
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    sofr_changes = [0.014, 0.016, 0.018, 0.020, 0.022]\n    notional_principal = 1_000_000\n    fixed_rate = 0.025\n    basis_points = 0.0035\n    years = 5\n\n    # Do math calculation to get the answer\n    total_gain_loss = 0\n\n    for year in range(years):\n        variable_rate = sofr_changes[year] + basis_points\n        annual_gain_loss = notional_principal * (variable_rate - fixed_rate)\n        total_gain_loss += annual_gain_loss\n\n    # return answer\n    return round(total_gain_loss)\n```",
+        "usage": {
+          "prompt_tokens": 5942,
+          "completion_tokens": 267,
+          "total_tokens": 6209,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 102
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2677",
+        "score": 1.9382009506225586
+      },
+      {
+        "function_id": "article-2679",
+        "score": 1.8520296812057495
+      },
+      {
+        "function_id": "article-237",
+        "score": 1.8438491821289062
+      },
+      {
+        "function_id": "article-419",
+        "score": 1.789384365081787
+      },
+      {
+        "function_id": "article-2678",
+        "score": 1.7827597856521606
+      },
+      {
+        "function_id": "article-2381",
+        "score": 1.7775366306304932
+      },
+      {
+        "function_id": "article-1921",
+        "score": 1.702883005142212
+      },
+      {
+        "function_id": "article-2976",
+        "score": 1.7018855810165405
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.68049955368042
+      },
+      {
+        "function_id": "article-1424",
+        "score": 1.6689884662628174
+      },
+      {
+        "function_id": "article-445",
+        "score": 1.6650515794754028
+      },
+      {
+        "function_id": "article-26",
+        "score": 1.6649456024169922
+      },
+      {
+        "function_id": "article-2525",
+        "score": 1.6602783203125
+      },
+      {
+        "function_id": "article-2056",
+        "score": 1.659121036529541
+      },
+      {
+        "function_id": "article-1477",
+        "score": 1.6546212434768677
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.6420948505401611
+      },
+      {
+        "function_id": "article-3127",
+        "score": 1.6350383758544922
+      },
+      {
+        "function_id": "article-678",
+        "score": 1.6301116943359375
+      },
+      {
+        "function_id": "article-2055",
+        "score": 1.6275663375854492
+      },
+      {
+        "function_id": "article-2917",
+        "score": 1.6154319047927856
+      },
+      {
+        "function_id": "article-1030",
+        "score": 1.6112207174301147
+      },
+      {
+        "function_id": "article-432",
+        "score": 1.6101527214050293
+      },
+      {
+        "function_id": "article-2202",
+        "score": 1.608304738998413
+      },
+      {
+        "function_id": "article-1103",
+        "score": 1.6042115688323975
+      },
+      {
+        "function_id": "article-1992",
+        "score": 1.6015946865081787
+      },
+      {
+        "function_id": "article-2915",
+        "score": 1.6006858348846436
+      },
+      {
+        "function_id": "article-2369",
+        "score": 1.6005418300628662
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.5970699787139893
+      },
+      {
+        "function_id": "article-443",
+        "score": 1.593796730041504
+      },
+      {
+        "function_id": "article-1432",
+        "score": 1.5928955078125
+      }
+    ],
+    "selected_ids": [
+      "article-2677",
+      "article-2679",
+      "article-2678"
+    ],
+    "status": "ok",
+    "answer": -17500,
+    "code": "def solution():\n    # Define variables name and value\n    sofr_changes = [0.014, 0.016, 0.018, 0.020, 0.022]\n    notional_principal = 1_000_000\n    fixed_rate = 0.025\n    basis_points = 0.0035\n    years = 5\n\n    # Do math calculation to get the answer\n    total_gain_loss = 0\n\n    for year in range(years):\n        variable_rate = sofr_changes[year] + basis_points\n        annual_gain_loss = notional_principal * (variable_rate - fixed_rate)\n        total_gain_loss += annual_gain_loss\n\n    # return answer\n    return round(total_gain_loss)\n"
+  },
+  "digest": "7268de1c7a041273858e832adecf799f19cb051e958334530f6169866fbe1e56"
+}

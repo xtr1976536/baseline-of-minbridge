@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2076",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fixed monthly payment for a fully amortizing loan using the principal amount, annual interest rate converted to a monthly rate, and total repayment term in months, with the result rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 5000,
+          "completion_tokens": 47,
+          "total_tokens": 5047,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL]",
+        "usage": {
+          "prompt_tokens": 16875,
+          "completion_tokens": 1514,
+          "total_tokens": 18389,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1417
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    loan_amount = 25000\n    annual_interest_rate = 0.05\n    loan_term_years = 5\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    monthly_payment = (\n        loan_amount * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    # return answer\n    return round(monthly_payment, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5579,
+          "completion_tokens": 180,
+          "total_tokens": 5759,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 47
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-581",
+        "score": 1.9938859939575195
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.9621777534484863
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.9477423429489136
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.9467999935150146
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.9426794052124023
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.9352909326553345
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.921478509902954
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.8959869146347046
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.8879714012145996
+      },
+      {
+        "function_id": "article-1638",
+        "score": 1.8631665706634521
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.8415985107421875
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.8072983026504517
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.8036898374557495
+      },
+      {
+        "function_id": "article-2309",
+        "score": 1.8020316362380981
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.7987090349197388
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.7963811159133911
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.7949410676956177
+      },
+      {
+        "function_id": "article-578",
+        "score": 1.7917895317077637
+      },
+      {
+        "function_id": "article-582",
+        "score": 1.7869174480438232
+      },
+      {
+        "function_id": "article-677",
+        "score": 1.7826594114303589
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.7810277938842773
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.7808502912521362
+      },
+      {
+        "function_id": "article-2311",
+        "score": 1.780032753944397
+      },
+      {
+        "function_id": "article-1068",
+        "score": 1.7763879299163818
+      },
+      {
+        "function_id": "article-2273",
+        "score": 1.7689447402954102
+      },
+      {
+        "function_id": "article-676",
+        "score": 1.7664597034454346
+      },
+      {
+        "function_id": "article-1480",
+        "score": 1.7548894882202148
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.7493236064910889
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.7491916418075562
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.7488678693771362
+      }
+    ],
+    "selected_ids": [
+      "article-581",
+      "article-2308",
+      "article-784"
+    ],
+    "status": "ok",
+    "answer": 471.78,
+    "code": "def solution():\n    # Define variables name and value\n    loan_amount = 25000\n    annual_interest_rate = 0.05\n    loan_term_years = 5\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    monthly_payment = (\n        loan_amount * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    # return answer\n    return round(monthly_payment, 2)\n"
+  },
+  "digest": "97bb73f1c2d6d598d0c807fca736719895e516f85677585dfcc6bc6293602ece"
+}

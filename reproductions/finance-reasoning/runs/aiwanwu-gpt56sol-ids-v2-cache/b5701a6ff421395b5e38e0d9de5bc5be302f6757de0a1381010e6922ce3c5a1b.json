@@ -1,0 +1,21 @@
+{
+  "identity": "b5701a6ff421395b5e38e0d9de5bc5be302f6757de0a1381010e6922ce3c5a1b",
+  "response_digest": "6586d46c25af6d1a8b48cd7ce716f3a588d3772f71f1edb0b898304057243c9d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 10000\n    coupon_rate = 0.05\n    discount_rate = 0.04\n    years_to_maturity = 5\n    annual_coupon = face_value * coupon_rate\n\n    # Do math calculation to get the answer\n    present_value_coupons = sum(\n        annual_coupon / ((1 + discount_rate) ** year)\n        for year in range(1, years_to_maturity + 1)\n    )\n    present_value_face_value = face_value / ((1 + discount_rate) ** years_to_maturity)\n    bond_value = present_value_coupons + present_value_face_value\n\n    # Return the answer rounded to the nearest integer\n    return round(bond_value)\n```",
+    "usage": {
+      "prompt_tokens": 5786,
+      "completion_tokens": 241,
+      "total_tokens": 6027,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 71
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "request_hash": "3733b1dc6e3084546e691290b5364c4c95dc6e226966596fd4ac9f8bc493b3b0",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat was MGM's interest coverage ratio using FY2022 Adjusted EBIT as the numerator and annual Interest Expense as the denominator?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"interest_coverage_ratio\",\n  \"facts\": [\n    {\n      \"name\": \"fy2022_adjusted_ebit\",\n      \"aliases\": [\n        \"Adjusted EBIT\",\n        \"Adjusted operating income\",\n        \"Adjusted income from operations\",\n        \"Adjusted earnings before interest and taxes\"\n      ],\n      \"period\": \"FY2022\",\n      \"statement\": \"proxy\"\n    },\n    {\n      \"name\": \"fy2022_annual_interest_expense\",\n      \"aliases\": [\n        \"Interest expense\",\n        \"Interest expense, net\",\n        \"Interest expense, including finance lease liabilities\",\n        \"Interest expense, net of amounts capitalized\"\n      ],\n      \"period\": \"FY2022\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Calculate interest coverage as FY2022 Adjusted EBIT divided by FY2022 annual Interest Expense.\"\n}",
+  "usage": {
+    "prompt_tokens": 4703,
+    "completion_tokens": 245,
+    "total_tokens": 4948,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 53
+    }
+  },
+  "response_id": "resp_066a4a33eddd7ba2016aedba4b59a087d1b5f943f9ed00e546",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

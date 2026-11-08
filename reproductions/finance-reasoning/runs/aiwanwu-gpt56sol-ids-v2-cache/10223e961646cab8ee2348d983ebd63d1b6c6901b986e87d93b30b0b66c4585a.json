@@ -1,0 +1,18 @@
+{
+  "identity": "10223e961646cab8ee2348d983ebd63d1b6c6901b986e87d93b30b0b66c4585a",
+  "response_digest": "80e67303c0b55507411cebe9ae8fc7ccd13d9d83255e10fbd2cc503c3122192d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    add_on_rate = 0.065\n    days_to_maturity = 150\n    money_market_year = 360\n    bond_equivalent_year = 365\n\n    # Do math calculation to get the answer\n    holding_period_rate = add_on_rate * days_to_maturity / money_market_year\n    purchase_price_fraction = 1 - holding_period_rate\n    bond_equivalent_yield = (\n        holding_period_rate\n        / purchase_price_fraction\n        * bond_equivalent_year\n        / days_to_maturity\n        * 100\n    )\n\n    # return answer\n    return round(bond_equivalent_yield, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5221,
+      "completion_tokens": 475,
+      "total_tokens": 5696,
+      "completion_tokens_details": {
+        "reasoning_tokens": 320
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

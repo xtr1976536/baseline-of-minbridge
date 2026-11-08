@@ -1,0 +1,18 @@
+{
+  "identity": "14121ddab37b126d0bdc51943561bc945caceffdeea65e355f2b94dbdcfe4e88",
+  "response_digest": "4ab5a759e8b18d94427453120dad7272dde5ea58b3c2a8bbd09661b6a94b0810",
+  "response": {
+    "content": "```python\ndef solution():\n    bid_rates = [6.2, 6.4, 6.1, 6.5, 6.3, 6.4, 6.0, 6.1]\n    offer_rates = [6.6, 6.7, 6.5, 6.8, 6.7, 6.8, 6.4, 6.5]\n\n    mid_rates = sorted(\n        (bid + offer) / 2\n        for bid, offer in zip(bid_rates, offer_rates)\n    )\n    trimmed_mid_rates = mid_rates[2:-2]\n    jibar_rate = sum(trimmed_mid_rates) / len(trimmed_mid_rates)\n\n    return round(jibar_rate, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5567,
+      "completion_tokens": 296,
+      "total_tokens": 5863,
+      "completion_tokens_details": {
+        "reasoning_tokens": 123
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

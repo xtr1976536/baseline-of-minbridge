@@ -1,0 +1,224 @@
+{
+  "record": {
+    "question_id": "test-2109",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the number of stock index futures contracts required to rebalance a portfolio from a current stock/bond allocation to a target allocation, incorporating portfolio value, equity beta, futures index level, contract multiplier, futures beta, and bond duration or bond-futures pricing adjustments, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5058,
+          "completion_tokens": 119,
+          "total_tokens": 5177,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 49
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C12\"]}",
+        "usage": {
+          "prompt_tokens": 13445,
+          "completion_tokens": 540,
+          "total_tokens": 13985,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    fund_value = 100_000_000\n    current_share_weight = 0.80\n    target_share_weight = 0.60\n    share_beta = 1.20\n    futures_index_level = 1_200\n    futures_multiplier = 250\n    futures_beta = 0.95\n\n    # Calculate the equity exposure to be shifted\n    equity_exposure_shift = (\n        (current_share_weight - target_share_weight)\n        * fund_value\n        * share_beta\n    )\n\n    # Calculate the beta-adjusted value of one stock index futures contract\n    futures_contract_value = futures_index_level * futures_multiplier\n    beta_adjusted_contract_value = futures_contract_value * futures_beta\n\n    # Calculate the number of stock index futures contracts\n    contracts = equity_exposure_shift / beta_adjusted_contract_value\n\n    # Return the answer rounded to three decimal places\n    return round(contracts, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5495,
+          "completion_tokens": 597,
+          "total_tokens": 6092,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 388
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-659",
+        "score": 1.7960050106048584,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-394",
+        "score": 1.7259948253631592,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.6986256837844849,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-660",
+        "score": 1.69685959815979,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2691",
+        "score": 1.6836538314819336,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.678810954093933,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2692",
+        "score": 1.6507701873779297,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.6331533193588257,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-396",
+        "score": 1.6297178268432617,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1468",
+        "score": 1.6257237195968628,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-395",
+        "score": 1.6247138977050781,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1027",
+        "score": 1.616647481918335,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.61544930934906,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-105",
+        "score": 1.6137875318527222,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6132839918136597,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1291",
+        "score": 1.6099456548690796,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1744",
+        "score": 1.5951642990112305,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-397",
+        "score": 1.585819959640503,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1105",
+        "score": 1.5854694843292236,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.58115553855896,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1889",
+        "score": 1.5763943195343018,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-663",
+        "score": 1.575944423675537,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.5743703842163086,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-398",
+        "score": 1.554284930229187,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2137",
+        "score": 1.5499916076660156,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1106",
+        "score": 1.5440489053726196,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-700",
+        "score": 1.5401829481124878,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1230",
+        "score": 1.53706693649292,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.5359238386154175,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-3071",
+        "score": 1.5349154472351074,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-659",
+      "article-394",
+      "article-1027"
+    ],
+    "status": "ok",
+    "answer": 84.211,
+    "code": "def solution():\n    # Define variables\n    fund_value = 100_000_000\n    current_share_weight = 0.80\n    target_share_weight = 0.60\n    share_beta = 1.20\n    futures_index_level = 1_200\n    futures_multiplier = 250\n    futures_beta = 0.95\n\n    # Calculate the equity exposure to be shifted\n    equity_exposure_shift = (\n        (current_share_weight - target_share_weight)\n        * fund_value\n        * share_beta\n    )\n\n    # Calculate the beta-adjusted value of one stock index futures contract\n    futures_contract_value = futures_index_level * futures_multiplier\n    beta_adjusted_contract_value = futures_contract_value * futures_beta\n\n    # Calculate the number of stock index futures contracts\n    contracts = equity_exposure_shift / beta_adjusted_contract_value\n\n    # Return the answer rounded to three decimal places\n    return round(contracts, 3)\n"
+  },
+  "digest": "b8013c9afc4a753996e154144d01cdc14e77f0226af7ae1861f32229e3db3718"
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "1fa6c85f7e649a16b6757b7289c3ca671dfb7969e7268f8fe74d4dd63aa72eba",
+  "response_digest": "d53c40df5042db1aaef2b75d8257bc92097496f408df5ecf1bf799c7a25c1051",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    bond_price = 950.0\n    cash_flows = [50.0, 50.0, 1050.0]\n    spot_rates = [0.015, 0.018, 0.020]\n    periods = [1, 2, 3]\n\n    # Do math calculation to get the answer\n    from scipy.optimize import fsolve\n\n    def pv_difference(z_spread):\n        present_value = sum(\n            cash_flow / ((1 + (spot_rate + z_spread) / 2) ** (2 * period))\n            for cash_flow, spot_rate, period\n            in zip(cash_flows, spot_rates, periods)\n        )\n        return present_value - bond_price\n\n    z_spread = fsolve(pv_difference, 0.0)[0]\n    answer = round(z_spread * 100, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5171,
+      "completion_tokens": 530,
+      "total_tokens": 5701,
+      "prompt_tokens_details": {
+        "cached_tokens": 3495
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 317
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

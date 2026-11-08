@@ -1,0 +1,21 @@
+{
+  "identity": "a308ff0b40a454937c35b97bfce1ea1de9da38ecc3b3d7a4091c4b6107b3e536",
+  "response_digest": "5920bc1898a7d026a530a80e97cba527f73f4084fa0026500519a8cb61a92ef1",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 350000\n    fully_indexed_rate = 0.05\n    loan_term_months = 240\n\n    # Calculate the monthly payment using the amortization formula\n    monthly_rate = fully_indexed_rate / 12\n    monthly_payment = principal * (\n        monthly_rate * (1 + monthly_rate) ** loan_term_months\n    ) / ((1 + monthly_rate) ** loan_term_months - 1)\n\n    # Return the answer rounded to the nearest cent\n    return round(monthly_payment, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5731,
+      "completion_tokens": 154,
+      "total_tokens": 5885,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 20
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

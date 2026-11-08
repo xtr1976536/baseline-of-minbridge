@@ -1,0 +1,21 @@
+{
+  "identity": "4ff919017603fb735cd33cec41e1f607c38dca6978634aa884849845dbe6dfab",
+  "response_digest": "c2922512f98e67fcb53ab419f748c1db01af8c1bc527d95ee1e76db6224d14cf",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    starting_assets = 160.0\n    growth_rate = 0.25\n    management_fee_rate = 0.02\n    performance_fee_rate = 0.20\n    hurdle_rate = 0.10\n    high_water_mark = 198.0\n\n    # Do math calculation to get the answer\n    end_year_assets = starting_assets * (1 + growth_rate)\n    management_fee = end_year_assets * management_fee_rate\n\n    # The soft hurdle is satisfied, but the net asset value remains below\n    # the prior high-water mark, so no incentive fee is collected.\n    net_assets_after_management_fee = end_year_assets - management_fee\n    hurdle_value = starting_assets * (1 + hurdle_rate)\n\n    if net_assets_after_management_fee > high_water_mark and net_assets_after_management_fee > hurdle_value:\n        performance_fee = (\n            net_assets_after_management_fee - high_water_mark\n        ) * performance_fee_rate\n    else:\n        performance_fee = 0.0\n\n    total_fees = management_fee + performance_fee\n\n    # return answer\n    return round(total_fees, 1)\n```",
+    "usage": {
+      "prompt_tokens": 5552,
+      "completion_tokens": 575,
+      "total_tokens": 6127,
+      "prompt_tokens_details": {
+        "cached_tokens": 3764
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 321
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

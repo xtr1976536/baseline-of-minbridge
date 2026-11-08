@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2132",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the forward price of an asset using annual compounding from the current spot price, risk-free interest rate, time to contract expiration in years, and present values of asset benefits and costs, incorporating net benefits as \\((\\text{benefits} - \\text{costs})\\) and supporting fractional maturities?",
+        "usage": {
+          "prompt_tokens": 5000,
+          "completion_tokens": 71,
+          "total_tokens": 5071,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14902,
+          "completion_tokens": 613,
+          "total_tokens": 15515,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    spot_price = 50\n    risk_free_rate = 0.04\n    time_to_maturity = 3 / 12\n    advantages = 5\n    disadvantages = 6\n\n    # Do math calculation to get the answer\n    net_current_value = spot_price + advantages - disadvantages\n    forward_price = net_current_value * (1 + risk_free_rate) ** time_to_maturity\n    answer = round(forward_price, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5571,
+          "completion_tokens": 200,
+          "total_tokens": 5771,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 75
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-612",
+        "score": 1.9278453588485718
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.8277575969696045
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.706403374671936
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.688988208770752
+      },
+      {
+        "function_id": "article-614",
+        "score": 1.6701390743255615
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.6576685905456543
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.648484468460083
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.6456139087677002
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.641686201095581
+      },
+      {
+        "function_id": "article-2180",
+        "score": 1.638878583908081
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.6301642656326294
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.6290099620819092
+      },
+      {
+        "function_id": "article-616",
+        "score": 1.628091812133789
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.6278935670852661
+      },
+      {
+        "function_id": "article-159",
+        "score": 1.6269344091415405
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.6267404556274414
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6246412992477417
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.6221318244934082
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.6180622577667236
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.6177932024002075
+      },
+      {
+        "function_id": "article-2657",
+        "score": 1.6113476753234863
+      },
+      {
+        "function_id": "article-2895",
+        "score": 1.6099746227264404
+      },
+      {
+        "function_id": "article-2858",
+        "score": 1.6081386804580688
+      },
+      {
+        "function_id": "article-700",
+        "score": 1.603172779083252
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.6007394790649414
+      },
+      {
+        "function_id": "article-2344",
+        "score": 1.5980876684188843
+      },
+      {
+        "function_id": "article-1897",
+        "score": 1.5978944301605225
+      },
+      {
+        "function_id": "article-1524",
+        "score": 1.5945873260498047
+      },
+      {
+        "function_id": "article-2944",
+        "score": 1.593860149383545
+      },
+      {
+        "function_id": "article-1097",
+        "score": 1.5926823616027832
+      }
+    ],
+    "selected_ids": [
+      "article-2623",
+      "article-657",
+      "article-141"
+    ],
+    "status": "ok",
+    "answer": 49.483,
+    "code": "def solution():\n    # Define variables name and value\n    spot_price = 50\n    risk_free_rate = 0.04\n    time_to_maturity = 3 / 12\n    advantages = 5\n    disadvantages = 6\n\n    # Do math calculation to get the answer\n    net_current_value = spot_price + advantages - disadvantages\n    forward_price = net_current_value * (1 + risk_free_rate) ** time_to_maturity\n    answer = round(forward_price, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "58fb9dfa81594e114a5f0219446b544f92f2614764f9e6b5f53b9fe2d18a1d7c"
+}

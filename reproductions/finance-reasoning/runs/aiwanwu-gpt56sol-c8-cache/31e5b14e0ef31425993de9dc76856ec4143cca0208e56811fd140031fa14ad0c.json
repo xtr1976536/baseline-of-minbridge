@@ -1,0 +1,21 @@
+{
+  "identity": "31e5b14e0ef31425993de9dc76856ec4143cca0208e56811fd140031fa14ad0c",
+  "response_digest": "32ae2d7b053b49634b037e59fbd5de8a4368c8de99589134467b7d21358fb838",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    weight_1 = 0.30\n    weight_2 = 0.70\n    std_dev_1 = 0.12\n    std_dev_2 = 0.25\n    correlation = 0.20\n\n    # Do math calculation to get the answer\n    covariance = correlation * std_dev_1 * std_dev_2\n    portfolio_variance = (\n        weight_1**2 * std_dev_1**2\n        + weight_2**2 * std_dev_2**2\n        + 2 * weight_1 * weight_2 * covariance\n    )\n    portfolio_std_dev_percentage = portfolio_variance**0.5 * 100\n    answer = round(portfolio_std_dev_percentage, 2)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5935,
+      "completion_tokens": 275,
+      "total_tokens": 6210,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 88
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "request_hash": "3334b2b03d2cfafcd8b5bd606137efe8185eb740f5d1b3d0816303be19d2cf20",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWe need to calculate a financial metric by using information only provided within the balance sheet. Please answer the following question: what is Boeing's year end FY2018 net property, plant, and equipment (in USD millions)?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"net_property_plant_and_equipment\",\"facts\":[{\"name\":\"net_property_plant_and_equipment\",\"aliases\":[\"Property, plant and equipment, net\",\"Property, plant and equipment — net\",\"Net property, plant and equipment\",\"Property and equipment, net\",\"PP&E, net\"],\"period\":\"FY2018 year end\",\"statement\":\"balance sheet\"}],\"reason\":\"Direct lookup of Boeing's year-end FY2018 net property, plant, and equipment balance sheet amount in USD millions.\"}",
+  "usage": {
+    "prompt_tokens": 4722,
+    "completion_tokens": 106,
+    "total_tokens": 4828,
+    "prompt_tokens_details": {
+      "cached_tokens": 4480
+    }
+  },
+  "response_id": "resp_086d351d0244f16c016aedb4cc6d0c87d0890a7192013314da",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:depreciation_amortization)

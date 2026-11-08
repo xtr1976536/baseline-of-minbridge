@@ -1,0 +1,186 @@
+{
+  "record": {
+    "question_id": "test-2079",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates total household-employer nanny payroll taxes by applying combined Social Security and Medicare rates to total wages, adding federal unemployment tax only on wages up to the applicable wage base, excluding state taxes, and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5064,
+          "completion_tokens": 53,
+          "total_tokens": 5117
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16431,
+          "completion_tokens": 367,
+          "total_tokens": 16798,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 270
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    wages = 25000\n    social_security_medicare_rate = 0.0765\n    futa_wage_base = 7000\n    futa_rate = 0.06\n\n    # Do math calculation to get the answer\n    social_security_medicare_tax = wages * social_security_medicare_rate * 2\n    futa_tax = min(wages, futa_wage_base) * futa_rate\n    total_tax = social_security_medicare_tax + futa_tax\n\n    # return answer\n    return round(total_tax)\n```",
+        "usage": {
+          "prompt_tokens": 5457,
+          "completion_tokens": 194,
+          "total_tokens": 5651,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 55
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2851",
+        "score": 2.219775915145874
+      },
+      {
+        "function_id": "article-1259",
+        "score": 1.8038098812103271
+      },
+      {
+        "function_id": "article-1857",
+        "score": 1.7362624406814575
+      },
+      {
+        "function_id": "article-529",
+        "score": 1.7170212268829346
+      },
+      {
+        "function_id": "article-1858",
+        "score": 1.7041075229644775
+      },
+      {
+        "function_id": "article-532",
+        "score": 1.6677888631820679
+      },
+      {
+        "function_id": "article-508",
+        "score": 1.573734998703003
+      },
+      {
+        "function_id": "article-1087",
+        "score": 1.5708597898483276
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.5690491199493408
+      },
+      {
+        "function_id": "article-2563",
+        "score": 1.5571657419204712
+      },
+      {
+        "function_id": "article-2484",
+        "score": 1.5400221347808838
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.526386022567749
+      },
+      {
+        "function_id": "article-403",
+        "score": 1.5259335041046143
+      },
+      {
+        "function_id": "article-2694",
+        "score": 1.524673581123352
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.5227901935577393
+      },
+      {
+        "function_id": "article-2520",
+        "score": 1.5209647417068481
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.515641689300537
+      },
+      {
+        "function_id": "article-1746",
+        "score": 1.5140000581741333
+      },
+      {
+        "function_id": "article-1818",
+        "score": 1.5115801095962524
+      },
+      {
+        "function_id": "article-594",
+        "score": 1.5016136169433594
+      },
+      {
+        "function_id": "article-1802",
+        "score": 1.5014002323150635
+      },
+      {
+        "function_id": "article-1257",
+        "score": 1.4989795684814453
+      },
+      {
+        "function_id": "article-2274",
+        "score": 1.4957809448242188
+      },
+      {
+        "function_id": "article-2853",
+        "score": 1.487714171409607
+      },
+      {
+        "function_id": "article-1163",
+        "score": 1.4758448600769043
+      },
+      {
+        "function_id": "article-1088",
+        "score": 1.4756982326507568
+      },
+      {
+        "function_id": "article-2429",
+        "score": 1.4742515087127686
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.471813440322876
+      },
+      {
+        "function_id": "article-1799",
+        "score": 1.4673011302947998
+      },
+      {
+        "function_id": "article-2953",
+        "score": 1.4666796922683716
+      }
+    ],
+    "selected_ids": [
+      "article-2851",
+      "article-532"
+    ],
+    "status": "ok",
+    "answer": 4245,
+    "code": "def solution():\n    # Define variables name and value\n    wages = 25000\n    social_security_medicare_rate = 0.0765\n    futa_wage_base = 7000\n    futa_rate = 0.06\n\n    # Do math calculation to get the answer\n    social_security_medicare_tax = wages * social_security_medicare_rate * 2\n    futa_tax = min(wages, futa_wage_base) * futa_rate\n    total_tax = social_security_medicare_tax + futa_tax\n\n    # return answer\n    return round(total_tax)\n"
+  },
+  "digest": "2b13773f4c4130e71cdaac8bd6303115bc13646d894be7e7b446fdb8df392cec"
+}

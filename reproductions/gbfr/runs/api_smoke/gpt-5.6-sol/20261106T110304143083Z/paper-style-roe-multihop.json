@@ -1,0 +1,74 @@
+{
+  "case": {
+    "id": "paper-style-roe-multihop",
+    "question": "Compute Company A's Return on Equity (ROE) for fiscal year 2024 as a percentage, rounded to two decimal places. Use average equity.",
+    "context": "Company A annual report. All financial amounts are in USD millions. Net Profit for fiscal year 2024: 500. Total Equity at the end of fiscal year 2024: 2500. Total Equity at the end of fiscal year 2023: 2200. No other values are reported.",
+    "expected": "answered",
+    "expected_percent": 21.27659574468085
+  },
+  "prediction": {
+    "status": "abstained",
+    "value": null,
+    "meta": {},
+    "precision": "percentage to two decimal places",
+    "trace": {
+      "events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "reasoning_type": "ArithmeticCalculation",
+            "operator": "sum",
+            "subgoals": [
+              {
+                "metric": "Return on Equity (ROE) using average equity",
+                "constraints": {
+                  "temporal_scope": "fiscal year 2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "percentage"
+                  }
+                }
+              }
+            ],
+            "precision": "percentage to two decimal places"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Return on Equity (ROE) using average equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "percentage"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Return on Equity (ROE) using average equity is not directly stated in the context; only Net Profit and Total Equity component values are reported."
+          }
+        }
+      ],
+      "subgoal_results": [
+        {
+          "value": null,
+          "meta": {},
+          "paths": [],
+          "reason": "Return on Equity (ROE) using average equity is not directly stated in the context; only Net Profit and Total Equity component values are reported."
+        }
+      ]
+    },
+    "reason": "At least one required subgoal could not be grounded"
+  },
+  "passed": false
+}

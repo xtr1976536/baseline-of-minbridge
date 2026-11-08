@@ -1,0 +1,5314 @@
+{
+  "baseline_stats": {
+    "nodes": 11619,
+    "atomic": 8349,
+    "derived": 3270,
+    "edges": 11889
+  },
+  "candidate_stats": {
+    "nodes": 11619,
+    "atomic": 8309,
+    "derived": 3310,
+    "edges": 12104
+  },
+  "old_formulas": 4844,
+  "candidate_formulas": 4952,
+  "old_formula_ids_preserved": true,
+  "removed_formula_ids": [],
+  "eligible_source_equations": 173,
+  "added": [
+    {
+      "formula_id": "source:3c80ecc33fd0f78942b3",
+      "target": "Interest Coverage Ratio",
+      "source_formula": "Interest Coverage Ratio = (Net Profit + Interest Expense + Income Tax Expense) ÷ Interest Expense",
+      "source_records": [
+        8
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_expense",
+          "metric": "Income Tax Expense",
+          "global_metric": "Tax Expense",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Expense",
+              "label": "Tax Expense",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3167
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:425a4063ecc4a37eaed7",
+      "target": "Net Interest Expense",
+      "source_formula": "Net Interest Expense = Interest Expense × (1 - Income Tax Rate)",
+      "source_records": [
+        31
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:7a6e3edb3ce4db3a66b4",
+      "target": "Perpetual Bond Value",
+      "source_formula": "Perpetual Bond Value = Annual Interest Amount ÷ Discount Rate",
+      "source_records": [
+        53
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "annual_interest",
+          "metric": "Annual Interest Amount",
+          "global_metric": "Annual Interest",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Annual Interest Amount",
+              "label": "Annual Interest",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3656
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:45db58eceb794dbd46d9",
+      "target": "Lease Term Cash Flow Discount Rate",
+      "source_formula": "Lease Term Cash Flow Discount Rate = Pre-tax Cost of Debt × (1 - Income Tax Rate)",
+      "source_records": [
+        116
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:45112cdbfcd60e6e0960",
+      "target": "Cost of Forgoing Cash Discount",
+      "source_formula": "Cost of Forgoing Cash Discount = Discount Percentage ÷ (1 - Discount Percentage) × 360 ÷ (Credit Period - Discount Period)",
+      "source_records": [
+        117
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "discount_rate",
+          "metric": "Discount Percentage",
+          "global_metric": "Discount Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Discount Percentage",
+              "label": "Discount Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3333
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:18d6d6e61bc0bea42495",
+      "target": "Break-even Point Sales Volume",
+      "source_formula": "Break-even Point Sales Volume = Fixed Costs ÷ (Unit Price - Unit Variable Cost)",
+      "source_records": [
+        197
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:fdb445927028d603315a",
+      "target": "Break-even Point Sales Volume",
+      "source_formula": "Break-even Point Sales Volume = Fixed Costs ÷ Unit Contribution Margin",
+      "source_records": [
+        197
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:d1edf40d8748c7ff19fa",
+      "target": "Break-even Sales",
+      "source_formula": "Break-even Sales = Fixed Costs ÷ Contribution Margin Ratio",
+      "source_records": [
+        198
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:0d44e8cbef5ef913f3b0",
+      "target": "Actual Price-to-Book Ratio",
+      "source_formula": "Actual Price-to-Book Ratio = Stock Price ÷ Net Asset Value per Share",
+      "source_records": [
+        464
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "book_value_per_share",
+          "metric": "Net Asset Value Per Share",
+          "global_metric": "Book Value Per Share",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Net Asset Value per Share",
+              "label": "Book Value Per Share",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3184
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:019c0dbcce342ce0d200",
+      "target": "Required Rate of Return on Market Portfolio",
+      "source_formula": "Required Rate of Return on Market Portfolio = Risk-Free Rate + Market Portfolio Risk Premium",
+      "source_records": [
+        469
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "market_risk_premium",
+          "metric": "Market Portfolio Risk Premium",
+          "global_metric": "Market Risk Premium",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Portfolio Risk Premium",
+              "label": "Market Risk Premium",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 845
+            },
+            {
+              "declared_related_concept": "Market Portfolio Risk Premium",
+              "label": "Market Risk Premium",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1562
+            },
+            {
+              "declared_related_concept": "Market Portfolio Risk Premium",
+              "label": "Market Risk Premium",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4846
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:fb7bd3691677465e2fd0",
+      "target": "Annual Order Frequency",
+      "source_formula": "Annual Order Frequency = Annual Demand ÷ Order Quantity per Order",
+      "source_records": [
+        481
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "order_quantity",
+          "metric": "Order Quantity per Order",
+          "global_metric": "Order Quantity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Order Quantity per Order",
+              "label": "Order Quantity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1030
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:7c55cd01d124b260c515",
+      "target": "Component Company Adjusted Stock Price",
+      "source_formula": "Component Company Adjusted Stock Price = Historical Stock Price × Adjustment Factor",
+      "source_records": [
+        496
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "historical_price",
+          "metric": "Historical Stock Price",
+          "global_metric": "Historical Price",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Historical Stock Price",
+              "label": "Historical Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3810
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:b1608ed0c9b142611b65",
+      "target": "Current Year Cost of Capital",
+      "source_formula": "Current Year Cost of Capital = (Market Value of Equity ÷ Total Market Value) × Cost of Equity + (Market Value of Debt ÷ Total Market Value) × Cost of Debt × (1 - Income Tax Rate)",
+      "source_records": [
+        544
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "equity_market_value",
+          "metric": "Market Value of Equity",
+          "global_metric": "Equity Market Value",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1813
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3178
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5409
+            }
+          ]
+        },
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:cc51d957978c985229ee",
+      "target": "Standard Unit Fixed Cost",
+      "source_formula": "Standard Unit Fixed Cost = Total Fixed Costs ÷ Total Output",
+      "source_records": [
+        552
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_fixed_cost",
+          "metric": "Total Fixed Costs",
+          "global_metric": "Total Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Fixed Costs",
+              "label": "Total Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3285
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:130c0c073d3103a99403",
+      "target": "Standard Unit Fixed Cost",
+      "source_formula": "Standard Unit Fixed Cost = Total Fixed Costs ÷ Total Activity Volume",
+      "source_records": [
+        552
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_fixed_cost",
+          "metric": "Total Fixed Costs",
+          "global_metric": "Total Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Fixed Costs",
+              "label": "Total Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3285
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:6cb280a2c4fc1261bfa7",
+      "target": "Net Operating Profit After Tax",
+      "source_formula": "Net Operating Profit After Tax = Operating Profit × (1 - Average Income Tax Rate)",
+      "source_records": [
+        575
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "effective_tax_rate",
+          "metric": "Average Income Tax Rate",
+          "global_metric": "Effective Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Income Tax Rate",
+              "label": "Effective Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 851
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:1abeeee09aecf38016c4",
+      "target": "Net Operating Profit After Tax",
+      "source_formula": "Net Operating Profit After Tax = Earnings Before Interest and Taxes × (1 - Average Income Tax Rate)",
+      "source_records": [
+        575
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "effective_tax_rate",
+          "metric": "Average Income Tax Rate",
+          "global_metric": "Effective Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Income Tax Rate",
+              "label": "Effective Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 851
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:57b40fe58e034f62307b",
+      "target": "Net Operating Profit After Tax",
+      "source_formula": "Net Operating Profit After Tax = (Net Profit + Income Tax Expense + Interest Expense) × (1 - Average Income Tax Rate)",
+      "source_records": [
+        575
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "effective_tax_rate",
+          "metric": "Average Income Tax Rate",
+          "global_metric": "Effective Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Income Tax Rate",
+              "label": "Effective Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 851
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:a3753a87f3da74364679",
+      "target": "Cost of Equity",
+      "source_formula": "Cost of Equity = Risk-Free Rate + Beta × (Market Average Return - Risk-Free Rate)",
+      "source_records": [
+        603
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "market_return",
+          "metric": "Market Average Return",
+          "global_metric": "Market Return",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Average Return",
+              "label": "Market Return",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:9494204cdf4022348ea6",
+      "target": "Working Capital Management",
+      "source_formula": "Working Capital Management = Total Current Assets - Total Current Liabilities",
+      "source_records": [
+        608
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "current_assets",
+          "metric": "Total Current Assets",
+          "global_metric": "Current Assets",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Current Assets",
+              "label": "Current Assets",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1046
+            }
+          ]
+        },
+        {
+          "parameter": "current_liabilities",
+          "metric": "Total Current Liabilities",
+          "global_metric": "Current Liabilities",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Current Liabilities",
+              "label": "Current Liabilities",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1043
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:92875370b57ecaaeb596",
+      "target": "Debt to Equity Ratio",
+      "source_formula": "Debt-to-Equity Ratio = Debt-to-Assets Ratio ÷ (1 - Debt-to-Assets Ratio)",
+      "source_records": [
+        612
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "debt_ratio",
+          "metric": "Debt-to-Assets Ratio",
+          "global_metric": "Debt Ratio",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Debt-to-Assets Ratio",
+              "label": "Debt Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8539
+            },
+            {
+              "declared_related_concept": "Debt-to-Assets Ratio",
+              "label": "Debt Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8541
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:fc4a50de544b21e6b59a",
+      "target": "Expected Risk Premium",
+      "source_formula": "Expected Risk Premium = Beta Coefficient × (Expected Market Return - Risk-free Rate)",
+      "source_records": [
+        644
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "beta",
+          "metric": "Beta Coefficient",
+          "global_metric": "Beta",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 388
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1238
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2008
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:1c18816858753fea42d1",
+      "target": "Risk-Adjusted Discount Rate",
+      "source_formula": "Risk-Adjusted Discount Rate = Risk-Free Rate + Beta Coefficient × (Market Average Return Rate - Risk-Free Rate)",
+      "source_records": [
+        650
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "beta",
+          "metric": "Beta Coefficient",
+          "global_metric": "Beta",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 388
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1238
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2008
+            }
+          ]
+        },
+        {
+          "parameter": "market_average_return",
+          "metric": "Market Average Return Rate",
+          "global_metric": "Market Average Return",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Average Return Rate",
+              "label": "Market Average Return",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 834
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:e824b794c97c12926640",
+      "target": "Debt-to-Capital Ratio",
+      "source_formula": "Debt-to-Capital Ratio = Total Debt ÷ (Total Debt + Shareholders' Equity)",
+      "source_records": [
+        724
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_liabilities",
+          "metric": "Total Debt",
+          "global_metric": "Total Liabilities",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Debt",
+              "label": "Total Liabilities",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3143
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:8208b1549d1e1343072f",
+      "target": "Debt-to-Capital Ratio",
+      "source_formula": "Debt-to-Capital Ratio = Total Debt ÷ Total Assets",
+      "source_records": [
+        724
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_liabilities",
+          "metric": "Total Debt",
+          "global_metric": "Total Liabilities",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Debt",
+              "label": "Total Liabilities",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3143
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:83cae06934d06bc66c15",
+      "target": "Net Operating Profit",
+      "source_formula": "Net Operating Profit = Operating Profit × (1 - Income Tax Rate)",
+      "source_records": [
+        734
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:3dc5d2d6c65978b327bf",
+      "target": "Net Operating Profit",
+      "source_formula": "Net Operating Profit = Operating Revenue - Operating Costs - Operating Expenses - Taxes and Surcharges - Income Tax Expense",
+      "source_records": [
+        734
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "revenue",
+          "metric": "Operating Revenue",
+          "global_metric": "Revenue",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Operating Revenue",
+              "label": "Revenue",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3201
+            }
+          ]
+        },
+        {
+          "parameter": "operating_cost",
+          "metric": "Operating Costs",
+          "global_metric": "Operating Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Operating Costs",
+              "label": "Operating Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3435
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:3e4899e231b9ed0bca1d",
+      "target": "Unit Price per Product",
+      "source_formula": "Unit Price per Product = (Profit + Fixed Costs) ÷ Sales Volume + Unit Variable Cost",
+      "source_records": [
+        767
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:83ebb04c1ac0cfd7406f",
+      "target": "Unit Variable Cost per Product",
+      "source_formula": "Unit Variable Cost per Product = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "source_records": [
+        768
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:e3822ddc673d45aa9f1c",
+      "target": "Current Price Value Added by Industry",
+      "source_formula": "Current Price Value Added by Industry = Gross Output - Intermediate Input",
+      "source_records": [
+        784
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_output",
+          "metric": "Gross Output",
+          "global_metric": "Total Output",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Gross Output",
+              "label": "Total Output",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1640
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:5407ca2dcfacb4504c5f",
+      "target": "Nominal Gross Domestic Product",
+      "source_formula": "Nominal GDP = Final Consumption Expenditure + Gross Capital Formation + Net Exports",
+      "source_records": [
+        787
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "final_consumption",
+          "metric": "Final Consumption Expenditure",
+          "global_metric": "Final Consumption",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Final Consumption Expenditure",
+              "label": "Final Consumption",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1739
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:866b8467eb406994a148",
+      "target": "Average Daily Net Cash Flow",
+      "source_formula": "Average Daily Net Cash Flow = Net Cash Flow ÷ Number of Days in Period",
+      "source_records": [
+        853
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "period_days",
+          "metric": "Number of Days in Period",
+          "global_metric": "Period Days",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Number of Days in Period",
+              "label": "Period Days",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5915
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:46e9b63ed89fb3516bc1",
+      "target": "Average Daily Net Cash Flow",
+      "source_formula": "Average Daily Net Cash Flow = (Net Profit + Depreciation) ÷ Number of Days in Period",
+      "source_records": [
+        853
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "period_days",
+          "metric": "Number of Days in Period",
+          "global_metric": "Period Days",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Number of Days in Period",
+              "label": "Period Days",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5915
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:4eb50827736ee07cc56d",
+      "target": "Equity Multiplier",
+      "source_formula": "Equity Multiplier = Total Assets ÷ Total Shareholders' Equity",
+      "source_records": [
+        1006
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_equity",
+          "metric": "Total Shareholders' Equity",
+          "global_metric": "Final Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Shareholders' Equity",
+              "label": "Total Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1116
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:443ab5d4909034ac4d69",
+      "target": "Book Value of Equity Ratio",
+      "source_formula": "Book Value of Equity Ratio = Total Shareholders' Equity ÷ Total Assets",
+      "source_records": [
+        1011
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_equity",
+          "metric": "Total Shareholders' Equity",
+          "global_metric": "Final Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Shareholders' Equity",
+              "label": "Total Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1116
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:36bbfbb95289ddd69c4b",
+      "target": "Equity Capital Ratio",
+      "source_formula": "Equity Capital Ratio = Total Shareholders' Equity ÷ Total Assets",
+      "source_records": [
+        1012
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_equity",
+          "metric": "Total Shareholders' Equity",
+          "global_metric": "Final Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Shareholders' Equity",
+              "label": "Total Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1116
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:2f979ae43fb114fb2bba",
+      "target": "Depreciation and Amortization per Share",
+      "source_formula": "Depreciation and Amortization per Share = (Depreciation Expense + Amortization Expense) ÷ Number of Common Shares Outstanding",
+      "source_records": [
+        1033
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "outstanding_shares",
+          "metric": "Number of Common Shares Outstanding",
+          "global_metric": "Outstanding Shares",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Number of Common Shares Outstanding",
+              "label": "Outstanding Shares",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3672
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:2fe8e7b9439ece0b858d",
+      "target": "Perpetual Period FCFF",
+      "source_formula": "Perpetual Period FCFF = Net Operating Cash Flow - Capital Expenditures",
+      "source_records": [
+        1038
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "operating_cash_flow",
+          "metric": "Net Operating Cash Flow",
+          "global_metric": "Operating Cash Flow",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Net Operating Cash Flow",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1139
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:c1efec516dd378d3f20b",
+      "target": "Market Value of Tradable Equity",
+      "source_formula": "Market Value of Tradable Equity = Number of Common Shares Outstanding × Current Market Price per Share",
+      "source_records": [
+        1049
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "shares_outstanding",
+          "metric": "Number of Common Shares Outstanding",
+          "global_metric": "Shares Outstanding",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Number of Common Shares Outstanding",
+              "label": "Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3672
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:2a334d44cfe8594b9f3d",
+      "target": "After-tax Interest Rate",
+      "source_formula": "After-tax Interest Rate = [Interest Expense × (1 - Income Tax Rate)] ÷ Net Debt",
+      "source_records": [
+        1081
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:c962b8f5accc31398ac2",
+      "target": "Required Rate of Return",
+      "source_formula": "Required Rate of Return = Risk-Free Rate + Beta Coefficient × Market Risk Premium",
+      "source_records": [
+        1146
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "beta",
+          "metric": "Beta Coefficient",
+          "global_metric": "Beta",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 388
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1238
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2008
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:e67cf8fceb6ea685f917",
+      "target": "Estimated NOPAT",
+      "source_formula": "Estimated NOPAT = Operating Profit × (1 - Income Tax Rate)",
+      "source_records": [
+        1234
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:718edec353d7a357c901",
+      "target": "Stock Price After Rise",
+      "source_formula": "Stock Price After Rise = Next Period Dividend ÷ (Required Rate of Return for Shareholders - Constant Dividend Growth Rate)",
+      "source_records": [
+        1242
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "required_rate_of_return",
+          "metric": "Required Rate of Return for Shareholders",
+          "global_metric": "Required Rate of Return",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Required Rate of Return for Shareholders",
+              "label": "Required Rate of Return",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3034
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:d8677de91bfc67d53c4e",
+      "target": "Average Collection Period (Previous Period)",
+      "source_formula": "Average Collection Period (Previous Period) = Days in Year ÷ Accounts Receivable Turnover Ratio",
+      "source_records": [
+        1250
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "accounts_receivable_turnover",
+          "metric": "Accounts Receivable Turnover Ratio",
+          "global_metric": "Accounts Receivable Turnover",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Accounts Receivable Turnover Ratio",
+              "label": "Accounts Receivable Turnover",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3120
+            },
+            {
+              "declared_related_concept": "Accounts Receivable Turnover Ratio",
+              "label": "Accounts Receivable Turnover",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8206
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:14be0b88613b47aec392",
+      "target": "Downside Price",
+      "source_formula": "Downside Price = Original Price × (1 - Downward Adjustment Ratio)",
+      "source_records": [
+        1284
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "discount_rate",
+          "metric": "Downward Adjustment Ratio",
+          "global_metric": "Discount Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Downward Adjustment Ratio",
+              "label": "Discount Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4090
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:0f63e9a668e230e0bea2",
+      "target": "Intermediate Consumption",
+      "source_formula": "Intermediate Consumption = Gross Output - Value Added",
+      "source_records": [
+        1303
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_output",
+          "metric": "Gross Output",
+          "global_metric": "Total Output",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Gross Output",
+              "label": "Total Output",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1640
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:d61c06a9ff89232060bd",
+      "target": "Cash Product Cost",
+      "source_formula": "Cash Product Cost = Manufacturing Cost - Depreciation",
+      "source_records": [
+        1317
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "production_cost",
+          "metric": "Manufacturing Cost",
+          "global_metric": "Production Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Manufacturing Cost",
+              "label": "Production Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4333
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:0d4e9647703c01def6b9",
+      "target": "Market Value of Debt",
+      "source_formula": "Market Value of Debt = Total Market Value - Market Value of Equity",
+      "source_records": [
+        1342
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "equity_market_value",
+          "metric": "Market Value of Equity",
+          "global_metric": "Equity Market Value",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1813
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3178
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5409
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:22f38277d341098a610c",
+      "target": "Market Value of Debt",
+      "source_formula": "Market Value of Debt = Market Value of Equity × Debt-to-Equity Ratio",
+      "source_records": [
+        1342
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "equity_market_value",
+          "metric": "Market Value of Equity",
+          "global_metric": "Equity Market Value",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1813
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3178
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5409
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:680636c299a46368c0c0",
+      "target": "Individual Asset Market Value",
+      "source_formula": "Individual Asset Market Value = Asset Replacement Cost - Physical Depreciation - Functional Obsolescence - Economic Obsolescence",
+      "source_records": [
+        1406
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "replacement_cost",
+          "metric": "Asset Replacement Cost",
+          "global_metric": "Replacement Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Asset Replacement Cost",
+              "label": "Replacement Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5994
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:484ee71a2d44ce1b1d8e",
+      "target": "Present Value of Initial Investment",
+      "source_formula": "Present Value of Initial Investment = Net Present Value - Present Value of Future Net Cash Flows",
+      "source_records": [
+        1425
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "present_value_of_future_cash_flows",
+          "metric": "Present Value of Future Net Cash Flows",
+          "global_metric": "Present Value of Future Cash Flows",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Present Value of Future Net Cash Flows",
+              "label": "Present Value of Future Cash Flows",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1771
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:ee4696f2cecd0d089698",
+      "target": "Periodic Interest",
+      "source_formula": "Periodic Interest = Principal × Annual Interest Rate ÷ Number of Compounding Periods per Year",
+      "source_records": [
+        1445
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "compounding_frequency_per_year",
+          "metric": "Number of Compounding Periods Per Year",
+          "global_metric": "Compounding Frequency per Year",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Number of Compounding Periods per Year",
+              "label": "Compounding Frequency per Year",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2510
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:8f40e9e5cafdbe2f4949",
+      "target": "Merchandise Markup",
+      "source_formula": "Merchandise Markup = Current Period Sales Revenue × Markup Rate",
+      "source_records": [
+        1475
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "sales_revenue",
+          "metric": "Current Period Sales Revenue",
+          "global_metric": "Sales Revenue",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Current Period Sales Revenue",
+              "label": "Sales Revenue",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1003
+            },
+            {
+              "declared_related_concept": "Current Period Sales Revenue",
+              "label": "Sales Revenue",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1004
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:2cbce0e1426527b95d49",
+      "target": "Disposal Proceeds",
+      "source_formula": "Disposal Proceeds = Net Sales Revenue - Disposal Costs - Other Related Expenses",
+      "source_records": [
+        1517
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "disposal_cost",
+          "metric": "Disposal Costs",
+          "global_metric": "Disposal Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Disposal Costs",
+              "label": "Disposal Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2454
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:053a80c1711bc24840d6",
+      "target": "Market Portfolio Return",
+      "source_formula": "Market Portfolio Return = Risk-Free Rate + Market Portfolio Risk Premium",
+      "source_records": [
+        1557
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "market_risk_premium",
+          "metric": "Market Portfolio Risk Premium",
+          "global_metric": "Market Risk Premium",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Portfolio Risk Premium",
+              "label": "Market Risk Premium",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 845
+            },
+            {
+              "declared_related_concept": "Market Portfolio Risk Premium",
+              "label": "Market Risk Premium",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1562
+            },
+            {
+              "declared_related_concept": "Market Portfolio Risk Premium",
+              "label": "Market Risk Premium",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4846
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:955cbeb758ef30542347",
+      "target": "Average Days Sales Outstanding",
+      "source_formula": "Average Days Sales Outstanding = 365 ÷ Accounts Receivable Turnover Ratio",
+      "source_records": [
+        1608
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "receivables_turnover_ratio",
+          "metric": "Accounts Receivable Turnover Ratio",
+          "global_metric": "Receivables Turnover Ratio",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Accounts Receivable Turnover Ratio",
+              "label": "Receivables Turnover Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3120
+            },
+            {
+              "declared_related_concept": "Accounts Receivable Turnover Ratio",
+              "label": "Receivables Turnover Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8206
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:ee9f298d9b4831a9b018",
+      "target": "Current Period Net Profit",
+      "source_formula": "Current Period Net Profit = Operating Revenue - Operating Costs - Taxes and Surcharges - Selling Expenses - Administrative Expenses - Financial Expenses - Income Tax Expense",
+      "source_records": [
+        1623
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "operating_cost",
+          "metric": "Operating Costs",
+          "global_metric": "Operating Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Operating Costs",
+              "label": "Operating Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3435
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:7cae65e70d33e054a28f",
+      "target": "Total Profit for the Current Period",
+      "source_formula": "Total Profit for the Current Period = Operating Revenue - Operating Costs - Business Taxes and Surcharges - Selling Expenses - Administrative Expenses - Financial Expenses + Investment Income + Non-operating Income - Non-operating Expenses",
+      "source_records": [
+        1624
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "operating_cost",
+          "metric": "Operating Costs",
+          "global_metric": "Operating Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Operating Costs",
+              "label": "Operating Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3435
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:fc76e64b406b0d2a53b0",
+      "target": "Current Real GDP",
+      "source_formula": "Current Real GDP = Final Consumption Expenditure + Gross Capital Formation + Net Exports",
+      "source_records": [
+        1626
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "final_consumption",
+          "metric": "Final Consumption Expenditure",
+          "global_metric": "Final Consumption",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Final Consumption Expenditure",
+              "label": "Final Consumption",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1739
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:5b1e5ee3c1a7b32286f3",
+      "target": "Total Investment Amount",
+      "source_formula": "Total Investment Amount = (Purchase Price per Unit × Purchase Quantity) + Transaction Fees + Stamp Duty",
+      "source_records": [
+        1650
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "transaction_fee",
+          "metric": "Transaction Fees",
+          "global_metric": "Transaction Fee",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Transaction Fees",
+              "label": "Transaction Fee",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 7936
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:ce5e96c147e642875d98",
+      "target": "Total Investment Amount",
+      "source_formula": "Total Investment Amount = (Purchase Unit Price × Purchase Quantity) + Transaction Fees + Stamp Duty",
+      "source_records": [
+        1651
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "transaction_fee",
+          "metric": "Transaction Fees",
+          "global_metric": "Transaction Fee",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Transaction Fees",
+              "label": "Transaction Fee",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 7936
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:40024c9b5d4402430e09",
+      "target": "Average Total Assets",
+      "source_formula": "Average Total Assets = (Total Assets at Beginning of Period + Total Assets at End of Period) ÷ 2",
+      "source_records": [
+        1657
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "beginning_total_assets",
+          "metric": "Total Assets at Beginning of Period",
+          "global_metric": "Beginning Total Assets",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Assets at Beginning of Period",
+              "label": "Beginning Total Assets",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2686
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:d952dc18826571b1a585",
+      "target": "Investment Cost",
+      "source_formula": "Investment Cost = Initial Investment Amount + Transaction Costs + Financing Costs",
+      "source_records": [
+        1674
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "initial_investment",
+          "metric": "Initial Investment Amount",
+          "global_metric": "Initial Investment",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Initial Investment Amount",
+              "label": "Initial Investment",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2671
+            },
+            {
+              "declared_related_concept": "Initial Investment Amount",
+              "label": "Initial Investment",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4316
+            },
+            {
+              "declared_related_concept": "Initial Investment Amount",
+              "label": "Initial Investment",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4412
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:b426f3afc9df65f63445",
+      "target": "Total Investment Cost",
+      "source_formula": "Total Investment Cost = (Purchase Price per Unit × Purchase Quantity) + Transaction Fees + Stamp Duty",
+      "source_records": [
+        1685
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "transaction_fee",
+          "metric": "Transaction Fees",
+          "global_metric": "Transaction Fee",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Transaction Fees",
+              "label": "Transaction Fee",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 7936
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:672347ddba393dd91252",
+      "target": "Investment Amount",
+      "source_formula": "Investment Amount = Initial Investment Amount × (1 + Investment Return Rate) ^ Investment Period",
+      "source_records": [
+        1687
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "initial_investment",
+          "metric": "Initial Investment Amount",
+          "global_metric": "Initial Investment",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Initial Investment Amount",
+              "label": "Initial Investment",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2671
+            },
+            {
+              "declared_related_concept": "Initial Investment Amount",
+              "label": "Initial Investment",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4316
+            },
+            {
+              "declared_related_concept": "Initial Investment Amount",
+              "label": "Initial Investment",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4412
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:21d8c80444c7642964b5",
+      "target": "Average Collection Period",
+      "source_formula": "Average Collection Period = 360 ÷ Accounts Receivable Turnover Ratio",
+      "source_records": [
+        1720
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "receivables_turnover_ratio",
+          "metric": "Accounts Receivable Turnover Ratio",
+          "global_metric": "Receivables Turnover Ratio",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Accounts Receivable Turnover Ratio",
+              "label": "Receivables Turnover Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3120
+            },
+            {
+              "declared_related_concept": "Accounts Receivable Turnover Ratio",
+              "label": "Receivables Turnover Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8206
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:6ead610a0501701464bd",
+      "target": "Old Average Collection Period",
+      "source_formula": "Old Average Collection Period = 360 ÷ Accounts Receivable Turnover Ratio",
+      "source_records": [
+        1727
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "receivables_turnover_ratio",
+          "metric": "Accounts Receivable Turnover Ratio",
+          "global_metric": "Receivables Turnover Ratio",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Accounts Receivable Turnover Ratio",
+              "label": "Receivables Turnover Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3120
+            },
+            {
+              "declared_related_concept": "Accounts Receivable Turnover Ratio",
+              "label": "Receivables Turnover Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8206
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:86f60b84e797537d9ffe",
+      "target": "Total Cost at Highest Activity Level",
+      "source_formula": "Total Cost at Highest Activity Level = Total Fixed Costs + Variable Cost per Unit × Highest Activity Level",
+      "source_records": [
+        1740
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "unit_variable_cost",
+          "metric": "Variable Cost per Unit",
+          "global_metric": "Unit Variable Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Variable Cost per Unit",
+              "label": "Unit Variable Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1408
+            },
+            {
+              "declared_related_concept": "Variable Cost per Unit",
+              "label": "Unit Variable Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4378
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:1a17a3becb5289936935",
+      "target": "Equity Market Value Added",
+      "source_formula": "Equity Market Value Added = Market Value of Equity - Equity Capital",
+      "source_records": [
+        1810
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "equity_market_value",
+          "metric": "Market Value of Equity",
+          "global_metric": "Equity Market Value",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1813
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3178
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5409
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:41099fa6fa18341e5a75",
+      "target": "Standardized Random Variable Value",
+      "source_formula": "Standardized Random Variable Value = (Random Variable Value - Population Mean of Random Variable) ÷ Population Standard Deviation of Random Variable",
+      "source_records": [
+        1824
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "population_mean",
+          "metric": "Population Mean of Random Variable",
+          "global_metric": "Population Mean",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Population Mean of Random Variable",
+              "label": "Population Mean",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6132
+            }
+          ]
+        },
+        {
+          "parameter": "population_standard_deviation",
+          "metric": "Population Standard Deviation of Random Variable",
+          "global_metric": "Population Standard Deviation",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Population Standard Deviation of Random Variable",
+              "label": "Population Standard Deviation",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6133
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:0df309ca884909a49185",
+      "target": "Daily Income Tax",
+      "source_formula": "Daily Income Tax = (Taxable Income × Applicable Tax Rate - Quick Deduction) ÷ Number of Days in Period",
+      "source_records": [
+        1839
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "period_days",
+          "metric": "Number of Days in Period",
+          "global_metric": "Period Days",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Number of Days in Period",
+              "label": "Period Days",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5915
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:09d40d890c86355a4297",
+      "target": "Target Company Sales Per Share",
+      "source_formula": "Target Company Sales Per Share = Total Revenue ÷ Weighted Average Number of Common Shares Outstanding",
+      "source_records": [
+        1885
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "weighted_average_shares_outstanding",
+          "metric": "Weighted Average Number of Common Shares Outstanding",
+          "global_metric": "Weighted Average Shares Outstanding",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 749
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1430
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1431
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1432
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1433
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4438
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5011
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5516
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:4038f5f13f7b247a1a1e",
+      "target": "After-Tax Operating Income",
+      "source_formula": "After-Tax Operating Income = Operating Profit × (1 - Income Tax Rate)",
+      "source_records": [
+        1904
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:948fa93661a5a8b7c3c1",
+      "target": "Stock Upward Price",
+      "source_formula": "Stock Upward Price = Current Stock Price × Upward Multiplier",
+      "source_records": [
+        1970
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "up_factor",
+          "metric": "Upward Multiplier",
+          "global_metric": "Up Factor",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Upward Multiplier",
+              "label": "Up Factor",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1119
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:c875d7776acf7e2d7565",
+      "target": "Planned Variable Cost Per Unit",
+      "source_formula": "Planned Variable Cost Per Unit = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "source_records": [
+        1991
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:9758432b263a275c552e",
+      "target": "Adjusted After-tax Operating Profit",
+      "source_formula": "Adjusted After-tax Operating Profit = EBIT × (1 - Income Tax Rate)",
+      "source_records": [
+        2005
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:8596fb9e22afea3e204f",
+      "target": "Historical Average Return on Assets",
+      "source_formula": "Historical Average Return on Assets = Net Profit ÷ Average Total Assets",
+      "source_records": [
+        2026
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "average_assets",
+          "metric": "Average Total Assets",
+          "global_metric": "Average Assets",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Total Assets",
+              "label": "Average Assets",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 471
+            },
+            {
+              "declared_related_concept": "Average Total Assets",
+              "label": "Average Assets",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1580
+            },
+            {
+              "declared_related_concept": "Average Total Assets",
+              "label": "Average Assets",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5973
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:97facf12c792f04ceb55",
+      "target": "Market Value Weight of Assets",
+      "source_formula": "Market Value Weight of Assets = Market Value of Equity ÷ (Market Value of Equity + Market Value of Debt)",
+      "source_records": [
+        2032
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "equity_market_value",
+          "metric": "Market Value of Equity",
+          "global_metric": "Equity Market Value",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1813
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3178
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5409
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:be07fb5e1076548959fc",
+      "target": "Market Value Weight of Assets",
+      "source_formula": "Market Value Weight of Assets = Market Value of Debt ÷ (Market Value of Equity + Market Value of Debt)",
+      "source_records": [
+        2032
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "equity_market_value",
+          "metric": "Market Value of Equity",
+          "global_metric": "Equity Market Value",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1813
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3178
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5409
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:e6cc8e5c19ea81f8cde3",
+      "target": "Replacement Cost of Assets",
+      "source_formula": "Replacement Cost of Assets = Historical Cost of Assets × Price Index Adjustment Factor",
+      "source_records": [
+        2033
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "historical_cost",
+          "metric": "Historical Cost of Assets",
+          "global_metric": "Historical Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Historical Cost of Assets",
+              "label": "Historical Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5986
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:b87fc7216be8acc94b46",
+      "target": "Total Capital",
+      "source_formula": "Total Capital = Total Shareholders' Equity + Total Interest-bearing Debt",
+      "source_records": [
+        2043
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_equity",
+          "metric": "Total Shareholders' Equity",
+          "global_metric": "Final Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Shareholders' Equity",
+              "label": "Total Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1116
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:7ec7c867b51cd43d1ac9",
+      "target": "Partial Current Period Amount",
+      "source_formula": "Partial Current Period Amount = Base Period Amount × (1 + Growth Rate)",
+      "source_records": [
+        2064
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "base_amount",
+          "metric": "Base Period Amount",
+          "global_metric": "Base Amount",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Base Period Amount",
+              "label": "Base Amount",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4680
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:7568443e3f79715ab501",
+      "target": "Net Sales Revenue",
+      "source_formula": "Net Sales Revenue = Gross Sales Revenue - Sales Discounts and Allowances - Sales Returns",
+      "source_records": [
+        2076
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "gross_sales",
+          "metric": "Total Sales Revenue",
+          "global_metric": "Gross Sales",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Gross Sales Revenue",
+              "label": "Gross Sales",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2575
+            },
+            {
+              "declared_related_concept": "Gross Sales Revenue",
+              "label": "Gross Sales",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2963
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:90190e67133d0d1b14ea",
+      "target": "Forward Price-to-Earnings Ratio",
+      "source_formula": "Forward P/E Ratio = Dividend Payout Ratio ÷ (Cost of Equity - Growth Rate)",
+      "source_records": [
+        2125
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "payout_ratio",
+          "metric": "Dividend Payout Ratio",
+          "global_metric": "Payout Ratio",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Dividend Payout Ratio",
+              "label": "Payout Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1964
+            },
+            {
+              "declared_related_concept": "Dividend Payout Ratio",
+              "label": "Payout Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 7776
+            },
+            {
+              "declared_related_concept": "Dividend Payout Ratio",
+              "label": "Payout Ratio",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8205
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:a707b3199d7a59f1a819",
+      "target": "Expected Rate of Return",
+      "source_formula": "Expected Rate of Return = Risk-Free Rate + Beta Coefficient × Market Risk Premium",
+      "source_records": [
+        2130
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "beta",
+          "metric": "Beta Coefficient",
+          "global_metric": "Beta",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 388
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1238
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2008
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:93636243dacb8713fd56",
+      "target": "Standard Total Hours at Budgeted Production Level",
+      "source_formula": "Standard Total Hours at Budgeted Production Level = Budgeted Production Volume × Standard Hours per Unit",
+      "source_records": [
+        2157
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "budgeted_production",
+          "metric": "Budgeted Production Volume",
+          "global_metric": "Budgeted Production",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Budgeted Production Volume",
+              "label": "Budgeted Production",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1230
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:1b6cafbda0af67b261b0",
+      "target": "Estimated Variable Cost Per Unit",
+      "source_formula": "Estimated Variable Cost Per Unit = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "source_records": [
+        2162
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:8462641894a649439f44",
+      "target": "Risk Premium",
+      "source_formula": "Risk Premium = Beta Coefficient × Market Risk Premium",
+      "source_records": [
+        2184
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "beta",
+          "metric": "Beta Coefficient",
+          "global_metric": "Beta",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 388
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1238
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2008
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:b2b35c852abe85df2ff8",
+      "target": "Required Rate of Return for Shareholders",
+      "source_formula": "Required Rate of Return for Shareholders = Risk-Free Rate + Beta Coefficient × Market Risk Premium",
+      "source_records": [
+        3034
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "beta",
+          "metric": "Beta Coefficient",
+          "global_metric": "Beta",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 388
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1238
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2008
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:6ac9ce1cdef449a4f609",
+      "target": "Upward Return Rate",
+      "source_formula": "Upward Return Rate = Upward Multiplier - 1",
+      "source_records": [
+        3079
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "up_factor",
+          "metric": "Upward Multiplier",
+          "global_metric": "Up Factor",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Upward Multiplier",
+              "label": "Up Factor",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1119
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:42438ef4cdf77c578e1d",
+      "target": "After-tax Profit",
+      "source_formula": "After-tax Profit = Total Profit × (1 - Income Tax Rate)",
+      "source_records": [
+        3090
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:0ce1047d98c27da735a2",
+      "target": "Debt Service Coverage Ratio",
+      "source_formula": "Debt Service Coverage Ratio = Total Liabilities ÷ Net Cash Flow from Operating Activities",
+      "source_records": [
+        3127
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "operating_cash_flow",
+          "metric": "Net Cash Flow from Operating Activities",
+          "global_metric": "Operating Cash Flow",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Net Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1111
+            },
+            {
+              "declared_related_concept": "Net Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2854
+            },
+            {
+              "declared_related_concept": "Net Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5748
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:fc58ad554d52b7d9669e",
+      "target": "After-tax Cost of Debt",
+      "source_formula": "After-tax Cost of Debt = Debt Interest × (1 - Income Tax Rate)",
+      "source_records": [
+        3190
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:69c70376c19180d807f7",
+      "target": "Replacement Cost",
+      "source_formula": "Replacement Cost = Direct Costs + Indirect Costs",
+      "source_records": [
+        3210
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "direct_cost",
+          "metric": "Direct Costs",
+          "global_metric": "Direct Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Direct Costs",
+              "label": "Direct Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3686
+            }
+          ]
+        },
+        {
+          "parameter": "indirect_cost",
+          "metric": "Indirect Costs",
+          "global_metric": "Indirect Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Indirect Costs",
+              "label": "Indirect Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2089
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:c59ef10bf589754b3aa7",
+      "target": "Price",
+      "source_formula": "Price = Unit Variable Cost + (Fixed Costs + Target Profit) ÷ Sales Volume",
+      "source_records": [
+        3229
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:af81c278e76f7853ace0",
+      "target": "Total Capital Cost",
+      "source_formula": "Total Capital Cost = Cost of Debt × (1 - Income Tax Rate) × (Debt Capital ÷ Total Capital) + Cost of Equity × (Equity Capital ÷ Total Capital)",
+      "source_records": [
+        3242
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:421518ae47031988bfb9",
+      "target": "Actual Wage Rate",
+      "source_formula": "Actual Wage Rate = Actual Labor Cost ÷ Actual Hours Worked",
+      "source_records": [
+        3299
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "actual_working_hours",
+          "metric": "Actual Hours Worked",
+          "global_metric": "Actual Working Hours",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Actual Hours Worked",
+              "label": "Actual Working Hours",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3567
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:5a923985c20a5f2dc570",
+      "target": "Daily Sales",
+      "source_formula": "Daily Sales = (Daily Sales Quantity × Unit Selling Price) + Daily Other Income",
+      "source_records": [
+        3343
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "unit_price",
+          "metric": "Unit Selling Price",
+          "global_metric": "Unit Price",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Unit Selling Price",
+              "label": "Unit Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 751
+            },
+            {
+              "declared_related_concept": "Unit Selling Price",
+              "label": "Unit Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2364
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:3a5c50e9b36b3f58ce10",
+      "target": "Standard Variable Cost per Unit",
+      "source_formula": "Standard Variable Cost per Unit = Unit Price - [(Total Revenue - Total Expenditure + Fixed Costs) ÷ Sales Volume]",
+      "source_records": [
+        3366
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:489f61c5b9450f4a3a5b",
+      "target": "Standard Variable Cost per Unit",
+      "source_formula": "Standard Variable Cost per Unit = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "source_records": [
+        3366
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:86644bcb16a3520182f4",
+      "target": "Target Company's Earnings Per Share",
+      "source_formula": "Target Company's Earnings Per Share = (Net Profit - Preferred Dividends) ÷ Weighted Average Number of Common Shares Outstanding",
+      "source_records": [
+        3393
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "weighted_average_shares_outstanding",
+          "metric": "Weighted Average Number of Common Shares Outstanding",
+          "global_metric": "Weighted Average Shares Outstanding",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 749
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1430
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1431
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1432
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1433
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4438
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5011
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5516
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:df877502b56dbff8df43",
+      "target": "Equity Charge",
+      "source_formula": "Equity Charge = Risk-Free Rate + Beta Coefficient × (Market Return Rate - Risk-Free Rate)",
+      "source_records": [
+        3415
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "beta",
+          "metric": "Beta Coefficient",
+          "global_metric": "Beta",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 388
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1238
+            },
+            {
+              "declared_related_concept": "Beta Coefficient",
+              "label": "Beta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2008
+            }
+          ]
+        },
+        {
+          "parameter": "market_return",
+          "metric": "Market Return Rate",
+          "global_metric": "Market Return",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Return Rate",
+              "label": "Market Return",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3161
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:78002abe125321921815",
+      "target": "Debt Ratio",
+      "source_formula": "Debt Ratio = Total Liabilities ÷ Total Net Assets",
+      "source_records": [
+        3428
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "net_assets",
+          "metric": "Total Net Assets",
+          "global_metric": "Net Assets",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Net Assets",
+              "label": "Net Assets",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4294
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:d8cc2c0d4cf0f04dfff4",
+      "target": "Procurement Cost",
+      "source_formula": "Procurement Cost = Ordering Cost + Material Cost + Carrying Cost + Shortage Cost",
+      "source_records": [
+        3442
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "holding_cost",
+          "metric": "Carrying Cost",
+          "global_metric": "Holding Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Carrying Cost",
+              "label": "Holding Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 88
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:fb442beb9c73efc81c5e",
+      "target": "Covered Call Maximum Loss",
+      "source_formula": "Covered Call Maximum Loss = Stock Purchase Price - Premium Received",
+      "source_records": [
+        6471
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "stock_price",
+          "metric": "Stock Purchase Price",
+          "global_metric": "Stock Price",
+          "binding_source": "explicit_parameter_documentation",
+          "evidence": [
+            {
+              "parameter_description": "The purchase price of the underlying stock.",
+              "matched_explicit_label": "purchase price"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:f5b09a9dce3f627d3d0f",
+      "target": "Hedge Ratio",
+      "source_formula": "Hedge Ratio = Option Delta",
+      "source_records": [
+        7721
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "delta",
+          "metric": "Option Delta",
+          "global_metric": "Delta",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Option Delta",
+              "label": "Delta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 7287
+            },
+            {
+              "declared_related_concept": "Option Delta",
+              "label": "Delta",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8735
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:d29bb49ddf37473d96b4",
+      "target": "Tangible Personal Property Tax",
+      "source_formula": "Tangible Personal Property Tax = Fair Market Value × Tax Rate",
+      "source_records": [
+        7818
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "property_value",
+          "metric": "Fair Market Value",
+          "global_metric": "Property Value",
+          "binding_source": "explicit_parameter_documentation",
+          "evidence": [
+            {
+              "parameter_description": "The fair market value of the tangible personal property.",
+              "matched_explicit_label": "fair market value"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "formula_id": "source:7e8d7851b75490b5f8e6",
+      "target": "Vega",
+      "source_formula": "Vega = Option Premium × Change in Implied Volatility",
+      "source_records": [
+        8923
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "option_price",
+          "metric": "Option Premium",
+          "global_metric": "Option Price",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Option Premium",
+              "label": "Option Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 7420
+            },
+            {
+              "declared_related_concept": "Option Premium",
+              "label": "Option Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8445
+            }
+          ]
+        },
+        {
+          "parameter": "change_in_volatility",
+          "metric": "Change in Implied Volatility",
+          "global_metric": "Volatility Change",
+          "binding_source": "explicit_parameter_documentation",
+          "evidence": [
+            {
+              "parameter_description": "The change in implied volatility, expressed as a decimal.",
+              "matched_explicit_label": "change in implied volatility"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "formula_id": "source:fea0d27e69f1f4397f13",
+      "target": "Operating Profit",
+      "source_formula": "Operating Profit = Pre-tax Operating Profit × (1 - Income Tax Rate)",
+      "source_records": [
+        30
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:bbba21a870cd0907fe18",
+      "target": "Upward Project Value",
+      "source_formula": "Upward Project Value = Project Value × Upward Multiplier",
+      "source_records": [
+        169
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "u",
+          "metric": "Upward Multiplier",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Upward Multiplier",
+              "label": "u",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1119
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:a367d7a588431f5456ff",
+      "target": "Sales Volume",
+      "source_formula": "Sales Volume = (Fixed Costs + Profit) ÷ (Unit Price - Unit Variable Cost)",
+      "source_records": [
+        196
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:750f48e9d8b5aea43ed7",
+      "target": "Sales Volume",
+      "source_formula": "Sales Volume = (Fixed Costs + After-tax Profit ÷ (1 - Income Tax Rate)) ÷ (Unit Price - Unit Variable Cost)",
+      "source_records": [
+        196
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        },
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:7e22fa1b8621fb20383d",
+      "target": "Alternative Investment",
+      "source_formula": "Alternative Investment = Total Investment Assets - Stock Assets - Bond Assets - Cash Assets",
+      "source_records": [
+        240
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_assets",
+          "metric": "Total Investment Assets",
+          "global_metric": "Total Assets",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Investment Assets",
+              "label": "Total Assets",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 488
+            }
+          ]
+        }
+      ],
+      "reason": "node_not_in_baseline"
+    },
+    {
+      "formula_id": "source:7c029897f60e8a0c630b",
+      "target": "Treasury Bill Yield",
+      "source_formula": "Treasury Bill Yield = ((Face Value - Purchase Price) / Purchase Price) × (360 / Days to Maturity)",
+      "source_records": [
+        381
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "par_value",
+          "metric": "Face Value",
+          "global_metric": "Par Value",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Face Value",
+              "label": "Par Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2822
+            },
+            {
+              "declared_related_concept": "Face Value",
+              "label": "Par Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3112
+            },
+            {
+              "declared_related_concept": "Face Value",
+              "label": "Par Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3689
+            },
+            {
+              "declared_related_concept": "Face Value",
+              "label": "Par Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5633
+            }
+          ]
+        }
+      ],
+      "reason": "node_not_in_baseline"
+    },
+    {
+      "formula_id": "source:d6466d9d3246a821f0eb",
+      "target": "Final Real GDP",
+      "source_formula": "Final Real GDP = Nominal Gross Domestic Product ÷ GDP Deflator",
+      "source_records": [
+        526
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "nominal_gdp",
+          "metric": "Nominal Gross Domestic Product",
+          "global_metric": "Nominal GDP",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Nominal Gross Domestic Product",
+              "label": "Nominal GDP",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 787
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:a4bb0f5479c25a8f37ad",
+      "target": "Final Real GDP",
+      "source_formula": "Final Real GDP = Nominal Gross Domestic Product ÷ Price Index",
+      "source_records": [
+        526
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "nominal_gdp",
+          "metric": "Nominal Gross Domestic Product",
+          "global_metric": "Nominal GDP",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Nominal Gross Domestic Product",
+              "label": "Nominal GDP",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 787
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:306fe6827f93d1ea7bdc",
+      "target": "Terminal Value",
+      "source_formula": "Terminal Value = Beginning Book Value - Current Period Depreciation Expense",
+      "source_records": [
+        534
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "depreciation_expense",
+          "metric": "Current Period Depreciation Expense",
+          "global_metric": "Depreciation Expense",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Current Period Depreciation Expense",
+              "label": "Depreciation Expense",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 993
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:d88d63ea8799e6d83226",
+      "target": "Ending Net Operating Assets",
+      "source_formula": "Ending Net Operating Assets = Ending Operating Assets - Ending Operating Liabilities",
+      "source_records": [
+        535
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "operating_assets",
+          "metric": "Ending Operating Assets",
+          "global_metric": "Operating Assets",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Ending Operating Assets",
+              "label": "Operating Assets",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 969
+            }
+          ]
+        },
+        {
+          "parameter": "operating_liabilities",
+          "metric": "Ending Operating Liabilities",
+          "global_metric": "Operating Liabilities",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Ending Operating Liabilities",
+              "label": "Operating Liabilities",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 968
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:de1e86a44a28f3037a36",
+      "target": "Earnings Per Share",
+      "source_formula": "Earnings Per Share = (Net Profit - Preferred Dividends) ÷ Weighted Average Number of Common Shares Outstanding",
+      "source_records": [
+        557
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "weighted_average_shares_outstanding",
+          "metric": "Weighted Average Number of Common Shares Outstanding",
+          "global_metric": "Weighted Average Shares Outstanding",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 749
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1430
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1431
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1432
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1433
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4438
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5011
+            },
+            {
+              "declared_related_concept": "Weighted Average Number of Common Shares Outstanding",
+              "label": "Weighted Average Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5516
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:2cc3a28430c8fbdf10e7",
+      "target": "After-tax Interest Expense",
+      "source_formula": "After-tax Interest Expense = Interest Expense × (1 - Income Tax Rate)",
+      "source_records": [
+        573
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:b4cdb9c5ea3b0fae4943",
+      "target": "Free Cash Flow to Equity",
+      "source_formula": "Free Cash Flow to Equity = Cash Flow from Operating Activities - Capital Expenditure + Net Borrowing",
+      "source_records": [
+        598
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "cfo",
+          "metric": "Cash Flow from Operating Activities",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "CFO",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1112
+            },
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "CFO",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1938
+            },
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "CFO",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6376
+            },
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "CFO",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8898
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:a921ac006819f1ee61bb",
+      "target": "Long-term Capital",
+      "source_formula": "Long-term Capital = Long-term Liabilities + Total Shareholders' Equity",
+      "source_records": [
+        633
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_equity",
+          "metric": "Total Shareholders' Equity",
+          "global_metric": "Final Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Shareholders' Equity",
+              "label": "Total Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1116
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:9a1e4037a7c18d5d61e3",
+      "target": "Non-operating Profit",
+      "source_formula": "Non-operating Profit = Net Operating Income - Operating Profit",
+      "source_records": [
+        635
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "net_operating_revenue",
+          "metric": "Net Operating Income",
+          "global_metric": "Net Operating Revenue",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Net Operating Income",
+              "label": "Net Operating Revenue",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3117
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:9535adb499d624747f16",
+      "target": "Next Period Capital Expenditure",
+      "source_formula": "Next Period Capital Expenditure = Net Operating Cash Flow - Equity Cash Flow",
+      "source_records": [
+        690
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "operating_cash_flow",
+          "metric": "Net Operating Cash Flow",
+          "global_metric": "Operating Cash Flow",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Net Operating Cash Flow",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1139
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:199e2f9fe222cb70b35b",
+      "target": "Total Debt Financing",
+      "source_formula": "Total Debt Financing = Long-term Debt + Short-term Debt + Bonds Payable - Cash and Cash Equivalents",
+      "source_records": [
+        722
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "cash_equivalents",
+          "metric": "Cash and Cash Equivalents",
+          "global_metric": "Cash Equivalents",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cash and Cash Equivalents",
+              "label": "Cash Equivalents",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3677
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:6339c704ecbb129f057f",
+      "target": "Current Market Price per Common Share",
+      "source_formula": "Current Market Price per Common Share = Dividend per Share ÷ (Cost of Equity Capital - Dividend Growth Rate)",
+      "source_records": [
+        876
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "cost_of_equity",
+          "metric": "Cost of Equity Capital",
+          "global_metric": "Cost of Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1814
+            },
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3046
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:bfc2f99616e4f4a7f7f2",
+      "target": "Current Market Price Per Share",
+      "source_formula": "Current Market Price per Share = Expected Dividend per Share ÷ (Cost of Equity Capital - Growth Rate)",
+      "source_records": [
+        877
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "cost_of_equity",
+          "metric": "Cost of Equity Capital",
+          "global_metric": "Cost of Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1814
+            },
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3046
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:09615bee91ff7013116c",
+      "target": "Present Value",
+      "source_formula": "Present Value = Future Cash Flow ÷ (1 + Interest Rate × Number of Periods)",
+      "source_records": [
+        880
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "未来现金流量",
+          "metric": "Future Cash Flow",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Future Cash Flow",
+              "label": "未来现金流量",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 982
+            }
+          ]
+        },
+        {
+          "parameter": "利率",
+          "metric": "Interest Rate",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Interest Rate",
+              "label": "利率",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1717
+            },
+            {
+              "declared_related_concept": "Interest Rate",
+              "label": "利率",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2343
+            }
+          ]
+        },
+        {
+          "parameter": "期数",
+          "metric": "Number of Periods",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Number of Periods",
+              "label": "期数",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3816
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:2d4260196bef74a6da66",
+      "target": "Return on Invested Capital",
+      "source_formula": "Return on Invested Capital = (Net Income - Taxes) ÷ Total Capital",
+      "source_records": [
+        909
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax",
+          "metric": "Taxes",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Taxes",
+              "label": "Tax",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3139
+            },
+            {
+              "declared_related_concept": "Taxes",
+              "label": "TAX",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3139
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:390de6883acb9d055878",
+      "target": "Equity Value",
+      "source_formula": "Equity Value = Net Profit ÷ Cost of Equity Capital",
+      "source_records": [
+        1007
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "cost_of_equity",
+          "metric": "Cost of Equity Capital",
+          "global_metric": "Cost of Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1814
+            },
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3046
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:b20b25bf6968dc8405b3",
+      "target": "Cash Flow",
+      "source_formula": "Cash Flow = Cash Flow from Operating Activities + Cash Flow from Investing Activities + Cash Flow from Financing Activities",
+      "source_records": [
+        1058
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "operating_cash_flow",
+          "metric": "Cash Flow from Operating Activities",
+          "global_metric": "Operating Cash Flow",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1112
+            },
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1938
+            },
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6376
+            },
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8898
+            }
+          ]
+        },
+        {
+          "parameter": "investing_cash_flow",
+          "metric": "Cash Flow from Investing Activities",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cash Flow from Investing Activities",
+              "label": "Investing Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 913
+            },
+            {
+              "declared_related_concept": "Cash Flow from Investing Activities",
+              "label": "Investing Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2589
+            },
+            {
+              "declared_related_concept": "Cash Flow from Investing Activities",
+              "label": "Investing Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2592
+            }
+          ]
+        },
+        {
+          "parameter": "financing_cash_flow",
+          "metric": "Cash Flow from Financing Activities",
+          "global_metric": "Financing Cash Flow",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cash Flow from Financing Activities",
+              "label": "Financing Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1918
+            },
+            {
+              "declared_related_concept": "Cash Flow from Financing Activities",
+              "label": "Financing Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2881
+            },
+            {
+              "declared_related_concept": "Cash Flow from Financing Activities",
+              "label": "Financing Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6375
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:d6365149d1d2a4174146",
+      "target": "Stock Price",
+      "source_formula": "Stock Price = Par Value × Dividend Yield ÷ Interest Rate",
+      "source_records": [
+        1126
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "dividend_rate",
+          "metric": "Dividend Yield",
+          "global_metric": "Dividend Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Dividend Yield",
+              "label": "Dividend Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1965
+            },
+            {
+              "declared_related_concept": "Dividend Yield",
+              "label": "Dividend Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3412
+            },
+            {
+              "declared_related_concept": "Dividend Yield",
+              "label": "Dividend Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 7780
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:1edb23d841fb35dd9c06",
+      "target": "Free Cash Flow",
+      "source_formula": "Free Cash Flow = Cash Flow from Operating Activities - Capital Expenditures",
+      "source_records": [
+        1134
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "operating_cash_flow",
+          "metric": "Cash Flow from Operating Activities",
+          "global_metric": "Operating Cash Flow",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1112
+            },
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1938
+            },
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6376
+            },
+            {
+              "declared_related_concept": "Cash Flow from Operating Activities",
+              "label": "Operating Cash Flow",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8898
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:d33ab2495fe522cc0a14",
+      "target": "Credit Sales",
+      "source_formula": "Credit Sales = Average Accounts Receivable Balance × (365 ÷ Days Sales Outstanding)",
+      "source_records": [
+        1179
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "average_accounts_receivable",
+          "metric": "Average Accounts Receivable Balance",
+          "global_metric": "Average Accounts Receivable",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Accounts Receivable Balance",
+              "label": "Average Accounts Receivable",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3036
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:660bae7ffdf9e0a81f72",
+      "target": "Terminal Value",
+      "source_formula": "Terminal Value = Expected Investment Return ÷ Investment Principal",
+      "source_records": [
+        1394
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "expected_return",
+          "metric": "Expected Investment Return",
+          "global_metric": "Expected Return",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Expected Investment Return",
+              "label": "Expected Return",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5107
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:f7ff45f004471a1c6d5f",
+      "target": "Variable Cost per Unit",
+      "source_formula": "Variable Cost per Unit = Unit Price - [(Target Profit + Fixed Costs) ÷ Sales Volume]",
+      "source_records": [
+        1408
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:fff19c9460fb547582a1",
+      "target": "Engineering Cost",
+      "source_formula": "Engineering Cost = Direct Engineering Cost + Indirect Costs + Profit + Taxes",
+      "source_records": [
+        1542
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "indirect_cost",
+          "metric": "Indirect Costs",
+          "global_metric": "Indirect Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Indirect Costs",
+              "label": "Indirect Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2089
+            }
+          ]
+        },
+        {
+          "parameter": "tax",
+          "metric": "Taxes",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Taxes",
+              "label": "Tax",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3139
+            },
+            {
+              "declared_related_concept": "Taxes",
+              "label": "TAX",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3139
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:837045b0c77fe5f704e0",
+      "target": "Income Tax Payable",
+      "source_formula": "Income Tax Payable = Taxable Income × Income Tax Rate",
+      "source_records": [
+        1600
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:d7a908418ea2f50c3230",
+      "target": "Average Days Sales Outstanding",
+      "source_formula": "Average Days Sales Outstanding = Average Accounts Receivable Balance × 365 ÷ Sales Revenue",
+      "source_records": [
+        1608
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "average_accounts_receivable",
+          "metric": "Average Accounts Receivable Balance",
+          "global_metric": "Average Accounts Receivable",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Accounts Receivable Balance",
+              "label": "Average Accounts Receivable",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3036
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:e36d198815005312da1e",
+      "target": "Average Days Sales Outstanding",
+      "source_formula": "Average Days Sales Outstanding = Average Accounts Receivable Balance ÷ Average Daily Sales",
+      "source_records": [
+        1608
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "average_accounts_receivable",
+          "metric": "Average Accounts Receivable Balance",
+          "global_metric": "Average Accounts Receivable",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Accounts Receivable Balance",
+              "label": "Average Accounts Receivable",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3036
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:79b89f9d825a0e594def",
+      "target": "Present Value",
+      "source_formula": "Present Value = Annuity × Present Value Annuity Factor × (1 + Discount Rate)",
+      "source_records": [
+        1619
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "annuity_present_value_factor",
+          "metric": "Present Value Annuity Factor",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Present Value Annuity Factor",
+              "label": "Annuity Present Value Factor",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3162
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:8747634a0b976b838f13",
+      "target": "Current Income Tax",
+      "source_formula": "Current Income Tax = Taxable Income × Income Tax Rate",
+      "source_records": [
+        1627
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:1f3fc873a9e683e6bc08",
+      "target": "Current Liabilities",
+      "source_formula": "Current Liabilities = Short-term Borrowings + Notes Payable + Accounts Payable + Advances from Customers + Employee Benefits Payable + Taxes Payable + Other Payables + Non-current Liabilities Due within One Year + Other Current Liabilities",
+      "source_records": [
+        1630
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "advance_from_customers",
+          "metric": "Advances from Customers",
+          "global_metric": "Advance from Customers",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Advances from Customers",
+              "label": "Advance from Customers",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2989
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:a561060359a5b36f5cb0",
+      "target": "Total Variable Cost",
+      "source_formula": "Total Variable Cost = Variable Cost per Unit × Total Output",
+      "source_records": [
+        1647
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "unit_variable_cost",
+          "metric": "Variable Cost per Unit",
+          "global_metric": "Unit Variable Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Variable Cost per Unit",
+              "label": "Unit Variable Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1408
+            },
+            {
+              "declared_related_concept": "Variable Cost per Unit",
+              "label": "Unit Variable Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4378
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:82dcb745f7d19701df9c",
+      "target": "Final Investment Amount",
+      "source_formula": "Final Investment Amount = (Purchase Price per Unit × Purchase Quantity) + Transaction Fees + Stamp Duty",
+      "source_records": [
+        1737
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "transaction_fee",
+          "metric": "Transaction Fees",
+          "global_metric": "Transaction Fee",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Transaction Fees",
+              "label": "Transaction Fee",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 7936
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:cde0b0b5f7bdf4b288a6",
+      "target": "Current Period Accounts Receivable Turnover Ratio",
+      "source_formula": "Current Period Accounts Receivable Turnover Ratio = Net Credit Sales ÷ Average Accounts Receivable Balance",
+      "source_records": [
+        1783
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "average_accounts_receivable",
+          "metric": "Average Accounts Receivable Balance",
+          "global_metric": "Average Accounts Receivable",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Accounts Receivable Balance",
+              "label": "Average Accounts Receivable",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3036
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:53ab6b498e5633d39991",
+      "target": "Current Period Indicators",
+      "source_formula": "Current Period Indicator = Net Operating Revenue ÷ Average Accounts Receivable Balance",
+      "source_records": [
+        1785
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "average_accounts_receivable",
+          "metric": "Average Accounts Receivable Balance",
+          "global_metric": "Average Accounts Receivable",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Accounts Receivable Balance",
+              "label": "Average Accounts Receivable",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3036
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:8ea5df7e21714a2037af",
+      "target": "Equity Market Value Added",
+      "source_formula": "Equity Market Value Added = (Net Profit ÷ Cost of Equity Capital) - Equity Capital",
+      "source_records": [
+        1810
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "cost_of_equity",
+          "metric": "Cost of Equity Capital",
+          "global_metric": "Cost of Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1814
+            },
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3046
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:f978d7a433d0a0cadb03",
+      "target": "Market Value of Equity",
+      "source_formula": "Market Value of Equity = Net Profit ÷ Cost of Equity Capital",
+      "source_records": [
+        1813
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "cost_of_equity",
+          "metric": "Cost of Equity Capital",
+          "global_metric": "Cost of Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1814
+            },
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3046
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:f978d7a433d0a0cadb03",
+      "target": "Market Value of Equity",
+      "source_formula": "Market Value of Equity = Net Profit ÷ Cost of Equity Capital",
+      "source_records": [
+        1816
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "cost_of_equity",
+          "metric": "Cost of Equity Capital",
+          "global_metric": "Cost of Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1814
+            },
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3046
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:bcf7a06af4ba3e0a2a63",
+      "target": "Return on Capital",
+      "source_formula": "Return on Capital = (Net Income - Taxes) ÷ Total Capital",
+      "source_records": [
+        2040
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax",
+          "metric": "Taxes",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Taxes",
+              "label": "Tax",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3139
+            },
+            {
+              "declared_related_concept": "Taxes",
+              "label": "TAX",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3139
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:af6ac23c581644e92364",
+      "target": "Per Share Value",
+      "source_formula": "Per Share Value = Company Value ÷ Number of Common Shares Outstanding",
+      "source_records": [
+        3050
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "shares_outstanding",
+          "metric": "Number of Common Shares Outstanding",
+          "global_metric": "Shares Outstanding",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Number of Common Shares Outstanding",
+              "label": "Shares Outstanding",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3672
+            }
+          ]
+        }
+      ],
+      "reason": "node_not_in_baseline"
+    },
+    {
+      "formula_id": "source:1bc519cc6e456ab41843",
+      "target": "Equity Value",
+      "source_formula": "Equity Value = Entity Value - Debt Value",
+      "source_records": [
+        3051
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "enterprise_value",
+          "metric": "Entity Value",
+          "global_metric": "Enterprise Value",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Entity Value",
+              "label": "Enterprise Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3052
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:edcb7fa649a063924ec0",
+      "target": "Unit Price",
+      "source_formula": "Unit Price = (Total Fixed Costs + Total Variable Costs) ÷ Quantity",
+      "source_records": [
+        3089
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_fixed_cost",
+          "metric": "Total Fixed Costs",
+          "global_metric": "Total Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Fixed Costs",
+              "label": "Total Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3285
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:ce518f7074da3dbe1998",
+      "target": "Contribution Margin",
+      "source_formula": "Contribution Margin = Fixed Costs + Profit",
+      "source_records": [
+        3091
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fixed_cost",
+          "metric": "Fixed Costs",
+          "global_metric": "Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4601
+            },
+            {
+              "declared_related_concept": "Fixed Costs",
+              "label": "Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4604
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:e7fa7db0df31107ba1e1",
+      "target": "Accounts Receivable Turnover Ratio",
+      "source_formula": "Accounts Receivable Turnover Ratio = Operating Revenue ÷ Average Accounts Receivable Balance",
+      "source_records": [
+        3120
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "average_accounts_receivable",
+          "metric": "Average Accounts Receivable Balance",
+          "global_metric": "Average Accounts Receivable",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Accounts Receivable Balance",
+              "label": "Average Accounts Receivable",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3036
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:00fdd87fdb3fb3ad7781",
+      "target": "Capital Gain",
+      "source_formula": "Capital Gain = Selling Price - Purchase Price",
+      "source_records": [
+        3125
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "buying_price",
+          "metric": "Purchase Price",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Purchase Price",
+              "label": "Buying Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2261
+            },
+            {
+              "declared_related_concept": "Purchase Price",
+              "label": "Buying Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2914
+            },
+            {
+              "declared_related_concept": "Purchase Price",
+              "label": "Buying Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2919
+            },
+            {
+              "declared_related_concept": "Purchase Price",
+              "label": "Buying Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 4124
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:4b149dc287120d3d8518",
+      "target": "Initial Investment",
+      "source_formula": "Initial Investment = Initial Outlay + Working Capital",
+      "source_records": [
+        3152
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "initial_investment",
+          "metric": "Initial Outlay",
+          "global_metric": "Initial Investment",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Initial Outlay",
+              "label": "Initial Investment",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1384
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:f72f56ca027d128172c5",
+      "target": "Income Tax Expense",
+      "source_formula": "Income Tax Expense = Current Income Tax + Deferred Income Tax Expense",
+      "source_records": [
+        3167
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "deferred_tax_expense",
+          "metric": "Deferred Income Tax Expense",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Deferred Income Tax Expense",
+              "label": "Deferred Tax Expense",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2059
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:f978d7a433d0a0cadb03",
+      "target": "Market Value of Equity",
+      "source_formula": "Market Value of Equity = Net Profit ÷ Cost of Equity Capital",
+      "source_records": [
+        3178
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "cost_of_equity",
+          "metric": "Cost of Equity Capital",
+          "global_metric": "Cost of Equity",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1814
+            },
+            {
+              "declared_related_concept": "Cost of Equity Capital",
+              "label": "Cost of Equity",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3046
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:2cc3a28430c8fbdf10e7",
+      "target": "After-tax Interest Expense",
+      "source_formula": "After-tax Interest Expense = Interest Expense × (1 - Income Tax Rate)",
+      "source_records": [
+        3193
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "tax_rate",
+          "metric": "Income Tax Rate",
+          "global_metric": "Tax Rate",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Income Tax Rate",
+              "label": "Tax Rate",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3598
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:d3de08476cba830ec4d9",
+      "target": "Operating Revenue",
+      "source_formula": "Operating Revenue = Sales Volume × Unit Selling Price",
+      "source_records": [
+        3201
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "unit_price",
+          "metric": "Unit Selling Price",
+          "global_metric": "Unit Price",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Unit Selling Price",
+              "label": "Unit Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 751
+            },
+            {
+              "declared_related_concept": "Unit Selling Price",
+              "label": "Unit Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 2364
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:678f7d5ebc1c3cf1e345",
+      "target": "Decision Price",
+      "source_formula": "Decision Price = Unit Variable Cost + (Total Fixed Costs + Target Profit) ÷ Estimated Sales Volume",
+      "source_records": [
+        3245
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "total_fixed_cost",
+          "metric": "Total Fixed Costs",
+          "global_metric": "Total Fixed Cost",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Fixed Costs",
+              "label": "Total Fixed Cost",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3285
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:591ab3d828a4b4aa404a",
+      "target": "Net Credit Sales",
+      "source_formula": "Net Credit Sales = Total Sales - Sales Returns - Sales Allowances - Sales Discounts",
+      "source_records": [
+        3248
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "gross_sales",
+          "metric": "Total Sales",
+          "global_metric": "Gross Sales",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Total Sales",
+              "label": "Gross Sales",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3448
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:817f6e46e4870fb25535",
+      "target": "Annual Interest Rate",
+      "source_formula": "Annual Interest Rate = Annual Interest Amount ÷ Principal",
+      "source_records": [
+        3312
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "annual_interest",
+          "metric": "Annual Interest Amount",
+          "global_metric": "Annual Interest",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Annual Interest Amount",
+              "label": "Annual Interest",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3656
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:6d3692551e734087b620",
+      "target": "Daily Sales",
+      "source_formula": "Daily Sales = Average Accounts Receivable Balance ÷ Days Sales Outstanding",
+      "source_records": [
+        3343
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "average_accounts_receivable",
+          "metric": "Average Accounts Receivable Balance",
+          "global_metric": "Average Accounts Receivable",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Average Accounts Receivable Balance",
+              "label": "Average Accounts Receivable",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3036
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:9c426f85bcaf751a9a59",
+      "target": "Free Cash Flow to Equity",
+      "source_formula": "FCFE = Free Cash Flow - Interest Expense + Net Borrowing",
+      "source_records": [
+        6804
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "fcf",
+          "metric": "Free Cash Flow",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Free Cash Flow",
+              "label": "FCF",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1132
+            },
+            {
+              "declared_related_concept": "Free Cash Flow",
+              "label": "FCF",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1134
+            },
+            {
+              "declared_related_concept": "Free Cash Flow",
+              "label": "FCF",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6507
+            },
+            {
+              "declared_related_concept": "Free Cash Flow",
+              "label": "FCF",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6803
+            },
+            {
+              "declared_related_concept": "Free Cash Flow",
+              "label": "FCF",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6805
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    },
+    {
+      "formula_id": "source:3def76bde6355a39dffb",
+      "target": "Theoretical Value of a Right (Cum Rights)",
+      "source_formula": "Theoretical Value of a Right (Cum Rights) = (Market Price - Subscription Price) ÷ (Rights Required + 1)",
+      "source_records": [
+        7881
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "stock_price",
+          "metric": "Market Price",
+          "global_metric": "Stock Price",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Price",
+              "label": "Stock Price",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3575
+            }
+          ]
+        }
+      ],
+      "reason": "node_not_in_baseline"
+    },
+    {
+      "formula_id": "source:8737e9acf488db9d8816",
+      "target": "New Price",
+      "source_formula": "New Price = Current Price + Tick Size",
+      "source_records": [
+        7890
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "price",
+          "metric": "Current Price",
+          "global_metric": "Price",
+          "binding_source": "explicit_parameter_documentation",
+          "evidence": [
+            {
+              "parameter_description": "The current price of the security.",
+              "matched_explicit_label": "current price"
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:82b8aaf6702e384601a9",
+      "target": "Total Enterprise Value (TEV)",
+      "source_formula": "Total Enterprise Value (TEV) = Market Capitalization + Total Debt + Preferred Stock - Cash and Cash Equivalents",
+      "source_records": [
+        7916
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "market_cap",
+          "metric": "Market Capitalization",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 286
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "market cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 286
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 891
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3233
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3414
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5796
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6362
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6364
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 6955
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 7060
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8501
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8535
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8681
+            },
+            {
+              "declared_related_concept": "Market Capitalization",
+              "label": "Market Cap",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 8976
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:4f934b23088dc9b4649e",
+      "target": "Reserve Stock",
+      "source_formula": "Reserve Stock = (Average Daily Usage Rate × Lead Time) + Safety Stock",
+      "source_records": [
+        7983
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "daily_usage_rate",
+          "metric": "Average Daily Usage Rate",
+          "global_metric": "Daily Consumption/Usage",
+          "binding_source": "explicit_parameter_documentation",
+          "evidence": [
+            {
+              "parameter_description": "The average daily usage rate of the inventory item.",
+              "matched_explicit_label": "average daily usage rate"
+            }
+          ]
+        }
+      ],
+      "reason": "node_not_in_baseline"
+    },
+    {
+      "formula_id": "source:46d71ae084d09c940898",
+      "target": "Unlevered Free Cash Flow",
+      "source_formula": "Unlevered Free Cash Flow = EBITDA - Capital Expenditures - Change in Working Capital - Taxes",
+      "source_records": [
+        8044
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "capex",
+          "metric": "Capital Expenditure",
+          "global_metric": null,
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Capital Expenditures",
+              "label": "CapEx",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 243
+            },
+            {
+              "declared_related_concept": "Capital Expenditures",
+              "label": "CAPEX",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 243
+            },
+            {
+              "declared_related_concept": "Capital Expenditures",
+              "label": "capex",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 243
+            },
+            {
+              "declared_related_concept": "Capital Expenditures",
+              "label": "CAPEX",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3209
+            },
+            {
+              "declared_related_concept": "Capital Expenditures",
+              "label": "CapEx",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3209
+            }
+          ]
+        }
+      ],
+      "reason": "would_exceed_depth_six"
+    },
+    {
+      "formula_id": "source:a26a241205aa6429c87c",
+      "target": "Weighted Average Cost of Capital",
+      "source_formula": "WACC = (Market Value of Equity ÷ (Market Value of Equity + Market Value of Debt)) × Cost of Equity + (Market Value of Debt ÷ (Market Value of Equity + Market Value of Debt)) × Cost of Debt × (1 - Tax Rate)",
+      "source_records": [
+        8397
+      ],
+      "parameter_bindings": [
+        {
+          "parameter": "equity_market_value",
+          "metric": "Market Value of Equity",
+          "global_metric": "Equity Market Value",
+          "binding_source": "record_local_explicit_alias",
+          "evidence": [
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 1813
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 3178
+            },
+            {
+              "declared_related_concept": "Market Value of Equity",
+              "label": "Equity Market Value",
+              "evidence_kind": "source_registered_alias",
+              "alias_source_record": 5409
+            }
+          ]
+        }
+      ],
+      "reason": "would_cycle_old_or_added_dag"
+    }
+  ],
+  "skip_counts": {
+    "would_cycle_old_or_added_dag": 13,
+    "would_exceed_depth_six": 47,
+    "node_not_in_baseline": 5
+  },
+  "max_depth": 6,
+  "benchmark_inputs_used": false,
+  "selection_order": "raw source record, source formula index, stable formula id",
+  "baseline_graph_sha256": "094871c783c318541ede74750f944ff61622cb3de7d2317b1609792f1b34f28a",
+  "candidate_graph_sha256": "bc6bdbe2d88a2effc9c4709b3207687c2d8e580557ec733fe5754b2ac76402bc",
+  "source_sha256": "67f2ff0393308352992fbef88777275b09adfd26a4042541fc395eed9e4be06a",
+  "output": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\data\\assets\\fmkg.reconstructed_candidate_v2_conservative.json",
+  "source_code_sha256": {
+    "build_graph.py": "c1a14eb0d3e755912530a7e6ba7440bcc31ad5590119621aef667e4de75398cc",
+    "graph_recovery.py": "0f03026f452159b76f74464a0f4d3d0587c6146d502e300ffa6ff47b8b241908"
+  }
+}

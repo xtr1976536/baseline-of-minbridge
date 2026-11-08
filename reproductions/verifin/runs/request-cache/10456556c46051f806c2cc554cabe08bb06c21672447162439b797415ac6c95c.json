@@ -1,0 +1,31 @@
+{
+  "request_hash": "10456556c46051f806c2cc554cabe08bb06c21672447162439b797415ac6c95c",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nAs of FY 2021, how much did Verizon expect to pay for its retirees in 2024?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"expected_retiree_payments_2024\",\n  \"facts\": [\n    {\n      \"name\": \"estimated_benefit_payments_to_retirees_2024\",\n      \"aliases\": [\n        \"expected benefit payments\",\n        \"estimated future benefit payments\",\n        \"pension benefits\",\n        \"other postretirement benefits\",\n        \"benefit payments\"\n      ],\n      \"period\": \"FY 2024, as projected in FY 2021\",\n      \"statement\": \"notes\"\n    }\n  ],\n  \"reason\": \"Direct lookup of Verizon's FY 2021 projection for benefit payments to retirees in 2024, using the estimated future benefit payments disclosure in the retirement plans notes.\"\n}",
+  "usage": {
+    "prompt_tokens": 4700,
+    "completion_tokens": 292,
+    "total_tokens": 4992,
+    "prompt_tokens_details": {
+      "cached_tokens": 2957
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 136
+    }
+  },
+  "response_id": "resp_0c314d765c7efbff016aedbd60e56c87d28bf4fea659d0bfaa",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

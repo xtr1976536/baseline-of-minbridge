@@ -1,0 +1,18 @@
+{
+  "identity": "dc7355bfb01dc15ca6d65029f89548947e24804961ec2d78f8d6cd19f8d34401",
+  "response_digest": "26625559dc77c84275a05f40464a8a24b00592c446eb0b894bb58ecb7cdfd7db",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define current-period quantities and prices, plus base-period prices\n    sugar_quantity = 120\n    sugar_december_price = 1.00\n    sugar_november_price = 0.90\n\n    cotton_quantity = 50\n    cotton_december_price = 0.80\n    cotton_november_price = 0.60\n\n    # Calculate the Paasche price index using December quantities\n    december_cost = (\n        sugar_quantity * sugar_december_price\n        + cotton_quantity * cotton_december_price\n    )\n    november_prices_cost = (\n        sugar_quantity * sugar_november_price\n        + cotton_quantity * cotton_november_price\n    )\n    answer = round(december_cost / november_prices_cost * 100, 3)\n\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5580,
+      "completion_tokens": 239,
+      "total_tokens": 5819,
+      "completion_tokens_details": {
+        "reasoning_tokens": 63
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

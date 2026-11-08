@@ -1,0 +1,420 @@
+{
+  "FinQA": {
+    "metrics": {
+      "n": 33,
+      "predictions": 4,
+      "missing": 29,
+      "errors": 4,
+      "correct": 0,
+      "unanswerable": 3,
+      "correct_abstentions": 0,
+      "total_accuracy": 0.0,
+      "abstention_accuracy": 0.0,
+      "complete": false,
+      "answerable_controls": 30,
+      "answerable_answered": 0,
+      "answerable_correct": 0,
+      "false_abstentions": 0,
+      "reference": {
+        "total_accuracy": 84.98,
+        "abstention_accuracy": 98.8
+      },
+      "refusal_checks_passed": false,
+      "main_thresholds_passed": false,
+      "fixed_two_decimal_diagnostic": {
+        "n": 33,
+        "predictions": 4,
+        "missing": 29,
+        "errors": 4,
+        "correct": 0,
+        "unanswerable": 3,
+        "correct_abstentions": 0,
+        "total_accuracy": 0.0,
+        "abstention_accuracy": 0.0,
+        "complete": false
+      }
+    },
+    "categories": {
+      "technical_error": 4,
+      "missing": 29
+    },
+    "counterfactuals": [],
+    "failed_cases": [
+      {
+        "id": "FinQA:JPM/2009/page_175.pdf-3",
+        "question": "in 2008 what was the ratio of the trading assets derivatives - receivables to the payables",
+        "status": "error",
+        "value": null,
+        "gold": "1.72",
+        "unanswerable": false,
+        "error": "Chat API returned HTTP 403; task=OES",
+        "plan": {
+          "operator": "product",
+          "precision": "in millions",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Hologic; equity compensation plans approved by security holders",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "shares"
+                },
+                "temporal_scope": "fiscal year ended September 29, 2007"
+              },
+              "metric": "Number of securities to be issued upon exercise of outstanding options, warrants and rights"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Hologic; equity compensation plans approved by security holders",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": "dollars per share"
+                },
+                "temporal_scope": "fiscal year ended September 29, 2007"
+              },
+              "metric": "Weighted-average exercise price of outstanding options, warrants and rights"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "technical_error"
+      },
+      {
+        "id": "FinQA:RCL/2016/page_6.pdf-2",
+        "question": "what was the anticipated percentage increase in the global cruise fleet berths from 2017 to 2021",
+        "status": "error",
+        "value": null,
+        "gold": "34.4%",
+        "unanswerable": false,
+        "error": "Chat API returned HTTP 403; task=OES",
+        "plan": {
+          "operator": "division",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Global cruise fleet",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "berths"
+                },
+                "temporal_scope": "end of 2016"
+              },
+              "metric": "Global cruise fleet berths"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Global cruise fleet",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "berths"
+                },
+                "temporal_scope": "2017–2021 expected additions"
+              },
+              "metric": "Berths expected to be placed in service"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "technical_error"
+      },
+      {
+        "id": "FinQA:JPM/2009/page_175.pdf-2",
+        "question": "excluding derivatives , what are net 2008 trading assets , in millions?",
+        "status": "error",
+        "value": null,
+        "gold": "305261",
+        "unanswerable": false,
+        "error": "Chat API returned HTTP 403; task=OES",
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "JPMorgan Chase & Co.; trading assets excluding derivatives",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2008"
+              },
+              "metric": "Trading assets – debt and equity instruments"
+            },
+            {
+              "constraints": {
+                "entity_scope": "JPMorgan Chase & Co.; trading liabilities excluding derivatives",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2008"
+              },
+              "metric": "Trading liabilities – debt and equity instruments"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "technical_error"
+      },
+      {
+        "id": "FinQA:HOLX/2007/page_93.pdf-1",
+        "question": "what is the total value of issued securities that are approved by security holders , ( in millions ) ?",
+        "status": "error",
+        "value": null,
+        "gold": "57.2",
+        "unanswerable": false,
+        "error": "Chat API returned HTTP 403; task=OES",
+        "plan": {
+          "operator": "product",
+          "precision": "in millions",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Hologic; equity compensation plans approved by security holders",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "shares"
+                },
+                "temporal_scope": "fiscal year ended September 29, 2007"
+              },
+              "metric": "Number of securities to be issued upon exercise of outstanding options, warrants and rights"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Hologic; equity compensation plans approved by security holders",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": "dollars per share"
+                },
+                "temporal_scope": "fiscal year ended September 29, 2007"
+              },
+              "metric": "Weighted-average exercise price of outstanding options, warrants and rights"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "technical_error"
+      }
+    ],
+    "api_calls": {
+      "cache": 4
+    },
+    "api_usage_available": true
+  },
+  "TAT-QA": {
+    "metrics": {
+      "n": 33,
+      "predictions": 4,
+      "missing": 29,
+      "errors": 4,
+      "correct": 0,
+      "unanswerable": 3,
+      "correct_abstentions": 0,
+      "total_accuracy": 0.0,
+      "abstention_accuracy": 0.0,
+      "complete": false,
+      "answerable_controls": 30,
+      "answerable_answered": 0,
+      "answerable_correct": 0,
+      "false_abstentions": 0,
+      "reference": {
+        "total_accuracy": 95.75,
+        "abstention_accuracy": 96.69
+      },
+      "refusal_checks_passed": false,
+      "main_thresholds_passed": false,
+      "fixed_two_decimal_diagnostic": {
+        "n": 33,
+        "predictions": 4,
+        "missing": 29,
+        "errors": 4,
+        "correct": 0,
+        "unanswerable": 3,
+        "correct_abstentions": 0,
+        "total_accuracy": 0.0,
+        "abstention_accuracy": 0.0,
+        "complete": false
+      }
+    },
+    "categories": {
+      "technical_error": 4,
+      "missing": 29
+    },
+    "counterfactuals": [],
+    "failed_cases": [
+      {
+        "id": "TAT-QA:734df6cfe7b18ff15734dd10c3d8e4b3_08d598ef197ff29cdfbb8f4f23cd0197",
+        "question": "What is the percentage change in the net loss between 2018 and 2019?",
+        "status": "error",
+        "value": null,
+        "gold": -89.14,
+        "unanswerable": false,
+        "error": "Chat API returned HTTP 403; task=OES",
+        "plan": {
+          "operator": "change ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Company",
+                "meta": {
+                  "currency": "USD",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Net Loss"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Company",
+                "meta": {
+                  "currency": "USD",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Net Loss"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "technical_error"
+      },
+      {
+        "id": "TAT-QA:fcb7772c54b34b8dc98dbeaed568a453_a3561ce26a3d85d3f370b411127c2982",
+        "question": "What is the nominal difference of the total dividends paid in cash between 2018 and 2019?",
+        "status": "error",
+        "value": null,
+        "gold": 543,
+        "unanswerable": false,
+        "error": "Chat API returned HTTP 403; task=OES",
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "DirectRetrieval",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "year ended December 31, 2019 compared to 2018"
+              },
+              "metric": "Decrease in shipping revenues"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "technical_error"
+      },
+      {
+        "id": "TAT-QA:771fd661a72d5018797f3ea240571013_c22c73c764d0e502810da5391f4538ad",
+        "question": "What is the incentive compensation received by Messrs Richard, Robert and Bruce Leeds respectively?",
+        "status": "error",
+        "value": null,
+        "gold": "0",
+        "unanswerable": false,
+        "error": "Chat API returned HTTP 403; task=OES",
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "DirectRetrieval",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Richard Leeds",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Incentive compensation received"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Robert Leeds",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Incentive compensation received"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Bruce Leeds",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Incentive compensation received"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "technical_error"
+      },
+      {
+        "id": "TAT-QA:b04b711c2c88effff02bc8a9aeb01c61_4151841bc7dc44a3403410634ea48956",
+        "question": "How much did the shipping revenues decreased during the year ended December 31, 2019 compared to 2018?",
+        "status": "error",
+        "value": null,
+        "gold": "$10,616",
+        "unanswerable": false,
+        "error": "Chat API returned HTTP 403; task=OES",
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "DirectRetrieval",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "year ended December 31, 2019 compared to 2018"
+              },
+              "metric": "Decrease in shipping revenues"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "technical_error"
+      }
+    ],
+    "api_calls": {
+      "cache": 4
+    },
+    "api_usage_available": true
+  }
+}

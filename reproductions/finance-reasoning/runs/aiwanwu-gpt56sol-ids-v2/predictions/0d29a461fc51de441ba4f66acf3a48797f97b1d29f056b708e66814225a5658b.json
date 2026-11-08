@@ -1,0 +1,212 @@
+{
+  "record": {
+    "question_id": "test-2058",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates depreciation expense for a specified period using the double-declining balance method, given an asset’s initial cost, salvage value, useful life, and target year, while ensuring book value does not fall below salvage value?",
+        "usage": {
+          "prompt_tokens": 5055,
+          "completion_tokens": 50,
+          "total_tokens": 5105,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C05\",\"C08\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14310,
+          "completion_tokens": 22,
+          "total_tokens": 14332
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    asset_value = 120000\n    salvage_value = 10000\n    useful_life_years = 5\n    target_year = 3\n\n    # Do math calculation to get the answer\n    depreciation_rate = 2 / useful_life_years\n    book_value = asset_value\n\n    for _ in range(1, target_year):\n        depreciation = min(\n            book_value * depreciation_rate,\n            book_value - salvage_value\n        )\n        book_value -= depreciation\n\n    third_year_depreciation = min(\n        book_value * depreciation_rate,\n        book_value - salvage_value\n    )\n    answer = round(third_year_depreciation)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5816,
+          "completion_tokens": 165,
+          "total_tokens": 5981,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1703",
+        "score": 2.2474513053894043,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2550",
+        "score": 2.2088727951049805,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2219",
+        "score": 2.1941680908203125,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1655",
+        "score": 2.1671528816223145,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1774",
+        "score": 2.1583478450775146,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1702",
+        "score": 2.1255130767822266,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2248",
+        "score": 2.1114468574523926,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2249",
+        "score": 2.0871195793151855,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1122",
+        "score": 2.085580348968506,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2084",
+        "score": 2.0469954013824463,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-569",
+        "score": 2.0001132488250732,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1699",
+        "score": 1.995563268661499,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2247",
+        "score": 1.992842435836792,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2657",
+        "score": 1.9565128087997437,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2252",
+        "score": 1.9515472650527954,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2549",
+        "score": 1.94708251953125,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-655",
+        "score": 1.9352834224700928,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1123",
+        "score": 1.927546739578247,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-353",
+        "score": 1.912772536277771,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2499",
+        "score": 1.8725659847259521,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-923",
+        "score": 1.8630231618881226,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1003",
+        "score": 1.8615610599517822,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2551",
+        "score": 1.8597912788391113,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2083",
+        "score": 1.8595103025436401,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-67",
+        "score": 1.8501430749893188,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1700",
+        "score": 1.8477556705474854,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2133",
+        "score": 1.8471989631652832,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2548",
+        "score": 1.8447990417480469,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-76",
+        "score": 1.843371868133545,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1709",
+        "score": 1.8431172370910645,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2219",
+      "article-1774",
+      "article-2249"
+    ],
+    "status": "ok",
+    "answer": 17280,
+    "code": "def solution():\n    # Define variables name and value\n    asset_value = 120000\n    salvage_value = 10000\n    useful_life_years = 5\n    target_year = 3\n\n    # Do math calculation to get the answer\n    depreciation_rate = 2 / useful_life_years\n    book_value = asset_value\n\n    for _ in range(1, target_year):\n        depreciation = min(\n            book_value * depreciation_rate,\n            book_value - salvage_value\n        )\n        book_value -= depreciation\n\n    third_year_depreciation = min(\n        book_value * depreciation_rate,\n        book_value - salvage_value\n    )\n    answer = round(third_year_depreciation)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "495cc46f67b61d4ae9561920fc26faf767ddda3db733a98e0ab1b39e100ca7ad"
+}

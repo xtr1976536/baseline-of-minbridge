@@ -1,0 +1,1344 @@
+PAGE 1
+VeriFin: A Neurosymbolic Framework for Verifying
+LLM-Generated Financial Claims
+XBRLFiling
+Bethel Hall1
+bhall2@stevens.edu
+Stevens Institute of Technology
+Hoboken, New Jersey, USA
+Sachi Shome2
+sshome@stevens.edu
+Stevens Institute of Technology
+Hoboken, New Jersey, USA
+William Eiers3
+weiers@stevens.edu
+Stevens Institute of Technology
+Hoboken, New Jersey, USA
+Abstract
+Large Language Models (LLMs) are being adopted in financial work-
+flows, where accuracy and reliability are critical. One such applica-
+tion is financial question answering over public company filings.
+However, LLMs struggle with quantitative financial reasoning, in-
+cluding identifying financial facts, interpreting reporting periods
+and units, and determining appropriate metrics, leading to incor-
+rect answers. Recent RAG-based methods have improved financial
+question answering but do not ensure factual and numerical cor-
+rectness. LLM-based verifiers may also accept incorrect numerical
+claims. To address this, we introduce VeriFin, a neurosymbolic
+framework for verifying LLM generated numerical financial claims.
+Given a question and generated answer, VeriFin retrieves filing
+evidence, grounds values in XBRL facts, and establishes the re-
+quired formula independently of the answer. It then uses the Z3
+SMT solver to check the resulting arithmetic constraints. VeriFin
+accepts consistent claims, rejects inconsistent claims, and abstains
+when required facts or formulas cannot be established. To evaluate
+VeriFin, we constructed XBRLFiling, a dataset of 600 numerical
+questions from corporate filings, and selected 67 and 403 questions
+from FinanceBench and TAT-DQA, respectively. Across six an-
+swer models and three datasets, VeriFin achieves 100% observed
+precision among accepted answers with known correctness. For
+Qwen3-30B on XBRLFiling, VeriFin accepts 304 correct answers
+versus 166 for an LLM judge, while reducing false accepts from 87
+to zero. We release our benchmark to support research on reliable
+financial question answering.
+Keywords
+Large Language Models, SMT Solvers, Formal Verification, XBRL,
+Financial Question Answering, Neurosymbolic Reasoning
+1
+Introduction
+Financial professionals increasingly use large language models to
+answer numerical questions over public company filings. These
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+Conference’17, Washington, DC, USA
+© 2026 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ACM ISBN 978-x-xxxx-xxxx-x/YYYY/MM
+https://doi.org/10.1145/nnnnnnn.nnnnnnn
+questions often require identifying the correct line items, report-
+ing period, unit, and computation from 10-K and 10-Q disclosures.
+However, a fluent answer may rely on the wrong year, scale, sign,
+metric definition, or source fact while remaining entirely plausible.
+Once incorporated into a spreadsheet, valuation model, risk report,
+compliance assessment, or investment memo, such an error may
+be difficult to detect and trace. The central reliability problem is
+therefore not only whether an LLM can generate a financial claim,
+but whether that claim should be accepted into a financial workflow
+or used in financial decision-making. For practical use, a plausible
+numerical answer is not enough; it must be independently verified
+before acceptance.
+Recent works have improved financial question answering through
+retrieval, structured XBRL access, calculation tools, and executable
+programs [7, 8, 10, 16], nonetheless, numerical reliability remains a
+challenge. FinanceBench, XBRL-Agent, and Fin-RATE show that
+errors continue even when models have access to filings and ex-
+ternal tools, particularly when questions require the correct entity,
+reporting period, line item, or computation [7–9]. The problem
+is therefore not only retrieving the relevant evidence or execut-
+ing arithmetic, but establishing whether the selected facts, units,
+periods, and formula actually supports a candidate answer. Com-
+plementary work on atomic claim grounding, financial-statement
+consistency, and XBRL-based audit verification addresses parts of
+this problem [6, 15, 17]; however, a model-generated program may
+execute the wrong computation, retrieved evidence may be insuf-
+ficient, and an LLM judge may still approve a claim that does not
+follow from the filing. We call the acceptance of such an incorrect
+numerical claim a false accept. This motivates the operational ques-
+tion at the center of our work: given a fixed numerical claim
+produced by an LLM, should a financial workflow accept it?
+To address this question, we introduce VeriFin, a filing-grounded
+neurosymbolic framework that separates claim generation from
+verification and determines whether numerical claims produced by
+LLMs should be accepted (Figure 1). VeriFin treats each candidate
+claim as an untrusted claim. First, it grounds the required financial
+values in filed XBRL facts, preserving their concepts, reporting
+periods, units, and contexts. Second, it establishes the required
+calculation independently of the candidate claim. The calculation
+is obtained from an operation stated in the question, the filing’s
+XBRL calculation relationships, a documented financial metric defi-
+nition, or a filing-specific definition. Third, VeriFin compiles the
+grounded values, calculation, and candidate claim into arithmetic
+constraints checked by the Satisfiability Modulo Theories (SMT)
+solver Z3 [5]. The framework returns Verified when the candidate
+arXiv:2608.10213v3  [cs.CE]  23 Oct 2026
+
+
+PAGE 2
+Conference’17, July 2017, Washington, DC, USA
+Hall et al.
+Figure 1: Overview of VeriFin
+is consistent with the established facts and calculation, Violated
+when it is inconsistent, and Abstain when the necessary facts or
+a source-backed calculation cannot be established unambiguously.
+Once the facts and calculation are fixed, the solver decision is deter-
+ministic and traceable to the filing evidence. Abstention is therefore
+an explicit financial-control decision: when support for a number
+cannot be established, VeriFin declines to approve it rather than
+substituting a model-generated assumption.
+We evaluate VeriFin on XBRLFiling, a new benchmark of 600
+numerical questions constructed from calculations in 10-K filings of
+28 U.S. companies, and on a numerical subset of FinanceBench. On
+XBRLFiling, VeriFin records zero observed false accepts, whereas
+the four baselines accept between 6 and 92 of the same 92 incorrect
+claims. VeriFin achieves 92.2% accuracy among decided cases with
+1.2% abstention. On FinanceBench, VeriFin again records zero
+observed false accepts, whereas the baselines accept between 4 and
+21 of the same 21 incorrect claims. The zero false-accept result
+persists across multiple answer-generator models. These findings
+shift the reliability question in LLM-based financial analysis from
+whether a claim sounds plausible to whether filed facts and an
+independently established calculation support its acceptance. We
+evaluate VeriFin across six answer models on XBRLFiling, our
+new benchmark of 600 questions, and selected numerical subsets of
+FinanceBench [8] and TAT-DQA [21]. Across all 18 experimental
+settings, we find 100% precision among accepted answers with
+known correctness. Our strongest comparison shows improvements
+in both precision and the acceptance of correct answers: for Qwen3-
+30B on XBRLFiling, VeriFin accepts 304 correct answers compared
+with 166 for LLM Judge, while reducing false accepts from 87 to zero.
+This represents 83% more correct answers accepted from the same
+candidate pool. These results demonstrate that effective verification
+can improve the reliability of accepted answers while allowing more
+correct answers to pass.
+Our contributions are:
+• We formulate verification of numerical financial claims as an
+acceptance-control problem, focused on the risk of accepting
+incorrect claims and the need to abstain when evidence is
+insufficient. The objective is to reduce the risk of passing
+unsupported claims into downstream financial workflows.
+• We develop VeriFin, a framework that grounds required
+values in filed XBRL facts, establishes the financial calcula-
+tion independently of the candidate claim, and checks the
+resulting claim using a symbolic solver.
+• We introduce XBRLFiling, a 600-question benchmark con-
+structed from corporate filings, and evaluate VeriFin on
+XBRLFiling, FinanceBench, and TAT-DQA.
+Neurosymbolic Verification. Logic-LM, LINC, and SatLM trans-
+late natural-language problems into formal representations and
+delegate inference to symbolic solvers [13, 14, 18]. Similarly, ARc
+uses inference-time autoformalization to verify natural-language
+policy rules with automated reasoning tools [2]. Although inference
+is deterministic with respect to the generated formal representa-
+tion, semantic-parsing errors can still lead to incorrect conclusions.
+VeriFin reduces reliance on unconstrained free-form translation
+by grounding numerical values in XBRL facts and restricting com-
+putations to operations specified in the question, filing calculation
+relationships, or documented financial definitions. Given a com-
+plete and correctly grounded verification plan, VeriFin uses Z3 [5]
+to deterministically check whether the candidate claim satisfies the
+resulting arithmetic constraints.
+2
+Related Work
+Factuality and LLM-based evaluation. Benchmarks such as Truth-
+fulQA and FActScore demonstrate that fluent language-model out-
+puts are not necessarily factually supported [11, 12]. LLM-as-a-
+judge methods use one language model to evaluate the output of
+another, providing a flexible alternative to task-specific evaluators.
+However, their decisions can exhibit systematic biases and reason-
+ing failures [20]. In numerical financial settings, these limitations
+are particularly consequential because a plausible explanation may
+conceal an incorrect operand, reporting period, unit, or calculation.
+Financial claim verification. FinDVer[19] studies explainable claim
+verification over long, hybrid-content financial documents under
+long-context and retrieval-augmented settings. Its RAG-CoT ap-
+proach conditions an LLM on retrieved evidence to produce an
+explained binary verdict [19]. VerifierFC[4] addresses reasoning
+drift in complex numerical claim verification through test-time
+scaling, generating multiple reasoning paths and using a trained
+path ranker to select the highest-scoring path and associated ver-
+dict [4]. These approaches rely on model-generated judgments or
+reasoning paths, whereas VeriFin checks a fixed candidate claim
+against independently established financial evidence and arithmetic
+constraints.
+Executable and guided numerical reasoning. Program-of-Thoughts
+delegates arithmetic reasoning to executable model-generated pro-
+grams [3], and SEC-QA applies this paradigm to numerical ques-
+tions over SEC filings [10]. These approaches separate numerical
+execution from natural-language generation, but the generated
+program still specifies the operands and computation to execute.
+VERAFI incorporates formalized financial policies as guidance dur-
+ing agentic generation [1]. These methods are complementary to
+post-generation verification, where the objective is to determine
+whether an already generated numerical claim is sufficiently sup-
+ported for acceptance.
+
+
+PAGE 3
+VeriFin: Verifying LLM-Generated Financial Claims
+Conference’17, July 2017, Washington, DC, USA
+Figure 2: VeriFin applies formal verification to numerical claims generated by LLMs. For an Apple FY2025 operating-expense
+query, it retrieves filing evidence and obtains an untrusted candidate claim. A Verification Planner specifies the metric, period,
+unit, operands, and computation. The Provenance Verifier independently grounds the operands in XBRL facts and authorizes the
+formula from candidate-independent sources. The Claim Verifier then checks the resulting constraints and returns Verified,
+Violated, or Abstain with traceable evidence.
+3
+Methodology
+VeriFin separates answer generation from verification. Given a fi-
+nancial question, a candidate numerical answer, and filing evidence,
+it checks whether the answer follows from supported financial facts
+and a documented calculation. The framework accepts consistent
+claims, rejects inconsistent claims, and abstains when the required
+support cannot be established.
+3.1
+Neurosymbolic Verification
+Financial verification requires identifying the appropriate concepts,
+reporting periods, units, and calculation from the filings, then check-
+ing whether they support the generated claim. As illustrated in
+Figure 1, we use language models to semantically interpret the
+question and propose verification plans. Then, these proposals are
+checked against filing evidence, XBRL calculation relationships and
+documented metric definitions to establish the financial inputs and
+calculations independently of the candidate claim.
+The supported facts, calculation, and candidate value are encoded
+as constraints and checked for consistency using the SMT solver Z3.
+The decision of the solver is conditional on the facts and calculation
+encoded in those constraints. We next describe the five components
+of the framework.
+3.2
+Evidence Retriever
+Given a query 𝑞and filing document 𝐷, the Evidence Retriever
+selects a bounded set of 𝐾evidence chunks 𝐸= {𝑒1, . . . ,𝑒𝐾} ⊆𝐷
+to ground claim generation and verification. To prevent cross-filing
+contamination, candidates are strictly restricted to 𝐷by document
+identifier. Rather than searching with𝑞alone, the retriever identifies
+required line-item facts 𝑅= {𝑟1, . . . ,𝑟𝑚} and constructs expanded
+queries 𝑞𝑖= [𝑞|| 𝑟𝑖|| period || statement]. Chunks 𝑐∈𝐷are scored
+using a hybrid function:
+𝑆(𝑞𝑖,𝑐) = cos (e(𝑞𝑖), e(𝑐)) + 𝜆· 𝑆lex(𝑞𝑖,𝑐)
+(1)
+combining dense cosine similarity with a lexical score 𝑆lex that
+rewards exact label matches in table rows. Top candidate chunks
+are reranked via a cross-encoder model. The selected passages and
+table rows are concatenated to form the evidence text supplied to
+the subsequent claim-generation and verification stages.
+3.3
+Answer Generator
+Given the retrieved evidence context 𝐸, a language model drafts a
+candidate claim 𝑎to query 𝑞. This stage is intentionally decoupled
+from decision-making: 𝑎is treated as an untrusted claim. To prevent
+circular evaluation, candidate 𝑎is passed forward strictly as a target
+for formal verification and exerts no influence on the authoritative
+facts, linkbases, or solver constraints used to check it.
+3.4
+Verification Planner
+The Verification Planner uses an LLM to parse question 𝑞and
+evidence 𝐸into a candidate verification plan 𝐶= (𝑀, 𝐹, 𝑅, 𝒖, 𝝆,𝑆).
+Defining target metrics 𝑀, authorized formulas 𝐹, operand roles
+𝑅, expected units 𝒖, reporting periods 𝝆, and formula sources 𝑆as
+sets enables a single plan to naturally support multi-metric and
+multi-step computational queries.
+Formula authority follows a strict hierarchy over non-generative
+sources (§3.5): explicit operations in𝑞, the filing’s calculation linkbase,
+the curated metric registry, or disclosure text. If any formula in 𝐹
+lacks complete and unambiguous authority, VeriFin abstains.
+
+
+PAGE 4
+Conference’17, July 2017, Washington, DC, USA
+Hall et al.
+3.5
+Provenance Verifier
+Grounding Operands in XBRL Facts. For each required operand
+role 𝑟𝑖, the Provenance Verifier independently establishes four prop-
+erties: the referenced taxonomy concept, the reporting period, the
+reported unit, and the filed value.
+Concept. The role is resolved to a taxonomy concept in three
+stages. If the filing’s calculation linkbase identifies a child concept
+for the role under the requested subtotal, that concept is bound
+directly. Otherwise the role is matched against a curated concept
+registry that maps normalized financial concepts to candidate tax-
+onomy elements (e.g., us-gaap:AccountsPayableCurrent). If nei-
+ther stage resolves the role, a symbolic label-matching heuristic
+tokenizes the filing row label and candidate concept labels, accepts
+a concept only when the row’s tokens are a subset of the concept
+label, and breaks ties by selecting the candidate with the fewest
+surplus tokens.
+Period and unit. A concept alone does not uniquely identify a fact:
+the same concept is reported for multiple fiscal periods and may
+be presented at different display scales (e.g., thousands or millions
+of USD). A role therefore binds only to a fact whose reporting
+period matches the question and whose unit matches the expected
+measure, after normalizing the reported value to the requested scale.
+A concept that exists in the filing but has no fact at the required
+period and unit does not bind.
+Value and provenance. The operand value is taken exclusively
+from the filed fact. Registry-resolved concepts are therefore bound
+value-blind: the filed value overrides whatever figure the model
+extracted. Consequently, structural mismatches (e.g., binding Pr
+ofitLoss where the authorized policy requires NetIncomeLoss)
+are not filtered during grounding but instead surface later as solver
+constraint violations. Only the heuristic third stage is guarded
+by a plausibility check against the extracted value. Every binding
+records the concept, reporting period, unit, accession number, and
+source fact identifier, so each admitted operand is fully traceable
+to a specific reported filing fact. If any required role cannot be
+grounded, no verification plan is admitted and VeriFin abstains.
+Establishing Formula Provenance. For linkbase-derived subtotals,
+issuer-declared child concepts and arc weights 𝑤𝑖∈{−1, +1} de-
+fine the formula directly as 𝑓(𝑥1, . . . ,𝑥𝑛) = Í𝑛
+𝑖=1 𝑤𝑖𝑥𝑖. Where no
+linkbase relationship applies, formula authority is derived from an
+explicit question template, a curated metric registry,1 or an explicit
+definition in the filing text. If no authority yields a complete and
+unambiguous formula, VeriFin abstains.
+Admitted plans record the formula provenance, source identi-
+fier, authorized equation 𝑓, and grounded operand roles, providing
+downstream verification with an independently established com-
+putational baseline.
+3.6
+Claim Verifier
+Given a validated verification plan and grounded XBRL facts, the
+Claim Verifier binds each operand 𝑥𝑖to its filed value 𝑚★
+𝑖, computes
+the expected value ˆ𝑣using formula 𝑓, and compares it with the
+candidate value 𝑣𝑐:
+1The registry compiles derived financial-metric definitions from CFA Institute curricu-
+lum materials.
+XBRLFiling Example
+Income statement
+Question. What were Apple’s FY2025 total operating expenses?
+APPLE INC.
+CONSOLIDATED STATEMENTS OF OPERATIONS
+(USD millions)
+Fiscal years ended
+2025
+2024
+2023
+Revenue
+416,161
+391,035
+383,285
+Cost of goods sold
+220,960
+210,352
+214,137
+Gross profit
+195,201
+180,683
+169,148
+Operating expenses:
+Research and development
+34,550
+31,370
+29,915
+Selling, general and administrative
+27,601
+26,097
+24,932
+Total operating expenses
+[redacted]
+57,467
+54,847
+Operating income
+133,050
+123,216
+114,301
+Nonoperating income (expense)
+321
+269
+565
+Income before taxes
+132,729
+123,485
+113,736
+Income tax expense
+20,719
+29,749
+16,741
+Net income
+112,010
+93,736
+96,995
+gold answer: 34,550 + 27,601 = 62,151 million
+Figure 3: An XBRLFiling income-statement numerical ques-
+tion: the target subtotal is redacted, and the complete filing
+table is reorganized into a compact listing while preserving
+all line items and reporting periods.
+Φ =
+Û
+𝑖
+(𝑥𝑖= 𝑚★
+𝑖) ∧(ˆ𝑣= 𝑓(𝑥)) ∧(|ˆ𝑣−𝑣𝑐| ≤𝜏),
+where 𝜏is the reporting precision. The constraints are compiled
+into quantifier-free real arithmetic and evaluated by Z3 [5]. The
+tolerance 𝜏is half a unit in the last place reported by the filing, so
+it admits rounding at the disclosed precision. For a figure stated to
+the nearest million, 𝜏= 0.5 million; for a percentage stated to one
+decimal, 𝜏= 0.05 percentage points.
+A satisfiable constraint system yields Verified; an unsatisfiable
+constraint system yields Violated; the system returns Abstain
+when a required operand or authorized formula cannot be estab-
+lished or when the solver returns unknown. Constraints are named
+so that a violation can be accompanied by an unsatisfiable core
+identifying conflicting filing, formula, or claim constraints. The
+final solver decision is deterministic conditional on the grounded
+facts and authorized computation.
+Verifier feedback. Each constraint is named so that a failed veri-
+fication can be traced to the relevant filing value, formula condition,
+or claim bound. For a verified claim, the Z3 SMT Solver returns
+logically grounded evidence supporting the result. For a Violated
+claim, it identifies a conflicting subset of named filing, formula,
+and claim constraints that cannot all hold together, thereby pin-
+pointing the source of the error. The violated claim bound further
+indicates whether the claim overstates or understates the correct
+value. For Abstain, the verifier provides the exact requirement it
+could not establish, such as a missing formula or facts that cannot
+be grounded in the filing. This provides the language model with a
+concrete target for repair.
+
+
+PAGE 5
+VeriFin: Verifying LLM-Generated Financial Claims
+Conference’17, July 2017, Washington, DC, USA
+Statement
+M
+N
+Metrics
+Income
+5
+226
+Net, pretax, and operating income; gross profit;
+operating expenses
+Balance
+7
+279
+Current/non-current assets and liabilities; total
+liabilities; shareholders’ equity; net PP&E
+Cash flow
+3
+95
+Operating, investing, and financing cash flows
+Table 1: XBRLFiling composition (𝑁=600; 15 metrics). M de-
+notes the number of metrics.
+4
+Experimental Setup
+We evaluate VeriFin across six answer language models and three
+datasets. Baseline comparisons cover four of these models. Within
+each comparison, all methods evaluate the same questions and
+fixed candidate answers, without regenerating the candidates. We
+describe each method’s retrieval procedure and model configuration
+below.
+4.1
+Datasets
+XBRLFiling. We introduce XBRLFiling, a benchmark of 600 ques-
+tions constructed from calculation relationships declared in corpo-
+rate filings. Each question includes financial evidence, a reference
+answer, and the corresponding calculation. We reduct the required
+facts in the supplied evidence while retaining the evidence, requir-
+ing the answer to be computed rather than copied. The benchmark
+covers 15 financial metrics across income statements, balance sheets,
+and cash-flow statements (see Table 1).
+FinanceBench and TAT-DQA. We additionally evaluate on se-
+lected numerical subsets of FinanceBench [8] and TAT-DQA [21],
+containing 67 and 403 questions, respectively. TAT-DQA is a fi-
+nancial document question-answering benchmark combining semi-
+structured tables and unstructured text from financial reports. We
+select questions requiring financial value extraction, numerical
+comparisons, or calculations. We exclude questions requiring only
+qualitative interpretation because our framework targets numerical
+financial claims that remain challenging for LLMs [7]. For TAT-
+DQA, we further require matching SEC filings with available XBRL
+evidence and apply eligibility checks before running verification.
+These selected subsets extend our evaluation beyond questions
+constructed from XBRL calculation relationships.
+4.2
+Evaluated Models and Baselines
+Financial Concepts and Formula Registry. Financial questions and
+filings can use different terminology for the same concept, while
+derived metrics require calculation definitions that may not be
+stated in the filing. We curate a registry to connect financial terms
+to filing concepts and provide documented formulas for verification.
+This supplies a reference for checking the concepts and calculations
+proposed by the verification planner.
+The registry contains 59 metric entries, 17 arithmetic operation
+rules, and 126 financial concepts. Entries specify formulas, required
+inputs, and supporting references drawn from CFA Institute mate-
+rials, US GAAP and IFRS taxonomies, and FinanceBench question
+definitions. Nineteen metric entries are specific to FinanceBench.
+The registry supplies definitions and mappings; numerical values
+are retrieved from the evidence for each question.
+Answer Models. To evaluate verification robustness across di-
+verse model capabilities, candidate claims are generated using six
+language models spanning different scales and architectures: fron-
+tier closed models (GPT-5.5, Claude Haiku-4.5), open-weight
+reasoning models (Qwen3-30B, Llama-3.1-8B, Qwen2.5-7B), and
+domain-specialized financial models (Fin-o1-8B). Evaluating across
+this models ensures our results reflect verifier performance rather
+than specific generator biases. We served the openweight claim
+generation models with vLLM, calling them through its OpenAI-
+compatible endpoint; weights were downloaded from HuggingFace.
+Claude Haiku 4.5 and GPT-5.5 were called through their respec-
+tive APIs. The local models are accessed through OpenAPI com-
+patible endpoints, and Claude Haiku 4.5 through Anthropic API.
+generation settings vary across models and runs. For GPT-5.5 on
+FinanceBench and TAT-DQA, we use low reasoning effort and an
+8192-token output budget, without setting temperature.
+Baselines. We compare VeriFin with an LLM Judge, FinDVer [19],
+and VerifierFC [4]. All methods evaluate the same frozen candidate
+claims, which are reused without regeneration. Evidence retrieval
+and input construction follow each method’s respective evalua-
+tion pipeline; no baseline receives gold answers, gold evidence, or
+verdicts produced by another method.
+• LLM judge: The model receives the question, retrieved evi-
+dence, and fixed candidate claim, and predicts whether the
+claim should be accepted as correct.
+• FinDVer: We apply FinDVer’s released RAG-CoT method
+using its text-embedding-3-large top-10 retrieval, original
+prompts, and binary evaluation procedure. Following FinD-
+Ver’s evaluation design across diverse LLM backbones, we
+use Claude Haiku 4.5 as the verifier while preserving the
+remaining components and settings of the released pipeline.
+FinDVer produces a binary entailed/refuted verdict, which
+we map to accept or reject. Because it returns one of these
+two decisions for every evaluated claim, it has no abstentions
+and therefore achieves 100% decision coverage.
+• VerifierFC: We reproduce the GPT-4o-mini Best-of-10 con-
+figuration reported for VerifierFC, using its full-filing BM25
+retrieval and MiniLM reranking stages. We select this gener-
+ator configuration because it achieves the highest reported
+ClaimDecomp macro-F1 among the Best-of-10 configura-
+tions evaluated in the original study. Following the reported
+protocol, GPT-4o-mini generates ten reasoning-path–verdict
+pairs for each claim. A Llama-3.2-3B LoRA path ranker,
+trained on tuples comprising a claim, an LLM-generated rea-
+soning path, and its predicted verdict, scores the candidates
+and selects the highest-scoring verdict. We map supporting
+and refuting verdicts to accept and reject, respectively, while
+a conflicting verdict is treated as an abstention; VerifierFC
+can therefore have less than 100% coverage. The authors did
+not release the trained LoRA checkpoint, we reproduce the
+ranker locally using their released training and development
+data, implementation, and reported hyperparameters.
+
+
+PAGE 6
+Conference’17, July 2017, Washington, DC, USA
+Hall et al.
+Figure 4: Left: Percentage of incorrect claims generated by each LLM and rejected by VeriFin on XBRLFiling. Right: Candidate-
+answer accuracy by requested line item on XBRLFiling. Generator errors are strongly metric-dependent. Cash-flow subtotals
+remain difficult for most evaluated models, while every incorrect candidate represented in the left panel is rejected by VeriFin.
+Inference and scoring. LLM Judge and FinDVer predict verifica-
+tion verdicts from the candidate claim and evidence. VerifierFC uses
+a trained verifier to score multiple generated reasoning paths and
+returns the verdict associated with the highest-scoring path. Within
+each comparison, we evaluate all methods against the same candi-
+date correctness labels, using the scoring policy for each dataset.
+These labels are used only for evaluation and are not supplied to
+the verification methods. The numerical tolerance used by VeriFin
+during verification is defined in §3.6.
+Metrics. True accepts (TA) and false accepts (FA) count correct
+and incorrect accepted claims, respectively. True rejects (TR) and
+false rejects (FR) count incorrect and correct rejected claims. Abs
+counts abstentions, including cases where candidate generation
+fails.
+We report false accepts, precision TA/(TA + FA), and decision
+accuracy (TA + TR)/(TA + FA + TR + FR). Precision measures
+correctness among accepted claims, while decision accuracy mea-
+sures correctness among scored acceptance and rejection decisions.
+Coverage is (𝑛−Abs)/𝑛, and the abstention rate is Abs/𝑛, where
+𝑛includes every question. Cases with unresolved correctness are
+excluded from precision and decision accuracy but remain in the
+coverage calculation.
+For repair, recovery requires an initially incorrect, rejected claim
+to be revised into a correct answer that passes verification. Naive
+repair uses one generic retry. Verifier-guided pass@1 measures
+recovery on the first attempt, while pass@3 measures recovery
+within three attempts. We report recovery rates together with re-
+covered/scored counts for each condition.
+4.3
+Exploratory Repair Setup
+As an auxiliary analysis, we examine whether diagnostics already
+produced by VeriFin can support the revision of rejected numeri-
+cal claims. When a claim is Violated, the verifier can use named
+constraints from the solver’s unsatisfiable core to identify the filed
+values, arithmetic relation, and claim bound involved in the incon-
+sistency.
+We consider two repair conditions:
+• Naive Repair: the model receives the question, filing evi-
+dence, previous answer, and a generic request to revise the
+incorrect calculation.
+• Verifier-Guided Repair: the model additionally receives
+structured diagnostic feedback derived from the verification
+failure.
+The naive condition uses one retry. Verifier-guided pass@1 eval-
+uates the first guided attempt, while pass@3 allows up to three
+guided attempts and counts a case as recovered if any attempt suc-
+ceeds. Every revised claim is checked using the same verification
+procedure; it is counted as recovered only if it matches the gold
+answer and receives a Verified verdict.
+This exploratory analysis uses archived, condition-specific scored
+subsets of true catches rather than a single matched set. We there-
+fore report the recovery rates in Table 2 descriptively and do not
+interpret differences between conditions as controlled effects.
+5
+Results and Discussion
+5.1
+Comparison with Verification Baselines
+Table 3 shows that VeriFin is the only evaluated method to record
+zero false accepts across all 12 settings covering four answer models
+and three datasets. It achieves 100% observed precision throughout
+these comparisons, including settings where the other methods
+accept substantial numbers of incorrect claims.
+For answers generated by Qwen3-30B on XBRLFiling, LLM
+Judge accepts 87 incorrect answers, FinDVer accepts 34, and Ver-
+ifierFC accepts 27, compared with zero for VeriFin. At the same
+time, VeriFin accepts 304 correct answers compared with 166 for
+LLM Judge. This result demonstrates a particularly useful outcome:
+
+
+PAGE 7
+VeriFin: Verifying LLM-Generated Financial Claims
+Conference’17, July 2017, Washington, DC, USA
+Naive Repair
+Verifier-Guided Repair
+Backbone
+Recovery (%)
+pass@1 (%)
+pass@3 (%)
+XBRLFiling
+Qwen3-30B
+6.5
+46.3
+47.7
+Fin-o1-8B
+26.1
+57.0
+69.9
+Claude Haiku 4.5
+23.1
+40.5
+55.6
+FinanceBench
+Qwen3-30B
+0.0
+37.5
+50.0
+Fin-o1-8B
+0.0
+0.0
+9.1
+Claude Haiku 4.5
+0.0
+10.0
+20.0
+Table 2: Exploratory repair recovery rates (%) on archived,
+condition-specific scored subsets of true catches. Naive Re-
+pair uses one generic retry. Verifier-guided pass@1 uses one
+attempt with solver-derived diagnostic feedback, whereas
+pass@3 allows up to three guided attempts. Because the con-
+ditions were evaluated on separately scored archived subsets
+rather than a single matched set, the results are descriptive
+rather than paired comparisons.
+the verification pipeline prevents more incorrect answers from pass-
+ing while preserving more correct answers from the same candidate
+pool.
+The benefit also extends to GPT-5.5. Its judge accepts nine in-
+correct answers on FinanceBench and 31 on TAT-DQA, whereas
+VeriFin accepts none in the corresponding comparisons. The ad-
+vantage is smaller on XBRLFiling, where FinDVer, VerifierFC, and
+VeriFin all record zero false accepts and LLM Judge records only
+one. The precision difference from LLM Judge is not statistically sig-
+nificant in that setting. Overall, the results demonstrate consistent
+control of observed false accepts across the evaluated settings, with
+additional gains in retaining correct answers in some comparisons.
+5.2
+Performance Across Claim Generating
+Models
+Table 4 reports VeriFin’s performance across six answer models
+and three datasets. Across all 18 settings, none of the accepted
+answers whose correctness could be assessed is incorrect. The pre-
+cision is therefore 100% throughout, while the number of correct
+answers accepted varies substantially across models and datasets.
+The confidence intervals show how much evidence supports each
+precision estimate. On FinanceBench, Qwen2.5-7B and Llama-
+3.1-8B each have only ten correct accepted answers, giving a 95%
+interval of [69.2%, 100%]. GPT-5.5 has 560 correct accepted answers
+on XBRLFiling, with an interval of [99.3%, 100%]. Thus, our obser-
+vation is that identical observed precision does not imply equally
+precise estimates.
+As shown in Figure 4 (left), VeriFin rejects every ground-truth-
+incorrect candidate produced by the evaluated generators on XBRL-
+Filing, yielding zero false accepts. Candidate claim accuracy nev-
+ertheless varies widely, with cash-flow subtotals remaining partic-
+ularly challenging (right).
+5.3
+Exploratory Verifier-Guided Repair
+Table 2 presents an exploratory analysis of using solver-derived
+diagnostics to guide repair attempts. On XBRLFiling, naive-repair
+recovery is 6.5%, 26.1%, and 23.1% for Qwen3-30B, Fin-o1-8B, and
+Claude Haiku 4.5, respectively. The corresponding verifier-guided
+pass@1 rates are 46.3%, 57.0%, and 40.5%, while pass@3 reaches
+47.7%, 69.9%, and 55.6%. On FinanceBench, generic retries recover
+no cases in the scored subsets, whereas pass@3 reaches 50.0% for
+Qwen3-30B, 9.1% for Fin-o1-8B, and 20.0% for Claude Haiku 4.5.
+These results suggest that solver-derived feedback may help
+models revise rejected answers and that additional guided attempts
+may provide further recovery. However, because the conditions
+were evaluated on separately scored archived subsets rather than
+a single matched set, the results are descriptive rather than con-
+trolled comparisons. Accordingly, this analysis provides an initial
+illustration of the potential utility of verifier-guided repair.
+6
+Error Analysis
+Abstentions. Our manual review identified three recurring causes
+of abstention: failure to establish a supported formula, resolve the
+required evidence, or obtain a usable numerical claim. In several
+evidence-related cases, the necessary values were already present
+in the source. The difficulty was connecting those values to the
+financial concepts required by the question, showing that evidence
+availability alone does not ensure successful verification.
+False Rejects. Some false rejections arose from incorrect period
+selection, misinterpreted financial quantities, and inconsistent sign
+conventions. For example, a correct FY2025 answer was checked
+against FY2026 facts, while another case treated net PP&E as gross
+PP&E and applied an inappropriate depreciation adjustment. These
+errors changed the financial problem encoded in the constraints: a
+correct answer could then conflict with the constructed check. They
+highlight the need to validate the interpretation of financial inputs
+before symbolic checking. We distinguished these construction
+errors from disagreements between the evaluation and verification
+criteria.
+Use of AI Assistants. Codex was used to assist with code imple-
+mentation, LATEX formatting, and editorial revisions of the manu-
+script. The authors independently conducted all research, designed
+the experiments, performed the analyses, and formulated the scien-
+tific claims and conclusions.
+7
+Conclusion
+We introduced VeriFin, a neurosymbolic framework that verifies
+numerical financial claims against facts and calculations established
+independently of the candidate answer. Across six answer models
+on XBRLFiling, FinanceBench, and TAT-DQA, the reported evalu-
+ations yield zero observed false accepts among claims with known
+correctness. Baseline comparisons show that higher precision can
+coincide with accepting more correct answers, although the gains
+vary across models and datasets. False rejections and abstentions
+highlight the importance of correctly identifying financial concepts,
+selecting evidence, and establishing the required calculation before
+symbolic checking. These findings support neurosymbolic verifica-
+tion for controlling false accepts in financial question answering.
+Future work will focus on reducing abstentions through better ev-
+idence resolution and financial interpretation while maintaining
+high precision among accepted claims.
+
+
+PAGE 8
+Conference’17, July 2017, Washington, DC, USA
+Hall et al.
+Table 3: Baselines versus VeriFin (ours). FA counts incorrect answers accepted; Acc. is accuracy among non-abstaining decisions;
+Cov. is the percentage receiving a non-abstaining decision. Each p-value shown for a baseline compares its precision with the
+VeriFin result at the end of the same model block and is Holm-adjusted. LLM Judge and FinDVer have 100% coverage because
+their binary protocols produce an accept/reject decision for every question. Green indicates zero FA or 𝑝< 0.05; red indicates
+nonzero FA or 𝑝≥0.05.
+FinanceBench (𝑛= 67)
+XBRLFiling (𝑛= 600)
+TAT-DQA (𝑛= 403)
+Precision
+Precision
+Precision
+Model
+Method
+FA
+Acc. (%)
+%
+𝑝
+Cov. (%)
+FA
+Acc. (%)
+%
+𝑝
+Cov. (%)
+FA
+Acc. (%)
+%
+𝑝
+Cov. (%)
+Qwen2.5-7B
+LLM Judge
+22
+49.3
+46.3
+6.5×10−3
+100.0
+167
+59.3
+19.3
+2.7×10−4
+100.0
+89
+56.3
+54.6
+1.4×10−7
+100.0
+FinDVer
+13
+65.7
+53.6
+9.4×10−6
+100.0
+29
+85.7
+63.8
+9.4×10−6
+100.0
+21
+72.7
+81.9
+8.4×10−8
+100.0
+VerifierFC
+3
+66.7
+57.1
+8.8×10−2
+31.3
+24
+53.4
+31.4
+1.9×10−15
+9.7
+19
+68.1
+75.0
+1.3×10−6
+52.9
+VeriFin
+0
+78.8
+100.0
+49.3
+0
+87.6
+100.0
+98.3
+0
+71.7
+100.0
+62.3
+Qwen3-30B
+LLM Judge
+23
+50.7
+57.4
+1.7×10−3
+100.0
+87
+51.8
+65.6
+5.1×10−5
+100.0
+44
+74.7
+86.0
+2.1×10−6
+100.0
+FinDVer
+15
+47.8
+54.5
+3.7×10−5
+100.0
+34
+76.5
+88.4
+1.3×10−6
+100.0
+23
+85.1
+92.5
+1.4×10−4
+100.0
+VerifierFC
+5
+56.5
+58.3
+1.7×10−2
+34.3
+27
+69.8
+74.0
+7.0×10−6
+28.7
+36
+75.8
+85.5
+2.3×10−8
+73.9
+VeriFin
+0
+84.6
+100.0
+77.6
+0
+89.5
+100.0
+99.7
+0
+77.3
+100.0
+79.7
+Llama-3.1-8B
+LLM Judge
+34
+49.3
+47.7
+3.8×10−3
+100.0
+456
+23.3
+21.4
+4.1×10−5
+100.0
+234
+41.7
+39.2
+1.1×10−8
+100.0
+FinDVer
+13
+59.7
+51.9
+2.4×10−5
+100.0
+55
+83.5
+59.3
+1.3×10−9
+100.0
+24
+78.9
+79.1
+7.1×10−6
+100.0
+VerifierFC
+2
+70.4
+77.8
+3.3×10−1
+40.3
+38
+51.4
+44.1
+3.3×10−11
+17.8
+51
+66.8
+56.8
+1.3×10−21
+68.0
+VeriFin
+0
+69.2
+100.0
+58.2
+0
+91.4
+100.0
+97.3
+0
+80.7
+100.0
+68.0
+GPT-5.5
+LLM Judge
+9
+86.6
+86.4
+1.9×10−2
+100.0
+1
+92.7
+99.8
+9.5×10−1
+100.0
+31
+92.1
+92.3
+1.1×10−4
+100.0
+FinDVer
+12
+61.2
+74.5
+5.0×10−4
+100.0
+0
+61.0
+100.0
+1.0×100
+100.0
+30
+90.6
+92.2
+7.1×10−6
+100.0
+VerifierFC
+11
+63.0
+71.1
+8.6×10−4
+68.7
+0
+95.9
+100.0
+1.0×100
+40.8
+19
+87.4
+94.3
+1.4×10−4
+88.8
+VeriFin
+0
+89.4
+100.0
+70.1
+0
+93.8
+100.0
+100.0
+0
+91.3
+100.0
+80.1
+Table 4: VeriFin performance across six answer generators and three datasets. TA/FA/FR/Abs are counts; precision, accuracy,
+and coverage are percentages with 95% exact confidence intervals in brackets.
+XBRLFiling (𝑛=600)
+FinanceBench (𝑛=67)
+TADQA (𝑛=403)
+Claim model
+TA
+FA ↓
+FR
+Abs
+Prec.
+Acc.
+Cov.
+TA
+FA ↓
+FR
+Abs
+Prec.
+Acc.
+Cov.
+TA
+FA ↓
+FR
+Abs
+Prec.
+Acc.
+Cov.
+Qwen2.5-7B
+35
+0
+73
+10
+100.0
+87.6
+98.3
+10
+0
+7
+34
+100.0
+78.8
+49.3
+62
+0
+71
+152
+100.0
+71.7
+62.3
+[90.0, 100.0]
+[84.7, 90.2]
+[97.0, 99.2]
+[69.2, 100.0]
+[61.1, 91.0]
+[36.8, 61.8]
+[94.2, 100.0]
+[65.7, 77.2]
+[57.4, 67.0]
+Llama-3.1-8B
+74
+0
+50
+16
+100.0
+91.4
+97.3
+10
+0
+12
+28
+100.0
+69.2
+58.2
+48
+0
+53
+129
+100.0
+80.7
+68.0
+[95.1, 100.0]
+[88.9, 93.6]
+[95.7, 98.5]
+[69.2, 100.0]
+[52.4, 83.0]
+[45.5, 70.2]
+[92.6, 100.0]
+[75.5, 85.2]
+[63.2, 72.5]
+Qwen3-30B
+304
+0
+63
+2
+100.0
+89.5
+99.7
+24
+0
+8
+15
+100.0
+84.6
+77.6
+196
+0
+73
+82
+100.0
+77.3
+79.7
+[98.8, 100.0]
+[86.7, 91.8]
+[98.8, 100.0]
+[85.8, 100.0]
+[71.9, 93.1]
+[65.8, 86.9]
+[98.1, 100.0]
+[72.3, 81.7]
+[75.4, 83.5]
+Fin-o1
+436
+0
+49
+8
+100.0
+91.7
+98.7
+32
+0
+9
+12
+100.0
+83.6
+82.1
+191
+0
+61
+103
+100.0
+79.7
+74.4
+[99.2, 100.0]
+[89.2, 93.8]
+[97.4, 99.4]
+[89.1, 100.0]
+[71.2, 92.2]
+[70.8, 90.4]
+[98.1, 100.0]
+[74.7, 84.1]
+[69.9, 78.6]
+Claude Haiku 4.5
+455
+0
+46
+7
+100.0
+92.2
+98.8
+28
+0
+9
+13
+100.0
+83.3
+80.6
+244
+0
+55
+80
+100.0
+83.0
+80.1
+[99.2, 100.0]
+[89.8, 94.3]
+[97.6, 99.5]
+[87.7, 100.0]
+[70.7, 92.1]
+[69.1, 89.2]
+[98.5, 100.0]
+[78.4, 86.9]
+[75.9, 83.9]
+GPT-5.5
+560
+0
+37
+0
+100.0
+93.8
+100.0
+34
+0
+6
+20
+100.0
+86.7
+70.1
+282
+0
+28
+80
+100.0
+91.3
+80.1
+[99.3, 100.0]
+[91.6, 95.6]
+[99.4, 100.0]
+[89.7, 100.0]
+[73.2, 94.9]
+[57.7, 80.7]
+[98.7, 100.0]
+[87.7, 94.2]
+[75.9, 83.9]
+References
+[1] Adewale Akinfaderin and Shreyas Subramanian. 2025. VERAFI: Verified Agentic
+Financial Intelligence through Neurosymbolic Policy Generation. arXiv preprint
+arXiv:2512.14744 (2025).
+[2] Sam Bayless, Stefano Buliani, Darion Cassel, Byron Cook, Duncan Clough, Rémi
+Delmas, Nafi Diallo, Ferhat Erata, Nick Feng, Dimitra Giannakopoulou, et al. 2025.
+A neurosymbolic approach to natural language formalization and verification.
+arXiv preprint arXiv:2511.09008 (2025).
+[3] Wenhu Chen, Xueguang Ma, Xinyi Wang, and William W Cohen. 2022. Program
+of thoughts prompting: Disentangling computation from reasoning for numerical
+reasoning tasks. arXiv preprint arXiv:2211.12588 (2022).
+[4] Primakov Chungkham, Venktesh Viswanathan, Vinay Setty, and Avishek Anand.
+2025. Think Right, Not More: Test-Time Scaling for Numerical Claim Verification.
+In Empirical Methods in Natural Language Processing (EMNLP) 2025. Association
+for Computational Linguistics, 24345–24363.
+[5] Leonardo De Moura and Nikolaj Bjørner. 2008. Z3: An efficient SMT solver. In
+International conference on Tools and Algorithms for the Construction and Analysis
+of Systems. Springer, 337–340.
+[6] Dongxin Guo, Jikun Wu, and Siu Ming Yiu. 2026. FinGround: Detecting and
+Grounding Financial Hallucinations via Atomic Claim Verification. arXiv preprint
+arXiv:2604.23588 (2026).
+[7] Shijie Han, Haoqiang Kang, Bo Jin, Xiao-Yang Liu, and Steve Y Yang. 2024. Xbrl
+agent: Leveraging large language models for financial report analysis. In Proceed-
+ings of the 5th ACM International Conference on AI in Finance. 856–864.
+[8] Pranab Islam, Anand Kannappan, Douwe Kiela, Rebecca Qian, Nino Scherrer,
+and Bertie Vidgen. 2023. Financebench: A new benchmark for financial question
+answering. arXiv preprint arXiv:2311.11944 (2023).
+[9] Yidong Jiang, Junrong Chen, Eftychia Makri, Jialin Chen, Peiwen Li, Ali Maatouk,
+Leandros Tassiulas, Eliot Brenner, Bing Xiang, and Rex Ying. 2026. Fin-rate: A
+real-world financial analytics and tracking evaluation benchmark for llms on sec
+filings. arXiv preprint arXiv:2602.07294 (2026).
+[10] Viet Lai, Michael Krumdick, Charles Lovering, Varshini Reddy, Craig Schmidt,
+and Chris Tanner. 2025. Sec-qa: A systematic evaluation corpus for financial
+qa. In Proceedings of The 10th Workshop on Financial Technology and Natural
+Language Processing. 221–236.
+[11] Stephanie Lin, Jacob Hilton, and Owain Evans. 2022. Truthfulqa: Measuring how
+models mimic human falsehoods. In Proceedings of the 60th annual meeting of the
+association for computational linguistics (volume 1: long papers). 3214–3252.
+[12] Sewon Min, Kalpesh Krishna, Xinxi Lyu, Mike Lewis, Wen-tau Yih, Pang Koh,
+Mohit Iyyer, Luke Zettlemoyer, and Hannaneh Hajishirzi. 2023. FActScore: Fine-
+grained atomic evaluation of factual precision in long form text generation.
+In Proceedings of the 2023 conference on empirical methods in natural language
+processing. 12076–12100.
+
+
+PAGE 9
+VeriFin: Verifying LLM-Generated Financial Claims
+Conference’17, July 2017, Washington, DC, USA
+[13] Theo Olausson, Alex Gu, Ben Lipkin, Cedegao Zhang, Armando Solar-Lezama,
+Joshua Tenenbaum, and Roger Levy. 2023. LINC: A neurosymbolic approach for
+logical reasoning by combining language models with first-order logic provers.
+In Proceedings of the 2023 Conference on Empirical Methods in Natural Language
+Processing. 5153–5176.
+[14] Liangming Pan, Alon Albalak, Xinyi Wang, and William Wang. 2023. Logic-lm:
+Empowering large language models with symbolic solvers for faithful logical
+reasoning. In Findings of the Association for Computational Linguistics: EMNLP
+2023. 3806–3824.
+[15] Silu Panda. 2026. FinVerBench: Benchmark Validity and Calibration in Large
+Language Model Financial Statement Verification. arXiv preprint arXiv:2605.29586
+(2026).
+[16] Xinyu Wang, Jijun Chi, Zhenghan Tai, Tung Sum Thomas Kwok, Hailin He,
+Zhuhong Li, Yuchen Hua, Muzhi Li, Peng Lu, Suyucheng Wang, et al. 2025.
+Finsage: A multi-aspect rag system for financial filings question answering.
+In Proceedings of the 34th ACM International Conference on Information and
+Knowledge Management. 6144–6152.
+[17] Yan Wang, Xuguang Ai, Jaisal Patel, Xueqing Peng, Fengran Mo, Yupeng Cao,
+Haohang Li, Mingyu Cao, Lingfei Qian, and Víctor Gutiérrez-Basulto. 2026. AU-
+DITFLOW: Executable Symbolic Environments for Structured Financial Report-
+ing Verification. arXiv preprint arXiv:2606.03031 (2026).
+[18] Xi Ye, Qiaochu Chen, Isil Dillig, and Greg Durrett. 2023. Satlm: Satisfiability-aided
+language models using declarative prompting. Advances in Neural Information
+Processing Systems 36 (2023), 45548–45580.
+[19] Yilun Zhao, Yitao Long, Tintin Jiang, Chengye Wang, Weiyuan Chen, Hongjun
+Liu, Xiangru Tang, Yiming Zhang, Chen Zhao, and Arman Cohan. 2024. FinDVer:
+Explainable claim verification over long and hybrid-content financial documents.
+In Proceedings of the 2024 Conference on Empirical Methods in Natural Language
+Processing. 14739–14752.
+[20] Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu,
+Yonghao Zhuang, Zi Lin, Zhuohan Li, Dacheng Li, Eric Xing, et al. 2023. Judging
+llm-as-a-judge with mt-bench and chatbot arena. Advances in neural information
+processing systems 36 (2023), 46595–46623.
+[21] Fengbin Zhu, Wenqiang Lei, Fuli Feng, Chao Wang, Haozhou Zhang, and Tat-Seng
+Chua. 2022. Towards complex document understanding by discrete reasoning. In
+Proceedings of the 30th ACM International Conference on Multimedia. 4857–4866.

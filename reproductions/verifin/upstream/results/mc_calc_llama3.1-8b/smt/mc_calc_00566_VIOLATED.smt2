@@ -1,0 +1,52 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_stockholders_equity_fy2023 Real)
+(declare-const accumulated_other_comprehensive_income_loss_net_of_tax_fy2023 Real)
+(declare-const common_stocks_including_additional_paid_in_capital_fy2023 Real)
+(declare-const preferred_stock_value_fy2023 Real)
+(declare-const retained_earnings_accumulated_deficit_fy2023 Real)
+
+(assert (! (= accumulated_other_comprehensive_income_loss_net_of_tax_fy2023 -1575.0) :named evidence_accumulated_other_comprehensive_income_loss_net_of_tax_fy2023))
+(assert (! (= common_stocks_including_additional_paid_in_capital_fy2023 44289.0) :named evidence_common_stocks_including_additional_paid_in_capital_fy2023))
+(assert (! (= preferred_stock_value_fy2023 0.0) :named evidence_preferred_stock_value_fy2023))
+(assert (! (= retained_earnings_accumulated_deficit_fy2023 1639.0) :named evidence_retained_earnings_accumulated_deficit_fy2023))
+
+(assert (! (= computed_stockholders_equity_fy2023 (+ (+ preferred_stock_value_fy2023 common_stocks_including_additional_paid_in_capital_fy2023 retained_earnings_accumulated_deficit_fy2023) accumulated_other_comprehensive_income_loss_net_of_tax_fy2023)) :named formula_stockholders_equity_fy2023))
+
+(assert (! (or (> preferred_stock_value_fy2023 0) (< preferred_stock_value_fy2023 0)) :named denom_nonzero))
+(assert (! (or (> common_stocks_including_additional_paid_in_capital_fy2023 0) (< common_stocks_including_additional_paid_in_capital_fy2023 0)) :named denom_nonzero1))
+(assert (! (or (> retained_earnings_accumulated_deficit_fy2023 0) (< retained_earnings_accumulated_deficit_fy2023 0)) :named denom_nonzero2))
+(assert (! (or (> accumulated_other_comprehensive_income_loss_net_of_tax_fy2023 0) (< accumulated_other_comprehensive_income_loss_net_of_tax_fy2023 0)) :named denom_nonzero3))
+
+(assert (! (<= (- computed_stockholders_equity_fy2023 39773.0) 397.73) :named claim_upper))
+(assert (! (<= (- 39773.0 computed_stockholders_equity_fy2023) 397.73) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2023_07_29_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2023_07_29_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_PreferredStockValue_instant_2023_07_29_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2023_07_29_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_StockholdersEquity_instant_2023_07_29_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_StockholdersEquity_instant_2023_07_29_unit_USD_dims_none 44353) :named evidence_xbrl_fact_us_gaap_StockholdersEquity_instant_2023_07_29_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= preferred_stock_value_fy2023 xbrl_fact_us_gaap_PreferredStockValue_instant_2023_07_29_unit_USD_dims_none) :named xbrl_bind_preferred_stock_value_fy2023_edgar_2023_07_29_0000858877_23_000023))
+(assert (! (= xbrl_fact_us_gaap_PreferredStockValue_instant_2023_07_29_unit_USD_dims_none 0) :named xbrl_instance_preferred_stock_value_fy2023))
+(assert (! (= common_stocks_including_additional_paid_in_capital_fy2023 xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2023_07_29_unit_USD_dims_none) :named xbrl_bind_common_stocks_including_additional_paid_in_capital_fy2023_edgar_2023_07_29_0000858877_23_000023))
+(assert (! (= xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2023_07_29_unit_USD_dims_none 44289) :named xbrl_instance_common_stocks_including_additional_paid_in_capital_fy2023))
+(assert (! (= retained_earnings_accumulated_deficit_fy2023 xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2023_07_29_unit_USD_dims_none) :named xbrl_bind_retained_earnings_accumulated_deficit_fy2023_edgar_2023_07_29_0000858877_23_000023))
+(assert (! (= xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2023_07_29_unit_USD_dims_none 1639) :named xbrl_instance_retained_earnings_accumulated_deficit_fy2023))
+(assert (! (= accumulated_other_comprehensive_income_loss_net_of_tax_fy2023 xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2023_07_29_unit_USD_dims_none) :named xbrl_bind_accumulated_other_comprehensive_income_loss_net_of_tax_fy2023_edgar_2023_07_29_0000858877_23_000023))
+(assert (! (= xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2023_07_29_unit_USD_dims_none -1575) :named xbrl_instance_accumulated_other_comprehensive_income_loss_net_of_tax_fy2023))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_StockholdersEquity_instant_2023_07_29_unit_USD_dims_none (+ xbrl_fact_us_gaap_PreferredStockValue_instant_2023_07_29_unit_USD_dims_none xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2023_07_29_unit_USD_dims_none xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2023_07_29_unit_USD_dims_none xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2023_07_29_unit_USD_dims_none)) 2.5) :named xbrl_calc_0_968055796_StockholdersEquity_c_4_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_StockholdersEquity_instant_2023_07_29_unit_USD_dims_none (+ xbrl_fact_us_gaap_PreferredStockValue_instant_2023_07_29_unit_USD_dims_none xbrl_fact_us_gaap_CommonStocksIncludingAdditionalPaidInCapital_instant_2023_07_29_unit_USD_dims_none xbrl_fact_us_gaap_RetainedEarningsAccumulatedDeficit_instant_2023_07_29_unit_USD_dims_none xbrl_fact_us_gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax_instant_2023_07_29_unit_USD_dims_none)) (- 2.5)) :named xbrl_calc_0_968055796_StockholdersEquity_c_4_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

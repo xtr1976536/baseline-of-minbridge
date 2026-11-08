@@ -1,0 +1,18 @@
+{
+  "identity": "8d5d1c032b27f94157e384cdfc83e74e5a619311b69b0032c16c49c56bc48438",
+  "response_digest": "42f135d6bfbc68dc1f35f3be551d7d32b68b56e3390f68da15ce4d4c57554e0f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    interest_paid = 36000\n    mortgage_debt = 900000\n    acquisition_date = \"2020-01-10\"\n    filing_status = \"single\"\n    cutoff_date = \"2017-12-15\"\n    \n    # Do math calculation to get the answer\n    if acquisition_date <= cutoff_date:\n        debt_limit = 1000000\n    elif filing_status == \"married filing separately\":\n        debt_limit = 375000\n    else:\n        debt_limit = 750000\n\n    deductible_interest = interest_paid * min(1, debt_limit / mortgage_debt)\n    answer = round(deductible_interest)\n    \n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5180,
+      "completion_tokens": 162,
+      "total_tokens": 5342,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "request_hash": "0b1e71d65e06a6a18d5b6da49d44accf04a47f266ac54da6ff10f94678c6be9b",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the nature & purpose of AMCOR's restructuring liability as oF Q2 of FY2023 close?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"\",\n  \"facts\": [\n    {\n      \"name\": \"restructuring_liability_nature_and_purpose\",\n      \"aliases\": [\n        \"restructuring liability\",\n        \"restructuring liabilities\",\n        \"restructuring activities\",\n        \"restructuring charges\",\n        \"restructuring provision\",\n        \"restructuring reserve\",\n        \"restructuring costs\"\n      ],\n      \"period\": \"Q2 FY2023 close\",\n      \"statement\": \"notes\"\n    }\n  ],\n  \"reason\": \"The question asks for the nature and purpose of AMCOR's restructuring liability at a specific reporting date, requiring the relevant restructuring-liability disclosure and its explanation in the notes.\"\n}",
+  "usage": {
+    "prompt_tokens": 4701,
+    "completion_tokens": 237,
+    "total_tokens": 4938,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 83
+    }
+  },
+  "response_id": "resp_00b64a7a5dbcd09c016aedb1dcadbc87d09d932b80359e7737",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

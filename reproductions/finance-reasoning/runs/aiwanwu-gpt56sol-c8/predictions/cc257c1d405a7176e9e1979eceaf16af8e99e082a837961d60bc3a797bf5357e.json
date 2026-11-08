@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2007",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates a simple moving average over a fixed rolling window of sequential stock closing prices, returning the average for the latest trading day, with support for a 5-day window and rounding the result to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5043,
+          "completion_tokens": 48,
+          "total_tokens": 5091,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15357,
+          "completion_tokens": 389,
+          "total_tokens": 15746,
+          "prompt_tokens_details": {
+            "cached_tokens": 10663
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 292
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    closing_prices = [205, 210, 215, 220, 222, 225, 230, 235, 236, 240]\n    period = 5\n\n    # Do math calculation to get the answer\n    last_five_prices = closing_prices[-period:]\n    moving_average = sum(last_five_prices) / period\n    answer = round(moving_average, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5538,
+          "completion_tokens": 175,
+          "total_tokens": 5713,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 60
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-862",
+        "score": 1.7343289852142334
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.7161179780960083
+      },
+      {
+        "function_id": "article-852",
+        "score": 1.688978910446167
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.6657752990722656
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.6608623266220093
+      },
+      {
+        "function_id": "article-1632",
+        "score": 1.6382131576538086
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.6376938819885254
+      },
+      {
+        "function_id": "article-1602",
+        "score": 1.6329389810562134
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.6283087730407715
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.6211588382720947
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.6189303398132324
+      },
+      {
+        "function_id": "article-1958",
+        "score": 1.6118342876434326
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.6030899286270142
+      },
+      {
+        "function_id": "article-1886",
+        "score": 1.5992412567138672
+      },
+      {
+        "function_id": "article-3025",
+        "score": 1.5914794206619263
+      },
+      {
+        "function_id": "article-962",
+        "score": 1.5912203788757324
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.5910656452178955
+      },
+      {
+        "function_id": "article-1621",
+        "score": 1.5906375646591187
+      },
+      {
+        "function_id": "article-359",
+        "score": 1.5900121927261353
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.5873923301696777
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.583654522895813
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.583282470703125
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.5794603824615479
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.568900465965271
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.5679740905761719
+      },
+      {
+        "function_id": "article-2279",
+        "score": 1.5664892196655273
+      },
+      {
+        "function_id": "article-1038",
+        "score": 1.562648892402649
+      },
+      {
+        "function_id": "article-666",
+        "score": 1.5599981546401978
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.5566457509994507
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.5493755340576172
+      }
+    ],
+    "selected_ids": [
+      "article-862",
+      "article-2600",
+      "article-961"
+    ],
+    "status": "ok",
+    "answer": 233.2,
+    "code": "def solution():\n    # Define variables name and value\n    closing_prices = [205, 210, 215, 220, 222, 225, 230, 235, 236, 240]\n    period = 5\n\n    # Do math calculation to get the answer\n    last_five_prices = closing_prices[-period:]\n    moving_average = sum(last_five_prices) / period\n    answer = round(moving_average, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "2c5536c06c8096c4f5afa86315bb0d698e37fe12cb84595229c16d40fe8190e3"
+}

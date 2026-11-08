@@ -1,0 +1,189 @@
+{
+  "record": {
+    "question_id": "test-2087",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the average effective bid-ask spread for multiple market buy trades using trade prices and contemporaneous bid-ask quotes, typically as twice the trade price minus the quote midpoint, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5110,
+          "completion_tokens": 100,
+          "total_tokens": 5210,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 47
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14340,
+          "completion_tokens": 613,
+          "total_tokens": 14953,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    trades = [\n        {\"trade_price\": 25.20, \"bid_price\": 25.17, \"ask_price\": 25.20},\n        {\"trade_price\": 25.22, \"bid_price\": 25.19, \"ask_price\": 25.22},\n        {\"trade_price\": 25.27, \"bid_price\": 25.22, \"ask_price\": 25.26},\n    ]\n\n    # Do math calculation to get the answer\n    effective_spreads = []\n\n    for trade in trades:\n        midpoint = (trade[\"bid_price\"] + trade[\"ask_price\"]) / 2\n        effective_spread = 2 * abs(trade[\"trade_price\"] - midpoint)\n        effective_spreads.append(effective_spread)\n\n    average_effective_spread = sum(effective_spreads) / len(effective_spreads)\n\n    # return answer\n    return round(average_effective_spread, 2)\n```",
+        "usage": {
+          "prompt_tokens": 4777,
+          "completion_tokens": 312,
+          "total_tokens": 5089,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 94
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-718",
+        "score": 1.8344348669052124
+      },
+      {
+        "function_id": "article-2357",
+        "score": 1.826850414276123
+      },
+      {
+        "function_id": "article-2628",
+        "score": 1.81329345703125
+      },
+      {
+        "function_id": "article-720",
+        "score": 1.8073567152023315
+      },
+      {
+        "function_id": "article-885",
+        "score": 1.8024036884307861
+      },
+      {
+        "function_id": "article-721",
+        "score": 1.7978458404541016
+      },
+      {
+        "function_id": "article-2358",
+        "score": 1.7764887809753418
+      },
+      {
+        "function_id": "article-722",
+        "score": 1.7754909992218018
+      },
+      {
+        "function_id": "article-1281",
+        "score": 1.7614762783050537
+      },
+      {
+        "function_id": "article-234",
+        "score": 1.6980974674224854
+      },
+      {
+        "function_id": "article-2543",
+        "score": 1.6811654567718506
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.655872106552124
+      },
+      {
+        "function_id": "article-2855",
+        "score": 1.6553679704666138
+      },
+      {
+        "function_id": "article-707",
+        "score": 1.62894606590271
+      },
+      {
+        "function_id": "article-2048",
+        "score": 1.6211533546447754
+      },
+      {
+        "function_id": "article-780",
+        "score": 1.621077060699463
+      },
+      {
+        "function_id": "article-719",
+        "score": 1.5961546897888184
+      },
+      {
+        "function_id": "article-781",
+        "score": 1.590917706489563
+      },
+      {
+        "function_id": "article-706",
+        "score": 1.5902992486953735
+      },
+      {
+        "function_id": "article-1008",
+        "score": 1.5891828536987305
+      },
+      {
+        "function_id": "article-778",
+        "score": 1.5890381336212158
+      },
+      {
+        "function_id": "article-777",
+        "score": 1.5886491537094116
+      },
+      {
+        "function_id": "article-723",
+        "score": 1.5847680568695068
+      },
+      {
+        "function_id": "article-776",
+        "score": 1.5843472480773926
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.5838698148727417
+      },
+      {
+        "function_id": "article-708",
+        "score": 1.5780757665634155
+      },
+      {
+        "function_id": "article-775",
+        "score": 1.5759148597717285
+      },
+      {
+        "function_id": "article-779",
+        "score": 1.5710220336914062
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.5689209699630737
+      },
+      {
+        "function_id": "article-2630",
+        "score": 1.5682393312454224
+      }
+    ],
+    "selected_ids": [],
+    "status": "ok",
+    "answer": 0.04,
+    "code": "def solution():\n    # Define variables name and value\n    trades = [\n        {\"trade_price\": 25.20, \"bid_price\": 25.17, \"ask_price\": 25.20},\n        {\"trade_price\": 25.22, \"bid_price\": 25.19, \"ask_price\": 25.22},\n        {\"trade_price\": 25.27, \"bid_price\": 25.22, \"ask_price\": 25.26},\n    ]\n\n    # Do math calculation to get the answer\n    effective_spreads = []\n\n    for trade in trades:\n        midpoint = (trade[\"bid_price\"] + trade[\"ask_price\"]) / 2\n        effective_spread = 2 * abs(trade[\"trade_price\"] - midpoint)\n        effective_spreads.append(effective_spread)\n\n    average_effective_spread = sum(effective_spreads) / len(effective_spreads)\n\n    # return answer\n    return round(average_effective_spread, 2)\n"
+  },
+  "digest": "5a1223d4dc9dd25392c21066da6b0ee3e4df06b19fd302396479c7e639c7b723"
+}

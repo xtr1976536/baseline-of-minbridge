@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pipeline Outputs Trace</title>
+  <style>
+    body {
+      max-width: 980px;
+      margin: 32px auto 56px;
+      padding: 0 24px;
+      color: #1f2933;
+      background: #ffffff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 34px 0 10px;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.94em;
+    }
+
+    pre {
+      margin: 12px 0 0;
+      padding: 12px 14px;
+      overflow: auto;
+      background: #f8fafc;
+      color: #24313d;
+      font-size: 12.5px;
+      line-height: 1.5;
+      tab-size: 2;
+      white-space: pre;
+    }
+
+    pre code {
+      font-size: inherit;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        margin-top: 22px;
+        padding: 0 16px 40px;
+      }
+
+      h1 { font-size: 28px; }
+      h2 { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+<h1>Pipeline Outputs Trace</h1>
+<p>This is the readable transcript view for <code>financebench_id_03029</code>. Each section shows the output emitted by that stage. The stage directories also include a canonical <code>output.json</code> or <code>output.smt2</code> file.</p>
+<p><strong>Question:</strong> What is the FY2018 capital expenditure amount (in USD millions) for 3M? Give a response to the question by relying on the details shown in the cash flow statement.</p>
+<p><strong>Gold answer:</strong> $1577.00</p>
+<p><strong>Final status:</strong> VERIFIED</p>
+<h2>Dataset Load and Filter</h2>
+<p><strong>Output file:</strong> <code>00_dataset_load_and_filter/output.json</code></p>
+<pre><code>{
+  &quot;first_filtered_question&quot;: {
+    &quot;company&quot;: &quot;3M&quot;,
+    &quot;doc_name&quot;: &quot;3M_2018_10K&quot;,
+    &quot;financebench_id&quot;: &quot;financebench_id_03029&quot;,
+    &quot;gold_answer&quot;: &quot;$1577.00&quot;,
+    &quot;question&quot;: &quot;What is the FY2018 capital expenditure amount (in USD millions) for 3M? Give a response to the question by relying on the details shown in the cash flow statement.&quot;
+  },
+  &quot;loaded_and_filter_output&quot;: {
+    &quot;filter&quot;: &quot;verifiqa.question_filter.is_numerical_example&quot;,
+    &quot;filtered_count_from_run_config&quot;: 63,
+    &quot;filtered_count_recomputed_from_source_jsonl&quot;: 63,
+    &quot;first_filtered_financebench_id&quot;: &quot;financebench_id_03029&quot;,
+    &quot;first_question_passed_filter&quot;: true,
+    &quot;loaded_count_from_run_config&quot;: 150,
+    &quot;numeric_only&quot;: true
+  }
+}</code></pre>
+<h2>Filing Corpus and Retriever</h2>
+<p><strong>Output file:</strong> <code>01_filing_corpus_and_retriever/output.json</code></p>
+<pre><code>{
+  &quot;corpus&quot;: {
+    &quot;canonical_build_command&quot;: &quot;PYTHONPATH=src python3 -m verifiqa build-corpus --data data/financebench_sample --examples data/numerical_questions.jsonl --out data/corpus --cached-only&quot;,
+    &quot;corpus_coverage_from_run&quot;: {
+      &quot;missing_docs&quot;: [],
+      &quot;missing_examples&quot;: [],
+      &quot;n_available_docs&quot;: 52,
+      &quot;n_available_examples&quot;: 63,
+      &quot;n_examples&quot;: 63,
+      &quot;n_missing_docs&quot;: 0,
+      &quot;n_missing_examples&quot;: 0,
+      &quot;n_required_docs&quot;: 52
+    },
+    &quot;corpus_path&quot;: &quot;data/corpus&quot;,
+    &quot;corpus_stats_from_run&quot;: {
+      &quot;coalesced_legacy_windows&quot;: false,
+      &quot;loaded_chunks&quot;: 153332,
+      &quot;source_types&quot;: {
+        &quot;benchmark_evidence_page&quot;: 4,
+        &quot;filing_page&quot;: 7630,
+        &quot;table_row&quot;: 145698
+      },
+      &quot;stored_records&quot;: 153332
+    },
+    &quot;document_for_first_question&quot;: &quot;3M_2018_10K&quot;,
+    &quot;document_manifest_entry&quot;: {
+      &quot;cached&quot;: true,
+      &quot;chunks&quot;: 160,
+      &quot;status&quot;: &quot;ok&quot;
+    }
+  },
+  &quot;retriever&quot;: {
+    &quot;embedding_cache_dir&quot;: &quot;data/corpus&quot;,
+    &quot;evidence_top_k&quot;: 10,
+    &quot;first_stage_k&quot;: 100,
+    &quot;hybrid_rrf_k&quot;: 60,
+    &quot;rerank&quot;: true,
+    &quot;rerank_planned_queries&quot;: false,
+    &quot;reranker_model&quot;: &quot;BAAI/bge-reranker-v2-m3&quot;,
+    &quot;retrieval_mode&quot;: &quot;dense&quot;,
+    &quot;retriever_model&quot;: &quot;BAAI/bge-large-en-v1.5&quot;
+  }
+}</code></pre>
+<h2>Retrieval Plan LLM</h2>
+<p><strong>Output file:</strong> <code>02_retrieval_plan_llm/output.json</code></p>
+<pre><code>{
+  &quot;facts&quot;: [
+    {
+      &quot;aliases&quot;: [
+        &quot;Capital expenditures&quot;,
+        &quot;Capex&quot;,
+        &quot;Capital investments&quot;,
+        &quot;Purchases of property, plant and equipment&quot;,
+        &quot;Additions to property, plant and equipment&quot;,
+        &quot;Property, plant and equipment additions&quot;,
+        &quot;PP&amp;E additions&quot;,
+        &quot;Capital spending&quot;
+      ],
+      &quot;name&quot;: &quot;capital_expenditures_2018&quot;,
+      &quot;period&quot;: &quot;2018&quot;,
+      &quot;statement&quot;: &quot;cash flow&quot;
+    }
+  ],
+  &quot;metric&quot;: &quot;capital_expenditures&quot;,
+  &quot;reason&quot;: &quot;Need to retrieve the capital expenditure amount from 3M&#x27;s 2018 cash flow statement to answer the direct lookup question.&quot;
+}</code></pre>
+<h2>Planned Evidence Retrieval</h2>
+<p><strong>Output file:</strong> <code>03_planned_evidence_retrieval/output.json</code></p>
+<pre><code>{
+  &quot;evidence_top_k&quot;: 10,
+  &quot;retrieved_chunk_ids&quot;: [
+    &quot;corpus:3M_2018_10K:p49&quot;,
+    &quot;corpus:3M_2018_10K:p59&quot;,
+    &quot;corpus:3M_2018_10K:p46&quot;,
+    &quot;corpus:3M_2018_10K:p39&quot;,
+    &quot;corpus:3M_2018_10K:p60&quot;,
+    &quot;corpus:3M_2018_10K:p47&quot;,
+    &quot;corpus:3M_2018_10K:p126&quot;
+  ],
+  &quot;retrieved_chunks&quot;: [
+    {
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p49&quot;,
+      &quot;doc_name&quot;: &quot;3M_2018_10K&quot;,
+      &quot;page&quot;: 49,
+      &quot;rank&quot;: 1,
+      &quot;source_type&quot;: &quot;filing_page&quot;,
+      &quot;text_preview&quot;: &quot;STRUCTURED TABLE ROWS: [ { \&quot;chunk_id\&quot;: \&quot;corpus:3M_2018_10K:p49\&quot;, \&quot;columns\&quot;: { \&quot;2016\&quot;: 1420.0, \&quot;2017\&quot;: 1373.0, \&quot;2018\&quot;: 1577.0 }, \&quot;page\&quot;: 49, \&quot;required_fact\&quot;: \&quot;capital_expenditures_2018\&quot;, \&quot;row_label\&quot;: \&quot;Purchases of property plant and equipment PP&amp;E\&quot;, \&quot;source_quote\&quot;: \&quot;Purchases of property, plant and equipment (PP&amp;E) (1,577) (1,373) (1,420)\&quot;, \&quot;statement\&quot;: \&quot;cash flow\&quot;, \&quot;unit\&quot;: \&quot;\&quot;, \&quot;unit_scale\&quot;: \&quot;\&quot;, \&quot;unit_scale_quote\&quot;: \&quot;\&quot; } ] RAW FILING PAGE TEXT: [retrieved table-row match from corpus:3M_2018_10K:ro&quot;
+    },
+    {
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p59&quot;,
+      &quot;doc_name&quot;: &quot;3M_2018_10K&quot;,
+      &quot;page&quot;: 59,
+      &quot;rank&quot;: 2,
+      &quot;source_type&quot;: &quot;filing_page&quot;,
+      &quot;text_preview&quot;: &quot;[previous page table header/scale context from corpus:3M_2018_10K:p58] (Dollars in millions, except per share amount) 2018 2017 [retrieved table-row match from corpus:3M_2018_10K:row:p59:r12] TABLE ROW CHUNK: Parent chunk id: corpus:3M_2018_10K:p59 Document: corpus:3M_2018_10K:p59 Page: 59 Statement: cash flow Row label: Capital Columns: - 2015: 31 - 2016: 2015 Unit scale: millions Unit scale quote: Dollars in millions Unit: USD millions Source quote: Capital Earnings Stock (Loss) Interest Balan&quot;
+    },
+    {
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p46&quot;,
+      &quot;doc_name&quot;: &quot;3M_2018_10K&quot;,
+      &quot;page&quot;: 46,
+      &quot;rank&quot;: 3,
+      &quot;source_type&quot;: &quot;filing_page&quot;,
+      &quot;text_preview&quot;: &quot;STRUCTURED TABLE ROWS: [ { \&quot;chunk_id\&quot;: \&quot;corpus:3M_2018_10K:p46\&quot;, \&quot;columns\&quot;: { \&quot;2016\&quot;: 1420.0, \&quot;2017\&quot;: 1373.0, \&quot;2018\&quot;: 1577.0 }, \&quot;page\&quot;: 46, \&quot;required_fact\&quot;: \&quot;capital_expenditures_2018\&quot;, \&quot;row_label\&quot;: \&quot;Purchases of property plant and equipment PP&amp;E\&quot;, \&quot;source_quote\&quot;: \&quot;Purchases of property, plant and equipment (PP&amp;E) $ (1,577) $ (1,373) $ (1,420)\&quot;, \&quot;statement\&quot;: \&quot;cash flow\&quot;, \&quot;unit\&quot;: \&quot;\&quot;, \&quot;unit_scale\&quot;: \&quot;\&quot;, \&quot;unit_scale_quote\&quot;: \&quot;\&quot; } ] RAW FILING PAGE TEXT: [retrieved table-row match from corpus:3M_2018_&quot;
+    },
+    {
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p39&quot;,
+      &quot;doc_name&quot;: &quot;3M_2018_10K&quot;,
+      &quot;page&quot;: 39,
+      &quot;rank&quot;: 4,
+      &quot;source_type&quot;: &quot;filing_page&quot;,
+      &quot;text_preview&quot;: &quot;STRUCTURED TABLE ROWS: [ { \&quot;chunk_id\&quot;: \&quot;corpus:3M_2018_10K:p39\&quot;, \&quot;columns\&quot;: { \&quot;2018\&quot;: 31.0 }, \&quot;page\&quot;: 39, \&quot;required_fact\&quot;: \&quot;capital_expenditures_2018\&quot;, \&quot;row_label\&quot;: \&quot;Capital Spending\&quot;, \&quot;source_quote\&quot;: \&quot;Capital Spending as of December 31,\&quot;, \&quot;statement\&quot;: \&quot;cash flow\&quot;, \&quot;unit\&quot;: \&quot;\&quot;, \&quot;unit_scale\&quot;: \&quot;\&quot;, \&quot;unit_scale_quote\&quot;: \&quot;\&quot; } ] RAW FILING PAGE TEXT: Table of Contents Geographic Area Supplemental Information Property, Plant and Equipment - net Employees as of December 31, Capital Spending as of December&quot;
+    },
+    {
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p60&quot;,
+      &quot;doc_name&quot;: &quot;3M_2018_10K&quot;,
+      &quot;page&quot;: 60,
+      &quot;rank&quot;: 5,
+      &quot;source_type&quot;: &quot;filing_page&quot;,
+      &quot;text_preview&quot;: &quot;STRUCTURED TABLE ROWS: [ { \&quot;chunk_id\&quot;: \&quot;corpus:3M_2018_10K:p60\&quot;, \&quot;columns\&quot;: { \&quot;2016\&quot;: 1420.0, \&quot;2017\&quot;: 1373.0, \&quot;2018\&quot;: 1577.0 }, \&quot;page\&quot;: 60, \&quot;required_fact\&quot;: \&quot;capital_expenditures_2018\&quot;, \&quot;row_label\&quot;: \&quot;Purchases of property plant and equipment PP&amp;E\&quot;, \&quot;source_quote\&quot;: \&quot;Purchases of property, plant and equipment (PP&amp;E) (1,577) (1,373) (1,420)\&quot;, \&quot;statement\&quot;: \&quot;cash flow\&quot;, \&quot;unit\&quot;: \&quot;USD millions\&quot;, \&quot;unit_scale\&quot;: \&quot;millions\&quot;, \&quot;unit_scale_quote\&quot;: \&quot;Dollars in millions\&quot; } ] RAW FILING PAGE TEXT: [previous page&quot;
+    },
+    {
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p47&quot;,
+      &quot;doc_name&quot;: &quot;3M_2018_10K&quot;,
+      &quot;page&quot;: 47,
+      &quot;rank&quot;: 6,
+      &quot;source_type&quot;: &quot;filing_page&quot;,
+      &quot;text_preview&quot;: &quot;[previous page table header/scale context from corpus:3M_2018_10K:p46] Table of Contents Cash flows from operating, investing and financing activities are provided in the tables that follow. Individual amounts in the Consolidated Statement of Table of Contents Investments in property, plant and equipment enable growth across many diverse markets, helping to meet product demand and increasing manufacturing efficiency. The Company expects 2019 capital spending to be approximately $1.7 billion to $&quot;
+    },
+    {
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p126&quot;,
+      &quot;doc_name&quot;: &quot;3M_2018_10K&quot;,
+      &quot;page&quot;: 126,
+      &quot;rank&quot;: 7,
+      &quot;source_type&quot;: &quot;filing_page&quot;,
+      &quot;text_preview&quot;: &quot;STRUCTURED TABLE ROWS: [ { \&quot;chunk_id\&quot;: \&quot;corpus:3M_2018_10K:p126\&quot;, \&quot;columns\&quot;: { \&quot;2016\&quot;: 2016.0, \&quot;2017\&quot;: 2017.0, \&quot;2018\&quot;: 2018.0 }, \&quot;page\&quot;: 126, \&quot;required_fact\&quot;: \&quot;capital_expenditures_2018\&quot;, \&quot;row_label\&quot;: \&quot;Capital Expenditures\&quot;, \&quot;source_quote\&quot;: \&quot;Capital Expenditures (Millions) 2018 2017 2016 2018 2017 2016 2018 2017 2016\&quot;, \&quot;statement\&quot;: \&quot;cash flow\&quot;, \&quot;unit\&quot;: \&quot;\&quot;, \&quot;unit_scale\&quot;: \&quot;\&quot;, \&quot;unit_scale_quote\&quot;: \&quot;\&quot; } ] RAW FILING PAGE TEXT: Table of Contents Business Segment Information Net Sales Operating Income &quot;
+    }
+  ],
+  &quot;status&quot;: &quot;retrieved&quot;
+}</code></pre>
+<p>Full evidence text lives in <code>03_planned_evidence_retrieval/question_evidence.json</code>.</p>
+<h2>Answer LLM</h2>
+<p><strong>Output file:</strong> <code>04_answer_llm/output.json</code></p>
+<pre><code>{
+  &quot;answer&quot;: &quot;The FY2018 capital expenditure amount for 3M was $1,577 million (USD). This is shown in the cash flow statement as &#x27;Purchases of property, plant and equipment (PP&amp;E)&#x27; for 2018.&quot;
+}</code></pre>
+<h2>Formalizer LLM Verification Certificate</h2>
+<p><strong>Output file:</strong> <code>05_formalizer_llm_certificate/output.json</code></p>
+<pre><code>{
+  &quot;calculation&quot;: &quot;1577&quot;,
+  &quot;claim&quot;: {
+    &quot;claimed_value&quot;: 1577.0,
+    &quot;metric&quot;: &quot;capital_expenditures&quot;,
+    &quot;period&quot;: &quot;2018&quot;,
+    &quot;reported_value&quot;: 1577.0,
+    &quot;unit&quot;: &quot;USD millions&quot;
+  },
+  &quot;facts&quot;: [
+    {
+      &quot;absence_scope&quot;: {},
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p60&quot;,
+      &quot;column&quot;: &quot;2018&quot;,
+      &quot;fact_type&quot;: &quot;numeric&quot;,
+      &quot;name&quot;: &quot;capital_expenditures_2018&quot;,
+      &quot;period&quot;: &quot;2018&quot;,
+      &quot;raw_unit&quot;: &quot;USD millions&quot;,
+      &quot;raw_value&quot;: 1577.0,
+      &quot;row_label&quot;: &quot;Purchases of property plant and equipment PP&amp;E&quot;,
+      &quot;source_quote&quot;: &quot;Purchases of property, plant and equipment (PP&amp;E) (1,577) (1,373) (1,420)&quot;,
+      &quot;source_scale&quot;: &quot;millions&quot;,
+      &quot;source_scale_quote&quot;: &quot;Dollars in millions&quot;,
+      &quot;unit&quot;: &quot;USD millions&quot;,
+      &quot;value&quot;: 1577.0
+    }
+  ],
+  &quot;formula&quot;: &quot;capital_expenditures_2018&quot;,
+  &quot;reason&quot;: &quot;&quot;,
+  &quot;tolerance&quot;: 0.5,
+  &quot;verifiable&quot;: true
+}</code></pre>
+<h2>Certificate Grounding Validator</h2>
+<p><strong>Output file:</strong> <code>06_certificate_grounding_validator/output.json</code></p>
+<pre><code>{
+  &quot;evidence_bindings&quot;: [
+    {
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p60&quot;,
+      &quot;column&quot;: &quot;2018&quot;,
+      &quot;evidence_assertion&quot;: &quot;evidence_capital_expenditures_2018&quot;,
+      &quot;name&quot;: &quot;capital_expenditures_2018&quot;,
+      &quot;period&quot;: &quot;2018&quot;,
+      &quot;row_label&quot;: &quot;Purchases of property plant and equipment PP&amp;E&quot;,
+      &quot;source_quote&quot;: &quot;Purchases of property, plant and equipment (PP&amp;E) (1,577) (1,373) (1,420)&quot;,
+      &quot;unit&quot;: &quot;USD millions&quot;,
+      &quot;value&quot;: 1577.0
+    }
+  ],
+  &quot;validation_result&quot;: {
+    &quot;answer_used_for_claim_support&quot;: &quot;The verified capital expenditures is 1577 USD millions. Calculation: 1577.&quot;,
+    &quot;checks_enforced_by_validator&quot;: [
+      &quot;claim_has_unit&quot;,
+      &quot;claimed_value_supported_by_answer&quot;,
+      &quot;certificate_facts_match_formula_variables&quot;,
+      &quot;fact_has_unit_source_quote_and_chunk_id&quot;,
+      &quot;chunk_id_exists_in_retrieved_evidence&quot;,
+      &quot;source_quote_supported_by_retrieved_chunk_text&quot;,
+      &quot;fact_quantity_normalizes_under_source_scale&quot;,
+      &quot;statement_context_matches_retrieval_plan&quot;
+    ],
+    &quot;enabled&quot;: true,
+    &quot;reason&quot;: &quot;&quot;,
+    &quot;valid&quot;: true,
+    &quot;validator&quot;: &quot;verifiqa.formalization.certificate_validator.CertificateValidator.validate&quot;
+  }
+}</code></pre>
+<h2>Typed Verification IR</h2>
+<p><strong>Output file:</strong> <code>07_typed_verification_ir/output.json</code></p>
+<pre><code>{
+  &quot;claim_unit&quot;: &quot;USD millions&quot;,
+  &quot;claimed_value&quot;: 1577.0,
+  &quot;computed_unit&quot;: &quot;USD millions&quot;,
+  &quot;facts&quot;: {
+    &quot;capital_expenditures_2018&quot;: {
+      &quot;absence_scope&quot;: {},
+      &quot;chunk_id&quot;: &quot;corpus:3M_2018_10K:p60&quot;,
+      &quot;column&quot;: &quot;2018&quot;,
+      &quot;fact_type&quot;: &quot;numeric&quot;,
+      &quot;name&quot;: &quot;capital_expenditures_2018&quot;,
+      &quot;period&quot;: &quot;2018&quot;,
+      &quot;raw_unit&quot;: &quot;USD millions&quot;,
+      &quot;raw_value&quot;: 1577.0,
+      &quot;row_label&quot;: &quot;Purchases of property plant and equipment PP&amp;E&quot;,
+      &quot;source_quote&quot;: &quot;Purchases of property, plant and equipment (PP&amp;E) (1,577) (1,373) (1,420)&quot;,
+      &quot;source_scale&quot;: &quot;millions&quot;,
+      &quot;source_scale_quote&quot;: &quot;Dollars in millions&quot;,
+      &quot;unit&quot;: &quot;USD millions&quot;,
+      &quot;value&quot;: 1577.0
+    }
+  },
+  &quot;formula&quot;: &quot;capital_expenditures_2018&quot;,
+  &quot;metric&quot;: &quot;capital_expenditures&quot;,
+  &quot;period&quot;: &quot;2018&quot;,
+  &quot;precision_digits&quot;: 0,
+  &quot;query_type&quot;: &quot;counterexample&quot;,
+  &quot;tolerance&quot;: 0.5,
+  &quot;tolerance_source&quot;: &quot;answer_precision&quot;
+}</code></pre>
+<h2>SMT Generation LLM</h2>
+<p><strong>Output file:</strong> <code>09_smt_generation_llm/output.smt2</code></p>
+<pre><code>(set-logic QF_NRA)
+(set-option :produce-models true)
+
+(declare-const computed_capital_expenditures Real)
+(declare-const capital_expenditures_2018 Real)
+
+(assert (! (= capital_expenditures_2018 1577.0) :named evidence_capital_expenditures_2018))
+
+(assert (! (= computed_capital_expenditures capital_expenditures_2018) :named formula_capital_expenditures))
+
+(assert (!
+  (or
+    (&gt; (- computed_capital_expenditures 1577.0) 0.5)
+    (&gt; (- 1577.0 computed_capital_expenditures) 0.5))
+  :named violation_claim_tolerance))
+
+(check-sat)
+(get-model)</code></pre>
+<h2>SMT Semantic Sanitizer</h2>
+<p>Checks that the LLM-generated SMT faithfully encodes the Typed Verification IR before Z3 is allowed to run.</p>
+<p><strong>Result:</strong> valid. The SMT uses the IR facts, formula, claim value, and tolerance without introducing unrelated variables or constants.</p>
+<p><strong>Output file:</strong> <code>10_smt_semantic_sanitizer/output.json</code></p>
+<pre><code>{
+  &quot;local_python_z3_available_now&quot;: false,
+  &quot;local_replay_note&quot;: &quot;Python package z3 is not installed in this shell; this file preserves the completed run status.&quot;,
+  &quot;reason&quot;: &quot;&quot;,
+  &quot;recorded_math_check&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;reason&quot;: &quot;&quot;,
+    &quot;smt_status&quot;: &quot;valid&quot;,
+    &quot;solver_status&quot;: &quot;UNSAT&quot;,
+    &quot;status&quot;: &quot;passed&quot;,
+    &quot;valid&quot;: true
+  },
+  &quot;smt_status&quot;: &quot;valid&quot;,
+  &quot;source&quot;: &quot;recorded_completed_run&quot;,
+  &quot;validator&quot;: &quot;verifiqa.verification.smt_sanitizer.SmtSanitizer.validate_ir&quot;
+}</code></pre>
+<h2>Z3 Counterexample Check</h2>
+<p><strong>Output file:</strong> <code>11_z3_counterexample_check/output.json</code></p>
+<pre><code>{
+  &quot;checker&quot;: &quot;verifiqa.verification.z3_runner.Z3Runner.run&quot;,
+  &quot;counterexample_model&quot;: &quot;&quot;,
+  &quot;first_pass_solver_status&quot;: &quot;UNSAT&quot;,
+  &quot;local_replay_note&quot;: &quot;z3 binary is not on PATH in this shell; this file preserves the completed run status.&quot;,
+  &quot;local_z3_binary_available_now&quot;: false,
+  &quot;query_type&quot;: &quot;counterexample&quot;,
+  &quot;recorded_solver_status&quot;: &quot;UNSAT&quot;,
+  &quot;semantics&quot;: &quot;UNSAT means no evidence-grounded counterexample exists outside tolerance; SAT means a violating model exists; UNKNOWN is inconclusive.&quot;,
+  &quot;smt_path_from_run&quot;: &quot;runs/verification_complete/smt/0001_financebench_id_03029_first.smt2&quot;
+}</code></pre>
+<h2>Final Decision and Run Artifacts</h2>
+<p><strong>Output file:</strong> <code>12_final_decision_and_artifacts/output.json</code></p>
+<pre><code>{
+  &quot;abstain_reason&quot;: &quot;&quot;,
+  &quot;abstained&quot;: false,
+  &quot;decision_reason&quot;: &quot;SMT was validated against the typed IR and Z3 proved the counterexample query UNSAT.&quot;,
+  &quot;final_answer&quot;: &quot;The verified capital expenditures is 1577 USD millions. Calculation: 1577.&quot;,
+  &quot;final_status&quot;: &quot;VERIFIED&quot;,
+  &quot;financebench_id&quot;: &quot;financebench_id_03029&quot;,
+  &quot;first_pass_solver_status&quot;: &quot;UNSAT&quot;,
+  &quot;repaired&quot;: false,
+  &quot;verified&quot;: true
+}</code></pre>
+<p>The full <code>RavResult</code> is in <code>12_final_decision_and_artifacts/rav_result.json</code>, and the full verifier certificate is in <code>12_final_decision_and_artifacts/verifier_certificate.json</code>.</p>
+</body>
+</html>

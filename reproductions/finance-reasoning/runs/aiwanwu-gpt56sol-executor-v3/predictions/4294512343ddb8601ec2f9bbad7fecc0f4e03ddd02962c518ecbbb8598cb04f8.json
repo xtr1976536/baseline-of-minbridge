@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2032",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function estimates a bond’s percentage price change from a given yield-to-maturity change using modified duration and modified convexity, applying the duration-convexity approximation for a 50-basis-point yield decrease and returning the result as a percentage rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4985,
+          "completion_tokens": 59,
+          "total_tokens": 5044,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14497,
+          "completion_tokens": 291,
+          "total_tokens": 14788,
+          "completion_tokens_details": {
+            "reasoning_tokens": 267
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables and values\n    modified_duration = 10.3829\n    modified_convexity = 141.217\n    yield_change = -0.005  # 50 basis point decrease\n\n    # Estimate percentage price change using duration and convexity\n    price_change = (\n        -modified_duration * yield_change\n        + 0.5 * modified_convexity * yield_change**2\n    )\n    answer = round(price_change * 100, 3)\n\n    # Return the projected percentage price increase\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5286,
+          "completion_tokens": 187,
+          "total_tokens": 5473,
+          "completion_tokens_details": {
+            "reasoning_tokens": 60
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2872",
+        "score": 2.0116870403289795,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2871",
+        "score": 1.9202888011932373,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-173",
+        "score": 1.9048608541488647,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1790",
+        "score": 1.8704462051391602,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-503",
+        "score": 1.8310848474502563,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-927",
+        "score": 1.81197988986969,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-454",
+        "score": 1.7703821659088135,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.7630343437194824,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2870",
+        "score": 1.7566454410552979,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.7406584024429321,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1334",
+        "score": 1.7366161346435547,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.73606276512146,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.7324832677841187,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.71337890625,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-26",
+        "score": 1.701561450958252,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.700934648513794,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-172",
+        "score": 1.6967110633850098,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.6962922811508179,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.6866085529327393,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.6865540742874146,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-28",
+        "score": 1.684615135192871,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.677262783050537,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-806",
+        "score": 1.6639342308044434,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1466",
+        "score": 1.6638739109039307,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6637558937072754,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2243",
+        "score": 1.6624977588653564,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1771",
+        "score": 1.6567014455795288,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.6564114093780518,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.6517988443374634,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.6483638286590576,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2872",
+      "article-2871",
+      "article-173"
+    ],
+    "status": "ok",
+    "answer": 5.368,
+    "code": "def solution():\n    # Define variables and values\n    modified_duration = 10.3829\n    modified_convexity = 141.217\n    yield_change = -0.005  # 50 basis point decrease\n\n    # Estimate percentage price change using duration and convexity\n    price_change = (\n        -modified_duration * yield_change\n        + 0.5 * modified_convexity * yield_change**2\n    )\n    answer = round(price_change * 100, 3)\n\n    # Return the projected percentage price increase\n    return answer\n"
+  },
+  "digest": "3024e5146b8846f9590c84ee857fb58f57798183f6234f17451ee0b4a4ef1813"
+}

@@ -1,0 +1,13 @@
+{
+  "identified_at": "2026-11-06T11:04:34.726869+00:00",
+  "completed_samples_at_review": 20,
+  "issue": "Explicit units in reference answers must precede heuristic units inferred from question wording. The upstream question unit parser classifies separation as ratio; a unique reference amount such as $20 billion must still be scored as USD billions.",
+  "policy": "Honor declared gold.unit first. Otherwise explicit percent or currency scale on the unique label amount takes priority; unscaled dollar labels still inherit explicit question magnitude. Multiple reference targets remain unresolved.",
+  "affected_label_examples": [
+    "financebench_id_01490",
+    "financebench_id_01491"
+  ],
+  "affected_example_predictions_inspected": false,
+  "inference_changes": false,
+  "planned_application": "After the fixed 67-item inference completes, retain original metrics/journal, apply deterministic unit-scoring fix to every row, and publish separately versioned final metrics. No candidate regeneration, gold edits, or tolerance widening."
+}

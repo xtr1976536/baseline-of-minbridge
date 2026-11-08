@@ -1,0 +1,31 @@
+{
+  "request_hash": "63206b6f30738222c2dad2bed48a9e2e8721cba517c9bf3f67edbef847e9b3e4",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nTaking into account the information outlined in the income statement, what is the FY2019 - FY2021 3 year average unadjusted operating income % margin for Corning? Answer in units of percents and round to one decimal place.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"three_year_average_unadjusted_operating_income_margin\",\n  \"facts\": [\n    {\n      \"name\": \"operating_income\",\n      \"aliases\": [\"Operating income\", \"Income from operations\", \"Operating profit\"],\n      \"period\": \"FY2019\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"revenue\",\n      \"aliases\": [\"Net sales\", \"Sales\", \"Revenue\", \"Net revenue\"],\n      \"period\": \"FY2019\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"operating_income\",\n      \"aliases\": [\"Operating income\", \"Income from operations\", \"Operating profit\"],\n      \"period\": \"FY2020\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"revenue\",\n      \"aliases\": [\"Net sales\", \"Sales\", \"Revenue\", \"Net revenue\"],\n      \"period\": \"FY2020\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"operating_income\",\n      \"aliases\": [\"Operating income\", \"Income from operations\", \"Operating profit\"],\n      \"period\": \"FY2021\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"revenue\",\n      \"aliases\": [\"Net sales\", \"Sales\", \"Revenue\", \"Net revenue\"],\n      \"period\": \"FY2021\",\n      \"statement\": \"income statement\"\n    }\n  ],\n  \"reason\": \"Calculate each year's unadjusted operating income margin as operating income divided by revenue, then average the FY2019, FY2020, and FY2021 margins and round to one decimal place.\"\n}",
+  "usage": {
+    "prompt_tokens": 4727,
+    "completion_tokens": 433,
+    "total_tokens": 5160,
+    "prompt_tokens_details": {
+      "cached_tokens": 4480
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 76
+    }
+  },
+  "response_id": "resp_07021c8b46a50b30016aedb62ecf4887d0964fd0d49d58ac10",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

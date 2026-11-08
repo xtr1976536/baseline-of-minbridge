@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2178",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates a company’s weighted average cost of capital using CAPM cost of equity, after-tax cost of debt, and market-value capital weights, where debt value is derived from semi-annual coupon bonds using face value, coupon rate, yield to maturity, and remaining maturity, with results expressed as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5049,
+          "completion_tokens": 72,
+          "total_tokens": 5121,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USEFUL]",
+        "usage": {
+          "prompt_tokens": 14812,
+          "completion_tokens": 849,
+          "total_tokens": 15661,
+          "prompt_tokens_details": {
+            "cached_tokens": 14592
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 752
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    equity_market_value = 2_000_000\n    face_value_of_debt = 4_000_000\n    annual_coupon_rate = 0.08\n    annual_yield_to_maturity = 0.09\n    years_to_maturity = 5\n    tax_rate = 0.25\n    risk_free_rate = 0.02\n    beta = 1.2\n    equity_risk_premium = 0.04\n\n    # Calculate the market value of debt using semi-annual bond valuation\n    periods = years_to_maturity * 2\n    semiannual_coupon = face_value_of_debt * annual_coupon_rate / 2\n    semiannual_yield = annual_yield_to_maturity / 2\n\n    debt_market_value = (\n        semiannual_coupon * (1 - (1 + semiannual_yield) ** (-periods)) / semiannual_yield\n        + face_value_of_debt * (1 + semiannual_yield) ** (-periods)\n    )\n\n    # Calculate the cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * equity_risk_premium\n\n    # Calculate the pre-tax cost of debt\n    cost_of_debt = annual_yield_to_maturity\n\n    # Calculate WACC\n    total_market_value = equity_market_value + debt_market_value\n    equity_weight = equity_market_value / total_market_value\n    debt_weight = debt_market_value / total_market_value\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * cost_of_debt * (1 - tax_rate)\n    )\n\n    # Return WACC as a percentage rounded to two decimal places\n    answer = round(wacc * 100, 2)\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5649,
+          "completion_tokens": 474,
+          "total_tokens": 6123,
+          "completion_tokens_details": {
+            "reasoning_tokens": 85
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-198",
+        "score": 1.9286085367202759
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.920653223991394
+      },
+      {
+        "function_id": "article-2452",
+        "score": 1.8382747173309326
+      },
+      {
+        "function_id": "article-43",
+        "score": 1.834822416305542
+      },
+      {
+        "function_id": "article-2796",
+        "score": 1.8330726623535156
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.8270529508590698
+      },
+      {
+        "function_id": "article-189",
+        "score": 1.8261535167694092
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.8237937688827515
+      },
+      {
+        "function_id": "article-2475",
+        "score": 1.8149055242538452
+      },
+      {
+        "function_id": "article-1512",
+        "score": 1.8132836818695068
+      },
+      {
+        "function_id": "article-874",
+        "score": 1.8041541576385498
+      },
+      {
+        "function_id": "article-1643",
+        "score": 1.7838910818099976
+      },
+      {
+        "function_id": "article-560",
+        "score": 1.781984567642212
+      },
+      {
+        "function_id": "article-2560",
+        "score": 1.7669482231140137
+      },
+      {
+        "function_id": "article-1641",
+        "score": 1.7603837251663208
+      },
+      {
+        "function_id": "article-1644",
+        "score": 1.7556763887405396
+      },
+      {
+        "function_id": "article-1095",
+        "score": 1.7511606216430664
+      },
+      {
+        "function_id": "article-552",
+        "score": 1.7498258352279663
+      },
+      {
+        "function_id": "article-1592",
+        "score": 1.747354507446289
+      },
+      {
+        "function_id": "article-388",
+        "score": 1.7326852083206177
+      },
+      {
+        "function_id": "article-2212",
+        "score": 1.7309892177581787
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7162213325500488
+      },
+      {
+        "function_id": "article-41",
+        "score": 1.7144042253494263
+      },
+      {
+        "function_id": "article-559",
+        "score": 1.7129597663879395
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.711678385734558
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.7111167907714844
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.7104339599609375
+      },
+      {
+        "function_id": "article-3052",
+        "score": 1.7065515518188477
+      },
+      {
+        "function_id": "article-3125",
+        "score": 1.7048451900482178
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.7008802890777588
+      }
+    ],
+    "selected_ids": [
+      "article-198",
+      "article-191",
+      "article-2452"
+    ],
+    "status": "ok",
+    "answer": 6.77,
+    "code": "def solution():\n    # Define variables\n    equity_market_value = 2_000_000\n    face_value_of_debt = 4_000_000\n    annual_coupon_rate = 0.08\n    annual_yield_to_maturity = 0.09\n    years_to_maturity = 5\n    tax_rate = 0.25\n    risk_free_rate = 0.02\n    beta = 1.2\n    equity_risk_premium = 0.04\n\n    # Calculate the market value of debt using semi-annual bond valuation\n    periods = years_to_maturity * 2\n    semiannual_coupon = face_value_of_debt * annual_coupon_rate / 2\n    semiannual_yield = annual_yield_to_maturity / 2\n\n    debt_market_value = (\n        semiannual_coupon * (1 - (1 + semiannual_yield) ** (-periods)) / semiannual_yield\n        + face_value_of_debt * (1 + semiannual_yield) ** (-periods)\n    )\n\n    # Calculate the cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * equity_risk_premium\n\n    # Calculate the pre-tax cost of debt\n    cost_of_debt = annual_yield_to_maturity\n\n    # Calculate WACC\n    total_market_value = equity_market_value + debt_market_value\n    equity_weight = equity_market_value / total_market_value\n    debt_weight = debt_market_value / total_market_value\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * cost_of_debt * (1 - tax_rate)\n    )\n\n    # Return WACC as a percentage rounded to two decimal places\n    answer = round(wacc * 100, 2)\n    return answer\n"
+  },
+  "digest": "2c840f8bc5d63ad4958337d6c74eed9b8fc6ab496df3f37e53001a2df7c028ba"
+}

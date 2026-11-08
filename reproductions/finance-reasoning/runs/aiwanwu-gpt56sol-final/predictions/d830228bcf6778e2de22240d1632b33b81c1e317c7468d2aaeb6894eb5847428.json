@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2001",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annualized total return (CAGR) for an investment using its initial value, ending cumulative value, and holding period in years, including reinvested dividends, with the result rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5367,
+          "completion_tokens": 49,
+          "total_tokens": 5416,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14217,
+          "completion_tokens": 613,
+          "total_tokens": 14830,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    beginning_value = 100.00\n    ending_value = 370.32\n    years = 5\n\n    # Do math calculation to get the answer\n    annualized_return = ((ending_value / beginning_value) ** (1 / years) - 1) * 100\n    answer = round(annualized_return)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5962,
+          "completion_tokens": 197,
+          "total_tokens": 6159,
+          "completion_tokens_details": {
+            "reasoning_tokens": 98
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2327",
+        "score": 2.073178768157959
+      },
+      {
+        "function_id": "article-2319",
+        "score": 2.050945997238159
+      },
+      {
+        "function_id": "article-7",
+        "score": 2.018359899520874
+      },
+      {
+        "function_id": "article-1213",
+        "score": 1.893352746963501
+      },
+      {
+        "function_id": "article-1443",
+        "score": 1.8679674863815308
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.8563597202301025
+      },
+      {
+        "function_id": "article-1217",
+        "score": 1.8445446491241455
+      },
+      {
+        "function_id": "article-137",
+        "score": 1.8285818099975586
+      },
+      {
+        "function_id": "article-2342",
+        "score": 1.8280768394470215
+      },
+      {
+        "function_id": "article-477",
+        "score": 1.7784054279327393
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.7754416465759277
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.7660889625549316
+      },
+      {
+        "function_id": "article-1063",
+        "score": 1.7644858360290527
+      },
+      {
+        "function_id": "article-2385",
+        "score": 1.756692886352539
+      },
+      {
+        "function_id": "article-1918",
+        "score": 1.743491291999817
+      },
+      {
+        "function_id": "article-2331",
+        "score": 1.7389366626739502
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.7258739471435547
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.7230814695358276
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.7084792852401733
+      },
+      {
+        "function_id": "article-1062",
+        "score": 1.700797200202942
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.6976499557495117
+      },
+      {
+        "function_id": "article-2214",
+        "score": 1.6879849433898926
+      },
+      {
+        "function_id": "article-1064",
+        "score": 1.680367350578308
+      },
+      {
+        "function_id": "article-1207",
+        "score": 1.6744314432144165
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.6678264141082764
+      },
+      {
+        "function_id": "article-3",
+        "score": 1.6666532754898071
+      },
+      {
+        "function_id": "article-481",
+        "score": 1.6631401777267456
+      },
+      {
+        "function_id": "article-259",
+        "score": 1.663109302520752
+      },
+      {
+        "function_id": "article-1608",
+        "score": 1.657680869102478
+      },
+      {
+        "function_id": "article-2881",
+        "score": 1.655165195465088
+      }
+    ],
+    "selected_ids": [
+      "article-2327",
+      "article-2319",
+      "article-7"
+    ],
+    "status": "ok",
+    "answer": 30,
+    "code": "def solution():\n    # Define variables name and value\n    beginning_value = 100.00\n    ending_value = 370.32\n    years = 5\n\n    # Do math calculation to get the answer\n    annualized_return = ((ending_value / beginning_value) ** (1 / years) - 1) * 100\n    answer = round(annualized_return)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "321c2e21b94e3d6d37b69d08648166db7cc0e466f49aa640166d0bd9ecf5dc30"
+}

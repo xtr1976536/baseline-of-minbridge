@@ -1,0 +1,112 @@
+{
+  "datasets": {
+    "CFBenchmark": {
+      "ready": false,
+      "issues": [
+        "table4_counts_differ",
+        "unresolved_source_gold_disagreements"
+      ],
+      "actual": {
+        "original": 105,
+        "counterfactual": 11,
+        "total": 116
+      },
+      "expected_table4": {
+        "original": 140,
+        "counterfactual": 11,
+        "total": 151
+      },
+      "file_sha256": "dd245416edf142183d29d903bd90006ffd0cd1f89372e054c6282e572a413de7",
+      "unsupported_labels": [],
+      "invalid_inputs": [],
+      "unresolved_source_gold_disagreements": [
+        {
+          "file": "金融指标计算.json",
+          "index": 18,
+          "id": "18",
+          "official_option": "B",
+          "official_answer": "-270.2702",
+          "gbfr_answer": "-0.037",
+          "question": "你是一个指标计算助手。请根据给定的数据和公式计算福昕软件ROS，保留四位小数。"
+        },
+        {
+          "file": "金融指标计算.json",
+          "index": 66,
+          "id": "66",
+          "official_option": "D",
+          "official_answer": "4.08%",
+          "gbfr_answer": "4.26%",
+          "question": "你是一个数据分析助手。请根据以下内容，计算人民币兑美元贬值率。"
+        }
+      ],
+      "boolean_comparisons": 0
+    },
+    "FinanceReasoning": {
+      "ready": true,
+      "issues": [],
+      "actual": {
+        "original": 2238,
+        "counterfactual": 412,
+        "total": 2650
+      },
+      "expected_table4": {
+        "original": 2238,
+        "counterfactual": 412,
+        "total": 2650
+      },
+      "file_sha256": "266b89ba7ee2351702b24602352b7402635bde9399434decfaaf39b6ef59116c",
+      "unsupported_labels": [],
+      "invalid_inputs": [],
+      "unresolved_source_gold_disagreements": [],
+      "boolean_comparisons": 14
+    },
+    "FinQA": {
+      "ready": true,
+      "issues": [],
+      "actual": {
+        "original": 1002,
+        "counterfactual": 97,
+        "total": 1099
+      },
+      "expected_table4": {
+        "original": 1002,
+        "counterfactual": 97,
+        "total": 1099
+      },
+      "file_sha256": "4c046668bbea73bbd4a92b8647d6ba1288e77163a42d4ea5b82d69882a5643e3",
+      "unsupported_labels": [],
+      "invalid_inputs": [],
+      "unresolved_source_gold_disagreements": [],
+      "boolean_comparisons": 0
+    },
+    "TAT-QA": {
+      "ready": false,
+      "issues": [
+        "unsupported_non_scalar_labels"
+      ],
+      "actual": {
+        "original": 1119,
+        "counterfactual": 151,
+        "total": 1270
+      },
+      "expected_table4": {
+        "original": 1119,
+        "counterfactual": 151,
+        "total": 1270
+      },
+      "file_sha256": "0f3ad11424d784545c6ea509922f595cfa93e9546f4257ad733322375fcf8944",
+      "unsupported_labels": [
+        {
+          "sample_id": "TAT-QA:54f286bcdaeeba724ae2f2d2aecceddb_8af2135a1b3d73f3cb033d1458e429ca",
+          "question": "What are the financial covenants to be maintained as per the credit agreement?",
+          "answer": "(i) a minimum working capital ratio of 2.00 to 1.00 and (ii) an annual limit on capital expenditures of $100.0 million"
+        }
+      ],
+      "invalid_inputs": [],
+      "unresolved_source_gold_disagreements": [],
+      "boolean_comparisons": 0
+    }
+  },
+  "all_datasets_ready": false,
+  "scope": "Test-set identity/label readiness only; full main experiment additionally requires the validated FMKG and API"
+}

@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2107",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function computes the winsorized mean of a numeric array by replacing the lowest and highest 10% of observations with the nearest retained boundary values, suitable for robust central-tendency analysis of outlier-sensitive stock returns, and returns the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5147,
+          "completion_tokens": 61,
+          "total_tokens": 5208,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14884,
+          "completion_tokens": 413,
+          "total_tokens": 15297,
+          "completion_tokens_details": {
+            "reasoning_tokens": 316
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_returns = [\n        15.4, -6.2, 7.8, -14.3, 12.0, -9.1, 18.5, 25.7, -5.0, 3.3,\n        21.2, -7.6, 11.7, 29.8, -19.4, 8.9, 4.5, -11.2, 6.6, -13.7\n    ]\n    winsor_percent = 0.10\n\n    # Do math calculation to get the answer\n    sorted_returns = sorted(stock_returns)\n    n = int(len(sorted_returns) * winsor_percent)\n\n    winsorized_returns = sorted_returns[:]\n    lower_value = sorted_returns[n]\n    upper_value = sorted_returns[-n - 1]\n\n    for i in range(n):\n        winsorized_returns[i] = lower_value\n        winsorized_returns[-i - 1] = upper_value\n\n    winsorized_mean = sum(winsorized_returns) / len(winsorized_returns)\n    answer = round(winsorized_mean, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5245,
+          "completion_tokens": 671,
+          "total_tokens": 5916,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 394
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2481",
+        "score": 1.9583139419555664
+      },
+      {
+        "function_id": "article-1965",
+        "score": 1.4985158443450928
+      },
+      {
+        "function_id": "article-514",
+        "score": 1.4480514526367188
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.447023868560791
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.4361226558685303
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.4264628887176514
+      },
+      {
+        "function_id": "article-2832",
+        "score": 1.4222991466522217
+      },
+      {
+        "function_id": "article-2106",
+        "score": 1.417184591293335
+      },
+      {
+        "function_id": "article-1712",
+        "score": 1.4153302907943726
+      },
+      {
+        "function_id": "article-894",
+        "score": 1.4032717943191528
+      },
+      {
+        "function_id": "article-2564",
+        "score": 1.3961414098739624
+      },
+      {
+        "function_id": "article-1186",
+        "score": 1.3866928815841675
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.385948657989502
+      },
+      {
+        "function_id": "article-500",
+        "score": 1.3729727268218994
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.371443748474121
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.3710964918136597
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.3702120780944824
+      },
+      {
+        "function_id": "article-2686",
+        "score": 1.369985818862915
+      },
+      {
+        "function_id": "article-283",
+        "score": 1.365430474281311
+      },
+      {
+        "function_id": "article-1988",
+        "score": 1.3634157180786133
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.361075520515442
+      },
+      {
+        "function_id": "article-2687",
+        "score": 1.3602378368377686
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.3601751327514648
+      },
+      {
+        "function_id": "article-860",
+        "score": 1.360100269317627
+      },
+      {
+        "function_id": "article-705",
+        "score": 1.3582074642181396
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.3534140586853027
+      },
+      {
+        "function_id": "article-1742",
+        "score": 1.352109432220459
+      },
+      {
+        "function_id": "article-725",
+        "score": 1.3511300086975098
+      },
+      {
+        "function_id": "article-1337",
+        "score": 1.3508665561676025
+      },
+      {
+        "function_id": "article-2667",
+        "score": 1.350642442703247
+      }
+    ],
+    "selected_ids": [
+      "article-2481"
+    ],
+    "status": "ok",
+    "answer": 3.6,
+    "code": "def solution():\n    # Define variables name and value\n    stock_returns = [\n        15.4, -6.2, 7.8, -14.3, 12.0, -9.1, 18.5, 25.7, -5.0, 3.3,\n        21.2, -7.6, 11.7, 29.8, -19.4, 8.9, 4.5, -11.2, 6.6, -13.7\n    ]\n    winsor_percent = 0.10\n\n    # Do math calculation to get the answer\n    sorted_returns = sorted(stock_returns)\n    n = int(len(sorted_returns) * winsor_percent)\n\n    winsorized_returns = sorted_returns[:]\n    lower_value = sorted_returns[n]\n    upper_value = sorted_returns[-n - 1]\n\n    for i in range(n):\n        winsorized_returns[i] = lower_value\n        winsorized_returns[-i - 1] = upper_value\n\n    winsorized_mean = sum(winsorized_returns) / len(winsorized_returns)\n    answer = round(winsorized_mean, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "afbbdc6f2327bdc6b522aeaffbed388c51e65f20a6399833e3ce5f244cc36472"
+}

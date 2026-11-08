@@ -1,0 +1,21 @@
+{
+  "identity": "d1412d39f09cb1a26c47fffb29f8409de26b1e4bc099e54073d0ec665add6e0c",
+  "response_digest": "c3ef4a503459ba6fa480b5922f9638a2fcb1d6e9938bc456d54cc950b7ba1031",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 100.0\n    annual_coupon_rate = 0.05\n    coupon_payment = face_value * annual_coupon_rate\n    z_spread = 0.0234\n    spot_rates = [0.0486, 0.0495, 0.0565]\n    \n    # Do math calculation to get the answer\n    bond_value = 0.0\n    \n    for year, spot_rate in enumerate(spot_rates, start=1):\n        discount_rate = spot_rate + z_spread\n        cash_flow = coupon_payment\n        \n        if year == len(spot_rates):\n            cash_flow += face_value\n        \n        bond_value += cash_flow / ((1 + discount_rate) ** year)\n    \n    # return answer\n    return round(bond_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 4976,
+      "completion_tokens": 900,
+      "total_tokens": 5876,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 714
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

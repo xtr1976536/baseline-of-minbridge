@@ -1,0 +1,30 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_capex_as_percent_of_revenue_3yr_avg Real)
+(declare-const capex_y1 Real)
+(declare-const capex_y2 Real)
+(declare-const capex_y3 Real)
+(declare-const revenue_y1 Real)
+(declare-const revenue_y2 Real)
+(declare-const revenue_y3 Real)
+
+(assert (! (= capex_y1 1486.8430000000001) :named evidence_capex_y1))
+(assert (! (= capex_y2 739.00599999999997) :named evidence_capex_y2))
+(assert (! (= capex_y3 270.57900000000001) :named evidence_capex_y3))
+(assert (! (= revenue_y1 11763.096) :named evidence_revenue_y1))
+(assert (! (= revenue_y2 12899.672) :named evidence_revenue_y2))
+(assert (! (= revenue_y3 5162.0820000000003) :named evidence_revenue_y3))
+
+(assert (! (= computed_capex_as_percent_of_revenue_3yr_avg (* (/ (+ (/ capex_y1 revenue_y1) (/ capex_y2 revenue_y2) (/ capex_y3 revenue_y3)) 3) 100)) :named formula_capex_as_percent_of_revenue_3yr_avg))
+(assert (! (or (> revenue_y1 0) (< revenue_y1 0)) :named domain_capex_as_percent_of_revenue_3yr_avg_0))
+(assert (! (or (> revenue_y2 0) (< revenue_y2 0)) :named domain_capex_as_percent_of_revenue_3yr_avg_1))
+(assert (! (or (> revenue_y3 0) (< revenue_y3 0)) :named domain_capex_as_percent_of_revenue_3yr_avg_2))
+
+(assert (! (<= (- computed_capex_as_percent_of_revenue_3yr_avg 6) 0.050000000000000003) :named claim_upper))
+(assert (! (<= (- 6 computed_capex_as_percent_of_revenue_3yr_avg) 0.050000000000000003) :named claim_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

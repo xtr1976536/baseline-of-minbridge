@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "cohort": "gbfr_finqa_r25",
+  "frozen_at": "2026-11-07T15:15:05.578541+00:00",
+  "historical_audit_frozen_at": "2026-11-07T15:13:23.514907+00:00",
+  "seed": "gbfr-finqa-r25-fresh-20261107-v1",
+  "dataset": "FinQA",
+  "count": 10,
+  "original_count": 8,
+  "counterfactual_count": 2,
+  "api_calls_during_selection": 0,
+  "full_run_resumed": false,
+  "tat_qa_run_authorized": false,
+  "status": "frozen_native_selection_ready_for_root_runner",
+  "main_source": {
+    "path": "data/main/FinQA.jsonl",
+    "sha256": "e1907f8304a7afcec5f0356d5335600aa4bbb9d2bf863e0ea674e827d22b78e9",
+    "native_records": {
+      "total": 1096,
+      "original": 1002,
+      "counterfactual": 94
+    }
+  },
+  "freshness_audit": {
+    "path": "research/repairs/20261107/r25_freshness_layers.json",
+    "sha256": "5bbf584fd2b7c689300a4900e1e7895814dfca04e2b873862da77b686caf5f6c",
+    "historical_source_file_count": 33089,
+    "historical_source_inventory_sha256": "502f1c4498c4e88cc9a5cfbb4dfb0738e779bd0baeb6aaa0940073925309fe9e",
+    "all_exclusion_source_paths_and_sha256": "See the hash-pinned freshness audit source_inventory; includes a hash for every audited historical file.",
+    "exclusion_definitions": {
+      "L1": "Sample-bound API request/response/usage/error/prediction records under known real backend run roots; source snapshots, caches, offline/replay/mock/test and full-pool planning excluded. Prior cache-backed API-mode predictions remain conservative exposure because those exact questions were used in model development; no claim every round made a fresh request.",
+      "L2": "Specific small-validation selections, per-question debug/review records and benchmark text/ID examples in prompts/tests/scripts. Full-pool retained_ids inventories are excluded. Includes concrete offline replays of already inspected cases as development exposure, without claiming API sends.",
+      "L3": "Only normalized full-context overlap propagated from L1 or L2 to otherwise unreferenced main IDs.",
+      "L4": "Pure planning inventories/full-pool lists, cached opaque responses, source snapshots or offline-only pool artifacts. These do not themselves exclude questions."
+    },
+    "layered_counts": {
+      "L1_real_api_send_or_prediction": {
+        "total": 895,
+        "original": 880,
+        "counterfactual": 15
+      },
+      "L2_specific_review_or_small_selection_all": {
+        "total": 825,
+        "original": 809,
+        "counterfactual": 16
+      },
+      "L2_additional_not_L1": {
+        "total": 20,
+        "original": 19,
+        "counterfactual": 1
+      },
+      "L1_union_L2": {
+        "total": 915,
+        "original": 899,
+        "counterfactual": 16
+      },
+      "L3_context_only_additional": {
+        "total": 95,
+        "original": 95,
+        "counterfactual": 0
+      },
+      "L4_inventory_ids_all": {
+        "total": 1096,
+        "original": 1002,
+        "counterfactual": 94
+      },
+      "L4_only_not_actual_or_reviewed": {
+        "total": 181,
+        "original": 103,
+        "counterfactual": 78
+      },
+      "eligible_unseen_id_and_no_specific_debug_use": {
+        "total": 181,
+        "original": 103,
+        "counterfactual": 78
+      },
+      "eligible_plus_never_seen_context": {
+        "total": 86,
+        "original": 8,
+        "counterfactual": 78
+      }
+    },
+    "r22_cancelled_requests_already_excluded": {
+      "finqa_request_ids": 7,
+      "finqa_oqa_sent_ids": 7
+    },
+    "stability_recheck_before_freeze": "All audited historical file contents unchanged."
+  },
+  "eligible_counts": {
+    "unseen_id_and_no_specific_debug_use": {
+      "total": 181,
+      "original": 103,
+      "counterfactual": 78
+    },
+    "also_never_seen_historical_context": {
+      "total": 86,
+      "original": 8,
+      "counterfactual": 78
+    },
+    "strict_original_unique_contexts": 6,
+    "strict_counterfactual_unique_contexts": 75
+  },
+  "selection_policy": {
+    "features_used": [
+      "native_id",
+      "normalized_question_sha256",
+      "normalized_context_sha256",
+      "normalized_question_context_sha256"
+    ],
+    "features_not_used": [
+      "answers",
+      "gold correctness",
+      "previous prediction success",
+      "manual question/content difficulty review"
+    ],
+    "normalization": "Unicode NFKC, casefold, whitespace collapse",
+    "question_context_hash": "SHA256(UTF-8 compact JSON [normalized_question, normalized_context])",
+    "rank_hash": "SHA256(UTF-8(seed + NUL + native_id)), ascending hexadecimal digest, tie-break native_id.",
+    "originals": "All 8 strictly fresh original candidates are selected; none chosen by difficulty or answer. Seed hash determines ordering only.",
+    "counterfactuals": "Select first 2 in fixed seed hash order from the 78 strict fresh candidates, skipping any Q+D or context overlap with this cohort.",
+    "question_context_unique": true,
+    "historical_context_unseen": true,
+    "within_original_context_uniqueness_not_required": "The user requires 10 fresh questions, not 10 independent documents. All originals are retained despite two pairs sharing context within this new cohort.",
+    "gold_fields_copy_only": true,
+    "native_record_fields_modified": false,
+    "selected_contents_shown_to_parent": false
+  },
+  "within_cohort": {
+    "unique_ids": 10,
+    "unique_question_contexts": 10,
+    "original_unique_contexts": 6,
+    "counterfactual_unique_contexts": 2,
+    "overall_unique_contexts": 8,
+    "shared_original_context_groups": [
+      {
+        "context_sha256": "983b49a480e8f9553dd7ecc1bbac4fdeeb0a5c7ae6813cfe2dc78543e57d1875",
+        "native_ids": [
+          "FinQA:DRE/2007/page_56.pdf-1",
+          "FinQA:DRE/2007/page_56.pdf-3"
+        ],
+        "count": 2,
+        "interpretation": "Distinct native questions sharing one supplied context within this new cohort; not independent documents."
+      },
+      {
+        "context_sha256": "9b00e6334ddffee84d08db64afac9c1b3fdcbce9f4bfb610b3535f2749ef470a",
+        "native_ids": [
+          "FinQA:DRE/2005/page_30.pdf-1",
+          "FinQA:DRE/2005/page_30.pdf-2"
+        ],
+        "count": 2,
+        "interpretation": "Distinct native questions sharing one supplied context within this new cohort; not independent documents."
+      }
+    ],
+    "counterfactual_context_overlap_with_originals": false,
+    "counterfactual_context_overlap_with_each_other": false,
+    "independent_documents_claimed": false
+  },
+  "selection": [
+    {
+      "rank": 1,
+      "id": "FinQA:DRE/2007/page_56.pdf-1",
+      "kind": "original",
+      "native_line_number": 849,
+      "native_line_sha256_utf8": "92ae9912860b45ce235d69a7dd240aa5ea7794502a43623fc38942bb699584cd",
+      "question_sha256": "ecf29ef1326adf701901c599e3ab0cdfff5b3a40864d972750c4d1564dddfd11",
+      "context_sha256": "983b49a480e8f9553dd7ecc1bbac4fdeeb0a5c7ae6813cfe2dc78543e57d1875",
+      "question_context_sha256": "3b975ace251f6951f349dfb6d47a420a10ef3e46fdd567f29eb753bdb3d88eba",
+      "ranking_sha256": "08b58d1e98bb38062dd2a423f9ca741448a49686ae1a24c23616414b71c8c485",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    },
+    {
+      "rank": 2,
+      "id": "FinQA:DRE/2005/page_30.pdf-1",
+      "kind": "original",
+      "native_line_number": 890,
+      "native_line_sha256_utf8": "ef256b14e413899d4655fd1e5efae7941141cfcdbf78bfc965f1a8da7ddf7ab1",
+      "question_sha256": "7478355b8449e963115966b94ab17199cf4b1fc5a2f290964575a4a66f812d38",
+      "context_sha256": "9b00e6334ddffee84d08db64afac9c1b3fdcbce9f4bfb610b3535f2749ef470a",
+      "question_context_sha256": "a6f4ecd8959e0cef5d487ce74c39c821b593fba5e5ee21ee58894d9b20e33262",
+      "ranking_sha256": "2aac4dcde6f425fb07d4c6d643a051ec593e63563d9e2689067d5c381627536e",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    },
+    {
+      "rank": 3,
+      "id": "FinQA:DRE/2007/page_56.pdf-3",
+      "kind": "original",
+      "native_line_number": 760,
+      "native_line_sha256_utf8": "2ac576a56a7e465c17290428439ed3f0f6bd4193b7bf1b6cd54ab08a2133343a",
+      "question_sha256": "ce4f9f51f0e1e75441d7b7921d89f199d62bce874e7f3f0888159afccd9150b3",
+      "context_sha256": "983b49a480e8f9553dd7ecc1bbac4fdeeb0a5c7ae6813cfe2dc78543e57d1875",
+      "question_context_sha256": "470350e09d7e0ad96cdb5e9d0e2c91d0db7e0a8c3df3569bfb4e0737bf57d425",
+      "ranking_sha256": "2d63b0a709cae2764c1bff2ab2b0c1629000150e2d106c51581a3eac53397ec9",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    },
+    {
+      "rank": 4,
+      "id": "FinQA:V/2010/page_28.pdf-1",
+      "kind": "original",
+      "native_line_number": 865,
+      "native_line_sha256_utf8": "6d92efcaecaa1dc6b18e3fabfa797210de8d548ac49106b8855d0754a0e80e3f",
+      "question_sha256": "c9ac5785601aa90939780145a44fbd784ef5170bf7593158d213e39855eab2e8",
+      "context_sha256": "a7179dfdafc9c37a74f2025a99c802076e3f8c5e07991e3284ea8e51adf8c950",
+      "question_context_sha256": "6c08c0f11f01d631c219dce047ba84783eb92e03c451b23c0d5d6d646a1d95e3",
+      "ranking_sha256": "77ead4068f597938f04319cd151acf558629c7b6137b127e98a30f15dd20b2fb",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    },
+    {
+      "rank": 5,
+      "id": "FinQA:DRE/2005/page_30.pdf-2",
+      "kind": "original",
+      "native_line_number": 894,
+      "native_line_sha256_utf8": "a6d8c7afecdd1edc9ff5615970d47d827ac2c34e5571996ddc88e3ba4da29065",
+      "question_sha256": "5d49e2e5aed26aaed2030e8f9a85b78ef79f73d7bde12009ff0fa18e1d612ce8",
+      "context_sha256": "9b00e6334ddffee84d08db64afac9c1b3fdcbce9f4bfb610b3535f2749ef470a",
+      "question_context_sha256": "9cc8a84015ff18deedab6a1567befd1817056014bf50eb4f9013b069ab1c9bae",
+      "ranking_sha256": "99e8fce614f5f8dac7c4a5a661172a48ed805696e1eec3eb090f9d0e5eeeeb3b",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    },
+    {
+      "rank": 6,
+      "id": "FinQA:GIS/2015/page_62.pdf-1",
+      "kind": "original",
+      "native_line_number": 856,
+      "native_line_sha256_utf8": "8cc3509918a45cf1f0d26e4a840a092be3fdea3f3168bede5de0bfc82b5441a7",
+      "question_sha256": "a086fe1e34889f69047621a3c9b96520e0b8fd6a2e658c5a100f8d7f1cc65b08",
+      "context_sha256": "d4d78c196f596a79c8656d8fbeb2d29eabbac18e2ec83fb8a0df2886436b4a7e",
+      "question_context_sha256": "aa3e5818ee8eca78fd515017ca1dec56b0c2e42d738d579a4a2240e6f595ceec",
+      "ranking_sha256": "ac1f365f652b774d68ca6426be08bee51aa11a37fbf8fffc7221a0061d41e565",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    },
+    {
+      "rank": 7,
+      "id": "FinQA:RSG/2016/page_135.pdf-1",
+      "kind": "original",
+      "native_line_number": 888,
+      "native_line_sha256_utf8": "863778ca99a0883e8eecca8ddc10ee265280cbfc11449600c4fefc55082bd106",
+      "question_sha256": "06a2ffec37d27d7a126b0b84c89370bcd84c0b7f67536ffa03b2d257bd66a44a",
+      "context_sha256": "9603fb96e80aaf2d8e0bd3d11a98bd4e4913a5aabed36d767571b65e270391a0",
+      "question_context_sha256": "87c660f9795b0b1bf91351915cd94a39f53ed35a4a5c05dc43d9073d2576a144",
+      "ranking_sha256": "c4ec10d3a5b654f4ceb70b5f5f0d28a4ff14648a74546a15b005c8a9cee21f21",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    },
+    {
+      "rank": 8,
+      "id": "FinQA:BDX/2018/page_106.pdf-1",
+      "kind": "original",
+      "native_line_number": 994,
+      "native_line_sha256_utf8": "1041699fa0c6edd6720de09faf294ba572ca9309895da686cd4553e0e4d05abd",
+      "question_sha256": "1bd5f82538ba0d22ccba5e30459583c975722f774b62a91cb3167967486630d3",
+      "context_sha256": "3587997b8b2778f83e19ee38a1a79430b46c15e21fed80ddd967e54bcb4c9fa1",
+      "question_context_sha256": "4ba1b15288d945b941601100c4305b14a3528b273da9852f83cd1f287b8a309b",
+      "ranking_sha256": "e327d0c2903fc5c496a08ab84564f588051c49b093912165435f2d9bf0405566",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    },
+    {
+      "rank": 9,
+      "id": "FinQA:counterfactual:47",
+      "kind": "counterfactual",
+      "native_line_number": 1049,
+      "native_line_sha256_utf8": "cf535f064799c21851fb484eaa5bafe4b9dcb288d2a3f4cf4182bd3ac7a6d294",
+      "question_sha256": "c658a832089f7f19135f92560895c083d207c2343b9032e4361a2ac002f40f32",
+      "context_sha256": "52d2a63c8d90978f09db17302f138fab20079e7bb85f8466d1d4e92a6e1e57da",
+      "question_context_sha256": "2403fff84a25b8b41050755156ede33edcd78dd392fcaf4ad4f89e5160e79a7a",
+      "ranking_sha256": "04dca8b25a072af8d909f2d6cf04f6af41ad5c02309d26e4a00ef927797a1a26",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    },
+    {
+      "rank": 10,
+      "id": "FinQA:counterfactual:50",
+      "kind": "counterfactual",
+      "native_line_number": 1052,
+      "native_line_sha256_utf8": "07bc0096f6a730997f62fbf3393fe3e4f9c72c4ab37ae19f98bbc0d4d1756965",
+      "question_sha256": "e876b8ce320e3029167f35f81017434a9b2b140369cb97148b6fdf7cb9ea990d",
+      "context_sha256": "11c6e22520790f5a15503a1c3bc123d0788c28114063f3fbb6088fc6d3cab68f",
+      "question_context_sha256": "74c9145ed02f94133782df693106bb6ba3cb7c6af26e6570d8628267357b3a96",
+      "ranking_sha256": "052c7bae6e9c9ea9d50ee418785009e2f35a3a58b58c3f3af57144fedaeb5604",
+      "fresh_api_or_specific_debug_exposure": false,
+      "historical_context_seen": false
+    }
+  ],
+  "counterfactual_rank_skips": [],
+  "sample_file": "data/validation/gbfr_finqa_r25/FinQA.jsonl",
+  "sample_file_sha256": "77dd665cb041b2816b82fc0664235ac51b7eea5f656c26768d561e19e4c46f6c"
+}

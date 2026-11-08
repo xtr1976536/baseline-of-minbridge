@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2115",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the implied one-year forward interest rate for next year from current one-year and two-year bond spot rates using Expectations Theory, with annual compounding and percentage output rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5021,
+          "completion_tokens": 44,
+          "total_tokens": 5065,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C04\",\"C06\"]}",
+        "usage": {
+          "prompt_tokens": 13943,
+          "completion_tokens": 22,
+          "total_tokens": 13965,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    two_year_rate = 0.045\n    one_year_rate = 0.03\n\n    # Do math calculation to get the answer\n    future_one_year_rate = ((1 + two_year_rate) ** 2 / (1 + one_year_rate)) - 1\n    answer = round(future_one_year_rate * 100, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5659,
+          "completion_tokens": 218,
+          "total_tokens": 5877,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 114
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2829",
+        "score": 1.9256408214569092,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2002",
+        "score": 1.9169634580612183,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.8497127294540405,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1429",
+        "score": 1.7660839557647705,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1509",
+        "score": 1.7001614570617676,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-616",
+        "score": 1.6834166049957275,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.679631233215332,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1727",
+        "score": 1.6532554626464844,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.6521871089935303,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2739",
+        "score": 1.6422293186187744,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6411280632019043,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.6243962049484253,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-293",
+        "score": 1.6226081848144531,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1209",
+        "score": 1.6222416162490845,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.618241310119629,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.6170908212661743,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.6170692443847656,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2941",
+        "score": 1.613905429840088,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2742",
+        "score": 1.6054120063781738,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.6033697128295898,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2606",
+        "score": 1.5996308326721191,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.5986511707305908,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-744",
+        "score": 1.595882534980774,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.5953915119171143,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.5910446643829346,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2315",
+        "score": 1.5885539054870605,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-432",
+        "score": 1.5884349346160889,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.5870529413223267,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1267",
+        "score": 1.5802028179168701,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2965",
+        "score": 1.5794990062713623,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2002",
+      "article-1429",
+      "article-616"
+    ],
+    "status": "ok",
+    "answer": 6.02,
+    "code": "def solution():\n    # Define variables name and value\n    two_year_rate = 0.045\n    one_year_rate = 0.03\n\n    # Do math calculation to get the answer\n    future_one_year_rate = ((1 + two_year_rate) ** 2 / (1 + one_year_rate)) - 1\n    answer = round(future_one_year_rate * 100, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "cce699f87654b75b2e5ece2e81812a134c2fa039d7caa2e530cba61912da4f58"
+}

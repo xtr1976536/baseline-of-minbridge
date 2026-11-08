@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2009",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the profit from a one-period currency carry trade by converting borrowed funds from a low-interest-rate currency into a high-interest-rate currency, applying the respective annual interest rates, assuming a stable exchange rate, and returning the net profit in the investment currency rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5046,
+          "completion_tokens": 61,
+          "total_tokens": 5107,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14626,
+          "completion_tokens": 1131,
+          "total_tokens": 15757,
+          "prompt_tokens_details": {
+            "cached_tokens": 14464
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    borrowed_amount_jpy = 1_000_000\n    borrowing_rate = 0.005\n    investment_rate = 0.05\n    exchange_rate_brl_per_jpy = 0.05\n\n    # Convert borrowed yen to Brazilian reals\n    invested_amount_brl = borrowed_amount_jpy * exchange_rate_brl_per_jpy\n\n    # Calculate investment earnings and borrowing cost\n    investment_earnings = invested_amount_brl * investment_rate\n    borrowing_cost_brl = borrowed_amount_jpy * borrowing_rate * exchange_rate_brl_per_jpy\n\n    # Calculate the carry trade profit\n    profit = investment_earnings - borrowing_cost_brl\n\n    # Return the answer rounded to the nearest integer\n    return round(profit)\n```",
+        "usage": {
+          "prompt_tokens": 5582,
+          "completion_tokens": 412,
+          "total_tokens": 5994,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 234
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-233",
+        "score": 2.2032623291015625
+      },
+      {
+        "function_id": "article-2869",
+        "score": 2.0294487476348877
+      },
+      {
+        "function_id": "article-445",
+        "score": 1.8787562847137451
+      },
+      {
+        "function_id": "article-2343",
+        "score": 1.8661673069000244
+      },
+      {
+        "function_id": "article-3106",
+        "score": 1.841686725616455
+      },
+      {
+        "function_id": "article-1963",
+        "score": 1.7979919910430908
+      },
+      {
+        "function_id": "article-79",
+        "score": 1.7943999767303467
+      },
+      {
+        "function_id": "article-597",
+        "score": 1.774506688117981
+      },
+      {
+        "function_id": "article-2004",
+        "score": 1.746472954750061
+      },
+      {
+        "function_id": "article-162",
+        "score": 1.7405767440795898
+      },
+      {
+        "function_id": "article-672",
+        "score": 1.7356289625167847
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.7249289751052856
+      },
+      {
+        "function_id": "article-77",
+        "score": 1.7214163541793823
+      },
+      {
+        "function_id": "article-2677",
+        "score": 1.712287187576294
+      },
+      {
+        "function_id": "article-2423",
+        "score": 1.7061271667480469
+      },
+      {
+        "function_id": "article-2900",
+        "score": 1.7019063234329224
+      },
+      {
+        "function_id": "article-2187",
+        "score": 1.6970913410186768
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.690144419670105
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.6791210174560547
+      },
+      {
+        "function_id": "article-1964",
+        "score": 1.6782162189483643
+      },
+      {
+        "function_id": "article-2868",
+        "score": 1.678086280822754
+      },
+      {
+        "function_id": "article-1438",
+        "score": 1.668980598449707
+      },
+      {
+        "function_id": "article-817",
+        "score": 1.667248249053955
+      },
+      {
+        "function_id": "article-2195",
+        "score": 1.663884162902832
+      },
+      {
+        "function_id": "article-1271",
+        "score": 1.6599957942962646
+      },
+      {
+        "function_id": "article-1364",
+        "score": 1.6598992347717285
+      },
+      {
+        "function_id": "article-1888",
+        "score": 1.6566922664642334
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.6544777154922485
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6518468856811523
+      },
+      {
+        "function_id": "article-2013",
+        "score": 1.6511921882629395
+      }
+    ],
+    "selected_ids": [
+      "article-233",
+      "article-445",
+      "article-3106"
+    ],
+    "status": "ok",
+    "answer": 2250,
+    "code": "def solution():\n    # Define variables name and value\n    borrowed_amount_jpy = 1_000_000\n    borrowing_rate = 0.005\n    investment_rate = 0.05\n    exchange_rate_brl_per_jpy = 0.05\n\n    # Convert borrowed yen to Brazilian reals\n    invested_amount_brl = borrowed_amount_jpy * exchange_rate_brl_per_jpy\n\n    # Calculate investment earnings and borrowing cost\n    investment_earnings = invested_amount_brl * investment_rate\n    borrowing_cost_brl = borrowed_amount_jpy * borrowing_rate * exchange_rate_brl_per_jpy\n\n    # Calculate the carry trade profit\n    profit = investment_earnings - borrowing_cost_brl\n\n    # Return the answer rounded to the nearest integer\n    return round(profit)\n"
+  },
+  "digest": "34b2d84ad09092f95eedd80e5040b17bbf87e23fe12adedd08a7d516a7d52c49"
+}

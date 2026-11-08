@@ -1,0 +1,49 @@
+{
+  "experiment_profile": "user-requested-backbone",
+  "requested_backbone": "GPT-5.6 Sol",
+  "requested_model": "gpt-5.6-sol",
+  "user_instruction": "User authorized only code repairs and a fixed small real API validation; full experiment remains paused.",
+  "asset_policy": "paper-method-v1",
+  "graph": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\runs\\gbfr_e2e_validation\\r23\\source_snapshot\\assets\\graph.json",
+  "asset_lock": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\runs\\gbfr_e2e_validation\\r23\\asset_lock.json",
+  "data_dir": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\data\\main",
+  "output_dir": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\runs\\gbfr_e2e_validation\\r23",
+  "cache_dir": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\runs\\gbfr_e2e_validation\\r23\\cache",
+  "example_concurrency": 4,
+  "execution_timeout": 5,
+  "evidence_policy": "paper",
+  "evaluation": {
+    "unspecified_decimals": 2,
+    "precision_policy": "reference_display",
+    "rounding": "ROUND_HALF_UP"
+  },
+  "backbones": {
+    "GPT-5.6 Sol": {
+      "model": "gpt-5.6-sol",
+      "base_url": "https://aiwanwu.cc/v1",
+      "api_key_env": "GBFR_GPT56_SOL_API_KEY",
+      "concurrency": 8,
+      "timeout_seconds": 180,
+      "retries": 1,
+      "json_response_format": {
+        "type": "json_object"
+      },
+      "structured_oqa": true,
+      "structured_oes": true,
+      "separate_operator_inputs": true,
+      "system_message": "Execute one stateless financial reasoning operator. Follow the operator instructions and actual question/data in the user message. Return only the requested JSON object or compute(vars) Python function. Do not propose repository changes or include commentary. No tool calls.",
+      "unwrap_codex_commentary": true,
+      "repair_closed_json_root": true,
+      "parameters": {
+        "reasoning_effort": "high"
+      },
+      "cache_only": false
+    }
+  },
+  "validation_manifest_sha256": "1b46e9bb95b65262ab7b7ee181b2f7414a82158b026cc869a13c714a0a4a3da3",
+  "validation_round": "r23",
+  "prior_live_rounds_on_selection": [
+    "r21",
+    "r22"
+  ]
+}

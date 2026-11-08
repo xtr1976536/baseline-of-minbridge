@@ -1,0 +1,21 @@
+{
+  "identity": "8db586e7e561e612aad9ad6c7aec030165ce8295428dee43087c85150043c0b3",
+  "response_digest": "561b47398280eca1522439f93dd81833f6f84c998a8c5d2692e5a92dfbab12b7",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    prices = [\n        120, 122, 121, 124, 125,\n        127, 126, 129, 130, 128,\n        131, 132, 134, 135, 137,\n        136, 138, 139, 140, 142,\n        141, 143, 144, 146, 145\n    ]\n    period_ema = 10\n    period_atr = 10\n    multiplier = 1.5\n\n    # Calculate the 10-day EMA\n    ema = [sum(prices[:period_ema]) / period_ema]\n    ema_multiplier = 2 / (period_ema + 1)\n\n    for price in prices[period_ema:]:\n        ema.append(\n            (price - ema[-1]) * ema_multiplier + ema[-1]\n        )\n\n    # Calculate the 10-day ATR using consecutive price ranges\n    true_ranges = [\n        abs(prices[i] - prices[i - 1])\n        for i in range(1, len(prices))\n    ]\n\n    atr = [sum(true_ranges[:period_atr]) / period_atr]\n\n    for true_range in true_ranges[period_atr:]:\n        atr.append(\n            (atr[-1] * (period_atr - 1) + true_range) / period_atr\n        )\n\n    # Align EMA and ATR series\n    if len(ema) > len(atr):\n        ema = ema[-len(atr):]\n    elif len(atr) > len(ema):\n        atr = atr[-len(ema):]\n\n    # Calculate the final upper Keltner Channel band\n    last_upper_band = ema[-1] + multiplier * atr[-1]\n\n    # Return the answer rounded to two decimal places\n    return round(last_upper_band, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5489,
+      "completion_tokens": 572,
+      "total_tokens": 6061,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 166
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

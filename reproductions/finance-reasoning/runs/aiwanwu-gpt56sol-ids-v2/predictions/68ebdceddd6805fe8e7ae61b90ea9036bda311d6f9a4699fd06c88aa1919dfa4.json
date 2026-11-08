@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2117",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Black-Scholes-Merton European put option value using current stock price, strike price, time to expiration, continuously compounded risk-free rate, volatility, and provided cumulative normal values for \\(d_1\\) and \\(d_2\\), returning the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5017,
+          "completion_tokens": 130,
+          "total_tokens": 5147,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 63
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 15774,
+          "completion_tokens": 181,
+          "total_tokens": 15955,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 160
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_price = 48.6\n    strike_price = 45\n    time_to_expiration = 0.25\n    risk_free_rate = 0.003\n    n_d1 = 0.6352\n    n_d2 = 0.5486\n\n    # Calculate the put value using the Black-Scholes formula\n    from math import exp\n\n    put_value = (\n        strike_price\n        * exp(-risk_free_rate * time_to_expiration)\n        * (1 - n_d2)\n        - stock_price * (1 - n_d1)\n    )\n\n    # return answer\n    return round(put_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5521,
+          "completion_tokens": 274,
+          "total_tokens": 5795,
+          "completion_tokens_details": {
+            "reasoning_tokens": 115
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-3060",
+        "score": 2.2275354862213135,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1033",
+        "score": 2.17612361907959,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-729",
+        "score": 2.1642022132873535,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1032",
+        "score": 2.125488042831421,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-3061",
+        "score": 2.069641590118408,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2505",
+        "score": 1.9649771451950073,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-358",
+        "score": 1.954585075378418,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.7781553268432617,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1408",
+        "score": 1.773075819015503,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.7435197830200195,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6960992813110352,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-911",
+        "score": 1.6801186800003052,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.676953673362732,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.675209403038025,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-307",
+        "score": 1.6588609218597412,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.6555830240249634,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.6544179916381836,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1897",
+        "score": 1.6521525382995605,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2587",
+        "score": 1.6515169143676758,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-758",
+        "score": 1.6505622863769531,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1156",
+        "score": 1.6452058553695679,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1406",
+        "score": 1.6451336145401,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-3058",
+        "score": 1.6431797742843628,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.6423988342285156,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.6352952718734741,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-499",
+        "score": 1.6325167417526245,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1410",
+        "score": 1.6306538581848145,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2196",
+        "score": 1.6295979022979736,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.624249815940857,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2649",
+        "score": 1.6204323768615723,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-3060",
+      "article-1033"
+    ],
+    "status": "ok",
+    "answer": 2.568,
+    "code": "def solution():\n    # Define variables name and value\n    stock_price = 48.6\n    strike_price = 45\n    time_to_expiration = 0.25\n    risk_free_rate = 0.003\n    n_d1 = 0.6352\n    n_d2 = 0.5486\n\n    # Calculate the put value using the Black-Scholes formula\n    from math import exp\n\n    put_value = (\n        strike_price\n        * exp(-risk_free_rate * time_to_expiration)\n        * (1 - n_d2)\n        - stock_price * (1 - n_d1)\n    )\n\n    # return answer\n    return round(put_value, 3)\n"
+  },
+  "digest": "475d3d3e5020686ad50e361d2e220cf977698b8e50b7224e23802851f5a508bd"
+}

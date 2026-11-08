@@ -1,0 +1,18 @@
+{
+  "identity": "d51daf7f276f910bf5945630036eac9b0b3cdcbe4d868960feb8859b5779115c",
+  "response_digest": "19c866c1a63ddd99462a92779f0b4ce89cccdab7a0355a1933219c6f816960eb",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    dividend_year_1 = 0.5\n    dividend_year_2 = 0.5\n    growth_rate = 0.06\n    required_rate_of_return = 0.10\n\n    # Do math calculation to get the answer\n    dividend_year_3 = dividend_year_2 * (1 + growth_rate)\n    terminal_value_year_2 = dividend_year_3 / (required_rate_of_return - growth_rate)\n\n    present_value_year_1 = dividend_year_1 / (1 + required_rate_of_return)\n    present_value_year_2 = dividend_year_2 / (1 + required_rate_of_return) ** 2\n    present_value_terminal_value = terminal_value_year_2 / (1 + required_rate_of_return) ** 2\n\n    equity_value = (\n        present_value_year_1\n        + present_value_year_2\n        + present_value_terminal_value\n    )\n\n    # Return answer\n    return round(equity_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5581,
+      "completion_tokens": 344,
+      "total_tokens": 5925,
+      "completion_tokens_details": {
+        "reasoning_tokens": 120
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

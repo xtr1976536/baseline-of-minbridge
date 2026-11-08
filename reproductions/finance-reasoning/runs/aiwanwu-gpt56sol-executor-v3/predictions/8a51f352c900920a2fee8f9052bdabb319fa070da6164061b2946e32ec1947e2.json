@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2180",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the price of a fixed-rate bond by discounting semiannual coupon payments and par value at the required annual yield, accounting for years to maturity and semiannual compounding?",
+        "usage": {
+          "prompt_tokens": 5010,
+          "completion_tokens": 41,
+          "total_tokens": 5051,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C10\"]}",
+        "usage": {
+          "prompt_tokens": 14180,
+          "completion_tokens": 16,
+          "total_tokens": 14196,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    par_value = 100\n    coupon_rate = 0.03\n    market_rate = 0.05\n    years_to_maturity = 3\n    payments_per_year = 2\n\n    period_rate = market_rate / payments_per_year\n    coupon_payment = (coupon_rate / payments_per_year) * par_value\n    total_payments = years_to_maturity * payments_per_year\n\n    # Do math calculation to get the answer\n    pv_coupons = sum(\n        coupon_payment / ((1 + period_rate) ** (t + 1))\n        for t in range(total_payments)\n    )\n    pv_principal = par_value / ((1 + period_rate) ** total_payments)\n    bond_price = pv_coupons + pv_principal\n\n    # return answer\n    return round(bond_price, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5064,
+          "completion_tokens": 328,
+          "total_tokens": 5392,
+          "completion_tokens_details": {
+            "reasoning_tokens": 131
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1734",
+        "score": 1.8315937519073486,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.8165568113327026,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.8049765825271606,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.8023369312286377,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.7975075244903564,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.7838490009307861,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.7827142477035522,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7793598175048828,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.7780430316925049,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.771907925605774,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.7665563821792603,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-735",
+        "score": 1.7475755214691162,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7449862957000732,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.7420169115066528,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.7369893789291382,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.735122561454773,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7337844371795654,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.7337003946304321,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1208",
+        "score": 1.7255302667617798,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.72362220287323,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.7204999923706055,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.7189985513687134,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.7187793254852295,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.7173457145690918,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.7093342542648315,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.7089698314666748,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.7014563083648682,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.6992056369781494,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.6957865953445435,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-398",
+        "score": 1.6871984004974365,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-734"
+    ],
+    "status": "ok",
+    "answer": 94.492,
+    "code": "def solution():\n    # Define variables name and value\n    par_value = 100\n    coupon_rate = 0.03\n    market_rate = 0.05\n    years_to_maturity = 3\n    payments_per_year = 2\n\n    period_rate = market_rate / payments_per_year\n    coupon_payment = (coupon_rate / payments_per_year) * par_value\n    total_payments = years_to_maturity * payments_per_year\n\n    # Do math calculation to get the answer\n    pv_coupons = sum(\n        coupon_payment / ((1 + period_rate) ** (t + 1))\n        for t in range(total_payments)\n    )\n    pv_principal = par_value / ((1 + period_rate) ** total_payments)\n    bond_price = pv_coupons + pv_principal\n\n    # return answer\n    return round(bond_price, 3)\n"
+  },
+  "digest": "720df003b48ff6d5459969d80c8ebd5a28300d3d704540251380da4a9e3bf14a"
+}

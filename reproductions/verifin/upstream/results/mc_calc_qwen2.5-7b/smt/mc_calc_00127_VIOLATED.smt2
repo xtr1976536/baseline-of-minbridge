@@ -1,0 +1,44 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_net_income_loss_fy2026 Real)
+(declare-const income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2026 Real)
+(declare-const income_tax_expense_benefit_fy2026 Real)
+
+(assert (! (= income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2026 9520.0) :named evidence_income_loss))
+(assert (! (= income_tax_expense_benefit_fy2026 2063.0) :named evidence_tax))
+
+(assert (! (= computed_net_income_loss_fy2026 (+ (- income_tax_expense_benefit_fy2026) income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2026)) :named formula_net_income_loss))
+
+(assert (! (or (> income_tax_expense_benefit_fy2026 0) (< income_tax_expense_benefit_fy2026 0)) :named denom_nonzero))
+
+(assert (! (<= (- computed_net_income_loss_fy2026 -3893.0) 38.93) :named claim_upper))
+(assert (! (<= (- -3893.0 computed_net_income_loss_fy2026) 38.93) :named claim_lower))
+
+; XBRL calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_CurrentIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_DeferredIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2025_02_01_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_NetIncomeLoss_duration_2025_02_01_2026_01_31_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_CurrentIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none 1104) :named evidence_xbrl_fact_us_gaap_CurrentIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_DeferredIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none 959) :named evidence_xbrl_fact_us_gaap_DeferredIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2025_02_01_2026_01_31_unit_USD_dims_none 9520) :named evidence_xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2025_02_01_2026_01_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_NetIncomeLoss_duration_2025_02_01_2026_01_31_unit_USD_dims_none 7457) :named evidence_xbrl_fact_us_gaap_NetIncomeLoss_duration_2025_02_01_2026_01_31_unit_USD_dims_none))
+
+; IR-to-XBRL bindings and independent instance-value witnesses.
+(assert (! (= income_tax_expense_benefit_fy2026 xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none) :named xbrl_bind_income_tax_expense_benefit_fy2026_c_1))
+(assert (! (= xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none 2063) :named xbrl_instance_income_tax_expense_benefit_fy2026))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_NetIncomeLoss_duration_2025_02_01_2026_01_31_unit_USD_dims_none (+ (* -1 xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none) xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2025_02_01_2026_01_31_unit_USD_dims_none)) 1.5) :named xbrl_calc_6_204774902_NetIncomeLoss_c_1_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_NetIncomeLoss_duration_2025_02_01_2026_01_31_unit_USD_dims_none (+ (* -1 xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none) xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2025_02_01_2026_01_31_unit_USD_dims_none)) (- 1.5)) :named xbrl_calc_6_204774902_NetIncomeLoss_c_1_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_DeferredIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_CurrentIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none)) 1.5) :named xbrl_calc_42_662887504_IncomeTaxExpenseBenefit_c_1_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_IncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_DeferredIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none xbrl_fact_us_gaap_CurrentIncomeTaxExpenseBenefit_duration_2025_02_01_2026_01_31_unit_USD_dims_none)) (- 1.5)) :named xbrl_calc_42_662887504_IncomeTaxExpenseBenefit_c_1_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

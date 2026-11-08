@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2106",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Durbin-Watson statistic for autocorrelation in regression residuals from paired actual and predicted numeric values, returning a floating-point result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5155,
+          "completion_tokens": 40,
+          "total_tokens": 5195,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 15636,
+          "completion_tokens": 125,
+          "total_tokens": 15761,
+          "completion_tokens_details": {
+            "reasoning_tokens": 104
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    actual_values = [150.2, 149.8, 150.5, 151.0, 150.7, 151.5, 152.0, 151.8, 152.3, 152.1]\n    predicted_values = [150.0, 150.1, 150.3, 150.9, 150.6, 151.3, 152.1, 151.9, 152.5, 152.0]\n\n    residuals = [actual - predicted for actual, predicted in zip(actual_values, predicted_values)]\n    numerator = sum((residuals[i] - residuals[i - 1]) ** 2 for i in range(1, len(residuals)))\n    denominator = sum(residual ** 2 for residual in residuals)\n    answer = round(numerator / denominator, 2)\n\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5478,
+          "completion_tokens": 323,
+          "total_tokens": 5801,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 118
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2565",
+        "score": 2.120100259780884,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1791",
+        "score": 2.0230824947357178,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2379",
+        "score": 1.4868135452270508,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.4865788221359253,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2378",
+        "score": 1.4809333086013794,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2669",
+        "score": 1.4792391061782837,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1521",
+        "score": 1.477951169013977,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1144",
+        "score": 1.4776170253753662,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1484",
+        "score": 1.46614670753479,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2668",
+        "score": 1.4568403959274292,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.4448972940444946,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-176",
+        "score": 1.4410560131072998,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.439946174621582,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1523",
+        "score": 1.4306317567825317,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2526",
+        "score": 1.423860788345337,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.4213953018188477,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-106",
+        "score": 1.4051226377487183,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.4007821083068848,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.3986423015594482,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.395227313041687,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1075",
+        "score": 1.3929340839385986,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-970",
+        "score": 1.3898749351501465,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2989",
+        "score": 1.3887622356414795,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1142",
+        "score": 1.3853864669799805,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1960",
+        "score": 1.3734893798828125,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.3728296756744385,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2873",
+        "score": 1.3670028448104858,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1145",
+        "score": 1.366469144821167,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2106",
+        "score": 1.357835054397583,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1988",
+        "score": 1.3538432121276855,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2565",
+      "article-1791"
+    ],
+    "status": "ok",
+    "answer": 2.37,
+    "code": "def solution():\n    actual_values = [150.2, 149.8, 150.5, 151.0, 150.7, 151.5, 152.0, 151.8, 152.3, 152.1]\n    predicted_values = [150.0, 150.1, 150.3, 150.9, 150.6, 151.3, 152.1, 151.9, 152.5, 152.0]\n\n    residuals = [actual - predicted for actual, predicted in zip(actual_values, predicted_values)]\n    numerator = sum((residuals[i] - residuals[i - 1]) ** 2 for i in range(1, len(residuals)))\n    denominator = sum(residual ** 2 for residual in residuals)\n    answer = round(numerator / denominator, 2)\n\n    return answer\n"
+  },
+  "digest": "5ed7a5388b9741c5ee44ce0bd3cfb2a170730ba9ed19a5e18f8346b5aa29a483"
+}

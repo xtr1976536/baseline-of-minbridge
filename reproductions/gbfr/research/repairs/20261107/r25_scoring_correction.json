@@ -1,0 +1,677 @@
+{
+  "classification": "POST-HOC SCORER CORRECTION DIAGNOSTIC; not a new blind evaluation",
+  "api_calls": 0,
+  "inference_rerun": false,
+  "primary_result_replaced": false,
+  "inference_source_edited": false,
+  "frozen_predictions_edited": false,
+  "labels_or_precision_policy_changed": false,
+  "registered_scores_preserved": {
+    "fixed2": {
+      "n": 10,
+      "predictions": 10,
+      "missing": 0,
+      "errors": 0,
+      "correct": 5,
+      "unanswerable": 2,
+      "correct_abstentions": 1,
+      "total_accuracy": 50.0,
+      "abstention_accuracy": 50.0,
+      "complete": true
+    },
+    "reference_display": {
+      "n": 10,
+      "predictions": 10,
+      "missing": 0,
+      "errors": 0,
+      "correct": 6,
+      "unanswerable": 2,
+      "correct_abstentions": 1,
+      "total_accuracy": 60.0,
+      "abstention_accuracy": 50.0,
+      "complete": true
+    }
+  },
+  "before_after_same_frozen_predictions": {
+    "fixed": {
+      "preregistered_scorer": {
+        "n": 10,
+        "predictions": 10,
+        "missing": 0,
+        "errors": 0,
+        "correct": 5,
+        "unanswerable": 2,
+        "correct_abstentions": 1,
+        "total_accuracy": 50.0,
+        "abstention_accuracy": 50.0,
+        "complete": true
+      },
+      "corrected_scorer": {
+        "n": 10,
+        "predictions": 10,
+        "missing": 0,
+        "errors": 0,
+        "correct": 6,
+        "unanswerable": 2,
+        "correct_abstentions": 1,
+        "total_accuracy": 60.0,
+        "abstention_accuracy": 50.0,
+        "complete": true
+      }
+    },
+    "reference_display": {
+      "preregistered_scorer": {
+        "n": 10,
+        "predictions": 10,
+        "missing": 0,
+        "errors": 0,
+        "correct": 6,
+        "unanswerable": 2,
+        "correct_abstentions": 1,
+        "total_accuracy": 60.0,
+        "abstention_accuracy": 50.0,
+        "complete": true
+      },
+      "corrected_scorer": {
+        "n": 10,
+        "predictions": 10,
+        "missing": 0,
+        "errors": 0,
+        "correct": 7,
+        "unanswerable": 2,
+        "correct_abstentions": 1,
+        "total_accuracy": 70.0,
+        "abstention_accuracy": 50.0,
+        "complete": true
+      }
+    }
+  },
+  "changed_ids": [
+    "FinQA:V/2010/page_28.pdf-1"
+  ],
+  "changes": [
+    {
+      "id": "FinQA:V/2010/page_28.pdf-1",
+      "question": "what is the average payment volume per transaction for visa inc?",
+      "gold": "44.9",
+      "prediction": {
+        "status": "answered",
+        "value": 44.90353697749196,
+        "meta": {
+          "currency": "USD",
+          "scale": "ones",
+          "unit": "usd per transaction"
+        }
+      },
+      "before_unit_contract": {
+        "status": "unresolved",
+        "reason": "Target display units are unknown, so explicit monetary or scaled prediction units cannot be verified",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": null
+        },
+        "prediction_meta": {
+          "currency": "USD",
+          "scale": "ones",
+          "unit": "usd per transaction"
+        }
+      },
+      "after_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": "USD",
+          "scale": "ones",
+          "unit": "currency/transaction"
+        },
+        "prediction_meta": {
+          "currency": "USD",
+          "scale": "ones",
+          "unit": "currency/transaction"
+        }
+      },
+      "before_fixed2": false,
+      "after_fixed2": true,
+      "before_reference_display": false,
+      "after_reference_display": true
+    }
+  ],
+  "all_questions": [
+    {
+      "id": "FinQA:DRE/2007/page_56.pdf-1",
+      "question": "what is the percent change in basic net income available for common shareholders from 2006 to 2007?",
+      "gold": "50.0%",
+      "prediction": {
+        "status": "answered",
+        "value": 50.03411557944795,
+        "meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        }
+      },
+      "before_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        }
+      },
+      "after_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        }
+      },
+      "before_fixed2": false,
+      "after_fixed2": false,
+      "before_reference_display": true,
+      "after_reference_display": true
+    },
+    {
+      "id": "FinQA:DRE/2005/page_30.pdf-1",
+      "question": "what was the ratio of the after tax gains of in 2004 compared to 2003 in dollars",
+      "gold": "1.72",
+      "prediction": {
+        "status": "answered",
+        "value": 1.71875,
+        "meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        }
+      },
+      "before_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        }
+      },
+      "after_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        }
+      },
+      "before_fixed2": true,
+      "after_fixed2": true,
+      "before_reference_display": true,
+      "after_reference_display": true
+    },
+    {
+      "id": "FinQA:DRE/2007/page_56.pdf-3",
+      "question": "what was the average basic net income available for common shareholders from 2005 to 2007",
+      "gold": "223990",
+      "prediction": {
+        "status": "answered",
+        "value": 223990.0,
+        "meta": {
+          "currency": "USD",
+          "scale": "thousand",
+          "unit": null
+        }
+      },
+      "before_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": "thousand",
+          "unit": null
+        },
+        "prediction_meta": {
+          "currency": "USD",
+          "scale": "thousand",
+          "unit": null
+        }
+      },
+      "after_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": "thousand",
+          "unit": null
+        },
+        "prediction_meta": {
+          "currency": "USD",
+          "scale": "thousand",
+          "unit": null
+        }
+      },
+      "before_fixed2": true,
+      "after_fixed2": true,
+      "before_reference_display": true,
+      "after_reference_display": true
+    },
+    {
+      "id": "FinQA:V/2010/page_28.pdf-1",
+      "question": "what is the average payment volume per transaction for visa inc?",
+      "gold": "44.9",
+      "prediction": {
+        "status": "answered",
+        "value": 44.90353697749196,
+        "meta": {
+          "currency": "USD",
+          "scale": "ones",
+          "unit": "usd per transaction"
+        }
+      },
+      "before_unit_contract": {
+        "status": "unresolved",
+        "reason": "Target display units are unknown, so explicit monetary or scaled prediction units cannot be verified",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": null
+        },
+        "prediction_meta": {
+          "currency": "USD",
+          "scale": "ones",
+          "unit": "usd per transaction"
+        }
+      },
+      "after_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": "USD",
+          "scale": "ones",
+          "unit": "currency/transaction"
+        },
+        "prediction_meta": {
+          "currency": "USD",
+          "scale": "ones",
+          "unit": "currency/transaction"
+        }
+      },
+      "before_fixed2": false,
+      "after_fixed2": true,
+      "before_reference_display": false,
+      "after_reference_display": true
+    },
+    {
+      "id": "FinQA:DRE/2005/page_30.pdf-2",
+      "question": "what was the total gain on sales in 2004 before any adjustment for impairments in millions",
+      "gold": "10626",
+      "prediction": {
+        "status": "answered",
+        "value": 10.626,
+        "meta": {
+          "currency": "USD",
+          "scale": "million",
+          "unit": null
+        }
+      },
+      "before_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": "million",
+          "unit": null
+        },
+        "prediction_meta": {
+          "currency": "USD",
+          "scale": "million",
+          "unit": null
+        }
+      },
+      "after_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": "million",
+          "unit": null
+        },
+        "prediction_meta": {
+          "currency": "USD",
+          "scale": "million",
+          "unit": null
+        }
+      },
+      "before_fixed2": false,
+      "after_fixed2": false,
+      "before_reference_display": false,
+      "after_reference_display": false
+    },
+    {
+      "id": "FinQA:GIS/2015/page_62.pdf-1",
+      "question": "in may 2015 what was the ratio of the unrealized losses from interest rate cash flow hedges to the unrealized gains from foreign currency cash flow hedges",
+      "gold": "-4.74",
+      "prediction": {
+        "status": "answered",
+        "value": -4.74025974025974,
+        "meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        }
+      },
+      "before_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        }
+      },
+      "after_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        }
+      },
+      "before_fixed2": true,
+      "after_fixed2": true,
+      "before_reference_display": true,
+      "after_reference_display": true
+    },
+    {
+      "id": "FinQA:RSG/2016/page_135.pdf-1",
+      "question": "based on the 2016 actual asset allocation what was the debt to equity ratio",
+      "gold": "2.57",
+      "prediction": {
+        "status": "answered",
+        "value": 2.5714285714285716,
+        "meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        }
+      },
+      "before_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        }
+      },
+      "after_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "ratio"
+        }
+      },
+      "before_fixed2": true,
+      "after_fixed2": true,
+      "before_reference_display": true,
+      "after_reference_display": true
+    },
+    {
+      "id": "FinQA:BDX/2018/page_106.pdf-1",
+      "question": "what was the percentage change in the losses on debt extinguishment from 2017 to 2018",
+      "gold": "78.1%",
+      "prediction": {
+        "status": "answered",
+        "value": -78.08219178082192,
+        "meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        }
+      },
+      "before_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        }
+      },
+      "after_unit_contract": {
+        "status": "resolved",
+        "reason": "Target display dimensions are specified; compatibility is checked separately",
+        "target_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        },
+        "prediction_meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        }
+      },
+      "before_fixed2": false,
+      "after_fixed2": false,
+      "before_reference_display": false,
+      "after_reference_display": false
+    },
+    {
+      "id": "FinQA:counterfactual:47",
+      "question": "At December 29, 2000, what was the ratio of the S&P 500 Index to the Dow Jones Industrial Average?",
+      "gold": null,
+      "prediction": {
+        "status": "abstained",
+        "value": null,
+        "meta": {}
+      },
+      "before_unit_contract": {
+        "status": "not_applicable",
+        "reason": "No answered numeric target to compare"
+      },
+      "after_unit_contract": {
+        "status": "not_applicable",
+        "reason": "No answered numeric target to compare"
+      },
+      "before_fixed2": true,
+      "after_fixed2": true,
+      "before_reference_display": true,
+      "after_reference_display": true
+    },
+    {
+      "id": "FinQA:counterfactual:50",
+      "question": "What is the current portion of the present value of lease obligations for Nimbus Corp?",
+      "gold": null,
+      "prediction": {
+        "status": "answered",
+        "value": -1336.0,
+        "meta": {
+          "currency": "USD",
+          "scale": "thousand",
+          "unit": null
+        }
+      },
+      "before_unit_contract": {
+        "status": "not_applicable",
+        "reason": "No answered numeric target to compare"
+      },
+      "after_unit_contract": {
+        "status": "not_applicable",
+        "reason": "No answered numeric target to compare"
+      },
+      "before_fixed2": false,
+      "after_fixed2": false,
+      "before_reference_display": false,
+      "after_reference_display": false
+    }
+  ],
+  "source_evidence": {
+    "id": "FinQA:V/2010/page_28.pdf-1",
+    "question": "what is the average payment volume per transaction for visa inc?",
+    "source_file": "runs/gbfr_e2e_validation/r25/samples.jsonl",
+    "quotes_with_original_offsets": [
+      {
+        "quote": "| Company | Payments Volume  (billions) | Total Volume  (billions) | Total Transactions  (billions) | Cards  (millions) |",
+        "start": 528,
+        "end": 649
+      },
+      {
+        "quote": "| VisaInc.<sup>(1)</sup> | $2,793 | $4,423 | 62.2 | 1,808 |",
+        "start": 682,
+        "end": 741
+      },
+      {
+        "quote": "payments volume represents the aggregate dollar amount of purchases made with cards carrying the visa , visa electron and interlink brands for the relevant period .",
+        "start": 1318,
+        "end": 1482
+      },
+      {
+        "quote": "currency figures are in u.s .\ndollars .",
+        "start": 1943,
+        "end": 1982
+      }
+    ],
+    "math": "2793 billion USD /62.2 billion transactions =44.90353697749196 USD/transaction; matching billion multipliers cancel.",
+    "official_program_for_audit_only": "divide(2793,62.2)",
+    "correction": "Canonicalize explicit USD per transaction to currency/transaction and derive the same target unit from the requested monetary-per-count quantity plus explicit U.S.-dollar source declaration; no prediction magnitude/reference-fit selects units."
+  },
+  "unit_unresolved_counts": {
+    "before": 1,
+    "after": 0
+  },
+  "generalization_scope": [
+    "currency/transaction",
+    "currency/employee",
+    "currency/item",
+    "currency/unit"
+  ],
+  "boundaries": [
+    "Requires a monetary target in final query output focus and explicit output/source currency evidence.",
+    "Nonmonetary time/physical volume/count-per-count requests remain distinct.",
+    "Input reporting scales do not become output multipliers; explicit output and official display scales are retained.",
+    "Conflicting or unrelated currency declarations are not silently resolved.",
+    "No currency conversion, guessed factor, model judge, correctness retry, new API, inference or label changes.",
+    "DRE requested-million/reference-thousand and BDX signed-change/loss-reduction conflicts remain failures under both scorers.",
+    "The corrected score is a retrospective scorer correction on previously observed cases, not independent evidence of improved model reasoning."
+  ],
+  "validation": {
+    "new_specialized_tests": 29,
+    "focused_tests": "153 passed,1 deselected; known unrelated engine.metric_hints test excluded. Root will run full suite.",
+    "test_command": "python -m pytest -q tests/test_currency_per_count_scoring_r25.py tests/test_metric_repairs_r25.py tests/test_metrics.py tests/test_full_metric_repairs.py tests/test_paper_repairs.py -k \"not financial_hints_exclude_numbers_in_question_amounts\""
+  },
+  "score_source_snapshot": "research/repairs/20261107/r25_scoring_source_snapshot",
+  "scorer_manifest": {
+    "purpose": "Post-hoc scorer-only correction snapshot, not an inference rerun or a replacement for preregistered R25 results.",
+    "created_at": "2026-11-07T15:29:27.365734+00:00",
+    "api_calls": 0,
+    "inference_round": "r25",
+    "scorer_sha256": {
+      "metrics.py": "6628d5dbb856dc7465c82407a562febd947ff3f1341098cf31877775c39fc12e",
+      "units.py": "a30cf8c7bedfe6a59b22c4cadd4ad7f69b0e2b8d07d547074910e3a31da129dd",
+      "__init__.py": "0b624b5e70e0c3a10a5984227437dfad5d34517b208f2f12bd6e7cd62598ecc8"
+    },
+    "protected_inputs_sha256": {
+      "runs/gbfr_e2e_validation/r25/results.json": "d6c05eeaea64800e8810fa89a84ed9aa1b84fab362c42788bce98a1aa245aebb",
+      "runs/gbfr_e2e_validation/r25/samples.jsonl": "77dd665cb041b2816b82fc0664235ac51b7eea5f656c26768d561e19e4c46f6c",
+      "runs/gbfr_e2e_validation/r25/fresh/GPT-5.6 Sol/FinQA/predictions.jsonl": "82b55d537abf12493e92229113e6898d674147db8af26bdf7a2cffa16e89e95e",
+      "runs/gbfr_e2e_validation/r25/version.json": "0601d5856158ce34bd1c323f1ee8ea3b370c94aac818f9eb67632e7cbb174f56"
+    },
+    "test_file": "tests/test_currency_per_count_scoring_r25.py",
+    "test_sha256": "8cc55c5a77b5f6b4eadc8bf1d0eba4db7c47ed759684bea2c852e242a62bc190",
+    "change": "Source-backed monetary-per-count target and unit aliases for transaction,employee,item,unit; no numeric/gold-ID heuristic; no precision or label change."
+  },
+  "protected_hashes_before": {
+    "runs/gbfr_e2e_validation/r25/results.json": "d6c05eeaea64800e8810fa89a84ed9aa1b84fab362c42788bce98a1aa245aebb",
+    "runs/gbfr_e2e_validation/r25/samples.jsonl": "77dd665cb041b2816b82fc0664235ac51b7eea5f656c26768d561e19e4c46f6c",
+    "runs/gbfr_e2e_validation/r25/fresh/GPT-5.6 Sol/FinQA/predictions.jsonl": "82b55d537abf12493e92229113e6898d674147db8af26bdf7a2cffa16e89e95e",
+    "runs/gbfr_e2e_validation/r25/version.json": "0601d5856158ce34bd1c323f1ee8ea3b370c94aac818f9eb67632e7cbb174f56"
+  },
+  "protected_hashes_after": {
+    "runs/gbfr_e2e_validation/r25/results.json": "d6c05eeaea64800e8810fa89a84ed9aa1b84fab362c42788bce98a1aa245aebb",
+    "runs/gbfr_e2e_validation/r25/samples.jsonl": "77dd665cb041b2816b82fc0664235ac51b7eea5f656c26768d561e19e4c46f6c",
+    "runs/gbfr_e2e_validation/r25/fresh/GPT-5.6 Sol/FinQA/predictions.jsonl": "82b55d537abf12493e92229113e6898d674147db8af26bdf7a2cffa16e89e95e",
+    "runs/gbfr_e2e_validation/r25/version.json": "0601d5856158ce34bd1c323f1ee8ea3b370c94aac818f9eb67632e7cbb174f56"
+  },
+  "all_protected_hashes_equal": true,
+  "original_R25_source_snapshot_intact": true,
+  "untouched_inference_source_checks": {
+    "adjustments.py": true,
+    "build_graph.py": true,
+    "cli.py": true,
+    "data.py": true,
+    "engine.py": true,
+    "evidence.py": true,
+    "executor.py": true,
+    "graph.py": true,
+    "graph_recovery.py": true,
+    "llm.py": true,
+    "metrics.py": true,
+    "paper_consistency.py": true,
+    "prompts.py": true,
+    "query_constraints.py": true,
+    "reconciliation.py": true,
+    "runner.py": true,
+    "source_recovery.py": true,
+    "symbolic_worker.py": true,
+    "types.py": true,
+    "units.py": true,
+    "worker.py": true,
+    "__init__.py": true,
+    "prompts/evidence_seeking.txt": true,
+    "prompts/final_program.txt": true,
+    "prompts/metric_program.txt": true,
+    "prompts/query_analysis.txt": true,
+    "prompts/query_examples.txt": true,
+    "prompts/verification.txt": true
+  }
+}

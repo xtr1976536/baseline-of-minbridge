@@ -1,0 +1,18 @@
+{
+  "identity": "d71dd34fa36df7627449d009b31681ef07d4134b5a61b1a4671e6b84c82c0930",
+  "response_digest": "fca73ebfe5ce0b66e0ec29fe820ec93cebf2a7ababd851ad17a8ae444bdc752f",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    ordinary_income = 150000\n    ordinary_expenses = 120000\n    short_term_gain = 12000\n    short_term_loss = 18000\n    long_term_gain = 5000\n    long_term_loss = 9000\n    capital_loss_deduction_limit = 3000\n\n    # Do math calculation to get the answer\n    net_ordinary_gain = ordinary_income - ordinary_expenses\n    net_short_term_capital = short_term_gain - short_term_loss\n    net_long_term_capital = long_term_gain - long_term_loss\n    net_capital = net_short_term_capital + net_long_term_capital\n\n    allowable_capital_deduction = min(net_capital, -capital_loss_deduction_limit)\n    net_overall_gain = net_ordinary_gain + allowable_capital_deduction\n\n    # return answer\n    return round(net_overall_gain)\n```",
+    "usage": {
+      "prompt_tokens": 5828,
+      "completion_tokens": 257,
+      "total_tokens": 6085,
+      "completion_tokens_details": {
+        "reasoning_tokens": 49
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

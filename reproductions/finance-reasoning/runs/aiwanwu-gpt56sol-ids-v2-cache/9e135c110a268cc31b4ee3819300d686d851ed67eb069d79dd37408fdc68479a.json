@@ -1,0 +1,21 @@
+{
+  "identity": "9e135c110a268cc31b4ee3819300d686d851ed67eb069d79dd37408fdc68479a",
+  "response_digest": "ab267780c4777053fd0e68e7ab483600ab4e05f528fbc77d2cf932a6de7e242e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    units_sold = 50000\n    purchase_costs = [\n        (40000, 17),  # Most recent purchase\n        (30000, 15),\n        (20000, 13)   # Beginning inventory\n    ]\n\n    # Do math calculation to get the answer\n    units_remaining = units_sold\n    cogs = 0\n\n    for units, cost_per_unit in purchase_costs:\n        units_used = min(units_remaining, units)\n        cogs += units_used * cost_per_unit\n        units_remaining -= units_used\n\n        if units_remaining == 0:\n            break\n\n    # return answer\n    return round(cogs)\n```",
+    "usage": {
+      "prompt_tokens": 5829,
+      "completion_tokens": 217,
+      "total_tokens": 6046,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 56
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

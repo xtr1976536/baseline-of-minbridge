@@ -1,0 +1,21 @@
+{
+  "identity": "3ab299ad788a25189e9f08f2ec00729d687b3e84f10eb124d892e20e7bf8c3fa",
+  "response_digest": "972a0d202119d26314eccbd160b611d775e1ac1f0bafdebb8e94e7622792c5d3",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables: par value, bond price, and modified duration\n    bonds = [\n        {\"par_value\": 25_000_000, \"price\": 105, \"modified_duration\": 7.9},\n        {\"par_value\": 25_000_000, \"price\": 100, \"modified_duration\": 8.5},\n        {\"par_value\": 20_000_000, \"price\": 95, \"modified_duration\": 6.3},\n        {\"par_value\": 30_000_000, \"price\": 87, \"modified_duration\": 10.2},\n    ]\n\n    # Calculate the collection's price value of a basis point\n    pvbp = sum(\n        bond[\"modified_duration\"]\n        * (bond[\"par_value\"] * bond[\"price\"] / 100)\n        * 0.0001\n        for bond in bonds\n    )\n\n    # Return the answer to one decimal place\n    return round(pvbp, 1)\n```",
+    "usage": {
+      "prompt_tokens": 5033,
+      "completion_tokens": 383,
+      "total_tokens": 5416,
+      "prompt_tokens_details": {
+        "cached_tokens": 4864
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 163
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

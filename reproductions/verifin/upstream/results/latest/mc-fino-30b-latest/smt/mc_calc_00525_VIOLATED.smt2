@@ -1,0 +1,42 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2023 Real)
+(declare-const interest_expense_fy2023 Real)
+(declare-const nonoperating_income_expense_fy2023 Real)
+(declare-const operating_income_loss_fy2023 Real)
+
+(assert (! (= interest_expense_fy2023 694) :named evidence_interest_expense_fy2023))
+(assert (! (= nonoperating_income_expense_fy2023 349) :named evidence_nonoperating_income_expense_fy2023))
+(assert (! (= operating_income_loss_fy2023 7788) :named evidence_operating_income_loss_fy2023))
+
+(assert (! (= computed_income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2023 (+ operating_income_loss_fy2023 (* (- 1) interest_expense_fy2023) nonoperating_income_expense_fy2023)) :named formula_income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2023))
+
+(assert (! (<= (- computed_income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2023 14998) 14.998000000000001) :named claim_upper))
+(assert (! (<= (- 14998 computed_income_loss_from_continuing_operations_before_income_taxes_extraordinary_items_noncontrolling_interest_fy2023) 14.998000000000001) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2022_09_26_2023_09_24_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_InterestExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_NonoperatingIncomeExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2022_09_26_2023_09_24_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2022_09_26_2023_09_24_unit_USD_dims_none 7443) :named evidence_xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2022_09_26_2023_09_24_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= operating_income_loss_fy2023 xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2022_09_26_2023_09_24_unit_USD_dims_none) :named xbrl_bind_operating_income_loss_fy2023_edgar_2023_09_24_0000804328_23_000055))
+(assert (! (= xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2022_09_26_2023_09_24_unit_USD_dims_none 7788) :named xbrl_instance_operating_income_loss_fy2023))
+(assert (! (= interest_expense_fy2023 xbrl_fact_us_gaap_InterestExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none) :named xbrl_bind_interest_expense_fy2023_edgar_2023_09_24_0000804328_23_000055))
+(assert (! (= xbrl_fact_us_gaap_InterestExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none 694) :named xbrl_instance_interest_expense_fy2023))
+(assert (! (= nonoperating_income_expense_fy2023 xbrl_fact_us_gaap_NonoperatingIncomeExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none) :named xbrl_bind_nonoperating_income_expense_fy2023_edgar_2023_09_24_0000804328_23_000055))
+(assert (! (= xbrl_fact_us_gaap_NonoperatingIncomeExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none 349) :named xbrl_instance_nonoperating_income_expense_fy2023))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2022_09_26_2023_09_24_unit_USD_dims_none (+ xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2022_09_26_2023_09_24_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_InterestExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none) xbrl_fact_us_gaap_NonoperatingIncomeExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none)) 2) :named xbrl_calc_9_745625813_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_c_1_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_duration_2022_09_26_2023_09_24_unit_USD_dims_none (+ xbrl_fact_us_gaap_OperatingIncomeLoss_duration_2022_09_26_2023_09_24_unit_USD_dims_none (* -1 xbrl_fact_us_gaap_InterestExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none) xbrl_fact_us_gaap_NonoperatingIncomeExpense_duration_2022_09_26_2023_09_24_unit_USD_dims_none)) (- 2)) :named xbrl_calc_9_745625813_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest_c_1_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

@@ -1,0 +1,21 @@
+{
+  "identity": "5f44efd1c0d841f63605de1e916394efa104e61a69e2bd7f32ffc2e0de4a7e41",
+  "response_digest": "fa560167544e4be5768c1024c0bb4cdfc2b61fc1a67768e24af5bd63185ea07e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    starting_assets = 160.0\n    growth_rate = 0.25\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.20\n    hurdle_rate = 0.10\n    prior_high_water_mark = 198.0\n\n    # Calculate end-of-year assets and management fee\n    end_of_year_assets = starting_assets * (1 + growth_rate)\n    management_fee = end_of_year_assets * management_fee_rate\n\n    # Calculate asset value after management fees\n    net_assets = end_of_year_assets - management_fee\n\n    # The net hurdle must be exceeded, and net assets must exceed the high-water mark\n    hurdle_value = starting_assets * (1 + hurdle_rate)\n    incentive_fee_base = max(0.0, net_assets - max(prior_high_water_mark, hurdle_value))\n    incentive_fee = incentive_fee_base * incentive_fee_rate\n\n    # Calculate total fees\n    total_fees = management_fee + incentive_fee\n\n    # Return answer rounded to one decimal place\n    return round(total_fees, 1)\n```",
+    "usage": {
+      "prompt_tokens": 5527,
+      "completion_tokens": 541,
+      "total_tokens": 6068,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 300
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

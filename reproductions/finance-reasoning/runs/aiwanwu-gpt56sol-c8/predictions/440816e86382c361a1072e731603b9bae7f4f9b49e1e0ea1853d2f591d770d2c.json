@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2042",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates a 5-period Exponential Moving Average (EMA) for a time-ordered series of daily stock closing prices, using the standard smoothing factor and returning the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5037,
+          "completion_tokens": 45,
+          "total_tokens": 5082,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16228,
+          "completion_tokens": 501,
+          "total_tokens": 16729,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 404
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 153, 150, 155, 157, 158, 160, 162, 161]\n    period = 5\n    smoothing_factor = 2 / (period + 1)\n\n    # Do math calculation to get the answer\n    ema = sum(closing_prices[:period]) / period\n\n    for price in closing_prices[period:]:\n        ema = (price - ema) * smoothing_factor + ema\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5683,
+          "completion_tokens": 271,
+          "total_tokens": 5954,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 131
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-962",
+        "score": 2.123242139816284
+      },
+      {
+        "function_id": "article-1225",
+        "score": 2.071324348449707
+      },
+      {
+        "function_id": "article-1622",
+        "score": 2.019690752029419
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.9957168102264404
+      },
+      {
+        "function_id": "article-2471",
+        "score": 1.9684721231460571
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.886365532875061
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.857546091079712
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.8432109355926514
+      },
+      {
+        "function_id": "article-1776",
+        "score": 1.8312476873397827
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.8097944259643555
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.7942657470703125
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.753896713256836
+      },
+      {
+        "function_id": "article-1958",
+        "score": 1.7538447380065918
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.745365858078003
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.737237572669983
+      },
+      {
+        "function_id": "article-1861",
+        "score": 1.7201687097549438
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.660007119178772
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.6552715301513672
+      },
+      {
+        "function_id": "article-1226",
+        "score": 1.6511365175247192
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.6359853744506836
+      },
+      {
+        "function_id": "article-501",
+        "score": 1.6081339120864868
+      },
+      {
+        "function_id": "article-2145",
+        "score": 1.6062688827514648
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.5880091190338135
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5860377550125122
+      },
+      {
+        "function_id": "article-1632",
+        "score": 1.5758309364318848
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.5649141073226929
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.5642154216766357
+      },
+      {
+        "function_id": "article-2387",
+        "score": 1.5605552196502686
+      },
+      {
+        "function_id": "article-852",
+        "score": 1.5587488412857056
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5568941831588745
+      }
+    ],
+    "selected_ids": [
+      "article-962",
+      "article-1225",
+      "article-1622"
+    ],
+    "status": "ok",
+    "answer": 159.33,
+    "code": "def solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 153, 150, 155, 157, 158, 160, 162, 161]\n    period = 5\n    smoothing_factor = 2 / (period + 1)\n\n    # Do math calculation to get the answer\n    ema = sum(closing_prices[:period]) / period\n\n    for price in closing_prices[period:]:\n        ema = (price - ema) * smoothing_factor + ema\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "9b63b8b1feb947ce21c8884ec79b162aa04513d54c07d7f96046ed226cd8553b"
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "33f0232324bae2b43d36a60682b216d34fc2a9a27031a05184b91e0732b58b48",
+  "response_digest": "b6ce8ac7b3c50326470cbbeb2e26d3256a22a984c0b24b7c43e5f8d81989b478",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    close_prices = [\n        145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159, 160,\n        162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173, 175,\n        176, 177, 178, 180\n    ]\n\n    low_prices = [\n        140, 145, 148, 147, 149, 150, 152, 153, 154, 155, 156, 157,\n        159, 158, 160, 162, 163, 164, 165, 167, 168, 169, 170, 172,\n        173, 174, 175, 177\n    ]\n\n    high_prices = [\n        150, 151, 153, 155, 156, 158, 159, 160, 161, 162, 163, 164,\n        165, 167, 168, 169, 170, 171, 172, 174, 175, 176, 177, 179,\n        180, 181, 182, 183\n    ]\n\n    prior_close_prices = [\n        144, 145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159,\n        160, 162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173,\n        175, 176, 177, 178\n    ]\n\n    bp_values = []\n    tr_values = []\n\n    for close, low, high, prior_close in zip(\n        close_prices, low_prices, high_prices, prior_close_prices\n    ):\n        true_low = min(low, prior_close)\n        true_high = max(high, prior_close)\n\n        bp_values.append(close - true_low)\n        tr_values.append(true_high - true_low)\n\n    def average(period):\n        bp_sum = sum(bp_values[-period:])\n        tr_sum = sum(tr_values[-period:])\n        return bp_sum / tr_sum\n\n    average_7 = average(7)\n    average_14 = average(14)\n    average_28 = average(28)\n\n    ultimate_oscillator = (\n        (average_7 * 4 + average_14 * 2 + average_28) / 7\n    ) * 100\n\n    # return answer\n    return round(ultimate_oscillator, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5522,
+      "completion_tokens": 1624,
+      "total_tokens": 7146,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1034
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

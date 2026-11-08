@@ -1,0 +1,21 @@
+{
+  "identity": "50a7e6b9c500728ec9411e494532961a1ff1023b367dc31a2631165f618d7710",
+  "response_digest": "611cab7aa79a2087935cf4b3b9577b1e220f4063d2897bc6443fc4421a52712b",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    borrowed_amount_jpy = 1_000_000\n    borrowing_rate = 0.005\n    investment_rate = 0.05\n    exchange_rate = 0.05  # Brazilian Reals per Japanese Yen\n\n    # Convert borrowed funds to BRL and calculate the interest-rate spread\n    invested_amount_brl = borrowed_amount_jpy * exchange_rate\n    investment_interest_brl = invested_amount_brl * investment_rate\n    borrowing_interest_brl = (\n        borrowed_amount_jpy * borrowing_rate * exchange_rate\n    )\n    profit_brl = investment_interest_brl - borrowing_interest_brl\n\n    # Return the profit to the nearest integer\n    return round(profit_brl)\n```",
+    "usage": {
+      "prompt_tokens": 5619,
+      "completion_tokens": 249,
+      "total_tokens": 5868,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 83
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

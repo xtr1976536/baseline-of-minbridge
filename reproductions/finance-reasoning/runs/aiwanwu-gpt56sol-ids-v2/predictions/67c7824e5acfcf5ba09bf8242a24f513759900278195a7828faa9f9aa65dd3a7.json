@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2140",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates free cash flow to equity (FCFE) for a company using annual financial statements, incorporating net income, noncash depreciation, capital expenditures derived from changes in gross fixed assets, and changes in net working capital and debt financing, with the result reported in millions to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5620,
+          "completion_tokens": 63,
+          "total_tokens": 5683
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 15253,
+          "completion_tokens": 684,
+          "total_tokens": 15937,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 660
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 485.0\n    depreciation = 270.0\n\n    gross_fixed_assets_2008 = 4275.0\n    gross_fixed_assets_2007 = 3752.0\n\n    operating_current_assets_2008 = 770.0 + 846.0\n    operating_current_assets_2007 = 711.0 + 780.0\n    operating_current_liabilities_2008 = 476.0 + 149.0\n    operating_current_liabilities_2007 = 443.0 + 114.0\n\n    notes_payable_2008 = 465.0\n    notes_payable_2007 = 450.0\n    long_term_debt_2008 = 1575.0\n    long_term_debt_2007 = 1515.0\n\n    # Do math calculation to get the answer\n    capital_expenditures = gross_fixed_assets_2008 - gross_fixed_assets_2007\n\n    net_working_capital_2008 = (\n        operating_current_assets_2008 - operating_current_liabilities_2008\n    )\n    net_working_capital_2007 = (\n        operating_current_assets_2007 - operating_current_liabilities_2007\n    )\n    change_in_net_working_capital = (\n        net_working_capital_2008 - net_working_capital_2007\n    )\n\n    net_debt_issued = (\n        (notes_payable_2008 - notes_payable_2007)\n        + (long_term_debt_2008 - long_term_debt_2007)\n    )\n\n    fcfe = (\n        net_income\n        + depreciation\n        - capital_expenditures\n        - change_in_net_working_capital\n        + net_debt_issued\n    )\n\n    # return answer in millions, rounded to one decimal place\n    return round(fcfe, 1)\n```",
+        "usage": {
+          "prompt_tokens": 6371,
+          "completion_tokens": 650,
+          "total_tokens": 7021,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 228
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-51",
+        "score": 2.3142623901367188,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-625",
+        "score": 2.299464225769043,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-623",
+        "score": 2.286557197570801,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-622",
+        "score": 2.1360361576080322,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-270",
+        "score": 2.1216421127319336,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1665",
+        "score": 2.119288444519043,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-624",
+        "score": 2.0576062202453613,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-627",
+        "score": 2.039638042449951,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-629",
+        "score": 2.0389041900634766,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-628",
+        "score": 2.003060817718506,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2130",
+        "score": 1.9970178604125977,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1329",
+        "score": 1.9732229709625244,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2053",
+        "score": 1.9572372436523438,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-626",
+        "score": 1.9543826580047607,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-89",
+        "score": 1.8515150547027588,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-52",
+        "score": 1.7868785858154297,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.7638075351715088,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-87",
+        "score": 1.7623600959777832,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-3027",
+        "score": 1.7282285690307617,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-630",
+        "score": 1.7092243432998657,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2700",
+        "score": 1.7058231830596924,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-88",
+        "score": 1.6957628726959229,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-463",
+        "score": 1.691077470779419,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2738",
+        "score": 1.6890672445297241,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-247",
+        "score": 1.6851730346679688,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-407",
+        "score": 1.6828523874282837,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-3026",
+        "score": 1.6803247928619385,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1732",
+        "score": 1.6769157648086548,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-389",
+        "score": 1.673621416091919,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1326",
+        "score": 1.6729207038879395,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-51",
+      "article-625",
+      "article-622"
+    ],
+    "status": "ok",
+    "answer": 250.0,
+    "code": "def solution():\n    # Define variables name and value\n    net_income = 485.0\n    depreciation = 270.0\n\n    gross_fixed_assets_2008 = 4275.0\n    gross_fixed_assets_2007 = 3752.0\n\n    operating_current_assets_2008 = 770.0 + 846.0\n    operating_current_assets_2007 = 711.0 + 780.0\n    operating_current_liabilities_2008 = 476.0 + 149.0\n    operating_current_liabilities_2007 = 443.0 + 114.0\n\n    notes_payable_2008 = 465.0\n    notes_payable_2007 = 450.0\n    long_term_debt_2008 = 1575.0\n    long_term_debt_2007 = 1515.0\n\n    # Do math calculation to get the answer\n    capital_expenditures = gross_fixed_assets_2008 - gross_fixed_assets_2007\n\n    net_working_capital_2008 = (\n        operating_current_assets_2008 - operating_current_liabilities_2008\n    )\n    net_working_capital_2007 = (\n        operating_current_assets_2007 - operating_current_liabilities_2007\n    )\n    change_in_net_working_capital = (\n        net_working_capital_2008 - net_working_capital_2007\n    )\n\n    net_debt_issued = (\n        (notes_payable_2008 - notes_payable_2007)\n        + (long_term_debt_2008 - long_term_debt_2007)\n    )\n\n    fcfe = (\n        net_income\n        + depreciation\n        - capital_expenditures\n        - change_in_net_working_capital\n        + net_debt_issued\n    )\n\n    # return answer in millions, rounded to one decimal place\n    return round(fcfe, 1)\n"
+  },
+  "digest": "c15e44ec0e0f4d888bbc113a1c5ff457916b8bced23f4e8b8def412b72143de3"
+}

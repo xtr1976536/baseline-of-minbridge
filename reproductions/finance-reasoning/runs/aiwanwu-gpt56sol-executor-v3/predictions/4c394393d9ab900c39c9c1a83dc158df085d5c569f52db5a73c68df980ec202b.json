@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2006",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates degree of operating leverage (DOL) at varying production levels using unit contribution margin and fixed production costs, identifies the production level where DOL is minimized within a specified capacity limit, and returns the result rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 4984,
+          "completion_tokens": 53,
+          "total_tokens": 5037
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\",\"C03\",\"C06\"]}",
+        "usage": {
+          "prompt_tokens": 12947,
+          "completion_tokens": 526,
+          "total_tokens": 13473,
+          "completion_tokens_details": {
+            "reasoning_tokens": 502
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    unit_contribution_margin = 20\n    fixed_production_costs = 500_000\n    maximum_production = 300_000\n\n    # DOL decreases as production rises above the break-even level,\n    # so its least value occurs at maximum production.\n    answer = float(maximum_production)\n\n    # Return the production level in units\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5527,
+          "completion_tokens": 180,
+          "total_tokens": 5707,
+          "completion_tokens_details": {
+            "reasoning_tokens": 81
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1682",
+        "score": 2.3808960914611816,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1681",
+        "score": 2.374640464782715,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1680",
+        "score": 2.3527603149414062,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1676",
+        "score": 2.3094146251678467,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1679",
+        "score": 2.248595952987671,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3041",
+        "score": 2.130436420440674,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1675",
+        "score": 2.0277767181396484,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-574",
+        "score": 1.959571123123169,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1678",
+        "score": 1.8773267269134521,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2121",
+        "score": 1.8707979917526245,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1677",
+        "score": 1.8170949220657349,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2116",
+        "score": 1.7790124416351318,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-573",
+        "score": 1.7350010871887207,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-769",
+        "score": 1.6825385093688965,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-539",
+        "score": 1.678463339805603,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-829",
+        "score": 1.6674904823303223,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-428",
+        "score": 1.6612043380737305,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-3049",
+        "score": 1.6610150337219238,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1836",
+        "score": 1.6600399017333984,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2200",
+        "score": 1.6462260484695435,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1183",
+        "score": 1.635011076927185,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1371",
+        "score": 1.6302309036254883,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1198",
+        "score": 1.6300972700119019,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3035",
+        "score": 1.6289961338043213,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-164",
+        "score": 1.6059906482696533,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-180",
+        "score": 1.6037830114364624,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-3001",
+        "score": 1.6007401943206787,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3031",
+        "score": 1.6006355285644531,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-767",
+        "score": 1.6003568172454834,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2617",
+        "score": 1.5977907180786133,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1681",
+      "article-1680",
+      "article-3041"
+    ],
+    "status": "ok",
+    "answer": 300000.0,
+    "code": "def solution():\n    # Define variables name and value\n    unit_contribution_margin = 20\n    fixed_production_costs = 500_000\n    maximum_production = 300_000\n\n    # DOL decreases as production rises above the break-even level,\n    # so its least value occurs at maximum production.\n    answer = float(maximum_production)\n\n    # Return the production level in units\n    return answer\n"
+  },
+  "digest": "0da9cd9e5cfb6d2c0b9ea224d4281167cb305909e8d9466cf96929fafafdb9b0"
+}

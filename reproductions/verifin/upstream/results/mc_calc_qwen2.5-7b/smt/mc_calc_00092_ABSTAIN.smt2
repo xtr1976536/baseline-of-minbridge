@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:provision_for_doubtful_accounts_fy2025,discontinued_operation_gain_loss_on_disposal_of_discontinued_operation_net_of_tax_fy2025)

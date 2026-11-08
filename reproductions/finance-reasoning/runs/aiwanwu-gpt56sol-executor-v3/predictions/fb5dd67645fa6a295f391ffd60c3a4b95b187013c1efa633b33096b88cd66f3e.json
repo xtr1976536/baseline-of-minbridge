@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2098",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates adjusted present value (APV) by adding the present value of the interest tax shield from fixed-rate debt to an all-equity firm value, using debt principal, interest rate, corporate tax rate, and financing period, with the result rounded to the nearest currency unit?",
+        "usage": {
+          "prompt_tokens": 5054,
+          "completion_tokens": 61,
+          "total_tokens": 5115,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C16\",\"C20\"]}",
+        "usage": {
+          "prompt_tokens": 13677,
+          "completion_tokens": 540,
+          "total_tokens": 14217,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    unlevered_firm_value = 800_000\n    debt = 300_000\n    interest_rate = 0.05\n    tax_rate = 0.28\n    periods = 5\n\n    # Calculate the present value of the interest tax shield\n    annual_tax_shield = debt * interest_rate * tax_rate\n    pv_tax_shield = annual_tax_shield * (\n        1 - (1 / (1 + interest_rate) ** periods)\n    ) / interest_rate\n\n    # Calculate APV\n    apv = unlevered_firm_value + pv_tax_shield\n\n    # Return APV rounded to the nearest integer\n    return round(apv)\n```",
+        "usage": {
+          "prompt_tokens": 5732,
+          "completion_tokens": 214,
+          "total_tokens": 5946,
+          "completion_tokens_details": {
+            "reasoning_tokens": 52
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2286",
+        "score": 2.4246621131896973,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2964",
+        "score": 1.8385281562805176,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.838417649269104,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.8131248950958252,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.8119101524353027,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.8109405040740967,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.7996876239776611,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.780816912651062,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2317",
+        "score": 1.769505262374878,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-159",
+        "score": 1.7588940858840942,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1310",
+        "score": 1.7365385293960571,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1537",
+        "score": 1.726646065711975,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1905",
+        "score": 1.726531982421875,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-291",
+        "score": 1.7103400230407715,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1507",
+        "score": 1.699324607849121,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2944",
+        "score": 1.6900646686553955,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.6893434524536133,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-297",
+        "score": 1.6759161949157715,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2599",
+        "score": 1.6756458282470703,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2940",
+        "score": 1.6741883754730225,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6732101440429688,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.66733980178833,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-782",
+        "score": 1.6663031578063965,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-45",
+        "score": 1.665724515914917,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-713",
+        "score": 1.661589503288269,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.6604030132293701,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.6508970260620117,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2015",
+        "score": 1.6502711772918701,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1341",
+        "score": 1.6491286754608154,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2572",
+        "score": 1.640181064605713,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2286",
+      "article-2944",
+      "article-2940"
+    ],
+    "status": "ok",
+    "answer": 818184,
+    "code": "def solution():\n    # Define variables\n    unlevered_firm_value = 800_000\n    debt = 300_000\n    interest_rate = 0.05\n    tax_rate = 0.28\n    periods = 5\n\n    # Calculate the present value of the interest tax shield\n    annual_tax_shield = debt * interest_rate * tax_rate\n    pv_tax_shield = annual_tax_shield * (\n        1 - (1 / (1 + interest_rate) ** periods)\n    ) / interest_rate\n\n    # Calculate APV\n    apv = unlevered_firm_value + pv_tax_shield\n\n    # Return APV rounded to the nearest integer\n    return round(apv)\n"
+  },
+  "digest": "19d9e69e7591e4f0c31c14cba28f86d65ac52b2a96241dfc48d054c58dade14e"
+}

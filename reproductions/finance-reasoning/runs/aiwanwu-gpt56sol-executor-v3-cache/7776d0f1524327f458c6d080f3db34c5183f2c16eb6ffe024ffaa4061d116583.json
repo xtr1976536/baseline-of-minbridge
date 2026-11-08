@@ -1,0 +1,18 @@
+{
+  "identity": "7776d0f1524327f458c6d080f3db34c5183f2c16eb6ffe024ffaa4061d116583",
+  "response_digest": "c2a15ae97b032da86fee3af370c3088f4b827298d40a3034360e79abd7fdb393",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    face_value = 1000.0\n    current_one_year_rate = 0.08\n    up_rate = 0.10\n    down_rate = 0.06\n    probability_each = 0.50\n    annual_risk_premium = 0.004\n\n    # Discount the expected year-1 bond value using the current rate,\n    # with the duration risk premium added to each year's rate.\n    expected_year1_discount_factor = (\n        probability_each / (1 + up_rate + annual_risk_premium)\n        + probability_each / (1 + down_rate + annual_risk_premium)\n    )\n    bond_value = (\n        face_value\n        * expected_year1_discount_factor\n        / (1 + current_one_year_rate + annual_risk_premium)\n    )\n\n    # Return the valuation rounded to three decimal places\n    return round(bond_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5573,
+      "completion_tokens": 518,
+      "total_tokens": 6091,
+      "completion_tokens_details": {
+        "reasoning_tokens": 313
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

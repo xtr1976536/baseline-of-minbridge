@@ -1,0 +1,77 @@
+% Short-form pipeline: every module in one horizontal strip, with the two repair
+% loops. Compact overview to sit near the introduction.
+% Requires: \usepackage{tikz} + libraries below; \usepackage{amsmath, xcolor}.
+% Compile standalone by uncommenting the documentclass block.
+
+% \documentclass[tikz,border=6pt]{standalone}
+% \usepackage{amsmath,xcolor}
+% \begin{document}
+
+\usetikzlibrary{positioning,arrows.meta}
+
+\definecolor{vqInk}{HTML}{1F2937}
+\definecolor{vqGrey}{HTML}{6B7280}
+\definecolor{vqTeal}{HTML}{0F766E}
+\definecolor{vqViolet}{HTML}{6D28D9}
+\definecolor{vqBlue}{HTML}{1D4ED8}
+\definecolor{vqGreen}{HTML}{15803D}
+\definecolor{vqRed}{HTML}{B91C1C}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  >=Latex, node distance=6mm,
+  every node/.style={text=vqInk},
+  m/.style={draw, rounded corners=2.5pt, align=center, inner sep=4pt,
+            minimum height=13mm, text width=21mm, font=\scriptsize, line width=0.5pt},
+  ttl/.style={font=\scriptsize\bfseries\sffamily},
+  arr/.style={-{Latex[length=4pt]}, vqInk!65, line width=0.7pt},
+  rep/.style={-{Latex[length=4pt]}, dashed, orange!80!black, line width=0.7pt},
+  rlbl/.style={font=\tiny\itshape, text=orange!65!black},
+]
+
+\node[m, fill=vqInk!4, draw=vqInk!35] (in)
+  {\ttl{Inputs}\\[1pt]question,\\ filing (XBRL)};
+\node[m, right=of in, fill=vqGrey!10, draw=vqGrey!55] (ans)
+  {\ttl{Answer}\\[1pt]LLM $\Rightarrow$ claim $c$\\[1pt]\textcolor{vqGrey}{untrusted}};
+\node[m, right=of ans, fill=vqTeal!8, draw=vqTeal!55] (grd)
+  {\ttl{Ground}\\[1pt]formula \& operands\\ from filing (XBRL)};
+\node[m, right=of grd, fill=vqViolet!7, draw=vqViolet!50, text width=17mm] (ir)
+  {\ttl{IR}\\[1pt]$m^\star,\,c,\,\tau$};
+\node[m, right=of ir, fill=vqGrey!10, draw=vqGrey!55] (af)
+  {\ttl{Autoformalize}\\[1pt]LLM $\Rightarrow$ SMT $\Phi$};
+\node[m, right=of af, fill=vqBlue!7, draw=vqBlue!50, text width=15mm] (z3)
+  {\ttl{Solve}\\[1pt]Z3};
+\node[m, right=of z3, fill=vqGreen!7, draw=vqGreen!55, text width=26mm] (v)
+  {\ttl{Verdict}\\[1pt]Verified / Violated ($c^\star$) / Abstain};
+
+\draw[arr] (in) -- (ans);
+\draw[arr] (ans) -- (grd);
+\draw[arr] (grd) -- (ir);
+\draw[arr] (ir) -- (af);
+\draw[arr] (af) -- (z3);
+\draw[arr] (z3) -- (v);
+
+% repair loops (bounded, re-verified)
+\draw[rep] (z3.south) to[out=-90,in=-90]
+  node[rlbl, below, pos=0.5]{regenerate $\le1$ (invalid SMT)} (af.south);
+\draw[rep] (v.north) to[out=90,in=90]
+  node[rlbl, above, pos=0.5]{re-ask $\le1$ (Violated), re-verify} (ans.north);
+
+\end{tikzpicture}
+
+\caption{\textbf{VerifiQA in one strip.} Every module: a question and filing are
+answered by an untrusted \emph{Answer} model ($\Rightarrow$ claim $c$); a
+\emph{Ground} step reconstructs the formula and authoritative operands from the
+filing ($\Rightarrow m^\star$); these form the \emph{IR}; an \emph{Autoformalize}
+step compiles it to an SMT obligation $\Phi:\lvert m^\star-c\rvert\le\tau$;
+\emph{Solve} discharges it with Z3; and the \emph{Verdict} is
+\textsc{Verified}, \textsc{Violated} (with certified correction $c^\star=m^\star$),
+or \textsc{Abstain}. Two bounded, re-verified repair loops (dashed) regenerate an
+invalid SMT once and re-ask the model once on \textsc{Violated}. Only
+\textsc{sat}/\textsc{unsat} produce a verdict, so soundness holds regardless of
+either LLM.}
+\label{fig:pipeline-short}
+\end{figure*}
+
+% \end{document}

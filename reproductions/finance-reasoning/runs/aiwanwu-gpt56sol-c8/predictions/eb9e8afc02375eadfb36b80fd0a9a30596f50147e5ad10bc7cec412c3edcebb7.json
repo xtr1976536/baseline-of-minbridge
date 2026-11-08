@@ -1,0 +1,193 @@
+{
+  "record": {
+    "question_id": "test-2154",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the mark-to-market value in USD of a EUR/USD foreign-exchange forward hedge after partial elapsed time, using the original contracted forward rate, current forward bid/ask points for the remaining maturity, EUR notional exposure, spot quote convention, and USD discounting, with valuation based on the appropriate bid/ask side and rounded to three decimals?",
+        "usage": {
+          "prompt_tokens": 5222,
+          "completion_tokens": 192,
+          "total_tokens": 5414,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 114
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14943,
+          "completion_tokens": 1131,
+          "total_tokens": 16074,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    shares = 200_000\n    price_per_share_eur = 90\n    euro_notional = shares * price_per_share_eur\n\n    initial_spot_bid = 1.3935\n    initial_six_month_forward_points_bid = -0.0190\n    initial_forward_rate = initial_spot_bid + initial_six_month_forward_points_bid\n\n    three_month_spot_ask = 1.4210\n    three_month_three_month_forward_points_ask = -0.0210\n    current_forward_rate = three_month_spot_ask + three_month_three_month_forward_points_ask\n\n    usd_libor = 0.01266\n    remaining_time = 3 / 12\n\n    # Do math calculation to get the answer\n    usd_value_at_maturity = euro_notional * (initial_forward_rate - current_forward_rate)\n    mark_to_market_value = usd_value_at_maturity / (1 + usd_libor * remaining_time)\n\n    # return answer\n    return round(mark_to_market_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5784,
+          "completion_tokens": 996,
+          "total_tokens": 6780,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 759
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2623",
+        "score": 1.787040114402771
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.7483843564987183
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.712669014930725
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.7052714824676514
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.7007131576538086
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.6860625743865967
+      },
+      {
+        "function_id": "article-601",
+        "score": 1.6794183254241943
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.6700372695922852
+      },
+      {
+        "function_id": "article-1963",
+        "score": 1.6678500175476074
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.667267084121704
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.6623554229736328
+      },
+      {
+        "function_id": "article-2079",
+        "score": 1.6482069492340088
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.640655279159546
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.6394058465957642
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.6377041339874268
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.6325241327285767
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.6316428184509277
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.6294502019882202
+      },
+      {
+        "function_id": "article-1889",
+        "score": 1.6289904117584229
+      },
+      {
+        "function_id": "article-1886",
+        "score": 1.6210346221923828
+      },
+      {
+        "function_id": "article-2621",
+        "score": 1.6204967498779297
+      },
+      {
+        "function_id": "article-603",
+        "score": 1.6160476207733154
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.6154074668884277
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.6140657663345337
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.6067053079605103
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6063326597213745
+      },
+      {
+        "function_id": "article-1022",
+        "score": 1.6060600280761719
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.6048235893249512
+      },
+      {
+        "function_id": "article-450",
+        "score": 1.6013528108596802
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.5987472534179688
+      }
+    ],
+    "selected_ids": [
+      "article-607",
+      "article-608",
+      "article-3104"
+    ],
+    "status": "ok",
+    "answer": -457551.848,
+    "code": "def solution():\n    # Define variables name and value\n    shares = 200_000\n    price_per_share_eur = 90\n    euro_notional = shares * price_per_share_eur\n\n    initial_spot_bid = 1.3935\n    initial_six_month_forward_points_bid = -0.0190\n    initial_forward_rate = initial_spot_bid + initial_six_month_forward_points_bid\n\n    three_month_spot_ask = 1.4210\n    three_month_three_month_forward_points_ask = -0.0210\n    current_forward_rate = three_month_spot_ask + three_month_three_month_forward_points_ask\n\n    usd_libor = 0.01266\n    remaining_time = 3 / 12\n\n    # Do math calculation to get the answer\n    usd_value_at_maturity = euro_notional * (initial_forward_rate - current_forward_rate)\n    mark_to_market_value = usd_value_at_maturity / (1 + usd_libor * remaining_time)\n\n    # return answer\n    return round(mark_to_market_value, 3)\n"
+  },
+  "digest": "7e07020b8ab3f9fcbacb2de39c3661b59182d4d477c19214ae18603fef8a9897"
+}

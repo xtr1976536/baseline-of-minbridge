@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2061",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the terminal value in a two-stage dividend discount model for a stock with an initial high-growth period followed by perpetual stable growth, using the final projected dividend, stable growth rate, and required return, with results rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5086,
+          "completion_tokens": 54,
+          "total_tokens": 5140
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13796,
+          "completion_tokens": 543,
+          "total_tokens": 14339,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 446
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    current_dividend = 0.22\n    high_growth_rate = 0.12\n    stable_growth_rate = 0.06\n    required_rate_of_return = 0.09\n    high_growth_years = 4\n\n    # Do math calculation to get the answer\n    dividend_year_4 = current_dividend * (1 + high_growth_rate) ** high_growth_years\n    dividend_year_5 = dividend_year_4 * (1 + stable_growth_rate)\n    terminal_value = dividend_year_5 / (required_rate_of_return - stable_growth_rate)\n\n    # return answer\n    return round(terminal_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5683,
+          "completion_tokens": 258,
+          "total_tokens": 5941,
+          "completion_tokens_details": {
+            "reasoning_tokens": 102
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1755",
+        "score": 1.8848813772201538
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.8565990924835205
+      },
+      {
+        "function_id": "article-1758",
+        "score": 1.841997742652893
+      },
+      {
+        "function_id": "article-1151",
+        "score": 1.8123435974121094
+      },
+      {
+        "function_id": "article-1511",
+        "score": 1.802974820137024
+      },
+      {
+        "function_id": "article-1870",
+        "score": 1.7589175701141357
+      },
+      {
+        "function_id": "article-1756",
+        "score": 1.7575780153274536
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.7306771278381348
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.712011694908142
+      },
+      {
+        "function_id": "article-2146",
+        "score": 1.704588770866394
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.6972943544387817
+      },
+      {
+        "function_id": "article-519",
+        "score": 1.6902775764465332
+      },
+      {
+        "function_id": "article-1932",
+        "score": 1.6821759939193726
+      },
+      {
+        "function_id": "article-1872",
+        "score": 1.6709762811660767
+      },
+      {
+        "function_id": "article-86",
+        "score": 1.657977819442749
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.6567564010620117
+      },
+      {
+        "function_id": "article-272",
+        "score": 1.6506264209747314
+      },
+      {
+        "function_id": "article-1516",
+        "score": 1.6453828811645508
+      },
+      {
+        "function_id": "article-1757",
+        "score": 1.6451621055603027
+      },
+      {
+        "function_id": "article-2943",
+        "score": 1.6386929750442505
+      },
+      {
+        "function_id": "article-605",
+        "score": 1.6377151012420654
+      },
+      {
+        "function_id": "article-714",
+        "score": 1.636824131011963
+      },
+      {
+        "function_id": "article-1212",
+        "score": 1.63474702835083
+      },
+      {
+        "function_id": "article-1754",
+        "score": 1.6295630931854248
+      },
+      {
+        "function_id": "article-463",
+        "score": 1.6279888153076172
+      },
+      {
+        "function_id": "article-1761",
+        "score": 1.6277556419372559
+      },
+      {
+        "function_id": "article-2411",
+        "score": 1.623064398765564
+      },
+      {
+        "function_id": "article-606",
+        "score": 1.6205511093139648
+      },
+      {
+        "function_id": "article-1520",
+        "score": 1.6164519786834717
+      },
+      {
+        "function_id": "article-13",
+        "score": 1.6088582277297974
+      }
+    ],
+    "selected_ids": [
+      "article-1755",
+      "article-1758",
+      "article-1151"
+    ],
+    "status": "ok",
+    "answer": 12.231,
+    "code": "def solution():\n    # Define variables name and value\n    current_dividend = 0.22\n    high_growth_rate = 0.12\n    stable_growth_rate = 0.06\n    required_rate_of_return = 0.09\n    high_growth_years = 4\n\n    # Do math calculation to get the answer\n    dividend_year_4 = current_dividend * (1 + high_growth_rate) ** high_growth_years\n    dividend_year_5 = dividend_year_4 * (1 + stable_growth_rate)\n    terminal_value = dividend_year_5 / (required_rate_of_return - stable_growth_rate)\n\n    # return answer\n    return round(terminal_value, 3)\n"
+  },
+  "digest": "c91711e7df9d78066467cd629955673b7a899530c303a674c76178841961f550"
+}

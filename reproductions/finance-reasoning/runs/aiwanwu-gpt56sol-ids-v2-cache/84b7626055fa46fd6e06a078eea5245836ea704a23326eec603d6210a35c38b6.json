@@ -1,0 +1,21 @@
+{
+  "identity": "84b7626055fa46fd6e06a078eea5245836ea704a23326eec603d6210a35c38b6",
+  "response_digest": "4a1dca25199960793fd863f03ae25cf21e49bff278d23a0cc6b879831557f656",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    total_billed_amount = 10000\n    deductible = 1200\n    coinsurance_rate = 0.20\n    out_of_pocket_max = 3000\n    \n    # Do math calculation to get the answer\n    remaining_cost = max(total_billed_amount - deductible, 0)\n    coinsurance_cost = remaining_cost * coinsurance_rate\n    total_out_of_pocket = min(\n        deductible + coinsurance_cost,\n        out_of_pocket_max\n    )\n    \n    # return answer\n    return round(total_out_of_pocket)\n```",
+    "usage": {
+      "prompt_tokens": 5519,
+      "completion_tokens": 171,
+      "total_tokens": 5690,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 35
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

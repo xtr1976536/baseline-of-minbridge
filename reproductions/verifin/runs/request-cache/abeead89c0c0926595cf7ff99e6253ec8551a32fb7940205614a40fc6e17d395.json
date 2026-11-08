@@ -1,0 +1,28 @@
+{
+  "request_hash": "abeead89c0c0926595cf7ff99e6253ec8551a32fb7940205614a40fc6e17d395",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nFor Pfizer, which geographic region had the biggest drop in Q22023 year over year revenues (on a percentage basis)?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"year_over_year_revenue_percentage_change\",\n  \"facts\": [\n    {\n      \"name\": \"geographic_region_revenue_q2_2023\",\n      \"aliases\": [\"Revenues by Geographic Region\", \"Revenue by Geography\", \"United States\", \"Developed Europe\", \"Emerging Markets\", \"Other Developed Markets\"],\n      \"period\": \"Q2 2023\",\n      \"statement\": \"other\"\n    },\n    {\n      \"name\": \"geographic_region_revenue_q2_2022\",\n      \"aliases\": [\"Revenues by Geographic Region\", \"Revenue by Geography\", \"United States\", \"Developed Europe\", \"Emerging Markets\", \"Other Developed Markets\"],\n      \"period\": \"Q2 2022\",\n      \"statement\": \"other\"\n    }\n  ],\n  \"reason\": \"Compare each region's Q2 2023 revenue with Q2 2022 revenue as a percentage change, then identify the largest decline.\"\n}",
+  "usage": {
+    "prompt_tokens": 4702,
+    "completion_tokens": 205,
+    "total_tokens": 4907,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    }
+  },
+  "response_id": "resp_07aee781cccfda2e016aedbd5cd99887d0921239db4ad94ec5",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

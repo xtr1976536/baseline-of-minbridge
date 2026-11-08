@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:cash_and_cash_equivalents_at_carrying_value_fy2026,inventory_net_fy2026,other_assets_current_fy2026)

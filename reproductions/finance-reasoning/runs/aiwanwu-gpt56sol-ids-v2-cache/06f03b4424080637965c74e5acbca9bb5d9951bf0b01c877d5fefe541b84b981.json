@@ -1,0 +1,21 @@
+{
+  "identity": "06f03b4424080637965c74e5acbca9bb5d9951bf0b01c877d5fefe541b84b981",
+  "response_digest": "9dcd0cd38256114392ab5fc875f44f0d8bca6e5d570b02a9c2e1f6155f44cc4e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    cash_flows = [50, 50, 50, 50, 1050]\n    discount_rate = 0.04\n\n    # Do math calculation to get the answer\n    present_values = [\n        cash_flow / ((1 + discount_rate) ** period)\n        for period, cash_flow in enumerate(cash_flows, 1)\n    ]\n    bond_price = sum(present_values)\n\n    macaulay_duration = sum(\n        period * present_value / bond_price\n        for period, present_value in enumerate(present_values, 1)\n    )\n\n    # Return answer rounded to two decimal places\n    return round(macaulay_duration, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5704,
+      "completion_tokens": 491,
+      "total_tokens": 6195,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 331
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

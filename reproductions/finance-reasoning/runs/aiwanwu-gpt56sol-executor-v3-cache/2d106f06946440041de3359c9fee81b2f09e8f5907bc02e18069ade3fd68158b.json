@@ -1,0 +1,18 @@
+{
+  "identity": "2d106f06946440041de3359c9fee81b2f09e8f5907bc02e18069ade3fd68158b",
+  "response_digest": "b0a6b77d73a77e413e2442ed02c473a1d408436d4af965c33739c0cfab52a13d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    cost = 120000\n    salvage_value = 20000\n    useful_life = 5\n    year = 3\n\n    # Calculate depreciation using the sum-of-the-years'-digits method\n    depreciable_base = cost - salvage_value\n    sum_of_years = useful_life * (useful_life + 1) // 2\n    remaining_years = useful_life - year + 1\n    depreciation_expense = depreciable_base * remaining_years / sum_of_years\n\n    # Return the expense rounded to the nearest dollar\n    return round(depreciation_expense)\n```",
+    "usage": {
+      "prompt_tokens": 5763,
+      "completion_tokens": 173,
+      "total_tokens": 5936,
+      "completion_tokens_details": {
+        "reasoning_tokens": 27
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

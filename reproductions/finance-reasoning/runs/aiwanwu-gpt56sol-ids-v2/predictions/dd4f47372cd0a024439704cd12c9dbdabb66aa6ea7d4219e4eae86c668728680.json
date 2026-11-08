@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2161",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a total transaction advisory fee using a tiered Lehman formula, applying progressively lower percentage rates to successive deal-value brackets, including amounts above the highest threshold, and returning the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5104,
+          "completion_tokens": 48,
+          "total_tokens": 5152,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14603,
+          "completion_tokens": 304,
+          "total_tokens": 14907,
+          "completion_tokens_details": {
+            "reasoning_tokens": 286
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    transaction_amount = 12_000_000\n    tier_limits = [1_000_000, 5_000_000, 10_000_000]\n    tier_rates = [0.05, 0.04, 0.03, 0.02]\n\n    # Do math calculation to get the answer\n    first_tier = min(transaction_amount, tier_limits[0])\n    second_tier = min(max(transaction_amount - tier_limits[0], 0), 4_000_000)\n    third_tier = min(max(transaction_amount - tier_limits[1], 0), 5_000_000)\n    fourth_tier = max(transaction_amount - tier_limits[2], 0)\n\n    total_fee = (\n        first_tier * tier_rates[0]\n        + second_tier * tier_rates[1]\n        + third_tier * tier_rates[2]\n        + fourth_tier * tier_rates[3]\n    )\n\n    # Return the answer rounded to the nearest dollar\n    return round(total_fee)\n```",
+        "usage": {
+          "prompt_tokens": 5231,
+          "completion_tokens": 330,
+          "total_tokens": 5561,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 91
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2109",
+        "score": 2.082122325897217,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-332",
+        "score": 1.5918247699737549,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.556104063987732,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.5310499668121338,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1023",
+        "score": 1.528629183769226,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-516",
+        "score": 1.5161393880844116,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.5129958391189575,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-815",
+        "score": 1.5068638324737549,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-679",
+        "score": 1.5015771389007568,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2436",
+        "score": 1.4970290660858154,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.4965975284576416,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1891",
+        "score": 1.492511510848999,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1893",
+        "score": 1.4909675121307373,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.4888423681259155,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1469",
+        "score": 1.4881739616394043,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1939",
+        "score": 1.4843688011169434,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-443",
+        "score": 1.4841009378433228,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1188",
+        "score": 1.4820830821990967,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1896",
+        "score": 1.4757657051086426,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1895",
+        "score": 1.4751861095428467,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.470513939857483,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1892",
+        "score": 1.4645057916641235,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1983",
+        "score": 1.46306574344635,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1871",
+        "score": 1.4626089334487915,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.4620888233184814,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1486",
+        "score": 1.4616961479187012,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1582",
+        "score": 1.461484670639038,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1894",
+        "score": 1.4581674337387085,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-908",
+        "score": 1.4579180479049683,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2203",
+        "score": 1.4577319622039795,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2109"
+    ],
+    "status": "ok",
+    "answer": 400000,
+    "code": "def solution():\n    # Define variables name and value\n    transaction_amount = 12_000_000\n    tier_limits = [1_000_000, 5_000_000, 10_000_000]\n    tier_rates = [0.05, 0.04, 0.03, 0.02]\n\n    # Do math calculation to get the answer\n    first_tier = min(transaction_amount, tier_limits[0])\n    second_tier = min(max(transaction_amount - tier_limits[0], 0), 4_000_000)\n    third_tier = min(max(transaction_amount - tier_limits[1], 0), 5_000_000)\n    fourth_tier = max(transaction_amount - tier_limits[2], 0)\n\n    total_fee = (\n        first_tier * tier_rates[0]\n        + second_tier * tier_rates[1]\n        + third_tier * tier_rates[2]\n        + fourth_tier * tier_rates[3]\n    )\n\n    # Return the answer rounded to the nearest dollar\n    return round(total_fee)\n"
+  },
+  "digest": "7af26314d048049ed9419aa0119c1ca687497964eb0f58cf28d5460759c29f6d"
+}

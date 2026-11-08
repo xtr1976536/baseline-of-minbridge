@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2154",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the USD mark-to-market value of an existing foreign-exchange forward hedge before maturity, using the original contracted forward rate, the remaining-term current bid/ask forward quote, the foreign-currency notional, and discounting the settlement gain or loss at the appropriate interest rate?",
+        "usage": {
+          "prompt_tokens": 5222,
+          "completion_tokens": 62,
+          "total_tokens": 5284,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C13\"]}",
+        "usage": {
+          "prompt_tokens": 14655,
+          "completion_tokens": 534,
+          "total_tokens": 15189,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    shares_purchased = 200_000\n    price_per_share_eur = 90\n    euro_notional = shares_purchased * price_per_share_eur\n\n    initial_spot_bid = 1.3935\n    initial_six_month_forward_bid_points = -19.0\n\n    three_month_spot_ask = 1.4210\n    three_month_forward_ask_points = -21.0\n\n    usd_libor = 0.01266\n    remaining_term_years = 3 / 12\n\n    # The original hedge sells euros, so it uses the six-month forward bid.\n    original_forward_rate = (\n        initial_spot_bid + initial_six_month_forward_bid_points / 10_000\n    )\n\n    # Closing the hedge requires buying euros, so it uses the current ask.\n    closing_forward_rate = (\n        three_month_spot_ask + three_month_forward_ask_points / 10_000\n    )\n\n    # Discount the forward loss from maturity to the three-month valuation date.\n    value_at_maturity = euro_notional * (\n        original_forward_rate - closing_forward_rate\n    )\n    mark_to_market_value = value_at_maturity / (\n        1 + usd_libor * remaining_term_years\n    )\n\n    # return answer\n    return round(mark_to_market_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5163,
+          "completion_tokens": 866,
+          "total_tokens": 6029,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 566
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-596",
+        "score": 1.7831125259399414,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2623",
+        "score": 1.7637604475021362,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.7210482358932495,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-219",
+        "score": 1.7204809188842773,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-601",
+        "score": 1.7152149677276611,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-607",
+        "score": 1.6973307132720947,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.6957645416259766,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2079",
+        "score": 1.6866519451141357,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.6696908473968506,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3104",
+        "score": 1.661989450454712,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-603",
+        "score": 1.647681713104248,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-611",
+        "score": 1.6321055889129639,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-609",
+        "score": 1.6317732334136963,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1555",
+        "score": 1.625650405883789,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6252751350402832,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1236",
+        "score": 1.6224725246429443,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1239",
+        "score": 1.6202688217163086,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2621",
+        "score": 1.615457534790039,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.6088790893554688,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.608551263809204,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.6000945568084717,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-595",
+        "score": 1.5968103408813477,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-357",
+        "score": 1.5963010787963867,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1886",
+        "score": 1.5961692333221436,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.5949208736419678,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1022",
+        "score": 1.588059663772583,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1873",
+        "score": 1.5870652198791504,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-610",
+        "score": 1.585624098777771,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2005",
+        "score": 1.5838594436645508,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2961",
+        "score": 1.5837541818618774,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-609"
+    ],
+    "status": "ok",
+    "answer": -489849.626,
+    "code": "def solution():\n    # Define variables name and value\n    shares_purchased = 200_000\n    price_per_share_eur = 90\n    euro_notional = shares_purchased * price_per_share_eur\n\n    initial_spot_bid = 1.3935\n    initial_six_month_forward_bid_points = -19.0\n\n    three_month_spot_ask = 1.4210\n    three_month_forward_ask_points = -21.0\n\n    usd_libor = 0.01266\n    remaining_term_years = 3 / 12\n\n    # The original hedge sells euros, so it uses the six-month forward bid.\n    original_forward_rate = (\n        initial_spot_bid + initial_six_month_forward_bid_points / 10_000\n    )\n\n    # Closing the hedge requires buying euros, so it uses the current ask.\n    closing_forward_rate = (\n        three_month_spot_ask + three_month_forward_ask_points / 10_000\n    )\n\n    # Discount the forward loss from maturity to the three-month valuation date.\n    value_at_maturity = euro_notional * (\n        original_forward_rate - closing_forward_rate\n    )\n    mark_to_market_value = value_at_maturity / (\n        1 + usd_libor * remaining_term_years\n    )\n\n    # return answer\n    return round(mark_to_market_value, 3)\n"
+  },
+  "digest": "1a28db1249f835f61b10a40eb681828ad6a2903ab04343f734536bfdaf40e449"
+}

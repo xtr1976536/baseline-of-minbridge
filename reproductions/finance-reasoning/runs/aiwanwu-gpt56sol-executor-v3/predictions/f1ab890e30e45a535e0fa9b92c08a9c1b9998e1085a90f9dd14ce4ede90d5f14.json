@@ -1,0 +1,225 @@
+{
+  "record": {
+    "question_id": "test-2149",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Negative Volume Index (NVI) from sequential closing prices and trading volumes, updating the index only on days when volume decreases, using an initial index value and returning the final result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5066,
+          "completion_tokens": 49,
+          "total_tokens": 5115,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 15275,
+          "completion_tokens": 107,
+          "total_tokens": 15382,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 83
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    prices = [102, 100, 105, 107, 103]\n    volumes = [1500, 1600, 1400, 1300, 1350]\n    nvi = 1000.0\n\n    for day in range(1, len(prices)):\n        if volumes[day] < volumes[day - 1]:\n            price_change = (prices[day] - prices[day - 1]) / prices[day - 1]\n            nvi *= 1 + price_change\n\n    return round(nvi, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5803,
+          "completion_tokens": 221,
+          "total_tokens": 6024,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 87
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2071",
+        "score": 2.426722526550293,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-331",
+        "score": 2.395634412765503,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2883",
+        "score": 2.394120454788208,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.9665606021881104,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.962194561958313,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.8335862159729004,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-853",
+        "score": 1.6666054725646973,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.6537721157073975,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6378941535949707,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.6364496946334839,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2876",
+        "score": 1.5780423879623413,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.5623618364334106,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2855",
+        "score": 1.561995267868042,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-259",
+        "score": 1.5609610080718994,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-340",
+        "score": 1.5584510564804077,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2466",
+        "score": 1.5537850856781006,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1619",
+        "score": 1.5532121658325195,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2954",
+        "score": 1.5515382289886475,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2075",
+        "score": 1.5514497756958008,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.5444029569625854,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2868",
+        "score": 1.54422926902771,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2078",
+        "score": 1.5386154651641846,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1991",
+        "score": 1.5381677150726318,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-396",
+        "score": 1.536428689956665,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.5270166397094727,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.5235074758529663,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1886",
+        "score": 1.52158784866333,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2877",
+        "score": 1.5184422731399536,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.5166486501693726,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.516281247138977,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2071",
+      "article-331",
+      "article-2883"
+    ],
+    "status": "ok",
+    "answer": 1070.0,
+    "code": "def solution():\n    prices = [102, 100, 105, 107, 103]\n    volumes = [1500, 1600, 1400, 1300, 1350]\n    nvi = 1000.0\n\n    for day in range(1, len(prices)):\n        if volumes[day] < volumes[day - 1]:\n            price_change = (prices[day] - prices[day - 1]) / prices[day - 1]\n            nvi *= 1 + price_change\n\n    return round(nvi, 2)\n"
+  },
+  "digest": "b7ef48c510b57408d42ee4c9c3f478d21180df916c32312974aba665d9492d35"
+}

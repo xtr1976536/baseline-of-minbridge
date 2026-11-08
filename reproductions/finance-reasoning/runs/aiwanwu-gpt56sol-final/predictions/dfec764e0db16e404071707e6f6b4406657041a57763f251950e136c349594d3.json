@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2224",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the cumulative principal paid on a fixed-rate, fully amortizing mortgage over a specified range of monthly payment periods, given the loan amount, annual interest rate, loan term, monthly payment frequency, and end-of-period payments?",
+        "usage": {
+          "prompt_tokens": 5040,
+          "completion_tokens": 51,
+          "total_tokens": 5091,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS]",
+        "usage": {
+          "prompt_tokens": 16838,
+          "completion_tokens": 576,
+          "total_tokens": 17414,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 479
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 250000.0\n    annual_interest_rate = 0.0375\n    loan_term_years = 30\n    months_in_first_year = 12\n\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n\n    # Calculate the principal portion of each payment during the first 12 months\n    remaining_balance = principal\n    total_principal_paid = 0.0\n\n    for _ in range(months_in_first_year):\n        interest_payment = remaining_balance * monthly_interest_rate\n        principal_payment = monthly_payment - interest_payment\n        total_principal_paid += principal_payment\n        remaining_balance -= principal_payment\n\n    # Return the total principal paid, rounded to the nearest dollar\n    return round(total_principal_paid)\n```",
+        "usage": {
+          "prompt_tokens": 6007,
+          "completion_tokens": 1190,
+          "total_tokens": 7197,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 971
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-581",
+        "score": 1.9387571811676025
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.9235700368881226
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.9208285808563232
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.9108620882034302
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.8964111804962158
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.8934216499328613
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.8817322254180908
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.8696916103363037
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.8669644594192505
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.8638824224472046
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.860635757446289
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.8462738990783691
+      },
+      {
+        "function_id": "article-292",
+        "score": 1.8446452617645264
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.842088222503662
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.8375332355499268
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.8322513103485107
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.8303272724151611
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.8301031589508057
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.828989028930664
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.8243681192398071
+      },
+      {
+        "function_id": "article-2309",
+        "score": 1.8237998485565186
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.8223282098770142
+      },
+      {
+        "function_id": "article-676",
+        "score": 1.819493293762207
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.8180735111236572
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.8145389556884766
+      },
+      {
+        "function_id": "article-582",
+        "score": 1.809180736541748
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.8062220811843872
+      },
+      {
+        "function_id": "article-299",
+        "score": 1.8060734272003174
+      },
+      {
+        "function_id": "article-2132",
+        "score": 1.8041566610336304
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.8006681203842163
+      }
+    ],
+    "selected_ids": [
+      "article-581",
+      "article-1069",
+      "article-990"
+    ],
+    "status": "ok",
+    "answer": 4597,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 250000.0\n    annual_interest_rate = 0.0375\n    loan_term_years = 30\n    months_in_first_year = 12\n\n    monthly_interest_rate = annual_interest_rate / 12\n    total_payments = loan_term_years * 12\n\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -total_payments)\n    )\n\n    # Calculate the principal portion of each payment during the first 12 months\n    remaining_balance = principal\n    total_principal_paid = 0.0\n\n    for _ in range(months_in_first_year):\n        interest_payment = remaining_balance * monthly_interest_rate\n        principal_payment = monthly_payment - interest_payment\n        total_principal_paid += principal_payment\n        remaining_balance -= principal_payment\n\n    # Return the total principal paid, rounded to the nearest dollar\n    return round(total_principal_paid)\n"
+  },
+  "digest": "5395dc38d2207f8cc7c4601ece0a32783b227437e988c721d9bec80d4b0c64c5"
+}

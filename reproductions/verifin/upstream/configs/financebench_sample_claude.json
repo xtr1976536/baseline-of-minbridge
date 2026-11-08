@@ -1,0 +1,18 @@
+{
+  "description": "Official patronus-ai/financebench open-source sample run with Claude.",
+  "dataset": "data/financebench_sample",
+  "download_command": "PYTHONPATH=src python3 -m verifiqa download-sample --out data/financebench_sample",
+  "run_command": "PYTHONPATH=src python3 -m verifiqa run --financebench-dir data/financebench_sample --out runs/financebench_sample_claude --llm-mode claude --model claude-sonnet-4-20250514 --evidence-top-k 5 --limit 5",
+  "eval_command": "PYTHONPATH=src python3 -m verifiqa eval --run runs/financebench_sample_claude --out reports/financebench_sample_claude",
+  "questions": 150,
+  "llm_mode": "claude",
+  "model": "claude-sonnet-4-20250514",
+  "evidence_top_k": 5,
+  "repair_enabled": true,
+  "verification": {
+    "query_type": "counterexample",
+    "verified_status": "UNSAT",
+    "failed_statuses": ["SAT", "UNKNOWN", "INVALID"],
+    "repair_passes": 1
+  }
+}

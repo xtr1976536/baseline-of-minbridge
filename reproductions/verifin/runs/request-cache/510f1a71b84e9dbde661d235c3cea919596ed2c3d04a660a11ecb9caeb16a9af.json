@@ -1,0 +1,31 @@
+{
+  "request_hash": "510f1a71b84e9dbde661d235c3cea919596ed2c3d04a660a11ecb9caeb16a9af",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nAccording to the information provided in the statement of cash flows, what is the FY2020 free cash flow (FCF) for General Mills? FCF here is defined as: (cash from operations - capex). Answer in USD millions.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"free_cash_flow\",\n  \"facts\": [\n    {\n      \"name\": \"cash_from_operations\",\n      \"aliases\": [\n        \"Cash provided by operating activities\",\n        \"Net cash provided by operating activities\",\n        \"Cash flows from operating activities\",\n        \"Net cash from operating activities\"\n      ],\n      \"period\": \"FY2020\",\n      \"statement\": \"cash flow\"\n    },\n    {\n      \"name\": \"capital_expenditures\",\n      \"aliases\": [\n        \"Capital expenditures\",\n        \"Capital expenditure\",\n        \"Purchases of property, plant and equipment\",\n        \"Additions to property, plant and equipment\",\n        \"Payments to acquire property, plant and equipment\"\n      ],\n      \"period\": \"FY2020\",\n      \"statement\": \"cash flow\"\n    }\n  ],\n  \"reason\": \"Calculate FY2020 free cash flow as cash from operations minus capital expenditures.\"\n}",
+  "usage": {
+    "prompt_tokens": 4727,
+    "completion_tokens": 252,
+    "total_tokens": 4979,
+    "prompt_tokens_details": {
+      "cached_tokens": 4480
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 57
+    }
+  },
+  "response_id": "resp_07e451e3e8fa84b1016aedb7877a4c87d0ba6dfca936037916",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

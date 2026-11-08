@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2225",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Ultimate Oscillator momentum indicator from aligned high, low, close, and prior-close price series using short, medium, and long lookback periods of 7, 14, and 28, with weighted averages of buying pressure and true range, returning the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5368,
+          "completion_tokens": 66,
+          "total_tokens": 5434,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 19438,
+          "completion_tokens": 16,
+          "total_tokens": 19454,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    close_prices = [\n        145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159, 160,\n        162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173, 175,\n        176, 177, 178, 180\n    ]\n\n    low_prices = [\n        140, 145, 148, 147, 149, 150, 152, 153, 154, 155, 156, 157,\n        159, 158, 160, 162, 163, 164, 165, 167, 168, 169, 170, 172,\n        173, 174, 175, 177\n    ]\n\n    high_prices = [\n        150, 151, 153, 155, 156, 158, 159, 160, 161, 162, 163, 164,\n        165, 167, 168, 169, 170, 171, 172, 174, 175, 176, 177, 179,\n        180, 181, 182, 183\n    ]\n\n    prior_close_prices = [\n        144, 145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159,\n        160, 162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173,\n        175, 176, 177, 178\n    ]\n\n    bp_values = []\n    tr_values = []\n\n    for close, low, high, prior_close in zip(\n        close_prices, low_prices, high_prices, prior_close_prices\n    ):\n        true_low = min(low, prior_close)\n        true_high = max(high, prior_close)\n\n        bp_values.append(close - true_low)\n        tr_values.append(true_high - true_low)\n\n    def average(period):\n        bp_sum = sum(bp_values[-period:])\n        tr_sum = sum(tr_values[-period:])\n        return bp_sum / tr_sum\n\n    average_7 = average(7)\n    average_14 = average(14)\n    average_28 = average(28)\n\n    ultimate_oscillator = (\n        (average_7 * 4 + average_14 * 2 + average_28) / 7\n    ) * 100\n\n    # return answer\n    return round(ultimate_oscillator, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5522,
+          "completion_tokens": 1624,
+          "total_tokens": 7146,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1994",
+        "score": 2.0051419734954834,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.8626558780670166,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.856818675994873,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2477",
+        "score": 1.818400502204895,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1051",
+        "score": 1.7099010944366455,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.7097649574279785,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.7034274339675903,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1050",
+        "score": 1.6699917316436768,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.6435644626617432,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.6401253938674927,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.628122091293335,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1860",
+        "score": 1.627131462097168,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.615891456604004,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-930",
+        "score": 1.6104710102081299,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.601647138595581,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2354",
+        "score": 1.5973246097564697,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2638",
+        "score": 1.5947669744491577,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1492",
+        "score": 1.587930679321289,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-898",
+        "score": 1.5847135782241821,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2402",
+        "score": 1.5830881595611572,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.580003023147583,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.5781712532043457,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1435",
+        "score": 1.5767902135849,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1493",
+        "score": 1.574533224105835,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-339",
+        "score": 1.5722126960754395,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.569657325744629,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2072",
+        "score": 1.5690815448760986,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1282",
+        "score": 1.5687657594680786,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-3112",
+        "score": 1.568650245666504,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2351",
+        "score": 1.559330701828003,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1994"
+    ],
+    "status": "ok",
+    "answer": 42.99,
+    "code": "def solution():\n    # Define variables name and value\n    close_prices = [\n        145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159, 160,\n        162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173, 175,\n        176, 177, 178, 180\n    ]\n\n    low_prices = [\n        140, 145, 148, 147, 149, 150, 152, 153, 154, 155, 156, 157,\n        159, 158, 160, 162, 163, 164, 165, 167, 168, 169, 170, 172,\n        173, 174, 175, 177\n    ]\n\n    high_prices = [\n        150, 151, 153, 155, 156, 158, 159, 160, 161, 162, 163, 164,\n        165, 167, 168, 169, 170, 171, 172, 174, 175, 176, 177, 179,\n        180, 181, 182, 183\n    ]\n\n    prior_close_prices = [\n        144, 145, 148, 150, 149, 151, 153, 154, 155, 156, 158, 159,\n        160, 162, 161, 163, 165, 166, 167, 168, 170, 171, 172, 173,\n        175, 176, 177, 178\n    ]\n\n    bp_values = []\n    tr_values = []\n\n    for close, low, high, prior_close in zip(\n        close_prices, low_prices, high_prices, prior_close_prices\n    ):\n        true_low = min(low, prior_close)\n        true_high = max(high, prior_close)\n\n        bp_values.append(close - true_low)\n        tr_values.append(true_high - true_low)\n\n    def average(period):\n        bp_sum = sum(bp_values[-period:])\n        tr_sum = sum(tr_values[-period:])\n        return bp_sum / tr_sum\n\n    average_7 = average(7)\n    average_14 = average(14)\n    average_28 = average(28)\n\n    ultimate_oscillator = (\n        (average_7 * 4 + average_14 * 2 + average_28) / 7\n    ) * 100\n\n    # return answer\n    return round(ultimate_oscillator, 2)\n"
+  },
+  "digest": "d0a27338260a6e8d82d0bb37a6398675d11920bb7c13144c1d077f4b8d97d40c"
+}

@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2100",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function values a receive-fixed, pay-equity-index swap with quarterly resets by solving for the future equity index level that makes the swap’s present value zero, using the initial index level, fixed annual rate, notional amount, remaining maturity, quarterly payment frequency, and a term structure of discount factors for fractional maturities?",
+        "usage": {
+          "prompt_tokens": 5090,
+          "completion_tokens": 69,
+          "total_tokens": 5159,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C26\"]}",
+        "usage": {
+          "prompt_tokens": 14283,
+          "completion_tokens": 540,
+          "total_tokens": 14823,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_equity_index = 100.0\n    fixed_rate = 0.03\n    notional_amount = 100_000_000.0\n    payment_frequency = 4\n\n    fixed_payment = (fixed_rate * notional_amount) / payment_frequency\n\n    # Present value factors for the three remaining quarterly payments\n    present_value_factors = [0.997506, 0.992556, 0.985222]\n\n    # The equity settlement occurs at the swap expiry\n    expiry_present_value_factor = present_value_factors[-1]\n\n    # Calculate the present value of the remaining fixed-leg payments\n    fixed_leg_present_value = fixed_payment * sum(present_value_factors)\n\n    # At zero value, the present value of the equity leg equals the fixed leg\n    required_equity_return = fixed_leg_present_value / (\n        notional_amount * expiry_present_value_factor\n    )\n\n    equity_index_level = initial_equity_index * (1 + required_equity_return)\n\n    # Return the index level rounded to three decimal places\n    return round(equity_index_level, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5698,
+          "completion_tokens": 753,
+          "total_tokens": 6451,
+          "completion_tokens_details": {
+            "reasoning_tokens": 502
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2678",
+        "score": 1.7514586448669434,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.7342714071273804,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1424",
+        "score": 1.717334508895874,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-419",
+        "score": 1.6715519428253174,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1022",
+        "score": 1.6583302021026611,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3127",
+        "score": 1.6400479078292847,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1425",
+        "score": 1.634598731994629,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.620358943939209,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1640",
+        "score": 1.61903715133667,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.61338472366333,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2679",
+        "score": 1.6122863292694092,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-329",
+        "score": 1.6101504564285278,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-497",
+        "score": 1.5958747863769531,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1099",
+        "score": 1.5851495265960693,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.583877444267273,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2692",
+        "score": 1.5797593593597412,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.5736851692199707,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2677",
+        "score": 1.5704600811004639,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.5683393478393555,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.5611940622329712,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2691",
+        "score": 1.560014247894287,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-37",
+        "score": 1.557663917541504,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1030",
+        "score": 1.555713415145874,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.553953766822815,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-26",
+        "score": 1.5531197786331177,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1921",
+        "score": 1.548457384109497,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2654",
+        "score": 1.5465424060821533,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.545853853225708,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-398",
+        "score": 1.5453242063522339,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.5442323684692383,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2678",
+      "article-1428",
+      "article-1921"
+    ],
+    "status": "ok",
+    "answer": 102.265,
+    "code": "def solution():\n    # Define variables name and value\n    initial_equity_index = 100.0\n    fixed_rate = 0.03\n    notional_amount = 100_000_000.0\n    payment_frequency = 4\n\n    fixed_payment = (fixed_rate * notional_amount) / payment_frequency\n\n    # Present value factors for the three remaining quarterly payments\n    present_value_factors = [0.997506, 0.992556, 0.985222]\n\n    # The equity settlement occurs at the swap expiry\n    expiry_present_value_factor = present_value_factors[-1]\n\n    # Calculate the present value of the remaining fixed-leg payments\n    fixed_leg_present_value = fixed_payment * sum(present_value_factors)\n\n    # At zero value, the present value of the equity leg equals the fixed leg\n    required_equity_return = fixed_leg_present_value / (\n        notional_amount * expiry_present_value_factor\n    )\n\n    equity_index_level = initial_equity_index * (1 + required_equity_return)\n\n    # Return the index level rounded to three decimal places\n    return round(equity_index_level, 3)\n"
+  },
+  "digest": "ea18888832551b95ed4f6013a039fd5834e8b493d5fa5829bcb89cbb50cf484c"
+}

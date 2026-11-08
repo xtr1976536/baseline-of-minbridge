@@ -1,0 +1,31 @@
+{
+  "request_hash": "e6dbe77c20f0fadd2df5388d71f771138544d5c0e9f758b99810677cfe763dc2",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nYou are an investment banker and your only resource(s) to answer the following question is (are): the statement of financial position and the cash flow statement. Here's the question: what is the FY2015 operating cash flow ratio for Adobe? Operating cash flow ratio is defined as: cash from operations / total current liabilities. Round your answer to two decimal places.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"operating_cash_flow_ratio\",\n  \"facts\": [\n    {\n      \"name\": \"cash_from_operations\",\n      \"aliases\": [\n        \"Net cash provided by operating activities\",\n        \"Cash flows from operating activities\",\n        \"Cash from operations\",\n        \"Net cash provided by (used in) operating activities\"\n      ],\n      \"period\": \"FY2015\",\n      \"statement\": \"cash flow\"\n    },\n    {\n      \"name\": \"total_current_liabilities\",\n      \"aliases\": [\n        \"Total current liabilities\",\n        \"Total current liabilities and deferred revenue\",\n        \"Current liabilities\"\n      ],\n      \"period\": \"FY2015\",\n      \"statement\": \"balance sheet\"\n    }\n  ],\n  \"reason\": \"Calculate the FY2015 operating cash flow ratio as cash from operations divided by total current liabilities, then round to two decimal places.\"\n}",
+  "usage": {
+    "prompt_tokens": 4750,
+    "completion_tokens": 222,
+    "total_tokens": 4972,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 34
+    }
+  },
+  "response_id": "resp_07dcb53ad2928cce016aedaf96faf487d285b7f76ec750e50f",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

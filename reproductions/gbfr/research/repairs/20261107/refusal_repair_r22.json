@@ -1,0 +1,113 @@
+{
+  "version": "r22",
+  "scope": "Minimal general OQA/OES/OPE contracts and one source-scale metadata repair",
+  "api_calls_by_agent": 0,
+  "full_run_resumed": false,
+  "source_stable": true,
+  "changes": [
+    {
+      "id": "period_flow_vs_balance",
+      "operators": [
+        "OQA"
+      ],
+      "behavior": "Prefer explicit interval movements in a rollforward; preserve interval boundaries; never sum successive end balances as issuances. Explicit sum/average of balances and distinct period flows remain allowed."
+    },
+    {
+      "id": "local_antecedent_and_inclusion",
+      "operators": [
+        "OQA",
+        "OES",
+        "OPE.final"
+      ],
+      "behavior": "Preserve local footnote/section/row scope, do not add Total, distinguish whole balance from included component and avoid double counting. Unresolved ambiguity stays for OES; no added OQA fields."
+    },
+    {
+      "id": "difference_and_ratio",
+      "operators": [
+        "OQA",
+        "OPE.final"
+      ],
+      "behavior": "Distinguish percentage-point differences from relative ratio growth. Symmetric gaps may use magnitude; explicit subtraction, temporal changes and signed bases keep direction. No automatic contra-asset abs."
+    },
+    {
+      "id": "reported_scalar_identity",
+      "operators": [
+        "OPE.final"
+      ],
+      "behavior": "DirectRetrieval returns the single reported scalar and its reported sign/magnitude; only explicitly requested, source-supported display conversion is permitted. No controller rewrites or answer-based corrections."
+    },
+    {
+      "id": "unknown_source_scale",
+      "operators": [
+        "OQA",
+        "OES",
+        "OPE.metric",
+        "OPE.final",
+        "engine._direct"
+      ],
+      "behavior": "Explicit observed_meta.scale null/unknown overrides requested display scale as unknown; source printed value remains unchanged. Dollar symbols do not establish ones. Known thousand-to-million and known ones-to-million conversions remain allowed; source_scale_resolution records requested/observed/effective scales."
+    },
+    {
+      "id": "rate_principal_applicability",
+      "operators": [
+        "OQA",
+        "OES",
+        "OPE.final"
+      ],
+      "behavior": "Keep both operands issuer/entity, instrument/tranche, time and rate-coverage scope; dimension compatibility alone does not license applying one note rate to all debt."
+    }
+  ],
+  "validation": {
+    "command": "python -m pytest -q tests/test_refusal_repairs_r22.py tests/test_refusal_repairs_r21.py tests/test_engine.py tests/test_live_protocol_regressions.py tests/test_paper_repairs.py tests/test_evidence_alignment.py",
+    "passed": 111,
+    "failed": 0,
+    "elapsed_seconds": 5.66,
+    "new_r22_cases": 19,
+    "kind": "Offline scripted protocol/dataflow/execution regressions; NOT fresh-API semantic accuracy verification"
+  },
+  "source_sha256": {
+    "gbfr/engine.py": "048f7515ea4426dd53760b43dc1bfd15a44137bdf14d6d9963e8eed3c1f2931f",
+    "gbfr/prompts.py": "8c6e1df1c2678c350824bab9431b8b756e1b61ef5eb5d19e966b1508ab854d9e",
+    "tests/test_refusal_repairs_r22.py": "940d88b65b56fb3a50cc792b941eeea209649a6e0ab969a02b56ffaf133f2bf0"
+  },
+  "appendix_f_bodies": {
+    "gbfr/prompts/query_analysis.txt": {
+      "current_sha256": "0339ad453ae4b182ae8e515a48c8b5a076db43834246aed0ef3aa0acb3461754",
+      "r21_sha256": "0339ad453ae4b182ae8e515a48c8b5a076db43834246aed0ef3aa0acb3461754",
+      "unchanged": true
+    },
+    "gbfr/prompts/evidence_seeking.txt": {
+      "current_sha256": "63bd31a05f7f98c7d122dffc59c9cca841a0997505e8bcfb3c224875ddfeaaac",
+      "r21_sha256": "63bd31a05f7f98c7d122dffc59c9cca841a0997505e8bcfb3c224875ddfeaaac",
+      "unchanged": true
+    },
+    "gbfr/prompts/metric_program.txt": {
+      "current_sha256": "cb81a65a71cbe740d39270c5c6ad733197cf78ae5feb51e2d3c6abd38ca5eab1",
+      "r21_sha256": "cb81a65a71cbe740d39270c5c6ad733197cf78ae5feb51e2d3c6abd38ca5eab1",
+      "unchanged": true
+    },
+    "gbfr/prompts/final_program.txt": {
+      "current_sha256": "6aca00c6f9078c3131d2e7e801937eff7067e30c030728683ec082dbda569e09",
+      "r21_sha256": "6aca00c6f9078c3131d2e7e801937eff7067e30c030728683ec082dbda569e09",
+      "unchanged": true
+    },
+    "gbfr/prompts/verification.txt": {
+      "current_sha256": "0829459f3208ffdac0722c193f6868da1918fd74694b2fa7db0b4d003f2ca8be",
+      "r21_sha256": "0829459f3208ffdac0722c193f6868da1918fd74694b2fa7db0b4d003f2ca8be",
+      "unchanged": true
+    }
+  },
+  "compatibility": [
+    "Legacy OES records without observed_meta retain their old fallback metadata.",
+    "With explicit observed_meta, unknown source scale is no longer filled by the requested display preference. Some formerly asserted conversions therefore remain unknown.",
+    "The paper prompts remain byte-identical; supplemental static contracts instantiate allowed local conventions.",
+    "Prompt compliance and end-to-end accuracy require the parent real-API retest; scripted tests do not prove model accuracy."
+  ],
+  "excluded": [
+    "No API calls or additional judge/retry.",
+    "No dash-to-zero rule.",
+    "No automatic sign/absolute-value change, scorer edit or gold modification.",
+    "No special coefficient or exception for AWK/ETR or another individual benchmark answer.",
+    "No old run, snapshot, source data or label was modified."
+  ]
+}

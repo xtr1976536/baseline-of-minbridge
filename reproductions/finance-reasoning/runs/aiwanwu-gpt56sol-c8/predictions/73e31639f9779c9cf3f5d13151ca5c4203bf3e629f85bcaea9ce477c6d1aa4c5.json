@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2018",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the latest N-day Exponential Moving Average (EMA) for a time-ordered series of stock closing prices using the standard smoothing factor, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5063,
+          "completion_tokens": 44,
+          "total_tokens": 5107,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16988,
+          "completion_tokens": 427,
+          "total_tokens": 17415,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 330
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [150, 152, 153, 151, 154, 155, 158, 160, 162, 164, 166, 165]\n    period = 10\n    smoothing_factor = 2 / (period + 1)\n\n    # Do math calculation to get the answer\n    ema = sum(prices[:period]) / period\n\n    for price in prices[period:]:\n        ema = (price * smoothing_factor) + (ema * (1 - smoothing_factor))\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5822,
+          "completion_tokens": 328,
+          "total_tokens": 6150,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 180
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-962",
+        "score": 2.046121597290039
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.9895626306533813
+      },
+      {
+        "function_id": "article-1622",
+        "score": 1.9860203266143799
+      },
+      {
+        "function_id": "article-1225",
+        "score": 1.9725615978240967
+      },
+      {
+        "function_id": "article-2471",
+        "score": 1.920149803161621
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.8633325099945068
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.8201566934585571
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.7628154754638672
+      },
+      {
+        "function_id": "article-1776",
+        "score": 1.7523093223571777
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.735528588294983
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.7014107704162598
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.68551504611969
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.6544880867004395
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.631471872329712
+      },
+      {
+        "function_id": "article-1861",
+        "score": 1.6284048557281494
+      },
+      {
+        "function_id": "article-1958",
+        "score": 1.627075433731079
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.5990028381347656
+      },
+      {
+        "function_id": "article-501",
+        "score": 1.584197759628296
+      },
+      {
+        "function_id": "article-1226",
+        "score": 1.5769178867340088
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.5719306468963623
+      },
+      {
+        "function_id": "article-2145",
+        "score": 1.5702886581420898
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5303293466567993
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.5234403610229492
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.5091171264648438
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.5082261562347412
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.490403652191162
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.4870505332946777
+      },
+      {
+        "function_id": "article-666",
+        "score": 1.4844106435775757
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.4774198532104492
+      },
+      {
+        "function_id": "article-1632",
+        "score": 1.4693070650100708
+      }
+    ],
+    "selected_ids": [
+      "article-962",
+      "article-2845",
+      "article-1622"
+    ],
+    "status": "ok",
+    "answer": 159.06,
+    "code": "def solution():\n    # Define variables name and value\n    prices = [150, 152, 153, 151, 154, 155, 158, 160, 162, 164, 166, 165]\n    period = 10\n    smoothing_factor = 2 / (period + 1)\n\n    # Do math calculation to get the answer\n    ema = sum(prices[:period]) / period\n\n    for price in prices[period:]:\n        ema = (price * smoothing_factor) + (ema * (1 - smoothing_factor))\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "f577fb2033cf47a88020fd99191f56db62d19acb9d8095e61db5e6df3987874d"
+}

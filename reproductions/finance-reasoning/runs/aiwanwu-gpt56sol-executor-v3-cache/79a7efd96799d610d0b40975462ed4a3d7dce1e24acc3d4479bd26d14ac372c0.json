@@ -1,0 +1,18 @@
+{
+  "identity": "79a7efd96799d610d0b40975462ed4a3d7dce1e24acc3d4479bd26d14ac372c0",
+  "response_digest": "df668bed41f2d125ccbaa0326a2b89f599172676146380d542833979a8e32010",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    weights = [0.40, 0.35, 0.25]\n    variances = [0.0225, 0.0156, 0.0304]\n    correlations = [\n        [1.0, 0.8, 0.4],\n        [0.8, 1.0, 0.6],\n        [0.4, 0.6, 1.0]\n    ]\n\n    # Do math calculation to get the answer\n    portfolio_variance = 0.0\n    num_assets = len(weights)\n\n    for i in range(num_assets):\n        for j in range(num_assets):\n            portfolio_variance += (\n                weights[i]\n                * weights[j]\n                * correlations[i][j]\n                * (variances[i] ** 0.5)\n                * (variances[j] ** 0.5)\n            )\n\n    portfolio_standard_deviation = portfolio_variance ** 0.5\n\n    # Return answer rounded to four decimal places\n    return round(portfolio_standard_deviation, 4)\n```",
+    "usage": {
+      "prompt_tokens": 5872,
+      "completion_tokens": 607,
+      "total_tokens": 6479,
+      "completion_tokens_details": {
+        "reasoning_tokens": 362
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

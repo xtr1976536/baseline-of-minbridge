@@ -1,0 +1,21 @@
+{
+  "identity": "ef28e06cb7f70782928736e6ffabf7d722dfc3881fe1619017c70e56d9e79024",
+  "response_digest": "5d81e37ea9634a534c2cd05e45741d1ca83a27f0ed0396aba508952c2eebce19",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    original_loan_amount = 15000\n    monthly_payment = 700\n    original_payments = 24\n    payments_made = 10\n    remaining_payments = original_payments - payments_made\n\n    # Do math calculation to get the answer\n    total_finance_charge = (\n        original_payments * monthly_payment\n    ) - original_loan_amount\n\n    unearned_interest = total_finance_charge * (\n        remaining_payments * (remaining_payments + 1)\n    ) / (\n        original_payments * (original_payments + 1)\n    )\n\n    # Return the answer rounded to the nearest dollar\n    answer = round(unearned_interest)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5746,
+      "completion_tokens": 252,
+      "total_tokens": 5998,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 86
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

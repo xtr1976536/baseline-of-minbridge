@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+      - name: Check solver installation
+        run: python -c "import z3; assert hasattr(z3, 'Solver'), 'z3-solver is shadowed or unavailable'"
+      - name: Test
+        run: python -m pytest -q
+
+  package-and-release-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Build wheel and source distribution
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build
+      - name: Verify runtime registry assets are packaged
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+
+          wheel = next(Path("dist").glob("*.whl"))
+          with ZipFile(wheel) as archive:
+              names = set(archive.namelist())
+          required = {
+              "verifiqa/agent/registry_builder/metric_sources.json",
+              "verifiqa/agent/registry_builder/source_texts/current_ratio_cfi.txt",
+              "verifiqa/policy/data/metric_policies.json",
+          }
+          missing = sorted(required - names)
+          if missing:
+              raise SystemExit(f"missing package assets: {missing}")
+          PY
+      - name: Build and scan publication snapshot
+        run: python scripts/build_public_release.py --output "$RUNNER_TEMP/verifin-public"

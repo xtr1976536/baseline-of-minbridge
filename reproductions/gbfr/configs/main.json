@@ -1,0 +1,34 @@
+{
+  "asset_policy": "paper-method-v1",
+  "graph": "data/assets/fmkg.reconstructed.json",
+  "asset_lock": "data/assets/main_assets.lock.json",
+  "data_dir": "data/main",
+  "output_dir": "runs/main",
+  "cache_dir": "runs/cache",
+  "example_concurrency": 1,
+  "execution_timeout": 5,
+  "evidence_policy": "paper",
+  "evaluation": {"unspecified_decimals": 2, "precision_policy":"reference_display", "rounding": "ROUND_HALF_UP"},
+  "backbones": {
+    "GPT-5": {
+      "model": "gpt-5",
+      "base_url": "https://api.openai.com/v1",
+      "base_url_env": "GBFR_GPT5_BASE_URL",
+      "api_key_env": "GBFR_GPT5_API_KEY",
+      "concurrency": 8,
+      "timeout_seconds": 180,
+      "retries": 3,
+      "parameters": {}
+    },
+    "Qwen3-14B": {
+      "model": "Qwen/Qwen3-14B",
+      "base_url": "",
+      "base_url_env": "GBFR_QWEN_BASE_URL",
+      "api_key_env": "GBFR_QWEN_API_KEY",
+      "concurrency": 8,
+      "timeout_seconds": 180,
+      "retries": 3,
+      "parameters": {}
+    }
+  }
+}

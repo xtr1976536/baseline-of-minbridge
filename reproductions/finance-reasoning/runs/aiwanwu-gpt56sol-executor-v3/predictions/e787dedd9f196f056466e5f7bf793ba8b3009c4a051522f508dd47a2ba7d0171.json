@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2009",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the one-year profit of a currency carry trade by converting borrowed principal at a fixed exchange rate, accruing investment interest in the foreign currency, and accounting for repayment of the borrowing plus interest in the home currency converted at the same rate, with the result rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5046,
+          "completion_tokens": 63,
+          "total_tokens": 5109
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 14291,
+          "completion_tokens": 540,
+          "total_tokens": 14831,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    borrowed_amount_jpy = 1_000_000\n    borrowing_rate = 0.005\n    investment_rate = 0.05\n    exchange_rate_brl_per_jpy = 0.05\n\n    invested_amount_brl = borrowed_amount_jpy * exchange_rate_brl_per_jpy\n\n    # Do math calculation to get the answer\n    investment_ending_balance = invested_amount_brl * (1 + investment_rate)\n    borrowed_amount_ending_jpy = borrowed_amount_jpy * (1 + borrowing_rate)\n    borrowing_cost_brl = borrowed_amount_ending_jpy * exchange_rate_brl_per_jpy\n\n    profit_brl = investment_ending_balance - borrowing_cost_brl\n\n    # return answer\n    return round(profit_brl)\n\n\nprint(solution())\n```",
+        "usage": {
+          "prompt_tokens": 5582,
+          "completion_tokens": 430,
+          "total_tokens": 6012,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 247
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-233",
+        "score": 2.142054557800293,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2869",
+        "score": 1.9786200523376465,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-3106",
+        "score": 1.854115605354309,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-445",
+        "score": 1.842550277709961,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2343",
+        "score": 1.830632209777832,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-597",
+        "score": 1.812474250793457,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-162",
+        "score": 1.774606704711914,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-79",
+        "score": 1.7495399713516235,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2677",
+        "score": 1.7472715377807617,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1963",
+        "score": 1.736781120300293,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2631",
+        "score": 1.7330809831619263,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2004",
+        "score": 1.7303986549377441,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-817",
+        "score": 1.722041368484497,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-77",
+        "score": 1.7165143489837646,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-672",
+        "score": 1.7100188732147217,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2188",
+        "score": 1.7061042785644531,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6940912008285522,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-596",
+        "score": 1.693170189857483,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2423",
+        "score": 1.6929858922958374,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1888",
+        "score": 1.6925605535507202,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2187",
+        "score": 1.6783089637756348,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.6725854873657227,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1673",
+        "score": 1.6722283363342285,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-237",
+        "score": 1.669905662536621,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-608",
+        "score": 1.669712781906128,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1964",
+        "score": 1.6694538593292236,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-598",
+        "score": 1.6649795770645142,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.660794734954834,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2013",
+        "score": 1.6603055000305176,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1271",
+        "score": 1.6601214408874512,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-233",
+      "article-3106",
+      "article-445"
+    ],
+    "status": "ok",
+    "answer": 2250,
+    "code": "def solution():\n    # Define variables name and value\n    borrowed_amount_jpy = 1_000_000\n    borrowing_rate = 0.005\n    investment_rate = 0.05\n    exchange_rate_brl_per_jpy = 0.05\n\n    invested_amount_brl = borrowed_amount_jpy * exchange_rate_brl_per_jpy\n\n    # Do math calculation to get the answer\n    investment_ending_balance = invested_amount_brl * (1 + investment_rate)\n    borrowed_amount_ending_jpy = borrowed_amount_jpy * (1 + borrowing_rate)\n    borrowing_cost_brl = borrowed_amount_ending_jpy * exchange_rate_brl_per_jpy\n\n    profit_brl = investment_ending_balance - borrowing_cost_brl\n\n    # return answer\n    return round(profit_brl)\n\n\nprint(solution())\n"
+  },
+  "digest": "1cab7314e61c441ffc7fb51eb41b22f8e9d165062fb183d91dda5c7409a565ee"
+}

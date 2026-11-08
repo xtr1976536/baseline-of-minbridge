@@ -1,0 +1,182 @@
+{
+  "record": {
+    "question_id": "test-2194",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the U.S. federal Lifetime Learning Credit for an individual taxpayer using qualified education expenses and modified adjusted gross income, applying the applicable annual expense cap, credit rate, and MAGI phaseout rules, with the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5024,
+          "completion_tokens": 55,
+          "total_tokens": 5079,
+          "prompt_tokens_details": {
+            "cached_tokens": 4864
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 17101,
+          "completion_tokens": 317,
+          "total_tokens": 17418,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 220
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    qualified_expenses = 8500.0\n    magi = 85000.0\n    phase_out_start = 80000.0\n    phase_out_end = 90000.0\n    credit_rate = 0.20\n\n    # Do math calculation to get the answer\n    potential_credit = min(qualified_expenses, 10000.0) * credit_rate\n    phase_out_percentage = (phase_out_end - magi) / (\n        phase_out_end - phase_out_start\n    )\n    answer = potential_credit * phase_out_percentage\n\n    # return answer\n    return round(answer, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5279,
+          "completion_tokens": 150,
+          "total_tokens": 5429
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2134",
+        "score": 2.247864007949829
+      },
+      {
+        "function_id": "article-924",
+        "score": 1.7230656147003174
+      },
+      {
+        "function_id": "article-1823",
+        "score": 1.7073357105255127
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.5348517894744873
+      },
+      {
+        "function_id": "article-2274",
+        "score": 1.5329420566558838
+      },
+      {
+        "function_id": "article-1483",
+        "score": 1.5196713209152222
+      },
+      {
+        "function_id": "article-2694",
+        "score": 1.5036766529083252
+      },
+      {
+        "function_id": "article-2285",
+        "score": 1.4901680946350098
+      },
+      {
+        "function_id": "article-1850",
+        "score": 1.4885351657867432
+      },
+      {
+        "function_id": "article-2297",
+        "score": 1.4808437824249268
+      },
+      {
+        "function_id": "article-2131",
+        "score": 1.4755240678787231
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.4748444557189941
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.474606990814209
+      },
+      {
+        "function_id": "article-1856",
+        "score": 1.472641944885254
+      },
+      {
+        "function_id": "article-1399",
+        "score": 1.4694229364395142
+      },
+      {
+        "function_id": "article-2551",
+        "score": 1.4675090312957764
+      },
+      {
+        "function_id": "article-2828",
+        "score": 1.4655303955078125
+      },
+      {
+        "function_id": "article-382",
+        "score": 1.4573664665222168
+      },
+      {
+        "function_id": "article-1840",
+        "score": 1.4561580419540405
+      },
+      {
+        "function_id": "article-2304",
+        "score": 1.455916166305542
+      },
+      {
+        "function_id": "article-54",
+        "score": 1.4482460021972656
+      },
+      {
+        "function_id": "article-2980",
+        "score": 1.447730541229248
+      },
+      {
+        "function_id": "article-1929",
+        "score": 1.445570945739746
+      },
+      {
+        "function_id": "article-1818",
+        "score": 1.4436323642730713
+      },
+      {
+        "function_id": "article-1982",
+        "score": 1.4395341873168945
+      },
+      {
+        "function_id": "article-2664",
+        "score": 1.438031792640686
+      },
+      {
+        "function_id": "article-1837",
+        "score": 1.4358783960342407
+      },
+      {
+        "function_id": "article-2162",
+        "score": 1.4353586435317993
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.4339337348937988
+      },
+      {
+        "function_id": "article-3094",
+        "score": 1.4262299537658691
+      }
+    ],
+    "selected_ids": [
+      "article-2134"
+    ],
+    "status": "ok",
+    "answer": 850.0,
+    "code": "def solution():\n    # Define variables name and value\n    qualified_expenses = 8500.0\n    magi = 85000.0\n    phase_out_start = 80000.0\n    phase_out_end = 90000.0\n    credit_rate = 0.20\n\n    # Do math calculation to get the answer\n    potential_credit = min(qualified_expenses, 10000.0) * credit_rate\n    phase_out_percentage = (phase_out_end - magi) / (\n        phase_out_end - phase_out_start\n    )\n    answer = potential_credit * phase_out_percentage\n\n    # return answer\n    return round(answer, 2)\n"
+  },
+  "digest": "5cd2e08d99aa52917b5d419eaca55cf0329618be475f8980e144d3334a589c15"
+}

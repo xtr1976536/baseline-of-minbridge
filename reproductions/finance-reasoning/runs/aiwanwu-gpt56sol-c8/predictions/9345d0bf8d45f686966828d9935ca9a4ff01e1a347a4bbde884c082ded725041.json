@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2229",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the realized yield or holding-period return for a fixed-rate coupon bond purchased below par, sold before maturity after a specified holding period, with an interim market yield change affecting the sale price, including coupon income and sale proceeds, and returns the annualized percentage yield rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 4984,
+          "completion_tokens": 64,
+          "total_tokens": 5048,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USEFUL]",
+        "usage": {
+          "prompt_tokens": 15378,
+          "completion_tokens": 2215,
+          "total_tokens": 17593,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 2118
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    purchase_price = 89.4535\n    face_value = 100.0\n    annual_coupon_rate = 0.06\n    reinvestment_rate = 0.085\n    holding_period = 4\n    remaining_maturity = 1\n\n    annual_coupon = face_value * annual_coupon_rate\n\n    # Future value of coupons received during the four-year holding period\n    coupon_value_at_sale = sum(\n        annual_coupon * ((1 + reinvestment_rate) ** periods)\n        for periods in range(holding_period)\n    )\n\n    # Sale price after four years, with one year remaining to maturity\n    sale_price = (\n        annual_coupon + face_value\n    ) / ((1 + reinvestment_rate) ** remaining_maturity)\n\n    total_value_at_sale = coupon_value_at_sale + sale_price\n\n    # Calculate the annual realized yield\n    realized_yield = (\n        (total_value_at_sale / purchase_price) ** (1 / holding_period) - 1\n    ) * 100\n\n    # return answer\n    return round(realized_yield, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5555,
+          "completion_tokens": 490,
+          "total_tokens": 6045,
+          "prompt_tokens_details": {
+            "cached_tokens": 3764
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 241
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1465",
+        "score": 1.9804147481918335
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.8829938173294067
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.8770164251327515
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.876625657081604
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.8748269081115723
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.845609188079834
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.8410427570343018
+      },
+      {
+        "function_id": "article-1208",
+        "score": 1.8377530574798584
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.8319408893585205
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.8304206132888794
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.827463150024414
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.8227424621582031
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.8212547302246094
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.8157963752746582
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.81502103805542
+      },
+      {
+        "function_id": "article-1490",
+        "score": 1.8144292831420898
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.7905218601226807
+      },
+      {
+        "function_id": "article-732",
+        "score": 1.7897247076034546
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.7884985208511353
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.7849993705749512
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.7815773487091064
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.7779614925384521
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.7776715755462646
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7678765058517456
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.7658073902130127
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.7610392570495605
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.7576079368591309
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.7522859573364258
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.7485145330429077
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.7456597089767456
+      }
+    ],
+    "selected_ids": [
+      "article-1953",
+      "article-1420",
+      "article-1490"
+    ],
+    "status": "ok",
+    "answer": 8.71,
+    "code": "def solution():\n    # Define variables name and value\n    purchase_price = 89.4535\n    face_value = 100.0\n    annual_coupon_rate = 0.06\n    reinvestment_rate = 0.085\n    holding_period = 4\n    remaining_maturity = 1\n\n    annual_coupon = face_value * annual_coupon_rate\n\n    # Future value of coupons received during the four-year holding period\n    coupon_value_at_sale = sum(\n        annual_coupon * ((1 + reinvestment_rate) ** periods)\n        for periods in range(holding_period)\n    )\n\n    # Sale price after four years, with one year remaining to maturity\n    sale_price = (\n        annual_coupon + face_value\n    ) / ((1 + reinvestment_rate) ** remaining_maturity)\n\n    total_value_at_sale = coupon_value_at_sale + sale_price\n\n    # Calculate the annual realized yield\n    realized_yield = (\n        (total_value_at_sale / purchase_price) ** (1 / holding_period) - 1\n    ) * 100\n\n    # return answer\n    return round(realized_yield, 2)\n"
+  },
+  "digest": "bf46af4ce5d6cb91a4e51a87d3284696db11e756687d707ca0bf8896dc9db52c"
+}

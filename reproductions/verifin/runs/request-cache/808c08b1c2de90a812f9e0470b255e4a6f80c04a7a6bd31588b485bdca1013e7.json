@@ -1,0 +1,31 @@
+{
+  "request_hash": "808c08b1c2de90a812f9e0470b255e4a6f80c04a7a6bd31588b485bdca1013e7",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the FY2022 unadjusted EBITDA less capex for PepsiCo? Define unadjusted EBITDA as unadjusted operating income + depreciation and amortization [from cash flow statement]. Answer in USD millions. Respond to the question by assuming the perspective of an investment analyst who can only use the details shown within the statement of cash flows and the income statement.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"unadjusted_ebitda_less_capex\",\n  \"facts\": [\n    {\n      \"name\": \"operating_income\",\n      \"aliases\": [\n        \"Operating profit\",\n        \"Operating income\"\n      ],\n      \"period\": \"FY2022\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"depreciation_and_amortization\",\n      \"aliases\": [\n        \"Depreciation and amortization\",\n        \"Depreciation & amortization\"\n      ],\n      \"period\": \"FY2022\",\n      \"statement\": \"cash flow\"\n    },\n    {\n      \"name\": \"capital_expenditures\",\n      \"aliases\": [\n        \"Capital spending\",\n        \"Capital expenditures\",\n        \"Purchases of property, plant and equipment\",\n        \"Capital investments\"\n      ],\n      \"period\": \"FY2022\",\n      \"statement\": \"cash flow\"\n    }\n  ],\n  \"reason\": \"Calculate unadjusted EBITDA less capex as FY2022 operating income plus depreciation and amortization from the cash flow statement, less FY2022 capital expenditures, using amounts reported in USD millions.\"\n}",
+  "usage": {
+    "prompt_tokens": 4752,
+    "completion_tokens": 369,
+    "total_tokens": 5121,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 124
+    }
+  },
+  "response_id": "resp_025a1f9d98b4126d016aedbbb847a087d0b23f9e3c40fcff25",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2041",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates gross profit margin as a percentage from total revenue and cost of goods sold, using the formula `(revenue - COGS) / revenue * 100`, rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5063,
+          "completion_tokens": 45,
+          "total_tokens": 5108,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 12810,
+          "completion_tokens": 1078,
+          "total_tokens": 13888,
+          "prompt_tokens_details": {
+            "cached_tokens": 8871
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 981
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    revenue = 750000\n    cost_of_goods_sold = 450000\n\n    # Do math calculation to get the answer\n    gross_profit = revenue - cost_of_goods_sold\n    gross_profit_margin = (gross_profit / revenue) * 100\n    answer = round(gross_profit_margin, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5524,
+          "completion_tokens": 95,
+          "total_tokens": 5619
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1195",
+        "score": 2.0234036445617676
+      },
+      {
+        "function_id": "article-1185",
+        "score": 2.010089874267578
+      },
+      {
+        "function_id": "article-1196",
+        "score": 2.0064356327056885
+      },
+      {
+        "function_id": "article-2228",
+        "score": 1.9956090450286865
+      },
+      {
+        "function_id": "article-1370",
+        "score": 1.97481369972229
+      },
+      {
+        "function_id": "article-3046",
+        "score": 1.9708056449890137
+      },
+      {
+        "function_id": "article-1446",
+        "score": 1.9697812795639038
+      },
+      {
+        "function_id": "article-1367",
+        "score": 1.9410003423690796
+      },
+      {
+        "function_id": "article-1194",
+        "score": 1.921010136604309
+      },
+      {
+        "function_id": "article-1375",
+        "score": 1.9142907857894897
+      },
+      {
+        "function_id": "article-1271",
+        "score": 1.9041926860809326
+      },
+      {
+        "function_id": "article-554",
+        "score": 1.8932490348815918
+      },
+      {
+        "function_id": "article-1362",
+        "score": 1.8909461498260498
+      },
+      {
+        "function_id": "article-1169",
+        "score": 1.8690166473388672
+      },
+      {
+        "function_id": "article-2946",
+        "score": 1.8420464992523193
+      },
+      {
+        "function_id": "article-2910",
+        "score": 1.841330885887146
+      },
+      {
+        "function_id": "article-1368",
+        "score": 1.8392444849014282
+      },
+      {
+        "function_id": "article-1366",
+        "score": 1.8389902114868164
+      },
+      {
+        "function_id": "article-377",
+        "score": 1.8238037824630737
+      },
+      {
+        "function_id": "article-1372",
+        "score": 1.8234885931015015
+      },
+      {
+        "function_id": "article-1371",
+        "score": 1.8139575719833374
+      },
+      {
+        "function_id": "article-1186",
+        "score": 1.8027348518371582
+      },
+      {
+        "function_id": "article-1197",
+        "score": 1.8000462055206299
+      },
+      {
+        "function_id": "article-3045",
+        "score": 1.7969553470611572
+      },
+      {
+        "function_id": "article-1198",
+        "score": 1.7797688245773315
+      },
+      {
+        "function_id": "article-3048",
+        "score": 1.7777435779571533
+      },
+      {
+        "function_id": "article-1377",
+        "score": 1.7750113010406494
+      },
+      {
+        "function_id": "article-3044",
+        "score": 1.7634563446044922
+      },
+      {
+        "function_id": "article-1193",
+        "score": 1.7617497444152832
+      },
+      {
+        "function_id": "article-3035",
+        "score": 1.7491810321807861
+      }
+    ],
+    "selected_ids": [
+      "article-1195",
+      "article-1185",
+      "article-1196"
+    ],
+    "status": "ok",
+    "answer": 40.0,
+    "code": "def solution():\n    # Define variables name and value\n    revenue = 750000\n    cost_of_goods_sold = 450000\n\n    # Do math calculation to get the answer\n    gross_profit = revenue - cost_of_goods_sold\n    gross_profit_margin = (gross_profit / revenue) * 100\n    answer = round(gross_profit_margin, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "92a8f5ffeb945b3393c69b0a7b21ae416a003a2efd062a304ba5193b022b5d0d"
+}

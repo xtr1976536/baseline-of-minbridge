@@ -1,0 +1,212 @@
+{
+  "record": {
+    "question_id": "test-2101",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the ending value of an equal-weighted stock price index from multiple securities’ beginning and ending prices, using a specified starting index value, without weighting by shares outstanding, and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5099,
+          "completion_tokens": 49,
+          "total_tokens": 5148
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C05\",\"C14\",\"C17\"]}",
+        "usage": {
+          "prompt_tokens": 13659,
+          "completion_tokens": 248,
+          "total_tokens": 13907,
+          "completion_tokens_details": {
+            "reasoning_tokens": 224
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    starting_index_value = 121\n    starting_prices = [15, 20, 30]\n    ending_prices = [20, 30, 25]\n\n    # Do math calculation to get the answer\n    percentage_changes = [\n        ending / starting - 1\n        for starting, ending in zip(starting_prices, ending_prices)\n    ]\n    equal_weighted_change = sum(percentage_changes) / len(percentage_changes)\n    answer = round(starting_index_value * (1 + equal_weighted_change), 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5498,
+          "completion_tokens": 211,
+          "total_tokens": 5709,
+          "completion_tokens_details": {
+            "reasoning_tokens": 71
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1336",
+        "score": 1.747028112411499,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1335",
+        "score": 1.7463901042938232,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.6797454357147217,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2545",
+        "score": 1.6633565425872803,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1337",
+        "score": 1.6532878875732422,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.6520828008651733,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.6394697427749634,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2281",
+        "score": 1.6281814575195312,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.6198585033416748,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2279",
+        "score": 1.6192281246185303,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2782",
+        "score": 1.6140716075897217,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2438",
+        "score": 1.6116454601287842,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1154",
+        "score": 1.6024878025054932,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2783",
+        "score": 1.5937178134918213,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.593409538269043,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.5923221111297607,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.592290997505188,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-701",
+        "score": 1.5916790962219238,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.5879006385803223,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2716",
+        "score": 1.5854685306549072,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.5802102088928223,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1401",
+        "score": 1.5776731967926025,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2458",
+        "score": 1.5764436721801758,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-788",
+        "score": 1.5758237838745117,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.573157548904419,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.573026418685913,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.572666883468628,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2280",
+        "score": 1.5696954727172852,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-643",
+        "score": 1.5676209926605225,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2652",
+        "score": 1.5644495487213135,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1337",
+      "article-2783",
+      "article-274"
+    ],
+    "status": "ok",
+    "answer": 147.889,
+    "code": "def solution():\n    # Define variables name and value\n    starting_index_value = 121\n    starting_prices = [15, 20, 30]\n    ending_prices = [20, 30, 25]\n\n    # Do math calculation to get the answer\n    percentage_changes = [\n        ending / starting - 1\n        for starting, ending in zip(starting_prices, ending_prices)\n    ]\n    equal_weighted_change = sum(percentage_changes) / len(percentage_changes)\n    answer = round(starting_index_value * (1 + equal_weighted_change), 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "71521b7d36e51226d399a3d9a781bcd0aa84cf09881e51a24554422e980a0a3f"
+}

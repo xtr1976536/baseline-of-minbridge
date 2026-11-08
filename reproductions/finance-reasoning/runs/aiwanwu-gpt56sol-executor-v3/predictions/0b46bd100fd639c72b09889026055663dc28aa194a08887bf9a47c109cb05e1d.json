@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2031",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the intrinsic value of common equity using a multi-stage dividend discount model, with fixed dividends for an initial two-year period followed by perpetual dividend growth at a constant rate, discounted at a specified required rate of return, and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4984,
+          "completion_tokens": 58,
+          "total_tokens": 5042,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 13710,
+          "completion_tokens": 249,
+          "total_tokens": 13959,
+          "prompt_tokens_details": {
+            "cached_tokens": 9498
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 225
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    dividend_year_1 = 0.5\n    dividend_year_2 = 0.5\n    growth_rate = 0.06\n    required_rate_of_return = 0.10\n\n    # Do math calculation to get the answer\n    dividend_year_3 = dividend_year_2 * (1 + growth_rate)\n    terminal_value_year_2 = dividend_year_3 / (required_rate_of_return - growth_rate)\n\n    present_value_year_1 = dividend_year_1 / (1 + required_rate_of_return)\n    present_value_year_2 = dividend_year_2 / (1 + required_rate_of_return) ** 2\n    present_value_terminal_value = terminal_value_year_2 / (1 + required_rate_of_return) ** 2\n\n    equity_value = (\n        present_value_year_1\n        + present_value_year_2\n        + present_value_terminal_value\n    )\n\n    # Return answer\n    return round(equity_value, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5581,
+          "completion_tokens": 344,
+          "total_tokens": 5925,
+          "completion_tokens_details": {
+            "reasoning_tokens": 120
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1755",
+        "score": 2.0327017307281494,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1758",
+        "score": 1.9849951267242432,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1151",
+        "score": 1.9702397584915161,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-519",
+        "score": 1.8787922859191895,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.795388102531433,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-714",
+        "score": 1.7910243272781372,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-272",
+        "score": 1.7833356857299805,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2943",
+        "score": 1.7801933288574219,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1511",
+        "score": 1.7569499015808105,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.7497315406799316,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1520",
+        "score": 1.730185866355896,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-250",
+        "score": 1.717078685760498,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-463",
+        "score": 1.7090449333190918,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.6771126985549927,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.6624302864074707,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1460",
+        "score": 1.6596614122390747,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2648",
+        "score": 1.6480470895767212,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1756",
+        "score": 1.64789879322052,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2663",
+        "score": 1.6473114490509033,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.6456568241119385,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1406",
+        "score": 1.644559621810913,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-880",
+        "score": 1.6440975666046143,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1903",
+        "score": 1.6410789489746094,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1902",
+        "score": 1.6312601566314697,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2570",
+        "score": 1.6295335292816162,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2373",
+        "score": 1.6280021667480469,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1103",
+        "score": 1.6277964115142822,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6268857717514038,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.619354248046875,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2824",
+        "score": 1.6176865100860596,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1755",
+      "article-1758",
+      "article-1151"
+    ],
+    "status": "ok",
+    "answer": 11.818,
+    "code": "def solution():\n    # Define variables name and value\n    dividend_year_1 = 0.5\n    dividend_year_2 = 0.5\n    growth_rate = 0.06\n    required_rate_of_return = 0.10\n\n    # Do math calculation to get the answer\n    dividend_year_3 = dividend_year_2 * (1 + growth_rate)\n    terminal_value_year_2 = dividend_year_3 / (required_rate_of_return - growth_rate)\n\n    present_value_year_1 = dividend_year_1 / (1 + required_rate_of_return)\n    present_value_year_2 = dividend_year_2 / (1 + required_rate_of_return) ** 2\n    present_value_terminal_value = terminal_value_year_2 / (1 + required_rate_of_return) ** 2\n\n    equity_value = (\n        present_value_year_1\n        + present_value_year_2\n        + present_value_terminal_value\n    )\n\n    # Return answer\n    return round(equity_value, 3)\n"
+  },
+  "digest": "385d794818e3d2bf72b3e839532a0c94105cfbed2de81e3e2d3a3410c924a25b"
+}

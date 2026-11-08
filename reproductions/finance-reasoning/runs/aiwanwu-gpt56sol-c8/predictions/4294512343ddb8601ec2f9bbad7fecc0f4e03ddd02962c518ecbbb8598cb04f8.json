@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2032",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function estimates a bond’s percentage price change from a yield-to-maturity change using modified duration and modified convexity, applying the second-order approximation ΔP/P ≈ −Duration × Δy + 0.5 × Convexity × (Δy)², supporting yield changes in basis points and rounding the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4985,
+          "completion_tokens": 74,
+          "total_tokens": 5059,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15012,
+          "completion_tokens": 592,
+          "total_tokens": 15604,
+          "prompt_tokens_details": {
+            "cached_tokens": 14848
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 495
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    modified_duration = 10.3829\n    modified_convexity = 141.217\n    yield_change = -0.005  # A 50 basis point fall\n\n    # Do math calculation to get the answer\n    duration_effect = -modified_duration * yield_change\n    convexity_effect = 0.5 * modified_convexity * (yield_change ** 2)\n    percentage_price_change = (duration_effect + convexity_effect) * 100\n\n    # return answer\n    return round(percentage_price_change, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5286,
+          "completion_tokens": 282,
+          "total_tokens": 5568,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 147
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2872",
+        "score": 1.9941223859786987
+      },
+      {
+        "function_id": "article-2871",
+        "score": 1.9218658208847046
+      },
+      {
+        "function_id": "article-173",
+        "score": 1.8831346035003662
+      },
+      {
+        "function_id": "article-1790",
+        "score": 1.8284653425216675
+      },
+      {
+        "function_id": "article-503",
+        "score": 1.7962923049926758
+      },
+      {
+        "function_id": "article-1334",
+        "score": 1.793339490890503
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.7760207653045654
+      },
+      {
+        "function_id": "article-927",
+        "score": 1.7739371061325073
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.7732770442962646
+      },
+      {
+        "function_id": "article-2870",
+        "score": 1.7722522020339966
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.7709065675735474
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.7644867897033691
+      },
+      {
+        "function_id": "article-454",
+        "score": 1.7404224872589111
+      },
+      {
+        "function_id": "article-26",
+        "score": 1.7309074401855469
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.7193880081176758
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.7138597965240479
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7136931419372559
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.710981011390686
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7037019729614258
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.7031683921813965
+      },
+      {
+        "function_id": "article-28",
+        "score": 1.7027735710144043
+      },
+      {
+        "function_id": "article-1466",
+        "score": 1.6988744735717773
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.692300796508789
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.689880132675171
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.6886813640594482
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.6880955696105957
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.682546615600586
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.6788380146026611
+      },
+      {
+        "function_id": "article-2243",
+        "score": 1.667648196220398
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.6648213863372803
+      }
+    ],
+    "selected_ids": [
+      "article-2872",
+      "article-2871",
+      "article-173"
+    ],
+    "status": "ok",
+    "answer": 5.368,
+    "code": "def solution():\n    # Define variables name and value\n    modified_duration = 10.3829\n    modified_convexity = 141.217\n    yield_change = -0.005  # A 50 basis point fall\n\n    # Do math calculation to get the answer\n    duration_effect = -modified_duration * yield_change\n    convexity_effect = 0.5 * modified_convexity * (yield_change ** 2)\n    percentage_price_change = (duration_effect + convexity_effect) * 100\n\n    # return answer\n    return round(percentage_price_change, 3)\n"
+  },
+  "digest": "2cf935b6ee34e8ad4f3b420368b6c3db6dbbf8d9189dae8e0b1ae48272702b50"
+}

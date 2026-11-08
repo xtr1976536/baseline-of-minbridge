@@ -1,0 +1,31 @@
+{
+  "request_hash": "da6143f57353721c04be184257cb1e38968d22bfe69233ffef97c347a2438991",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nWhat is the amount of the cash proceeds that JnJ realised from the separation of Kenvue (formerly Consumer Health business segment), as of August 30, 2023?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"cash_proceeds_from_kenvue_separation\",\n  \"facts\": [\n    {\n      \"name\": \"cash_proceeds_from_kenvue_separation\",\n      \"aliases\": [\n        \"cash proceeds from the separation of Kenvue\",\n        \"cash proceeds from separation\",\n        \"proceeds from the separation of Kenvue\",\n        \"net cash proceeds from the Kenvue separation\",\n        \"cash proceeds from the Consumer Health business separation\"\n      ],\n      \"period\": \"as of August 30, 2023\",\n      \"statement\": \"notes\"\n    }\n  ],\n  \"reason\": \"This is a direct lookup of the cash proceeds J&J realized from the Kenvue separation as of the specified date.\"\n}",
+  "usage": {
+    "prompt_tokens": 4715,
+    "completion_tokens": 229,
+    "total_tokens": 4944,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 67
+    }
+  },
+  "response_id": "resp_0b84be56c8c6d4bf016aedb897db5087d08ae3ac1f6ceadb9d",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

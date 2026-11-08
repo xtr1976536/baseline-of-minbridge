@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2081",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates progressive wealth tax liability using tiered net-worth brackets and marginal tax rates, applies a residency adjustment factor to the total tax, and rounds the result to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5081,
+          "completion_tokens": 41,
+          "total_tokens": 5122,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 16523,
+          "completion_tokens": 313,
+          "total_tokens": 16836,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 289
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_worth = 1_200_000\n    residency_factor = 0.9\n\n    tax_free_threshold = 500_000\n    second_bracket_threshold = 1_000_000\n    second_bracket_rate = 0.02\n    top_bracket_rate = 0.04\n\n    # Do math calculation to get the answer\n    second_bracket_tax = (\n        second_bracket_threshold - tax_free_threshold\n    ) * second_bracket_rate\n\n    top_bracket_tax = (\n        net_worth - second_bracket_threshold\n    ) * top_bracket_rate\n\n    calculated_tax = second_bracket_tax + top_bracket_tax\n    adjusted_tax = calculated_tax * residency_factor\n\n    # return answer\n    return round(adjusted_tax)\n```",
+        "usage": {
+          "prompt_tokens": 5939,
+          "completion_tokens": 308,
+          "total_tokens": 6247,
+          "completion_tokens_details": {
+            "reasoning_tokens": 124
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2440",
+        "score": 2.0943572521209717,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2439",
+        "score": 1.868212342262268,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-846",
+        "score": 1.8550662994384766,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-313",
+        "score": 1.8307712078094482,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1815",
+        "score": 1.7589733600616455,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.747408390045166,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.7292017936706543,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.697943925857544,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.6773681640625,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3076",
+        "score": 1.6755021810531616,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1842",
+        "score": 1.6501672267913818,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.6484642028808594,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.6065970659255981,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1852",
+        "score": 1.5956252813339233,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1813",
+        "score": 1.5494320392608643,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1839",
+        "score": 1.5486901998519897,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1835",
+        "score": 1.5464835166931152,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2303",
+        "score": 1.5393738746643066,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1633",
+        "score": 1.5392358303070068,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2953",
+        "score": 1.5376389026641846,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-384",
+        "score": 1.5283019542694092,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2979",
+        "score": 1.5282635688781738,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1841",
+        "score": 1.5192699432373047,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1821",
+        "score": 1.5172933340072632,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1838",
+        "score": 1.5096616744995117,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-382",
+        "score": 1.50742506980896,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2437",
+        "score": 1.5056730508804321,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2955",
+        "score": 1.503563642501831,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2239",
+        "score": 1.4946348667144775,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2484",
+        "score": 1.4913039207458496,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2440",
+      "article-846",
+      "article-313"
+    ],
+    "status": "ok",
+    "answer": 16200,
+    "code": "def solution():\n    # Define variables name and value\n    net_worth = 1_200_000\n    residency_factor = 0.9\n\n    tax_free_threshold = 500_000\n    second_bracket_threshold = 1_000_000\n    second_bracket_rate = 0.02\n    top_bracket_rate = 0.04\n\n    # Do math calculation to get the answer\n    second_bracket_tax = (\n        second_bracket_threshold - tax_free_threshold\n    ) * second_bracket_rate\n\n    top_bracket_tax = (\n        net_worth - second_bracket_threshold\n    ) * top_bracket_rate\n\n    calculated_tax = second_bracket_tax + top_bracket_tax\n    adjusted_tax = calculated_tax * residency_factor\n\n    # return answer\n    return round(adjusted_tax)\n"
+  },
+  "digest": "396cdf751e6cfe1adafce7cab9270b549f51fdb6fc92dd5cb8de92c144b58b7a"
+}

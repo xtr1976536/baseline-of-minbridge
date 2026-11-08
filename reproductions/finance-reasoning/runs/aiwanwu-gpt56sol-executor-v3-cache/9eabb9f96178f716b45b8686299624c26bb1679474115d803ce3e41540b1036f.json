@@ -1,0 +1,21 @@
+{
+  "identity": "9eabb9f96178f716b45b8686299624c26bb1679474115d803ce3e41540b1036f",
+  "response_digest": "b36eb2503e8e8adcdc9500a0cb444606bcadce5d294812b965185e3b2935d44a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    face_value = 100.0\n    coupon_rate = 0.06\n    purchase_price = 89.4535\n    market_yield = 0.085\n    holding_period_years = 4\n    annual_coupon = face_value * coupon_rate\n\n    # Calculate the bond's sale price with one year remaining\n    sale_price = sum(\n        annual_coupon / ((1 + market_yield) ** period)\n        for period in range(1, 2)\n    ) + face_value / ((1 + market_yield) ** 1)\n\n    # Reinvest the four coupons until the sale date\n    reinvested_coupons = sum(\n        annual_coupon * ((1 + market_yield) ** periods_remaining)\n        for periods_remaining in range(holding_period_years)\n    )\n\n    # Calculate the annualized realized yield\n    final_value = sale_price + reinvested_coupons\n    realized_yield = (\n        (final_value / purchase_price) ** (1 / holding_period_years) - 1\n    ) * 100\n\n    # Return the answer rounded to two decimal places\n    return round(realized_yield, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5618,
+      "completion_tokens": 2046,
+      "total_tokens": 7664,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1781
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

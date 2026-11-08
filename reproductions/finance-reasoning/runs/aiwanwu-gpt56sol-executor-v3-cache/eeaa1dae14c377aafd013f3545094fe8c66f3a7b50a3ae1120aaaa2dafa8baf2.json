@@ -1,0 +1,21 @@
+{
+  "identity": "eeaa1dae14c377aafd013f3545094fe8c66f3a7b50a3ae1120aaaa2dafa8baf2",
+  "response_digest": "0a4b6d7d4264c07ca93f7520867b02a6081c4e69ff1245db849347bd175603c3",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    higher_strike_price = 155\n    lower_strike_price = 145\n    cost_of_higher_strike = 5\n    revenue_from_lower_strike = 2\n    underlying_at_expiration = 140\n    shares_per_contract = 100\n\n    # Calculate the spread's maximum profit since the stock is at or below the lower strike\n    net_cost = (cost_of_higher_strike - revenue_from_lower_strike) * shares_per_contract\n    answer = (higher_strike_price - lower_strike_price) * shares_per_contract - net_cost\n\n    # Return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5168,
+      "completion_tokens": 173,
+      "total_tokens": 5341,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 23
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

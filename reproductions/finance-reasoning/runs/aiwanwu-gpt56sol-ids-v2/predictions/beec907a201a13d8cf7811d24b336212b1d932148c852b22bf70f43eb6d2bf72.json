@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2209",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the principal portion of the first payment on a fully amortizing fixed-rate loan, given the loan amount, annual interest rate converted to a monthly rate, and total number of monthly payments, with the result rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 5029,
+          "completion_tokens": 53,
+          "total_tokens": 5082,
+          "prompt_tokens_details": {
+            "cached_tokens": 4864
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 16188,
+          "completion_tokens": 150,
+          "total_tokens": 16338,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 126
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 20000\n    annual_interest_rate = 0.055\n    loan_term_years = 5\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n    first_month_interest = principal * monthly_interest_rate\n    first_month_principal = monthly_payment - first_month_interest\n    answer = round(first_month_principal, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5853,
+          "completion_tokens": 231,
+          "total_tokens": 6084,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 70
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-581",
+        "score": 1.9414219856262207,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2164",
+        "score": 1.8693574666976929,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-641",
+        "score": 1.8665374517440796,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-784",
+        "score": 1.857375144958496,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2308",
+        "score": 1.8525607585906982,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2310",
+        "score": 1.8440642356872559,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.822269082069397,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-582",
+        "score": 1.8144187927246094,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1781",
+        "score": 1.811193585395813,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2314",
+        "score": 1.8107714653015137,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2864",
+        "score": 1.7984468936920166,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-429",
+        "score": 1.7976232767105103,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2309",
+        "score": 1.7843437194824219,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.7757688760757446,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2311",
+        "score": 1.7691316604614258,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-959",
+        "score": 1.7466251850128174,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1068",
+        "score": 1.7457056045532227,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1638",
+        "score": 1.744401454925537,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.7436130046844482,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.737579345703125,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.7375383377075195,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-578",
+        "score": 1.7368643283843994,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-677",
+        "score": 1.7354846000671387,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-676",
+        "score": 1.7350727319717407,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.7333571910858154,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2273",
+        "score": 1.732864260673523,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.731397271156311,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.7266864776611328,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.7254201173782349,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.719045639038086,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-581",
+      "article-2164",
+      "article-641"
+    ],
+    "status": "ok",
+    "answer": 290.36,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 20000\n    annual_interest_rate = 0.055\n    loan_term_years = 5\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n    first_month_interest = principal * monthly_interest_rate\n    first_month_principal = monthly_payment - first_month_interest\n    answer = round(first_month_principal, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "aa3beb48db4001877d56a5acfd9dff79609108530d82c252505417be6eb2fb01"
+}

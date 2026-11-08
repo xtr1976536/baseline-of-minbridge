@@ -1,0 +1,213 @@
+{
+  "record": {
+    "question_id": "test-2000",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates adjusted ending shares outstanding by removing a specific acquisition-related share issuance from a multi-year equity rollforward and applying subsequent share transactions, with results reported in millions and rounded to the nearest whole number?",
+        "usage": {
+          "prompt_tokens": 5307,
+          "completion_tokens": 45,
+          "total_tokens": 5352,
+          "prompt_tokens_details": {
+            "cached_tokens": 3584
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C02\"]}",
+        "usage": {
+          "prompt_tokens": 13910,
+          "completion_tokens": 16,
+          "total_tokens": 13926
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    actual_2012_shares_outstanding = 1328\n    acquisition_issued_shares = 100\n    acquisition_treasury_shares = 76\n\n    # Do math calculation to get the answer\n    acquisition_shares_outstanding = (\n        acquisition_issued_shares + acquisition_treasury_shares\n    )\n    shares_without_acquisition = (\n        actual_2012_shares_outstanding - acquisition_shares_outstanding\n    )\n\n    # return answer\n    return round(shares_without_acquisition)\n```",
+        "usage": {
+          "prompt_tokens": 5224,
+          "completion_tokens": 543,
+          "total_tokens": 5767,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 414
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2281",
+        "score": 1.7416465282440186,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-491",
+        "score": 1.7038910388946533,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.6880632638931274,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2279",
+        "score": 1.6853134632110596,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2820",
+        "score": 1.670842170715332,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2242",
+        "score": 1.6691091060638428,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-748",
+        "score": 1.655290961265564,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2280",
+        "score": 1.6269502639770508,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2050",
+        "score": 1.5993945598602295,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-643",
+        "score": 1.5970722436904907,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1227",
+        "score": 1.594841718673706,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2654",
+        "score": 1.5944972038269043,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1568",
+        "score": 1.5831471681594849,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1949",
+        "score": 1.5815386772155762,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.5774738788604736,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-639",
+        "score": 1.5764654874801636,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.5615332126617432,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.5608723163604736,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.558577537536621,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2245",
+        "score": 1.5558089017868042,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-163",
+        "score": 1.5546181201934814,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1402",
+        "score": 1.5537612438201904,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.552799105644226,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-796",
+        "score": 1.5525462627410889,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.5494930744171143,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2712",
+        "score": 1.5479850769042969,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.5468144416809082,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.5463076829910278,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2650",
+        "score": 1.5457463264465332,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1950",
+        "score": 1.5453704595565796,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-491"
+    ],
+    "status": "ok",
+    "answer": 1152,
+    "code": "def solution():\n    # Define variables name and value\n    actual_2012_shares_outstanding = 1328\n    acquisition_issued_shares = 100\n    acquisition_treasury_shares = 76\n\n    # Do math calculation to get the answer\n    acquisition_shares_outstanding = (\n        acquisition_issued_shares + acquisition_treasury_shares\n    )\n    shares_without_acquisition = (\n        actual_2012_shares_outstanding - acquisition_shares_outstanding\n    )\n\n    # return answer\n    return round(shares_without_acquisition)\n"
+  },
+  "digest": "55a472c87a6d2e648dd7903bcef2db90a73fc4e3c93ca010b5d168769d0c4f42"
+}

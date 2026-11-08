@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2039",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a financial reserve as a percentage of a portfolio by dividing the reserve amount by the portfolio balance and multiplying by 100, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5934,
+          "completion_tokens": 40,
+          "total_tokens": 5974
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C13\"]}",
+        "usage": {
+          "prompt_tokens": 14594,
+          "completion_tokens": 112,
+          "total_tokens": 14706,
+          "completion_tokens_details": {
+            "reasoning_tokens": 94
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define the specific reserves and total TDR portfolio, in millions\n    specific_reserves = 587\n    tdr_portfolio = 2859\n\n    # Calculate specific reserves as a percentage of the TDR portfolio\n    answer = round((specific_reserves / tdr_portfolio) * 100, 3)\n\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5871,
+          "completion_tokens": 108,
+          "total_tokens": 5979,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 23
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2442",
+        "score": 1.6374764442443848,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-335",
+        "score": 1.6312382221221924,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-680",
+        "score": 1.6046438217163086,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1513",
+        "score": 1.5935051441192627,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1514",
+        "score": 1.58641517162323,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2831",
+        "score": 1.5825409889221191,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.5690116882324219,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-978",
+        "score": 1.5613832473754883,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1978",
+        "score": 1.5395300388336182,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2443",
+        "score": 1.5344219207763672,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1515",
+        "score": 1.5319862365722656,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.5161256790161133,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-130",
+        "score": 1.512890100479126,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-393",
+        "score": 1.506840467453003,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-547",
+        "score": 1.5050075054168701,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2583",
+        "score": 1.4938290119171143,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-3079",
+        "score": 1.4849326610565186,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2405",
+        "score": 1.4839600324630737,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2022",
+        "score": 1.4837745428085327,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1124",
+        "score": 1.4823857545852661,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-3008",
+        "score": 1.4815526008605957,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-618",
+        "score": 1.4807136058807373,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2782",
+        "score": 1.480613350868225,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-255",
+        "score": 1.4802029132843018,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-705",
+        "score": 1.4801154136657715,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1899",
+        "score": 1.4794747829437256,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1122",
+        "score": 1.4792144298553467,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2550",
+        "score": 1.4789811372756958,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-141",
+        "score": 1.47855806350708,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2248",
+        "score": 1.4775025844573975,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-130"
+    ],
+    "status": "ok",
+    "answer": 20.532,
+    "code": "def solution():\n    # Define the specific reserves and total TDR portfolio, in millions\n    specific_reserves = 587\n    tdr_portfolio = 2859\n\n    # Calculate specific reserves as a percentage of the TDR portfolio\n    answer = round((specific_reserves / tdr_portfolio) * 100, 3)\n\n    return answer\n"
+  },
+  "digest": "f6c7761ef77ccc81f31a241e49c381f8c411049474aef91fae00d63f5cd1ffbf"
+}

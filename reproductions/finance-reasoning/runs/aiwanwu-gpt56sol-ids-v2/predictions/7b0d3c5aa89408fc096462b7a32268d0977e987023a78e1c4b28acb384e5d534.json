@@ -1,0 +1,212 @@
+{
+  "record": {
+    "question_id": "test-2008",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the expiration profit or loss of a purchased call option on a Treasury bond based on strike yield, expiration yield, premium, and a fixed contract multiplier, using the option payoff max(expiration yield − strike yield, 0) minus the premium and rounding the result to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5023,
+          "completion_tokens": 64,
+          "total_tokens": 5087
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 14967,
+          "completion_tokens": 540,
+          "total_tokens": 15507,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    strike_yield = 3.0\n    premium = 1.5\n    yield_at_expiry = 3.5\n    multiplier = 100\n\n    # Calculate the call's intrinsic value and subtract the premium paid\n    intrinsic_value = max(0, yield_at_expiry - strike_yield) * multiplier\n    profit_or_loss = intrinsic_value - (premium * multiplier)\n\n    # return answer\n    return round(profit_or_loss)\n```",
+        "usage": {
+          "prompt_tokens": 5869,
+          "completion_tokens": 114,
+          "total_tokens": 5983,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-449",
+        "score": 2.1045150756835938,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3067",
+        "score": 2.018031120300293,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.9907946586608887,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2435",
+        "score": 1.9122540950775146,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.908780813217163,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.89263916015625,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2850",
+        "score": 1.8832296133041382,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.8825316429138184,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.8797361850738525,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-218",
+        "score": 1.864659309387207,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2054",
+        "score": 1.8561079502105713,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2655",
+        "score": 1.854421854019165,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-34",
+        "score": 1.8523815870285034,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-217",
+        "score": 1.8436014652252197,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-315",
+        "score": 1.8420326709747314,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.8406240940093994,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.8357462882995605,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.8341805934906006,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-706",
+        "score": 1.8327999114990234,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.8314387798309326,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-759",
+        "score": 1.8244853019714355,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3105",
+        "score": 1.8147287368774414,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1601",
+        "score": 1.814215898513794,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.8037562370300293,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2849",
+        "score": 1.7958743572235107,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.7951860427856445,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2502",
+        "score": 1.790736436843872,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3058",
+        "score": 1.7876521348953247,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-724",
+        "score": 1.7856802940368652,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-777",
+        "score": 1.77871572971344,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-449",
+      "article-3067",
+      "article-281"
+    ],
+    "status": "ok",
+    "answer": -100,
+    "code": "def solution():\n    # Define variables name and value\n    strike_yield = 3.0\n    premium = 1.5\n    yield_at_expiry = 3.5\n    multiplier = 100\n\n    # Calculate the call's intrinsic value and subtract the premium paid\n    intrinsic_value = max(0, yield_at_expiry - strike_yield) * multiplier\n    profit_or_loss = intrinsic_value - (premium * multiplier)\n\n    # return answer\n    return round(profit_or_loss)\n"
+  },
+  "digest": "25fa51d625fec9412dffacc308eeb729db0971efa41fa10d67d983788a0d861a"
+}

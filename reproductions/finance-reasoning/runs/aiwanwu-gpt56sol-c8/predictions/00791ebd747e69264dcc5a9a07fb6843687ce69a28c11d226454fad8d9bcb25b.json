@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2138",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the sample standard deviation of a one-dimensional dataset of numeric observations using \\(n-1\\) degrees of freedom, suitable for approximately normally distributed measurements, and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5047,
+          "completion_tokens": 46,
+          "total_tokens": 5093
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15444,
+          "completion_tokens": 840,
+          "total_tokens": 16284,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 743
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    measurements = [-3, -11, 3, -18, 18, 20, -6, 9, 2, -16]\n    sample_size = len(measurements)\n    mean = sum(measurements) / sample_size\n\n    # Do math calculation to get the answer\n    squared_deviations = sum((value - mean) ** 2 for value in measurements)\n    sample_variance = squared_deviations / (sample_size - 1)\n    sample_standard_deviation = sample_variance ** 0.5\n    answer = round(sample_standard_deviation, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5478,
+          "completion_tokens": 472,
+          "total_tokens": 5950,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 314
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2632",
+        "score": 1.618903636932373
+      },
+      {
+        "function_id": "article-284",
+        "score": 1.6069962978363037
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.5781762599945068
+      },
+      {
+        "function_id": "article-2686",
+        "score": 1.5770738124847412
+      },
+      {
+        "function_id": "article-302",
+        "score": 1.561907172203064
+      },
+      {
+        "function_id": "article-2553",
+        "score": 1.5603785514831543
+      },
+      {
+        "function_id": "article-1521",
+        "score": 1.5452518463134766
+      },
+      {
+        "function_id": "article-1797",
+        "score": 1.5385295152664185
+      },
+      {
+        "function_id": "article-1683",
+        "score": 1.5268117189407349
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.5253722667694092
+      },
+      {
+        "function_id": "article-2633",
+        "score": 1.5250678062438965
+      },
+      {
+        "function_id": "article-2667",
+        "score": 1.5118612051010132
+      },
+      {
+        "function_id": "article-285",
+        "score": 1.5070948600769043
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.5036077499389648
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.5030884742736816
+      },
+      {
+        "function_id": "article-2758",
+        "score": 1.4756635427474976
+      },
+      {
+        "function_id": "article-301",
+        "score": 1.471734642982483
+      },
+      {
+        "function_id": "article-1588",
+        "score": 1.4708290100097656
+      },
+      {
+        "function_id": "article-1794",
+        "score": 1.4707940816879272
+      },
+      {
+        "function_id": "article-1798",
+        "score": 1.4640250205993652
+      },
+      {
+        "function_id": "article-1717",
+        "score": 1.4625898599624634
+      },
+      {
+        "function_id": "article-1987",
+        "score": 1.4507907629013062
+      },
+      {
+        "function_id": "article-1413",
+        "score": 1.4474337100982666
+      },
+      {
+        "function_id": "article-149",
+        "score": 1.443619728088379
+      },
+      {
+        "function_id": "article-1523",
+        "score": 1.43850576877594
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.4255599975585938
+      },
+      {
+        "function_id": "article-1883",
+        "score": 1.4233849048614502
+      },
+      {
+        "function_id": "article-1145",
+        "score": 1.4199013710021973
+      },
+      {
+        "function_id": "article-2534",
+        "score": 1.4110193252563477
+      },
+      {
+        "function_id": "article-2990",
+        "score": 1.4078868627548218
+      }
+    ],
+    "selected_ids": [
+      "article-2632",
+      "article-284",
+      "article-302"
+    ],
+    "status": "ok",
+    "answer": 13.181,
+    "code": "def solution():\n    # Define variables name and value\n    measurements = [-3, -11, 3, -18, 18, 20, -6, 9, 2, -16]\n    sample_size = len(measurements)\n    mean = sum(measurements) / sample_size\n\n    # Do math calculation to get the answer\n    squared_deviations = sum((value - mean) ** 2 for value in measurements)\n    sample_variance = squared_deviations / (sample_size - 1)\n    sample_standard_deviation = sample_variance ** 0.5\n    answer = round(sample_standard_deviation, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "4153c3137e53273940178490ed4ab07ac97e0d33d69139ccbd742bc40617ace8"
+}

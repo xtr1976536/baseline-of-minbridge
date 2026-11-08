@@ -1,0 +1,213 @@
+{
+  "record": {
+    "question_id": "test-2168",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Stochastic RSI by normalizing the latest RSI value against the minimum and maximum RSI values over a specified lookback window, supports a numeric RSI time series and configurable period, and returns the result between 0 and 1 rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5124,
+          "completion_tokens": 58,
+          "total_tokens": 5182,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 16297,
+          "completion_tokens": 16,
+          "total_tokens": 16313
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    rsi_values = [40.5, 42.3, 41.8, 45.2, 47.6, 49.0, 51.3,\n                  48.7, 46.8, 44.9, 42.1, 39.5, 37.2, 36.4, 35.0]\n    lookback_period = 5\n\n    # Do math calculation to get the answer\n    window = rsi_values[-lookback_period:]\n    min_rsi = min(window)\n    max_rsi = max(window)\n    current_rsi = rsi_values[-1]\n\n    if max_rsi - min_rsi == 0:\n        stoch_rsi = 0.0\n    else:\n        stoch_rsi = (current_rsi - min_rsi) / (max_rsi - min_rsi)\n\n    answer = round(stoch_rsi, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5253,
+          "completion_tokens": 307,
+          "total_tokens": 5560,
+          "prompt_tokens_details": {
+            "cached_tokens": 3584
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 76
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-2638",
+        "score": 2.0043349266052246,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.5556228160858154,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2485",
+        "score": 1.5113284587860107,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.4926129579544067,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1860",
+        "score": 1.4790316820144653,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1523",
+        "score": 1.471623420715332,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-3112",
+        "score": 1.4702107906341553,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1493",
+        "score": 1.4669939279556274,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2668",
+        "score": 1.4609735012054443,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.4595905542373657,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1492",
+        "score": 1.4516432285308838,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-3128",
+        "score": 1.4455018043518066,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.433560848236084,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.432905912399292,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1897",
+        "score": 1.4209568500518799,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2380",
+        "score": 1.4146358966827393,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-462",
+        "score": 1.414429783821106,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1741",
+        "score": 1.4111506938934326,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1026",
+        "score": 1.4101507663726807,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2378",
+        "score": 1.397335171699524,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-3065",
+        "score": 1.3950759172439575,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.3940601348876953,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2758",
+        "score": 1.3913164138793945,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.3907697200775146,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3060",
+        "score": 1.390272617340088,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.3900988101959229,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2379",
+        "score": 1.3857613801956177,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2996",
+        "score": 1.3832505941390991,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1057",
+        "score": 1.3822373151779175,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.382037878036499,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2638"
+    ],
+    "status": "ok",
+    "answer": 0.0,
+    "code": "def solution():\n    # Define variables name and value\n    rsi_values = [40.5, 42.3, 41.8, 45.2, 47.6, 49.0, 51.3,\n                  48.7, 46.8, 44.9, 42.1, 39.5, 37.2, 36.4, 35.0]\n    lookback_period = 5\n\n    # Do math calculation to get the answer\n    window = rsi_values[-lookback_period:]\n    min_rsi = min(window)\n    max_rsi = max(window)\n    current_rsi = rsi_values[-1]\n\n    if max_rsi - min_rsi == 0:\n        stoch_rsi = 0.0\n    else:\n        stoch_rsi = (current_rsi - min_rsi) / (max_rsi - min_rsi)\n\n    answer = round(stoch_rsi, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "8bc2e20b3e493edea1e0538b2cf89ceccc837ffb0062947b9eb0c247816481cb"
+}

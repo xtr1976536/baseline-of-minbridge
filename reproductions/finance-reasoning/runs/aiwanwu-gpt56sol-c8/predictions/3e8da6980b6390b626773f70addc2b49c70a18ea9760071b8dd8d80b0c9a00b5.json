@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2014",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the deductible mortgage interest for a single taxpayer by applying the applicable home-acquisition debt limit to the mortgage principal and prorating total annual interest when the debt exceeds that limit, with the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5023,
+          "completion_tokens": 50,
+          "total_tokens": 5073,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16549,
+          "completion_tokens": 289,
+          "total_tokens": 16838,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 192
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    interest_paid = 36000\n    mortgage_debt = 900000\n    applicable_debt_limit = 750000\n\n    # Do math calculation to get the answer\n    deductible_interest = interest_paid * (applicable_debt_limit / mortgage_debt)\n    answer = round(deductible_interest)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5180,
+          "completion_tokens": 123,
+          "total_tokens": 5303,
+          "prompt_tokens_details": {
+            "cached_tokens": 3495
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 29
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1824",
+        "score": 2.0963618755340576
+      },
+      {
+        "function_id": "article-1073",
+        "score": 1.9468841552734375
+      },
+      {
+        "function_id": "article-3005",
+        "score": 1.7583616971969604
+      },
+      {
+        "function_id": "article-1347",
+        "score": 1.7580982446670532
+      },
+      {
+        "function_id": "article-1070",
+        "score": 1.7480783462524414
+      },
+      {
+        "function_id": "article-1823",
+        "score": 1.7142210006713867
+      },
+      {
+        "function_id": "article-1649",
+        "score": 1.7119795083999634
+      },
+      {
+        "function_id": "article-2162",
+        "score": 1.708716869354248
+      },
+      {
+        "function_id": "article-2132",
+        "score": 1.7043578624725342
+      },
+      {
+        "function_id": "article-1071",
+        "score": 1.6892098188400269
+      },
+      {
+        "function_id": "article-1100",
+        "score": 1.6739542484283447
+      },
+      {
+        "function_id": "article-956",
+        "score": 1.664554238319397
+      },
+      {
+        "function_id": "article-2341",
+        "score": 1.6625652313232422
+      },
+      {
+        "function_id": "article-989",
+        "score": 1.656914234161377
+      },
+      {
+        "function_id": "article-579",
+        "score": 1.655671238899231
+      },
+      {
+        "function_id": "article-1065",
+        "score": 1.638772964477539
+      },
+      {
+        "function_id": "article-438",
+        "score": 1.6358250379562378
+      },
+      {
+        "function_id": "article-984",
+        "score": 1.6344707012176514
+      },
+      {
+        "function_id": "article-2067",
+        "score": 1.6339787244796753
+      },
+      {
+        "function_id": "article-580",
+        "score": 1.627549409866333
+      },
+      {
+        "function_id": "article-1069",
+        "score": 1.6197359561920166
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.6101415157318115
+      },
+      {
+        "function_id": "article-1348",
+        "score": 1.6040821075439453
+      },
+      {
+        "function_id": "article-999",
+        "score": 1.6040637493133545
+      },
+      {
+        "function_id": "article-990",
+        "score": 1.6011484861373901
+      },
+      {
+        "function_id": "article-1089",
+        "score": 1.6002147197723389
+      },
+      {
+        "function_id": "article-1502",
+        "score": 1.599489450454712
+      },
+      {
+        "function_id": "article-3093",
+        "score": 1.5994434356689453
+      },
+      {
+        "function_id": "article-955",
+        "score": 1.5980576276779175
+      },
+      {
+        "function_id": "article-1153",
+        "score": 1.592597246170044
+      }
+    ],
+    "selected_ids": [
+      "article-1824"
+    ],
+    "status": "ok",
+    "answer": 30000,
+    "code": "def solution():\n    # Define variables name and value\n    interest_paid = 36000\n    mortgage_debt = 900000\n    applicable_debt_limit = 750000\n\n    # Do math calculation to get the answer\n    deductible_interest = interest_paid * (applicable_debt_limit / mortgage_debt)\n    answer = round(deductible_interest)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "9acba4a4835b2cef9e89a05a88448995f24615183b003639e493f5a261bc2245"
+}

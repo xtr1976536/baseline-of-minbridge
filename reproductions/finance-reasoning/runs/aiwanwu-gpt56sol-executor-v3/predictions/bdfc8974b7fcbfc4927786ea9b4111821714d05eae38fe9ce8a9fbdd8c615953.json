@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2075",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the adjusted McClellan Oscillator as the difference between the current 19-day EMA and 39-day EMA of Adjusted Net Advances, updating both EMAs from their prior-day values using the current ANA, and returns the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5073,
+          "completion_tokens": 60,
+          "total_tokens": 5133,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 15555,
+          "completion_tokens": 16,
+          "total_tokens": 15571,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    ana = 550\n    prior_19_day_ema = 528\n    prior_39_day_ema = 530\n\n    ema_19_day = ana * 0.10 + prior_19_day_ema * 0.90\n    ema_39_day = ana * 0.05 + prior_39_day_ema * 0.95\n    answer = round(ema_19_day - ema_39_day, 2)\n\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5090,
+          "completion_tokens": 176,
+          "total_tokens": 5266,
+          "completion_tokens_details": {
+            "reasoning_tokens": 63
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-898",
+        "score": 2.2159347534179688,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-897",
+        "score": 2.147038221359253,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-896",
+        "score": 2.1155807971954346,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.5575872659683228,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1051",
+        "score": 1.5112409591674805,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.496948003768921,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2415",
+        "score": 1.496659517288208,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1623",
+        "score": 1.4888648986816406,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2354",
+        "score": 1.4665226936340332,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1994",
+        "score": 1.4469119310379028,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1881",
+        "score": 1.4392967224121094,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.4186041355133057,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.415440320968628,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-962",
+        "score": 1.4118530750274658,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2556",
+        "score": 1.4035508632659912,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2288",
+        "score": 1.40293550491333,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-985",
+        "score": 1.4021656513214111,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-160",
+        "score": 1.3952637910842896,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-994",
+        "score": 1.3951988220214844,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-816",
+        "score": 1.3898851871490479,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1099",
+        "score": 1.3898837566375732,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1622",
+        "score": 1.3875925540924072,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.3845751285552979,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.3844811916351318,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2637",
+        "score": 1.382779598236084,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.382714033126831,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1666",
+        "score": 1.3816194534301758,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.379026174545288,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-586",
+        "score": 1.3760359287261963,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.3759654760360718,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-898"
+    ],
+    "status": "ok",
+    "answer": -0.8,
+    "code": "def solution():\n    ana = 550\n    prior_19_day_ema = 528\n    prior_39_day_ema = 530\n\n    ema_19_day = ana * 0.10 + prior_19_day_ema * 0.90\n    ema_39_day = ana * 0.05 + prior_39_day_ema * 0.95\n    answer = round(ema_19_day - ema_39_day, 2)\n\n    return answer\n"
+  },
+  "digest": "32affc34d4966b64ab00180567a8325950892df5eb2e0f862a5b27bd339e7f3b"
+}

@@ -1,0 +1,18 @@
+{
+  "identity": "1737be881382dcd87b059aaf04a41f70f2ede6c53e4dc921ca5d057143707761",
+  "response_digest": "d9003f87a738b6e53bcabe62328bad485b94ca225302a7c09397a973e7bf4072",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables\n    principal = 200000\n    monthly_interest_rate = 0.0033\n    periods = 20 * 12\n\n    # Calculate the monthly annuity payout\n    if monthly_interest_rate == 0:\n        monthly_payout = principal / periods\n    else:\n        monthly_payout = (\n            principal\n            * monthly_interest_rate\n            * (1 + monthly_interest_rate) ** periods\n            / ((1 + monthly_interest_rate) ** periods - 1)\n        )\n\n    # Return the payout rounded to the nearest dollar\n    return round(monthly_payout)\n```",
+    "usage": {
+      "prompt_tokens": 5716,
+      "completion_tokens": 402,
+      "total_tokens": 6118,
+      "completion_tokens_details": {
+        "reasoning_tokens": 264
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

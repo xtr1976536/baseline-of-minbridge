@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2089",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the present value or fair price of a fixed-coupon bond by discounting annual coupon payments and the face value at maturity using a fixed yield to maturity, given coupon rate, face value, annual payment frequency, and years to maturity, with the result rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5043,
+          "completion_tokens": 63,
+          "total_tokens": 5106,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15495,
+          "completion_tokens": 567,
+          "total_tokens": 16062,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 470
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    face_value = 10000\n    coupon_rate = 0.05\n    discount_rate = 0.04\n    years = 5\n\n    annual_coupon = face_value * coupon_rate\n\n    # Calculate the present value of coupon payments and face value\n    pv_coupons = sum(\n        annual_coupon / ((1 + discount_rate) ** year)\n        for year in range(1, years + 1)\n    )\n    pv_face_value = face_value / ((1 + discount_rate) ** years)\n\n    bond_value = pv_coupons + pv_face_value\n\n    # Return the value rounded to the nearest integer\n    return round(bond_value)\n```",
+        "usage": {
+          "prompt_tokens": 5692,
+          "completion_tokens": 261,
+          "total_tokens": 5953,
+          "completion_tokens_details": {
+            "reasoning_tokens": 104
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-741",
+        "score": 2.1371138095855713
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.9879066944122314
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.9682368040084839
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.9595003128051758
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.9444942474365234
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.9323898553848267
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.9271544218063354
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.9066468477249146
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.897798776626587
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.8964807987213135
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.8908851146697998
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.867368221282959
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.8662021160125732
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.862964153289795
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.8604388236999512
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.8519818782806396
+      },
+      {
+        "function_id": "article-1303",
+        "score": 1.8513433933258057
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.8495006561279297
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.8374810218811035
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.8184254169464111
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.8163772821426392
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.8144487142562866
+      },
+      {
+        "function_id": "article-2006",
+        "score": 1.8139783143997192
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.8073744773864746
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.7878098487854004
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.779416799545288
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.7753750085830688
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.76786470413208
+      },
+      {
+        "function_id": "article-1490",
+        "score": 1.767214059829712
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.7638516426086426
+      }
+    ],
+    "selected_ids": [
+      "article-741",
+      "article-742",
+      "article-2968"
+    ],
+    "status": "ok",
+    "answer": 10445,
+    "code": "def solution():\n    # Define variables\n    face_value = 10000\n    coupon_rate = 0.05\n    discount_rate = 0.04\n    years = 5\n\n    annual_coupon = face_value * coupon_rate\n\n    # Calculate the present value of coupon payments and face value\n    pv_coupons = sum(\n        annual_coupon / ((1 + discount_rate) ** year)\n        for year in range(1, years + 1)\n    )\n    pv_face_value = face_value / ((1 + discount_rate) ** years)\n\n    bond_value = pv_coupons + pv_face_value\n\n    # Return the value rounded to the nearest integer\n    return round(bond_value)\n"
+  },
+  "digest": "5b0a292fb04567df80831e5fe749a957f68d468a1d84c0790cadedb2260932a6"
+}

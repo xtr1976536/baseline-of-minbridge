@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2007",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a trailing simple moving average over a fixed window of consecutive daily stock closing prices, returning the average for the final trading day and supporting a 5-day period with results rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5043,
+          "completion_tokens": 46,
+          "total_tokens": 5089
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C03\",\"C07\",\"C09\"]}",
+        "usage": {
+          "prompt_tokens": 14239,
+          "completion_tokens": 113,
+          "total_tokens": 14352,
+          "completion_tokens_details": {
+            "reasoning_tokens": 89
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    prices = [205, 210, 215, 220, 222, 225, 230, 235, 236, 240]\n    period = 5\n    \n    # Do math calculation to get the answer\n    moving_average = sum(prices[-period:]) / period\n    answer = round(moving_average, 2)\n    \n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5538,
+          "completion_tokens": 147,
+          "total_tokens": 5685,
+          "completion_tokens_details": {
+            "reasoning_tokens": 42
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-996",
+        "score": 1.7657029628753662,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.7388958930969238,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.7243354320526123,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.7049832344055176,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-852",
+        "score": 1.7027740478515625,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2078",
+        "score": 1.683525562286377,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.675844430923462,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1933",
+        "score": 1.6705257892608643,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.6680421829223633,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.6596300601959229,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1886",
+        "score": 1.6485648155212402,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1932",
+        "score": 1.6418731212615967,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1632",
+        "score": 1.6417536735534668,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.6401855945587158,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.638902187347412,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-997",
+        "score": 1.6362833976745605,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.6340060234069824,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1958",
+        "score": 1.6278412342071533,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.627577543258667,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.6214659214019775,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.620800495147705,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-998",
+        "score": 1.6141629219055176,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-359",
+        "score": 1.604290246963501,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1038",
+        "score": 1.6017749309539795,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.600024938583374,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-3025",
+        "score": 1.5872008800506592,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2582",
+        "score": 1.586666226387024,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-86",
+        "score": 1.5826960802078247,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1931",
+        "score": 1.5794920921325684,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.573775291442871,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-862",
+      "article-2600",
+      "article-961"
+    ],
+    "status": "ok",
+    "answer": 233.2,
+    "code": "def solution():\n    # Define variables name and value\n    prices = [205, 210, 215, 220, 222, 225, 230, 235, 236, 240]\n    period = 5\n    \n    # Do math calculation to get the answer\n    moving_average = sum(prices[-period:]) / period\n    answer = round(moving_average, 2)\n    \n    # return answer\n    return answer\n"
+  },
+  "digest": "b751bee8c52508f8cf30db5a30fc828f1a05efbbbcf4d5bf1e51aa87df7d5225"
+}

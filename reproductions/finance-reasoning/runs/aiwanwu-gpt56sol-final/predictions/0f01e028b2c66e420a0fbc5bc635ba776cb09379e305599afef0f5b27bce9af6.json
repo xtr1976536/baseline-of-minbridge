@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2059",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function validates a credit card number string using the Luhn checksum algorithm and returns a boolean indicating whether the number is valid?",
+        "usage": {
+          "prompt_tokens": 5036,
+          "completion_tokens": 29,
+          "total_tokens": 5065,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14736,
+          "completion_tokens": 281,
+          "total_tokens": 15017,
+          "prompt_tokens_details": {
+            "cached_tokens": 10215
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 184
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    number = \"4532015112830365\"\n    total = 0\n    parity = len(number) % 2\n\n    # Do math calculation to get the answer\n    for i, digit in enumerate(number):\n        value = int(digit)\n        if i % 2 == parity:\n            value *= 2\n            if value > 9:\n                value -= 9\n        total += value\n\n    answer = total % 10 == 0\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5015,
+          "completion_tokens": 171,
+          "total_tokens": 5186,
+          "completion_tokens_details": {
+            "reasoning_tokens": 44
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2208",
+        "score": 2.026693344116211
+      },
+      {
+        "function_id": "article-2646",
+        "score": 1.466935634613037
+      },
+      {
+        "function_id": "article-1431",
+        "score": 1.3297200202941895
+      },
+      {
+        "function_id": "article-222",
+        "score": 1.305193305015564
+      },
+      {
+        "function_id": "article-910",
+        "score": 1.2766573429107666
+      },
+      {
+        "function_id": "article-908",
+        "score": 1.2618420124053955
+      },
+      {
+        "function_id": "article-1354",
+        "score": 1.243943214416504
+      },
+      {
+        "function_id": "article-1775",
+        "score": 1.2390457391738892
+      },
+      {
+        "function_id": "article-909",
+        "score": 1.2213566303253174
+      },
+      {
+        "function_id": "article-1415",
+        "score": 1.220409631729126
+      },
+      {
+        "function_id": "article-1416",
+        "score": 1.1628820896148682
+      },
+      {
+        "function_id": "article-2221",
+        "score": 1.1613826751708984
+      },
+      {
+        "function_id": "article-2397",
+        "score": 1.1611039638519287
+      },
+      {
+        "function_id": "article-1399",
+        "score": 1.158576488494873
+      },
+      {
+        "function_id": "article-3012",
+        "score": 1.1584537029266357
+      },
+      {
+        "function_id": "article-1942",
+        "score": 1.1564369201660156
+      },
+      {
+        "function_id": "article-979",
+        "score": 1.1292250156402588
+      },
+      {
+        "function_id": "article-1926",
+        "score": 1.1245384216308594
+      },
+      {
+        "function_id": "article-2997",
+        "score": 1.122945785522461
+      },
+      {
+        "function_id": "article-1812",
+        "score": 1.122806191444397
+      },
+      {
+        "function_id": "article-2130",
+        "score": 1.1122854948043823
+      },
+      {
+        "function_id": "article-1241",
+        "score": 1.1094820499420166
+      },
+      {
+        "function_id": "article-85",
+        "score": 1.1040904521942139
+      },
+      {
+        "function_id": "article-2446",
+        "score": 1.1036901473999023
+      },
+      {
+        "function_id": "article-1238",
+        "score": 1.1028962135314941
+      },
+      {
+        "function_id": "article-537",
+        "score": 1.1021008491516113
+      },
+      {
+        "function_id": "article-3107",
+        "score": 1.097271203994751
+      },
+      {
+        "function_id": "article-2107",
+        "score": 1.0968167781829834
+      },
+      {
+        "function_id": "article-221",
+        "score": 1.0964887142181396
+      },
+      {
+        "function_id": "article-1111",
+        "score": 1.0925941467285156
+      }
+    ],
+    "selected_ids": [
+      "article-2208"
+    ],
+    "status": "ok",
+    "answer": false,
+    "code": "def solution():\n    # Define variables name and value\n    number = \"4532015112830365\"\n    total = 0\n    parity = len(number) % 2\n\n    # Do math calculation to get the answer\n    for i, digit in enumerate(number):\n        value = int(digit)\n        if i % 2 == parity:\n            value *= 2\n            if value > 9:\n                value -= 9\n        total += value\n\n    answer = total % 10 == 0\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "8e53ce03e5e0591338694c5f6b2092b19828aff79aa9477132bacf9ca6a88c45"
+}

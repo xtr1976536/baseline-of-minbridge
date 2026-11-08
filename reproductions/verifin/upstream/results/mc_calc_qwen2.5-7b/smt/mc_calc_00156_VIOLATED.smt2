@@ -1,0 +1,54 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_liabilities_current_fy2025 Real)
+(declare-const accounts_payable_and_accrued_liabilities_current_fy2025 Real)
+(declare-const debt_current_fy2025 Real)
+
+(assert (! (= accounts_payable_and_accrued_liabilities_current_fy2025 25903.0) :named evidence_accounts_payable))
+(assert (! (= debt_current_fy2025 6861.0) :named evidence_debt))
+
+(assert (! (= computed_liabilities_current_fy2025 (+ accounts_payable_and_accrued_liabilities_current_fy2025 debt_current_fy2025)) :named formula_liabilities_current_fy2025))
+
+(assert (! (or (> accounts_payable_and_accrued_liabilities_current_fy2025 0) (< accounts_payable_and_accrued_liabilities_current_fy2025 0)) :named denom_nonzero_accounts_payable))
+(assert (! (or (> debt_current_fy2025 0) (< debt_current_fy2025 0)) :named denom_nonzero_debt))
+
+(assert (! (<= (- computed_liabilities_current_fy2025 326.0) 0.01) :named claim_upper))
+(assert (! (<= (- 326.0 computed_liabilities_current_fy2025) 0.01) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_pep_AccruedMarketplaceSpending_instant_2025_12_27_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AccountsPayableAndAccruedLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_27_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AccruedEmployeeBenefitsCurrent_instant_2025_12_27_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_DebtCurrent_instant_2025_12_27_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_DividendsPayableCurrent_instant_2025_12_27_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2025_12_27_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_pep_AccruedMarketplaceSpending_instant_2025_12_27_unit_USD_dims_none 3512) :named evidence_xbrl_fact_pep_AccruedMarketplaceSpending_instant_2025_12_27_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_27_unit_USD_dims_none 11704) :named evidence_xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_27_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_AccruedEmployeeBenefitsCurrent_instant_2025_12_27_unit_USD_dims_none 2230) :named evidence_xbrl_fact_us_gaap_AccruedEmployeeBenefitsCurrent_instant_2025_12_27_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_DividendsPayableCurrent_instant_2025_12_27_unit_USD_dims_none 1967) :named evidence_xbrl_fact_us_gaap_DividendsPayableCurrent_instant_2025_12_27_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none 32764) :named evidence_xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2025_12_27_unit_USD_dims_none 719) :named evidence_xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2025_12_27_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none 5771) :named evidence_xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= accounts_payable_and_accrued_liabilities_current_fy2025 xbrl_fact_us_gaap_AccountsPayableAndAccruedLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none) :named xbrl_bind_accounts_payable_and_accrued_liabilities_current_fy2025_edgar_2025_12_27_0000077476_26_000007))
+(assert (! (= xbrl_fact_us_gaap_AccountsPayableAndAccruedLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none 25903) :named xbrl_instance_accounts_payable_and_accrued_liabilities_current_fy2025))
+(assert (! (= debt_current_fy2025 xbrl_fact_us_gaap_DebtCurrent_instant_2025_12_27_unit_USD_dims_none) :named xbrl_bind_debt_current_fy2025_edgar_2025_12_27_0000077476_26_000007))
+(assert (! (= xbrl_fact_us_gaap_DebtCurrent_instant_2025_12_27_unit_USD_dims_none 6861) :named xbrl_instance_debt_current_fy2025))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none (+ xbrl_fact_us_gaap_DebtCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_AccountsPayableAndAccruedLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none)) 1.5) :named xbrl_calc_13_530985866_LiabilitiesCurrent_c_23_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none (+ xbrl_fact_us_gaap_DebtCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_AccountsPayableAndAccruedLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none)) (- 1.5)) :named xbrl_calc_13_530985866_LiabilitiesCurrent_c_23_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_AccountsPayableAndAccruedLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none (+ xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_pep_AccruedMarketplaceSpending_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_DividendsPayableCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_AccruedEmployeeBenefitsCurrent_instant_2025_12_27_unit_USD_dims_none)) 3.5) :named xbrl_calc_53_766609587_AccountsPayableAndAccruedLiabilitiesCurrent_c_23_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_AccountsPayableAndAccruedLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none (+ xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_OperatingLeaseLiabilityCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_pep_AccruedMarketplaceSpending_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_DividendsPayableCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_27_unit_USD_dims_none xbrl_fact_us_gaap_AccruedEmployeeBenefitsCurrent_instant_2025_12_27_unit_USD_dims_none)) (- 3.5)) :named xbrl_calc_53_766609587_AccountsPayableAndAccruedLiabilitiesCurrent_c_23_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

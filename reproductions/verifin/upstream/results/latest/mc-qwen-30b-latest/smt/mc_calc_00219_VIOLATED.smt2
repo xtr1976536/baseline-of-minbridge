@@ -1,0 +1,64 @@
+(set-logic QF_NRA)
+(set-option :produce-unsat-cores true)
+(set-option :produce-models true)
+
+(declare-const computed_liabilities_current_fy2025 Real)
+(declare-const accounts_payable_current_fy2025 Real)
+(declare-const accrued_income_taxes_current_fy2025 Real)
+(declare-const employee_related_liabilities_current_fy2025 Real)
+(declare-const long_term_debt_current_fy2025 Real)
+(declare-const other_liabilities_current_fy2025 Real)
+
+(assert (! (= accounts_payable_current_fy2025 756) :named evidence_accounts_payable_current_fy2025))
+(assert (! (= accrued_income_taxes_current_fy2025 67) :named evidence_accrued_income_taxes_current_fy2025))
+(assert (! (= employee_related_liabilities_current_fy2025 829) :named evidence_employee_related_liabilities_current_fy2025))
+(assert (! (= long_term_debt_current_fy2025 500) :named evidence_long_term_debt_current_fy2025))
+(assert (! (= other_liabilities_current_fy2025 1007) :named evidence_other_liabilities_current_fy2025))
+
+(assert (! (= computed_liabilities_current_fy2025 (+ long_term_debt_current_fy2025 accounts_payable_current_fy2025 employee_related_liabilities_current_fy2025 accrued_income_taxes_current_fy2025 other_liabilities_current_fy2025)) :named formula_liabilities_current_fy2025))
+
+(assert (! (<= (- computed_liabilities_current_fy2025 -3374) 3.3740000000000001) :named claim_upper))
+(assert (! (<= (- -3374 computed_liabilities_current_fy2025) 3.3740000000000001) :named claim_lower))
+
+; EDGAR-companyfacts calculation-linkbase constraints parsed from the filing.
+(declare-const xbrl_fact_txn_AccruedCapitalRelatedExpenditures_instant_2025_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2025_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2025_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2025_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_LongTermDebt_instant_2025_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none Real)
+(declare-const xbrl_fact_us_gaap_OtherSundryLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none Real)
+
+; Redundant XBRL instance facts used only by calculation-linkbase constraints.
+(assert (! (= xbrl_fact_txn_AccruedCapitalRelatedExpenditures_instant_2025_12_31_unit_USD_dims_none 300) :named evidence_xbrl_fact_txn_AccruedCapitalRelatedExpenditures_instant_2025_12_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none 3159) :named evidence_xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2025_12_31_unit_USD_dims_none 13548) :named evidence_xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2025_12_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_LongTermDebt_instant_2025_12_31_unit_USD_dims_none 14050) :named evidence_xbrl_fact_us_gaap_LongTermDebt_instant_2025_12_31_unit_USD_dims_none))
+(assert (! (= xbrl_fact_us_gaap_OtherSundryLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none 707) :named evidence_xbrl_fact_us_gaap_OtherSundryLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none))
+
+; IR-to-EDGAR-companyfacts bindings and independent instance-value witnesses.
+(assert (! (= long_term_debt_current_fy2025 xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2025_12_31_unit_USD_dims_none) :named xbrl_bind_long_term_debt_current_fy2025_edgar_2025_12_31_0000097476_26_000059))
+(assert (! (= xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2025_12_31_unit_USD_dims_none 500) :named xbrl_instance_long_term_debt_current_fy2025))
+(assert (! (= accounts_payable_current_fy2025 xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_31_unit_USD_dims_none) :named xbrl_bind_accounts_payable_current_fy2025_edgar_2025_12_31_0000097476_26_000059))
+(assert (! (= xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_31_unit_USD_dims_none 756) :named xbrl_instance_accounts_payable_current_fy2025))
+(assert (! (= employee_related_liabilities_current_fy2025 xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none) :named xbrl_bind_employee_related_liabilities_current_fy2025_edgar_2025_12_31_0000097476_26_000059))
+(assert (! (= xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none 829) :named xbrl_instance_employee_related_liabilities_current_fy2025))
+(assert (! (= accrued_income_taxes_current_fy2025 xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2025_12_31_unit_USD_dims_none) :named xbrl_bind_accrued_income_taxes_current_fy2025_edgar_2025_12_31_0000097476_26_000059))
+(assert (! (= xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2025_12_31_unit_USD_dims_none 67) :named xbrl_instance_accrued_income_taxes_current_fy2025))
+(assert (! (= other_liabilities_current_fy2025 xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none) :named xbrl_bind_other_liabilities_current_fy2025_edgar_2025_12_31_0000097476_26_000059))
+(assert (! (= xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none 1007) :named xbrl_instance_other_liabilities_current_fy2025))
+
+; R constraints from filing calculationArc summation-item relationships.
+(assert (! (<= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none)) 3) :named xbrl_calc_14_569867223_LiabilitiesCurrent_c_6_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_LiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccountsPayableCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_EmployeeRelatedLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_AccruedIncomeTaxesCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none)) (- 3)) :named xbrl_calc_14_569867223_LiabilitiesCurrent_c_6_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_LongTermDebt_instant_2025_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2025_12_31_unit_USD_dims_none)) 6) :named xbrl_calc_46_713236993_LongTermDebt_c_6_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_LongTermDebt_instant_2025_12_31_unit_USD_dims_none (+ xbrl_fact_us_gaap_LongTermDebtCurrent_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_LongTermDebtNoncurrent_instant_2025_12_31_unit_USD_dims_none)) (- 6)) :named xbrl_calc_46_713236993_LongTermDebt_c_6_lower))
+(assert (! (<= (- xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none (+ xbrl_fact_txn_AccruedCapitalRelatedExpenditures_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_OtherSundryLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none)) 1.5) :named xbrl_calc_54_625331665_OtherLiabilitiesCurrent_c_6_upper))
+(assert (! (>= (- xbrl_fact_us_gaap_OtherLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none (+ xbrl_fact_txn_AccruedCapitalRelatedExpenditures_instant_2025_12_31_unit_USD_dims_none xbrl_fact_us_gaap_OtherSundryLiabilitiesCurrent_instant_2025_12_31_unit_USD_dims_none)) (- 1.5)) :named xbrl_calc_54_625331665_OtherLiabilitiesCurrent_c_6_lower))
+
+(check-sat)
+(get-unsat-core)
+(get-model)

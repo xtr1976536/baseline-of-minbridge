@@ -1,0 +1,21 @@
+{
+  "identity": "5455f66391b00961449f695298560436f2d81727f9fb773a802ff8327951ad22",
+  "response_digest": "c55a67de28e0424c2ba43ec948b6d717b1646a45fd8c01b1e1a7037061c82edc",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    annual_payment = 10_000\n    interest_rate = 0.08\n    periods = 5\n    residual_value = 15_000\n\n    # Do math calculation to get the answer\n    present_value = sum(\n        annual_payment / ((1 + interest_rate) ** year)\n        for year in range(1, periods + 1)\n    )\n    present_value += residual_value / ((1 + interest_rate) ** periods)\n    answer = round(present_value)\n\n    # Return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5647,
+      "completion_tokens": 231,
+      "total_tokens": 5878,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 100
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

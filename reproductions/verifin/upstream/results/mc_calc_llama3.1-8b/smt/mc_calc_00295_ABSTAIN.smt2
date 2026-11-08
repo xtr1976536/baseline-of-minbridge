@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, grounding_failed:payments_related_to_tax_withholding_for_share_based_compensation_fy2026)

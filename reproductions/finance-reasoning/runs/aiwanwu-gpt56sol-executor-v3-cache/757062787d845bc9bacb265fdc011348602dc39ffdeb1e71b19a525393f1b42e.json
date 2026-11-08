@@ -1,0 +1,18 @@
+{
+  "identity": "757062787d845bc9bacb265fdc011348602dc39ffdeb1e71b19a525393f1b42e",
+  "response_digest": "d6499b6a296786109dc479d733ac1497bcdfe9f49afc67d605d3de194a65411a",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 5_000_000\n    annual_interest_rate = 0.058\n    loan_term_years = 10\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    monthly_payment = (\n        principal * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    # Return the initial monthly mortgage repayment rounded to three decimals\n    answer = round(monthly_payment, 3)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5661,
+      "completion_tokens": 265,
+      "total_tokens": 5926,
+      "completion_tokens_details": {
+        "reasoning_tokens": 118
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

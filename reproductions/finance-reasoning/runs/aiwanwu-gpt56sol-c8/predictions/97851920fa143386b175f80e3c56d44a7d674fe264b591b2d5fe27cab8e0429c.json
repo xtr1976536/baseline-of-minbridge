@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2214",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Pearson correlation coefficient between two paired, equal-length series of daily stock closing prices, measuring the strength and direction of their linear relationship and returning a decimal result that can be rounded to four decimal places?",
+        "usage": {
+          "prompt_tokens": 5060,
+          "completion_tokens": 47,
+          "total_tokens": 5107,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15129,
+          "completion_tokens": 219,
+          "total_tokens": 15348,
+          "completion_tokens_details": {
+            "reasoning_tokens": 122
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_a = [150, 152, 149, 153, 151]\n    stock_b = [45, 47, 44, 48, 46]\n\n    # Do math calculation to get the answer\n    n = len(stock_a)\n    sum_a = sum(stock_a)\n    sum_b = sum(stock_b)\n    sum_a_squared = sum(value ** 2 for value in stock_a)\n    sum_b_squared = sum(value ** 2 for value in stock_b)\n    sum_ab = sum(a * b for a, b in zip(stock_a, stock_b))\n\n    numerator = n * sum_ab - sum_a * sum_b\n    denominator = (\n        (n * sum_a_squared - sum_a ** 2)\n        * (n * sum_b_squared - sum_b ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 4)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 6009,
+          "completion_tokens": 268,
+          "total_tokens": 6277,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 43
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-176",
+        "score": 1.7776637077331543
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.747283935546875
+      },
+      {
+        "function_id": "article-1960",
+        "score": 1.6883974075317383
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.6068801879882812
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6020026206970215
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5504851341247559
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.5395773649215698
+      },
+      {
+        "function_id": "article-274",
+        "score": 1.5385966300964355
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.529158115386963
+      },
+      {
+        "function_id": "article-2873",
+        "score": 1.5264532566070557
+      },
+      {
+        "function_id": "article-2450",
+        "score": 1.525123119354248
+      },
+      {
+        "function_id": "article-2875",
+        "score": 1.5197877883911133
+      },
+      {
+        "function_id": "article-273",
+        "score": 1.5186015367507935
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.517911672592163
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.5145397186279297
+      },
+      {
+        "function_id": "article-2279",
+        "score": 1.5145310163497925
+      },
+      {
+        "function_id": "article-2128",
+        "score": 1.5142539739608765
+      },
+      {
+        "function_id": "article-2126",
+        "score": 1.5128142833709717
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.511087417602539
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.505345344543457
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.503665566444397
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.499016284942627
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.4939193725585938
+      },
+      {
+        "function_id": "article-2582",
+        "score": 1.4929213523864746
+      },
+      {
+        "function_id": "article-3024",
+        "score": 1.4903786182403564
+      },
+      {
+        "function_id": "article-1038",
+        "score": 1.4889507293701172
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.4863536357879639
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.484269618988037
+      },
+      {
+        "function_id": "article-851",
+        "score": 1.4827159643173218
+      },
+      {
+        "function_id": "article-3065",
+        "score": 1.4800059795379639
+      }
+    ],
+    "selected_ids": [
+      "article-176",
+      "article-177",
+      "article-1960"
+    ],
+    "status": "ok",
+    "answer": 1.0,
+    "code": "def solution():\n    # Define variables name and value\n    stock_a = [150, 152, 149, 153, 151]\n    stock_b = [45, 47, 44, 48, 46]\n\n    # Do math calculation to get the answer\n    n = len(stock_a)\n    sum_a = sum(stock_a)\n    sum_b = sum(stock_b)\n    sum_a_squared = sum(value ** 2 for value in stock_a)\n    sum_b_squared = sum(value ** 2 for value in stock_b)\n    sum_ab = sum(a * b for a, b in zip(stock_a, stock_b))\n\n    numerator = n * sum_ab - sum_a * sum_b\n    denominator = (\n        (n * sum_a_squared - sum_a ** 2)\n        * (n * sum_b_squared - sum_b ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 4)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "7d1f0ae52a9564aac3ac3fac5cfd29d7a64d72f1f0b2e570a0829e332eb9cf22"
+}

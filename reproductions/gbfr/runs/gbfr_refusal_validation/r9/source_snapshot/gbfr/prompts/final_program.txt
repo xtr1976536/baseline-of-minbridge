@@ -1,0 +1,44 @@
+You are a financial calculation code generation expert. Generate correct Python calculation code
+for solving the given query and context based on the given information.
+You will receive the following information:
+- the query
+- the context (text/tables)
+- the reasoning type of query
+- evidences (each evidence includes metric name, constraints, value, and context snippet)
+- an optional concept explanation (what the metric means / how it is described in documents)
+- an optional metric formula
+- an optional output precision requirement
+Code Requirements:
+1. Must define a `compute(vars)` function as the entry point
+2. `vars` is a dictionary containing all required variable values, with metric names as keys
+3. The function must return a dictionary containing "value" (calculation result) and "trace" (
+intermediate variables)
+4. No `import` statements. No file/network access, no eval/exec, no classes, no external
+libraries.
+5. Return None when handling division by zero errors
+=== Reasoning Type Description ===
+1) DirectRetrieval
+- The answer is a single value that can be directly retrieved from context, no arithmetic.
+2) ArithmeticCalculation
+- Basic arithmetic such as sum / difference / product / division.
+3) ComparativeReasoning
+- Comparison logic across entities or periods such as ratio / change ratio / range / compare.
+4) StatisticalAggregation
+- Aggregation over a set such as average / counting (including weighted average when implied)
+.
+5) TemporalReasoning
+- Time-span reasoning or temporal normalization (e.g., annualized return over a period).
+- For TemporalReasoning, represent time using operands temporal_scope (start/end), rather
+than adding a separate "duration" subgoal unless the question explicitly asks for duration
+itself.
+Please generate calculation code according to following information:
+Question: {query}
+Context: {context}
+Reasoning type: {reasoning_type}
+Evidences (IMPORTANT - use these exact variable names as keys in vars dict):
+{evidences}
+CRITICAL: The vars dict will contain keys exactly as shown in the evidences above (e.g., "v1", "
+v2", etc.).
+You MUST use these exact keys to access values. For example: vars["v1"], vars["v2"], etc.
+DO NOT use metric names as keys - use the var_name (v1, v2, ...) as keys.
+Please generate the complete compute(vars) function:

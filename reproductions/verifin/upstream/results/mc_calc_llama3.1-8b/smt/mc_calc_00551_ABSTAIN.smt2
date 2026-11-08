@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:proceeds_from_sale_maturity_and_collection_of_shortterm_investments_fy2024)

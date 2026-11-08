@@ -1,0 +1,18 @@
+{
+  "identity": "5206abd050851516b20efaa2ddf7e53018cb220bbff3d98ee67c023a2f9f29f5",
+  "response_digest": "238227ff48e355ee2d27ae4dbcd450df781852ceccd3003bb8103887cfe3e235",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    ebit = 1106\n    tax_rate = 0.32\n    depreciation = 243\n    fixed_capital_investment = 535\n\n    accounts_receivable_2012 = 413\n    accounts_receivable_2011 = 417\n    inventories_2012 = 709\n    inventories_2011 = 638\n    other_current_assets_2012 = 136\n    other_current_assets_2011 = 123\n    current_liabilities_2012 = 2783\n    current_liabilities_2011 = 2678\n\n    # Do math calculation to get the answer\n    operating_current_assets_change = (\n        (accounts_receivable_2012 + inventories_2012 + other_current_assets_2012)\n        - (accounts_receivable_2011 + inventories_2011 + other_current_assets_2011)\n    )\n    current_liabilities_change = current_liabilities_2012 - current_liabilities_2011\n    investment_in_working_capital = (\n        operating_current_assets_change - current_liabilities_change\n    )\n\n    fcff = (\n        ebit * (1 - tax_rate)\n        + depreciation\n        - fixed_capital_investment\n        - investment_in_working_capital\n    )\n\n    # return answer\n    return round(fcff, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5884,
+      "completion_tokens": 517,
+      "total_tokens": 6401,
+      "completion_tokens_details": {
+        "reasoning_tokens": 219
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "method": "table5-gpt4o-instructed-function-judge-pot-v1",
+  "data_dir": "data",
+  "output_dir": "runs/new-gpt56sol-executor-v3",
+  "cache_dir": "runs/new-gpt56sol-executor-v3-cache",
+  "example_concurrency": 8,
+  "execution_timeout_seconds": 10,
+  "retriever": {
+    "model": "facebook/contriever-msmarco",
+    "revision": "abe8c1493371369031bcb1e02acb754cf4e162fa",
+    "pooling": "masked_mean",
+    "similarity": "inner_product",
+    "max_length": 512,
+    "batch_size": 16,
+    "cpu_threads": 4,
+    "top_k": 30,
+    "selected_k": 3
+  },
+  "llm": {
+    "model": "gpt-5.6-sol",
+    "base_url": "https://aiwanwu.cc/v1",
+    "base_url_env": "FR_GPT56SOL_BASE_URL",
+    "api_key_env": "FR_GPT56SOL_API_KEY",
+    "concurrency": 8,
+    "requests_per_minute": 30,
+    "timeout_seconds": 180,
+    "retries": 3,
+    "parameters": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "max_tokens": 8192
+    }
+  },
+  "backbone_note": "User explicitly requested gpt-5.6-sol on 2026-11-06. Paper used gpt-4o-2024-11-20; do not claim identical-backbone replication.",
+  "judge_protocol": "candidate-ids-v2",
+  "rerun_policy": "Fresh three-stage inference for all 238 questions. Units come only from explicit original question instructions. No previous response reuse, no gold-guided changes, no answer-dependent or format-repair retries.",
+  "execution_protocol": "question-unit-aware-v3"
+}

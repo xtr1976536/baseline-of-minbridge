@@ -1,0 +1,21 @@
+{
+  "identity": "730c2dcaf98b46978db865a837fbdd67663fd02eb725a2408f0e7623b99a57f0",
+  "response_digest": "6bea1b7c7a6520c92d6b490dfd01e432f397e5117870db0809eadc91d1b1a1ef",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    purchase_price = 89.4535\n    par_value = 100\n    annual_coupon_rate = 0.06\n    reinvestment_rate = 0.085\n    holding_period_years = 4\n    remaining_years_at_sale = 1\n\n    # Do math calculation to get the answer\n    annual_coupon = par_value * annual_coupon_rate\n\n    future_value_of_coupons = sum(\n        annual_coupon * (1 + reinvestment_rate) ** periods\n        for periods in range(holding_period_years)\n    )\n\n    sale_price = (par_value + annual_coupon) / (\n        (1 + reinvestment_rate) ** remaining_years_at_sale\n    )\n\n    ending_value = future_value_of_coupons + sale_price\n    realized_yield = (ending_value / purchase_price) ** (\n        1 / holding_period_years\n    ) - 1\n\n    # return answer\n    return round(realized_yield * 100, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5501,
+      "completion_tokens": 561,
+      "total_tokens": 6062,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 331
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

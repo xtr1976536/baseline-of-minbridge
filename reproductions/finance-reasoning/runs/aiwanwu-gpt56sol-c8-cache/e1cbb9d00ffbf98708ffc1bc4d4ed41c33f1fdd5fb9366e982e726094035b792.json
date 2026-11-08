@@ -1,0 +1,21 @@
+{
+  "identity": "e1cbb9d00ffbf98708ffc1bc4d4ed41c33f1fdd5fb9366e982e726094035b792",
+  "response_digest": "0b859ff75d00f13b481e7ac4ceef5caf890adb8db31c45cc968298cdd2cd6442",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    loan_amount = 25000\n    annual_interest_rate = 0.05\n    loan_term_years = 5\n\n    # Do math calculation to get the answer\n    monthly_interest_rate = annual_interest_rate / 12\n    number_of_payments = loan_term_years * 12\n\n    monthly_payment = (\n        loan_amount * monthly_interest_rate\n        / (1 - (1 + monthly_interest_rate) ** -number_of_payments)\n    )\n\n    # return answer\n    return round(monthly_payment, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5579,
+      "completion_tokens": 180,
+      "total_tokens": 5759,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 47
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

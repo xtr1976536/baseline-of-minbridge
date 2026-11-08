@@ -1,0 +1,31 @@
+{
+  "request_hash": "7b690ac53ded10c3639655e70f893ba7e84cef35c4b923cea3db2b953d7d79c4",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nHow much was the Real change in Sales for AMCOR in FY 2023 vs FY 2022, if we exclude the impact of FX movement, passthrough costs and one-off items?\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"real_change_in_sales\",\n  \"facts\": [\n    {\n      \"name\": \"real_change_in_sales\",\n      \"aliases\": [\n        \"Real change in sales\",\n        \"real sales change\",\n        \"sales change excluding FX\",\n        \"sales change excluding foreign exchange\",\n        \"sales change excluding pass-through costs\",\n        \"sales change excluding one-off items\",\n        \"organic sales growth\",\n        \"underlying sales growth\"\n      ],\n      \"period\": \"FY 2023 vs FY 2022\",\n      \"statement\": \"proxy\"\n    }\n  ],\n  \"reason\": \"The question asks for a reported real change in sales metric that excludes foreign exchange movements, pass-through costs, and one-off items, so only that directly reported metric is needed.\"\n}",
+  "usage": {
+    "prompt_tokens": 4718,
+    "completion_tokens": 278,
+    "total_tokens": 4996,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 111
+    }
+  },
+  "response_id": "resp_0de0fe4ed18d59bc016aedb27806c487d1ba93569d624a5c32",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

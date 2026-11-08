@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:marketable_securities_current_fy2023,cash_and_cash_equivalents_at_carrying_value_fy2023,inventory_net_fy2023,accounts_receivable_net_current_fy2023)

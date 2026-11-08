@@ -1,0 +1,18 @@
+{
+  "identity": "9f4f21115b908943a714470edc6fe39f605b3b689f5f2352c0266edae6b8c79e",
+  "response_digest": "19c46055d991a86e4fc05baf18489804a461d904a13c7a4a89679dc9053f8c5d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    monthly_contribution = 500\n    annual_interest_rate = 0.06\n    months_per_year = 12\n    years = 10\n    monthly_interest_rate = annual_interest_rate / months_per_year\n    number_of_periods = years * months_per_year\n    annuity_due = True\n\n    # Do math calculation to get the answer\n    if monthly_interest_rate == 0:\n        future_value = monthly_contribution * number_of_periods\n    else:\n        future_value = (\n            monthly_contribution\n            * (((1 + monthly_interest_rate) ** number_of_periods - 1)\n               / monthly_interest_rate)\n        )\n\n        if annuity_due:\n            future_value *= 1 + monthly_interest_rate\n\n    # return answer\n    return round(future_value)\n```",
+    "usage": {
+      "prompt_tokens": 5702,
+      "completion_tokens": 336,
+      "total_tokens": 6038,
+      "completion_tokens_details": {
+        "reasoning_tokens": 151
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

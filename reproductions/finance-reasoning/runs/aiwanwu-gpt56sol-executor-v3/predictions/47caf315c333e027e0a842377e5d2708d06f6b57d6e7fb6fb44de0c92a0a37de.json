@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2019",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the cumulative Volume Price Trend (VPT) for a stock from sequential closing prices and trading volumes by adding each day’s volume weighted by its percentage price change, and returns the value at the end of the specified period?",
+        "usage": {
+          "prompt_tokens": 5062,
+          "completion_tokens": 51,
+          "total_tokens": 5113
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14992,
+          "completion_tokens": 78,
+          "total_tokens": 15070,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 60
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    prices = [120, 123, 121, 125, 130]\n    volumes = [1500, 1600, 1550, 1700, 1800]\n\n    # Calculate the cumulative Volume Price Trend\n    vpt = 0\n    for i in range(1, len(prices)):\n        price_change = (prices[i] - prices[i - 1]) / prices[i - 1]\n        vpt += price_change * volumes[i]\n\n    # Return the VPT at the end of the fifth day\n    return round(vpt, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5086,
+          "completion_tokens": 273,
+          "total_tokens": 5359,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 131
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-333",
+        "score": 2.036702871322632,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-330",
+        "score": 1.7614037990570068,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2070",
+        "score": 1.7563729286193848,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-340",
+        "score": 1.7381067276000977,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-334",
+        "score": 1.69675874710083,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3014",
+        "score": 1.691960334777832,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2071",
+        "score": 1.6628613471984863,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2883",
+        "score": 1.6460652351379395,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.6441320180892944,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.637414574623108,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-331",
+        "score": 1.630918264389038,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1499",
+        "score": 1.6021066904067993,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1325",
+        "score": 1.596490502357483,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1234",
+        "score": 1.5893566608428955,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2075",
+        "score": 1.5884966850280762,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.578048586845398,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1285",
+        "score": 1.5780079364776611,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.575603723526001,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.5745388269424438,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.5719678401947021,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-761",
+        "score": 1.5647062063217163,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1619",
+        "score": 1.5637147426605225,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.562418818473816,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1324",
+        "score": 1.546656608581543,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-940",
+        "score": 1.5448848009109497,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.5401774644851685,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1935",
+        "score": 1.5371288061141968,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.5312950611114502,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-271",
+        "score": 1.528928518295288,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1329",
+        "score": 1.5281774997711182,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-333"
+    ],
+    "status": "ok",
+    "answer": 143.0,
+    "code": "def solution():\n    # Define variables\n    prices = [120, 123, 121, 125, 130]\n    volumes = [1500, 1600, 1550, 1700, 1800]\n\n    # Calculate the cumulative Volume Price Trend\n    vpt = 0\n    for i in range(1, len(prices)):\n        price_change = (prices[i] - prices[i - 1]) / prices[i - 1]\n        vpt += price_change * volumes[i]\n\n    # Return the VPT at the end of the fifth day\n    return round(vpt, 2)\n"
+  },
+  "digest": "83db32c21f377a9f50bf15d5e0407a5dd5ac4252770c73a556f8b91b18bd389a"
+}

@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2220",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the annualized yield or spot rate of a zero-coupon bond from its current market price, par value, and years to maturity, assuming annual compounding and no coupon payments, and returns the rate as a percentage?",
+        "usage": {
+          "prompt_tokens": 5020,
+          "completion_tokens": 51,
+          "total_tokens": 5071,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15187,
+          "completion_tokens": 924,
+          "total_tokens": 16111,
+          "prompt_tokens_details": {
+            "cached_tokens": 10484
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 827
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    par_value = 1000\n    market_price = 850\n    years_to_maturity = 5\n\n    # Calculate the annual zero-coupon rate as a percentage\n    zero_coupon_rate = (\n        (par_value / market_price) ** (1 / years_to_maturity) - 1\n    ) * 100\n    answer = round(zero_coupon_rate, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5690,
+          "completion_tokens": 198,
+          "total_tokens": 5888,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 86
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1953",
+        "score": 2.087174415588379
+      },
+      {
+        "function_id": "article-1420",
+        "score": 2.0346438884735107
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.9962050914764404
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.9961692094802856
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.9615727663040161
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.9609670639038086
+      },
+      {
+        "function_id": "article-1233",
+        "score": 1.951629638671875
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.9325690269470215
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.9074490070343018
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.8913930654525757
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.8682254552841187
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.8662172555923462
+      },
+      {
+        "function_id": "article-1208",
+        "score": 1.8604717254638672
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.827449083328247
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.8252677917480469
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.8080534934997559
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.8076574802398682
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.8047425746917725
+      },
+      {
+        "function_id": "article-1432",
+        "score": 1.8008010387420654
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7986012697219849
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.7969913482666016
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.796667218208313
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.7949538230895996
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7934472560882568
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.7872463464736938
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.7812538146972656
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.7774553298950195
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.7677841186523438
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.7648321390151978
+      },
+      {
+        "function_id": "article-1726",
+        "score": 1.7632931470870972
+      }
+    ],
+    "selected_ids": [
+      "article-1953",
+      "article-1420",
+      "article-1233"
+    ],
+    "status": "ok",
+    "answer": 3.3,
+    "code": "def solution():\n    # Define variables name and value\n    par_value = 1000\n    market_price = 850\n    years_to_maturity = 5\n\n    # Calculate the annual zero-coupon rate as a percentage\n    zero_coupon_rate = (\n        (par_value / market_price) ** (1 / years_to_maturity) - 1\n    ) * 100\n    answer = round(zero_coupon_rate, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "c6a769c7081a78f236a00f32071b9a31ade23561c852d4a9e49eb53c6a2c31ec"
+}

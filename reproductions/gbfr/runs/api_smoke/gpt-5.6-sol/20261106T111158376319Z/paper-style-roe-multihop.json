@@ -1,0 +1,2152 @@
+{
+  "case": {
+    "id": "paper-style-roe-multihop",
+    "question": "Compute Company A's Return on Equity (ROE) for fiscal year 2024 as a percentage, rounded to two decimal places. Use average equity.",
+    "context": "Company A annual report. All financial amounts are in USD millions. Net Profit for fiscal year 2024: 500. Total Equity at the end of fiscal year 2024: 2500. Total Equity at the end of fiscal year 2023: 2200. No other values are reported.",
+    "expected": "answered",
+    "expected_percent": 21.27659574468085
+  },
+  "prediction": {
+    "status": "abstained",
+    "value": null,
+    "meta": {},
+    "precision": "percentage to two decimal places",
+    "trace": {
+      "events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "reasoning_type": "DirectRetrieval",
+            "operator": "sum",
+            "subgoals": [
+              {
+                "metric": "Return on Equity",
+                "constraints": {
+                  "temporal_scope": "fiscal year 2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "percentage"
+                  }
+                }
+              }
+            ],
+            "precision": "percentage to two decimal places"
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Return on Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "percentage"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Return on Equity for fiscal year 2024 is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OMD",
+          "goal": {
+            "metric": "Return on Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "percentage"
+              }
+            }
+          },
+          "paths": [
+            {
+              "id": "paper:2",
+              "direction": "down",
+              "formula": "ROE = Net Income / Average Equity"
+            },
+            {
+              "id": "source:7db2bb737b3785b0b931:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Annual Growth Rate of Common Dividends = Retention Ratio × Return on Equity] to solve for Return on Equity: parent_value/x0"
+            },
+            {
+              "id": "source:baff06762311172b94c5:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Dividend Growth Rate = Retention Ratio × Return on Equity] to solve for Return on Equity: parent_value/x0"
+            },
+            {
+              "id": "source:e41d9667c4aac8f4e0f4:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Dividend Perpetual Growth Rate = Return on Equity × (1 - Dividend Payout Ratio) ÷ [1 - Return on Equity × (1 - Dividend Payout Ratio)]] to solve for Return on Equity: -parent_value/(parent_value*x1 - parent_value + x1 - 1)"
+            },
+            {
+              "id": "source:ac305b2d2768ae8065bc:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Equity Value Added = Beginning Shareholders' Equity × (Return on Equity - Cost of Equity Rate)] to solve for Return on Equity: parent_value/x0 + x2"
+            },
+            {
+              "id": "source:8e40b0a7c1fd31fb96b2:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Expected Dividend Growth Rate = Return on Equity × (1 - Dividend Payout Ratio)] to solve for Return on Equity: -parent_value/(x1 - 1)"
+            },
+            {
+              "id": "source:d3b29188050a028da543:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Expected Dividend Growth Rate = Retention Ratio × Return on Equity] to solve for Return on Equity: parent_value/x0"
+            },
+            {
+              "id": "source:51db89dcee500ee9debc:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Intrinsic Price-to-Book Ratio = (Dividend Payout Ratio × Return on Equity) ÷ (Cost of Equity - Growth Rate)] to solve for Return on Equity: parent_value*(x2 - x3)/x0"
+            },
+            {
+              "id": "source:d3acc467a93dfa62a95e:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Per Share Value = Adjusted Average Price-to-Book Ratio × Return on Equity × 100 × Net Assets Per Share] to solve for Return on Equity: parent_value/(x0*x2*x3)"
+            },
+            {
+              "id": "source:d022b3590e5f8963bfe0:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Price-to-Book Ratio = (Return on Equity × Dividend Payout Ratio × (1 + Growth Rate)) ÷ (Cost of Equity - Growth Rate)] to solve for Return on Equity: parent_value*(-x2 + x3)/(x1*(x2 + 1))"
+            },
+            {
+              "id": "source:8764c325a14c5cf6ccdb:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Shareholders' Equity Growth Rate = Return on Equity × Retention Ratio ÷ (1 - Return on Equity × Retention Ratio)] to solve for Return on Equity: parent_value/(x1*(parent_value + 1))"
+            },
+            {
+              "id": "source:afa669f01569e6991849:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Stable Growth Rate = (Return on Equity × Retention Ratio) ÷ (1 - Return on Equity × Retention Ratio)] to solve for Return on Equity: parent_value/(x1*(parent_value + 1))"
+            },
+            {
+              "id": "source:48dcd19c996b08cf5cb4:inverse:Return on Equity",
+              "direction": "up",
+              "formula": "Rearrange [Sustainable Growth Rate = Retention Ratio × Return on Equity] to solve for Return on Equity: parent_value/x0"
+            }
+          ]
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Annual Growth Rate of Common Dividends",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Annual Growth Rate of Common Dividends is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Dividend Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Dividend Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Dividend Perpetual Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Dividend Perpetual Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported, so no ratio can be calculated."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Equity Value Added",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Equity Value Added is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Expected Dividend Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Expected Dividend Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Intrinsic Price-to-Book Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Intrinsic Price-to-Book Ratio is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Per Share Value",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Per Share Value is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Price-to-Book Ratio",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Price-to-Book Ratio is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Shareholders' Equity Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Shareholders' Equity Growth Rate is not directly stated in the context; only Total Equity values for fiscal years 2024 and 2023 are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Stable Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Stable Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Sustainable Growth Rate",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Sustainable Growth Rate is not directly stated in the context; only Net Profit and Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:7db2bb737b3785b0b931:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Annual Growth Rate of Common Dividends",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:baff06762311172b94c5:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Dividend Growth Rate",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:e41d9667c4aac8f4e0f4:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Dividend Perpetual Growth Rate",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "ratio"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:ac305b2d2768ae8065bc:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Equity Value Added",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:8e40b0a7c1fd31fb96b2:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Expected Dividend Growth Rate",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:d3b29188050a028da543:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Expected Dividend Growth Rate",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:51db89dcee500ee9debc:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Intrinsic Price-to-Book Ratio",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "ratio"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:d3acc467a93dfa62a95e:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Per Share Value",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:d022b3590e5f8963bfe0:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Price-to-Book Ratio",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "ratio"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:8764c325a14c5cf6ccdb:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Shareholders' Equity Growth Rate",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "ratio"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:afa669f01569e6991849:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Stable Growth Rate",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "ratio"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "source:48dcd19c996b08cf5cb4:inverse:Return on Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Sustainable Growth Rate",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Net Income",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved Net Income via alias Net Profit.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 0.99,
+                "constraints": {
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  },
+                  "temporal_scope": "fiscal year 2024"
+                },
+                "context": "Net Profit for fiscal year 2024: 500.",
+                "metric": "Net Income",
+                "observed_meta": {
+                  "currency": "USD",
+                  "scale": "millions",
+                  "unit": null
+                },
+                "value": 500
+              }
+            }
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Average Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Average Equity is not directly stated in the context; only Total Equity values for fiscal years 2024 and 2023 are reported."
+          }
+        },
+        {
+          "operator": "OMD",
+          "goal": {
+            "metric": "Average Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "paths": [
+            {
+              "id": "paper:1",
+              "direction": "down",
+              "formula": "Average Equity = (Initial Equity + Final Equity)/2"
+            },
+            {
+              "id": "paper:2:inverse:Average Equity",
+              "direction": "up",
+              "formula": "Rearrange [ROE = Net Income / Average Equity] to solve for Average Equity: i/parent_value"
+            }
+          ]
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Return on Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Return on Equity is not directly stated in the context; only Net Profit and Total Equity component values are reported."
+          }
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "paper:2:inverse:Average Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Return on Equity",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "ratio"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Initial Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "var_bindings": {},
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Initial Equity is not directly stated in the context; only Total Equity values are reported."
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Final Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved Final Equity via alias Total Equity.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  },
+                  "temporal_scope": "fiscal year 2024"
+                },
+                "context": "Total Equity at the end of fiscal year 2024: 2500.",
+                "metric": "Final Equity",
+                "observed_meta": {
+                  "currency": "USD",
+                  "scale": "millions",
+                  "unit": null
+                },
+                "value": 2500
+              }
+            }
+          }
+        },
+        {
+          "operator": "OMD",
+          "goal": {
+            "metric": "Initial Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "paths": [
+            {
+              "id": "paper:0",
+              "direction": "down",
+              "formula": "Initial Equity = prior-year Final Equity"
+            },
+            {
+              "id": "paper:1:inverse:Initial Equity",
+              "direction": "up",
+              "formula": "Rearrange [Average Equity = (Initial Equity + Final Equity)/2] to solve for Initial Equity: -e + 2*parent_value"
+            }
+          ]
+        },
+        {
+          "operator": "path_pruned",
+          "path_id": "paper:1:inverse:Initial Equity",
+          "reason": "missing_inverse_parent",
+          "goals": [
+            {
+              "metric": "Average Equity",
+              "constraints": {
+                "temporal_scope": "fiscal year 2024",
+                "entity_scope": "Company A",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Final Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2023",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved Final Equity via alias Total Equity.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  },
+                  "temporal_scope": "fiscal year 2023"
+                },
+                "context": "Total Equity at the end of fiscal year 2023: 2200.",
+                "metric": "Final Equity",
+                "observed_meta": {
+                  "currency": "USD",
+                  "scale": "millions",
+                  "unit": null
+                },
+                "value": 2200.0
+              }
+            }
+          }
+        },
+        {
+          "operator": "OPE.metric",
+          "path_id": "paper:0",
+          "program": "def compute(vars):\n    final_equity = vars[\"Final Equity\"]\n    initial_equity = final_equity\n\n    return {\n        \"value\": initial_equity,\n        \"trace\": {\n            \"Final Equity\": final_equity,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"millions\",\n                \"unit\": None\n            }\n        }\n    }",
+          "inputs": {
+            "Final Equity": 2200.0
+          },
+          "execution": {
+            "value": 2200.0,
+            "trace": {
+              "Final Equity": 2200.0,
+              "output_meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          }
+        },
+        {
+          "operator": "Verify",
+          "goal": {
+            "metric": "Initial Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "candidate_paths": [
+            {
+              "path_id": "paper:0",
+              "direction": "down",
+              "goal": {
+                "metric": "Initial Equity",
+                "constraints": {
+                  "temporal_scope": "fiscal year 2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  }
+                }
+              },
+              "subgoals": [
+                {
+                  "metric": "Final Equity",
+                  "constraints": {
+                    "temporal_scope": "fiscal year 2023",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": null
+                    }
+                  }
+                }
+              ],
+              "evidence": {
+                "e": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"fiscal year 2023\"}, \"metric\": \"Final Equity\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Final Equity",
+                        "constraints": {
+                          "temporal_scope": "fiscal year 2023",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "confidence": 1.0,
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          },
+                          "temporal_scope": "fiscal year 2023"
+                        },
+                        "context": "Total Equity at the end of fiscal year 2023: 2200.",
+                        "metric": "Final Equity",
+                        "observed_meta": {
+                          "currency": "USD",
+                          "scale": "millions",
+                          "unit": null
+                        },
+                        "value": 2200.0
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "Total Equity at the end of fiscal year 2023: 2200."
+                    ],
+                    "value": 2200.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                ]
+              },
+              "computation": {
+                "formula": "Initial Equity = prior-year Final Equity",
+                "symbolic_rhs": "e",
+                "program": "def compute(vars):\n    final_equity = vars[\"Final Equity\"]\n    initial_equity = final_equity\n\n    return {\n        \"value\": initial_equity,\n        \"trace\": {\n            \"Final Equity\": final_equity,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"millions\",\n                \"unit\": None\n            }\n        }\n    }",
+                "inputs": {
+                  "Final Equity": 2200.0
+                },
+                "trace": {
+                  "Final Equity": 2200.0,
+                  "output_meta": {
+                    "currency": "USD",
+                    "scale": "millions",
+                    "unit": null
+                  }
+                }
+              },
+              "value": 2200.0,
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              },
+              "verification": {
+                "decision": "VALID",
+                "justification": "The prior-year Final Equity operand of 2200.0 is directly supported by evidence for Company A fiscal year 2023, and the supplied formula correctly resolves Initial Equity for fiscal year 2024. Currency and scale are consistent with the evidence.",
+                "path_id": "paper:0"
+              }
+            }
+          ],
+          "response": {
+            "path_decisions": [
+              {
+                "decision": "VALID",
+                "justification": "The prior-year Final Equity operand of 2200.0 is directly supported by evidence for Company A fiscal year 2023, and the supplied formula correctly resolves Initial Equity for fiscal year 2024. Currency and scale are consistent with the evidence.",
+                "path_id": "paper:0"
+              }
+            ]
+          }
+        },
+        {
+          "operator": "OPE.metric",
+          "path_id": "paper:1",
+          "program": "def compute(vars):\n    initial_equity = vars[\"Initial Equity\"]\n    final_equity = vars[\"Final Equity\"]\n\n    average_equity = (initial_equity + final_equity) / 2\n\n    return {\n        \"value\": average_equity,\n        \"trace\": {\n            \"Initial Equity\": initial_equity,\n            \"Final Equity\": final_equity,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"millions\",\n                \"unit\": None\n            }\n        }\n    }",
+          "inputs": {
+            "Initial Equity": 2200.0,
+            "Final Equity": 2500.0
+          },
+          "execution": {
+            "value": 2350.0,
+            "trace": {
+              "Initial Equity": 2200.0,
+              "Final Equity": 2500.0,
+              "output_meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              }
+            }
+          }
+        },
+        {
+          "operator": "Verify",
+          "goal": {
+            "metric": "Average Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          },
+          "candidate_paths": [
+            {
+              "path_id": "paper:1",
+              "direction": "down",
+              "goal": {
+                "metric": "Average Equity",
+                "constraints": {
+                  "temporal_scope": "fiscal year 2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  }
+                }
+              },
+              "subgoals": [
+                {
+                  "metric": "Initial Equity",
+                  "constraints": {
+                    "temporal_scope": "fiscal year 2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": null
+                    }
+                  }
+                },
+                {
+                  "metric": "Final Equity",
+                  "constraints": {
+                    "temporal_scope": "fiscal year 2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": null
+                    }
+                  }
+                }
+              ],
+              "evidence": {
+                "b": [
+                  {
+                    "path_id": "paper:0",
+                    "direction": "down",
+                    "goal": {
+                      "metric": "Initial Equity",
+                      "constraints": {
+                        "temporal_scope": "fiscal year 2024",
+                        "entity_scope": "Company A",
+                        "meta": {
+                          "currency": null,
+                          "scale": null,
+                          "unit": null
+                        }
+                      }
+                    },
+                    "subgoals": [
+                      {
+                        "metric": "Final Equity",
+                        "constraints": {
+                          "temporal_scope": "fiscal year 2023",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "e": [
+                        {
+                          "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"fiscal year 2023\"}, \"metric\": \"Final Equity\"}",
+                          "subgoals": [
+                            {
+                              "metric": "Final Equity",
+                              "constraints": {
+                                "temporal_scope": "fiscal year 2023",
+                                "entity_scope": "Company A",
+                                "meta": {
+                                  "currency": null,
+                                  "scale": null,
+                                  "unit": null
+                                }
+                              }
+                            }
+                          ],
+                          "evidence": {
+                            "v1": {
+                              "confidence": 1.0,
+                              "constraints": {
+                                "entity_scope": "Company A",
+                                "meta": {
+                                  "currency": null,
+                                  "scale": null,
+                                  "unit": null
+                                },
+                                "temporal_scope": "fiscal year 2023"
+                              },
+                              "context": "Total Equity at the end of fiscal year 2023: 2200.",
+                              "metric": "Final Equity",
+                              "observed_meta": {
+                                "currency": "USD",
+                                "scale": "millions",
+                                "unit": null
+                              },
+                              "value": 2200.0
+                            }
+                          },
+                          "computation": {
+                            "kind": "direct extraction"
+                          },
+                          "verified_evidence_spans": [
+                            "Total Equity at the end of fiscal year 2023: 2200."
+                          ],
+                          "value": 2200.0,
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          }
+                        }
+                      ]
+                    },
+                    "computation": {
+                      "formula": "Initial Equity = prior-year Final Equity",
+                      "symbolic_rhs": "e",
+                      "program": "def compute(vars):\n    final_equity = vars[\"Final Equity\"]\n    initial_equity = final_equity\n\n    return {\n        \"value\": initial_equity,\n        \"trace\": {\n            \"Final Equity\": final_equity,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"millions\",\n                \"unit\": None\n            }\n        }\n    }",
+                      "inputs": {
+                        "Final Equity": 2200.0
+                      },
+                      "trace": {
+                        "Final Equity": 2200.0,
+                        "output_meta": {
+                          "currency": "USD",
+                          "scale": "millions",
+                          "unit": null
+                        }
+                      }
+                    },
+                    "value": 2200.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    },
+                    "verification": {
+                      "decision": "VALID",
+                      "justification": "The prior-year Final Equity operand of 2200.0 is directly supported by evidence for Company A fiscal year 2023, and the supplied formula correctly resolves Initial Equity for fiscal year 2024. Currency and scale are consistent with the evidence.",
+                      "path_id": "paper:0"
+                    }
+                  }
+                ],
+                "e": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"fiscal year 2024\"}, \"metric\": \"Final Equity\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Final Equity",
+                        "constraints": {
+                          "temporal_scope": "fiscal year 2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "confidence": 1.0,
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          },
+                          "temporal_scope": "fiscal year 2024"
+                        },
+                        "context": "Total Equity at the end of fiscal year 2024: 2500.",
+                        "metric": "Final Equity",
+                        "observed_meta": {
+                          "currency": "USD",
+                          "scale": "millions",
+                          "unit": null
+                        },
+                        "value": 2500
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "Total Equity at the end of fiscal year 2024: 2500."
+                    ],
+                    "value": 2500.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                ]
+              },
+              "computation": {
+                "formula": "Average Equity = (Initial Equity + Final Equity)/2",
+                "symbolic_rhs": "(b+e)/2",
+                "program": "def compute(vars):\n    initial_equity = vars[\"Initial Equity\"]\n    final_equity = vars[\"Final Equity\"]\n\n    average_equity = (initial_equity + final_equity) / 2\n\n    return {\n        \"value\": average_equity,\n        \"trace\": {\n            \"Initial Equity\": initial_equity,\n            \"Final Equity\": final_equity,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"millions\",\n                \"unit\": None\n            }\n        }\n    }",
+                "inputs": {
+                  "Initial Equity": 2200.0,
+                  "Final Equity": 2500.0
+                },
+                "trace": {
+                  "Initial Equity": 2200.0,
+                  "Final Equity": 2500.0,
+                  "output_meta": {
+                    "currency": "USD",
+                    "scale": "millions",
+                    "unit": null
+                  }
+                }
+              },
+              "value": 2350.0,
+              "meta": {
+                "currency": "USD",
+                "scale": "millions",
+                "unit": null
+              },
+              "verification": {
+                "decision": "VALID",
+                "justification": "Both equity operands are directly supported for Company A, with prior-year final equity explicitly mapped to fiscal year 2024 initial equity. The arithmetic is correct: (2200.0 + 2500.0) / 2 = 2350.0, and currency and scale are consistent.",
+                "path_id": "paper:1"
+              }
+            }
+          ],
+          "response": {
+            "path_decisions": [
+              {
+                "decision": "VALID",
+                "justification": "Both equity operands are directly supported for Company A, with prior-year final equity explicitly mapped to fiscal year 2024 initial equity. The arithmetic is correct: (2200.0 + 2500.0) / 2 = 2350.0, and currency and scale are consistent.",
+                "path_id": "paper:1"
+              }
+            ]
+          }
+        },
+        {
+          "operator": "OPE.metric",
+          "path_id": "paper:2",
+          "program": "def compute(vars):\n    net_income = vars[\"Net Income\"]\n    average_equity = vars[\"Average Equity\"]\n\n    if average_equity == 0:\n        return None\n\n    roe = net_income / average_equity\n\n    return {\n        \"value\": roe,\n        \"trace\": {\n            \"Net Income\": net_income,\n            \"Average Equity\": average_equity,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": None\n            }\n        }\n    }",
+          "inputs": {
+            "Net Income": 500.0,
+            "Average Equity": 2350.0
+          },
+          "execution": {
+            "value": 0.2127659574468085,
+            "trace": {
+              "Net Income": 500.0,
+              "Average Equity": 2350.0,
+              "output_meta": {
+                "currency": null,
+                "scale": null,
+                "unit": null
+              }
+            }
+          }
+        },
+        {
+          "operator": "Verify",
+          "goal": {
+            "metric": "Return on Equity",
+            "constraints": {
+              "temporal_scope": "fiscal year 2024",
+              "entity_scope": "Company A",
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "percentage"
+              }
+            }
+          },
+          "candidate_paths": [
+            {
+              "path_id": "paper:2",
+              "direction": "down",
+              "goal": {
+                "metric": "Return on Equity",
+                "constraints": {
+                  "temporal_scope": "fiscal year 2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "percentage"
+                  }
+                }
+              },
+              "subgoals": [
+                {
+                  "metric": "Net Income",
+                  "constraints": {
+                    "temporal_scope": "fiscal year 2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": null
+                    }
+                  }
+                },
+                {
+                  "metric": "Average Equity",
+                  "constraints": {
+                    "temporal_scope": "fiscal year 2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": null
+                    }
+                  }
+                }
+              ],
+              "evidence": {
+                "i": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"fiscal year 2024\"}, \"metric\": \"Net Income\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Net Income",
+                        "constraints": {
+                          "temporal_scope": "fiscal year 2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "confidence": 0.99,
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          },
+                          "temporal_scope": "fiscal year 2024"
+                        },
+                        "context": "Net Profit for fiscal year 2024: 500.",
+                        "metric": "Net Income",
+                        "observed_meta": {
+                          "currency": "USD",
+                          "scale": "millions",
+                          "unit": null
+                        },
+                        "value": 500
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "Net Profit for fiscal year 2024: 500."
+                    ],
+                    "value": 500.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                ],
+                "a": [
+                  {
+                    "path_id": "paper:1",
+                    "direction": "down",
+                    "goal": {
+                      "metric": "Average Equity",
+                      "constraints": {
+                        "temporal_scope": "fiscal year 2024",
+                        "entity_scope": "Company A",
+                        "meta": {
+                          "currency": null,
+                          "scale": null,
+                          "unit": null
+                        }
+                      }
+                    },
+                    "subgoals": [
+                      {
+                        "metric": "Initial Equity",
+                        "constraints": {
+                          "temporal_scope": "fiscal year 2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      },
+                      {
+                        "metric": "Final Equity",
+                        "constraints": {
+                          "temporal_scope": "fiscal year 2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "b": [
+                        {
+                          "path_id": "paper:0",
+                          "direction": "down",
+                          "goal": {
+                            "metric": "Initial Equity",
+                            "constraints": {
+                              "temporal_scope": "fiscal year 2024",
+                              "entity_scope": "Company A",
+                              "meta": {
+                                "currency": null,
+                                "scale": null,
+                                "unit": null
+                              }
+                            }
+                          },
+                          "subgoals": [
+                            {
+                              "metric": "Final Equity",
+                              "constraints": {
+                                "temporal_scope": "fiscal year 2023",
+                                "entity_scope": "Company A",
+                                "meta": {
+                                  "currency": null,
+                                  "scale": null,
+                                  "unit": null
+                                }
+                              }
+                            }
+                          ],
+                          "evidence": {
+                            "e": [
+                              {
+                                "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"fiscal year 2023\"}, \"metric\": \"Final Equity\"}",
+                                "subgoals": [
+                                  {
+                                    "metric": "Final Equity",
+                                    "constraints": {
+                                      "temporal_scope": "fiscal year 2023",
+                                      "entity_scope": "Company A",
+                                      "meta": {
+                                        "currency": null,
+                                        "scale": null,
+                                        "unit": null
+                                      }
+                                    }
+                                  }
+                                ],
+                                "evidence": {
+                                  "v1": {
+                                    "confidence": 1.0,
+                                    "constraints": {
+                                      "entity_scope": "Company A",
+                                      "meta": {
+                                        "currency": null,
+                                        "scale": null,
+                                        "unit": null
+                                      },
+                                      "temporal_scope": "fiscal year 2023"
+                                    },
+                                    "context": "Total Equity at the end of fiscal year 2023: 2200.",
+                                    "metric": "Final Equity",
+                                    "observed_meta": {
+                                      "currency": "USD",
+                                      "scale": "millions",
+                                      "unit": null
+                                    },
+                                    "value": 2200.0
+                                  }
+                                },
+                                "computation": {
+                                  "kind": "direct extraction"
+                                },
+                                "verified_evidence_spans": [
+                                  "Total Equity at the end of fiscal year 2023: 2200."
+                                ],
+                                "value": 2200.0,
+                                "meta": {
+                                  "currency": "USD",
+                                  "scale": "millions",
+                                  "unit": null
+                                }
+                              }
+                            ]
+                          },
+                          "computation": {
+                            "formula": "Initial Equity = prior-year Final Equity",
+                            "symbolic_rhs": "e",
+                            "program": "def compute(vars):\n    final_equity = vars[\"Final Equity\"]\n    initial_equity = final_equity\n\n    return {\n        \"value\": initial_equity,\n        \"trace\": {\n            \"Final Equity\": final_equity,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"millions\",\n                \"unit\": None\n            }\n        }\n    }",
+                            "inputs": {
+                              "Final Equity": 2200.0
+                            },
+                            "trace": {
+                              "Final Equity": 2200.0,
+                              "output_meta": {
+                                "currency": "USD",
+                                "scale": "millions",
+                                "unit": null
+                              }
+                            }
+                          },
+                          "value": 2200.0,
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          },
+                          "verification": {
+                            "decision": "VALID",
+                            "justification": "The prior-year Final Equity operand of 2200.0 is directly supported by evidence for Company A fiscal year 2023, and the supplied formula correctly resolves Initial Equity for fiscal year 2024. Currency and scale are consistent with the evidence.",
+                            "path_id": "paper:0"
+                          }
+                        }
+                      ],
+                      "e": [
+                        {
+                          "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"fiscal year 2024\"}, \"metric\": \"Final Equity\"}",
+                          "subgoals": [
+                            {
+                              "metric": "Final Equity",
+                              "constraints": {
+                                "temporal_scope": "fiscal year 2024",
+                                "entity_scope": "Company A",
+                                "meta": {
+                                  "currency": null,
+                                  "scale": null,
+                                  "unit": null
+                                }
+                              }
+                            }
+                          ],
+                          "evidence": {
+                            "v1": {
+                              "confidence": 1.0,
+                              "constraints": {
+                                "entity_scope": "Company A",
+                                "meta": {
+                                  "currency": null,
+                                  "scale": null,
+                                  "unit": null
+                                },
+                                "temporal_scope": "fiscal year 2024"
+                              },
+                              "context": "Total Equity at the end of fiscal year 2024: 2500.",
+                              "metric": "Final Equity",
+                              "observed_meta": {
+                                "currency": "USD",
+                                "scale": "millions",
+                                "unit": null
+                              },
+                              "value": 2500
+                            }
+                          },
+                          "computation": {
+                            "kind": "direct extraction"
+                          },
+                          "verified_evidence_spans": [
+                            "Total Equity at the end of fiscal year 2024: 2500."
+                          ],
+                          "value": 2500.0,
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          }
+                        }
+                      ]
+                    },
+                    "computation": {
+                      "formula": "Average Equity = (Initial Equity + Final Equity)/2",
+                      "symbolic_rhs": "(b+e)/2",
+                      "program": "def compute(vars):\n    initial_equity = vars[\"Initial Equity\"]\n    final_equity = vars[\"Final Equity\"]\n\n    average_equity = (initial_equity + final_equity) / 2\n\n    return {\n        \"value\": average_equity,\n        \"trace\": {\n            \"Initial Equity\": initial_equity,\n            \"Final Equity\": final_equity,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"millions\",\n                \"unit\": None\n            }\n        }\n    }",
+                      "inputs": {
+                        "Initial Equity": 2200.0,
+                        "Final Equity": 2500.0
+                      },
+                      "trace": {
+                        "Initial Equity": 2200.0,
+                        "Final Equity": 2500.0,
+                        "output_meta": {
+                          "currency": "USD",
+                          "scale": "millions",
+                          "unit": null
+                        }
+                      }
+                    },
+                    "value": 2350.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    },
+                    "verification": {
+                      "decision": "VALID",
+                      "justification": "Both equity operands are directly supported for Company A, with prior-year final equity explicitly mapped to fiscal year 2024 initial equity. The arithmetic is correct: (2200.0 + 2500.0) / 2 = 2350.0, and currency and scale are consistent.",
+                      "path_id": "paper:1"
+                    }
+                  }
+                ]
+              },
+              "computation": {
+                "formula": "ROE = Net Income / Average Equity",
+                "symbolic_rhs": "i/a",
+                "program": "def compute(vars):\n    net_income = vars[\"Net Income\"]\n    average_equity = vars[\"Average Equity\"]\n\n    if average_equity == 0:\n        return None\n\n    roe = net_income / average_equity\n\n    return {\n        \"value\": roe,\n        \"trace\": {\n            \"Net Income\": net_income,\n            \"Average Equity\": average_equity,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": None\n            }\n        }\n    }",
+                "inputs": {
+                  "Net Income": 500.0,
+                  "Average Equity": 2350.0
+                },
+                "trace": {
+                  "Net Income": 500.0,
+                  "Average Equity": 2350.0,
+                  "output_meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  }
+                }
+              },
+              "value": 0.2127659574468085,
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              },
+              "verification": {
+                "decision": "INVALID",
+                "justification": "UNSUPPORTED_ALIAS: the Net Income operand is bound to evidence stating Net Profit, but the path provides no explicit evidence or metadata supporting that alias mapping.",
+                "path_id": "paper:2"
+              }
+            }
+          ],
+          "response": {
+            "path_decisions": [
+              {
+                "decision": "INVALID",
+                "justification": "UNSUPPORTED_ALIAS: the Net Income operand is bound to evidence stating Net Profit, but the path provides no explicit evidence or metadata supporting that alias mapping.",
+                "path_id": "paper:2"
+              }
+            ]
+          }
+        }
+      ],
+      "subgoal_results": [
+        {
+          "value": null,
+          "meta": {},
+          "paths": [
+            {
+              "path_id": "paper:2",
+              "direction": "down",
+              "goal": {
+                "metric": "Return on Equity",
+                "constraints": {
+                  "temporal_scope": "fiscal year 2024",
+                  "entity_scope": "Company A",
+                  "meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": "percentage"
+                  }
+                }
+              },
+              "subgoals": [
+                {
+                  "metric": "Net Income",
+                  "constraints": {
+                    "temporal_scope": "fiscal year 2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": null
+                    }
+                  }
+                },
+                {
+                  "metric": "Average Equity",
+                  "constraints": {
+                    "temporal_scope": "fiscal year 2024",
+                    "entity_scope": "Company A",
+                    "meta": {
+                      "currency": null,
+                      "scale": null,
+                      "unit": null
+                    }
+                  }
+                }
+              ],
+              "evidence": {
+                "i": [
+                  {
+                    "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"fiscal year 2024\"}, \"metric\": \"Net Income\"}",
+                    "subgoals": [
+                      {
+                        "metric": "Net Income",
+                        "constraints": {
+                          "temporal_scope": "fiscal year 2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "v1": {
+                        "confidence": 0.99,
+                        "constraints": {
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          },
+                          "temporal_scope": "fiscal year 2024"
+                        },
+                        "context": "Net Profit for fiscal year 2024: 500.",
+                        "metric": "Net Income",
+                        "observed_meta": {
+                          "currency": "USD",
+                          "scale": "millions",
+                          "unit": null
+                        },
+                        "value": 500
+                      }
+                    },
+                    "computation": {
+                      "kind": "direct extraction"
+                    },
+                    "verified_evidence_spans": [
+                      "Net Profit for fiscal year 2024: 500."
+                    ],
+                    "value": 500.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    }
+                  }
+                ],
+                "a": [
+                  {
+                    "path_id": "paper:1",
+                    "direction": "down",
+                    "goal": {
+                      "metric": "Average Equity",
+                      "constraints": {
+                        "temporal_scope": "fiscal year 2024",
+                        "entity_scope": "Company A",
+                        "meta": {
+                          "currency": null,
+                          "scale": null,
+                          "unit": null
+                        }
+                      }
+                    },
+                    "subgoals": [
+                      {
+                        "metric": "Initial Equity",
+                        "constraints": {
+                          "temporal_scope": "fiscal year 2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      },
+                      {
+                        "metric": "Final Equity",
+                        "constraints": {
+                          "temporal_scope": "fiscal year 2024",
+                          "entity_scope": "Company A",
+                          "meta": {
+                            "currency": null,
+                            "scale": null,
+                            "unit": null
+                          }
+                        }
+                      }
+                    ],
+                    "evidence": {
+                      "b": [
+                        {
+                          "path_id": "paper:0",
+                          "direction": "down",
+                          "goal": {
+                            "metric": "Initial Equity",
+                            "constraints": {
+                              "temporal_scope": "fiscal year 2024",
+                              "entity_scope": "Company A",
+                              "meta": {
+                                "currency": null,
+                                "scale": null,
+                                "unit": null
+                              }
+                            }
+                          },
+                          "subgoals": [
+                            {
+                              "metric": "Final Equity",
+                              "constraints": {
+                                "temporal_scope": "fiscal year 2023",
+                                "entity_scope": "Company A",
+                                "meta": {
+                                  "currency": null,
+                                  "scale": null,
+                                  "unit": null
+                                }
+                              }
+                            }
+                          ],
+                          "evidence": {
+                            "e": [
+                              {
+                                "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"fiscal year 2023\"}, \"metric\": \"Final Equity\"}",
+                                "subgoals": [
+                                  {
+                                    "metric": "Final Equity",
+                                    "constraints": {
+                                      "temporal_scope": "fiscal year 2023",
+                                      "entity_scope": "Company A",
+                                      "meta": {
+                                        "currency": null,
+                                        "scale": null,
+                                        "unit": null
+                                      }
+                                    }
+                                  }
+                                ],
+                                "evidence": {
+                                  "v1": {
+                                    "confidence": 1.0,
+                                    "constraints": {
+                                      "entity_scope": "Company A",
+                                      "meta": {
+                                        "currency": null,
+                                        "scale": null,
+                                        "unit": null
+                                      },
+                                      "temporal_scope": "fiscal year 2023"
+                                    },
+                                    "context": "Total Equity at the end of fiscal year 2023: 2200.",
+                                    "metric": "Final Equity",
+                                    "observed_meta": {
+                                      "currency": "USD",
+                                      "scale": "millions",
+                                      "unit": null
+                                    },
+                                    "value": 2200.0
+                                  }
+                                },
+                                "computation": {
+                                  "kind": "direct extraction"
+                                },
+                                "verified_evidence_spans": [
+                                  "Total Equity at the end of fiscal year 2023: 2200."
+                                ],
+                                "value": 2200.0,
+                                "meta": {
+                                  "currency": "USD",
+                                  "scale": "millions",
+                                  "unit": null
+                                }
+                              }
+                            ]
+                          },
+                          "computation": {
+                            "formula": "Initial Equity = prior-year Final Equity",
+                            "symbolic_rhs": "e",
+                            "program": "def compute(vars):\n    final_equity = vars[\"Final Equity\"]\n    initial_equity = final_equity\n\n    return {\n        \"value\": initial_equity,\n        \"trace\": {\n            \"Final Equity\": final_equity,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"millions\",\n                \"unit\": None\n            }\n        }\n    }",
+                            "inputs": {
+                              "Final Equity": 2200.0
+                            },
+                            "trace": {
+                              "Final Equity": 2200.0,
+                              "output_meta": {
+                                "currency": "USD",
+                                "scale": "millions",
+                                "unit": null
+                              }
+                            }
+                          },
+                          "value": 2200.0,
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          },
+                          "verification": {
+                            "decision": "VALID",
+                            "justification": "The prior-year Final Equity operand of 2200.0 is directly supported by evidence for Company A fiscal year 2023, and the supplied formula correctly resolves Initial Equity for fiscal year 2024. Currency and scale are consistent with the evidence.",
+                            "path_id": "paper:0"
+                          }
+                        }
+                      ],
+                      "e": [
+                        {
+                          "path_id": "direct:{\"constraints\": {\"entity_scope\": \"Company A\", \"meta\": {\"currency\": null, \"scale\": null, \"unit\": null}, \"temporal_scope\": \"fiscal year 2024\"}, \"metric\": \"Final Equity\"}",
+                          "subgoals": [
+                            {
+                              "metric": "Final Equity",
+                              "constraints": {
+                                "temporal_scope": "fiscal year 2024",
+                                "entity_scope": "Company A",
+                                "meta": {
+                                  "currency": null,
+                                  "scale": null,
+                                  "unit": null
+                                }
+                              }
+                            }
+                          ],
+                          "evidence": {
+                            "v1": {
+                              "confidence": 1.0,
+                              "constraints": {
+                                "entity_scope": "Company A",
+                                "meta": {
+                                  "currency": null,
+                                  "scale": null,
+                                  "unit": null
+                                },
+                                "temporal_scope": "fiscal year 2024"
+                              },
+                              "context": "Total Equity at the end of fiscal year 2024: 2500.",
+                              "metric": "Final Equity",
+                              "observed_meta": {
+                                "currency": "USD",
+                                "scale": "millions",
+                                "unit": null
+                              },
+                              "value": 2500
+                            }
+                          },
+                          "computation": {
+                            "kind": "direct extraction"
+                          },
+                          "verified_evidence_spans": [
+                            "Total Equity at the end of fiscal year 2024: 2500."
+                          ],
+                          "value": 2500.0,
+                          "meta": {
+                            "currency": "USD",
+                            "scale": "millions",
+                            "unit": null
+                          }
+                        }
+                      ]
+                    },
+                    "computation": {
+                      "formula": "Average Equity = (Initial Equity + Final Equity)/2",
+                      "symbolic_rhs": "(b+e)/2",
+                      "program": "def compute(vars):\n    initial_equity = vars[\"Initial Equity\"]\n    final_equity = vars[\"Final Equity\"]\n\n    average_equity = (initial_equity + final_equity) / 2\n\n    return {\n        \"value\": average_equity,\n        \"trace\": {\n            \"Initial Equity\": initial_equity,\n            \"Final Equity\": final_equity,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"millions\",\n                \"unit\": None\n            }\n        }\n    }",
+                      "inputs": {
+                        "Initial Equity": 2200.0,
+                        "Final Equity": 2500.0
+                      },
+                      "trace": {
+                        "Initial Equity": 2200.0,
+                        "Final Equity": 2500.0,
+                        "output_meta": {
+                          "currency": "USD",
+                          "scale": "millions",
+                          "unit": null
+                        }
+                      }
+                    },
+                    "value": 2350.0,
+                    "meta": {
+                      "currency": "USD",
+                      "scale": "millions",
+                      "unit": null
+                    },
+                    "verification": {
+                      "decision": "VALID",
+                      "justification": "Both equity operands are directly supported for Company A, with prior-year final equity explicitly mapped to fiscal year 2024 initial equity. The arithmetic is correct: (2200.0 + 2500.0) / 2 = 2350.0, and currency and scale are consistent.",
+                      "path_id": "paper:1"
+                    }
+                  }
+                ]
+              },
+              "computation": {
+                "formula": "ROE = Net Income / Average Equity",
+                "symbolic_rhs": "i/a",
+                "program": "def compute(vars):\n    net_income = vars[\"Net Income\"]\n    average_equity = vars[\"Average Equity\"]\n\n    if average_equity == 0:\n        return None\n\n    roe = net_income / average_equity\n\n    return {\n        \"value\": roe,\n        \"trace\": {\n            \"Net Income\": net_income,\n            \"Average Equity\": average_equity,\n            \"output_meta\": {\n                \"currency\": None,\n                \"scale\": None,\n                \"unit\": None\n            }\n        }\n    }",
+                "inputs": {
+                  "Net Income": 500.0,
+                  "Average Equity": 2350.0
+                },
+                "trace": {
+                  "Net Income": 500.0,
+                  "Average Equity": 2350.0,
+                  "output_meta": {
+                    "currency": null,
+                    "scale": null,
+                    "unit": null
+                  }
+                }
+              },
+              "value": 0.2127659574468085,
+              "meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "ratio"
+              },
+              "verification": {
+                "decision": "INVALID",
+                "justification": "UNSUPPORTED_ALIAS: the Net Income operand is bound to evidence stating Net Profit, but the path provides no explicit evidence or metadata supporting that alias mapping.",
+                "path_id": "paper:2"
+              }
+            }
+          ],
+          "reason": "No validated consensus"
+        }
+      ]
+    },
+    "reason": "At least one required subgoal could not be grounded"
+  },
+  "passed": false
+}

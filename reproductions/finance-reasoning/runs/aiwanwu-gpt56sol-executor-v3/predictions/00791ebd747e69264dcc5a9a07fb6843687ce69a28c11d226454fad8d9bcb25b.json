@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2138",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the sample standard deviation of a finite set of numeric observations using the \\(n-1\\) denominator, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5047,
+          "completion_tokens": 37,
+          "total_tokens": 5084
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C09\"]}",
+        "usage": {
+          "prompt_tokens": 14527,
+          "completion_tokens": 279,
+          "total_tokens": 14806,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 255
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    measurements = [-3, -11, 3, -18, 18, 20, -6, 9, 2, -16]\n    \n    # Do math calculation to get the answer\n    mean = sum(measurements) / len(measurements)\n    variance = sum((value - mean) ** 2 for value in measurements) / (len(measurements) - 1)\n    answer = round(variance ** 0.5, 3)\n    \n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5487,
+          "completion_tokens": 437,
+          "total_tokens": 5924,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 305
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2632",
+        "score": 1.5367481708526611,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-284",
+        "score": 1.522948980331421,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.521224021911621,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2553",
+        "score": 1.5147407054901123,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-302",
+        "score": 1.509920597076416,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1521",
+        "score": 1.506064534187317,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2686",
+        "score": 1.4803115129470825,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2633",
+        "score": 1.4760117530822754,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-324",
+        "score": 1.4525930881500244,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2667",
+        "score": 1.4488129615783691,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2758",
+        "score": 1.4364609718322754,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1794",
+        "score": 1.4286315441131592,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1353",
+        "score": 1.426045298576355,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1797",
+        "score": 1.4155817031860352,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2759",
+        "score": 1.4152767658233643,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1413",
+        "score": 1.4128317832946777,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1987",
+        "score": 1.411072015762329,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1717",
+        "score": 1.4021763801574707,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1883",
+        "score": 1.4014109373092651,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1523",
+        "score": 1.39603590965271,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-285",
+        "score": 1.395392656326294,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.3952245712280273,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-149",
+        "score": 1.3833186626434326,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-301",
+        "score": 1.3771703243255615,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1588",
+        "score": 1.3764572143554688,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.3737990856170654,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-725",
+        "score": 1.3696404695510864,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1584",
+        "score": 1.3678619861602783,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.3620835542678833,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-726",
+        "score": 1.3602280616760254,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2632",
+      "article-284",
+      "article-324"
+    ],
+    "status": "ok",
+    "answer": 13.181,
+    "code": "def solution():\n    # Define variables name and value\n    measurements = [-3, -11, 3, -18, 18, 20, -6, 9, 2, -16]\n    \n    # Do math calculation to get the answer\n    mean = sum(measurements) / len(measurements)\n    variance = sum((value - mean) ** 2 for value in measurements) / (len(measurements) - 1)\n    answer = round(variance ** 0.5, 3)\n    \n    # return answer\n    return answer\n"
+  },
+  "digest": "2c17f93d97e9002c1986540d55f0c7a82391679a59527dbd1ee7599af9316caf"
+}

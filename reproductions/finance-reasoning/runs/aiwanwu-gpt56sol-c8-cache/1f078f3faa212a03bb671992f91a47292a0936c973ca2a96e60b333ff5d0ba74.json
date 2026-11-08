@@ -1,0 +1,21 @@
+{
+  "identity": "1f078f3faa212a03bb671992f91a47292a0936c973ca2a96e60b333ff5d0ba74",
+  "response_digest": "0ddaec4c84d9c105f2a80b204fb28d3338f4b881e54f34520d9ea23e857922c0",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    tech_stock_returns = [5.2, 3.8, 4.9, 2.7, 6.5, 3.3]\n    market_index_returns = [4.1, 3.9, 5.0, 2.5, 6.0, 3.7]\n\n    # Do math calculation to get the answer\n    n = len(tech_stock_returns)\n    sum_x = sum(tech_stock_returns)\n    sum_y = sum(market_index_returns)\n    sum_xy = sum(\n        x * y for x, y in zip(tech_stock_returns, market_index_returns)\n    )\n    sum_x_squared = sum(x ** 2 for x in tech_stock_returns)\n    sum_y_squared = sum(y ** 2 for y in market_index_returns)\n\n    numerator = n * sum_xy - sum_x * sum_y\n    denominator = (\n        (n * sum_x_squared - sum_x ** 2)\n        * (n * sum_y_squared - sum_y ** 2)\n    ) ** 0.5\n\n    correlation = numerator / denominator\n    answer = round(correlation, 4)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 6045,
+      "completion_tokens": 706,
+      "total_tokens": 6751,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 434
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

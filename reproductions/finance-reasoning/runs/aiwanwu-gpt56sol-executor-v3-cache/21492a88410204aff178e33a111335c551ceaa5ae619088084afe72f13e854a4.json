@@ -1,0 +1,21 @@
+{
+  "identity": "21492a88410204aff178e33a111335c551ceaa5ae619088084afe72f13e854a4",
+  "response_digest": "f4a1059822a086f3ec1f19402ae355a54130eacd5f2dddce43516a3baef0fd78",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_index = 100.0\n    notional_amount = 100_000_000.0\n    fixed_rate = 0.03\n    payment_frequency = 4\n\n    # Three months have elapsed, leaving three quarterly payments\n    present_value_factors = [0.997506, 0.992556, 0.985222]\n\n    fixed_payment = (fixed_rate * notional_amount) / payment_frequency\n    present_value_fixed_leg = sum(\n        fixed_payment * factor for factor in present_value_factors\n    )\n\n    # At zero value, the equity return equals the present value of the fixed leg\n    equity_return = present_value_fixed_leg / notional_amount\n    index_level = initial_index * (1 + equity_return)\n\n    # return answer\n    return round(index_level, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5383,
+      "completion_tokens": 1653,
+      "total_tokens": 7036,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1460
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

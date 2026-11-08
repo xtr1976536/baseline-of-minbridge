@@ -1,0 +1,193 @@
+{
+  "record": {
+    "question_id": "test-2109",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the number of stock index futures contracts required to rebalance a portfolio from current to target equity and bond allocations, using portfolio value, equity beta, futures index level, contract multiplier, and futures beta, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5058,
+          "completion_tokens": 297,
+          "total_tokens": 5355,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 239
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 13444,
+          "completion_tokens": 613,
+          "total_tokens": 14057,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    fund_value = 100_000_000\n    current_stock_weight = 0.80\n    target_stock_weight = 0.60\n    stock_beta = 1.20\n    futures_beta = 0.95\n    index_level = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    stock_value_to_reduce = fund_value * (current_stock_weight - target_stock_weight)\n    futures_contract_value = index_level * contract_multiplier\n    beta_adjusted_contract_value = futures_contract_value * futures_beta\n    number_of_futures = (\n        stock_value_to_reduce * stock_beta\n    ) / beta_adjusted_contract_value\n\n    # return answer\n    return round(number_of_futures, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5495,
+          "completion_tokens": 994,
+          "total_tokens": 6489,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 814
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-659",
+        "score": 1.860160231590271
+      },
+      {
+        "function_id": "article-394",
+        "score": 1.769848346710205
+      },
+      {
+        "function_id": "article-660",
+        "score": 1.7358765602111816
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.7210135459899902
+      },
+      {
+        "function_id": "article-2691",
+        "score": 1.7201783657073975
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.7010961771011353
+      },
+      {
+        "function_id": "article-2692",
+        "score": 1.6818246841430664
+      },
+      {
+        "function_id": "article-396",
+        "score": 1.6638541221618652
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6550605297088623
+      },
+      {
+        "function_id": "article-395",
+        "score": 1.6496070623397827
+      },
+      {
+        "function_id": "article-1027",
+        "score": 1.6462948322296143
+      },
+      {
+        "function_id": "article-1291",
+        "score": 1.6261019706726074
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.6221016645431519
+      },
+      {
+        "function_id": "article-1468",
+        "score": 1.6164625883102417
+      },
+      {
+        "function_id": "article-1744",
+        "score": 1.6140553951263428
+      },
+      {
+        "function_id": "article-1417",
+        "score": 1.6118502616882324
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.603764533996582
+      },
+      {
+        "function_id": "article-397",
+        "score": 1.599800705909729
+      },
+      {
+        "function_id": "article-663",
+        "score": 1.5946526527404785
+      },
+      {
+        "function_id": "article-1105",
+        "score": 1.5914349555969238
+      },
+      {
+        "function_id": "article-1889",
+        "score": 1.5867257118225098
+      },
+      {
+        "function_id": "article-700",
+        "score": 1.5849921703338623
+      },
+      {
+        "function_id": "article-105",
+        "score": 1.568213701248169
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.558885097503662
+      },
+      {
+        "function_id": "article-3071",
+        "score": 1.5563710927963257
+      },
+      {
+        "function_id": "article-2137",
+        "score": 1.5555319786071777
+      },
+      {
+        "function_id": "article-1594",
+        "score": 1.551933765411377
+      },
+      {
+        "function_id": "article-3072",
+        "score": 1.5440372228622437
+      },
+      {
+        "function_id": "article-1745",
+        "score": 1.54335618019104
+      },
+      {
+        "function_id": "article-661",
+        "score": 1.5425894260406494
+      }
+    ],
+    "selected_ids": [
+      "article-659",
+      "article-394",
+      "article-1027"
+    ],
+    "status": "ok",
+    "answer": 84.211,
+    "code": "def solution():\n    # Define variables name and value\n    fund_value = 100_000_000\n    current_stock_weight = 0.80\n    target_stock_weight = 0.60\n    stock_beta = 1.20\n    futures_beta = 0.95\n    index_level = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    stock_value_to_reduce = fund_value * (current_stock_weight - target_stock_weight)\n    futures_contract_value = index_level * contract_multiplier\n    beta_adjusted_contract_value = futures_contract_value * futures_beta\n    number_of_futures = (\n        stock_value_to_reduce * stock_beta\n    ) / beta_adjusted_contract_value\n\n    # return answer\n    return round(number_of_futures, 3)\n"
+  },
+  "digest": "a899c90c400b7bf65dec9e89ddd54f2871f70dba32a6baf8f5585dff4812c53a"
+}

@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2230",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a bond’s price value of a basis point (PVBP), or dollar value of a basis point (DV01), from coupon rate, annual coupon frequency, years to maturity, yield to maturity, and clean price per 100 par value, returning the result per 100 face value to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4984,
+          "completion_tokens": 69,
+          "total_tokens": 5053,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14434,
+          "completion_tokens": 175,
+          "total_tokens": 14609,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 157
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    coupon_rate = 0.03\n    yield_to_maturity = 0.05\n    years_to_maturity = 9\n    dirty_price = 85.784357\n    par_value = 100\n\n    annual_coupon = coupon_rate * par_value\n\n    # Calculate Macaulay duration from the bond's cash flows\n    weighted_present_value = 0.0\n    for year in range(1, years_to_maturity + 1):\n        cash_flow = annual_coupon\n        if year == years_to_maturity:\n            cash_flow += par_value\n\n        present_value = cash_flow / (1 + yield_to_maturity) ** year\n        weighted_present_value += year * present_value\n\n    macaulay_duration = weighted_present_value / dirty_price\n\n    # Convert Macaulay duration to modified duration\n    modified_duration = macaulay_duration / (1 + yield_to_maturity)\n\n    # Calculate price value of a basis point\n    pvbp = modified_duration * dirty_price * 0.0001\n\n    # Return the answer to three decimal places\n    return round(pvbp, 3)\n```",
+        "usage": {
+          "prompt_tokens": 4922,
+          "completion_tokens": 1284,
+          "total_tokens": 6206,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1334",
+        "score": 2.104968786239624,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-782",
+        "score": 1.8765329122543335,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.8322023153305054,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.8308582305908203,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.8086661100387573,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.7861192226409912,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.778605341911316,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.7778562307357788,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7665464878082275,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.7631027698516846,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.762400507926941,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.7565864324569702,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.7549302577972412,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.7497045993804932,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.747355580329895,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.7404944896697998,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.7392287254333496,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.7379775047302246,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.73628830909729,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.730774164199829,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.7291836738586426,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-739",
+        "score": 1.7258822917938232,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-735",
+        "score": 1.7157719135284424,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1303",
+        "score": 1.7132258415222168,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-736",
+        "score": 1.7074322700500488,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.7038041353225708,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.7028639316558838,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1905",
+        "score": 1.6997359991073608,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.699083685874939,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1309",
+        "score": 1.6981370449066162,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1334"
+    ],
+    "status": "ok",
+    "answer": 0.065,
+    "code": "def solution():\n    # Define variables\n    coupon_rate = 0.03\n    yield_to_maturity = 0.05\n    years_to_maturity = 9\n    dirty_price = 85.784357\n    par_value = 100\n\n    annual_coupon = coupon_rate * par_value\n\n    # Calculate Macaulay duration from the bond's cash flows\n    weighted_present_value = 0.0\n    for year in range(1, years_to_maturity + 1):\n        cash_flow = annual_coupon\n        if year == years_to_maturity:\n            cash_flow += par_value\n\n        present_value = cash_flow / (1 + yield_to_maturity) ** year\n        weighted_present_value += year * present_value\n\n    macaulay_duration = weighted_present_value / dirty_price\n\n    # Convert Macaulay duration to modified duration\n    modified_duration = macaulay_duration / (1 + yield_to_maturity)\n\n    # Calculate price value of a basis point\n    pvbp = modified_duration * dirty_price * 0.0001\n\n    # Return the answer to three decimal places\n    return round(pvbp, 3)\n"
+  },
+  "digest": "480c2b26040884c4f5bc991b399aca27bde17210f9bb333dba9d7d85ba4be04d"
+}

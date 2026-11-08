@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2079",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates total household employee nanny tax by combining employer and employee Social Security and Medicare taxes at a specified payroll tax rate with employer federal unemployment tax applied only to wages up to a statutory wage cap, excluding state taxes and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5064,
+          "completion_tokens": 56,
+          "total_tokens": 5120
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C05\",\"C16\"]}",
+        "usage": {
+          "prompt_tokens": 15908,
+          "completion_tokens": 431,
+          "total_tokens": 16339,
+          "completion_tokens_details": {
+            "reasoning_tokens": 407
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    wages = 25000\n    fica_rate_per_party = 0.0765\n    futa_wage_base = 7000\n    futa_rate = 0.06\n\n    # Do math calculation to get the answer\n    total_social_security_medicare = wages * fica_rate_per_party * 2\n    federal_unemployment_tax = min(wages, futa_wage_base) * futa_rate\n    total_nanny_tax = total_social_security_medicare + federal_unemployment_tax\n\n    # return answer\n    return round(total_nanny_tax)\n```",
+        "usage": {
+          "prompt_tokens": 5638,
+          "completion_tokens": 192,
+          "total_tokens": 5830,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 51
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2851",
+        "score": 2.241960048675537,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1259",
+        "score": 1.7810150384902954,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-529",
+        "score": 1.7218143939971924,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1858",
+        "score": 1.7145967483520508,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-532",
+        "score": 1.6981594562530518,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1857",
+        "score": 1.6912767887115479,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-508",
+        "score": 1.6007481813430786,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2563",
+        "score": 1.5604816675186157,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2484",
+        "score": 1.5598738193511963,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1087",
+        "score": 1.5497909784317017,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2274",
+        "score": 1.5482953786849976,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.5395745038986206,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2694",
+        "score": 1.5264166593551636,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2520",
+        "score": 1.526191234588623,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.5168118476867676,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1257",
+        "score": 1.5163884162902832,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1746",
+        "score": 1.5131890773773193,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.5085933208465576,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1818",
+        "score": 1.4978070259094238,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1802",
+        "score": 1.4923231601715088,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.4865957498550415,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-594",
+        "score": 1.481370210647583,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1799",
+        "score": 1.4782174825668335,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2953",
+        "score": 1.473146915435791,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-403",
+        "score": 1.4725289344787598,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2768",
+        "score": 1.457095742225647,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2828",
+        "score": 1.4471279382705688,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2853",
+        "score": 1.4394645690917969,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1072",
+        "score": 1.4373276233673096,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.436597228050232,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2851",
+      "article-532",
+      "article-1257"
+    ],
+    "status": "ok",
+    "answer": 4245,
+    "code": "def solution():\n    # Define variables name and value\n    wages = 25000\n    fica_rate_per_party = 0.0765\n    futa_wage_base = 7000\n    futa_rate = 0.06\n\n    # Do math calculation to get the answer\n    total_social_security_medicare = wages * fica_rate_per_party * 2\n    federal_unemployment_tax = min(wages, futa_wage_base) * futa_rate\n    total_nanny_tax = total_social_security_medicare + federal_unemployment_tax\n\n    # return answer\n    return round(total_nanny_tax)\n"
+  },
+  "digest": "6e3ffdc4c7b294c412a4e4e75b4e6a0d53b3516fb1f11d69ad2d7e245b29b919"
+}

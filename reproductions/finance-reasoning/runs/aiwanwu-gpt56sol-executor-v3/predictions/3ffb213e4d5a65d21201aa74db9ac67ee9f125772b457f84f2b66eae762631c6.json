@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2044",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates the present value of a fixed annual lease-payment annuity plus a terminal residual value, using a constant annual discount rate over a specified lease term, with payments at period end and the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5024,
+          "completion_tokens": 50,
+          "total_tokens": 5074,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C07\"]}",
+        "usage": {
+          "prompt_tokens": 14327,
+          "completion_tokens": 202,
+          "total_tokens": 14529,
+          "completion_tokens_details": {
+            "reasoning_tokens": 178
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    annual_payment = 10_000\n    interest_rate = 0.08\n    periods = 5\n    residual_value = 15_000\n\n    # Do math calculation to get the answer\n    present_value = sum(\n        annual_payment / ((1 + interest_rate) ** year)\n        for year in range(1, periods + 1)\n    )\n    present_value += residual_value / ((1 + interest_rate) ** periods)\n    answer = round(present_value)\n\n    # Return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5647,
+          "completion_tokens": 231,
+          "total_tokens": 5878,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 100
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-917",
+        "score": 2.0122056007385254,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-58",
+        "score": 1.8952584266662598,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.8625656366348267,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3020",
+        "score": 1.8555340766906738,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.8351354598999023,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.8169536590576172,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2338",
+        "score": 1.7786586284637451,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2335",
+        "score": 1.7725255489349365,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2104",
+        "score": 1.7718547582626343,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2091",
+        "score": 1.7624506950378418,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-252",
+        "score": 1.7600260972976685,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1524",
+        "score": 1.7582359313964844,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.7556533813476562,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1313",
+        "score": 1.7538306713104248,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.753096580505371,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2463",
+        "score": 1.7351917028427124,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-3073",
+        "score": 1.7269469499588013,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1269",
+        "score": 1.7185227870941162,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2334",
+        "score": 1.7160882949829102,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.7134416103363037,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2333",
+        "score": 1.6968058347702026,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-658",
+        "score": 1.6962213516235352,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-938",
+        "score": 1.6930389404296875,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2209",
+        "score": 1.688758373260498,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1870",
+        "score": 1.6879160404205322,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-369",
+        "score": 1.686601996421814,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2006",
+        "score": 1.6829333305358887,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-253",
+        "score": 1.6733399629592896,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.6724969148635864,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-12",
+        "score": 1.6689350605010986,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-917",
+      "article-58",
+      "article-2338"
+    ],
+    "status": "ok",
+    "answer": 50136,
+    "code": "def solution():\n    # Define variables name and value\n    annual_payment = 10_000\n    interest_rate = 0.08\n    periods = 5\n    residual_value = 15_000\n\n    # Do math calculation to get the answer\n    present_value = sum(\n        annual_payment / ((1 + interest_rate) ** year)\n        for year in range(1, periods + 1)\n    )\n    present_value += residual_value / ((1 + interest_rate) ** periods)\n    answer = round(present_value)\n\n    # Return answer\n    return answer\n"
+  },
+  "digest": "2c59aa56da966b9bd88eea06c9289bfd154ac549f2a915aee1e217b8a878c444"
+}

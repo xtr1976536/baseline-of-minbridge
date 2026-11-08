@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2236",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the final upper Keltner Channel band from a historical price series using a 10-period exponential moving average, a 10-period average true range, and a configurable multiplier of 1.5, returning the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5144,
+          "completion_tokens": 56,
+          "total_tokens": 5200,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 18239,
+          "completion_tokens": 588,
+          "total_tokens": 18827,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 491
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    prices = [\n        120, 122, 121, 124, 125,\n        127, 126, 129, 130, 128,\n        131, 132, 134, 135, 137,\n        136, 138, 139, 140, 142,\n        141, 143, 144, 146, 145\n    ]\n    period_ema = 10\n    period_atr = 10\n    multiplier = 1.5\n\n    # Calculate the 10-day EMA\n    ema = [sum(prices[:period_ema]) / period_ema]\n    ema_multiplier = 2 / (period_ema + 1)\n\n    for price in prices[period_ema:]:\n        ema.append(\n            (price - ema[-1]) * ema_multiplier + ema[-1]\n        )\n\n    # Calculate the 10-day ATR using consecutive price ranges\n    true_ranges = [\n        abs(prices[i] - prices[i - 1])\n        for i in range(1, len(prices))\n    ]\n\n    atr = [sum(true_ranges[:period_atr]) / period_atr]\n\n    for true_range in true_ranges[period_atr:]:\n        atr.append(\n            (atr[-1] * (period_atr - 1) + true_range) / period_atr\n        )\n\n    # Align EMA and ATR series\n    if len(ema) > len(atr):\n        ema = ema[-len(atr):]\n    elif len(atr) > len(ema):\n        atr = atr[-len(ema):]\n\n    # Calculate the final upper Keltner Channel band\n    last_upper_band = ema[-1] + multiplier * atr[-1]\n\n    # Return the answer rounded to two decimal places\n    return round(last_upper_band, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5489,
+          "completion_tokens": 572,
+          "total_tokens": 6061,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 166
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-501",
+        "score": 2.1703548431396484
+      },
+      {
+        "function_id": "article-731",
+        "score": 1.7470468282699585
+      },
+      {
+        "function_id": "article-1772",
+        "score": 1.718406319618225
+      },
+      {
+        "function_id": "article-1862",
+        "score": 1.7074427604675293
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.596754550933838
+      },
+      {
+        "function_id": "article-962",
+        "score": 1.5919616222381592
+      },
+      {
+        "function_id": "article-1865",
+        "score": 1.5723578929901123
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.5696630477905273
+      },
+      {
+        "function_id": "article-509",
+        "score": 1.565406322479248
+      },
+      {
+        "function_id": "article-1225",
+        "score": 1.5594030618667603
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.5355277061462402
+      },
+      {
+        "function_id": "article-512",
+        "score": 1.5338231325149536
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.530409336090088
+      },
+      {
+        "function_id": "article-513",
+        "score": 1.5263471603393555
+      },
+      {
+        "function_id": "article-2253",
+        "score": 1.5104544162750244
+      },
+      {
+        "function_id": "article-2466",
+        "score": 1.510229229927063
+      },
+      {
+        "function_id": "article-964",
+        "score": 1.5048357248306274
+      },
+      {
+        "function_id": "article-2077",
+        "score": 1.501663088798523
+      },
+      {
+        "function_id": "article-1438",
+        "score": 1.5006129741668701
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.4964350461959839
+      },
+      {
+        "function_id": "article-1056",
+        "score": 1.4937915802001953
+      },
+      {
+        "function_id": "article-1029",
+        "score": 1.492364525794983
+      },
+      {
+        "function_id": "article-2351",
+        "score": 1.4875879287719727
+      },
+      {
+        "function_id": "article-341",
+        "score": 1.4805673360824585
+      },
+      {
+        "function_id": "article-2350",
+        "score": 1.4803138971328735
+      },
+      {
+        "function_id": "article-1435",
+        "score": 1.4759068489074707
+      },
+      {
+        "function_id": "article-345",
+        "score": 1.475771188735962
+      },
+      {
+        "function_id": "article-2470",
+        "score": 1.4748196601867676
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.4718166589736938
+      },
+      {
+        "function_id": "article-510",
+        "score": 1.4657834768295288
+      }
+    ],
+    "selected_ids": [
+      "article-501"
+    ],
+    "status": "ok",
+    "answer": 143.66,
+    "code": "def solution():\n    # Define variables\n    prices = [\n        120, 122, 121, 124, 125,\n        127, 126, 129, 130, 128,\n        131, 132, 134, 135, 137,\n        136, 138, 139, 140, 142,\n        141, 143, 144, 146, 145\n    ]\n    period_ema = 10\n    period_atr = 10\n    multiplier = 1.5\n\n    # Calculate the 10-day EMA\n    ema = [sum(prices[:period_ema]) / period_ema]\n    ema_multiplier = 2 / (period_ema + 1)\n\n    for price in prices[period_ema:]:\n        ema.append(\n            (price - ema[-1]) * ema_multiplier + ema[-1]\n        )\n\n    # Calculate the 10-day ATR using consecutive price ranges\n    true_ranges = [\n        abs(prices[i] - prices[i - 1])\n        for i in range(1, len(prices))\n    ]\n\n    atr = [sum(true_ranges[:period_atr]) / period_atr]\n\n    for true_range in true_ranges[period_atr:]:\n        atr.append(\n            (atr[-1] * (period_atr - 1) + true_range) / period_atr\n        )\n\n    # Align EMA and ATR series\n    if len(ema) > len(atr):\n        ema = ema[-len(atr):]\n    elif len(atr) > len(ema):\n        atr = atr[-len(ema):]\n\n    # Calculate the final upper Keltner Channel band\n    last_upper_band = ema[-1] + multiplier * atr[-1]\n\n    # Return the answer rounded to two decimal places\n    return round(last_upper_band, 2)\n"
+  },
+  "digest": "abe430b06f1a9ec136a4b867be51320cae69b9d2f8069a2062c3b5c4102f6f55"
+}

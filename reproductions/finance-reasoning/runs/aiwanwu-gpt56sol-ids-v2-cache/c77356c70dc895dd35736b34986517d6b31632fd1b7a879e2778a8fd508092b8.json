@@ -1,0 +1,21 @@
+{
+  "identity": "c77356c70dc895dd35736b34986517d6b31632fd1b7a879e2778a8fd508092b8",
+  "response_digest": "403445106d758f1ecd753f22b283fc68d1d7222eada4ede9ae7953f0cbcaca6e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    mean = 9\n    std_dev = 2\n    data_points = [5, 8, 13, 12, 7, 9, 10, 6, 11, 7]\n\n    # Calculate the percentage within one standard deviation (7% to 11%)\n    count_within_range = sum(\n        mean - std_dev <= value <= mean + std_dev\n        for value in data_points\n    )\n    answer = (count_within_range / len(data_points)) * 100\n\n    # return answer\n    return round(answer, 2)\n```",
+    "usage": {
+      "prompt_tokens": 6143,
+      "completion_tokens": 197,
+      "total_tokens": 6340,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 53
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

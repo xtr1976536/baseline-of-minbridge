@@ -1,0 +1,190 @@
+{
+  "record": {
+    "question_id": "test-2203",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates the slope coefficient of a simple ordinary least squares linear regression between paired advertising expenditure and sales revenue observations, using one independent variable and one dependent variable, with the result rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5048,
+          "completion_tokens": 45,
+          "total_tokens": 5093,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15837,
+          "completion_tokens": 346,
+          "total_tokens": 16183,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 249
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    advertising_expenditure = [10, 20, 30, 40, 50]\n    monthly_sales_revenue = [15, 30, 50, 40, 65]\n\n    # Do math calculation to get the answer\n    n = len(advertising_expenditure)\n    mean_x = sum(advertising_expenditure) / n\n    mean_y = sum(monthly_sales_revenue) / n\n\n    numerator = sum(\n        (x - mean_x) * (y - mean_y)\n        for x, y in zip(advertising_expenditure, monthly_sales_revenue)\n    )\n    denominator = sum(\n        (x - mean_x) ** 2\n        for x in advertising_expenditure\n    )\n\n    slope = numerator / denominator\n\n    # return answer\n    return round(slope, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5911,
+          "completion_tokens": 272,
+          "total_tokens": 6183,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 76
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1484",
+        "score": 1.7310713529586792
+      },
+      {
+        "function_id": "article-2105",
+        "score": 1.6952296495437622
+      },
+      {
+        "function_id": "article-2106",
+        "score": 1.6870543956756592
+      },
+      {
+        "function_id": "article-2139",
+        "score": 1.6798162460327148
+      },
+      {
+        "function_id": "article-1959",
+        "score": 1.6329423189163208
+      },
+      {
+        "function_id": "article-1485",
+        "score": 1.6302303075790405
+      },
+      {
+        "function_id": "article-970",
+        "score": 1.5864059925079346
+      },
+      {
+        "function_id": "article-2526",
+        "score": 1.5812280178070068
+      },
+      {
+        "function_id": "article-176",
+        "score": 1.5454232692718506
+      },
+      {
+        "function_id": "article-2141",
+        "score": 1.535634160041809
+      },
+      {
+        "function_id": "article-177",
+        "score": 1.5200910568237305
+      },
+      {
+        "function_id": "article-2140",
+        "score": 1.5196335315704346
+      },
+      {
+        "function_id": "article-573",
+        "score": 1.5124375820159912
+      },
+      {
+        "function_id": "article-1295",
+        "score": 1.498962640762329
+      },
+      {
+        "function_id": "article-967",
+        "score": 1.4826323986053467
+      },
+      {
+        "function_id": "article-1960",
+        "score": 1.480177640914917
+      },
+      {
+        "function_id": "article-574",
+        "score": 1.4732033014297485
+      },
+      {
+        "function_id": "article-763",
+        "score": 1.4722315073013306
+      },
+      {
+        "function_id": "article-1028",
+        "score": 1.4689176082611084
+      },
+      {
+        "function_id": "article-2988",
+        "score": 1.4607229232788086
+      },
+      {
+        "function_id": "article-2873",
+        "score": 1.4597508907318115
+      },
+      {
+        "function_id": "article-2669",
+        "score": 1.4589236974716187
+      },
+      {
+        "function_id": "article-2668",
+        "score": 1.4488840103149414
+      },
+      {
+        "function_id": "article-1522",
+        "score": 1.4456689357757568
+      },
+      {
+        "function_id": "article-179",
+        "score": 1.4378373622894287
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.4368228912353516
+      },
+      {
+        "function_id": "article-1681",
+        "score": 1.4328722953796387
+      },
+      {
+        "function_id": "article-303",
+        "score": 1.4326480627059937
+      },
+      {
+        "function_id": "article-154",
+        "score": 1.431884527206421
+      },
+      {
+        "function_id": "article-112",
+        "score": 1.431783676147461
+      }
+    ],
+    "selected_ids": [
+      "article-1484",
+      "article-2105",
+      "article-2106"
+    ],
+    "status": "ok",
+    "answer": 1.1,
+    "code": "def solution():\n    # Define variables name and value\n    advertising_expenditure = [10, 20, 30, 40, 50]\n    monthly_sales_revenue = [15, 30, 50, 40, 65]\n\n    # Do math calculation to get the answer\n    n = len(advertising_expenditure)\n    mean_x = sum(advertising_expenditure) / n\n    mean_y = sum(monthly_sales_revenue) / n\n\n    numerator = sum(\n        (x - mean_x) * (y - mean_y)\n        for x, y in zip(advertising_expenditure, monthly_sales_revenue)\n    )\n    denominator = sum(\n        (x - mean_x) ** 2\n        for x in advertising_expenditure\n    )\n\n    slope = numerator / denominator\n\n    # return answer\n    return round(slope, 2)\n"
+  },
+  "digest": "81f238f2ca9c160b15aab0eb49d23ba1a5e1f0dec1d23edf81c2e1b64003a16e"
+}

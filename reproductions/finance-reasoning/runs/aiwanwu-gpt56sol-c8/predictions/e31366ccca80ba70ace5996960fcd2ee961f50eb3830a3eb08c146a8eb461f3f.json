@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2005",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function estimates the percentage change in a security’s price using modified duration (yearly adjusted period), annual convexity, and a yield-to-maturity change in basis points, applying the duration-convexity approximation and returning the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4978,
+          "completion_tokens": 56,
+          "total_tokens": 5034
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14162,
+          "completion_tokens": 783,
+          "total_tokens": 14945,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 686
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    duration = 7.020\n    convexity = 65.180\n    yield_change = -0.0025  # 25 basis point decline\n\n    # Do math calculation to get the answer\n    price_change = (-duration * yield_change) + (0.5 * convexity * yield_change ** 2)\n    answer = round(price_change * 100, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5279,
+          "completion_tokens": 254,
+          "total_tokens": 5533,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 142
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2872",
+        "score": 1.9346556663513184
+      },
+      {
+        "function_id": "article-2871",
+        "score": 1.8273345232009888
+      },
+      {
+        "function_id": "article-173",
+        "score": 1.7991273403167725
+      },
+      {
+        "function_id": "article-1790",
+        "score": 1.7955293655395508
+      },
+      {
+        "function_id": "article-927",
+        "score": 1.7628517150878906
+      },
+      {
+        "function_id": "article-503",
+        "score": 1.7279497385025024
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.702502727508545
+      },
+      {
+        "function_id": "article-454",
+        "score": 1.6958627700805664
+      },
+      {
+        "function_id": "article-1334",
+        "score": 1.666902780532837
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.665543794631958
+      },
+      {
+        "function_id": "article-2870",
+        "score": 1.6597506999969482
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.6583939790725708
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.6375190019607544
+      },
+      {
+        "function_id": "article-948",
+        "score": 1.6353812217712402
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.632385492324829
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.6263433694839478
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6258854866027832
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.6234157085418701
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.6233081817626953
+      },
+      {
+        "function_id": "article-28",
+        "score": 1.6228761672973633
+      },
+      {
+        "function_id": "article-1322",
+        "score": 1.6210001707077026
+      },
+      {
+        "function_id": "article-1956",
+        "score": 1.6207588911056519
+      },
+      {
+        "function_id": "article-172",
+        "score": 1.6198283433914185
+      },
+      {
+        "function_id": "article-1869",
+        "score": 1.619246244430542
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.6134696006774902
+      },
+      {
+        "function_id": "article-393",
+        "score": 1.6114096641540527
+      },
+      {
+        "function_id": "article-705",
+        "score": 1.6110830307006836
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.6109263896942139
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.6096439361572266
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.6085618734359741
+      }
+    ],
+    "selected_ids": [
+      "article-2872",
+      "article-2871",
+      "article-173"
+    ],
+    "status": "ok",
+    "answer": 1.775,
+    "code": "def solution():\n    # Define variables name and value\n    duration = 7.020\n    convexity = 65.180\n    yield_change = -0.0025  # 25 basis point decline\n\n    # Do math calculation to get the answer\n    price_change = (-duration * yield_change) + (0.5 * convexity * yield_change ** 2)\n    answer = round(price_change * 100, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "f289267e85af043b4beafddf1408a3244acade6b79d8cc0928979a39dd1acbbc"
+}

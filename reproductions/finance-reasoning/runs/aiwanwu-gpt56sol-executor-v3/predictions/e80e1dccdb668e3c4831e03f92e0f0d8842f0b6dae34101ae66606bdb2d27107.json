@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2097",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates annual tax penalties on account over-contributions by comparing contributions with year-specific limits, applying a fixed monthly penalty rate for 12 months to each positive excess, summing penalties across multiple years, and returning the result in CAD rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5130,
+          "completion_tokens": 57,
+          "total_tokens": 5187,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 15452,
+          "completion_tokens": 436,
+          "total_tokens": 15888,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 415
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    contributions = {\n        2015: 6000,\n        2016: 7500,\n        2017: 6000\n    }\n    annual_limits = {\n        2015: 5500,\n        2016: 5500,\n        2017: 5500\n    }\n    monthly_penalty_rate = 0.01\n    penalty_months = 12\n\n    # Do math calculation to get the answer\n    total_penalty = 0.0\n\n    for year, contribution in contributions.items():\n        over_contribution = max(0, contribution - annual_limits[year])\n        total_penalty += over_contribution * monthly_penalty_rate * penalty_months\n\n    # return answer\n    return round(total_penalty, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5391,
+          "completion_tokens": 234,
+          "total_tokens": 5625,
+          "completion_tokens_details": {
+            "reasoning_tokens": 49
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1831",
+        "score": 1.867222547531128,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2999",
+        "score": 1.6871994733810425,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2823",
+        "score": 1.6538034677505493,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1830",
+        "score": 1.5718796253204346,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2014",
+        "score": 1.5698045492172241,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2482",
+        "score": 1.5691328048706055,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.5266094207763672,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2551",
+        "score": 1.5252063274383545,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-103",
+        "score": 1.5070141553878784,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2483",
+        "score": 1.4891104698181152,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1930",
+        "score": 1.488255500793457,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-60",
+        "score": 1.4876855611801147,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2189",
+        "score": 1.485149621963501,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.4823479652404785,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2757",
+        "score": 1.4815728664398193,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-618",
+        "score": 1.4807446002960205,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.475326418876648,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1704",
+        "score": 1.4663749933242798,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2082",
+        "score": 1.461073875427246,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2015",
+        "score": 1.4603354930877686,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2550",
+        "score": 1.4535388946533203,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.4511842727661133,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1840",
+        "score": 1.449446678161621,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.4422968626022339,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2250",
+        "score": 1.4407575130462646,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2563",
+        "score": 1.4397523403167725,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-9",
+        "score": 1.4365923404693604,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2304",
+        "score": 1.4347665309906006,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-382",
+        "score": 1.4337494373321533,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1122",
+        "score": 1.4311658143997192,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1831",
+      "article-2823"
+    ],
+    "status": "ok",
+    "answer": 360.0,
+    "code": "def solution():\n    # Define variables name and value\n    contributions = {\n        2015: 6000,\n        2016: 7500,\n        2017: 6000\n    }\n    annual_limits = {\n        2015: 5500,\n        2016: 5500,\n        2017: 5500\n    }\n    monthly_penalty_rate = 0.01\n    penalty_months = 12\n\n    # Do math calculation to get the answer\n    total_penalty = 0.0\n\n    for year, contribution in contributions.items():\n        over_contribution = max(0, contribution - annual_limits[year])\n        total_penalty += over_contribution * monthly_penalty_rate * penalty_months\n\n    # return answer\n    return round(total_penalty, 2)\n"
+  },
+  "digest": "d2a8c31d3fffe566b604d9e53100697e0cf44588a85261095bf6c89c0489da98"
+}

@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2029",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates total tax liability for a given annual taxable income using progressive marginal tax brackets and rates, applies each rate only to the income within its bracket, and returns the result rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5067,
+          "completion_tokens": 45,
+          "total_tokens": 5112,
+          "prompt_tokens_details": {
+            "cached_tokens": 4864
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 15776,
+          "completion_tokens": 230,
+          "total_tokens": 16006,
+          "completion_tokens_details": {
+            "reasoning_tokens": 206
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    taxable_income = 115000\n    brackets = [\n        (0, 10000, 0.10),\n        (10000, 40000, 0.15),\n        (40000, 90000, 0.20),\n        (90000, float(\"inf\"), 0.25),\n    ]\n\n    # Do math calculation to get the answer\n    total_tax = 0.0\n\n    for lower_bound, upper_bound, rate in brackets:\n        income_in_bracket = max(0, min(taxable_income, upper_bound) - lower_bound)\n        total_tax += income_in_bracket * rate\n\n    answer = round(total_tax)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5688,
+          "completion_tokens": 226,
+          "total_tokens": 5914,
+          "completion_tokens_details": {
+            "reasoning_tokens": 55
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-846",
+        "score": 2.1125900745391846,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3076",
+        "score": 1.9870188236236572,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1815",
+        "score": 1.9481481313705444,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-313",
+        "score": 1.9404388666152954,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.8944307565689087,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.8553224802017212,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.8441225290298462,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1852",
+        "score": 1.8077476024627686,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.7860536575317383,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.775902509689331,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2440",
+        "score": 1.7739143371582031,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1813",
+        "score": 1.7331373691558838,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1842",
+        "score": 1.7309623956680298,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2979",
+        "score": 1.7137047052383423,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1839",
+        "score": 1.7006371021270752,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-384",
+        "score": 1.6829224824905396,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.6761970520019531,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1671",
+        "score": 1.6715922355651855,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1835",
+        "score": 1.660226583480835,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1816",
+        "score": 1.6561768054962158,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1819",
+        "score": 1.6465845108032227,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1841",
+        "score": 1.6297534704208374,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1633",
+        "score": 1.6291015148162842,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1850",
+        "score": 1.6287425756454468,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1821",
+        "score": 1.6244816780090332,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1667",
+        "score": 1.616849422454834,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1838",
+        "score": 1.6085141897201538,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-528",
+        "score": 1.6070669889450073,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2953",
+        "score": 1.5966696739196777,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-482",
+        "score": 1.592078685760498,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-846",
+      "article-3076",
+      "article-313"
+    ],
+    "status": "ok",
+    "answer": 21750,
+    "code": "def solution():\n    # Define variables name and value\n    taxable_income = 115000\n    brackets = [\n        (0, 10000, 0.10),\n        (10000, 40000, 0.15),\n        (40000, 90000, 0.20),\n        (90000, float(\"inf\"), 0.25),\n    ]\n\n    # Do math calculation to get the answer\n    total_tax = 0.0\n\n    for lower_bound, upper_bound, rate in brackets:\n        income_in_bracket = max(0, min(taxable_income, upper_bound) - lower_bound)\n        total_tax += income_in_bracket * rate\n\n    answer = round(total_tax)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "072d295f58dc0b23a28cdf7c601dd3da007fe2f7f6e3062436cf6902b8d6029a"
+}

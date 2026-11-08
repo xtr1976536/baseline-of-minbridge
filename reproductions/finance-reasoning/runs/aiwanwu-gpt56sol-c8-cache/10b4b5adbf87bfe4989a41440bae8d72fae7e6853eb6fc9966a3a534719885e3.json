@@ -1,0 +1,21 @@
+{
+  "identity": "10b4b5adbf87bfe4989a41440bae8d72fae7e6853eb6fc9966a3a534719885e3",
+  "response_digest": "129798d5a7fbdb9f746fc78442abac13e6c5dece69c2eabf71414213df58b11e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    fund_value = 100_000_000\n    current_stock_weight = 0.80\n    target_stock_weight = 0.60\n    stock_beta = 1.20\n    futures_beta = 0.95\n    index_level = 1_200\n    contract_multiplier = 250\n\n    # Do math calculation to get the answer\n    stock_value_to_reduce = fund_value * (current_stock_weight - target_stock_weight)\n    futures_contract_value = index_level * contract_multiplier\n    beta_adjusted_contract_value = futures_contract_value * futures_beta\n    number_of_futures = (\n        stock_value_to_reduce * stock_beta\n    ) / beta_adjusted_contract_value\n\n    # return answer\n    return round(number_of_futures, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5495,
+      "completion_tokens": 994,
+      "total_tokens": 6489,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 814
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

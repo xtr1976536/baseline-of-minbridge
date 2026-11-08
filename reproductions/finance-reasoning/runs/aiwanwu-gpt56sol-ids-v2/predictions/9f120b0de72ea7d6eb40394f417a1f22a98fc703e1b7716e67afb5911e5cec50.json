@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2108",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates an individual or pass-through business owner’s overall net taxable gain or loss by netting ordinary income against ordinary expenses, separately netting short-term and long-term capital gains and losses, applying capital-loss netting rules and the annual allowable capital-loss deduction against ordinary income, and rounding the result to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5086,
+          "completion_tokens": 69,
+          "total_tokens": 5155,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14447,
+          "completion_tokens": 228,
+          "total_tokens": 14675,
+          "completion_tokens_details": {
+            "reasoning_tokens": 204
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    ordinary_income = 150000\n    ordinary_expenses = 120000\n    short_term_gain = 12000\n    short_term_loss = 18000\n    long_term_gain = 5000\n    long_term_loss = 9000\n    capital_loss_deduction_limit = 3000\n\n    # Do math calculation to get the answer\n    net_ordinary_gain = ordinary_income - ordinary_expenses\n    net_short_term_capital = short_term_gain - short_term_loss\n    net_long_term_capital = long_term_gain - long_term_loss\n    net_capital = net_short_term_capital + net_long_term_capital\n\n    allowable_capital_deduction = min(net_capital, -capital_loss_deduction_limit)\n    net_overall_gain = net_ordinary_gain + allowable_capital_deduction\n\n    # return answer\n    return round(net_overall_gain)\n```",
+        "usage": {
+          "prompt_tokens": 5828,
+          "completion_tokens": 257,
+          "total_tokens": 6085,
+          "completion_tokens_details": {
+            "reasoning_tokens": 49
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-3078",
+        "score": 2.0123281478881836,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1837",
+        "score": 1.951035499572754,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1102",
+        "score": 1.878408670425415,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-60",
+        "score": 1.8587077856063843,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1841",
+        "score": 1.858675241470337,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2189",
+        "score": 1.8580892086029053,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1838",
+        "score": 1.8489532470703125,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1847",
+        "score": 1.8451857566833496,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-54",
+        "score": 1.7871882915496826,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-3084",
+        "score": 1.7777990102767944,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1836",
+        "score": 1.7688276767730713,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2932",
+        "score": 1.7538032531738281,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1464",
+        "score": 1.7518892288208008,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-600",
+        "score": 1.7455387115478516,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2188",
+        "score": 1.7426512241363525,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-56",
+        "score": 1.7371594905853271,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1839",
+        "score": 1.7288146018981934,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2978",
+        "score": 1.7228248119354248,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1835",
+        "score": 1.7220014333724976,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-376",
+        "score": 1.7147691249847412,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2559",
+        "score": 1.7134506702423096,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2200",
+        "score": 1.7112350463867188,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2558",
+        "score": 1.7075183391571045,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-482",
+        "score": 1.697882890701294,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1546",
+        "score": 1.6952189207077026,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1364",
+        "score": 1.6909801959991455,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1365",
+        "score": 1.6888588666915894,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-57",
+        "score": 1.6882731914520264,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2930",
+        "score": 1.6849279403686523,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2933",
+        "score": 1.6817909479141235,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-3078",
+      "article-1837",
+      "article-1102"
+    ],
+    "status": "ok",
+    "answer": 20000,
+    "code": "def solution():\n    # Define variables name and value\n    ordinary_income = 150000\n    ordinary_expenses = 120000\n    short_term_gain = 12000\n    short_term_loss = 18000\n    long_term_gain = 5000\n    long_term_loss = 9000\n    capital_loss_deduction_limit = 3000\n\n    # Do math calculation to get the answer\n    net_ordinary_gain = ordinary_income - ordinary_expenses\n    net_short_term_capital = short_term_gain - short_term_loss\n    net_long_term_capital = long_term_gain - long_term_loss\n    net_capital = net_short_term_capital + net_long_term_capital\n\n    allowable_capital_deduction = min(net_capital, -capital_loss_deduction_limit)\n    net_overall_gain = net_ordinary_gain + allowable_capital_deduction\n\n    # return answer\n    return round(net_overall_gain)\n"
+  },
+  "digest": "e70b331ff0853a05cd7edc4f1abe25fcff0bf0de80bbc8858a7020bbea150fa5"
+}

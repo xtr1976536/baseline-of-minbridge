@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:treasury_stock_common_value_fy2023,stockholders_equity_before_treasury_stock_fy2023)

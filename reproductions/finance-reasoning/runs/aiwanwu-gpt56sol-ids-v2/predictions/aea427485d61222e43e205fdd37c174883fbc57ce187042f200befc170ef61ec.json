@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2114",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the fixed annual payment of an ordinary annuity from a present value investment, given a fixed annual interest rate and a specified number of end-of-year payment periods, with the result rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5030,
+          "completion_tokens": 48,
+          "total_tokens": 5078,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C03\",\"C13\",\"C20\"]}",
+        "usage": {
+          "prompt_tokens": 14598,
+          "completion_tokens": 136,
+          "total_tokens": 14734,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 112
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 500000\n    interest_rate = 0.04\n    periods = 20\n\n    # Calculate the annual payment for an ordinary annuity\n    annual_payment = principal * interest_rate / (\n        1 - (1 + interest_rate) ** -periods\n    )\n    answer = round(annual_payment)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5655,
+          "completion_tokens": 128,
+          "total_tokens": 5783,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 29
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-3073",
+        "score": 1.922540307044983,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.895155906677246,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2333",
+        "score": 1.8951220512390137,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2334",
+        "score": 1.8851515054702759,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2338",
+        "score": 1.884676218032837,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.8803082704544067,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2335",
+        "score": 1.8688255548477173,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1313",
+        "score": 1.8656744956970215,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.8618124723434448,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.8574036359786987,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-658",
+        "score": 1.850677490234375,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.8426204919815063,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-12",
+        "score": 1.8366104364395142,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-369",
+        "score": 1.8365716934204102,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2091",
+        "score": 1.8311904668807983,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-253",
+        "score": 1.8150825500488281,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2463",
+        "score": 1.811105728149414,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-252",
+        "score": 1.7834569215774536,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.7833189964294434,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2332",
+        "score": 1.7718268632888794,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2462",
+        "score": 1.7438640594482422,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-3091",
+        "score": 1.743039846420288,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1252",
+        "score": 1.7405438423156738,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2209",
+        "score": 1.707887887954712,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2111",
+        "score": 1.7000740766525269,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.697757363319397,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.6913295984268188,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.6800951957702637,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.6778990030288696,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2665",
+        "score": 1.6725876331329346,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2333",
+      "article-12",
+      "article-2332"
+    ],
+    "status": "ok",
+    "answer": 36791,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 500000\n    interest_rate = 0.04\n    periods = 20\n\n    # Calculate the annual payment for an ordinary annuity\n    annual_payment = principal * interest_rate / (\n        1 - (1 + interest_rate) ** -periods\n    )\n    answer = round(annual_payment)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "ea2618b58e8a8d8cb1a9f18b28f18895c0e3c91b4cf7bbbeacbc09e69c89f919"
+}

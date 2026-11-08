@@ -1,0 +1,243 @@
+{
+  "review_kind": "read_only_single_case_source_and_trace_audit",
+  "created_utc": "2026-11-07T14:24:40.773822+00:00",
+  "sample_id": "FinQA:ETR/2017/page_143.pdf-3",
+  "provenance": {
+    "current_sample_file": "data/validation/gbfr_live_r21/repair/FinQA.jsonl",
+    "current_prediction_file": "runs/gbfr_e2e_validation/r21/repair/GPT-5.6 Sol/FinQA/predictions.jsonl",
+    "original_source_file": "data/raw/official/FinQA.json",
+    "original_source_id": "ETR/2017/page_143.pdf-3",
+    "current_sample_source": {
+      "commit": "b2eaa7156acb7d12fecc7386b92dd4bf82f9cc52",
+      "index": 660,
+      "uid": "ETR/2017/page_143.pdf-3"
+    },
+    "prediction_record_sha256": "5a0ca495cdecc3e73cbaf41fb8c53467e1674336ad024fcf871f5ccdfc27c650",
+    "prediction_record_digest_note": "Canonical JSON digest of this matched record only; prediction file is an active append-only run and was not changed.",
+    "api_calls": 0,
+    "code_modified": false,
+    "gold_modified": false,
+    "snapshots_modified": false,
+    "outputs_written_only": [
+      "research/repairs/20261107/r21_etr_review.json",
+      "research/repairs/20261107/r21_etr_review.md"
+    ]
+  },
+  "question": "what is the amount of interest applied to the annual long-term debt maturities in 2018?",
+  "current_sample_evidence": {
+    "answer": "566808000",
+    "answer_meta": {},
+    "unanswerable": false,
+    "full_context": "( a ) consists of pollution control revenue bonds and environmental revenue bonds , some of which are secured by collateral mortgage bonds .\n( b ) pursuant to the nuclear waste policy act of 1982 , entergy 2019s nuclear owner/licensee subsidiaries have contracts with the doe for spent nuclear fuel disposal service . a0 a0the contracts include a one-time fee for generation prior to april 7 , 1983 . a0 a0entergy arkansas is the only entergy company that generated electric power with nuclear fuel prior to that date and includes the one-time fee , plus accrued interest , in long-term debt .\n( c ) see note 10 to the financial statements for further discussion of the waterford 3 lease obligation and entergy louisiana 2019s acquisition of the equity participant 2019s beneficial interest in the waterford 3 leased assets and for further discussion of the grand gulf lease obligation .\n( d ) this note did not have a stated interest rate , but had an implicit interest rate of 7.458% ( 7.458 % ) .\n( e ) the fair value excludes lease obligations of $ 34 million at system energy and long-term doe obligations of $ 183 million at entergy arkansas , and includes debt due within one year . a0 a0fair values are classified as level 2 in the fair value hierarchy discussed in note 15 to the financial statements and are based on prices derived from inputs such as benchmark yields and reported trades .\nthe annual long-term debt maturities ( excluding lease obligations and long-term doe obligations ) for debt outstanding as of december a031 , 2017 , for the next five years are as follows : amount ( in thousands ) .\n|  | Amount (In Thousands) |\n| --- | --- |\n| 2018 | $760,000 |\n| 2019 | $857,679 |\n| 2020 | $898,500 |\n| 2021 | $960,764 |\n| 2022 | $1,304,431 |\nin november 2000 , entergy 2019s non-utility nuclear business purchased the fitzpatrick and indian point 3 power plants in a seller-financed transaction .\nas part of the purchase agreement with nypa , entergy recorded a liability representing the net present value of the payments entergy would be liable to nypa for each year that the fitzpatrick and indian point 3 power plants would run beyond their respective original nrc license expiration date .\nin october 2015 , entergy announced a planned shutdown of fitzpatrick at the end of its fuel cycle .\nas a result of the announcement , entergy reduced this liability by $ 26.4 million pursuant to the terms of the purchase agreement .\nin august 2016 , entergy entered into a trust transfer agreement with nypa to transfer the decommissioning trust funds and decommissioning liabilities for the indian point 3 and fitzpatrick plants to entergy .\nas part of the trust transfer agreement , the original decommissioning agreements were amended , and the entergy subsidiaries 2019 obligation to make additional license extension payments to nypa was eliminated .\nin the third quarter 2016 , entergy removed the note payable of $ 35.1 million from the consolidated balance sheet .\nentergy louisiana , entergy mississippi , entergy new orleans , entergy texas , and system energy have obtained long-term financing authorizations from the ferc that extend through october 2019 . a0 a0entergy arkansas has obtained long-term financing authorization from the apsc that extends through december 2018 .\nentergy new orleans has also obtained long-term financing authorization from the city council that extends through june 2018 , as the city council has concurrent jurisdiction with the ferc over such issuances .\ncapital funds agreement pursuant to an agreement with certain creditors , entergy corporation has agreed to supply system energy with sufficient capital to : 2022 maintain system energy 2019s equity capital at a minimum of 35% ( 35 % ) of its total capitalization ( excluding short- term debt ) ; entergy corporation and subsidiaries notes to financial statements .",
+    "interest_rate_sentence": "( d ) this note did not have a stated interest rate , but had an implicit interest rate of 7.458% ( 7.458 % ) .",
+    "maturity_scope_sentence": "the annual long-term debt maturities ( excluding lease obligations and long-term doe obligations ) for debt outstanding as of december a031 , 2017 , for the next five years are as follows : amount ( in thousands ) .",
+    "amount_table_header": "|  | Amount (In Thousands) |",
+    "amount_table_2018_row": "| 2018 | $760,000 |"
+  },
+  "original_source_qa_evidence": {
+    "question": "what is the amount of interest applied to the annual long-term debt maturities in 2018?",
+    "answer": "566808000",
+    "program": "multiply(760000, const_1000), multiply(#0, 7.458%)",
+    "exe_ans": 56680800.0,
+    "steps": [
+      {
+        "op": "multiply1-1",
+        "arg1": "760000",
+        "arg2": "const_1000",
+        "res": "760000000"
+      },
+      {
+        "op": "multiply1-2",
+        "arg1": "#0",
+        "arg2": "7.458%",
+        "res": "566808000"
+      }
+    ]
+  },
+  "live_trace_evidence": {
+    "status": "answered",
+    "value": 56680.8,
+    "meta": {
+      "currency": "USD",
+      "scale": "thousand",
+      "unit": null
+    },
+    "operator_sequence": [
+      "OQA",
+      "OES",
+      "OES",
+      "OPE.final"
+    ],
+    "oqa": {
+      "operator": "product",
+      "precision": "unknown",
+      "reasoning_type": "ArithmeticCalculation",
+      "subgoals": [
+        {
+          "constraints": {
+            "entity_scope": "Entergy long-term debt",
+            "meta": {
+              "currency": "$",
+              "scale": "thousand",
+              "unit": null
+            },
+            "temporal_scope": "2018"
+          },
+          "metric": "Annual long-term debt maturity amount"
+        },
+        {
+          "constraints": {
+            "entity_scope": null,
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": "percentage"
+            },
+            "temporal_scope": null
+          },
+          "metric": "Implicit interest rate"
+        }
+      ]
+    },
+    "oes": [
+      {
+        "goal": {
+          "metric": "Annual long-term debt maturity amount",
+          "constraints": {
+            "temporal_scope": "2018",
+            "entity_scope": "Entergy long-term debt",
+            "meta": {
+              "currency": "$",
+              "scale": "thousand",
+              "unit": null
+            }
+          }
+        },
+        "response": {
+          "found": true,
+          "missing_vars": [],
+          "notes": "Resolved \"Annual long-term debt maturity amount\" from the table heading \"the annual long-term debt maturities (excluding lease obligations and long-term DOE obligations) for debt outstanding as of December 31, 2017, for the next five years\" together with the 2018 row and the \"Amount (In Thousands)\" column.",
+          "var_bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": "Entergy long-term debt",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "2018"
+              },
+              "context": "Annual long-term debt maturities — 2018: $760,000 (Amount (In Thousands))",
+              "context_spans": [
+                "|  | Amount (In Thousands) |",
+                "| 2018 | $760,000 |"
+              ],
+              "metric": "Annual long-term debt maturity amount",
+              "observed_meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              },
+              "source_label": "Amount (In Thousands)",
+              "value": 760000
+            }
+          }
+        }
+      },
+      {
+        "goal": {
+          "metric": "Implicit interest rate",
+          "constraints": {
+            "temporal_scope": null,
+            "entity_scope": null,
+            "meta": {
+              "currency": null,
+              "scale": null,
+              "unit": "percentage"
+            }
+          }
+        },
+        "response": {
+          "found": true,
+          "missing_vars": [],
+          "notes": null,
+          "var_bindings": {
+            "v1": {
+              "confidence": 1.0,
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": null
+              },
+              "context": "implicit interest rate of 7.458%",
+              "context_spans": [],
+              "metric": "Implicit interest rate",
+              "observed_meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "percentage"
+              },
+              "source_label": "implicit interest rate",
+              "value": 7.458
+            }
+          }
+        }
+      }
+    ],
+    "final_program": "def compute(vars):\n    amount = vars[\"v1\"]\n    rate = vars[\"v2\"]\n    interest = amount * rate / 100\n    return {\n        \"value\": interest,\n        \"trace\": {\n            \"amount\": amount,\n            \"rate_percent\": rate,\n            \"interest\": interest,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"thousand\",\n                \"unit\": None\n            }\n        }\n    }",
+    "final_inputs": {
+      "v1": 760000.0,
+      "v2": 7.458
+    },
+    "final_execution": {
+      "value": 56680.8,
+      "trace": {
+        "amount": 760000.0,
+        "rate_percent": 7.458,
+        "interest": 56680.8,
+        "output_meta": {
+          "currency": "USD",
+          "scale": "thousand",
+          "unit": null
+        }
+      }
+    },
+    "uses_omd": false,
+    "uses_ope_metric": false
+  },
+  "arithmetic_audit": {
+    "display_equation": "760000 * 7.458 / 100 = 56680.8 thousand USD",
+    "canonical_equation": "760000 * 1000 * 7.458 / 100 = 56680800 USD",
+    "prediction_normalized_usd": 56680800.0,
+    "matches_original_exe_ans": true,
+    "original_published_answer_divided_by_exe_ans": 10.0,
+    "interpretation": "百分比换算及输出元数据中的thousand均正确；原始answer/末步res与其program及exe_ans差10倍。此数值一致性不证明利率适用范围成立，也未修改冻结评分。",
+    "gold_metadata_caveat": "当前answer_meta为空。裸数字gold缺乏显式单位声明；本审查没有替评估器推定gold单位，也不改变既有分数。"
+  },
+  "classification": {
+    "graph_formula_gap": false,
+    "new_graph_formula_usage_proven": false,
+    "percent_or_output_scale_error_demonstrated": false,
+    "source_answer_program_inconsistency": true,
+    "financial_scope_linkage_risk": true,
+    "graph_usage_limit": "本次仅OQA、OES×2、OPE.final；没有调用OMD/OPE.metric，不能将此题归因为新增图谱公式的验证成功。"
+  },
+  "scope_risk": {
+    "principal_scope": "Aggregate annual long-term debt maturities, excluding lease and long-term DOE obligations, outstanding at December 31 2017, maturity year 2018.",
+    "rate_scope_literal": "this note",
+    "dropped_rate_constraints": {
+      "entity_scope": null,
+      "temporal_scope": null
+    },
+    "evidence_limit": "当前D只将7.458%限定为this note的隐含利率；未明确将该note与全公司2018 aggregate maturities建立同一债项或覆盖范围关系。不能仅凭单位匹配或存在唯一利率就证明可相乘。",
+    "status": "Unproven applicability in supplied context; not a proof that the financial rate can never apply.",
+    "generic_repair_recommendation": "百分比×金额在OQA保留主体、工具/债项、期间、覆盖范围及计价口径；OES或最终关系检查要求Q/D中的明确绑定或直接蕴含，缺乏绑定则拒答。命名财务指标仍应遵循论文OMD路径，不应凭常识新增公式。",
+    "prohibited_gold_fit": "不为拟合当前gold乘10、不更改金标、不猜测债务关系或补入外部财务公式。"
+  }
+}

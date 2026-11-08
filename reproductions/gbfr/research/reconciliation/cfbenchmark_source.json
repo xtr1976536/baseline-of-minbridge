@@ -1,0 +1,491 @@
+{
+  "repository": "TongjiFinLab/CFBenchmark",
+  "commit": "982788b50539cb617f3826704d4ef4b5747f7430",
+  "source_files": [
+    {
+      "file": "金融指标计算.json",
+      "sha256": "f273c9b11c81082221982dc1adb2e3d8d0e997ed49df34a1da1641694ffd6311"
+    },
+    {
+      "file": "金融数值提取.json",
+      "sha256": "05cc4ce18a16b0c13a436fb9ba94fcd28b9202db363915d9548608ea9fa68407"
+    },
+    {
+      "file": "金融数据检查.json",
+      "sha256": "597e250364953158a97dfd4bf48b8c4a22b95caeeac9492be8b2493fd0a6602c"
+    }
+  ],
+  "candidate_original_count": 140,
+  "counterfactual_count": 11,
+  "selection_identity": "70 indicator-calculation + 70 numeric-extraction rows from the official release",
+  "gold_label_edits_in_gbfr_release": [
+    {
+      "file": "金融指标计算.json",
+      "index": 18,
+      "id": "18",
+      "official_option": "B",
+      "official_answer": "-270.2702",
+      "gbfr_answer": "-0.037",
+      "question": "你是一个指标计算助手。请根据给定的数据和公式计算福昕软件ROS，保留四位小数。"
+    },
+    {
+      "file": "金融指标计算.json",
+      "index": 66,
+      "id": "66",
+      "official_option": "D",
+      "official_answer": "4.08%",
+      "gbfr_answer": "4.26%",
+      "question": "你是一个数据分析助手。请根据以下内容，计算人民币兑美元贬值率。"
+    }
+  ],
+  "input_transform_exceptions": [
+    {
+      "file": "金融数值提取.json",
+      "index": 3,
+      "id": "3",
+      "issue": "input_differs_beyond_whitespace_and_removed_choice_instruction"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 9,
+      "id": "9",
+      "issue": "input_differs_beyond_whitespace_and_removed_choice_instruction"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 19,
+      "id": "19",
+      "issue": "input_differs_beyond_whitespace_and_removed_choice_instruction"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 22,
+      "id": "22",
+      "issue": "input_differs_beyond_whitespace_and_removed_choice_instruction"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 24,
+      "id": "24",
+      "issue": "input_differs_beyond_whitespace_and_removed_choice_instruction"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 25,
+      "id": "25",
+      "issue": "input_differs_beyond_whitespace_and_removed_choice_instruction"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 31,
+      "id": "31",
+      "issue": "input_differs_beyond_whitespace_and_removed_choice_instruction"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 33,
+      "id": "33",
+      "issue": "input_differs_beyond_whitespace_and_removed_choice_instruction"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 37,
+      "id": "37",
+      "issue": "input_differs_beyond_whitespace_and_removed_choice_instruction"
+    }
+  ],
+  "nonscalar_label_review": [
+    {
+      "file": "金融数值提取.json",
+      "index": 3,
+      "id": "3",
+      "question": "你是一个金融分析师。下面是2022年公募债券条款行权结构数据，请回答沪公募转股金额和到期只数为多少？",
+      "official_answer": "沪公募的转股金额为396.95亿元，到期只数为3只",
+      "gbfr_answer": "沪公募的转股金额为396.95亿元，到期只数为3只",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 16,
+      "id": "16",
+      "question": "你是一个金融分析师。请根据提供的基金分类的数据，回答问题。",
+      "official_answer": "偏股混合型基金",
+      "gbfr_answer": "偏股混合型基金",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 17,
+      "id": "17",
+      "question": "你是一个金融分析师。下面是截止2023-11-06的ETF市场概况，请回答主题指数ETF份额合计为多少？份额占比为多少？",
+      "official_answer": "主题指数ETF份额合计4924.57亿份，份额占比28.93%",
+      "gbfr_answer": "主题指数ETF份额合计4924.57亿份，份额占比28.93%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 18,
+      "id": "18",
+      "question": "你是一个金融分析师。下面是截止2023-11-06的FOF市场概况，请回答养老目标日期FOF基金数量合计为多少？数量占比为多少？",
+      "official_answer": "养老目标日期FOF基金数量合计为115只，数量占比为24.47%",
+      "gbfr_answer": "养老目标日期FOF基金数量合计为115只，数量占比为24.47%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 28,
+      "id": "28",
+      "question": "你是一个金融分析师。以下是五粮液的机构持仓数据，请回答哪个机构的占流通股比例最高。",
+      "official_answer": "其他机构的占流通股比例最高，为63.49%。",
+      "gbfr_answer": "其他机构的占流通股比例最高，为63.49%。",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 34,
+      "id": "34",
+      "question": "你是一个金融分析师。2023年三季度国内焦炭进出口数据如下，请问2023年09月国内出口焦炭的总额和涨跌幅为多少？",
+      "official_answer": "总额2.98亿美元，涨跌幅-10.20%",
+      "gbfr_answer": "总额2.98亿美元，涨跌幅-10.20%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 35,
+      "id": "35",
+      "question": "你是一个金融分析师。请根据提供的石油期货价回答问题。",
+      "official_answer": "结算价85.18美元/桶，涨跌幅0.34%",
+      "gbfr_answer": "结算价85.18美元/桶，涨跌幅0.34%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 38,
+      "id": "38",
+      "question": "你是一个金融分析助手。根据以下内容，香港恒生指数和恒生科技指数分别涨幅为多少？",
+      "official_answer": "恒生指数涨幅0.75%,恒生科技指数涨幅1.63%",
+      "gbfr_answer": "恒生指数涨幅0.75%,恒生科技指数涨幅1.63%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 39,
+      "id": "39",
+      "question": "你是一个金融分析助手。根据以下内容，11月2日美股普涨，其中道琼斯工业平均指数、标准普尔500种股票指数以及纳斯达克指数分别上涨多少个百分点？",
+      "official_answer": "道琼斯工业平均指数1.70％,标准普尔500种股票指数1.89％,纳斯达克指数1.78％",
+      "gbfr_answer": "道琼斯工业平均指数1.70％,标准普尔500种股票指数1.89％,纳斯达克指数1.78％",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 40,
+      "id": "40",
+      "question": "你是一个金融分析助手。根据以下内容，请依次说出11月2日苹果、小鹏汽车、特斯拉以及阿里巴巴涨幅分别超多少个百分点？",
+      "official_answer": "苹果涨幅超2％,小鹏汽车涨幅超6％,特斯拉涨幅超6％,阿里巴巴涨幅超1％",
+      "gbfr_answer": "苹果涨幅超2％,小鹏汽车涨幅超6％,特斯拉涨幅超6％,阿里巴巴涨幅超1％",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 42,
+      "id": "42",
+      "question": "你是一个金融分析助手。根据以下内容，高新发展自2023年10月19日至11月2日累计上涨多少百分点，且当前公司股票静态市盈率为多少？",
+      "official_answer": "累计上涨185.30％,静态市盈率82.45倍",
+      "gbfr_answer": "累计上涨185.30％,静态市盈率82.45倍",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 43,
+      "id": "43",
+      "question": "你是一个金融分析助手。根据以下内容，2023年10月万科实现合同销售面积多少万平方米，1-10月累计实现合同销售金额多少亿元？",
+      "official_answer": "合同销售面积200.0万平方米,合同销售金额3124.4亿元",
+      "gbfr_answer": "合同销售面积200.0万平方米,合同销售金额3124.4亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 45,
+      "id": "45",
+      "question": "你是一个金融分析助手。根据以下内容，晶科能源和晶澳科技2022年前三季度和2023年前三季度光伏组件出货量分别为多少GW？",
+      "official_answer": "晶科能源2022前三季度出货量28.5GW,晶科能源2023前三季度出货量52.20GW,晶澳科技2022前三季度出货量27.1GW,晶澳科技2023前三季度出货量37.63GW",
+      "gbfr_answer": "晶科能源2022前三季度出货量28.5GW,晶科能源2023前三季度出货量52.20GW,晶澳科技2022前三季度出货量27.1GW,晶澳科技2023前三季度出货量37.63GW",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 46,
+      "id": "46",
+      "question": "你是一个金融分析助手。根据以下内容，中银证券预测2023年贵州茅台EPS为多少，同比增长率为多少？",
+      "official_answer": "2023年贵州茅台EPS59.19元／股,同比增长率19％",
+      "gbfr_answer": "2023年贵州茅台EPS59.19元／股,同比增长率19％",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 47,
+      "id": "47",
+      "question": "你是一个金融分析助手。根据以下内容，中泰证券对于药明康德2023年的调整前公司收入预测和调整后公司收入预测分别为多少亿元？",
+      "official_answer": "调整前公司收入预测417.23亿元,调整后公司收入预测402.52亿元",
+      "gbfr_answer": "调整前公司收入预测417.23亿元,调整后公司收入预测402.52亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 48,
+      "id": "48",
+      "question": "你是一个金融分析助手。根据以下内容，在11月券商金股中，医药行业和电子行业的金股推荐度占比分别为多少？",
+      "official_answer": "医药行业13.35％,电子行业10.56％",
+      "gbfr_answer": "医药行业13.35％,电子行业10.56％",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 49,
+      "id": "49",
+      "question": "你是一个金融分析助手。根据以下内容，海通证券、国金证券、东方财富以及东方证券的回购金额上限分别为多少亿元？",
+      "official_answer": "海通证券6亿元,国金证券3亿元,东方财富10亿元,东方证券5亿元",
+      "gbfr_answer": "海通证券6亿元,国金证券3亿元,东方财富10亿元,东方证券5亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 51,
+      "id": "51",
+      "question": "你是一个金融分析助手。根据以下内容，11月3日上交所、深交所融资余额分别为多少亿元，两市融资交易额为多少亿元？",
+      "official_answer": "上交所融资余额8159.65亿元,深交所融资余额7343.98亿元,两市融资交易额1150.65亿元",
+      "gbfr_answer": "上交所融资余额8159.65亿元,深交所融资余额7343.98亿元,两市融资交易额1150.65亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 53,
+      "id": "53",
+      "question": "你是一个金融分析助手。根据以下内容，2023年前九个月，中国服务进口和出口总额分别为多少亿元？",
+      "official_answer": "服务进口总额28460.1亿元,服务出口总额19720.6亿元",
+      "gbfr_answer": "服务进口总额28460.1亿元,服务出口总额19720.6亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 54,
+      "id": "54",
+      "question": "你是一个金融分析助手。根据以下内容，2023年前三季度，文化企业实现营业收入多少亿元，其中文化制造业、文化批发和零售业以及文化服务业营收分别为多少？",
+      "official_answer": "文化企业营业收入91619亿元,文化制造业营业收入29007亿元,文化批发和零售业营业收入15024亿元,文化服务业营业收入47588亿元",
+      "gbfr_answer": "文化企业营业收入91619亿元,文化制造业营业收入29007亿元,文化批发和零售业营业收入15024亿元,文化服务业营业收入47588亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 55,
+      "id": "55",
+      "question": "你是一个金融分析助手。根据以下内容，11月2日境内在岸市场人民币兑美元汇率和境外离岸市场人民币兑美元汇率分别为多少？",
+      "official_answer": "境内在岸市场人民币兑美元汇率7.3191,境外离岸市场人民币兑美元汇率7.3326",
+      "gbfr_answer": "境内在岸市场人民币兑美元汇率7.3191,境外离岸市场人民币兑美元汇率7.3326",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 56,
+      "id": "56",
+      "question": "你是一个金融分析助手。根据以下内容，2023第三季度，科沃斯和石头科技的归母净利润分别为多少亿元？",
+      "official_answer": "科沃斯归母净利润1961万元,石头科技归母净利润6.21亿元",
+      "gbfr_answer": "科沃斯归母净利润1961万元,石头科技归母净利润6.21亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 58,
+      "id": "58",
+      "question": "你是一个金融分析助手。根据以下内容，截至2023年6月30日，泰丰股份2023年实现了多少收益以及净利润？",
+      "official_answer": "收益2.05亿元,净利润7359.9万元",
+      "gbfr_answer": "收益2.05亿元,净利润7359.9万元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 59,
+      "id": "59",
+      "question": "你是一个金融分析助手。根据以下内容，10月全球食品价格指数环比下降多少百分点，其中食糖类价格环比下降了多少？",
+      "official_answer": "食品价格指数环比下降0.5%,食糖价格环比下降2.2%",
+      "gbfr_answer": "食品价格指数环比下降0.5%,食糖价格环比下降2.2%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 60,
+      "id": "60",
+      "question": "你是一个金融分析助手。根据以下内容，11月3日芝加哥期货交易所玉米和小麦的12月合约期价分别为每蒲式耳多少美元？",
+      "official_answer": "玉米每蒲式耳4.7725美元,小麦每蒲式耳5.725美元",
+      "gbfr_answer": "玉米每蒲式耳4.7725美元,小麦每蒲式耳5.725美元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 61,
+      "id": "61",
+      "question": "你是一个金融分析助手。根据以下内容，2023年前三季度百纳千成营业总收入和归母净利润为多少万元，另外股价异动期间，股价与创业板综和文化传媒板块连续两个交易日累计偏离度分别为多少？",
+      "official_answer": "营业总收入18369.38万元,归母净利润-3151.02万元,与创业板综偏离度37.05%,与文化传媒板块偏离度32.62%",
+      "gbfr_answer": "营业总收入18369.38万元,归母净利润-3151.02万元,与创业板综偏离度37.05%,与文化传媒板块偏离度32.62%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 62,
+      "id": "62",
+      "question": "你是一个金融分析助手。根据以下内容，IDC预估全球AI软件市场规模将在2027年达到多少亿美元，复合年增长率为多少？",
+      "official_answer": "市场规模2790亿美元,复合年增长率31.4%",
+      "gbfr_answer": "市场规模2790亿美元,复合年增长率31.4%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 63,
+      "id": "63",
+      "question": "你是一个金融分析助手。根据以下内容，天风证券对于23年海能达的盈利预测调整前后分别为多少亿元？",
+      "official_answer": "调整前4.5亿元,调整后4.1亿元",
+      "gbfr_answer": "调整前4.5亿元,调整后4.1亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 64,
+      "id": "64",
+      "question": "你是一个金融分析助手。根据以下内容，国海证券定增发行价格和发行股数分别为多少，其中3家券商将合计买入国海证券多少亿元？",
+      "official_answer": "发行价格3.39元/股,发行股数9.42亿股,合计买入国海证券4.31亿元",
+      "gbfr_answer": "发行价格3.39元/股,发行股数9.42亿股,合计买入国海证券4.31亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 65,
+      "id": "65",
+      "question": "你是一个金融分析助手。根据以下内容，三季度末十大牛散合计持有A股市值多少亿元，其中葛卫东、陈发树、“章盟主”家族持股市值分别为多少？",
+      "official_answer": "合计持有385.43亿元,葛卫东持股市值138.85亿元,陈发树持股市值67.70亿元,“章盟主”持股市值38.39亿元",
+      "gbfr_answer": "合计持有385.43亿元,葛卫东持股市值138.85亿元,陈发树持股市值67.70亿元,“章盟主”持股市值38.39亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 66,
+      "id": "66",
+      "question": "你是一个金融分析助手。根据以下内容，“C50风向指数”中多家机构对于10月居民消费价格指数、新增人民币贷款以及社融规模的预测中值分别为多少？",
+      "official_answer": "10月居民消费价格指数预测中值-0.1%,新增人民币贷款预测中值0.64万亿元,社融规模预测中值1.81万亿元",
+      "gbfr_answer": "10月居民消费价格指数预测中值-0.1%,新增人民币贷款预测中值0.64万亿元,社融规模预测中值1.81万亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 67,
+      "id": "67",
+      "question": "你是一个金融分析助手。根据以下涉及到的科创100指数相关数据显示，该指数成分股平均市值为多少亿元，前五大行业占指数权重分别为多少？",
+      "official_answer": "平均市值140亿元,前五大行业权重分别为30.6%、19.7%、18.6%、10.9%、9.9%",
+      "gbfr_answer": "平均市值140亿元,前五大行业权重分别为30.6%、19.7%、18.6%、10.9%、9.9%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 68,
+      "id": "68",
+      "question": "你是一个金融分析助手。根据以下内容，截至11月3日，沪股通持有的科创板股市值达到了多少亿元，其中持有的传音控股的市值为多少？",
+      "official_answer": "沪股通持有的科创板股市值587.40亿元,持有的传音控股的市值46.46亿元",
+      "gbfr_answer": "沪股通持有的科创板股市值587.40亿元,持有的传音控股的市值46.46亿元",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    },
+    {
+      "file": "金融数值提取.json",
+      "index": 69,
+      "id": "69",
+      "question": "你是一个金融分析助手。根据以下内容，10月份中国大宗商品指数较上月回落了多少百分点，其中有色金属和汽车供应量的环比增长率分别为多少？",
+      "official_answer": "10月份中国大宗商品指数较上月回落0.8个百分比,有色金属环比增长率6.7%,汽车环比增长率6.5%",
+      "gbfr_answer": "10月份中国大宗商品指数较上月回落0.8个百分比,有色金属环比增长率6.7%,汽车环比增长率6.5%",
+      "reason": "not_a_supported_single_scalar_financial_answer"
+    }
+  ],
+  "negative_lineage": {
+    "links": [
+      {
+        "negative_index": 0,
+        "source_candidates": [
+          11
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 1,
+        "source_candidates": [
+          72
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 2,
+        "source_candidates": [
+          3
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 3,
+        "source_candidates": [
+          134
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 4,
+        "source_candidates": [
+          46
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 5,
+        "source_candidates": [
+          108
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 6,
+        "source_candidates": [
+          33
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 7,
+        "source_candidates": [
+          36
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 8,
+        "source_candidates": [
+          59
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 9,
+        "source_candidates": [
+          87
+        ],
+        "join_method": "original_question"
+      },
+      {
+        "negative_index": 10,
+        "source_candidates": [
+          10
+        ],
+        "join_method": "original_question"
+      }
+    ],
+    "unique": 11,
+    "ambiguous_or_missing": [],
+    "interpretation": "Links establish source identity only, not human verification of unanswerability"
+  },
+  "paper_ready": false,
+  "unresolved": "Paper numeric-only filtering and Table 4's 140 originals cannot both be verified from this mixed-answer release"
+}

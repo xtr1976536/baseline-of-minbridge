@@ -1,0 +1,219 @@
+{
+  "record": {
+    "question_id": "test-2105",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the expiration profit or loss of a bull put spread from the short-put strike and premium, long-put strike and premium, and underlying stock price at expiration, accounting for option intrinsic values, net premium received, contract payoff, and rounding the dollar result to the nearest whole number?",
+        "usage": {
+          "prompt_tokens": 5019,
+          "completion_tokens": 62,
+          "total_tokens": 5081,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14722,
+          "completion_tokens": 348,
+          "total_tokens": 15070,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 330
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    sell_premium = 6\n    buy_premium = 2\n    sell_strike = 110\n    stock_price_at_expiry = 105\n\n    # Do math calculation to get the answer\n    net_credit = sell_premium - buy_premium\n    short_put_loss = sell_strike - stock_price_at_expiry\n    profit_loss = net_credit - short_put_loss\n    answer = round(profit_loss)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5153,
+          "completion_tokens": 162,
+          "total_tokens": 5315,
+          "prompt_tokens_details": {
+            "cached_tokens": 3495
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 42
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-777",
+        "score": 2.0978403091430664,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-706",
+        "score": 2.055339813232422,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-316",
+        "score": 2.011536121368408,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-779",
+        "score": 1.9803904294967651,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-314",
+        "score": 1.9799633026123047,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.958949327468872,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.9534311294555664,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-778",
+        "score": 1.9395620822906494,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-780",
+        "score": 1.9084835052490234,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-707",
+        "score": 1.8966591358184814,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-317",
+        "score": 1.8948488235473633,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-781",
+        "score": 1.894681692123413,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.8918704986572266,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-774",
+        "score": 1.8916265964508057,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-315",
+        "score": 1.866180658340454,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-775",
+        "score": 1.85015070438385,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.8439699411392212,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.8427624702453613,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1077",
+        "score": 1.8405730724334717,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.8398993015289307,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-708",
+        "score": 1.8370757102966309,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.8291617631912231,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.8214911222457886,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2659",
+        "score": 1.819822072982788,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-759",
+        "score": 1.8189971446990967,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-709",
+        "score": 1.8184410333633423,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-703",
+        "score": 1.8030681610107422,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2586",
+        "score": 1.8018347024917603,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-793",
+        "score": 1.8014428615570068,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-776",
+        "score": 1.7995831966400146,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-777"
+    ],
+    "status": "ok",
+    "answer": -1,
+    "code": "def solution():\n    # Define variables name and value\n    sell_premium = 6\n    buy_premium = 2\n    sell_strike = 110\n    stock_price_at_expiry = 105\n\n    # Do math calculation to get the answer\n    net_credit = sell_premium - buy_premium\n    short_put_loss = sell_strike - stock_price_at_expiry\n    profit_loss = net_credit - short_put_loss\n    answer = round(profit_loss)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "a6a4a48f9674760aa19b13b61e4cf26ab40b511ae1f4c5a622bbb0f91ae5cd7c"
+}

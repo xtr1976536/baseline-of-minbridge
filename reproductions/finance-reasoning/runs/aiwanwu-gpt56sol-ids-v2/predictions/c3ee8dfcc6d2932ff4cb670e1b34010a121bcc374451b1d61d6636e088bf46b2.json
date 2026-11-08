@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2192",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the equilibrium quoted price of a Treasury note futures contract using a cash-and-carry (carry arbitrage) model, incorporating the underlying bond’s dirty price, accrued interest, time to futures expiration, risk-free financing rate, coupon payments, and conversion factor, with the result rounded to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5068,
+          "completion_tokens": 67,
+          "total_tokens": 5135,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C03\",\"C16\",\"C25\"]}",
+        "usage": {
+          "prompt_tokens": 15031,
+          "completion_tokens": 254,
+          "total_tokens": 15285,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 230
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    dirty_spot_price = 104.17\n    annual_coupon_rate = 0.02\n    days_since_last_coupon = 30\n    days_to_futures_expiration = 90\n    days_in_coupon_period = 180\n    annual_risk_free_rate = 0.0165\n    days_in_year = 360\n    conversion_factor = 0.7025\n\n    # Calculate the financed dirty price at futures expiration\n    financing_period = days_to_futures_expiration / days_in_year\n    future_dirty_price = dirty_spot_price * (\n        1 + annual_risk_free_rate * financing_period\n    )\n\n    # Subtract accrued interest at futures expiration to obtain the clean price\n    accrued_days_at_expiration = (\n        days_since_last_coupon + days_to_futures_expiration\n    )\n    semiannual_coupon = annual_coupon_rate * 100 / 2\n    accrued_interest_at_expiration = semiannual_coupon * (\n        accrued_days_at_expiration / days_in_coupon_period\n    )\n    future_clean_price = future_dirty_price - accrued_interest_at_expiration\n\n    # Adjust the clean price by the Treasury futures conversion factor\n    equilibrium_quoted_price = future_clean_price / conversion_factor\n\n    # return answer\n    return round(equilibrium_quoted_price, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5715,
+          "completion_tokens": 671,
+          "total_tokens": 6386,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 379
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-738",
+        "score": 1.8094271421432495,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-448",
+        "score": 1.8033568859100342,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2180",
+        "score": 1.7875494956970215,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-79",
+        "score": 1.7463068962097168,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.712477207183838,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1812",
+        "score": 1.698979377746582,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-518",
+        "score": 1.6950058937072754,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-876",
+        "score": 1.6945843696594238,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.6856786012649536,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-105",
+        "score": 1.6855413913726807,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-659",
+        "score": 1.6823434829711914,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-662",
+        "score": 1.680305004119873,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1432",
+        "score": 1.6616168022155762,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-155",
+        "score": 1.6585078239440918,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.6582359075546265,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1725",
+        "score": 1.6567773818969727,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.652910828590393,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1943",
+        "score": 1.6462671756744385,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1601",
+        "score": 1.6437560319900513,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2865",
+        "score": 1.634324073791504,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6332736015319824,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-157",
+        "score": 1.628591537475586,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2691",
+        "score": 1.6285688877105713,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-810",
+        "score": 1.6283025741577148,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-612",
+        "score": 1.626690149307251,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1729",
+        "score": 1.6253762245178223,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1955",
+        "score": 1.6204237937927246,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.61445951461792,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1303",
+        "score": 1.6097558736801147,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-394",
+        "score": 1.6095271110534668,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2180",
+      "article-1725",
+      "article-612"
+    ],
+    "status": "ok",
+    "answer": 147.947,
+    "code": "def solution():\n    # Define variables name and value\n    dirty_spot_price = 104.17\n    annual_coupon_rate = 0.02\n    days_since_last_coupon = 30\n    days_to_futures_expiration = 90\n    days_in_coupon_period = 180\n    annual_risk_free_rate = 0.0165\n    days_in_year = 360\n    conversion_factor = 0.7025\n\n    # Calculate the financed dirty price at futures expiration\n    financing_period = days_to_futures_expiration / days_in_year\n    future_dirty_price = dirty_spot_price * (\n        1 + annual_risk_free_rate * financing_period\n    )\n\n    # Subtract accrued interest at futures expiration to obtain the clean price\n    accrued_days_at_expiration = (\n        days_since_last_coupon + days_to_futures_expiration\n    )\n    semiannual_coupon = annual_coupon_rate * 100 / 2\n    accrued_interest_at_expiration = semiannual_coupon * (\n        accrued_days_at_expiration / days_in_coupon_period\n    )\n    future_clean_price = future_dirty_price - accrued_interest_at_expiration\n\n    # Adjust the clean price by the Treasury futures conversion factor\n    equilibrium_quoted_price = future_clean_price / conversion_factor\n\n    # return answer\n    return round(equilibrium_quoted_price, 3)\n"
+  },
+  "digest": "7393d269fb0b82889e061ef247165dc4bedb6b099299f11a0c9f547aa1ed74ac"
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "483604dfbd00cbe3c6fba8628c10b6444f6f4112bb117bf18ce49ac84cb4f82e",
+  "response_digest": "a8fecfde032182afd59166b5d36a7f75774e0ec8d9dd69796143f44076ef3435",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    mean = 9\n    std_dev = 2\n    data_points = [5, 8, 13, 12, 7, 9, 10, 6, 11, 7]\n\n    # Do math calculation to get the answer\n    lower_bound = mean - std_dev\n    upper_bound = mean + std_dev\n    within_one_std_dev = sum(\n        lower_bound <= value <= upper_bound for value in data_points\n    )\n    answer = (within_one_std_dev / len(data_points)) * 100\n\n    # return answer\n    return round(answer, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5204,
+      "completion_tokens": 241,
+      "total_tokens": 5445,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 91
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

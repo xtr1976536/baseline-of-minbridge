@@ -1,0 +1,21 @@
+{
+  "identity": "21a24e2bd269023e0a06b5eefa6a1b05399de30a457da4e630ffb617820edcc7",
+  "response_digest": "558bddb719050db6a391a56ed0e5b346f610ef8bcd6de652036068304bedca7c",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    trade_prices = [41.50, 41.75]\n    prevailing_bids = [41.45, 41.73]\n    prevailing_offers = [41.50, 41.75]\n\n    # Do math calculation to get the answer\n    effective_spreads = []\n\n    for trade_price, bid, offer in zip(\n        trade_prices, prevailing_bids, prevailing_offers\n    ):\n        midpoint = (bid + offer) / 2\n        effective_spread = 2 * abs(trade_price - midpoint)\n        effective_spreads.append(effective_spread)\n\n    average_effective_spread = sum(effective_spreads) / len(effective_spreads)\n\n    # return answer\n    return round(average_effective_spread, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5642,
+      "completion_tokens": 312,
+      "total_tokens": 5954,
+      "prompt_tokens_details": {
+        "cached_tokens": 5504
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 131
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

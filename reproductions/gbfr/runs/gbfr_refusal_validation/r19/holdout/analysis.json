@@ -1,0 +1,1127 @@
+{
+  "FinQA": {
+    "metrics": {
+      "n": 15,
+      "predictions": 15,
+      "missing": 0,
+      "errors": 0,
+      "correct": 14,
+      "unanswerable": 10,
+      "correct_abstentions": 10,
+      "total_accuracy": 93.33333333333333,
+      "abstention_accuracy": 100.0,
+      "complete": true,
+      "answerable_controls": 5,
+      "answerable_answered": 4,
+      "answerable_correct": 4,
+      "false_abstentions": 1,
+      "reference": {
+        "total_accuracy": 84.98,
+        "abstention_accuracy": 98.8
+      },
+      "refusal_checks_passed": false,
+      "main_thresholds_passed": false,
+      "fixed_two_decimal_diagnostic": {
+        "n": 15,
+        "predictions": 15,
+        "missing": 0,
+        "errors": 0,
+        "correct": 11,
+        "unanswerable": 10,
+        "correct_abstentions": 10,
+        "total_accuracy": 73.33333333333333,
+        "abstention_accuracy": 100.0,
+        "complete": true
+      }
+    },
+    "categories": {
+      "correct_answer": 4,
+      "false_abstention": 1,
+      "correct_abstention": 10
+    },
+    "counterfactuals": [
+      {
+        "id": "FinQA:counterfactual:9",
+        "question": "what is the difference in the initial health care trend rate and the ultimate health care trend rate in 2018?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Marathon Oil Corporation",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Initial health care trend rate"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Marathon Oil Corporation",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Ultimate health care trend rate"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Initial health care trend rate for 2018 is not stated; the table only provides values for 2017, 2016, and 2015.",
+          "Ultimate health care trend rate for 2018 is not directly stated in the context; the table only provides values for 2017, 2016, and 2015."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:1",
+        "question": "What was the difference in percentage change in Expedia Group and the S&P 500 index for the five year period ended 2016?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Expedia Group",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": "five-year period ended 2016"
+              },
+              "metric": "Percentage Change"
+            },
+            {
+              "constraints": {
+                "entity_scope": "S&P 500 Index",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": "five-year period ended 2016"
+              },
+              "metric": "Percentage Change"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Percentage Change is not directly stated; the context provides index values only. The company shown is The Priceline Group Inc., not Expedia Group.",
+          "Percentage Change for the S&P 500 Index over the five-year period ended 2016 is not directly stated; the context only provides index values, and calculating the change is not permitted.",
+          "\"Resulting Number\" is not explicitly stated in the context. The table reports indexed values for The Priceline Group Inc. and market indices, not Expedia Group.",
+          "Basis Point is not directly stated in the context; the table only contains index values for The Priceline Group Inc. and market indexes.",
+          "Price_{t-1} for Expedia Group over the five-year period ended 2016 is not directly stated. The table reports values for The Priceline Group Inc., a different entity, and the values appear to be indexed performance measurements rather than a labelled price.",
+          "Post-change Value for Expedia Group over the five-year period ended 2016 is not directly stated. The context provides indexed values for The Priceline Group Inc. and other indexes, which do not match the requested entity or metric.",
+          "Previous Value for Expedia Group for the five-year period ended 2016 is not directly stated. The context reports The Priceline Group Inc., not Expedia Group, and contains no metric labeled Previous Value.",
+          "The table explicitly reports The Priceline Group Inc., not Expedia Group. No qualifying Base Year Value for Expedia Group is stated.",
+          "Post-change Value is not directly stated or labeled in the context. The table provides S&P 500 Index measurement values, including 198.18 for 2016, but does not identify any value as an adjusted, changed, new, or post-change value.",
+          "Basis Point is not directly stated. The context provides S&P 500 Index values, not a basis-point value.",
+          "Price_{t-1} is not directly stated in the context. The table provides annual S&P 500 Index measurement values, but it does not label any value as Price_{t-1}; selecting a prior-year value would require inference.",
+          "Previous Value is not directly stated or labeled in the context. The table contains annual S&P 500 Index values, but identifying a prior-period value would require inferring which measurement point is intended."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:20",
+        "question": "What is the effective interest rate for long-term debt and other long-term liabilities in 2014?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Marriott International, Inc.; long-term debt and other long-term liabilities",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": "2014"
+              },
+              "metric": "Effective Interest Rate"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Effective Interest Rate for 2014 is not directly stated; the context provides fair values and carrying amounts for 2004 and 2003 only.",
+          "Bond Discount Amortization (per period) for Marriott International, Inc. is not directly stated in the context. The requested temporal scope is 2014, while the context reports 2004 and 2003 information.",
+          "Initial Sale Price is not directly stated in the context. The available table reports carrying amounts and fair values for 2004 and 2003, not an Initial Sale Price for 2014.",
+          "Purchase Price for Marriott International, Inc.'s long-term debt and other long-term liabilities in 2014 is not directly stated. The context only provides carrying amounts and fair values for 2004 and 2003; these are different metrics and periods."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:24",
+        "question": "what is the net change in the balance of unrecognized tax benefits during 2017?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "American Tower Corporation and subsidiaries",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "January 1, 2017"
+              },
+              "metric": "Balance of unrecognized tax benefits"
+            },
+            {
+              "constraints": {
+                "entity_scope": "American Tower Corporation and subsidiaries",
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "December 31, 2017"
+              },
+              "metric": "Balance of unrecognized tax benefits"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Balance of unrecognized tax benefits is explicitly stated as $107,551 thousand at December 31, 2016, but the requested temporal scope is January 1, 2017. The January 1, 2017 balance is not directly stated, and no value was inferred from the December 31 balance.",
+          "Balance of unrecognized tax benefits for December 31, 2017 is not directly stated; the table reports balances only through December 31, 2016."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:61",
+        "question": "What percentage of the total ending balance as of November 28, 2008 was attributable to transfer pricing-related unrecognized tax benefits?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "ratio",
+          "precision": "percentage",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "November 28, 2008"
+              },
+              "metric": "Transfer pricing-related unrecognized tax benefits"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "November 28, 2008"
+              },
+              "metric": "Total ending balance of unrecognized tax benefits"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Transfer pricing-related unrecognized tax benefits are not directly stated; the context gives only aggregate unrecognized tax benefit balances."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:63",
+        "question": "What was the weighted-average expected volatility assumption used to value stock options for 2018?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "DirectRetrieval",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Arconic",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Weighted-average expected volatility assumption used to value stock options"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Weighted-average expected volatility assumption for valuing stock options is not directly stated in the context; it only provides share counts and average exercise prices."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:77",
+        "question": "what was the difference in operating margin between 2016 and 2017?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Space Systems business segment",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": "2016"
+              },
+              "metric": "Operating Margin"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Space Systems business segment",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "percentage"
+                },
+                "temporal_scope": "2017"
+              },
+              "metric": "Operating Margin"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Operating Margin for Space Systems in 2016 is not directly stated in the context; the table only provides operating margins for 2014, 2013, and 2012.",
+          "Operating Margin for 2017 is not stated in the context; the table only reports 2014, 2013, and 2012.",
+          "Operating Income for the Space Systems business segment in 2016 is not stated. The context provides Space Systems operating profit only for 2014, 2013, and 2012.",
+          "Net Sales for the Space Systems business segment in 2016 is not stated. The table only reports 2014, 2013, and 2012; the text's 2015 reference is a forecast.",
+          "Revenue for the Space Systems business segment in 2016 is not directly stated; the context provides figures for 2014, 2013, and 2012 only.",
+          "Sales for the Space Systems business segment in 2016 is not directly stated in the context; the available table only covers 2014, 2013, and 2012.",
+          "Operating Income for the Space Systems business segment in 2017 is not directly stated. The context provides Operating profit only for 2014, 2013, and 2012.",
+          "Net Sales for the Space Systems business segment in 2017 is not directly stated in the context; the available figures are for 2014, 2013, and 2012.",
+          "Revenue for the Space Systems business segment in 2017 is not directly stated. The context provides Net sales only for 2014, 2013, and 2012.",
+          "Operating Profit for the Space Systems business segment in 2017 is not stated; the context provides only 2014, 2013, and 2012 figures.",
+          "Sales for the Space Systems business segment in 2017 is not directly stated in the context; the table only provides Net sales for 2014, 2013, and 2012.",
+          "EBITDA for Space Systems in 2016 is not directly stated; the context provides other metrics for 2012–2014 only.",
+          "Interest Coverage Ratio for 2016 is not directly stated in the context; it provides segment operating results for 2014, 2013, and 2012, but no interest coverage ratio.",
+          "Operating Profit Margin for the Space Systems business segment in 2016 is not stated; the context only provides historical results through 2014 and an outlook for 2015.",
+          "Overhead Ratio for the Space Systems business segment in 2016 is not directly stated. The context provides Operating margins for 2012–2014, which is a different metric and does not cover 2016.",
+          "Return on Investment for the Space Systems business segment in 2016 is not directly stated in the context. The context provides operating margins for 2012–2014 and expectations for 2015, but no 2016 ROI value.",
+          "Gross Profit is not directly stated in the context, and the reported Space Systems results cover 2014, 2013, and 2012, not 2016.",
+          "EBITDA for the Space Systems business segment in 2017 is not directly stated in the context. The context provides operating profit for 2012–2014, but operating profit is a different metric and no 2017 value is shown.",
+          "Interest Coverage Ratio for the Space Systems business segment in 2017 is not directly stated in the context. The context provides operating profit and other segment metrics only for 2012-2014, with no interest expense or coverage ratio.",
+          "Operating Profit Margin for 2017 is not directly stated in the context. The available operating margins are for 2014 (12.9%), 2013 (13.1%), and 2012 (13.0%), which do not match the requested temporal scope.",
+          "Overhead Ratio for Space Systems in 2017 is not stated in the context; the provided table reports 2014, 2013, and 2012 data.",
+          "Return on Investment for Space Systems in 2017 is not directly stated in the context; it only provides 2014, 2013, and 2012 operating margins and other segment data.",
+          "Gross Profit for 2017 is not directly stated. The context provides Space Systems data for 2014, 2013, and 2012, and no gross profit value.",
+          "Net Income for Space Systems in 2016 is not directly stated; the context reports net sales, operating profit, operating margins, and backlog for 2014, 2013, and 2012.",
+          "Interest Expense for the Space Systems business segment in 2016 is not directly stated in the context; the segment table reports 2014, 2013, and 2012 results only.",
+          "Tax Expense for 2016 is not directly stated. The context contains Space Systems results for 2014, 2013, and 2012, but no 2016 tax expense.",
+          "Operating Expenses for Space Systems in 2016 are not directly stated in the context; the table provides 2014, 2013, and 2012 results only.",
+          "Net Revenue for the Space Systems business segment in 2016 is not directly stated. The context provides Net sales only for 2014, 2013, and 2012; no 2016 value is shown.",
+          "Net Income for 2017 is not directly stated; the context provides Space Systems data for 2014, 2013, and 2012, plus 2015 expectations.",
+          "Tax Expense for 2017 and the Space Systems business segment is not stated in the context.",
+          "Operating Expenses for Space Systems in 2017 are not directly stated; the context provides segment net sales, operating profit, margins, and backlog for 2014, 2013, and 2012.",
+          "Amortization for the Space Systems business segment in 2017 is not directly stated in the context.",
+          "Net Revenue for 2017 is not directly stated. The context contains Net sales figures for 2012–2014 and a 2015 expectation, not the requested year."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:55",
+        "question": "As of December 31, 2007, what was the average annual rent per square foot for the Alpharetta, Georgia office space?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "division",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Alpharetta, Georgia office space",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "annual rent"
+                },
+                "temporal_scope": "December 31, 2007"
+              },
+              "metric": "Annual rent"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Alpharetta, Georgia office space",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "square feet"
+                },
+                "temporal_scope": "December 31, 2007"
+              },
+              "metric": "Approximate Square Footage"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Annual rent for the Alpharetta, Georgia office is not stated. The context gives its approximate square footage, not rent."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:79",
+        "question": "What are the average net unrealized investment gains for Marsh & McLennan Companies for the period?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "average",
+          "precision": "unknown",
+          "reasoning_type": "StatisticalAggregation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Marsh & McLennan Companies",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2007"
+              },
+              "metric": "Net unrealized investment gains"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Marsh & McLennan Companies",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2006"
+              },
+              "metric": "Net unrealized investment gains"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Marsh & McLennan Companies",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2005"
+              },
+              "metric": "Net unrealized investment gains"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Net unrealized investment gains are listed for Aon Corporation, not Marsh & McLennan Companies, so the entity constraint is not met.",
+          "The context provides Net unrealized investment gains for Aon Corporation, not Marsh & McLennan Companies; the entity constraint is not satisfied.",
+          "The table is explicitly for Aon Corporation, not Marsh & McLennan Companies; the requested entity scope does not match."
+        ]
+      },
+      {
+        "id": "FinQA:counterfactual:86",
+        "question": "In 2013, what was the percent of the allowances for doubtful accounts for Makita Corporation?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Makita Corporation",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2013"
+              },
+              "metric": "Allowances for doubtful accounts"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Makita Corporation",
+                "meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "2013"
+              },
+              "metric": "Trade and other accounts receivable"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "The allowance value is explicitly reported for Snap-on, not Makita Corporation, so it does not match the requested entity.",
+          "The context reports Snap-on's trade and other accounts receivable, not Makita Corporation's; the entity constraint does not match."
+        ]
+      }
+    ],
+    "failed_cases": [
+      {
+        "id": "FinQA:ETR/2017/page_143.pdf-3",
+        "question": "what is the amount of interest applied to the annual long-term debt maturities in 2018?",
+        "status": "abstained",
+        "value": null,
+        "gold": "566808000",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Entergy annual long-term debt maturities, excluding lease obligations and long-term DOE obligations",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Interest"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Interest for 2018 is not directly stated. The table explicitly reports the 2018 annual long-term debt maturity amount ($760,000), which is a debt principal maturity rather than Interest; the separately stated 7.458% is an implicit interest rate, not an interest amount."
+        ],
+        "category": "false_abstention"
+      }
+    ],
+    "api_calls": {
+      "new": 48,
+      "cache": 51
+    },
+    "api_usage_available": true
+  },
+  "TAT-QA": {
+    "metrics": {
+      "n": 15,
+      "predictions": 15,
+      "missing": 0,
+      "errors": 0,
+      "correct": 13,
+      "unanswerable": 10,
+      "correct_abstentions": 10,
+      "total_accuracy": 86.66666666666667,
+      "abstention_accuracy": 100.0,
+      "complete": true,
+      "answerable_controls": 5,
+      "answerable_answered": 4,
+      "answerable_correct": 3,
+      "false_abstentions": 1,
+      "reference": {
+        "total_accuracy": 95.75,
+        "abstention_accuracy": 96.69
+      },
+      "refusal_checks_passed": false,
+      "main_thresholds_passed": false,
+      "fixed_two_decimal_diagnostic": {
+        "n": 15,
+        "predictions": 15,
+        "missing": 0,
+        "errors": 0,
+        "correct": 13,
+        "unanswerable": 10,
+        "correct_abstentions": 10,
+        "total_accuracy": 86.66666666666667,
+        "abstention_accuracy": 100.0,
+        "complete": true
+      }
+    },
+    "categories": {
+      "correct_answer": 3,
+      "false_abstention": 1,
+      "incorrect_numeric_answer": 1,
+      "correct_abstention": 10
+    },
+    "counterfactuals": [
+      {
+        "id": "TAT-QA:counterfactual:40",
+        "question": "What percentage of fourth quarter 2021 revenue is the cost of revenue?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "RMB",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "fourth quarter of 2021"
+              },
+              "metric": "Revenues"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "RMB",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "fourth quarter of 2021"
+              },
+              "metric": "Cost of revenues"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Revenues for the fourth quarter of 2021 are not stated; the context provides figures only for the fourth quarter of 2019 and 2018.",
+          "Cost of revenues for the fourth quarter of 2021 is not stated; the context provides figures only for the fourth quarter of 2019 and the fourth quarter of 2018."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:138",
+        "question": "What is the amount of reimbursements for the cost of annual physical examinations and related travel for Mr. Thompson?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "DirectRetrieval",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Mr. Thompson",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "fiscal 2019"
+              },
+              "metric": "Reimbursements for the cost of annual physical examinations and related travel"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "The context lists reimbursements for other directors but does not state an amount for Mr. Thompson."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:14",
+        "question": "What is the change in Goodwill from 2018 to 2019?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Goodwill"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Goodwill"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Goodwill is not directly stated in the context; the passage only provides loans due from subsidiaries and related repayment information.",
+          "Goodwill is not directly stated in the context; it only reports loans due from subsidiaries and a total.",
+          "Net Tangible Assets are not directly stated in the context; the passage only lists loans due from subsidiaries and their total.",
+          "Tangible Common Equity is not directly stated in the context. The context only provides loans due from subsidiaries and their non-current, current, and total amounts for 2018 and 2019.",
+          "Net Tangible Assets for 2019 is not directly stated in the context; it only provides loans due from subsidiaries and their total.",
+          "Tangible Common Equity for 2019 is not directly stated in the context. The table only reports loans due from subsidiaries and their total.",
+          "Purchase Price for 2018 is not directly stated; the context gives loans due from subsidiaries and repayment installments, not an asset purchase price.",
+          "Fair Value of Identifiable Net Assets is not directly stated in the context; it only reports loans due from subsidiaries and their total.",
+          "Going-Concern Value is not directly stated in the context; only loans due from subsidiaries and total loan amounts are provided.",
+          "Liquidation Value is not directly stated in the context; the listed loan balances are not liquidation value.",
+          "Fair Value of Identifiable Assets is not directly stated in the context; it only provides loans due from subsidiaries and their total.",
+          "Fair Market Value of Net Identifiable Assets for 2018 is not directly stated in the context. The context only provides loans due from subsidiaries and total loan balances.",
+          "Net Fair Value of Identifiable Net Assets is not directly stated; the context only reports loans due from subsidiaries and their total.",
+          "Purchase Price is not directly stated in the context; it only reports loans due from subsidiaries and repayment terms.",
+          "Going-Concern Value for 2019 is not directly stated in the context. The context only provides loans due from subsidiaries and their total."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:121",
+        "question": "What is the number of shares granted during the period in 2020?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "DirectRetrieval",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "FY2018 Performance Rights Plan",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "shares"
+                },
+                "temporal_scope": "2020"
+              },
+              "metric": "Shares Granted"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Shares Granted for 2020 is not stated; the table only provides 2019 and 2018 figures."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:77",
+        "question": "How many factors were there that gave rise to Deferred tax assets for the Group in 2018?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "counting",
+          "precision": "unknown",
+          "reasoning_type": "StatisticalAggregation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "Group",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "count"
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Deferred tax assets factor: Provisions"
+            },
+            {
+              "constraints": {
+                "entity_scope": "Group",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "count"
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Deferred tax assets factor: Others"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "The context provides Deferred tax assets for Provisions as 0.5 S$ Mil for the Company, but the requested entity scope is Group and unit is count; these constraints do not match.",
+          "The table is labeled Company - 2018, but the requested entity scope is Group; no matching Group value is stated."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:60",
+        "question": "What was the percentage increase in cost of revenues for cloud services between the fourth quarter of 2018 and 2019?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "change ratio",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "cloud services",
+                "meta": {
+                  "currency": "RMB",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "fourth quarter of 2018"
+              },
+              "metric": "Cost of revenues"
+            },
+            {
+              "constraints": {
+                "entity_scope": "cloud services",
+                "meta": {
+                  "currency": "RMB",
+                  "scale": "million",
+                  "unit": null
+                },
+                "temporal_scope": "fourth quarter of 2019"
+              },
+              "metric": "Cost of revenues"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Cost of revenues for cloud services for the fourth quarter of 2018 is not directly stated. The context only provides the combined cost of revenues for FinTech and Business Services (RMB16,310 million), which cannot be attributed specifically to cloud services without calculation or inference.",
+          "Cost of revenues for cloud services is not directly stated. The context gives total cost of revenues and an aggregate for FinTech and Business Services, which includes cloud business but is not cloud-services-specific."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:144",
+        "question": "How much did the computer hardware, at cost change in 2020 compared to 2019?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "difference",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2020"
+              },
+              "metric": "Computer hardware, at cost"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Computer hardware, at cost"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Computer hardware, at cost is shown for 2019 and 2018 only; no value for 2020 is stated."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:34",
+        "question": "What is the Effect of dilutive securities expressed as a percentage of end-of-period Common Shares outstanding for fiscal year 2019?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "division",
+          "precision": "unknown",
+          "reasoning_type": "ArithmeticCalculation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "OpenText",
+                "meta": {
+                  "currency": null,
+                  "scale": "thousand",
+                  "unit": "shares"
+                },
+                "temporal_scope": "fiscal year 2019"
+              },
+              "metric": "Effect of dilutive securities"
+            },
+            {
+              "constraints": {
+                "entity_scope": "OpenText",
+                "meta": {
+                  "currency": null,
+                  "scale": null,
+                  "unit": "shares"
+                },
+                "temporal_scope": "fiscal year 2019"
+              },
+              "metric": "End-of-period Common Shares outstanding"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "End-of-period Common Shares outstanding for fiscal year 2019 is not directly stated. The context only provides weighted-average numbers of shares outstanding, which is a different metric."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:90",
+        "question": "What is the average fee earned or paid in cash compensation for all executive officers?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "average",
+          "precision": "unknown",
+          "reasoning_type": "StatisticalAggregation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "unknown executive officer",
+                "meta": {
+                  "currency": "$",
+                  "scale": null,
+                  "unit": null
+                },
+                "temporal_scope": "fiscal year 2019"
+              },
+              "metric": "Fees earned or paid in cash compensation"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "The context lists fees earned or paid in cash for six non-employee directors in fiscal year 2019, but the requested entity is an unspecified executive officer. No value is directly stated for that entity, and selecting a director's value would be ambiguous."
+        ]
+      },
+      {
+        "id": "TAT-QA:counterfactual:94",
+        "question": "Between fiscal years 2020 and 2022, how many years did the Tax benefit for stock compensation expense exceed $1,000 thousand?",
+        "status": "abstained",
+        "value": null,
+        "gold": null,
+        "unanswerable": true,
+        "error": null,
+        "plan": {
+          "operator": "counting",
+          "precision": "unknown",
+          "reasoning_type": "StatisticalAggregation",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "fiscal year 2020"
+              },
+              "metric": "Tax benefit for stock compensation expense"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "fiscal year 2021"
+              },
+              "metric": "Tax benefit for stock compensation expense"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "fiscal year 2022"
+              },
+              "metric": "Tax benefit for stock compensation expense"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Tax benefit for stock compensation expense is directly stated only for fiscal years 2019, 2018, and 2017; no fiscal year 2020 value is provided.",
+          "Tax benefit for stock compensation expense is shown only for fiscal years 2019, 2018, and 2017; fiscal year 2021 is not stated.",
+          "Tax benefit for stock compensation expense is directly stated only for fiscal years 2019, 2018, and 2017; no value is provided for fiscal year 2022."
+        ]
+      }
+    ],
+    "failed_cases": [
+      {
+        "id": "TAT-QA:0dfb4455ae2e1b2066e99d9a3a05baf0_4c8709f777694f5ea71b7c56a0080bfa",
+        "question": "What was the amortization expense for the twelve months ended December 31, 2019 in 2018?",
+        "status": "abstained",
+        "value": null,
+        "gold": "163",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "sum",
+          "precision": "unknown",
+          "reasoning_type": "DirectRetrieval",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Amortization Expense"
+            },
+            {
+              "constraints": {
+                "entity_scope": null,
+                "meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Amortization Expense"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [
+          "Amortization expense is stated as approximately $163 and $185 with references to 2018 and 2017, but the text does not unambiguously assign the amounts to 2018."
+        ],
+        "category": "false_abstention"
+      },
+      {
+        "id": "TAT-QA:f16c6fb645e7d077e776af63a85a6643_44408c045f44fc6d7f892bc6b45e0251",
+        "question": "Which year had a larger amount of restricted stock and restricted stock unit awards granted?",
+        "status": "answered",
+        "value": 2019.0,
+        "gold": "2018",
+        "unanswerable": false,
+        "error": null,
+        "plan": {
+          "operator": "compare",
+          "precision": "unknown",
+          "reasoning_type": "ComparativeReasoning",
+          "subgoals": [
+            {
+              "constraints": {
+                "entity_scope": "CenturyLink",
+                "meta": {
+                  "currency": null,
+                  "scale": "million",
+                  "unit": "shares"
+                },
+                "temporal_scope": "2017"
+              },
+              "metric": "Number of restricted stock and restricted stock unit awards granted"
+            },
+            {
+              "constraints": {
+                "entity_scope": "CenturyLink",
+                "meta": {
+                  "currency": null,
+                  "scale": "million",
+                  "unit": "shares"
+                },
+                "temporal_scope": "2018"
+              },
+              "metric": "Number of restricted stock and restricted stock unit awards granted"
+            },
+            {
+              "constraints": {
+                "entity_scope": "CenturyLink",
+                "meta": {
+                  "currency": null,
+                  "scale": "thousand",
+                  "unit": "shares"
+                },
+                "temporal_scope": "2019"
+              },
+              "metric": "Number of restricted stock and restricted stock unit awards granted"
+            }
+          ]
+        },
+        "missing_evidence_reasons": [],
+        "category": "incorrect_numeric_answer"
+      }
+    ],
+    "api_calls": {
+      "new": 30,
+      "cache": 32
+    },
+    "api_usage_available": true
+  }
+}

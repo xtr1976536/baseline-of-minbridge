@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:marketable_securities_noncurrent_fy2024,property_plant_and_equipment_net_fy2024)

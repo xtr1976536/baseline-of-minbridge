@@ -1,0 +1,184 @@
+{
+  "record": {
+    "question_id": "test-2023",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the net profit or loss at expiration for purchased put options, using the strike price, expiration stock price, premium per share, number of contracts, and contract size, including intrinsic value minus premium and returning the result in dollars?",
+        "usage": {
+          "prompt_tokens": 5054,
+          "completion_tokens": 52,
+          "total_tokens": 5106
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USEFUL, USEFUL, USEFUL, USEFUL, USELESS, USEFUL, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16111,
+          "completion_tokens": 613,
+          "total_tokens": 16724,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    strike_price = 145\n    expiration_price = 140\n    premium_per_share = 3.25\n    contracts = 5\n    shares_per_contract = 100\n\n    # Do math calculation to get the answer\n    total_shares = contracts * shares_per_contract\n    intrinsic_value_per_share = max(0, strike_price - expiration_price)\n    net_profit = (intrinsic_value_per_share - premium_per_share) * total_shares\n\n    # return answer\n    return round(net_profit)\n```",
+        "usage": {
+          "prompt_tokens": 5848,
+          "completion_tokens": 161,
+          "total_tokens": 6009,
+          "completion_tokens_details": {
+            "reasoning_tokens": 34
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-3067",
+        "score": 2.018033981323242
+      },
+      {
+        "function_id": "article-449",
+        "score": 2.0122361183166504
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.9861764907836914
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.934197187423706
+      },
+      {
+        "function_id": "article-3054",
+        "score": 1.9255545139312744
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.9224674701690674
+      },
+      {
+        "function_id": "article-706",
+        "score": 1.914566993713379
+      },
+      {
+        "function_id": "article-363",
+        "score": 1.913638949394226
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.9012360572814941
+      },
+      {
+        "function_id": "article-2506",
+        "score": 1.8778531551361084
+      },
+      {
+        "function_id": "article-3105",
+        "score": 1.873740315437317
+      },
+      {
+        "function_id": "article-777",
+        "score": 1.8703629970550537
+      },
+      {
+        "function_id": "article-401",
+        "score": 1.8473008871078491
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.845571756362915
+      },
+      {
+        "function_id": "article-1407",
+        "score": 1.8399028778076172
+      },
+      {
+        "function_id": "article-1411",
+        "score": 1.83954656124115
+      },
+      {
+        "function_id": "article-2586",
+        "score": 1.8393622636795044
+      },
+      {
+        "function_id": "article-759",
+        "score": 1.8259422779083252
+      },
+      {
+        "function_id": "article-317",
+        "score": 1.8225462436676025
+      },
+      {
+        "function_id": "article-2435",
+        "score": 1.8158771991729736
+      },
+      {
+        "function_id": "article-316",
+        "score": 1.7993900775909424
+      },
+      {
+        "function_id": "article-35",
+        "score": 1.7975761890411377
+      },
+      {
+        "function_id": "article-34",
+        "score": 1.7937450408935547
+      },
+      {
+        "function_id": "article-2502",
+        "score": 1.792999267578125
+      },
+      {
+        "function_id": "article-2663",
+        "score": 1.7887741327285767
+      },
+      {
+        "function_id": "article-3063",
+        "score": 1.786605954170227
+      },
+      {
+        "function_id": "article-315",
+        "score": 1.7841463088989258
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.7836122512817383
+      },
+      {
+        "function_id": "article-2659",
+        "score": 1.7801859378814697
+      },
+      {
+        "function_id": "article-1395",
+        "score": 1.7771129608154297
+      }
+    ],
+    "selected_ids": [
+      "article-3067",
+      "article-2807",
+      "article-281"
+    ],
+    "status": "ok",
+    "answer": 875,
+    "code": "def solution():\n    # Define variables name and value\n    strike_price = 145\n    expiration_price = 140\n    premium_per_share = 3.25\n    contracts = 5\n    shares_per_contract = 100\n\n    # Do math calculation to get the answer\n    total_shares = contracts * shares_per_contract\n    intrinsic_value_per_share = max(0, strike_price - expiration_price)\n    net_profit = (intrinsic_value_per_share - premium_per_share) * total_shares\n\n    # return answer\n    return round(net_profit)\n"
+  },
+  "digest": "7dd54bf464451f882236365652e2af1723a96bb820a65e3d1ef9cc87adf481d9"
+}

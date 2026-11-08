@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2070",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates an investor’s annual net return for a fund of hedge funds from beginning and ending fund values, applying annual management and incentive fees independently to gross year-end performance, and returns the result as a percentage rounded to one decimal place?",
+        "usage": {
+          "prompt_tokens": 5006,
+          "completion_tokens": 52,
+          "total_tokens": 5058,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 13926,
+          "completion_tokens": 307,
+          "total_tokens": 14233,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 283
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_investment = 250000\n    end_year_value = 320000\n    management_fee_rate = 0.04\n    incentive_fee_rate = 0.12\n\n    # Do math calculation to get the answer\n    profit = end_year_value - initial_investment\n    management_fee = end_year_value * management_fee_rate\n    incentive_fee = profit * incentive_fee_rate\n    net_end_year_value = end_year_value - management_fee - incentive_fee\n    annual_return = (\n        (net_end_year_value - initial_investment) / initial_investment\n    ) * 100\n    answer = round(annual_return, 1)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5557,
+          "completion_tokens": 284,
+          "total_tokens": 5841,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 115
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1983",
+        "score": 1.7952250242233276,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.7930798530578613,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1023",
+        "score": 1.780780553817749,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.7718360424041748,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.7634726762771606,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.733748197555542,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.7029677629470825,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.6938263177871704,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.690942645072937,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2902",
+        "score": 1.6775434017181396,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2901",
+        "score": 1.6610788106918335,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1207",
+        "score": 1.6558481454849243,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2328",
+        "score": 1.6521079540252686,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.6521042585372925,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-545",
+        "score": 1.6504688262939453,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.6389127969741821,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2386",
+        "score": 1.6387944221496582,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.6349637508392334,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2",
+        "score": 1.6314918994903564,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1919",
+        "score": 1.6274123191833496,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2916",
+        "score": 1.6265065670013428,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2330",
+        "score": 1.6140457391738892,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-637",
+        "score": 1.6054829359054565,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2319",
+        "score": 1.5963265895843506,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3",
+        "score": 1.595625638961792,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1918",
+        "score": 1.588721513748169,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1173",
+        "score": 1.5880944728851318,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1171",
+        "score": 1.5874868631362915,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1460",
+        "score": 1.5856494903564453,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-126",
+        "score": 1.5836265087127686,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1983",
+      "article-1024",
+      "article-1023"
+    ],
+    "status": "ok",
+    "answer": 19.5,
+    "code": "def solution():\n    # Define variables name and value\n    initial_investment = 250000\n    end_year_value = 320000\n    management_fee_rate = 0.04\n    incentive_fee_rate = 0.12\n\n    # Do math calculation to get the answer\n    profit = end_year_value - initial_investment\n    management_fee = end_year_value * management_fee_rate\n    incentive_fee = profit * incentive_fee_rate\n    net_end_year_value = end_year_value - management_fee - incentive_fee\n    annual_return = (\n        (net_end_year_value - initial_investment) / initial_investment\n    ) * 100\n    answer = round(annual_return, 1)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "f0d6820080455e19d211661f98f5c1d52ab9492dd9a57ac1fae6f001cd18bff4"
+}

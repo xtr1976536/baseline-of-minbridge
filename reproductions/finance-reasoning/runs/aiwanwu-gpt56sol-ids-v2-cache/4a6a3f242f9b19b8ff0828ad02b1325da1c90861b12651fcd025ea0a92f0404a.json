@@ -1,0 +1,18 @@
+{
+  "identity": "4a6a3f242f9b19b8ff0828ad02b1325da1c90861b12651fcd025ea0a92f0404a",
+  "response_digest": "4319d05f0dc0c02b6c0696b171e33c7fb45874e9839f074c8da9602c72f98082",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    par_value = 1000\n    coupon_rate = 0.10\n    spot_1_year = 0.06\n    forward_1_year_from_year_1 = 0.08\n    forward_1_year_from_year_2 = 0.10\n\n    # Do math calculation to get the answer\n    coupon_payment = par_value * coupon_rate\n    discount_factor_1 = 1 / (1 + spot_1_year)\n    discount_factor_2 = discount_factor_1 / (1 + forward_1_year_from_year_1)\n    discount_factor_3 = discount_factor_2 / (1 + forward_1_year_from_year_2)\n\n    bond_value = (\n        coupon_payment * discount_factor_1\n        + coupon_payment * discount_factor_2\n        + (coupon_payment + par_value) * discount_factor_3\n    )\n\n    # Return the answer rounded to three decimal places\n    return round(bond_value, 3)\n```",
+    "usage": {
+      "prompt_tokens": 5456,
+      "completion_tokens": 310,
+      "total_tokens": 5766,
+      "completion_tokens_details": {
+        "reasoning_tokens": 86
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

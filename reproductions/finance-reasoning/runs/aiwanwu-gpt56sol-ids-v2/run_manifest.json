@@ -1,0 +1,71 @@
+{
+  "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+  "identity": {
+    "config": {
+      "method": "table5-gpt4o-instructed-function-judge-pot-v1",
+      "data_dir": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\finance_reasoning\\data",
+      "output_dir": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\finance_reasoning\\runs\\aiwanwu-gpt56sol-ids-v2",
+      "cache_dir": "C:\\Users\\28678\\Documents\\ChatGPT\\Kaggle量子计算\\finance_reasoning\\runs\\aiwanwu-gpt56sol-ids-v2-cache",
+      "example_concurrency": 8,
+      "execution_timeout_seconds": 10,
+      "retriever": {
+        "model": "facebook/contriever-msmarco",
+        "revision": "abe8c1493371369031bcb1e02acb754cf4e162fa",
+        "pooling": "masked_mean",
+        "similarity": "inner_product",
+        "max_length": 512,
+        "batch_size": 16,
+        "cpu_threads": 4,
+        "top_k": 30,
+        "selected_k": 3
+      },
+      "llm": {
+        "model": "gpt-5.6-sol",
+        "base_url": "https://aiwanwu.cc/v1",
+        "base_url_env": "FR_GPT56SOL_BASE_URL",
+        "api_key_env": "FR_GPT56SOL_API_KEY",
+        "concurrency": 8,
+        "requests_per_minute": 30,
+        "timeout_seconds": 180,
+        "retries": 3,
+        "parameters": {
+          "temperature": 1.0,
+          "top_p": 1.0,
+          "max_tokens": 8192
+        }
+      },
+      "backbone_note": "User explicitly requested gpt-5.6-sol on 2026-11-06. Paper used gpt-4o-2024-11-20; do not claim identical-backbone replication.",
+      "judge_protocol": "candidate-ids-v2",
+      "rerun_policy": "Fresh three-stage inference for all 238 questions. No old response reuse, no gold-guided changes, no answer-dependent retries."
+    },
+    "asset_lock": "4c95c98e40d093dd1708a733f7f100719cbc21cf382207c645ccfe59b2fb1c1d",
+    "index_manifest": "91008c24b9fa37db80b5aa26cd5d70a33709a23735d16f9ee716c13c1de290f1",
+    "source": {
+      "__init__.py": "55d978cf02985a9e51b329374551e5feafc35381f3de6e3d546d9dec616a09f9",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "assets.py": "4169c05c1afee9e59e1a8e5ac037ac6717826e4ed318f48b463264e50a12b1ed",
+      "cli.py": "35158daed6d53d38a307a9344139b52225c280d19bf8f5d30e731ff6ef5af02f",
+      "client.py": "a6a5fa71c4a58ec278e16c4139ff1950da27cbab45dc08b6925547815c0334f0",
+      "common.py": "939a5b2272413f1bdafe7b8e553bc8a8db27b5deb8df0fbc11bd479453fe21df",
+      "execution.py": "48248a94891dfd0036f55d341d9edff2a695c93022bd66db052cdfc9ec7610dd",
+      "metrics.py": "0366114f2d183fe9ece82b7f20dc821bd6c39f2973d4979d87084c4140f48ec4",
+      "prompts.py": "f51509ae70dbff1f8e56741219d113679a61e68130d969ea335b6327f42bc129",
+      "retrieval.py": "37606ad983fbff3e7a926b2312bf29cb14dc649b748ee5d59d0e81c2f102a10a",
+      "runner.py": "8e1b979ecabd29cff1d9cf2c477bf60d4583eca131ec01530904650884bad3fb",
+      "worker.py": "630fbe6ba785bd0a825e1c6836d87d98a2a750fc2a5249ac38edf475875f74d2"
+    },
+    "prompts": "8e8cbd67e1ae8785a2cbdf7dfb866b1744ad83f76309cbbca3b31fc6c9e690e8",
+    "dependencies": {
+      "httpx": "0.28.1",
+      "numpy": "2.0.2",
+      "torch": "2.9.0",
+      "transformers": "5.22.1",
+      "huggingface-hub": "2.4.0",
+      "sympy": "1.14.0",
+      "scipy": "1.17.1",
+      "numpy-financial": "1.0.0"
+    },
+    "python": "3.12.8"
+  },
+  "experiment": "Table 5 selected method / gpt-5.6-sol / Hard / PoT"
+}

@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:depreciation_depletion_and_amortization_fy2022,increase_decrease_in_accounts_payable_fy2022,increase_decrease_in_contract_with_customer_liability_fy2022)

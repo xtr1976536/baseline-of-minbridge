@@ -1,0 +1,223 @@
+{
+  "record": {
+    "question_id": "test-2059",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function validates a credit card number using the Luhn checksum algorithm and returns a Boolean result (`True` for valid, `False` for invalid) for a numeric card-number string?",
+        "usage": {
+          "prompt_tokens": 5036,
+          "completion_tokens": 41,
+          "total_tokens": 5077,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14409,
+          "completion_tokens": 46,
+          "total_tokens": 14455,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 28
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    number = \"4532015112830365\"\n    total = 0\n    parity = len(number) % 2\n\n    for i, digit in enumerate(number):\n        value = int(digit)\n        if i % 2 == parity:\n            value *= 2\n            if value > 9:\n                value -= 9\n        total += value\n\n    return total % 10 == 0\n```",
+        "usage": {
+          "prompt_tokens": 5015,
+          "completion_tokens": 146,
+          "total_tokens": 5161,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 47
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2208",
+        "score": 2.0704421997070312,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2646",
+        "score": 1.4988750219345093,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1431",
+        "score": 1.3889174461364746,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-222",
+        "score": 1.3574378490447998,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-908",
+        "score": 1.3256168365478516,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-910",
+        "score": 1.3213434219360352,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1775",
+        "score": 1.2881910800933838,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1415",
+        "score": 1.28165864944458,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1354",
+        "score": 1.2790794372558594,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-909",
+        "score": 1.274642825126648,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1399",
+        "score": 1.2274718284606934,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2221",
+        "score": 1.2237112522125244,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1416",
+        "score": 1.2209876775741577,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2397",
+        "score": 1.2082886695861816,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1942",
+        "score": 1.206323504447937,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-3012",
+        "score": 1.1912590265274048,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-979",
+        "score": 1.1785937547683716,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1812",
+        "score": 1.165352463722229,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1241",
+        "score": 1.1577584743499756,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1238",
+        "score": 1.1570239067077637,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2107",
+        "score": 1.1551625728607178,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-537",
+        "score": 1.154618740081787,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1926",
+        "score": 1.1537582874298096,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1430",
+        "score": 1.150359869003296,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-221",
+        "score": 1.1492416858673096,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1111",
+        "score": 1.1470963954925537,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1420",
+        "score": 1.1450448036193848,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-3107",
+        "score": 1.1447696685791016,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1473",
+        "score": 1.1447350978851318,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1577",
+        "score": 1.1421328783035278,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2208"
+    ],
+    "status": "ok",
+    "answer": false,
+    "code": "def solution():\n    number = \"4532015112830365\"\n    total = 0\n    parity = len(number) % 2\n\n    for i, digit in enumerate(number):\n        value = int(digit)\n        if i % 2 == parity:\n            value *= 2\n            if value > 9:\n                value -= 9\n        total += value\n\n    return total % 10 == 0\n"
+  },
+  "digest": "f4aa3ce596cc7c358a8b7fe4ec5a35c355080cb45b140e95a0ffe094c9d98f6b"
+}

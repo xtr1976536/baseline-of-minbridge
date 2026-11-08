@@ -1,0 +1,187 @@
+{
+  "record": {
+    "question_id": "test-2068",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the present value of a fixed annuity consisting of equal annual cash flows over five years, discounted at a constant annual rate, with the first payment occurring immediately (annuity due), and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 4965,
+          "completion_tokens": 52,
+          "total_tokens": 5017,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USELESS, USEFUL, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14893,
+          "completion_tokens": 613,
+          "total_tokens": 15506,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    payment = 300\n    annual_discount_rate = 0.04\n    periods = 5\n\n    # Do math calculation to get the answer\n    present_value = sum(\n        payment / (1 + annual_discount_rate) ** period\n        for period in range(periods)\n    )\n    answer = round(present_value, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5583,
+          "completion_tokens": 287,
+          "total_tokens": 5870,
+          "completion_tokens_details": {
+            "reasoning_tokens": 185
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-252",
+        "score": 1.9197914600372314
+      },
+      {
+        "function_id": "article-1314",
+        "score": 1.9131035804748535
+      },
+      {
+        "function_id": "article-1313",
+        "score": 1.8883335590362549
+      },
+      {
+        "function_id": "article-2336",
+        "score": 1.8821898698806763
+      },
+      {
+        "function_id": "article-3074",
+        "score": 1.880523681640625
+      },
+      {
+        "function_id": "article-2338",
+        "score": 1.8699802160263062
+      },
+      {
+        "function_id": "article-2334",
+        "score": 1.8670965433120728
+      },
+      {
+        "function_id": "article-3073",
+        "score": 1.8667876720428467
+      },
+      {
+        "function_id": "article-2339",
+        "score": 1.8665753602981567
+      },
+      {
+        "function_id": "article-2335",
+        "score": 1.8644952774047852
+      },
+      {
+        "function_id": "article-2337",
+        "score": 1.8598030805587769
+      },
+      {
+        "function_id": "article-253",
+        "score": 1.8595165014266968
+      },
+      {
+        "function_id": "article-2463",
+        "score": 1.8301737308502197
+      },
+      {
+        "function_id": "article-658",
+        "score": 1.8223302364349365
+      },
+      {
+        "function_id": "article-2091",
+        "score": 1.8006057739257812
+      },
+      {
+        "function_id": "article-369",
+        "score": 1.7970526218414307
+      },
+      {
+        "function_id": "article-12",
+        "score": 1.7828326225280762
+      },
+      {
+        "function_id": "article-2333",
+        "score": 1.7653489112854004
+      },
+      {
+        "function_id": "article-2209",
+        "score": 1.7580041885375977
+      },
+      {
+        "function_id": "article-1272",
+        "score": 1.74430513381958
+      },
+      {
+        "function_id": "article-1312",
+        "score": 1.7221015691757202
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.7216482162475586
+      },
+      {
+        "function_id": "article-1252",
+        "score": 1.7207527160644531
+      },
+      {
+        "function_id": "article-2462",
+        "score": 1.7149138450622559
+      },
+      {
+        "function_id": "article-2332",
+        "score": 1.7086087465286255
+      },
+      {
+        "function_id": "article-2799",
+        "score": 1.6830384731292725
+      },
+      {
+        "function_id": "article-1309",
+        "score": 1.6787307262420654
+      },
+      {
+        "function_id": "article-1730",
+        "score": 1.6740248203277588
+      },
+      {
+        "function_id": "article-2464",
+        "score": 1.6639564037322998
+      },
+      {
+        "function_id": "article-1273",
+        "score": 1.6503556966781616
+      }
+    ],
+    "selected_ids": [
+      "article-1314",
+      "article-2336",
+      "article-3074"
+    ],
+    "status": "ok",
+    "answer": 1388.969,
+    "code": "def solution():\n    # Define variables name and value\n    payment = 300\n    annual_discount_rate = 0.04\n    periods = 5\n\n    # Do math calculation to get the answer\n    present_value = sum(\n        payment / (1 + annual_discount_rate) ** period\n        for period in range(periods)\n    )\n    answer = round(present_value, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "8e9259015ae956cc9c55240da4f4ec6a88cda8f31e2296c4c4b47de29398a613"
+}

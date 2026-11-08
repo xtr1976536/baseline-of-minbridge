@@ -1,0 +1,186 @@
+{
+  "record": {
+    "question_id": "test-2221",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates RAROC for a loan portfolio as risk-adjusted after-tax return, incorporating pre-tax profit, operating costs, funding costs based on deposits and interest rates, expected loss, unexpected loss or economic capital, risk-free rate, tax rate, and assuming no transfer-pricing adjustments, with the result expressed as a percentage?",
+        "usage": {
+          "prompt_tokens": 5120,
+          "completion_tokens": 71,
+          "total_tokens": 5191
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14561,
+          "completion_tokens": 1131,
+          "total_tokens": 15692,
+          "prompt_tokens_details": {
+            "cached_tokens": 14336
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    principal = 1_300_000_000\n    pre_tax_profit_rate = 0.07\n    operating_cost = 6_000_000\n    deposit_interest_rate = 0.05\n    expected_loss_rate = 0.003\n    unexpected_loss_rate = 0.08\n    risk_free_rate = 0.015\n    tax_rate = 0.25\n\n    revenue = principal * pre_tax_profit_rate\n    deposit_interest_expense = principal * deposit_interest_rate\n    expenses = operating_cost + deposit_interest_expense\n    expected_loss = principal * expected_loss_rate\n\n    capital = principal * unexpected_loss_rate\n    income_from_capital = capital * risk_free_rate\n\n    pre_tax_risk_adjusted_income = revenue - expenses - expected_loss\n    after_tax_risk_adjusted_income = pre_tax_risk_adjusted_income * (1 - tax_rate)\n\n    raroc = (\n        after_tax_risk_adjusted_income + income_from_capital\n    ) / capital\n\n    # Return RAROC as a percentage rounded to three decimal places\n    return round(raroc * 100, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5353,
+          "completion_tokens": 1293,
+          "total_tokens": 6646,
+          "prompt_tokens_details": {
+            "cached_tokens": 3584
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1034
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1575",
+        "score": 2.020273208618164
+      },
+      {
+        "function_id": "article-1552",
+        "score": 1.7638883590698242
+      },
+      {
+        "function_id": "article-2290",
+        "score": 1.7212622165679932
+      },
+      {
+        "function_id": "article-194",
+        "score": 1.7048325538635254
+      },
+      {
+        "function_id": "article-1535",
+        "score": 1.6807681322097778
+      },
+      {
+        "function_id": "article-1641",
+        "score": 1.6549060344696045
+      },
+      {
+        "function_id": "article-1545",
+        "score": 1.6501909494400024
+      },
+      {
+        "function_id": "article-1583",
+        "score": 1.6496100425720215
+      },
+      {
+        "function_id": "article-1599",
+        "score": 1.6409865617752075
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.6271352767944336
+      },
+      {
+        "function_id": "article-226",
+        "score": 1.616917610168457
+      },
+      {
+        "function_id": "article-1442",
+        "score": 1.6160078048706055
+      },
+      {
+        "function_id": "article-929",
+        "score": 1.6108139753341675
+      },
+      {
+        "function_id": "article-61",
+        "score": 1.605043649673462
+      },
+      {
+        "function_id": "article-2289",
+        "score": 1.603712558746338
+      },
+      {
+        "function_id": "article-1567",
+        "score": 1.6031477451324463
+      },
+      {
+        "function_id": "article-1477",
+        "score": 1.6001297235488892
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.5994653701782227
+      },
+      {
+        "function_id": "article-2173",
+        "score": 1.5968892574310303
+      },
+      {
+        "function_id": "article-1838",
+        "score": 1.5940355062484741
+      },
+      {
+        "function_id": "article-1847",
+        "score": 1.5897438526153564
+      },
+      {
+        "function_id": "article-921",
+        "score": 1.5877854824066162
+      },
+      {
+        "function_id": "article-1304",
+        "score": 1.5816551446914673
+      },
+      {
+        "function_id": "article-2018",
+        "score": 1.58062744140625
+      },
+      {
+        "function_id": "article-2206",
+        "score": 1.574355125427246
+      },
+      {
+        "function_id": "article-1397",
+        "score": 1.5735578536987305
+      },
+      {
+        "function_id": "article-190",
+        "score": 1.5733439922332764
+      },
+      {
+        "function_id": "article-2916",
+        "score": 1.569387435913086
+      },
+      {
+        "function_id": "article-3088",
+        "score": 1.5693800449371338
+      },
+      {
+        "function_id": "article-1537",
+        "score": 1.5675435066223145
+      }
+    ],
+    "selected_ids": [
+      "article-1575",
+      "article-2206"
+    ],
+    "status": "ok",
+    "answer": 13.111,
+    "code": "def solution():\n    # Define variables name and value\n    principal = 1_300_000_000\n    pre_tax_profit_rate = 0.07\n    operating_cost = 6_000_000\n    deposit_interest_rate = 0.05\n    expected_loss_rate = 0.003\n    unexpected_loss_rate = 0.08\n    risk_free_rate = 0.015\n    tax_rate = 0.25\n\n    revenue = principal * pre_tax_profit_rate\n    deposit_interest_expense = principal * deposit_interest_rate\n    expenses = operating_cost + deposit_interest_expense\n    expected_loss = principal * expected_loss_rate\n\n    capital = principal * unexpected_loss_rate\n    income_from_capital = capital * risk_free_rate\n\n    pre_tax_risk_adjusted_income = revenue - expenses - expected_loss\n    after_tax_risk_adjusted_income = pre_tax_risk_adjusted_income * (1 - tax_rate)\n\n    raroc = (\n        after_tax_risk_adjusted_income + income_from_capital\n    ) / capital\n\n    # Return RAROC as a percentage rounded to three decimal places\n    return round(raroc * 100, 3)\n"
+  },
+  "digest": "48f09229090b62576b92aa090a1db6d1aa0ff7ff1fd59368dff1413092d72e59"
+}

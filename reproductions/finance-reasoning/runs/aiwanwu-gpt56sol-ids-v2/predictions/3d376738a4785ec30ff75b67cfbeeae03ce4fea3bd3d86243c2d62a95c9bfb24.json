@@ -1,0 +1,214 @@
+{
+  "record": {
+    "question_id": "test-2071",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates Weighted Average Cost of Capital (WACC) from equity, debt, and preferred stock capital amounts and their respective costs, using market-value weights and returning the result as a percentage rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5060,
+          "completion_tokens": 48,
+          "total_tokens": 5108,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14769,
+          "completion_tokens": 132,
+          "total_tokens": 14901,
+          "completion_tokens_details": {
+            "reasoning_tokens": 114
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    equity_value = 150_000_000\n    debt_value = 100_000_000\n    preferred_value = 50_000_000\n    equity_cost = 0.12\n    debt_cost = 0.05\n    preferred_cost = 0.08\n\n    # Do math calculation to get the answer\n    total_value = equity_value + debt_value + preferred_value\n    wacc = (\n        (equity_value / total_value) * equity_cost\n        + (debt_value / total_value) * debt_cost\n        + (preferred_value / total_value) * preferred_cost\n    )\n    answer = f\"{wacc * 100:.2f}%\"\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5163,
+          "completion_tokens": 173,
+          "total_tokens": 5336,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-189",
+        "score": 2.171396493911743,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2452",
+        "score": 2.1571402549743652,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1095",
+        "score": 2.132328510284424,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1644",
+        "score": 2.1316776275634766,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-560",
+        "score": 2.1285831928253174,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-561",
+        "score": 2.071148157119751,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-3052",
+        "score": 2.0655553340911865,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2453",
+        "score": 1.9057152271270752,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-46",
+        "score": 1.8595337867736816,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.7566311359405518,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-199",
+        "score": 1.7520503997802734,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2700",
+        "score": 1.7485120296478271,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1096",
+        "score": 1.7311415672302246,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-552",
+        "score": 1.6591300964355469,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2191",
+        "score": 1.6570656299591064,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2454",
+        "score": 1.656345009803772,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1401",
+        "score": 1.6542139053344727,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2455",
+        "score": 1.646238088607788,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-559",
+        "score": 1.6327579021453857,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.6325788497924805,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-3125",
+        "score": 1.6319527626037598,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1911",
+        "score": 1.6286506652832031,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2459",
+        "score": 1.6286031007766724,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-388",
+        "score": 1.6279207468032837,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2120",
+        "score": 1.6266807317733765,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-41",
+        "score": 1.62648606300354,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-558",
+        "score": 1.6246005296707153,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-643",
+        "score": 1.6245629787445068,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2545",
+        "score": 1.6215523481369019,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.6214630603790283,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1095"
+    ],
+    "status": "execution_error",
+    "answer": null,
+    "error": "ValueError",
+    "code": "def solution():\n    # Define variables name and value\n    equity_value = 150_000_000\n    debt_value = 100_000_000\n    preferred_value = 50_000_000\n    equity_cost = 0.12\n    debt_cost = 0.05\n    preferred_cost = 0.08\n\n    # Do math calculation to get the answer\n    total_value = equity_value + debt_value + preferred_value\n    wacc = (\n        (equity_value / total_value) * equity_cost\n        + (debt_value / total_value) * debt_cost\n        + (preferred_value / total_value) * preferred_cost\n    )\n    answer = f\"{wacc * 100:.2f}%\"\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "14f747af3cf53ef5bb2539513bf69262988ec319e2feac7bb7f64625866483c5"
+}

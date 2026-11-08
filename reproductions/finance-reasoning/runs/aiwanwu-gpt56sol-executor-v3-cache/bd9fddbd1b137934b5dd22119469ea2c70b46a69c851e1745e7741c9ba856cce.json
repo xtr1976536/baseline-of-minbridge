@@ -1,0 +1,18 @@
+{
+  "identity": "bd9fddbd1b137934b5dd22119469ea2c70b46a69c851e1745e7741c9ba856cce",
+  "response_digest": "1aeb9dfed077a53aed87ffc8157a002424f75125b5ab8cd2c47985760aca5714",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define loan amounts and terms\n    home_price = 500_000\n    first_principal = home_price * 0.80\n    second_principal = home_price * 0.10\n\n    # Calculate monthly principal-and-interest payments\n    first_rate = 0.035 / 12\n    first_months = 30 * 12\n    first_payment = first_principal * first_rate / (1 - (1 + first_rate) ** -first_months)\n\n    second_rate = 0.06 / 12\n    second_months = 15 * 12\n    second_payment = second_principal * second_rate / (1 - (1 + second_rate) ** -second_months)\n\n    # Return the combined payment, rounded to the nearest dollar\n    return round(first_payment + second_payment)\n```",
+    "usage": {
+      "prompt_tokens": 5793,
+      "completion_tokens": 208,
+      "total_tokens": 6001,
+      "completion_tokens_details": {
+        "reasoning_tokens": 23
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

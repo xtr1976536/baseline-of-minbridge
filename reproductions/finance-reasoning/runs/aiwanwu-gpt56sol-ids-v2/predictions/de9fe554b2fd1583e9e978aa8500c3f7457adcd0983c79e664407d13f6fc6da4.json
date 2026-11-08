@@ -1,0 +1,218 @@
+{
+  "record": {
+    "question_id": "test-2064",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates diluted earnings per share using the treasury stock method, incorporating net income, weighted-average shares outstanding, and in-the-money employee stock options based on exercise price and average market price, with proceeds assumed to be used for share repurchases and the result rounded to the nearest cent?",
+        "usage": {
+          "prompt_tokens": 4999,
+          "completion_tokens": 61,
+          "total_tokens": 5060,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 13546,
+          "completion_tokens": 253,
+          "total_tokens": 13799,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 229
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_income = 2_500_000\n    basic_shares = 300_000\n    options = 30_000\n    exercise_price = 20\n    average_market_price = 30\n\n    # Calculate incremental shares using the treasury stock method\n    exercise_proceeds = options * exercise_price\n    repurchased_shares = exercise_proceeds / average_market_price\n    incremental_shares = options - repurchased_shares\n    diluted_shares = basic_shares + incremental_shares\n\n    # Calculate diluted EPS and round to the closest cent\n    answer = round(net_income / diluted_shares, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5619,
+          "completion_tokens": 158,
+          "total_tokens": 5777,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1951",
+        "score": 2.0716466903686523,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1952",
+        "score": 2.0693113803863525,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-2654",
+        "score": 1.8085488080978394,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-642",
+        "score": 1.7493807077407837,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1718",
+        "score": 1.747623085975647,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1720",
+        "score": 1.74570631980896,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2712",
+        "score": 1.738633394241333,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1950",
+        "score": 1.722632884979248,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-491",
+        "score": 1.6990759372711182,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-492",
+        "score": 1.695037841796875,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2645",
+        "score": 1.6948919296264648,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1949",
+        "score": 1.6882379055023193,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2050",
+        "score": 1.6552098989486694,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-378",
+        "score": 1.6497392654418945,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-695",
+        "score": 1.6435807943344116,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2569",
+        "score": 1.6383352279663086,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2711",
+        "score": 1.6140873432159424,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1934",
+        "score": 1.6137025356292725,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1494",
+        "score": 1.6096100807189941,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2908",
+        "score": 1.604902744293213,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-3129",
+        "score": 1.6043946743011475,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-856",
+        "score": 1.6022436618804932,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2895",
+        "score": 1.602146863937378,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3121",
+        "score": 1.596675157546997,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-615",
+        "score": 1.5959347486495972,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2928",
+        "score": 1.595339298248291,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-640",
+        "score": 1.5805259943008423,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2713",
+        "score": 1.578673243522644,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2521",
+        "score": 1.5762296915054321,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2576",
+        "score": 1.571390151977539,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1951",
+      "article-1952",
+      "article-642"
+    ],
+    "status": "ok",
+    "answer": 8.06,
+    "code": "def solution():\n    # Define variables name and value\n    net_income = 2_500_000\n    basic_shares = 300_000\n    options = 30_000\n    exercise_price = 20\n    average_market_price = 30\n\n    # Calculate incremental shares using the treasury stock method\n    exercise_proceeds = options * exercise_price\n    repurchased_shares = exercise_proceeds / average_market_price\n    incremental_shares = options - repurchased_shares\n    diluted_shares = basic_shares + incremental_shares\n\n    # Calculate diluted EPS and round to the closest cent\n    answer = round(net_income / diluted_shares, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "807a259f4c7f5876203098f8f2a5989ea5eb07bcc706d10bec75a8abb9c2dc55"
+}

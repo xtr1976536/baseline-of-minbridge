@@ -1,0 +1,21 @@
+{
+  "identity": "06aec2d773fdc60f996cb2c6420e2e686cf9a34ce293f131c9438ba5b035e30d",
+  "response_digest": "f5a2c9c0e84fb6df2308a61623a856effd20dad2345437989ea7de00d2f9316c",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    original_loan_amount = 15000\n    monthly_payment = 700\n    original_payments = 24\n    payments_made = 10\n    remaining_payments = original_payments - payments_made\n\n    # Do math calculation to get the answer\n    total_finance_charge = (original_payments * monthly_payment) - original_loan_amount\n    unearned_interest = total_finance_charge * (\n        remaining_payments * (remaining_payments + 1)\n    ) / (original_payments * (original_payments + 1))\n    answer = round(unearned_interest)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5746,
+      "completion_tokens": 222,
+      "total_tokens": 5968,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 68
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "17f654fc9b52a6a046ba9eacddfe1024b07b9163f74b37e65469a31210c54706",
+  "response_digest": "54ea6d9c1f85a15067ace46c88b5fa989597ba3d2c9af028aa8f607cb6cde17e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    qualified_expenses = 8500\n    magi = 85000\n    credit_rate = 0.20\n    phase_out_start = 80000\n    phase_out_end = 90000\n\n    # Do math calculation to get the answer\n    eligible_expenses = min(qualified_expenses, 10000)\n    potential_credit = eligible_expenses * credit_rate\n\n    if magi >= phase_out_end:\n        llc_credit = 0.0\n    elif magi > phase_out_start:\n        phase_out_fraction = (phase_out_end - magi) / (phase_out_end - phase_out_start)\n        llc_credit = potential_credit * phase_out_fraction\n    else:\n        llc_credit = potential_credit\n\n    # return answer\n    return round(llc_credit, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5279,
+      "completion_tokens": 236,
+      "total_tokens": 5515,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 46
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

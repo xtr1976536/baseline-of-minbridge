@@ -1,0 +1,185 @@
+{
+  "record": {
+    "question_id": "test-2081",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates progressive wealth tax liability from net worth using tiered marginal tax brackets, applies a residency adjustment factor to the total tax, and returns the result rounded to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5081,
+          "completion_tokens": 41,
+          "total_tokens": 5122,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16564,
+          "completion_tokens": 613,
+          "total_tokens": 17177,
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    net_worth = 1_200_000\n    residency_factor = 0.9\n\n    tax_free_threshold = 500_000\n    second_threshold = 1_000_000\n    second_rate = 0.02\n    top_rate = 0.04\n\n    # Do math calculation to get the answer\n    second_bracket_tax = (second_threshold - tax_free_threshold) * second_rate\n    top_bracket_tax = (net_worth - second_threshold) * top_rate\n    total_tax = second_bracket_tax + top_bracket_tax\n    adjusted_tax = total_tax * residency_factor\n\n    # return answer\n    return round(adjusted_tax)\n```",
+        "usage": {
+          "prompt_tokens": 5268,
+          "completion_tokens": 247,
+          "total_tokens": 5515,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 83
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-2440",
+        "score": 2.0979952812194824
+      },
+      {
+        "function_id": "article-846",
+        "score": 1.871534824371338
+      },
+      {
+        "function_id": "article-2439",
+        "score": 1.850756049156189
+      },
+      {
+        "function_id": "article-313",
+        "score": 1.8306766748428345
+      },
+      {
+        "function_id": "article-1815",
+        "score": 1.7649247646331787
+      },
+      {
+        "function_id": "article-1834",
+        "score": 1.7581126689910889
+      },
+      {
+        "function_id": "article-1385",
+        "score": 1.7158968448638916
+      },
+      {
+        "function_id": "article-525",
+        "score": 1.6881201267242432
+      },
+      {
+        "function_id": "article-3076",
+        "score": 1.684368371963501
+      },
+      {
+        "function_id": "article-1817",
+        "score": 1.65669846534729
+      },
+      {
+        "function_id": "article-1842",
+        "score": 1.6351139545440674
+      },
+      {
+        "function_id": "article-1017",
+        "score": 1.6270313262939453
+      },
+      {
+        "function_id": "article-312",
+        "score": 1.624858021736145
+      },
+      {
+        "function_id": "article-1852",
+        "score": 1.6086260080337524
+      },
+      {
+        "function_id": "article-1835",
+        "score": 1.5776708126068115
+      },
+      {
+        "function_id": "article-1839",
+        "score": 1.5555757284164429
+      },
+      {
+        "function_id": "article-2979",
+        "score": 1.5529792308807373
+      },
+      {
+        "function_id": "article-2953",
+        "score": 1.5490940809249878
+      },
+      {
+        "function_id": "article-384",
+        "score": 1.5474011898040771
+      },
+      {
+        "function_id": "article-1841",
+        "score": 1.5461959838867188
+      },
+      {
+        "function_id": "article-1821",
+        "score": 1.5434001684188843
+      },
+      {
+        "function_id": "article-1838",
+        "score": 1.532789945602417
+      },
+      {
+        "function_id": "article-1633",
+        "score": 1.5285390615463257
+      },
+      {
+        "function_id": "article-1813",
+        "score": 1.5207116603851318
+      },
+      {
+        "function_id": "article-382",
+        "score": 1.5137336254119873
+      },
+      {
+        "function_id": "article-2955",
+        "score": 1.513075828552246
+      },
+      {
+        "function_id": "article-2437",
+        "score": 1.50895357131958
+      },
+      {
+        "function_id": "article-482",
+        "score": 1.5084939002990723
+      },
+      {
+        "function_id": "article-2303",
+        "score": 1.507745623588562
+      },
+      {
+        "function_id": "article-2239",
+        "score": 1.5009284019470215
+      }
+    ],
+    "selected_ids": [
+      "article-2440"
+    ],
+    "status": "ok",
+    "answer": 16200,
+    "code": "def solution():\n    # Define variables name and value\n    net_worth = 1_200_000\n    residency_factor = 0.9\n\n    tax_free_threshold = 500_000\n    second_threshold = 1_000_000\n    second_rate = 0.02\n    top_rate = 0.04\n\n    # Do math calculation to get the answer\n    second_bracket_tax = (second_threshold - tax_free_threshold) * second_rate\n    top_bracket_tax = (net_worth - second_threshold) * top_rate\n    total_tax = second_bracket_tax + top_bracket_tax\n    adjusted_tax = total_tax * residency_factor\n\n    # return answer\n    return round(adjusted_tax)\n"
+  },
+  "digest": "e4f3236584172058c0974d728601e2ee4674857db0e0c38a8ff6ccc606b017e9"
+}

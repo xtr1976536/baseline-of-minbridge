@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:accumulated_depreciation_depletion_and_amortization_property_plant_and_equipment_fy2023)

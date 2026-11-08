@@ -1,0 +1,21 @@
+{
+  "identity": "6035c67329d4128de839bf82161674d1576ad10b1ffc37d5c33c6efc631d23d3",
+  "response_digest": "21a9f9338a6d14a716a37e8e81ae9d62638fe66c000304e7d9573dc1f6d4465b",
+  "response": {
+    "content": "```python\ndef solution():\n    from math import comb\n\n    trials = 200\n    successes = 10\n    success_probability = 0.05\n\n    probability_percent = (\n        comb(trials, successes)\n        * success_probability**successes\n        * (1 - success_probability)**(trials - successes)\n        * 100\n    )\n\n    return round(probability_percent, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5350,
+      "completion_tokens": 141,
+      "total_tokens": 5491,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 50
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "identity": "7940f7d1567fea64cad144a4ae8ac14cd642bdb518fad67d04ac8f0d99b6221a",
+  "response_digest": "af00fad4eef5546f869f323b00d0fc61d59b3130205aca7dbf66f35358c96dee",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    price = 950.0\n    par_value = 1000.0\n    coupon_rate = 0.06\n    periods = 20\n\n    # Do math calculation to get the answer\n    from scipy.optimize import fsolve\n\n    coupon_payment = coupon_rate * par_value / 2\n\n    def bond_price(ytm):\n        periodic_rate = ytm / 2\n        coupon_present_value = sum(\n            coupon_payment / (1 + periodic_rate) ** t\n            for t in range(1, periods + 1)\n        )\n        principal_present_value = (\n            par_value / (1 + periodic_rate) ** periods\n        )\n        return coupon_present_value + principal_present_value\n\n    ytm = fsolve(lambda rate: bond_price(rate) - price, 0.05)[0]\n\n    # Return the annual YTM as a percentage rounded to two decimal places\n    answer = round(ytm * 100, 2)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5105,
+      "completion_tokens": 643,
+      "total_tokens": 5748,
+      "prompt_tokens_details": {
+        "cached_tokens": 3047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 417
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

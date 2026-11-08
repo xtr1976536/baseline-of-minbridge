@@ -1,0 +1,220 @@
+{
+  "record": {
+    "question_id": "test-2161",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a tiered transaction advisory or investment banking fee using the Lehman formula, applying specified percentage rates to successive transaction-value brackets, including amounts above the highest tier, and returning the total fee rounded to the nearest dollar?",
+        "usage": {
+          "prompt_tokens": 5104,
+          "completion_tokens": 50,
+          "total_tokens": 5154,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 15193,
+          "completion_tokens": 16,
+          "total_tokens": 15209,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    transaction_amount = 12_000_000\n\n    # Apply each rate to the amount within its tier.\n    total_fee = (\n        1_000_000 * 0.05\n        + 4_000_000 * 0.04\n        + 5_000_000 * 0.03\n        + (transaction_amount - 10_000_000) * 0.02\n    )\n\n    return round(total_fee)\n```",
+        "usage": {
+          "prompt_tokens": 5231,
+          "completion_tokens": 160,
+          "total_tokens": 5391,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 51
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-2109",
+        "score": 2.10805606842041,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1891",
+        "score": 1.6224310398101807,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-679",
+        "score": 1.6117289066314697,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.6027507781982422,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1892",
+        "score": 1.5968973636627197,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-1893",
+        "score": 1.5957450866699219,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1895",
+        "score": 1.5889668464660645,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1896",
+        "score": 1.563802719116211,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1582",
+        "score": 1.549238920211792,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1894",
+        "score": 1.5406877994537354,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1023",
+        "score": 1.5370125770568848,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-332",
+        "score": 1.5296630859375,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-811",
+        "score": 1.5293934345245361,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-516",
+        "score": 1.5291039943695068,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-443",
+        "score": 1.5264878273010254,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1581",
+        "score": 1.5248956680297852,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.5246503353118896,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-129",
+        "score": 1.5151379108428955,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.5087147951126099,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.5061863660812378,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.505570411682129,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2436",
+        "score": 1.5055242776870728,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.5018510818481445,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1983",
+        "score": 1.4992790222167969,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.4985980987548828,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-42",
+        "score": 1.4929354190826416,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1469",
+        "score": 1.4893670082092285,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-815",
+        "score": 1.476874828338623,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-500",
+        "score": 1.4736740589141846,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1752",
+        "score": 1.465080738067627,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2109"
+    ],
+    "status": "ok",
+    "answer": 400000,
+    "code": "def solution():\n    transaction_amount = 12_000_000\n\n    # Apply each rate to the amount within its tier.\n    total_fee = (\n        1_000_000 * 0.05\n        + 4_000_000 * 0.04\n        + 5_000_000 * 0.03\n        + (transaction_amount - 10_000_000) * 0.02\n    )\n\n    return round(total_fee)\n"
+  },
+  "digest": "7ee33152453d271989612045baa552de15aaf2bd8317fd779985f6e77d9015e4"
+}

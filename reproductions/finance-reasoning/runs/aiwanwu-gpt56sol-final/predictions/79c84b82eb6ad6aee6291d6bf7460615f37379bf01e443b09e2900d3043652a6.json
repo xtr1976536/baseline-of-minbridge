@@ -1,0 +1,188 @@
+{
+  "record": {
+    "question_id": "test-2230",
+    "run_id": "ba6268c96b7283beb0befa7a9ec90e69a9450542bf7723a6180fea60ee89bda1",
+    "stages": {
+      "query": {
+        "content": "What function calculates a bond’s projected price value of a basis point (PVBP), or dollar value of a basis point (DV01), for a fixed-rate bond using coupon rate, annual payment frequency, years to maturity, yield to maturity, and current price per 100 par value, with the result expressed as the price change for a 1-basis-point yield shift?",
+        "usage": {
+          "prompt_tokens": 4984,
+          "completion_tokens": 80,
+          "total_tokens": 5064,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 15364,
+          "completion_tokens": 496,
+          "total_tokens": 15860,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 399
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    coupon_rate = 0.03\n    par_value = 100.0\n    coupon_frequency = 1\n    years_to_maturity = 9\n    yield_to_maturity = 0.05\n    dirty_price = 85.784357\n\n    coupon_payment = par_value * coupon_rate / coupon_frequency\n\n    # Calculate the bond's Macaulay duration\n    weighted_present_value = 0.0\n    for period in range(1, years_to_maturity + 1):\n        cash_flow = coupon_payment\n        if period == years_to_maturity:\n            cash_flow += par_value\n\n        present_value = cash_flow / (\n            (1 + yield_to_maturity / coupon_frequency)\n            ** (period * coupon_frequency)\n        )\n        weighted_present_value += (\n            period / coupon_frequency\n        ) * present_value\n\n    macaulay_duration = weighted_present_value / dirty_price\n\n    # Convert Macaulay duration to modified duration\n    modified_duration = macaulay_duration / (\n        1 + yield_to_maturity / coupon_frequency\n    )\n\n    # Calculate the price value of a basis point\n    pvbp = modified_duration * dirty_price * 0.0001\n\n    # Return the answer to three decimal places\n    return round(pvbp, 3)\n```",
+        "usage": {
+          "prompt_tokens": 4922,
+          "completion_tokens": 588,
+          "total_tokens": 5510,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 298
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": true
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-1334",
+        "score": 2.0972933769226074
+      },
+      {
+        "function_id": "article-782",
+        "score": 1.9340025186538696
+      },
+      {
+        "function_id": "article-1428",
+        "score": 1.893031120300293
+      },
+      {
+        "function_id": "article-657",
+        "score": 1.8076173067092896
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.8034814596176147
+      },
+      {
+        "function_id": "article-1904",
+        "score": 1.7978568077087402
+      },
+      {
+        "function_id": "article-656",
+        "score": 1.7911955118179321
+      },
+      {
+        "function_id": "article-1311",
+        "score": 1.77007257938385
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7627333402633667
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.7581391334533691
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.749518632888794
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.7451413869857788
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.7438256740570068
+      },
+      {
+        "function_id": "article-1309",
+        "score": 1.7424877882003784
+      },
+      {
+        "function_id": "article-1905",
+        "score": 1.7412279844284058
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.7339178323745728
+      },
+      {
+        "function_id": "article-742",
+        "score": 1.7282769680023193
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.7263377904891968
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.725517749786377
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.7212097644805908
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.7203452587127686
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.7182502746582031
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.7161591053009033
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.714482307434082
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.7116825580596924
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7087037563323975
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.6981281042099
+      },
+      {
+        "function_id": "article-1229",
+        "score": 1.6934032440185547
+      },
+      {
+        "function_id": "article-252",
+        "score": 1.6920026540756226
+      },
+      {
+        "function_id": "article-1432",
+        "score": 1.6910886764526367
+      }
+    ],
+    "selected_ids": [
+      "article-1334"
+    ],
+    "status": "ok",
+    "answer": 0.065,
+    "code": "def solution():\n    # Define variables name and value\n    coupon_rate = 0.03\n    par_value = 100.0\n    coupon_frequency = 1\n    years_to_maturity = 9\n    yield_to_maturity = 0.05\n    dirty_price = 85.784357\n\n    coupon_payment = par_value * coupon_rate / coupon_frequency\n\n    # Calculate the bond's Macaulay duration\n    weighted_present_value = 0.0\n    for period in range(1, years_to_maturity + 1):\n        cash_flow = coupon_payment\n        if period == years_to_maturity:\n            cash_flow += par_value\n\n        present_value = cash_flow / (\n            (1 + yield_to_maturity / coupon_frequency)\n            ** (period * coupon_frequency)\n        )\n        weighted_present_value += (\n            period / coupon_frequency\n        ) * present_value\n\n    macaulay_duration = weighted_present_value / dirty_price\n\n    # Convert Macaulay duration to modified duration\n    modified_duration = macaulay_duration / (\n        1 + yield_to_maturity / coupon_frequency\n    )\n\n    # Calculate the price value of a basis point\n    pvbp = modified_duration * dirty_price * 0.0001\n\n    # Return the answer to three decimal places\n    return round(pvbp, 3)\n"
+  },
+  "digest": "8ed4f1ff657af639be16079a62612036f933b7508b569cf96018167ee5a07cf9"
+}

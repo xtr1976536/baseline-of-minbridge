@@ -1,0 +1,28 @@
+{
+  "request_hash": "73ce7f0072215e241d14ae40ebffc39261f83a49f0061e40e653e6c9ccbd3dae",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nConsidering the data in the balance sheet, what is Block's (formerly known as Square) FY2016 working capital ratio? Define working capital ratio as total current assets divided by total current liabilities. Round your answer to two decimal places.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\"metric\":\"working_capital_ratio\",\"facts\":[{\"name\":\"total_current_assets\",\"aliases\":[\"Total current assets\",\"Current assets\",\"Total current assets, net\"],\"period\":\"FY2016\",\"statement\":\"balance sheet\"},{\"name\":\"total_current_liabilities\",\"aliases\":[\"Total current liabilities\",\"Current liabilities\",\"Total current liabilities\"],\"period\":\"FY2016\",\"statement\":\"balance sheet\"}],\"reason\":\"Calculate FY2016 working capital ratio as total current assets divided by total current liabilities, then round to two decimal places.\"}",
+  "usage": {
+    "prompt_tokens": 4725,
+    "completion_tokens": 108,
+    "total_tokens": 4833,
+    "prompt_tokens_details": {
+      "cached_tokens": 3136
+    }
+  },
+  "response_id": "resp_032e4c8606b3aa44016aedb3f5e03887d2b7453cf6ed3dd8ed",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

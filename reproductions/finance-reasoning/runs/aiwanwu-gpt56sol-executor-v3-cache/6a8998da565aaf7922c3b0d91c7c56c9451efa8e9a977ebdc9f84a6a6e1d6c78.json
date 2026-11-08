@@ -1,0 +1,18 @@
+{
+  "identity": "6a8998da565aaf7922c3b0d91c7c56c9451efa8e9a977ebdc9f84a6a6e1d6c78",
+  "response_digest": "dc21505af32bd8f2a884a138ce61bf1fdd1de83578b794828adddacd68fc64fa",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    face_value = 100000\n    annual_coupon_rate = 0.05\n    annual_market_rate = 0.04\n    years_to_maturity = 10\n    payments_per_year = 2\n\n    coupon_payment = (face_value * annual_coupon_rate) / payments_per_year\n    period_rate = annual_market_rate / payments_per_year\n    total_payments = years_to_maturity * payments_per_year\n\n    # Do math calculation to get the answer\n    pv_coupons = sum(\n        coupon_payment / ((1 + period_rate) ** period)\n        for period in range(1, total_payments + 1)\n    )\n    pv_face_value = face_value / ((1 + period_rate) ** total_payments)\n    answer = round(pv_coupons + pv_face_value)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5650,
+      "completion_tokens": 310,
+      "total_tokens": 5960,
+      "completion_tokens_details": {
+        "reasoning_tokens": 111
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

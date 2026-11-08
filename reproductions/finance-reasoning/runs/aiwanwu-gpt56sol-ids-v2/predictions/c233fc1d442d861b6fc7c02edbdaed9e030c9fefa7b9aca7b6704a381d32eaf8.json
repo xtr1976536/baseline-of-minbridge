@@ -1,0 +1,210 @@
+{
+  "record": {
+    "question_id": "test-2067",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the integer number of calendar days between a commercial paper’s issue date and maturity date using two specified dates?",
+        "usage": {
+          "prompt_tokens": 5008,
+          "completion_tokens": 28,
+          "total_tokens": 5036,
+          "prompt_tokens_details": {
+            "cached_tokens": 3405
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14921,
+          "completion_tokens": 16,
+          "total_tokens": 14937
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    from datetime import datetime\n\n    issuance_date = \"2023-03-15\"\n    maturity_date = \"2023-09-12\"\n\n    # Do math calculation to get the answer\n    issuance_date_obj = datetime.strptime(issuance_date, \"%Y-%m-%d\")\n    maturity_date_obj = datetime.strptime(maturity_date, \"%Y-%m-%d\")\n    days_to_maturity = (maturity_date_obj - issuance_date_obj).days\n\n    # return answer\n    return days_to_maturity\n```",
+        "usage": {
+          "prompt_tokens": 4959,
+          "completion_tokens": 126,
+          "total_tokens": 5085,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-125",
+        "score": 1.930001974105835,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1623",
+        "score": 1.5809118747711182,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1793",
+        "score": 1.54591965675354,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2431",
+        "score": 1.4879426956176758,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2805",
+        "score": 1.4761197566986084,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.4667572975158691,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.462357521057129,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-1624",
+        "score": 1.457961082458496,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.4555577039718628,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.453092098236084,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2567",
+        "score": 1.4510247707366943,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-84",
+        "score": 1.4483038187026978,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-442",
+        "score": 1.4376068115234375,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.4266397953033447,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1426",
+        "score": 1.4260566234588623,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2246",
+        "score": 1.4240021705627441,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1666",
+        "score": 1.4233711957931519,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-123",
+        "score": 1.4188042879104614,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.4091072082519531,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.4086648225784302,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-83",
+        "score": 1.4082871675491333,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-28",
+        "score": 1.4055640697479248,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-102",
+        "score": 1.4038325548171997,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-124",
+        "score": 1.4035406112670898,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2593",
+        "score": 1.3974779844284058,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-584",
+        "score": 1.3963141441345215,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.3927966356277466,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-540",
+        "score": 1.3915281295776367,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1626",
+        "score": 1.389805555343628,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.3897600173950195,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-125"
+    ],
+    "status": "ok",
+    "answer": 181,
+    "code": "def solution():\n    # Define variables name and value\n    from datetime import datetime\n\n    issuance_date = \"2023-03-15\"\n    maturity_date = \"2023-09-12\"\n\n    # Do math calculation to get the answer\n    issuance_date_obj = datetime.strptime(issuance_date, \"%Y-%m-%d\")\n    maturity_date_obj = datetime.strptime(maturity_date, \"%Y-%m-%d\")\n    days_to_maturity = (maturity_date_obj - issuance_date_obj).days\n\n    # return answer\n    return days_to_maturity\n"
+  },
+  "digest": "078251708e37938819f3fbdeadb28d3c2cde6f75825fb0915847f9ebfc209ffa"
+}

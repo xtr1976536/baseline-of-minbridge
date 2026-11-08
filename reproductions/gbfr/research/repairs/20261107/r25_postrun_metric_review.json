@@ -1,0 +1,696 @@
+{
+  "audit": "R25 post-run read-only review of Visa,DRE2005 andBDX2018",
+  "api_calls": 0,
+  "source_edits": 0,
+  "primary_results_changed": false,
+  "preserved_primary_fixed2": {
+    "n": 10,
+    "predictions": 10,
+    "missing": 0,
+    "errors": 0,
+    "correct": 5,
+    "unanswerable": 2,
+    "correct_abstentions": 1,
+    "total_accuracy": 50.0,
+    "abstention_accuracy": 50.0,
+    "complete": true
+  },
+  "preserved_secondary_reference_display": {
+    "n": 10,
+    "predictions": 10,
+    "missing": 0,
+    "errors": 0,
+    "correct": 6,
+    "unanswerable": 2,
+    "correct_abstentions": 1,
+    "total_accuracy": 60.0,
+    "abstention_accuracy": 50.0,
+    "complete": true
+  },
+  "preserved_false_abstentions": 0,
+  "preserved_unit_contract_unresolved": 1,
+  "primary_result_sha256_before": "d6c05eeaea64800e8810fa89a84ed9aa1b84fab362c42788bce98a1aa245aebb",
+  "cases": [
+    {
+      "id": "FinQA:V/2010/page_28.pdf-1",
+      "category": "source_supported_currency_per_transaction_contract_not_implemented",
+      "source_evidence": [
+        "| Company | Payments Volume  (billions) | Total Volume  (billions) | Total Transactions  (billions) | Cards  (millions) |",
+        "| VisaInc.<sup>(1)</sup> | $2,793 | $4,423 | 62.2 | 1,808 |",
+        "payments volume represents the aggregate dollar amount of purchases made with cards carrying the visa , visa electron and interlink brands for the relevant period .",
+        "currency figures are in u.s .\ndollars ."
+      ],
+      "calculation": "2793 billion USD / 62.2 billion transactions = 44.90353697749196 USD/transaction; billion multipliers cancel.",
+      "diagnosis": "Q and D establish a monetary amount per transaction. Model operands, division, unit and raw result agree with source and official program. Current target_meta lacks a per-transaction monetary target and returns all None. unit_name leaves USD per transaction as raw usd per transaction rather than currency/transaction. Conservative unit_contract therefore reports unresolved; this is a parser capability gap rather than missing source evidence.",
+      "precision_check": "44.90353697749196 rounds to44.90 at fixed2 and44.9 at reference_display1, matching44.9 under either resolution if a future source-grounded unit contract is implemented. This is a diagnostic observation, not a revised R25 score.",
+      "proposal_only": "In a future preregistered scorer, canonicalize currency-per-transaction aliases and identify a monetary amount/payment-volume per transaction output only with Q/source-backed monetary numerator and transaction-count denominator. Establish currency from attached source declaration, not prediction or matching magnitude. Carry source input scale cancellation; do not inherit Cards(millions) or a document-wide billion scale. Protect dimensionless ratios, nonmonetary quantities per transaction, incompatible currencies, mismatched input scales and per-share outputs.",
+      "question": "what is the average payment volume per transaction for visa inc?",
+      "gold": "44.9",
+      "answer_meta": {},
+      "source": {
+        "commit": "b2eaa7156acb7d12fecc7386b92dd4bf82f9cc52",
+        "index": 904,
+        "uid": "V/2010/page_28.pdf-1"
+      },
+      "source_context": "based on payments volume , total volume , number of transactions and number of cards in circulation , visa is the largest retail electronic payments network in the world .\nthe following chart compares our network with those of our major general-purpose payment network competitors for calendar year 2009 : company payments volume volume transactions cards ( billions ) ( billions ) ( billions ) ( millions ) visa inc. ( 1 ) .\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n$ 2793 $ 4423 62.2 1808 .\n| Company | Payments Volume  (billions) | Total Volume  (billions) | Total Transactions  (billions) | Cards  (millions) |\n| --- | --- | --- | --- | --- |\n| VisaInc.<sup>(1)</sup> | $2,793 | $4,423 | 62.2 | 1,808 |\n| MasterCard | 1,852 | 2,454 | 32.1 | 966 |\n| American Express | 613 | 620 | 5.1 | 88 |\n| Discover | 100 | 109 | 1.7 | 54 |\n| JCB | 75 | 83 | 0.8 | 61 |\n| Diners Club | 25 | 26 | 0.2 | 7 |\n( 1 ) visa inc .\nfigures as reported on form 8-k filed with the sec on february 3 and april 28 , 2010 , respectively .\nvisa figures represent total volume , payments volume and cash volume , and the number of payments transactions , cash transactions , accounts and cards for products carrying the visa , visa electron and interlink brands .\ncard counts include plus proprietary cards .\npayments volume represents the aggregate dollar amount of purchases made with cards carrying the visa , visa electron and interlink brands for the relevant period .\ntotal volume represents payments volume plus cash volume .\nthe data presented is reported quarterly by visa 2019s clients on their operating certificates and is subject to verification by visa .\non occasion , clients may update previously submitted information .\nsources : mastercard , american express , jcb and diners club data sourced from the nilson report issue 946 ( april 2010 ) .\nincludes all consumer and commercial credit , debit and prepaid cards .\ncurrency figures are in u.s .\ndollars .\nmastercard excludes maestro and cirrus figures .\namerican express includes figures for third party issuers .\njcb figures are for april 2008 through march 2009 and include third party issuers .\ntransactions are estimates .\ndiners club figures are for the 12 months ended november 30 , 2009 .\ndiscover data sourced from the nilson report issue 942 ( february 2010 ) 2014u.s .\ndata only and includes business from third party issuers .\nfor more information on the concentration of our operating revenues and other financial information , see note 15 2014enterprise-wide disclosures and concentration of business to our consolidated financial statements included in item 8 of this report .\nworking capital requirements payments settlement due from and due to issuing and acquiring clients generally represents our most consistent and substantial liquidity requirement , arising primarily from the payments settlement of certain credit and debit transactions and the timing of payments settlement between financial institution clients with settlement currencies other than the u.s .\ndollar .\nthese settlement receivables and payables generally remain outstanding for one to two business days , consistent with standard market conventions for domestic transactions and foreign currency transactions .\nwe maintain working capital sufficient to enable uninterrupted daily settlement .\nduring fiscal 2010 , we funded average daily net settlement receivable balances of $ 129 million , with the highest daily balance being $ 386 million .\nseasonality we do not expect to experience any pronounced seasonality in our business .\nno individual quarter of fiscal 2010 or fiscal 2009 accounted for more than 30% ( 30 % ) of our fiscal 2010 or fiscal 2009 operating revenues. .",
+      "actual_prediction": {
+        "status": "answered",
+        "value": 44.90353697749196,
+        "meta": {
+          "currency": "USD",
+          "scale": "ones",
+          "unit": "usd per transaction"
+        },
+        "precision": "unknown"
+      },
+      "frozen_result_fields": {
+        "correct_fixed_two": false,
+        "correct_reference_display": false,
+        "unit_contract": {
+          "status": "unresolved",
+          "reason": "Target display units are unknown, so explicit monetary or scaled prediction units cannot be verified",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "ones",
+            "unit": "usd per transaction"
+          }
+        }
+      },
+      "official_annotation_for_audit_only": {
+        "program": "divide(2793, 62.2)",
+        "steps": [
+          {
+            "op": "divide1-1",
+            "arg1": "2793",
+            "arg2": "62.2",
+            "res": "44.9"
+          }
+        ],
+        "exe_ans": 44.90354
+      },
+      "operator_events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "operator": "division",
+            "precision": "unknown",
+            "reasoning_type": "ArithmeticCalculation",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "Visa Inc.",
+                  "meta": {
+                    "currency": "USD",
+                    "scale": "billion",
+                    "unit": null
+                  },
+                  "temporal_scope": "calendar year 2009"
+                },
+                "metric": "Payments Volume"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Visa Inc.",
+                  "meta": {
+                    "currency": null,
+                    "scale": "billion",
+                    "unit": "count"
+                  },
+                  "temporal_scope": "calendar year 2009"
+                },
+                "metric": "Total Transactions"
+              }
+            ]
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Payments Volume",
+            "constraints": {
+              "temporal_scope": "calendar year 2009",
+              "entity_scope": "Visa Inc.",
+              "meta": {
+                "currency": "USD",
+                "scale": "billion",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved the calendar year 2009 scope from the chart description; the row label VisaInc.<sup>(1)</sup> identifies Visa Inc.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 0.99,
+                "constraints": {
+                  "entity_scope": "Visa Inc.",
+                  "meta": {
+                    "currency": "USD",
+                    "scale": "billion",
+                    "unit": null
+                  },
+                  "temporal_scope": "calendar year 2009"
+                },
+                "context": "VisaInc.<sup>(1)</sup> | $2,793 under Payments Volume (billions)",
+                "context_spans": [
+                  "| Company | Payments Volume  (billions) | Total Volume  (billions) | Total Transactions  (billions) | Cards  (millions) |",
+                  "| VisaInc.<sup>(1)</sup> | $2,793 | $4,423 | 62.2 | 1,808 |"
+                ],
+                "metric": "Payments Volume",
+                "observed_meta": {
+                  "currency": "USD",
+                  "scale": "billion",
+                  "unit": null
+                },
+                "source_label": "Payments Volume  (billions)",
+                "value": 2793
+              }
+            }
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Total Transactions",
+            "constraints": {
+              "temporal_scope": "calendar year 2009",
+              "entity_scope": "Visa Inc.",
+              "meta": {
+                "currency": null,
+                "scale": "billion",
+                "unit": "count"
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved the calendar year 2009 and Visa Inc. scope from the chart description and row label “VisaInc.<sup>(1)</sup>”.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": "Visa Inc.",
+                  "meta": {
+                    "currency": null,
+                    "scale": "billion",
+                    "unit": "count"
+                  },
+                  "temporal_scope": "calendar year 2009"
+                },
+                "context": "| Company | Payments Volume  (billions) | Total Volume  (billions) | Total Transactions  (billions) | Cards  (millions) |\n| VisaInc.<sup>(1)</sup> | $2,793 | $4,423 | 62.2 | 1,808 |",
+                "context_spans": [
+                  "the following chart compares our network with those of our major general-purpose payment network competitors for calendar year 2009",
+                  "| Company | Payments Volume  (billions) | Total Volume  (billions) | Total Transactions  (billions) | Cards  (millions) |\n| VisaInc.<sup>(1)</sup> | $2,793 | $4,423 | 62.2 | 1,808 |"
+                ],
+                "metric": "Total Transactions",
+                "observed_meta": {
+                  "currency": null,
+                  "scale": "billion",
+                  "unit": "count"
+                },
+                "source_label": "Total Transactions  (billions)",
+                "value": 62.2
+              }
+            }
+          }
+        },
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    payment_volume = vars[\"v1\"]\n    total_transactions = vars[\"v2\"]\n\n    if total_transactions == 0:\n        return None\n\n    value = payment_volume / total_transactions\n\n    return {\n        \"value\": value,\n        \"trace\": {\n            \"payment_volume\": payment_volume,\n            \"total_transactions\": total_transactions,\n            \"calculation\": \"payment_volume / total_transactions\",\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"ones\",\n                \"unit\": \"USD per transaction\"\n            }\n        }\n    }",
+          "inputs": {
+            "v1": 2793.0,
+            "v2": 62.2
+          },
+          "execution": {
+            "value": 44.90353697749196,
+            "trace": {
+              "payment_volume": 2793.0,
+              "total_transactions": 62.2,
+              "calculation": "payment_volume / total_transactions",
+              "output_meta": {
+                "currency": "USD",
+                "scale": "ones",
+                "unit": "USD per transaction"
+              },
+              "effective_output_meta": {
+                "currency": "USD",
+                "scale": "ones",
+                "unit": "usd per transaction"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "FinQA:DRE/2005/page_30.pdf-2",
+      "category": "explicit_requested_millions_vs_official_raw_thousands_conflict",
+      "source_evidence": [
+        "other income and expenses earnings from sales of land and ownership interests in unconsolidated companies , net of impairment adjustments , is comprised of the following amounts in 2004 and 2003 ( in thousands ) : .",
+        "| Gain on land sales | $10,543 | $7,695 |",
+        "| Gain on sale of ownership interests in unconsolidated companies | 83 | 8,617 |",
+        "| Impairment adjustment | (424) | (560) |",
+        "| Total | $10,202 | $15,752 |"
+      ],
+      "calculation": "10543 + 83 =10626 thousand USD =10.626 million USD. Independently,10202 +424 =10626 thousand USD.",
+      "diagnosis": "Question explicitly asks in millions. Model source-cell selection and thousand-to-million conversion are supported. Official program adds424 and10202 without conversion and gold preserves10626, the table display in thousands. This is an official answer-display/query-output-scale conflict, not a1000-fold model extraction error. Existing target policy gives explicit query units priority and therefore keeps the benchmark comparison incorrect.",
+      "proposal_only": "Keep label and pre-registered main score unchanged. Record source-consistent10.626M alongside raw official10626 and its unchanged executable program. Do not change target precedence to source-table units or infer a conversion by matching answer magnitude.",
+      "question": "what was the total gain on sales in 2004 before any adjustment for impairments in millions",
+      "gold": "10626",
+      "answer_meta": {},
+      "source": {
+        "commit": "b2eaa7156acb7d12fecc7386b92dd4bf82f9cc52",
+        "index": 937,
+        "uid": "DRE/2005/page_30.pdf-2"
+      },
+      "source_context": "28 duke realty corporation 25cf our merchant building development and sales program , whereby a building is developed by us and then sold , is a signifi cant component of construction and development income .\nduring 2004 , we generated after tax gains of $ 16.5 million from the sale of six properties compared to $ 9.6 million from the sale of four properties in 2003 .\nprofi t margins on these types of building sales fl uctuate by sale depending on the type of property being sold , the strength of the underlying tenant and nature of the sale , such as a pre-contracted purchase price for a primary tenant versus a sale on the open market .\ngeneral and administrative expense general and administrative expense increased from $ 22.0 million in 2003 to $ 26.3 million in 2004 .\nthe increase was a result of increased staffi ng and employee compensation costs to support development of our national development and construction group .\nwe also experienced an increase in marketing to support certain new projects .\nother income and expenses earnings from sales of land and ownership interests in unconsolidated companies , net of impairment adjustments , is comprised of the following amounts in 2004 and 2003 ( in thousands ) : .\n|  | 2004 | 2003 |\n| --- | --- | --- |\n| Gain on land sales | $10,543 | $7,695 |\n| Gain on sale of ownership interests in unconsolidated companies | 83 | 8,617 |\n| Impairment adjustment | (424) | (560) |\n| Total | $10,202 | $15,752 |\nin the fi rst quarter of 2003 , we sold our 50% ( 50 % ) interest in a joint venture that owned and operated depreciable investment property .\nthe joint venture developed and operated real estate assets ; thus , the gain was not included in operating income .\ngain on land sales are derived from sales of undeveloped land owned by us .\nwe pursue opportunities to dispose of land in markets with a high concentration of undeveloped land and in those markets where the land no longer meets our strategic development plans .\nthe increase was partially attributable to a land sale to a current corporate tenant for potential future expansion .\nwe recorded $ 424000 and $ 560000 of impairment charges associated with contracts to sell land parcels for the years ended december 31 , 2004 and 2003 , respectively .\nas of december 31 , 2004 , only one parcel on which we recorded impairment charges was still owned by us .\nwe sold this parcel in the fi rst quarter of 2005 .\nmanagement 2019s discussion and analysis of financial condition and results of operations critical accounting policies the preparation of our consolidated fi nancial statements in conformity with accounting principles generally accepted in the united states of america ( 201cgaap 201d ) requires us to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the fi nancial statements and the reported amounts of revenues and expenses during the reported period .\nour estimates , judgments and assumptions are continually evaluated based upon available information and experience .\nnote 2 to the consolidated financial statements includes further discussion of our signifi cant accounting policies .\nour management has assessed the accounting policies used in the preparation of our fi nancial statements and discussed them with our audit committee and independent auditors .\nthe following accounting policies are considered critical based upon materiality to the fi nancial statements , degree of judgment involved in estimating reported amounts and sensitivity to changes in industry and economic conditions : accounting for joint ventures : we analyze our investments in joint ventures under financial accounting standards board ( 201cfasb 201d ) interpretation no .\n46 ( r ) , consolidation of variable interest entities , to determine if the joint venture is considered a variable interest entity and would require consolidation .\nto the extent that our joint ventures do not qualify as variable interest entities , we further assess under the guidelines of emerging issues task force ( 201ceitf 201d ) issue no .\n04-5 , determining whether a general partner , or the general partners as a group , controls a limited partnership or similar entity when the limited partners have certain rights ( 201ceitf 04-5 201d ) , statement of position 78-9 , accounting for investments in real estate ventures ; accounting research bulletin no .\n51 , consolidated financial statements and fasb no .\n94 , consolidation of all majority-owned subsidiaries , to determine if the venture should be consolidated .\nwe have equity interests ranging from 10%-75% ( 10%-75 % ) in joint ventures that own and operate rental properties and hold land for development .\nwe consolidate those joint ventures that we control through majority ownership interests or substantial participating rights .\ncontrol is further demonstrated by the ability of the general partner to manage day-to-day operations , refi nance debt and sell the assets of the joint venture without the consent of the limited partner and inability of the limited partner to replace the general partner .\nwe use the equity method of accounting for those joint ventures where we do not have control over operating and fi nancial polices .\nunder the equity method of accounting , our investment in each joint venture is included on our balance sheet ; however , the assets and liabilities of the joint ventures for which we use the equity method are not included on our balance sheet. .",
+      "actual_prediction": {
+        "status": "answered",
+        "value": 10.626,
+        "meta": {
+          "currency": "USD",
+          "scale": "million",
+          "unit": null
+        },
+        "precision": "unknown"
+      },
+      "frozen_result_fields": {
+        "correct_fixed_two": false,
+        "correct_reference_display": false,
+        "unit_contract": {
+          "status": "resolved",
+          "reason": "Target display dimensions are specified; compatibility is checked separately",
+          "target_meta": {
+            "currency": null,
+            "scale": "million",
+            "unit": null
+          },
+          "prediction_meta": {
+            "currency": "USD",
+            "scale": "million",
+            "unit": null
+          }
+        }
+      },
+      "official_annotation_for_audit_only": {
+        "program": "add(424, 10202)",
+        "steps": [
+          {
+            "op": "add2-1",
+            "arg1": "424",
+            "arg2": "10202",
+            "res": "10626"
+          }
+        ],
+        "exe_ans": 10626.0
+      },
+      "operator_events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "operator": "sum",
+            "precision": "unknown",
+            "reasoning_type": "ArithmeticCalculation",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": "Duke Realty Corporation",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "2004"
+                },
+                "metric": "Gain on land sales"
+              },
+              {
+                "constraints": {
+                  "entity_scope": "Duke Realty Corporation",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "2004"
+                },
+                "metric": "Gain on sale of ownership interests in unconsolidated companies"
+              }
+            ]
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Gain on sale of ownership interests in unconsolidated companies",
+            "constraints": {
+              "temporal_scope": "2004",
+              "entity_scope": "Duke Realty Corporation",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": null,
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": "Duke Realty Corporation",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "2004"
+                },
+                "context": "Gain on sale of ownership interests in unconsolidated companies: 83 (2004, in thousands)",
+                "context_spans": [
+                  "|  | 2004 | 2003 |",
+                  "| Gain on sale of ownership interests in unconsolidated companies | 83 | 8,617 |"
+                ],
+                "metric": "Gain on sale of ownership interests in unconsolidated companies",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "source_label": "Gain on sale of ownership interests in unconsolidated companies",
+                "value": 83
+              }
+            }
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Gain on land sales",
+            "constraints": {
+              "temporal_scope": "2004",
+              "entity_scope": "Duke Realty Corporation",
+              "meta": {
+                "currency": "$",
+                "scale": "thousand",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": null,
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": "Duke Realty Corporation",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "thousand",
+                    "unit": null
+                  },
+                  "temporal_scope": "2004"
+                },
+                "context": "Gain on land sales: $10,543 (2004, in thousands)",
+                "context_spans": [
+                  "|  | 2004 | 2003 |",
+                  "| Gain on land sales | $10,543 | $7,695 |"
+                ],
+                "metric": "Gain on land sales",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "thousand",
+                  "unit": null
+                },
+                "source_label": "Gain on land sales",
+                "value": 10543.0
+              }
+            }
+          }
+        },
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    gain_on_land_sales = vars[\"v1\"]\n    gain_on_ownership_interests = vars[\"v2\"]\n\n    total_gain_thousand = gain_on_land_sales + gain_on_ownership_interests\n    total_gain_million = total_gain_thousand / 1000\n\n    return {\n        \"value\": total_gain_million,\n        \"trace\": {\n            \"gain_on_land_sales_thousand\": gain_on_land_sales,\n            \"gain_on_ownership_interests_thousand\": gain_on_ownership_interests,\n            \"total_gain_thousand\": total_gain_thousand,\n            \"conversion\": \"thousand to million by dividing by 1000\",\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": None\n            }\n        }\n    }",
+          "inputs": {
+            "v1": 10543.0,
+            "v2": 83.0
+          },
+          "execution": {
+            "value": 10.626,
+            "trace": {
+              "gain_on_land_sales_thousand": 10543.0,
+              "gain_on_ownership_interests_thousand": 83.0,
+              "total_gain_thousand": 10626.0,
+              "conversion": "thousand to million by dividing by 1000",
+              "output_meta": {
+                "currency": "USD",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "FinQA:BDX/2018/page_106.pdf-1",
+      "category": "signed_percentage_change_vs_positive_loss_reduction_convention",
+      "source_evidence": [
+        "| (Millions of dollars) | 2018 | 2017 | 2016 |",
+        "| Losses on debt extinguishment (a) | $(16) | $(73) | $— |",
+        "( a ) represents losses recognized upon our repurchase and extinguishment of certain senior notes , as further discussed in note 15 ."
+      ],
+      "calculation": "Signed values:((-16)-(-73))/(-73)*100=-78.08219178082192%. Loss magnitude reduction:(73-16)/73*100=+78.08219178082192%.",
+      "diagnosis": "OES retains source parentheses as negative for both years. OPE correctly computes a standard signed temporal percentage change. Official program subtract(16,73),divide(57,73) uses positive57 directly in the second step, not the prior -57 intermediate, and reports a positive loss-reduction magnitude. Gold78.1% reflects that convention. This is a directional/sign interpretation difference, not mistaken table-year mapping, bracket-sign extraction, or arithmetic execution.",
+      "proposal_only": "Do not globally abs temporal percentage changes or rewrite negative losses as positive in extraction. Only a future explicitly source/question-supported reduction/improvement-magnitude convention could choose a positive result; keep signed change and reduction magnitude distinct and preserve this benchmark discrepancy.",
+      "question": "what was the percentage change in the losses on debt extinguishment from 2017 to 2018",
+      "gold": "78.1%",
+      "answer_meta": {},
+      "source": {
+        "commit": "b2eaa7156acb7d12fecc7386b92dd4bf82f9cc52",
+        "index": 1041,
+        "uid": "BDX/2018/page_106.pdf-1"
+      },
+      "source_context": "note 17 2014 sales-type leases and financing receivables in april 2017 , in conjunction with the implementation of a new 201cgo-to-market 201d business model for the company's u.s .\ndispensing business within the medication management solutions ( 201cmms 201d ) unit of the medical segment , the company amended the terms of certain customer leases for dispensing equipment within the mms unit .\nthe modification provided customers the ability to reduce its dispensing asset base via a return provision , resulting in a more flexible lease term .\nprior to the modification , these leases were accounted for as sales-type leases in accordance with accounting standards codification topic 840 , \"leases\" , as the non- cancellable lease term of 5 years exceeded 75% ( 75 % ) of the equipment 2019s estimated useful life and the present value of the minimum lease payments exceeded 90% ( 90 % ) of the equipment 2019s fair value .\nas a result of the lease modification , the company was required to reassess the classification of the leases due to the amended lease term .\naccordingly , most amended lease contracts were classified as operating leases beginning in april 2017 .\nthe change in lease classification resulted in a pre-tax charge to earnings in fiscal year 2017 of $ 748 million , which was recorded in other operating expense , net .\nbeginning april 1 , 2017 , revenue associated with these modified contracts has been recognized on a straight-line basis over the remaining lease term , along with depreciation on the reinstated leased assets .\nthe company's consolidated financial results in 2018 and 2017 were not materially impacted by the financing receivables remaining subsequent to the lease modification discussed above .\nnote 18 2014 supplemental financial information other income ( expense ) , net .\n| (Millions of dollars) | 2018 | 2017 | 2016 |\n| --- | --- | --- | --- |\n| Losses on debt extinguishment (a) | $(16) | $(73) | $— |\n| Vyaire Medical-related amounts (b) | 288 | (3) | — |\n| Other equity investment income | 8 | 3 | 8 |\n| Losses on undesignated foreign exchange derivatives, net | (14) | (11) | (3) |\n| Royalty income (c) | 51 | — | — |\n| Gains on previously held investments (d) | — | 24 | — |\n| Other | — | 3 | 7 |\n| Other income (expense), net | $318 | $(57) | $11 |\n( a ) represents losses recognized upon our repurchase and extinguishment of certain senior notes , as further discussed in note 15 .\n( b ) represents amounts related to the company 2019s 2017 divestiture of a controlling interest in its former respiratory solutions business and the subsequent sale in 2018 of the remaining ownership interest .\nthe amount in 2018 includes the gain on the sale of the remaining non-controlling interest and transition services agreement income , net of the company's share of equity investee results .\nthe amount in 2017 represents the company 2019s share of equity investee results , net of transition services agreement income .\nadditional disclosures regarding these divestiture transactions are provided in note 10 in the notes to consolidated financial statements .\n( c ) represents the royalty income stream acquired in the bard transaction , net of non-cash purchase accounting amortization .\nthe royalty income stream was previously reported by bard as revenues .\n( d ) represents an acquisition-date accounting gain related to a previously-held equity method investment in an entity the company acquired. .",
+      "actual_prediction": {
+        "status": "answered",
+        "value": -78.08219178082192,
+        "meta": {
+          "currency": null,
+          "scale": null,
+          "unit": "percentage"
+        },
+        "precision": "unknown"
+      },
+      "frozen_result_fields": {
+        "correct_fixed_two": false,
+        "correct_reference_display": false,
+        "unit_contract": {
+          "status": "resolved",
+          "reason": "Target display dimensions are specified; compatibility is checked separately",
+          "target_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          },
+          "prediction_meta": {
+            "currency": null,
+            "scale": null,
+            "unit": "percentage"
+          }
+        }
+      },
+      "official_annotation_for_audit_only": {
+        "program": "subtract(16, 73), divide(57, 73)",
+        "steps": [
+          {
+            "op": "minus1-1",
+            "arg1": "16",
+            "arg2": "73",
+            "res": "-57"
+          },
+          {
+            "op": "divide1-2",
+            "arg1": "57",
+            "arg2": "73",
+            "res": "78.1%"
+          }
+        ],
+        "exe_ans": 0.78082
+      },
+      "operator_events": [
+        {
+          "operator": "OQA",
+          "response": {
+            "operator": "change ratio",
+            "precision": "unknown",
+            "reasoning_type": "ComparativeReasoning",
+            "subgoals": [
+              {
+                "constraints": {
+                  "entity_scope": null,
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2017"
+                },
+                "metric": "Losses on debt extinguishment"
+              },
+              {
+                "constraints": {
+                  "entity_scope": null,
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2018"
+                },
+                "metric": "Losses on debt extinguishment"
+              }
+            ]
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Losses on debt extinguishment",
+            "constraints": {
+              "temporal_scope": "2017",
+              "entity_scope": null,
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": null,
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": null,
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2017"
+                },
+                "context": "Losses on debt extinguishment (a): $(73) in 2017",
+                "context_spans": [
+                  "| (Millions of dollars) | 2018 | 2017 | 2016 |",
+                  "| Losses on debt extinguishment (a) | $(16) | $(73) | $— |"
+                ],
+                "metric": "Losses on debt extinguishment",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "source_label": "Losses on debt extinguishment (a)",
+                "value": -73.0
+              }
+            }
+          }
+        },
+        {
+          "operator": "OES",
+          "goal": {
+            "metric": "Losses on debt extinguishment",
+            "constraints": {
+              "temporal_scope": "2018",
+              "entity_scope": null,
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": null,
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": null,
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2018"
+                },
+                "context": "Losses on debt extinguishment (a) | $(16)",
+                "context_spans": [
+                  "| (Millions of dollars) | 2018 | 2017 | 2016 |",
+                  "| Losses on debt extinguishment (a) | $(16) | $(73) | $— |"
+                ],
+                "metric": "Losses on debt extinguishment",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": "dollars"
+                },
+                "source_label": "Losses on debt extinguishment (a)",
+                "value": -16.0
+              }
+            }
+          }
+        },
+        {
+          "operator": "OPE.final",
+          "program": "def compute(vars):\n    old_value = vars[\"v1\"]\n    new_value = vars[\"v2\"]\n\n    if old_value == 0:\n        return None\n\n    absolute_change = new_value - old_value\n    change_ratio = absolute_change / old_value\n    percentage_change = change_ratio * 100\n\n    return {\n        \"value\": percentage_change,\n        \"trace\": {\n            \"old_value\": old_value,\n            \"new_value\": new_value,\n            \"absolute_change\": absolute_change,\n            \"change_ratio\": change_ratio,\n            \"output_meta\": {\n                \"currency\": \"USD\",\n                \"scale\": \"million\",\n                \"unit\": \"percentage\"\n            }\n        }\n    }",
+          "inputs": {
+            "v1": -73.0,
+            "v2": -16.0
+          },
+          "execution": {
+            "value": -78.08219178082192,
+            "trace": {
+              "old_value": -73.0,
+              "new_value": -16.0,
+              "absolute_change": 57.0,
+              "change_ratio": -0.7808219178082192,
+              "output_meta": {
+                "currency": "USD",
+                "scale": "million",
+                "unit": "percentage"
+              },
+              "effective_output_meta": {
+                "currency": null,
+                "scale": null,
+                "unit": "percentage"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "honest_scope": "The frozen scorer has one unresolved contract,Visa. Source evidence can establish its currency-per-transaction quantity, but this capability is not implemented in the preregistered scorer. The one unresolved count does not mean all other cases are semantically unambiguous: DRE has requested-output/reference-display scale conflict andBDX has signed-change/reduction-magnitude convention conflict. No alternative scores replace50%/60%.",
+  "further_work": "Proposal only; no patch, no score rewrite, no API or new validation started.",
+  "primary_result_sha256_after": "d6c05eeaea64800e8810fa89a84ed9aa1b84fab362c42788bce98a1aa245aebb"
+}

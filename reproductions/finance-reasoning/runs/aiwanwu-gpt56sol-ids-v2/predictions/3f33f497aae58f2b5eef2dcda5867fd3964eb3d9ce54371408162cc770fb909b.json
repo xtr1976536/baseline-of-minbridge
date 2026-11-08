@@ -1,0 +1,217 @@
+{
+  "record": {
+    "question_id": "test-2136",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function estimates a bond yield at an intermediate time using linear interpolation between two surrounding quarterly yield observations, with time points expressed as fractions of the quarter and the result formatted as a percentage to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5056,
+          "completion_tokens": 45,
+          "total_tokens": 5101
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14885,
+          "completion_tokens": 53,
+          "total_tokens": 14938,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 35
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define yields at the end of Q2 and Q3\n    q2_yield = 2.5\n    q3_yield = 3.0\n\n    # Interpolate halfway between the two quarterly observations\n    midpoint_yield = q2_yield + 0.5 * (q3_yield - q2_yield)\n\n    # Return the yield as a percentage to two decimal places\n    return f\"{midpoint_yield:.2f}%\"\n```",
+        "usage": {
+          "prompt_tokens": 5146,
+          "completion_tokens": 194,
+          "total_tokens": 5340,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 82
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-460",
+        "score": 1.6362242698669434,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-30",
+        "score": 1.5969022512435913,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.5836204290390015,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.5817601680755615,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1728",
+        "score": 1.5803797245025635,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.5687847137451172,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.5622119903564453,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2970",
+        "score": 1.5583217144012451,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.5523262023925781,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1208",
+        "score": 1.5522027015686035,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2243",
+        "score": 1.5513734817504883,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.5511596202850342,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2872",
+        "score": 1.5489046573638916,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2318",
+        "score": 1.5476412773132324,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-737",
+        "score": 1.5415762662887573,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.536637544631958,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.5358233451843262,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1869",
+        "score": 1.5308096408843994,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2557",
+        "score": 1.5307589769363403,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1466",
+        "score": 1.5296943187713623,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1209",
+        "score": 1.5279247760772705,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-744",
+        "score": 1.5251065492630005,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.5243290662765503,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.5240753889083862,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2971",
+        "score": 1.522739052772522,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-503",
+        "score": 1.519010305404663,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2080",
+        "score": 1.5184893608093262,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.5173708200454712,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2002",
+        "score": 1.516756296157837,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.51399564743042,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-460"
+    ],
+    "status": "execution_error",
+    "answer": null,
+    "error": "ValueError",
+    "code": "def solution():\n    # Define yields at the end of Q2 and Q3\n    q2_yield = 2.5\n    q3_yield = 3.0\n\n    # Interpolate halfway between the two quarterly observations\n    midpoint_yield = q2_yield + 0.5 * (q3_yield - q2_yield)\n\n    # Return the yield as a percentage to two decimal places\n    return f\"{midpoint_yield:.2f}%\"\n"
+  },
+  "digest": "d5b30ea25e36ea5e42d13a2ca65311cc2b66eed0b7f21a6f8489ff42d70aa8f2"
+}

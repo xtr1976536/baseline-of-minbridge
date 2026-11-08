@@ -1,0 +1,189 @@
+{
+  "record": {
+    "question_id": "test-2117",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Black-Scholes-Merton European put option value from stock price, strike price, time to maturity, continuously compounded risk-free rate, and precomputed normal CDF values \\(N(d1)\\) and \\(N(d2)\\), using put-call parity or \\(K e^{-rT}[1-N(d2)] - S[1-N(d1)]\\), and returns the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5017,
+          "completion_tokens": 146,
+          "total_tokens": 5163,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 54
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 16121,
+          "completion_tokens": 382,
+          "total_tokens": 16503,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 285
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    stock_price = 48.6\n    strike_price = 45\n    risk_free_rate = 0.003\n    time_to_expiration = 0.25\n    n_d1 = 0.6352\n    n_d2 = 0.5486\n\n    # Do math calculation to get the answer\n    from math import exp\n\n    put_price = (\n        strike_price * exp(-risk_free_rate * time_to_expiration) * (1 - n_d2)\n        - stock_price * (1 - n_d1)\n    )\n\n    answer = round(put_price, 3)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5521,
+          "completion_tokens": 231,
+          "total_tokens": 5752,
+          "completion_tokens_details": {
+            "reasoning_tokens": 73
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-3060",
+        "score": 2.1530275344848633
+      },
+      {
+        "function_id": "article-1033",
+        "score": 2.1361145973205566
+      },
+      {
+        "function_id": "article-1032",
+        "score": 2.0692105293273926
+      },
+      {
+        "function_id": "article-729",
+        "score": 2.063413143157959
+      },
+      {
+        "function_id": "article-3061",
+        "score": 1.9645339250564575
+      },
+      {
+        "function_id": "article-2505",
+        "score": 1.9395781755447388
+      },
+      {
+        "function_id": "article-1408",
+        "score": 1.9192416667938232
+      },
+      {
+        "function_id": "article-358",
+        "score": 1.8401298522949219
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.7906463146209717
+      },
+      {
+        "function_id": "article-911",
+        "score": 1.7228381633758545
+      },
+      {
+        "function_id": "article-2194",
+        "score": 1.7090178728103638
+      },
+      {
+        "function_id": "article-3057",
+        "score": 1.7009339332580566
+      },
+      {
+        "function_id": "article-1406",
+        "score": 1.6981555223464966
+      },
+      {
+        "function_id": "article-758",
+        "score": 1.6937267780303955
+      },
+      {
+        "function_id": "article-1238",
+        "score": 1.6894930601119995
+      },
+      {
+        "function_id": "article-1410",
+        "score": 1.6893177032470703
+      },
+      {
+        "function_id": "article-2182",
+        "score": 1.682041049003601
+      },
+      {
+        "function_id": "article-1903",
+        "score": 1.6771153211593628
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.666882872581482
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6632256507873535
+      },
+      {
+        "function_id": "article-2587",
+        "score": 1.6610149145126343
+      },
+      {
+        "function_id": "article-2586",
+        "score": 1.6601974964141846
+      },
+      {
+        "function_id": "article-890",
+        "score": 1.655205249786377
+      },
+      {
+        "function_id": "article-2663",
+        "score": 1.6548593044281006
+      },
+      {
+        "function_id": "article-2649",
+        "score": 1.6547271013259888
+      },
+      {
+        "function_id": "article-2196",
+        "score": 1.650467872619629
+      },
+      {
+        "function_id": "article-2850",
+        "score": 1.6472222805023193
+      },
+      {
+        "function_id": "article-1898",
+        "score": 1.6427572965621948
+      },
+      {
+        "function_id": "article-307",
+        "score": 1.6376324892044067
+      },
+      {
+        "function_id": "article-2840",
+        "score": 1.6370747089385986
+      }
+    ],
+    "selected_ids": [
+      "article-3060",
+      "article-1033"
+    ],
+    "status": "ok",
+    "answer": 2.568,
+    "code": "def solution():\n    # Define variables name and value\n    stock_price = 48.6\n    strike_price = 45\n    risk_free_rate = 0.003\n    time_to_expiration = 0.25\n    n_d1 = 0.6352\n    n_d2 = 0.5486\n\n    # Do math calculation to get the answer\n    from math import exp\n\n    put_price = (\n        strike_price * exp(-risk_free_rate * time_to_expiration) * (1 - n_d2)\n        - stock_price * (1 - n_d1)\n    )\n\n    answer = round(put_price, 3)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "f0e6ea7573af36388a9678e0bf4f89b23d4ef165eba01d959e9146e3b91a5173"
+}

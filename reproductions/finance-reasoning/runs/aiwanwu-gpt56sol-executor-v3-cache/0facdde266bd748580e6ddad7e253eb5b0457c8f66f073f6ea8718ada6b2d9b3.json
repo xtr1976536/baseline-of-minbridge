@@ -1,0 +1,18 @@
+{
+  "identity": "0facdde266bd748580e6ddad7e253eb5b0457c8f66f073f6ea8718ada6b2d9b3",
+  "response_digest": "1a6375dc8827925b75c30f5d762d2291083a00ada4b311f7ea0c0d2406577a3e",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_value = 120000\n    salvage_value = 20000\n    useful_life = 5\n    year = 3\n\n    # Do math calculation to get the answer\n    depreciation_rate = 2 / useful_life\n    book_value = initial_value\n\n    for _ in range(1, year):\n        depreciation = book_value * depreciation_rate\n        book_value = max(book_value - depreciation, salvage_value)\n\n    depreciation_expense = min(\n        book_value * depreciation_rate,\n        book_value - salvage_value\n    )\n\n    answer = round(depreciation_expense)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 5783,
+      "completion_tokens": 214,
+      "total_tokens": 5997,
+      "completion_tokens_details": {
+        "reasoning_tokens": 61
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

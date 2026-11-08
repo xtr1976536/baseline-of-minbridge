@@ -1,0 +1,215 @@
+{
+  "record": {
+    "question_id": "test-2113",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates a bond’s make-whole call price by discounting the remaining periodic coupon payments and principal repayment to the call date using a benchmark Treasury yield plus a required spread, for a fixed number of annual periods and rounding the result to the nearest whole number?",
+        "usage": {
+          "prompt_tokens": 5018,
+          "completion_tokens": 57,
+          "total_tokens": 5075,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C04\"]}",
+        "usage": {
+          "prompt_tokens": 14783,
+          "completion_tokens": 173,
+          "total_tokens": 14956,
+          "completion_tokens_details": {
+            "reasoning_tokens": 149
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    coupon_payments = [5000, 5000, 5000]\n    principal = 100000\n    treasury_yield = 0.025\n    spread = 0.012\n    discount_rate = treasury_yield + spread\n\n    # Do math calculation to get the answer\n    call_price = sum(\n        payment / ((1 + discount_rate) ** (year + 1))\n        for year, payment in enumerate(coupon_payments)\n    )\n    call_price += principal / ((1 + discount_rate) ** len(coupon_payments))\n    answer = round(call_price)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5815,
+          "completion_tokens": 303,
+          "total_tokens": 6118,
+          "completion_tokens_details": {
+            "reasoning_tokens": 149
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-810",
+        "score": 2.1873035430908203,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-29",
+        "score": 1.87935471534729,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-734",
+        "score": 1.8119621276855469,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-741",
+        "score": 1.7988834381103516,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2306",
+        "score": 1.7826937437057495,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-31",
+        "score": 1.778646469116211,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-740",
+        "score": 1.7773678302764893,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-575",
+        "score": 1.7722493410110474,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2968",
+        "score": 1.7707109451293945,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2867",
+        "score": 1.7591434717178345,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2606",
+        "score": 1.7526814937591553,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2745",
+        "score": 1.7479472160339355,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-17",
+        "score": 1.7414875030517578,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-743",
+        "score": 1.7367749214172363,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1953",
+        "score": 1.7355903387069702,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-212",
+        "score": 1.7239718437194824,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-451",
+        "score": 1.714890956878662,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1419",
+        "score": 1.7119174003601074,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-398",
+        "score": 1.7109156847000122,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1600",
+        "score": 1.7098220586776733,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1232",
+        "score": 1.707374095916748,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-738",
+        "score": 1.7049543857574463,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-18",
+        "score": 1.7027617692947388,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1306",
+        "score": 1.7026879787445068,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1421",
+        "score": 1.7013139724731445,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-576",
+        "score": 1.697448968887329,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1957",
+        "score": 1.6964125633239746,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-169",
+        "score": 1.6896097660064697,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1731",
+        "score": 1.6879289150238037,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1734",
+        "score": 1.68620765209198,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-810",
+      "article-734",
+      "article-741"
+    ],
+    "status": "ok",
+    "answer": 103628,
+    "code": "def solution():\n    # Define variables name and value\n    coupon_payments = [5000, 5000, 5000]\n    principal = 100000\n    treasury_yield = 0.025\n    spread = 0.012\n    discount_rate = treasury_yield + spread\n\n    # Do math calculation to get the answer\n    call_price = sum(\n        payment / ((1 + discount_rate) ** (year + 1))\n        for year, payment in enumerate(coupon_payments)\n    )\n    call_price += principal / ((1 + discount_rate) ** len(coupon_payments))\n    answer = round(call_price)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "496964c90a6d00d47880fb51f435ad56f3ac4f299e93305514d2428ef6fb3824"
+}

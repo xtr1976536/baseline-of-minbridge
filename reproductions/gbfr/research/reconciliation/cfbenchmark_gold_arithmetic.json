@@ -1,0 +1,43 @@
+{
+  "official_repository": "TongjiFinLab/CFBenchmark",
+  "official_commit": "982788b50539cb617f3826704d4ef4b5747f7430",
+  "checks": [
+    {
+      "file": "金融指标计算.json",
+      "index": 18,
+      "metric": "ROS",
+      "source_formula": "Net income / Sales revenue",
+      "operands": {
+        "net_income": "-214.8 万元",
+        "sales": "5.799 亿元"
+      },
+      "normalized_operands_CNY": {
+        "net_income": "-2148000.0",
+        "sales": "579900000.000"
+      },
+      "computed_ratio": "-0.003704086911536471805483704087",
+      "computed_at_requested_precision": "-0.0037",
+      "matching_official_option": "C",
+      "official_declared_correct_option": "B",
+      "gbfr_released_label": "-0.037",
+      "conclusion": "Neither released scoring label equals the supplied formula with consistent currency scale"
+    },
+    {
+      "file": "金融指标计算.json",
+      "index": 66,
+      "metric": "CNY depreciation against USD",
+      "operands_CNY_per_USD": {
+        "2021": "6.4515",
+        "2022": "6.7261"
+      },
+      "comparison_basis": "Value of one CNY in USD, measured against its 2021 value",
+      "computed_depreciation_percent": "4.082603589004029080745156910",
+      "computed_at_two_decimals_percent": "4.08",
+      "usd_appreciation_percent_on_the_opposite_quote": "4.256374486553514686507013873",
+      "official_declared_label": "4.08%",
+      "gbfr_released_label": "4.26%",
+      "conclusion": "Official label matches CNY depreciation; GBFR label matches appreciation of the opposite USD quote"
+    }
+  ],
+  "scoring_labels_automatically_modified": false
+}

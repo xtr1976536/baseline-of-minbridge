@@ -1,0 +1,57 @@
+{
+  "scope": "verifin-main-user-backbone",
+  "datasets": [
+    "FinanceBench"
+  ],
+  "data_policy": "paper-method-source-reconstruction-v1",
+  "output_dir": "runs/coverage50-v2",
+  "concurrency": {
+    "samples": 4,
+    "api_requests": 4
+  },
+  "retrieval": {
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "embedding_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "reranker_model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "reranker_revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "lexical_weight": 0.2,
+    "top_k": 16,
+    "first_stage_k": 30,
+    "chunk_words": 200,
+    "chunk_overlap_words": 40,
+    "table_aware": true,
+    "table_row_lexical": true,
+    "expand_registry_roles": true,
+    "preserve_operand_rows": true
+  },
+  "models": {
+    "GPT-5.6-Sol": {
+      "provider": "openai-compatible",
+      "model": "gpt-5.6-sol",
+      "base_url": "https://aiwanwu.cc/v1",
+      "base_url_env": "VF_AIWANWU_BASE_URL",
+      "api_key_env": "VF_AIWANWU_API_KEY",
+      "token_parameter": "max_completion_tokens",
+      "max_tokens": 8192,
+      "temperature": null,
+      "parameters": {
+        "reasoning_effort": "low"
+      },
+      "timeout_seconds": 240,
+      "retries": 3
+    }
+  },
+  "backbone_override": {
+    "source": "explicit_user_request",
+    "requested_model": "gpt-5.6-sol",
+    "original_paper_model_equivalence": false,
+    "provider": "aiwanwu.cc"
+  },
+  "retrieval_implementation_note": "CPU-compatible checkpoint choice made before formal inference; paper does not name exact embedding/cross-encoder checkpoints. Hybrid scoring and reranking unchanged.",
+  "run_mode": "coverage_validation",
+  "comparison_reference_run": "runs/financebench-revised-v1",
+  "revision_basis": "v1 plus bounded retention of the cross-encoder-best exact table row for each question-derived operand; no scoring, facts or candidate-based formula changes",
+  "validation_manifest": "research/coverage50_manifest.json",
+  "validation_inputs_lock": "research/coverage50_inputs.lock.json",
+  "source_rows": true
+}

@@ -1,0 +1,31 @@
+{
+  "request_hash": "2db2deca63f4f8890dae2120ef174ccd7fc182bdac58c1feea824e552b22720d",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nBased on the information provided primarily in the statement of financial position and the statement of income, what is AES's FY2022 return on assets (ROA)? ROA is defined as: FY2022 net income / (average total assets between FY2021 and FY2022). Round your answer to two decimal places.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"return_on_assets\",\n  \"facts\": [\n    {\n      \"name\": \"fy2022_net_income\",\n      \"aliases\": [\n        \"Net income\",\n        \"Net income attributable to The AES Corporation\",\n        \"Net income attributable to AES\",\n        \"Net earnings\"\n      ],\n      \"period\": \"FY2022\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"fy2021_total_assets\",\n      \"aliases\": [\n        \"Total assets\",\n        \"Total assets at December 31, 2021\"\n      ],\n      \"period\": \"FY2021\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"fy2022_total_assets\",\n      \"aliases\": [\n        \"Total assets\",\n        \"Total assets at December 31, 2022\"\n      ],\n      \"period\": \"FY2022\",\n      \"statement\": \"balance sheet\"\n    }\n  ],\n  \"reason\": \"Calculate FY2022 ROA as FY2022 net income divided by the average of total assets at FY2021 and FY2022: net income / ((FY2021 total assets + FY2022 total assets) / 2).\"\n}",
+  "usage": {
+    "prompt_tokens": 4743,
+    "completion_tokens": 303,
+    "total_tokens": 5046,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 44
+    }
+  },
+  "response_id": "resp_0cb731d65c65a91e016aedb09e447487d083b0b228112aa70f",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

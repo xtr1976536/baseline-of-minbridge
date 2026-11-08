@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2020",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the Black-Scholes delta of a European call option using the current underlying stock price, strike price, time to expiration, annualized volatility, and continuously compounded risk-free interest rate, returning the result as a decimal?",
+        "usage": {
+          "prompt_tokens": 5046,
+          "completion_tokens": 50,
+          "total_tokens": 5096
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C11\"]}",
+        "usage": {
+          "prompt_tokens": 16343,
+          "completion_tokens": 172,
+          "total_tokens": 16515,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 154
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    from math import log, sqrt\n    from statistics import NormalDist\n\n    asset_price = 150\n    strike_price = 140\n    time_to_expiry = 0.5\n    volatility = 0.25\n    risk_free_rate = 0.02\n\n    # Do math calculation to get the answer\n    d1 = (\n        log(asset_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility**2) * time_to_expiry\n    ) / (volatility * sqrt(time_to_expiry))\n    call_delta = NormalDist().cdf(d1)\n    answer = round(call_delta, 4)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5111,
+          "completion_tokens": 296,
+          "total_tokens": 5407,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 129
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-729",
+        "score": 2.2635016441345215,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1032",
+        "score": 2.233645439147949,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-3060",
+        "score": 2.2016425132751465,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-3061",
+        "score": 2.078035831451416,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1033",
+        "score": 2.06931734085083,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-358",
+        "score": 1.9769724607467651,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-2505",
+        "score": 1.9663183689117432,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2806",
+        "score": 1.8111062049865723,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1408",
+        "score": 1.7446929216384888,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1157",
+        "score": 1.738502860069275,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2843",
+        "score": 1.7273234128952026,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-1688",
+        "score": 1.7136496305465698,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1155",
+        "score": 1.7093923091888428,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2662",
+        "score": 1.708863615989685,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2807",
+        "score": 1.7013661861419678,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2435",
+        "score": 1.6972445249557495,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2054",
+        "score": 1.6925783157348633,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-3067",
+        "score": 1.6916193962097168,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2850",
+        "score": 1.6914091110229492,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-3102",
+        "score": 1.6864811182022095,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1897",
+        "score": 1.6839876174926758,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-758",
+        "score": 1.6758415699005127,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.6709650754928589,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-2578",
+        "score": 1.6708475351333618,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-3064",
+        "score": 1.6700637340545654,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-3011",
+        "score": 1.6668305397033691,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-281",
+        "score": 1.6655669212341309,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1689",
+        "score": 1.6653488874435425,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1156",
+        "score": 1.6637485027313232,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-449",
+        "score": 1.6500442028045654,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-2843"
+    ],
+    "status": "invalid_program",
+    "answer": null,
+    "error": "Unsupported from-import"
+  },
+  "digest": "33887e28cdbcd1a1a9c319e8fdcf124fcb2fecad69f592cb4394d3ac7f64f0a6"
+}

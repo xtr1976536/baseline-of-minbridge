@@ -1,0 +1,31 @@
+{
+  "request_hash": "dbffa85f32d8acadc00454aeb0f49cc6b9bd30893081bb1e514ddc1e95cf17d2",
+  "endpoint": "https://aiwanwu.cc/v1/chat/completions",
+  "stage": "retrieval_plan",
+  "request": {
+    "model": "gpt-5.6-sol",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Create a retrieval plan for a numerical financial question.\n\nReturn JSON only, no markdown:\n{\n  \"metric\": \"<snake_case_metric_or_empty>\",\n  \"facts\": [\n    {\n      \"name\": \"<snake_case_fact_name>\",\n      \"aliases\": [\"<row labels or synonym phrases to search>\"],\n      \"period\": \"<year/quarter/date needed, if any>\",\n      \"statement\": \"<income statement|balance sheet|cash flow|notes|proxy|other|empty>\"\n    }\n  ],\n  \"reason\": \"<brief explanation>\"\n}\n\nRules:\n- Include only facts needed to answer or verify the numerical claim.\n- If the question defines a formula, decompose it into the formula variables.\n- Include exact row-label aliases likely to appear in filings.\n- Include period/year hints separately from aliases.\n- Do not invent evidence values.\n- For a direct lookup question, return one fact.\n- For \"per share\", \"each shareholder\", \"liquidation value\", or bankruptcy\n  shareholder-recovery questions, first retrieve reported per-share equity\n  metrics such as \"tangible book value per share\", \"TBVPS\", and \"book value per\n  share\". Do not use gross total assets divided by shares unless the question\n  explicitly defines that formula; common shareholders recover residual equity,\n  not total assets before liabilities.\n- If the question is not numerical or no facts can be inferred, use an empty facts list.\n\nQuestion:\nBased on the information provided primarily in the balance sheet and the statement of income, what is FY2020 days payable outstanding (DPO) for Corning? DPO is defined as: 365 * (average accounts payable between FY2019 and FY2020) / (FY2020 COGS + change in inventory between FY2019 and FY2020). Round your answer to two decimal places.\n"
+      }
+    ],
+    "max_completion_tokens": 8192,
+    "reasoning_effort": "low"
+  },
+  "text": "{\n  \"metric\": \"days_payable_outstanding\",\n  \"facts\": [\n    {\n      \"name\": \"accounts_payable_fy2019\",\n      \"aliases\": [\"Accounts payable\", \"Trade accounts payable\", \"Accounts payable and accrued liabilities\"],\n      \"period\": \"FY2019\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"accounts_payable_fy2020\",\n      \"aliases\": [\"Accounts payable\", \"Trade accounts payable\", \"Accounts payable and accrued liabilities\"],\n      \"period\": \"FY2020\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"cost_of_goods_sold_fy2020\",\n      \"aliases\": [\"Cost of goods sold\", \"Cost of sales\", \"Cost of revenue\"],\n      \"period\": \"FY2020\",\n      \"statement\": \"income statement\"\n    },\n    {\n      \"name\": \"inventory_fy2019\",\n      \"aliases\": [\"Inventories\", \"Inventory\", \"Inventories, net\"],\n      \"period\": \"FY2019\",\n      \"statement\": \"balance sheet\"\n    },\n    {\n      \"name\": \"inventory_fy2020\",\n      \"aliases\": [\"Inventories\", \"Inventory\", \"Inventories, net\"],\n      \"period\": \"FY2020\",\n      \"statement\": \"balance sheet\"\n    }\n  ],\n  \"reason\": \"The DPO formula requires FY2019 and FY2020 accounts payable to calculate average payables, FY2020 COGS, and FY2019 and FY2020 inventory to calculate the inventory change.\"\n}",
+  "usage": {
+    "prompt_tokens": 4761,
+    "completion_tokens": 400,
+    "total_tokens": 5161,
+    "prompt_tokens_details": {
+      "cached_tokens": 4224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 65
+    }
+  },
+  "response_id": "resp_06f981db83bddca8016aedb5ac968087d0a8e695d9f87ec8d9",
+  "reported_model": "gpt-5.6-sol",
+  "system_fingerprint": null
+}

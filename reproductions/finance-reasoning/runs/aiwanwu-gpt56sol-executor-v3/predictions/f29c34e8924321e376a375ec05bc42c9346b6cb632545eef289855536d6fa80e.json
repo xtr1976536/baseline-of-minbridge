@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2022",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a company’s weighted average cost of capital (WACC) using market-value weights for equity and debt, the cost of equity, the pre-tax cost of debt adjusted for the corporate tax rate, and returns the result as a percentage?",
+        "usage": {
+          "prompt_tokens": 5089,
+          "completion_tokens": 54,
+          "total_tokens": 5143
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 14536,
+          "completion_tokens": 22,
+          "total_tokens": 14558
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    equity_market_value = 15_000_000\n    debt_market_value = 5_000_000\n    cost_of_equity = 0.12\n    cost_of_debt = 0.05\n    tax_rate = 0.25\n\n    # Do math calculation to get the answer\n    total_value = equity_market_value + debt_market_value\n    equity_weight = equity_market_value / total_value\n    debt_weight = debt_market_value / total_value\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * after_tax_cost_of_debt\n    )\n\n    # Return the WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5827,
+          "completion_tokens": 263,
+          "total_tokens": 6090,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 69
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": true,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-189",
+        "score": 2.268524646759033,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2452",
+        "score": 2.250185966491699,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1644",
+        "score": 2.186582565307617,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-560",
+        "score": 2.179018974304199,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1095",
+        "score": 2.172886848449707,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-3052",
+        "score": 2.1285171508789062,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-561",
+        "score": 2.090092182159424,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2453",
+        "score": 1.9400336742401123,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-46",
+        "score": 1.9200563430786133,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2715",
+        "score": 1.8200870752334595,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-1096",
+        "score": 1.7872238159179688,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2700",
+        "score": 1.7752350568771362,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-199",
+        "score": 1.7352545261383057,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-552",
+        "score": 1.726837158203125,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-1641",
+        "score": 1.725959062576294,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-3125",
+        "score": 1.700156331062317,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-559",
+        "score": 1.6957423686981201,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.6944034099578857,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-41",
+        "score": 1.6943567991256714,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2545",
+        "score": 1.6863653659820557,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-388",
+        "score": 1.6815783977508545,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-558",
+        "score": 1.6788115501403809,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2120",
+        "score": 1.6710705757141113,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-39",
+        "score": 1.670803427696228,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.6641117334365845,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2454",
+        "score": 1.658365249633789,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2230",
+        "score": 1.6579868793487549,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1911",
+        "score": 1.6564769744873047,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-880",
+        "score": 1.6510131359100342,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.649849534034729,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-189",
+      "article-2452",
+      "article-1644"
+    ],
+    "status": "ok",
+    "answer": 9.94,
+    "code": "def solution():\n    # Define variables name and value\n    equity_market_value = 15_000_000\n    debt_market_value = 5_000_000\n    cost_of_equity = 0.12\n    cost_of_debt = 0.05\n    tax_rate = 0.25\n\n    # Do math calculation to get the answer\n    total_value = equity_market_value + debt_market_value\n    equity_weight = equity_market_value / total_value\n    debt_weight = debt_market_value / total_value\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n\n    wacc = (\n        equity_weight * cost_of_equity\n        + debt_weight * after_tax_cost_of_debt\n    )\n\n    # Return the WACC as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n"
+  },
+  "digest": "9574e20466d1a67cfda5aa404a483cee90f9b714a3e100cd177ceca16b4f1fe0"
+}

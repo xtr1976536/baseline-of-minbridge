@@ -1,0 +1,15 @@
+{
+  "identity": "a360c7db24ed9889916b0b3ef967cec7cc97cca2765b1137bb3b7c429656bd9a",
+  "response_digest": "5ad180de7cb8df0da6294d882c11eaa8505495bfa6bff4850a89e7589f123ae0",
+  "response": {
+    "content": "```python\ndef solution():\n    prices = [\n        120, 122, 121, 124, 125, 127, 126, 129, 130, 128,\n        131, 132, 134, 135, 137, 136, 138, 139, 140, 142,\n        141, 143, 144, 146, 145\n    ]\n    period_ema = 10\n    period_atr = 10\n    multiplier = 1.5\n\n    # The provided Keltner Channel method treats each price change as\n    # the true range, using Wilder smoothing for the ATR.\n    ema = sum(prices[:period_ema]) / period_ema\n    smoothing_factor = 2 / (period_ema + 1)\n    for price in prices[period_ema:]:\n        ema = (price - ema) * smoothing_factor + ema\n\n    true_ranges = [\n        abs(current - previous)\n        for previous, current in zip(prices[:-1], prices[1:])\n    ]\n    atr = sum(true_ranges[:period_atr]) / period_atr\n    for true_range in true_ranges[period_atr:]:\n        atr = (atr * (period_atr - 1) + true_range) / period_atr\n\n    answer = round(ema + multiplier * atr, 2)\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 6147,
+      "completion_tokens": 302,
+      "total_tokens": 6449
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

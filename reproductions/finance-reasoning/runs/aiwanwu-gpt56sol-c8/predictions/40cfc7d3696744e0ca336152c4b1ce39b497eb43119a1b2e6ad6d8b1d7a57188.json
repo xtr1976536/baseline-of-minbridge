@@ -1,0 +1,181 @@
+{
+  "record": {
+    "question_id": "test-2144",
+    "run_id": "7658159e838062963c50de7e94a40e1070cc250d054ef293a17a7919d1595678",
+    "stages": {
+      "query": {
+        "content": "What function calculates a weighted average credit score from multiple credit profile factor percentages using specified FICO weights and rounds the result to the nearest integer?",
+        "usage": {
+          "prompt_tokens": 5068,
+          "completion_tokens": 32,
+          "total_tokens": 5100
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "[USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USELESS, USEFUL, USELESS, USELESS, USELESS, USELESS]",
+        "usage": {
+          "prompt_tokens": 14941,
+          "completion_tokens": 369,
+          "total_tokens": 15310,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 272
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    payment_history = 90\n    accounts_owed = 65\n    length_of_credit_history = 70\n    credit_mix = 80\n    new_credit = 50\n\n    payment_history_weight = 0.35\n    accounts_owed_weight = 0.30\n    length_of_credit_history_weight = 0.15\n    credit_mix_weight = 0.10\n    new_credit_weight = 0.10\n\n    # Do math calculation to get the answer\n    fico_score = (\n        payment_history * payment_history_weight\n        + accounts_owed * accounts_owed_weight\n        + length_of_credit_history * length_of_credit_history_weight\n        + credit_mix * credit_mix_weight\n        + new_credit * new_credit_weight\n    )\n    answer = round(fico_score)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5727,
+          "completion_tokens": 194,
+          "total_tokens": 5921
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "candidates": [
+      {
+        "function_id": "article-537",
+        "score": 1.7061220407485962
+      },
+      {
+        "function_id": "article-2460",
+        "score": 1.575183629989624
+      },
+      {
+        "function_id": "article-2455",
+        "score": 1.5590033531188965
+      },
+      {
+        "function_id": "article-220",
+        "score": 1.5096871852874756
+      },
+      {
+        "function_id": "article-3019",
+        "score": 1.5067777633666992
+      },
+      {
+        "function_id": "article-1663",
+        "score": 1.4973708391189575
+      },
+      {
+        "function_id": "article-1416",
+        "score": 1.4855655431747437
+      },
+      {
+        "function_id": "article-223",
+        "score": 1.455344319343567
+      },
+      {
+        "function_id": "article-1415",
+        "score": 1.4533196687698364
+      },
+      {
+        "function_id": "article-2454",
+        "score": 1.4108295440673828
+      },
+      {
+        "function_id": "article-2997",
+        "score": 1.4059661626815796
+      },
+      {
+        "function_id": "article-2451",
+        "score": 1.3975813388824463
+      },
+      {
+        "function_id": "article-2120",
+        "score": 1.3975638151168823
+      },
+      {
+        "function_id": "article-1653",
+        "score": 1.3949527740478516
+      },
+      {
+        "function_id": "article-2404",
+        "score": 1.390852928161621
+      },
+      {
+        "function_id": "article-1911",
+        "score": 1.3796906471252441
+      },
+      {
+        "function_id": "article-1982",
+        "score": 1.3795751333236694
+      },
+      {
+        "function_id": "article-2874",
+        "score": 1.3785679340362549
+      },
+      {
+        "function_id": "article-2523",
+        "score": 1.3783915042877197
+      },
+      {
+        "function_id": "article-228",
+        "score": 1.3733443021774292
+      },
+      {
+        "function_id": "article-2165",
+        "score": 1.373136043548584
+      },
+      {
+        "function_id": "article-2456",
+        "score": 1.3664064407348633
+      },
+      {
+        "function_id": "article-1687",
+        "score": 1.366149663925171
+      },
+      {
+        "function_id": "article-1647",
+        "score": 1.3646377325057983
+      },
+      {
+        "function_id": "article-2175",
+        "score": 1.3636378049850464
+      },
+      {
+        "function_id": "article-2448",
+        "score": 1.3632512092590332
+      },
+      {
+        "function_id": "article-1912",
+        "score": 1.3628782033920288
+      },
+      {
+        "function_id": "article-1399",
+        "score": 1.3602019548416138
+      },
+      {
+        "function_id": "article-189",
+        "score": 1.3595356941223145
+      },
+      {
+        "function_id": "article-560",
+        "score": 1.3594622611999512
+      }
+    ],
+    "selected_ids": [
+      "article-537",
+      "article-2451",
+      "article-2874"
+    ],
+    "status": "ok",
+    "answer": 74,
+    "code": "def solution():\n    # Define variables name and value\n    payment_history = 90\n    accounts_owed = 65\n    length_of_credit_history = 70\n    credit_mix = 80\n    new_credit = 50\n\n    payment_history_weight = 0.35\n    accounts_owed_weight = 0.30\n    length_of_credit_history_weight = 0.15\n    credit_mix_weight = 0.10\n    new_credit_weight = 0.10\n\n    # Do math calculation to get the answer\n    fico_score = (\n        payment_history * payment_history_weight\n        + accounts_owed * accounts_owed_weight\n        + length_of_credit_history * length_of_credit_history_weight\n        + credit_mix * credit_mix_weight\n        + new_credit * new_credit_weight\n    )\n    answer = round(fico_score)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "b9b7e23687a0ca1c9ea1a6095dee75bd2007cbaa4f49fdb2a6120dd7606bed6f"
+}

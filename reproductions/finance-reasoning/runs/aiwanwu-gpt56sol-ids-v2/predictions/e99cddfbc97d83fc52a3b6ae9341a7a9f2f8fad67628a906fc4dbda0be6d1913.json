@@ -1,0 +1,221 @@
+{
+  "record": {
+    "question_id": "test-2190",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates an investor’s net return under a hedge fund “2 and 20” fee structure, applying a year-end management fee, a performance incentive fee only on gains above both a 5% hurdle rate and a high-water mark, and returning the result to three decimal places?",
+        "usage": {
+          "prompt_tokens": 5021,
+          "completion_tokens": 62,
+          "total_tokens": 5083,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C03\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 14234,
+          "completion_tokens": 399,
+          "total_tokens": 14633,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 375
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    initial_assets = 515.0\n    ending_assets = 602.5\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.20\n    hurdle_rate = 0.05\n    high_water_mark = 540.0\n\n    # Calculate the management fee based on end-of-year assets\n    management_fee = ending_assets * management_fee_rate\n    assets_after_management_fee = ending_assets - management_fee\n\n    # Calculate the hurdle value and use the higher applicable threshold\n    hurdle_value = initial_assets * (1 + hurdle_rate)\n    incentive_threshold = max(high_water_mark, hurdle_value)\n\n    # Calculate the incentive fee on profits above the threshold\n    incentive_profit = max(0.0, assets_after_management_fee - incentive_threshold)\n    incentive_fee = incentive_profit * incentive_fee_rate\n\n    # Calculate the investor's net return\n    net_assets = assets_after_management_fee - incentive_fee\n    net_return = (net_assets - initial_assets) / initial_assets\n\n    # Return the net return as a percentage, rounded to three decimal places\n    return round(net_return * 100, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5572,
+          "completion_tokens": 773,
+          "total_tokens": 6345,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 516
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1023",
+        "score": 1.889328956604004,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1984",
+        "score": 1.840160846710205,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1983",
+        "score": 1.8288524150848389,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1985",
+        "score": 1.8205912113189697,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1024",
+        "score": 1.7986693382263184,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-812",
+        "score": 1.7689502239227295,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1045",
+        "score": 1.765392541885376,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-947",
+        "score": 1.7545173168182373,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1937",
+        "score": 1.6832451820373535,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-811",
+        "score": 1.6081024408340454,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-545",
+        "score": 1.6080987453460693,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2901",
+        "score": 1.6005831956863403,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2916",
+        "score": 1.6004163026809692,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-946",
+        "score": 1.5914486646652222,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2068",
+        "score": 1.5827709436416626,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2902",
+        "score": 1.5771751403808594,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-637",
+        "score": 1.577113389968872,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2857",
+        "score": 1.573864459991455,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1936",
+        "score": 1.5687203407287598,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1171",
+        "score": 1.5616354942321777,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1906",
+        "score": 1.5556683540344238,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.5508744716644287,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2329",
+        "score": 1.5474638938903809,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1920",
+        "score": 1.5399304628372192,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-77",
+        "score": 1.5330610275268555,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2095",
+        "score": 1.5329694747924805,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-1460",
+        "score": 1.5314215421676636,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-126",
+        "score": 1.5305235385894775,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-1207",
+        "score": 1.5298587083816528,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1000",
+        "score": 1.5282511711120605,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1023",
+      "article-1983",
+      "article-1024"
+    ],
+    "status": "ok",
+    "answer": 12.72,
+    "code": "def solution():\n    # Define variables name and value\n    initial_assets = 515.0\n    ending_assets = 602.5\n    management_fee_rate = 0.02\n    incentive_fee_rate = 0.20\n    hurdle_rate = 0.05\n    high_water_mark = 540.0\n\n    # Calculate the management fee based on end-of-year assets\n    management_fee = ending_assets * management_fee_rate\n    assets_after_management_fee = ending_assets - management_fee\n\n    # Calculate the hurdle value and use the higher applicable threshold\n    hurdle_value = initial_assets * (1 + hurdle_rate)\n    incentive_threshold = max(high_water_mark, hurdle_value)\n\n    # Calculate the incentive fee on profits above the threshold\n    incentive_profit = max(0.0, assets_after_management_fee - incentive_threshold)\n    incentive_fee = incentive_profit * incentive_fee_rate\n\n    # Calculate the investor's net return\n    net_assets = assets_after_management_fee - incentive_fee\n    net_return = (net_assets - initial_assets) / initial_assets\n\n    # Return the net return as a percentage, rounded to three decimal places\n    return round(net_return * 100, 3)\n"
+  },
+  "digest": "3ea161fd7085daf4a8d4b99348cc51d0fb75fdaa94cf533795c45669cf41c8c0"
+}

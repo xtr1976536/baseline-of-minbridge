@@ -1,0 +1,194 @@
+"""Configurable chat-completions transport, bounded concurrency and exact cache."""
+from __future__ import annotations
+
+import asyncio
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import time
+
+import httpx
+
+from .types import ProtocolError, dumps
+
+
+class APIError(RuntimeError):
+    def __init__(self,message,*,status_code=None):
+        super().__init__(message)
+        self.status_code=status_code
+
+
+def parse_json(text: str) -> dict:
+    # A surrounding code fence is syntactic formatting, not another reasoning attempt.
+    text = re.sub(r"^```(?:json)?\s*\n?(.*?)\n?```$", r"\1", text.strip(), flags=re.S)
+    try:
+        obj = json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise ProtocolError("Operator did not return a single valid JSON object") from exc
+    if not isinstance(obj, dict):
+        raise ProtocolError("Operator response must be an object")
+    return obj
+
+
+def unwrap_codex_commentary(content: str) -> str:
+    """Only strip the gateway's observed {recipients,message} preamble.
+
+    Never select an arbitrary last JSON object or repair model values. Unknown
+    prose and multiple ordinary objects remain protocol errors.
+    """
+    remaining=content.lstrip()
+    while remaining.startswith('{'):
+        try:
+            obj,end=json.JSONDecoder().raw_decode(remaining)
+        except (ValueError,RecursionError):
+            break
+        rest=remaining[end:].lstrip()
+        if (isinstance(obj,dict) and set(obj)=={'recipients','message'}
+                and obj['recipients']==['user'] and isinstance(obj['message'],str) and rest):
+            remaining=rest
+        else:
+            break
+    return remaining
+
+
+def close_json_root(text: str) -> str:
+    """Repair only an omitted root brace after a complete nested object.
+
+    Do not finish strings, numbers, arrays or nested objects, or select an
+    object from prose. All parsed values and fields must already be present.
+    The provider's original content remains in the exact-response cache.
+    """
+    text=text.strip()
+    if not text.startswith('{') or not text.endswith('}'):return text
+    try:json.loads(text)
+    except json.JSONDecodeError as exc:
+        if exc.pos!=len(text):return text
+        try:obj=json.loads(text+'}')
+        except json.JSONDecodeError:return text
+        if isinstance(obj,dict):return text+'}'
+    return text
+
+
+class ChatClient:
+    def __init__(self, config: dict, cache_dir: Path, *, transport=None):
+        self.config = config
+        self.model = config["model"]
+        self.base_url = os.environ.get(config.get("base_url_env", ""), config.get("base_url", ""))
+        self.api_key = os.environ.get(config["api_key_env"], "")
+        if not self.api_key:
+            raise APIError(f"Missing environment variable {config['api_key_env']}")
+        if not self.base_url:
+            raise APIError("Missing endpoint base_url")
+        self.cache_dir = Path(cache_dir)
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        self.semaphore = asyncio.Semaphore(config.get("concurrency", 8))
+        self.http = httpx.AsyncClient(timeout=config.get("timeout_seconds", 180), transport=transport)
+        self.records: list[dict] = []
+        self.locks: dict[str, asyncio.Lock] = {}
+        self.fatal_error: APIError | None=None
+
+    async def close(self):
+        await self.http.aclose()
+
+    def response_format(self,task):
+        if task=='OQA' and self.config.get('structured_oqa'):
+            from .prompts import PLAN_RESPONSE_FORMAT
+            return PLAN_RESPONSE_FORMAT
+        if task=='OES' and self.config.get('structured_oes'):
+            from .prompts import EVIDENCE_RESPONSE_FORMAT
+            return EVIDENCE_RESPONSE_FORMAT
+        return self.config.get('json_response_format')
+
+    def request_body(self,task,prompt,*,json_mode=False):
+        parameters=dict(self.config.get('parameters',{}))
+        if json_mode and self.response_format(task):parameters['response_format']=self.response_format(task)
+        if {'model','messages','stream','n'} & parameters.keys():
+            raise APIError('parameters cannot override model/messages/stream/n')
+        from .prompts import OperatorPrompt
+        system=self.config.get('system_message','')
+        if self.config.get('separate_operator_inputs') and isinstance(prompt,OperatorPrompt):
+            system+='\n\n'+prompt.instructions
+            content=dumps(prompt.data)
+        else:content=str(prompt)
+        messages=[{'role':'user','content':content}]
+        if system:messages.insert(0,{'role':'system','content':system})
+        return {'model':self.model,'messages':messages,'stream':False,'n':1,**parameters}
+
+    async def complete(self, task: str, prompt: str, *, json_mode=False) -> str:
+        # Identical concurrent requests share one cached response, including when
+        # the provider samples stochastically. No competing temporary-file writes.
+        identity = dumps({'endpoint':self.base_url.rstrip('/'),'body':self.request_body(task,prompt,json_mode=json_mode)})
+        key = hashlib.sha256(identity.encode()).hexdigest()
+        async with self.locks.setdefault(key, asyncio.Lock()):
+            return await self._complete(task, prompt,json_mode=json_mode)
+
+    async def _complete(self, task: str, prompt: str, *, json_mode=False) -> str:
+        body = self.request_body(task,prompt,json_mode=json_mode)
+        identity = dumps({"endpoint": self.base_url.rstrip("/"), "body": body})
+        key = hashlib.sha256(identity.encode()).hexdigest()
+        path = self.cache_dir / (key + ".json")
+        if path.exists():
+            cached = json.loads(path.read_text(encoding="utf-8"))
+            self.records.append({"task": task, "cache_key": key, "cached": True, "usage": cached.get("usage", {})})
+            return unwrap_codex_commentary(cached['content']) if self.config.get('unwrap_codex_commentary') else cached['content']
+        if self.fatal_error is not None:
+            raise self.fatal_error
+        start = time.monotonic()
+        for attempt in range(self.config.get("retries", 3) + 1):
+            try:
+                async with self.semaphore:
+                    if self.fatal_error is not None:
+                        raise self.fatal_error
+                    response = await self.http.post(
+                        self.base_url.rstrip("/") + "/chat/completions", json=body,
+                        headers={"Authorization": "Bearer " + self.api_key},
+                    )
+            except httpx.TransportError as exc:
+                if attempt == self.config.get("retries", 3):
+                    raise APIError(f"Transport failure ({type(exc).__name__}); no abstention recorded") from None
+                await asyncio.sleep(min(2**attempt, 10))
+                continue
+            if response.status_code == 429 or response.status_code >= 500:
+                if attempt < self.config.get("retries", 3):
+                    await asyncio.sleep(min(2**attempt, 10))
+                    continue
+            if not response.is_success:
+                # Do not log provider bodies, headers, or secrets.
+                error=APIError(f"Chat API returned HTTP {response.status_code}; task={task}",status_code=response.status_code)
+                if response.status_code in {401,402,403}:
+                    self.fatal_error=error
+                raise error
+            try:
+                raw = response.json()
+                choice = raw["choices"][0]
+                if choice.get("finish_reason") != "stop":
+                    raise APIError(f"Incomplete completion: {choice.get('finish_reason')}")
+                content = choice["message"]["content"]
+                if not isinstance(content, str) or not content.strip():
+                    raise APIError("Empty completion")
+            except (ValueError, KeyError, IndexError, TypeError) as exc:
+                raise APIError("Invalid chat-completions response") from exc
+            final_content=unwrap_codex_commentary(content) if self.config.get('unwrap_codex_commentary') else content
+            record = {"content": final_content, "usage": raw.get("usage", {}),
+                      "model_returned": raw.get("model"), "system_fingerprint": raw.get("system_fingerprint"),
+                      "request_model": self.model, "seconds": time.monotonic()-start}
+            if final_content!=content:
+                record['raw_content']=content
+            tmp = path.with_suffix(".tmp")
+            tmp.write_text(dumps(record), encoding="utf-8")
+            tmp.replace(path)
+            self.records.append({"task": task, "cache_key": key, "cached": False,
+                                 "usage": record["usage"], "seconds": record["seconds"]})
+            return final_content
+        raise APIError("Retry budget exhausted")
+
+    async def json(self, task: str, prompt: str) -> dict:
+        content=await self.complete(task,prompt,json_mode=True)
+        if self.config.get('repair_closed_json_root'):
+            adapted=close_json_root(content)
+            if adapted!=content:
+                self.records[-1]['protocol_normalizations']=['closed_root_object']
+                content=adapted
+        return parse_json(content)

@@ -1,0 +1,216 @@
+{
+  "record": {
+    "question_id": "test-2042",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a 5-period exponential moving average (EMA) from an ordered series of daily stock closing prices, using the standard EMA smoothing factor and returning the latest value rounded to two decimal places?",
+        "usage": {
+          "prompt_tokens": 5037,
+          "completion_tokens": 44,
+          "total_tokens": 5081
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C05\"]}",
+        "usage": {
+          "prompt_tokens": 15688,
+          "completion_tokens": 22,
+          "total_tokens": 15710
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 153, 150, 155, 157, 158, 160, 162, 161]\n    period = 5\n\n    # Do math calculation to get the answer\n    smoothing_factor = 2 / (period + 1)\n    ema = sum(closing_prices[:period]) / period\n\n    for price in closing_prices[period:]:\n        ema = (price - ema) * smoothing_factor + ema\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5645,
+          "completion_tokens": 218,
+          "total_tokens": 5863,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 78
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-962",
+        "score": 2.093055486679077,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-1225",
+        "score": 2.055940866470337,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1622",
+        "score": 1.9929865598678589,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2845",
+        "score": 1.9846363067626953,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2471",
+        "score": 1.9500882625579834,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-327",
+        "score": 1.8937647342681885,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1966",
+        "score": 1.8469347953796387,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-896",
+        "score": 1.822382926940918,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-2513",
+        "score": 1.7909438610076904,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1776",
+        "score": 1.7861814498901367,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-862",
+        "score": 1.7770371437072754,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-963",
+        "score": 1.7363499402999878,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-1958",
+        "score": 1.734710931777954,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-961",
+        "score": 1.733390212059021,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2600",
+        "score": 1.7230840921401978,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-1861",
+        "score": 1.7048828601837158,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2781",
+        "score": 1.6502872705459595,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1226",
+        "score": 1.6450018882751465,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-1037",
+        "score": 1.633980631828308,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-996",
+        "score": 1.6194431781768799,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2449",
+        "score": 1.6177085638046265,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2145",
+        "score": 1.60623037815094,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-501",
+        "score": 1.5887126922607422,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-3095",
+        "score": 1.5836232900619507,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1632",
+        "score": 1.5794826745986938,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2892",
+        "score": 1.5724709033966064,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2401",
+        "score": 1.5701158046722412,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-2891",
+        "score": 1.5676013231277466,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-852",
+        "score": 1.565678596496582,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-964",
+        "score": 1.5576424598693848,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-962",
+      "article-1225",
+      "article-2471"
+    ],
+    "status": "ok",
+    "answer": 159.33,
+    "code": "def solution():\n    # Define variables name and value\n    closing_prices = [150, 152, 153, 150, 155, 157, 158, 160, 162, 161]\n    period = 5\n\n    # Do math calculation to get the answer\n    smoothing_factor = 2 / (period + 1)\n    ema = sum(closing_prices[:period]) / period\n\n    for price in closing_prices[period:]:\n        ema = (price - ema) * smoothing_factor + ema\n\n    answer = round(ema, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "e4a06f75b2b28aaaf9286b78db6455174fe3305ba40028497789a5e125375324"
+}

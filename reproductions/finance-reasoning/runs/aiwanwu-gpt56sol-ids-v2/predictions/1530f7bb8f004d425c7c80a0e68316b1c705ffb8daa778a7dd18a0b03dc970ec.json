@@ -1,0 +1,213 @@
+{
+  "record": {
+    "question_id": "test-2015",
+    "run_id": "157cc8faf390beeb7300c216700f44d1fc18c93c474007730654bed836af8227",
+    "stages": {
+      "query": {
+        "content": "What function calculates the cumulative percentage of total occurrences represented by the top two causes in a ranked list of complaint categories, summing their frequencies and dividing by the overall total, with the result rounded to two decimal places for Pareto analysis?",
+        "usage": {
+          "prompt_tokens": 5080,
+          "completion_tokens": 51,
+          "total_tokens": 5131,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\"]}",
+        "usage": {
+          "prompt_tokens": 14308,
+          "completion_tokens": 16,
+          "total_tokens": 14324,
+          "prompt_tokens_details": {
+            "cached_tokens": 3136
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    occurrences = [120, 80, 50, 40, 30]\n\n    # Do math calculation to get the answer\n    sorted_occurrences = sorted(occurrences, reverse=True)\n    total_complaints = sum(occurrences)\n    top_two_complaints = sum(sorted_occurrences[:2])\n    answer = round((top_two_complaints / total_complaints) * 100, 2)\n\n    # return answer\n    return answer\n```",
+        "usage": {
+          "prompt_tokens": 5175,
+          "completion_tokens": 117,
+          "total_tokens": 5292,
+          "prompt_tokens_details": {
+            "cached_tokens": 3047
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "candidates": [
+      {
+        "function_id": "article-1235",
+        "score": 1.673700213432312,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-711",
+        "score": 1.383894920349121,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-541",
+        "score": 1.3626948595046997,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-2213",
+        "score": 1.3577959537506104,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-2539",
+        "score": 1.3511595726013184,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-2608",
+        "score": 1.3494348526000977,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1942",
+        "score": 1.349120855331421,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2564",
+        "score": 1.3397817611694336,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-542",
+        "score": 1.3363230228424072,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1393",
+        "score": 1.3321013450622559,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-687",
+        "score": 1.3311642408370972,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2534",
+        "score": 1.3286134004592896,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-2276",
+        "score": 1.3264161348342896,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-691",
+        "score": 1.3251045942306519,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2451",
+        "score": 1.3247160911560059,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-2607",
+        "score": 1.322634220123291,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-906",
+        "score": 1.3224806785583496,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-1143",
+        "score": 1.321415901184082,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2235",
+        "score": 1.3185932636260986,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-693",
+        "score": 1.3171758651733398,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-2602",
+        "score": 1.3171716928482056,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-1654",
+        "score": 1.3162493705749512,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-2203",
+        "score": 1.313560962677002,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1263",
+        "score": 1.3082284927368164,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-2299",
+        "score": 1.299818992614746,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-1076",
+        "score": 1.2997996807098389,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2177",
+        "score": 1.298266887664795,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1949",
+        "score": 1.2978421449661255,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2949",
+        "score": 1.297823429107666,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-1923",
+        "score": 1.2932353019714355,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1235"
+    ],
+    "status": "ok",
+    "answer": 62.5,
+    "code": "def solution():\n    # Define variables name and value\n    occurrences = [120, 80, 50, 40, 30]\n\n    # Do math calculation to get the answer\n    sorted_occurrences = sorted(occurrences, reverse=True)\n    total_complaints = sum(occurrences)\n    top_two_complaints = sum(sorted_occurrences[:2])\n    answer = round((top_two_complaints / total_complaints) * 100, 2)\n\n    # return answer\n    return answer\n"
+  },
+  "digest": "aa9dc3aa7ebfa2a3eeb320fdc8fea179881a3c1855c96a270f2113b8c811c459"
+}

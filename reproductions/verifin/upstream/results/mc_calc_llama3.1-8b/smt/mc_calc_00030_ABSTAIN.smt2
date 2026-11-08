@@ -1,0 +1,1 @@
+; no SMT generated (status=ABSTAIN, facts_not_found:research_and_development_expense_fy2023,selling_and_marketing_expense_fy2023)

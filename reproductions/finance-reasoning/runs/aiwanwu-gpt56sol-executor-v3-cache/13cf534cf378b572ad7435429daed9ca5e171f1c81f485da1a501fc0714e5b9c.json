@@ -1,0 +1,21 @@
+{
+  "identity": "13cf534cf378b572ad7435429daed9ca5e171f1c81f485da1a501fc0714e5b9c",
+  "response_digest": "038591b07cc4111e24652dfdea8a381cd8c2b17e68bd603b8cff941eb4ec77bd",
+  "response": {
+    "content": "```python\ndef solution():\n    from math import erf, exp, log, sqrt\n\n    stock_price = 120.0\n    strike_price = 130.0\n    risk_free_rate = 0.02\n    time_to_maturity = 1.0\n    volatility = 0.35\n\n    d1 = (\n        log(stock_price / strike_price)\n        + (risk_free_rate + 0.5 * volatility ** 2) * time_to_maturity\n    ) / (volatility * sqrt(time_to_maturity))\n    d2 = d1 - volatility * sqrt(time_to_maturity)\n\n    normal_cdf = lambda x: 0.5 * (1.0 + erf(x / sqrt(2.0)))\n    call_price = (\n        stock_price * normal_cdf(d1)\n        - strike_price * exp(-risk_free_rate * time_to_maturity) * normal_cdf(d2)\n    )\n\n    return round(call_price, 2)\n```",
+    "usage": {
+      "prompt_tokens": 5998,
+      "completion_tokens": 246,
+      "total_tokens": 6244,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 34
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

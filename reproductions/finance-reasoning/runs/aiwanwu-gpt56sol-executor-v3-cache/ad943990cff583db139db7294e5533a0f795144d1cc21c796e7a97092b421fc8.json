@@ -1,0 +1,18 @@
+{
+  "identity": "ad943990cff583db139db7294e5533a0f795144d1cc21c796e7a97092b421fc8",
+  "response_digest": "0fe183c668abb1b7557bb290091571fc99fed04cce89eae3f9be9df44e5f2d4d",
+  "response": {
+    "content": "```python\ndef solution():\n    # Define variables name and value\n    par_rate_5 = 0.0437\n    spot_rates = [0.025, 0.030, 0.035, 0.040]\n    coupon = par_rate_5\n    discount_factors = [\n        1 / (1 + spot_rate) ** year\n        for year, spot_rate in enumerate(spot_rates, start=1)\n    ]\n\n    # Do math calculation to get the answer\n    present_value_of_coupons = coupon * sum(discount_factors)\n    discount_factor_5 = (1 - present_value_of_coupons) / (1 + coupon)\n    five_year_spot_rate = (1 / discount_factor_5) ** (1 / 5) - 1\n    answer = round(five_year_spot_rate * 100, 3)\n\n    # return answer\n    return answer\n```",
+    "usage": {
+      "prompt_tokens": 4757,
+      "completion_tokens": 363,
+      "total_tokens": 5120,
+      "completion_tokens_details": {
+        "reasoning_tokens": 161
+      }
+    },
+    "model_returned": "gpt-5.6-sol",
+    "system_fingerprint": null,
+    "request_model": "gpt-5.6-sol"
+  }
+}

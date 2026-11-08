@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2219",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function calculates a company’s weighted average cost of capital for a target funding amount while maintaining its existing debt-to-equity ratio, using CAPM for the cost of equity, yield-to-maturity for existing and new debt with amount-dependent bond issuance rates, and the after-tax cost of debt based on the marginal tax rate?",
+        "usage": {
+          "prompt_tokens": 5128,
+          "completion_tokens": 69,
+          "total_tokens": 5197
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C02\",\"C08\"]}",
+        "usage": {
+          "prompt_tokens": 14163,
+          "completion_tokens": 314,
+          "total_tokens": 14477,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 290
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables\n    shares_outstanding = 1_200_000\n    stock_price = 10.00\n    face_value_of_existing_bonds = 10_000_000\n    coupon_rate = 0.08\n    years_to_maturity = 5\n    semiannual_periods = years_to_maturity * 2\n    bond_yield = 0.1365\n    new_funding = 7_500_000\n    bond_issue_threshold = 2_500_000\n    new_stock_price = 10.00\n    risk_free_rate = 0.03\n    beta = 2.2\n    market_return = 0.10\n    tax_rate = 0.30\n\n    # Calculate the market value of existing equity\n    market_value_of_equity = shares_outstanding * stock_price\n\n    # Calculate the market value of existing bonds\n    semiannual_coupon = face_value_of_existing_bonds * coupon_rate / 2\n    semiannual_yield = bond_yield / 2\n\n    bond_annuity_factor = (\n        1 - (1 + semiannual_yield) ** (-semiannual_periods)\n    ) / semiannual_yield\n\n    market_value_of_debt = (\n        semiannual_coupon * bond_annuity_factor\n        + face_value_of_existing_bonds\n        * (1 + semiannual_yield) ** (-semiannual_periods)\n    )\n\n    # Determine target capital structure proportions\n    total_market_value = market_value_of_equity + market_value_of_debt\n    equity_proportion = market_value_of_equity / total_market_value\n    debt_proportion = market_value_of_debt / total_market_value\n\n    # Calculate the amount of new debt required under the target structure\n    new_debt = new_funding * debt_proportion\n\n    # The new debt exceeds $2.5 million, so the entire issuance costs 16%\n    if new_debt <= bond_issue_threshold:\n        cost_of_debt = bond_yield\n    else:\n        cost_of_debt = 0.16\n\n    # Calculate the cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * (market_return - risk_free_rate)\n\n    # Calculate WACC\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n    wacc = (\n        equity_proportion * cost_of_equity\n        + debt_proportion * after_tax_cost_of_debt\n    )\n\n    # Return the answer as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n```",
+        "usage": {
+          "prompt_tokens": 5661,
+          "completion_tokens": 1035,
+          "total_tokens": 6696,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 475
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-198",
+        "score": 1.9807474613189697,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.9555805921554565,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-388",
+        "score": 1.8587899208068848,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.8574366569519043,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-1512",
+        "score": 1.856896162033081,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-874",
+        "score": 1.8458466529846191,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1643",
+        "score": 1.8424394130706787,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-189",
+        "score": 1.8412296772003174,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-43",
+        "score": 1.839805245399475,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-2452",
+        "score": 1.838925838470459,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-2475",
+        "score": 1.8349438905715942,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.8345420360565186,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-560",
+        "score": 1.8315454721450806,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-2796",
+        "score": 1.8276275396347046,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-2560",
+        "score": 1.8238697052001953,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-552",
+        "score": 1.8123071193695068,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-1642",
+        "score": 1.7971131801605225,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-41",
+        "score": 1.7964487075805664,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-3125",
+        "score": 1.7921686172485352,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-1641",
+        "score": 1.7827931642532349,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-1095",
+        "score": 1.7755628824234009,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-559",
+        "score": 1.771848440170288,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-39",
+        "score": 1.7712479829788208,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-1644",
+        "score": 1.770695447921753,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-1592",
+        "score": 1.7704496383666992,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-2212",
+        "score": 1.7652617692947388,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2619",
+        "score": 1.7639734745025635,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-1650",
+        "score": 1.7574642896652222,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-558",
+        "score": 1.7560763359069824,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-3052",
+        "score": 1.7554354667663574,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-198",
+      "article-191",
+      "article-189"
+    ],
+    "status": "ok",
+    "answer": 15.52,
+    "code": "def solution():\n    # Define variables\n    shares_outstanding = 1_200_000\n    stock_price = 10.00\n    face_value_of_existing_bonds = 10_000_000\n    coupon_rate = 0.08\n    years_to_maturity = 5\n    semiannual_periods = years_to_maturity * 2\n    bond_yield = 0.1365\n    new_funding = 7_500_000\n    bond_issue_threshold = 2_500_000\n    new_stock_price = 10.00\n    risk_free_rate = 0.03\n    beta = 2.2\n    market_return = 0.10\n    tax_rate = 0.30\n\n    # Calculate the market value of existing equity\n    market_value_of_equity = shares_outstanding * stock_price\n\n    # Calculate the market value of existing bonds\n    semiannual_coupon = face_value_of_existing_bonds * coupon_rate / 2\n    semiannual_yield = bond_yield / 2\n\n    bond_annuity_factor = (\n        1 - (1 + semiannual_yield) ** (-semiannual_periods)\n    ) / semiannual_yield\n\n    market_value_of_debt = (\n        semiannual_coupon * bond_annuity_factor\n        + face_value_of_existing_bonds\n        * (1 + semiannual_yield) ** (-semiannual_periods)\n    )\n\n    # Determine target capital structure proportions\n    total_market_value = market_value_of_equity + market_value_of_debt\n    equity_proportion = market_value_of_equity / total_market_value\n    debt_proportion = market_value_of_debt / total_market_value\n\n    # Calculate the amount of new debt required under the target structure\n    new_debt = new_funding * debt_proportion\n\n    # The new debt exceeds $2.5 million, so the entire issuance costs 16%\n    if new_debt <= bond_issue_threshold:\n        cost_of_debt = bond_yield\n    else:\n        cost_of_debt = 0.16\n\n    # Calculate the cost of equity using CAPM\n    cost_of_equity = risk_free_rate + beta * (market_return - risk_free_rate)\n\n    # Calculate WACC\n    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)\n    wacc = (\n        equity_proportion * cost_of_equity\n        + debt_proportion * after_tax_cost_of_debt\n    )\n\n    # Return the answer as a percentage rounded to two decimal places\n    return round(wacc * 100, 2)\n"
+  },
+  "digest": "842c0f275a902b58c87df6dd488a0a2793661612fe9c2108f1b37069f1e6da9c"
+}

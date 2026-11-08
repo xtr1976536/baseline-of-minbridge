@@ -1,0 +1,733 @@
+{
+  "version": "r25",
+  "scope": "Three historical FinQA refusals only; new ten-question FinQA set not inspected",
+  "api_calls": 0,
+  "fresh_api_validation_by_agent": false,
+  "full_experiment_paused": true,
+  "paper_basis": [
+    {
+      "path": "research/paper.txt",
+      "lines": [
+        132,
+        142
+      ],
+      "principle": "Task definition: answer only with a valid document-grounded derivation; missing/ambiguous context requires abstention."
+    },
+    {
+      "path": "research/paper.txt",
+      "lines": [
+        889,
+        906
+      ],
+      "principle": "OQA uses question and context, retains required operands and constraints; no guessing."
+    },
+    {
+      "path": "research/paper.txt",
+      "lines": [
+        957,
+        989
+      ],
+      "principle": "OES extracts explicitly written values matching metric/alias and constraints; no arithmetic or missing-value inference."
+    }
+  ],
+  "source_identity": {
+    "raw_finqa_sha256": "831dbfb2e785dbc227f895ce3f24046433467aec67b09db2bd6ac7692a8a30dc",
+    "data_main_finqa_sha256": "e1907f8304a7afcec5f0356d5335600aa4bbb9d2bf863e0ea674e827d22b78e9",
+    "frozen_hint_function_source_sha256": "2e9ad2457c6d1b4c5e386722ca13f598f2e4463244d2d7f735edefebc868e7f0",
+    "frozen_graph_sha256": "bc6bdbe2d88a2effc9c4709b3207687c2d8e580557ec733fe5754b2ac76402bc"
+  },
+  "cases": [
+    {
+      "sample_id": "FinQA:MKTX/2004/page_99.pdf-2",
+      "audited_round": "r24",
+      "sample_path": "data/validation/gbfr_live_r21/evaluation/FinQA.jsonl",
+      "sample_file_sha256": "1e4a036e67f85dbef6b4c5ff81c90c3b155518104255b9f69cbda22f97c1f3f2",
+      "sample_row_sha256": "bf6933594d81c3b4ff3479a6469468f6e19800bb969a5a585127967a62c3271a",
+      "identical_to_data_main": true,
+      "prediction_path": "runs/gbfr_e2e_validation/r24/evaluation/GPT-5.6 Sol/FinQA/predictions.jsonl",
+      "prediction_file_sha256": "6bef7f247bbdc0932fb2afb32c60cbf51b20149f635d8a76840652cf82cde37c",
+      "prediction_line_sha256": "f228e2a73db1152e3df45e2b8a0d11808800ad8bc64b29c7478b79499bb4a630",
+      "question": "as of december 31 , 2004 , what percentage of common stock outstanding were non-voting shares?",
+      "context": "table of contents marketaxess holdings inc .\nnotes to consolidated financial statements 2014 ( continued ) ( in thousands , except share and per share amounts ) the combined aggregate amount of redemption requirements for the senior preferred shares was as follows : shares of series b convertible preferred stock were convertible into common stock on a 3.33-for-one basis and only in connection with an initial public offering of the company 2019s stock .\ndividends on the series b convertible preferred stock accrued at the rate of 8% ( 8 % ) per annum and were subordinate to dividend payments on the senior preferred shares .\nshares of series b convertible preferred stock had a liquidation preference equal to the original issue price plus all cumulative accrued but unpaid dividends .\nthe liquidation preference was subordinate to that of the senior preferred shares .\ncumulative accrued but unpaid dividends were forfeited upon conversion of shares of series b convertible preferred stock into common stock .\nas such , the company did not accrue dividends , as liquidation of the shares of series b convertible preferred stock was not anticipated .\nas of december 31 , 2004 , the company had 110000000 authorized shares of common stock and 10000000 authorized shares of non-voting common stock .\nas of december 31 , 2003 , the company had 120000000 authorized shares of common stock and 450060 authorized shares of non-voting common stock .\ncommon stock entitles the holder to one vote per share of common stock held .\nnon-voting common stock is convertible on a one-for-one basis into shares of common stock at any time subject to a limitation on conversion to the extent such conversion would result in a stockholder , together with its affiliates , owning more than 9.99% ( 9.99 % ) of the outstanding shares of common stock .\non march 30 , 2004 , the company 2019s board of directors authorized , and on november 1 , 2004 the company effectuated , a one-for-three reverse stock split of shares of common stock and non-voting common stock to be effective prior to the closing of the company 2019s initial public offering .\nall references in these financial statements to the number of shares of common stock and non-voting common stock of the company , securities convertible or exercisable therefor and per share amounts have been restated for all periods presented to reflect the effect of the common stock reverse stock split .\nin 2004 and 2003 , the company had 1939734 shares and 1937141 shares , respectively , of common stock that were issued to employees .\nincluded in these amounts , in 2001 , the company awarded 64001 shares and 289581 shares to employees at $ .003 and $ 3.60 , respectively , per share .\nthe common stock subscribed was issued in 2001 in exchange for three-year promissory notes ( 64001 shares ) and eleven-year promissory notes ( 289581 shares ) , which bear interest at the applicable federal rate and are collateralized by the subscribed shares .\nthe promissory note due in 2004 was repaid on january 15 , 2005 .\ncompensation expense in relation to the excess of the fair value of such awards over the amount paid will be recorded over the vesting period .\nthe awards vest over a period of either one and one-half or three years and are restricted as to transferability based on the vesting schedule set forth in the award agreement .\nthe eleven-year promissory notes ( 289581 shares ) were entered into in connection with the loans of approximately $ 1042 made to the company 2019s chief executive officer in 2001 .\nthese loans were made prior to the passage of the sarbanes-oxley act of 2002. .\n|  | As of December 31, |\n| --- | --- |\n| Year Ended December 31, | 2004 | 2003 |\n| 2005 | $— | $177,973 |\nconvertible preferred stock 9 .\nstockholders 2019 equity ( deficit ) common stock restricted common stock and common stock subscribed .",
+      "benchmark_answer": "8.3%",
+      "native_finqa_program": "add(110000000, 10000000), divide(10000000, #0)",
+      "native_finqa_exe_ans": 0.08333,
+      "native_finqa_gold_inds": {
+        "text_7": "as of december 31 , 2004 , the company had 110000000 authorized shares of common stock and 10000000 authorized shares of non-voting common stock ."
+      },
+      "native_table_ori": [
+        [
+          "",
+          "As of December 31,"
+        ],
+        [
+          "Year Ended December 31,",
+          "2004",
+          "2003"
+        ],
+        [
+          "2005",
+          "$—",
+          "$177,973"
+        ]
+      ],
+      "model_status": "abstained",
+      "model_reason": "At least one required subgoal could not be grounded",
+      "actual_oqa": {
+        "operator": "ratio",
+        "precision": "unknown",
+        "reasoning_type": "ComparativeReasoning",
+        "subgoals": [
+          {
+            "constraints": {
+              "entity_scope": "MarketAxess Holdings Inc.",
+              "meta": {
+                "currency": null,
+                "scale": "ones",
+                "unit": "shares"
+              },
+              "temporal_scope": "as of December 31, 2004"
+            },
+            "metric": "Non-voting common shares outstanding"
+          },
+          {
+            "constraints": {
+              "entity_scope": "MarketAxess Holdings Inc.",
+              "meta": {
+                "currency": null,
+                "scale": "ones",
+                "unit": "shares"
+              },
+              "temporal_scope": "as of December 31, 2004"
+            },
+            "metric": "Total common shares outstanding"
+          }
+        ]
+      },
+      "actual_oes": [
+        {
+          "goal": {
+            "metric": "Total common shares outstanding",
+            "constraints": {
+              "temporal_scope": "as of December 31, 2004",
+              "entity_scope": "MarketAxess Holdings Inc.",
+              "meta": {
+                "currency": null,
+                "scale": "ones",
+                "unit": "shares"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Total common shares outstanding as of December 31, 2004 is not directly stated. The context gives authorized shares and shares issued to employees, which are not the requested outstanding-share total.",
+            "var_bindings": {}
+          }
+        },
+        {
+          "goal": {
+            "metric": "Non-voting common shares outstanding",
+            "constraints": {
+              "temporal_scope": "as of December 31, 2004",
+              "entity_scope": "MarketAxess Holdings Inc.",
+              "meta": {
+                "currency": null,
+                "scale": "ones",
+                "unit": "shares"
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Non-voting common shares outstanding as of December 31, 2004 is not directly stated. The context gives authorized non-voting common shares, not shares outstanding.",
+            "var_bindings": {}
+          }
+        }
+      ],
+      "actual_generated_programs": [],
+      "generated_program_note": "No OPE program was generated; this is a missing-subgoal refusal, not an execution failure. Native FinQA program is an audit reference, not a model program.",
+      "optional_oq_a_hints_before": [
+        {
+          "query_mention": "common stock",
+          "canonical_metric": "Current Period Share Capital",
+          "definition": "Current period share capital refers to the total par value of all shares outstanding (typically common shares) issued by the company during the current accounting period (e.g., the current year or quarter). It is a fundamental component of the company's owner's equity, directly reflecting the scale of capital contributed by shareholders. The data can be obtained directly from the company's balance sheet or share capital account."
+        }
+      ],
+      "optional_oq_a_hints_after": [],
+      "verdict": "Benchmark false-abstention classification caused by authorized/outstanding evidence mismatch; refusal is justified under paper evidence constraints.",
+      "evidence_reason": "The only 2004 totals are 110000000 authorized common shares and 10000000 authorized non-voting common shares. Employee issuance does not supply company outstanding totals. The gold program computes an authorized-share proportion while the question asks outstanding shares.",
+      "repair_boundary": "Do not equate authorized, issued and outstanding shares. Keep the official benchmark score and native gold unchanged; separately explain the semantic inconsistency."
+    },
+    {
+      "sample_id": "FinQA:PNC/2014/page_111.pdf-2",
+      "audited_round": "r23",
+      "sample_path": "data/validation/gbfr_live_r21/repair/FinQA.jsonl",
+      "sample_file_sha256": "25c2a5aaa3b760ba5f0a8a81c5c54d53df51f5e99ef2e46715ad6fea65922918",
+      "sample_row_sha256": "77a23899ff5c2e40cf5e7411e8e9665b74e5d3a9e75588931250067244c76421",
+      "identical_to_data_main": true,
+      "prediction_path": "runs/gbfr_e2e_validation/r23/repair/GPT-5.6 Sol/FinQA/predictions.jsonl",
+      "prediction_file_sha256": "41f0aabb3f33eceb7aad3ea25379289f130b6915262a173a3b11e9d832470a6c",
+      "prediction_line_sha256": "405b7fbd73f409fe804ee7a3caa35109739e652dcaa2ea4fa3dd953e40989028",
+      "question": "for equity investment balances including unfunded commitments what was the change in millions between december 31 , 2014 and december 31 , 2013/",
+      "context": "market risk management 2013 equity and other investment equity investment risk is the risk of potential losses associated with investing in both private and public equity markets .\nin addition to extending credit , taking deposits , securities underwriting and trading financial instruments , we make and manage direct investments in a variety of transactions , including management buyouts , recapitalizations and growth financings in a variety of industries .\nwe also have investments in affiliated and non-affiliated funds that make similar investments in private equity and in debt and equity-oriented hedge funds .\nthe economic and/or book value of these investments and other assets such as loan servicing rights are directly affected by changes in market factors .\nthe primary risk measurement for equity and other investments is economic capital .\neconomic capital is a common measure of risk for credit , market and operational risk .\nit is an estimate of the potential value depreciation over a one year horizon commensurate with solvency expectations of an institution rated single-a by the credit rating agencies .\ngiven the illiquid nature of many of these types of investments , it can be a challenge to determine their fair values .\nsee note 7 fair value in the notes to consolidated financial statements in item 8 of this report for additional information .\nvarious pnc business units manage our equity and other investment activities .\nour businesses are responsible for making investment decisions within the approved policy limits and associated guidelines .\na summary of our equity investments follows : table 54 : equity investments summary in millions december 31 december 31 .\n| In millions | December 312014 | December 312013 |\n| --- | --- | --- |\n| BlackRock | $6,265 | $5,940 |\n| Tax credit investments (a) | 2,616 | 2,572 |\n| Private equity | 1,615 | 1,656 |\n| Visa | 77 | 158 |\n| Other | 155 | 234 |\n| Total | $10,728 | $10,560 |\n( a ) the december 31 , 2013 amount has been updated to reflect the first quarter 2014 adoption of asu 2014-01 related to investments in low income housing tax credits .\nblackrock pnc owned approximately 35 million common stock equivalent shares of blackrock equity at december 31 , 2014 , accounted for under the equity method .\nthe primary risk measurement , similar to other equity investments , is economic capital .\nthe business segments review section of this item 7 includes additional information about blackrock .\ntax credit investments included in our equity investments are direct tax credit investments and equity investments held by consolidated partnerships which totaled $ 2.6 billion at both december 31 , 2014 and december 31 , 2013 .\nthese equity investment balances include unfunded commitments totaling $ 717 million and $ 802 million at december 31 , 2014 and december 31 , 2013 , respectively .\nthese unfunded commitments are included in other liabilities on our consolidated balance sheet .\nnote 2 loan sale and servicing activities and variable interest entities in the notes to consolidated financial statements in item 8 of this report has further information on tax credit investments .\nprivate equity the private equity portfolio is an illiquid portfolio comprised of mezzanine and equity investments that vary by industry , stage and type of investment .\nprivate equity investments carried at estimated fair value totaled $ 1.6 billion at december 31 , 2014 and $ 1.7 billion at december 31 , 2013 .\nas of december 31 , 2014 , $ 1.1 billion was invested directly in a variety of companies and $ .5 billion was invested indirectly through various private equity funds .\nincluded in direct investments are investment activities of two private equity funds that are consolidated for financial reporting purposes .\nthe noncontrolling interests of these funds totaled $ 212 million as of december 31 , 2014 .\nthe interests held in indirect private equity funds are not redeemable , but pnc may receive distributions over the life of the partnership from liquidation of the underlying investments .\nsee item 1 business 2013 supervision and regulation and item 1a risk factors of this report for discussion of the potential impacts of the volcker rule provisions of dodd-frank on our interests in and sponsorship of private funds covered by the volcker rule .\nour unfunded commitments related to private equity totaled $ 140 million at december 31 , 2014 compared with $ 164 million at december 31 , 2013 .\nthe pnc financial services group , inc .\n2013 form 10-k 93 .",
+      "benchmark_answer": "-85",
+      "native_finqa_program": "subtract(717, 802)",
+      "native_finqa_exe_ans": -85.0,
+      "native_finqa_gold_inds": {
+        "text_14": "the primary risk measurement , similar to other equity investments , is economic capital .",
+        "text_17": "these equity investment balances include unfunded commitments totaling $ 717 million and $ 802 million at december 31 , 2014 and december 31 , 2013 , respectively ."
+      },
+      "native_table_ori": [
+        [
+          "In millions",
+          "December 312014",
+          "December 312013"
+        ],
+        [
+          "BlackRock",
+          "$6,265",
+          "$5,940"
+        ],
+        [
+          "Tax credit investments (a)",
+          "2,616",
+          "2,572"
+        ],
+        [
+          "Private equity",
+          "1,615",
+          "1,656"
+        ],
+        [
+          "Visa",
+          "77",
+          "158"
+        ],
+        [
+          "Other",
+          "155",
+          "234"
+        ],
+        [
+          "Total",
+          "$10,728",
+          "$10,560"
+        ]
+      ],
+      "model_status": "abstained",
+      "model_reason": "At least one required subgoal could not be grounded",
+      "actual_oqa": {
+        "operator": "difference",
+        "precision": "unknown",
+        "reasoning_type": "ArithmeticCalculation",
+        "subgoals": [
+          {
+            "constraints": {
+              "entity_scope": "PNC Financial Services Group, Inc. equity investments",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              },
+              "temporal_scope": "December 31, 2013"
+            },
+            "metric": "Total equity investment balance including unfunded commitments"
+          },
+          {
+            "constraints": {
+              "entity_scope": "PNC Financial Services Group, Inc. equity investments",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              },
+              "temporal_scope": "December 31, 2014"
+            },
+            "metric": "Total equity investment balance including unfunded commitments"
+          }
+        ]
+      },
+      "actual_oes": [
+        {
+          "goal": {
+            "metric": "Total equity investment balance including unfunded commitments",
+            "constraints": {
+              "temporal_scope": "December 31, 2014",
+              "entity_scope": "PNC Financial Services Group, Inc. equity investments",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "The table states Total equity investments of $10,728 million for December 31, 2014, but does not label that total as including unfunded commitments. Separate commitment amounts are reported, and the requested total including unfunded commitments is not directly stated.",
+            "var_bindings": {}
+          }
+        },
+        {
+          "goal": {
+            "metric": "Total equity investment balance including unfunded commitments",
+            "constraints": {
+              "temporal_scope": "December 31, 2013",
+              "entity_scope": "PNC Financial Services Group, Inc. equity investments",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "Total equity investments of $10,560 million at December 31, 2013 is directly stated, and unfunded commitments are separately reported, but the requested total equity investment balance including unfunded commitments is not directly stated. It cannot be calculated from the component values.",
+            "var_bindings": {}
+          }
+        }
+      ],
+      "actual_generated_programs": [],
+      "generated_program_note": "No OPE program was generated; this is a missing-subgoal refusal, not an execution failure. Native FinQA program is an audit reference, not a model program.",
+      "optional_oq_a_hints_before": [
+        {
+          "query_mention": "equity",
+          "canonical_metric": "Equity",
+          "definition": "Equity, also known as shareholders' equity or owners' equity, is a core item on the balance sheet. It represents the residual claim on the company's assets that ultimately belongs to the company's owners (shareholders) after all liabilities have been repaid. Simply put, it is the portion remaining after subtracting total liabilities from total assets, reflecting the investment value of shareholders in the company and accumulated retained earnings."
+        },
+        {
+          "query_mention": "change",
+          "canonical_metric": "Net Change",
+          "definition": "Net change is the difference between the current period's closing price and the previous period's closing price for a security, indicating the absolute price movement over the specified interval. It can be positive (price increase) or negative (price decrease)."
+        }
+      ],
+      "optional_oq_a_hints_after": [],
+      "verdict": "Confirmed OQA scope broadening plus ambiguous whole/component benchmark target; cannot honestly promise -85 by fixing Total alone.",
+      "evidence_reason": "R23 OQA adds Total and company-wide equity-investment scope despite the local tax-credit paragraph. That paragraph says these balances include 717/802 unfunded commitments; the amounts are components, not the whole balance. Table totals are 10728/10560; tax-credit row is 2616/2572.",
+      "audit_only_comparisons": {
+        "table_total_difference": 168,
+        "tax_credit_row_difference": 44,
+        "included_commitment_component_difference": -85,
+        "not_model_inputs": true
+      },
+      "repair_boundary": "Retain full requested qualifiers, local antecedents and whole/component identity. Includes is not plus. No selection of 717/802 merely because that gives the benchmark answer. Existing LOCAL_SCOPE_CONTRACT is already present in R23; more model compliance is not proved by another static sentence."
+    },
+    {
+      "sample_id": "FinQA:ALXN/2016/page_153.pdf-2",
+      "audited_round": "r23",
+      "sample_path": "data/validation/gbfr_live_r21/repair/FinQA.jsonl",
+      "sample_file_sha256": "25c2a5aaa3b760ba5f0a8a81c5c54d53df51f5e99ef2e46715ad6fea65922918",
+      "sample_row_sha256": "bb7ee475e15a919cb3dfcc0ebffcd93c3e1cfaa0b7c3026c8334f90dac2f16a1",
+      "identical_to_data_main": true,
+      "prediction_path": "runs/gbfr_e2e_validation/r23/repair/GPT-5.6 Sol/FinQA/predictions.jsonl",
+      "prediction_file_sha256": "41f0aabb3f33eceb7aad3ea25379289f130b6915262a173a3b11e9d832470a6c",
+      "prediction_line_sha256": "a715d557225f5d66282685ac26512766a9f43a51df6825ac1c6ba0180e7f73c4",
+      "question": "what is the borrowing under the term loan facility as a percentage of the total contractual maturities of long-term debt obligations due subsequent to december 31 , 2016?",
+      "context": "alexion pharmaceuticals , inc .\nnotes to consolidated financial statements for the years ended december 31 , 2016 , 2015 and 2014 ( amounts in millions except per share amounts ) depending upon our consolidated net leverage ratio ( as calculated in accordance with the credit agreement ) .\nat december 31 , 2016 , the interest rate on our outstanding loans under the credit agreement was 2.52% ( 2.52 % ) .\nour obligations under the credit facilities are guaranteed by certain of alexion 2019s foreign and domestic subsidiaries and secured by liens on certain of alexion 2019s and its subsidiaries 2019 equity interests , subject to certain exceptions .\nthe credit agreement requires us to comply with certain financial covenants on a quarterly basis .\nunder these financial covenants , we are required to deliver to the administrative agent , not later than 50 days after each fiscal quarter , our quarterly financial statements , and within 5 days thereafter , a compliance certificate .\nin november 2016 , we obtained a waiver from the necessary lenders for this requirement and the due date for delivery of the third quarter 2016 financial statements and compliance certificate was extended to january 18 , 2017 .\nthe posting of the third quarter report on form 10-q on our website on january 4 , 2017 satisfied the financial statement covenant , and we simultaneously delivered the required compliance certificate , as required by the lenders .\nfurther , the credit agreement includes negative covenants , subject to exceptions , restricting or limiting our ability and the ability of our subsidiaries to , among other things , incur additional indebtedness , grant liens , and engage in certain investment , acquisition and disposition transactions .\nthe credit agreement also contains customary representations and warranties , affirmative covenants and events of default , including payment defaults , breach of representations and warranties , covenant defaults and cross defaults .\nif an event of default occurs , the interest rate would increase and the administrative agent would be entitled to take various actions , including the acceleration of amounts due under the loan .\nin connection with entering into the credit agreement , we paid $ 45 in financing costs which are being amortized as interest expense over the life of the debt .\namortization expense associated with deferred financing costs for the years ended december 31 , 2016 and 2015 was $ 10 and $ 6 , respectively .\namortization expense associated with deferred financing costs for the year ended december 31 , 2014 was not material .\nin connection with the acquisition of synageva in june 2015 , we borrowed $ 3500 under the term loan facility and $ 200 under the revolving facility , and we used our available cash for the remaining cash consideration .\nwe made principal payments of $ 375 during the year ended december 31 , 2016 .\nat december 31 , 2016 , we had $ 3081 outstanding on the term loan and zero outstanding on the revolving facility .\nat december 31 , 2016 , we had open letters of credit of $ 15 , and our borrowing availability under the revolving facility was $ 485 .\nthe fair value of our long term debt , which is measured using level 2 inputs , approximates book value .\nthe contractual maturities of our long-term debt obligations due subsequent to december 31 , 2016 are as follows: .\n| 2017 | $— |\n| --- | --- |\n| 2018 | 150 |\n| 2019 | 175 |\n| 2020 | 2,756 |\nbased upon our intent and ability to make payments during 2017 , we included $ 175 within current liabilities on our consolidated balance sheet as of december 31 , 2016 , net of current deferred financing costs .\n9 .\nfacility lease obligations new haven facility lease obligation in november 2012 , we entered into a lease agreement for office and laboratory space to be constructed in new haven , connecticut .\nthe term of the lease commenced in 2015 and will expire in 2030 , with a renewal option of 10 years .\nalthough we do not legally own the premises , we are deemed to be the owner of the building due to the substantial improvements directly funded by us during the construction period based on applicable accounting guidance for build-to-suit leases .\naccordingly , the landlord 2019s costs of constructing the facility during the construction period are required to be capitalized , as a non-cash transaction , offset by a corresponding facility lease obligation in our consolidated balance sheet .\nconstruction of the new facility was completed and the building was placed into service in the first quarter 2016 .\nthe imputed interest rate on this facility lease obligation as of december 31 , 2016 was approximately 11% ( 11 % ) .\nfor the year ended december 31 , 2016 and 2015 , we recognized $ 14 and $ 5 , respectively , of interest expense associated with this arrangement .\nas of december 31 , 2016 and 2015 , our total facility lease obligation was $ 136 and $ 133 , respectively , recorded within other current liabilities and facility lease obligation on our consolidated balance sheets. .",
+      "benchmark_answer": "114%",
+      "native_finqa_program": "divide(3500, 3081)",
+      "native_finqa_exe_ans": 1.13599,
+      "native_finqa_gold_inds": {
+        "table_1": "2017 the 2018 of $ 2014 is 150 ;",
+        "table_2": "2017 the 2019 of $ 2014 is 175 ;",
+        "table_3": "2017 the 2020 of $ 2014 is 2756 ;",
+        "text_14": "in connection with the acquisition of synageva in june 2015 , we borrowed $ 3500 under the term loan facility and $ 200 under the revolving facility , and we used our available cash for the remaining cash consideration .",
+        "text_16": "at december 31 , 2016 , we had $ 3081 outstanding on the term loan and zero outstanding on the revolving facility .",
+        "text_19": "the contractual maturities of our long-term debt obligations due subsequent to december 31 , 2016 are as follows: ."
+      },
+      "native_table_ori": [
+        [
+          "2017",
+          "$—"
+        ],
+        [
+          "2018",
+          "150"
+        ],
+        [
+          "2019",
+          "175"
+        ],
+        [
+          "2020",
+          "2,756"
+        ]
+      ],
+      "model_status": "abstained",
+      "model_reason": "At least one required subgoal could not be grounded",
+      "actual_oqa": {
+        "operator": "ratio",
+        "precision": "unknown",
+        "reasoning_type": "ComparativeReasoning",
+        "subgoals": [
+          {
+            "constraints": {
+              "entity_scope": "Alexion Pharmaceuticals, Inc.",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": "currency"
+              },
+              "temporal_scope": "June 2015"
+            },
+            "metric": "Borrowing under the term loan facility"
+          },
+          {
+            "constraints": {
+              "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": "currency"
+              },
+              "temporal_scope": "2017"
+            },
+            "metric": "Contractual maturity of long-term debt obligations"
+          },
+          {
+            "constraints": {
+              "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": "currency"
+              },
+              "temporal_scope": "2018"
+            },
+            "metric": "Contractual maturity of long-term debt obligations"
+          },
+          {
+            "constraints": {
+              "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": "currency"
+              },
+              "temporal_scope": "2019"
+            },
+            "metric": "Contractual maturity of long-term debt obligations"
+          },
+          {
+            "constraints": {
+              "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": "currency"
+              },
+              "temporal_scope": "2020"
+            },
+            "metric": "Contractual maturity of long-term debt obligations"
+          }
+        ]
+      },
+      "actual_oes": [
+        {
+          "goal": {
+            "metric": "Contractual maturity of long-term debt obligations",
+            "constraints": {
+              "temporal_scope": "2017",
+              "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": false,
+            "missing_vars": [
+              "v1"
+            ],
+            "notes": "The 2017 contractual maturity is shown as \"$—\" rather than an explicit numeric value; zero cannot be inferred from the dash.",
+            "var_bindings": {}
+          }
+        },
+        {
+          "goal": {
+            "metric": "Contractual maturity of long-term debt obligations",
+            "constraints": {
+              "temporal_scope": "2018",
+              "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved the requested contractual maturity from the titled section “The contractual maturities of our long-term debt obligations due subsequent to December 31, 2016” and its 2018 row. The financial-statement heading states amounts are in millions.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 0.99,
+                "constraints": {
+                  "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2018"
+                },
+                "context": "The contractual maturities of our long-term debt obligations due subsequent to December 31, 2016 are as follows: | 2018 | 150 |",
+                "context_spans": [
+                  "| 2017 | $— |",
+                  "| 2018 | 150 |"
+                ],
+                "metric": "Contractual maturity of long-term debt obligations",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "source_label": "The contractual maturities of our long-term debt obligations",
+                "value": 150
+              }
+            }
+          }
+        },
+        {
+          "goal": {
+            "metric": "Contractual maturity of long-term debt obligations",
+            "constraints": {
+              "temporal_scope": "2020",
+              "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved the 2020 contractual maturity from the table introduced by “The contractual maturities of our long-term debt obligations due subsequent to December 31, 2016 are as follows.” The reporting notes specify amounts in millions.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 0.99,
+                "constraints": {
+                  "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2020"
+                },
+                "context": "Contractual maturities of our long-term debt obligations due subsequent to December 31, 2016: 2020 | 2,756",
+                "context_spans": [
+                  "The contractual maturities of our long-term debt obligations due subsequent to December 31, 2016 are as follows:",
+                  "| 2017 | $— |\n| --- | --- |\n| 2018 | 150 |\n| 2019 | 175 |\n| 2020 | 2,756 |"
+                ],
+                "metric": "Contractual maturity of long-term debt obligations",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "source_label": "Contractual maturities of our long-term debt obligations due subsequent to December 31, 2016",
+                "value": 2756
+              }
+            }
+          }
+        },
+        {
+          "goal": {
+            "metric": "Contractual maturity of long-term debt obligations",
+            "constraints": {
+              "temporal_scope": "2019",
+              "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved the 2019 contractual maturity from the section label “The contractual maturities of our long-term debt obligations due subsequent to December 31, 2016” and the 2019 table row. The notes state amounts are in millions; the table’s dollar sign applies to the monetary column.",
+            "var_bindings": {
+              "v1": {
+                "confidence": 0.98,
+                "constraints": {
+                  "entity_scope": "Alexion Pharmaceuticals, Inc.; contractual maturities of long-term debt obligations due subsequent to December 31, 2016",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "2019"
+                },
+                "context": "The contractual maturities of our long-term debt obligations due subsequent to December 31, 2016 are as follows: | 2019 | 175 |",
+                "context_spans": [
+                  "| 2017 | $— |",
+                  "| 2019 | 175 |"
+                ],
+                "metric": "Contractual maturity of long-term debt obligations",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "source_label": "The contractual maturities of our long-term debt obligations due subsequent to December 31, 2016",
+                "value": 175
+              }
+            }
+          }
+        },
+        {
+          "goal": {
+            "metric": "Borrowing under the term loan facility",
+            "constraints": {
+              "temporal_scope": "June 2015",
+              "entity_scope": "Alexion Pharmaceuticals, Inc.",
+              "meta": {
+                "currency": "$",
+                "scale": "million",
+                "unit": null
+              }
+            }
+          },
+          "response": {
+            "found": true,
+            "missing_vars": [],
+            "notes": "Resolved \"Borrowing under the term loan facility\" via the source wording \"borrowed under the term loan facility\".",
+            "var_bindings": {
+              "v1": {
+                "confidence": 1.0,
+                "constraints": {
+                  "entity_scope": "Alexion Pharmaceuticals, Inc.",
+                  "meta": {
+                    "currency": "$",
+                    "scale": "million",
+                    "unit": null
+                  },
+                  "temporal_scope": "June 2015"
+                },
+                "context": "borrowed $ 3500 under the term loan facility",
+                "context_spans": [],
+                "metric": "Borrowing under the term loan facility",
+                "observed_meta": {
+                  "currency": "$",
+                  "scale": "million",
+                  "unit": null
+                },
+                "source_label": "borrowed under the term loan facility",
+                "value": 3500.0
+              }
+            }
+          }
+        }
+      ],
+      "actual_generated_programs": [],
+      "generated_program_note": "No OPE program was generated; this is a missing-subgoal refusal, not an execution failure. Native FinQA program is an audit reference, not a model program.",
+      "optional_oq_a_hints_before": [
+        {
+          "query_mention": "borrowing",
+          "canonical_metric": "Borrowing",
+          "definition": "Borrowing refers to the amount of funds borrowed to finance the purchase of a stock when constructing a risk-free investment portfolio."
+        },
+        {
+          "query_mention": "term",
+          "canonical_metric": "Term",
+          "definition": "Term refers to the length of a time period, typically expressed in units such as years, months, or days. In the field of finance and accounting, it is a fundamental time parameter required for calculating the time value of money, evaluating bonds, computing interest rates, and numerous other financial metrics."
+        },
+        {
+          "query_mention": "total",
+          "canonical_metric": "Sum of All Data",
+          "definition": "Sum of all data refers to the total obtained by adding together all values in a dataset. In accounting and finance, it is commonly used to calculate aggregate amounts for items such as revenue, costs, assets, and liabilities, serving as a fundamental operation for financial analysis and statement preparation."
+        },
+        {
+          "query_mention": "long-term debt",
+          "canonical_metric": "Long-term Debt",
+          "definition": "Long-term debt refers to obligations undertaken by an enterprise with a repayment period exceeding one year (or one operating cycle). It represents funds borrowed to raise long-term capital, typically used for long-term purposes such as fixed asset investments and project development, and constitutes a significant component of the enterprise's capital structure."
+        }
+      ],
+      "optional_oq_a_hints_after": [],
+      "verdict": "Likely mechanical over-refusal of financial nil notation, but treating an unqualified dash as zero requires an explicitly bounded source-semantics policy; no unconditional fix is justified.",
+      "evidence_reason": "The 2017 cell is a real U+2014 em dash, not U+FFFD. R23 OQA expands the schedule into 2017-2020; OES rejects only the dash. Later maturities are 150,175,2756, and text directly reports 3081 outstanding on the term loan and zero revolving balance. Native gold uses 3500/3081. There is no explicit dash=nil legend in the supplied D.",
+      "audit_only_consistency": {
+        "later_printed_maturities_sum": 3081,
+        "direct_reported_term_loan_outstanding": 3081,
+        "dash_codepoint": "U+2014",
+        "not_model_inputs": true
+      },
+      "repair_boundary": "Do not create 2017=0 by residual arithmetic inside OES. Do not automatically equate an instrument outstanding balance with every company long-term contractual maturity total. The voluntary 2017 current-liability payment of 175 is not a stated contractual 2017 maturity. Explicit zero/none/nil or a source-defined nil legend can be normalized with provenance; absent that, a nil interpretation remains a semantic judgment rather than a literal guaranteed extraction."
+    }
+  ],
+  "minimal_proposal_implemented_after_parent_authorization": {
+    "change": "Filter only optional OQA canonical-name recommendations for generic task words, ordinary short words and partial compound phrases on either side; retain complete registered multiword names and registered abbreviations.",
+    "confirmed_defect": "The old word-level suggestions contain definitions unrelated to these actual queries: Equity as shareholders equity, Net Change as a security closing-price movement, Borrowing as portfolio borrowing, Term as duration, Sum of All Data as generic total, and Current Period Share Capital as par value.",
+    "risk_limit": "This fixes demonstrable hint pollution, not a demonstrated guarantee that these refusals become correct answers. Reduced optional-hint recall for short/qualified phrases is intentional; graph search, aliases, original OES Goal and accepted model plans remain unchanged.",
+    "implementation": [
+      "gbfr/engine.py:metric_hints",
+      "tests/test_hint_repairs_r25.py"
+    ],
+    "not_implemented": [
+      "No authorized/outstanding equivalence.",
+      "No dash-to-zero policy or residual inference.",
+      "No whole/component substitution or commitment double-counting.",
+      "No score/gold/data changes or answer-driven retry."
+    ]
+  },
+  "validation": {
+    "command": "python -m pytest -q tests/test_hint_repairs_r25.py tests/test_refusal_repairs_r22.py tests/test_refusal_repairs_r21.py tests/test_engine.py tests/test_live_protocol_regressions.py tests/test_paper_repairs.py tests/test_evidence_alignment.py",
+    "passed": 146,
+    "failed": 0,
+    "new_r25_tests": 35,
+    "elapsed_seconds": 6.75,
+    "meaning": "Offline phrase-boundary, protocol and regression checks only; NOT an API model-accuracy result."
+  },
+  "current_source_sha256": {
+    "gbfr/engine.py": "c7a54579f480bde80872dac6fb65f4859057b78d0583d78b4252c0392cdb53e0",
+    "gbfr/prompts.py": "6ef51b7317356235bd945dc95af3c5cea1a48c820c3af4fca9af184f3179be89",
+    "tests/test_hint_repairs_r25.py": "2762227c33b5b63dc960be28e27f1d0e5dec3e8dd918334f636bd0fd89340c3b"
+  },
+  "appendix_f_bodies": {
+    "gbfr/prompts/query_analysis.txt": {
+      "current_sha256": "0339ad453ae4b182ae8e515a48c8b5a076db43834246aed0ef3aa0acb3461754",
+      "r24_sha256": "0339ad453ae4b182ae8e515a48c8b5a076db43834246aed0ef3aa0acb3461754",
+      "unchanged": true
+    },
+    "gbfr/prompts/evidence_seeking.txt": {
+      "current_sha256": "63bd31a05f7f98c7d122dffc59c9cca841a0997505e8bcfb3c224875ddfeaaac",
+      "r24_sha256": "63bd31a05f7f98c7d122dffc59c9cca841a0997505e8bcfb3c224875ddfeaaac",
+      "unchanged": true
+    },
+    "gbfr/prompts/metric_program.txt": {
+      "current_sha256": "cb81a65a71cbe740d39270c5c6ad733197cf78ae5feb51e2d3c6abd38ca5eab1",
+      "r24_sha256": "cb81a65a71cbe740d39270c5c6ad733197cf78ae5feb51e2d3c6abd38ca5eab1",
+      "unchanged": true
+    },
+    "gbfr/prompts/final_program.txt": {
+      "current_sha256": "6aca00c6f9078c3131d2e7e801937eff7067e30c030728683ec082dbda569e09",
+      "r24_sha256": "6aca00c6f9078c3131d2e7e801937eff7067e30c030728683ec082dbda569e09",
+      "unchanged": true
+    },
+    "gbfr/prompts/verification.txt": {
+      "current_sha256": "0829459f3208ffdac0722c193f6868da1918fd74694b2fa7db0b4d003f2ca8be",
+      "r24_sha256": "0829459f3208ffdac0722c193f6868da1918fd74694b2fa7db0b4d003f2ca8be",
+      "unchanged": true
+    }
+  }
+}

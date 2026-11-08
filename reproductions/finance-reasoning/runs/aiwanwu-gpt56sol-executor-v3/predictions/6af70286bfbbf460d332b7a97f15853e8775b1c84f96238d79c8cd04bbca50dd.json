@@ -1,0 +1,222 @@
+{
+  "record": {
+    "question_id": "test-2196",
+    "run_id": "a0a7624eb53518f7ef57d762ccfc14ab3605df7614af4b1ec77babc16ee1a88a",
+    "stages": {
+      "query": {
+        "content": "What function values a REIT share using a two-stage dividend discount model, deriving the cost of equity from the risk-free rate, beta, and market risk premium via CAPM, discounting specified dividends for years 1 and 2, and applying a constant long-term dividend growth rate from year 3 onward? Return intrinsic value per share, rounded to three decimal places.",
+        "usage": {
+          "prompt_tokens": 5069,
+          "completion_tokens": 79,
+          "total_tokens": 5148
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "judge": {
+        "content": "{\"selected_ids\":[\"C01\",\"C16\",\"C03\"]}",
+        "usage": {
+          "prompt_tokens": 13975,
+          "completion_tokens": 307,
+          "total_tokens": 14282,
+          "prompt_tokens_details": {
+            "cached_tokens": 4480
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 283
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      },
+      "pot": {
+        "content": "```python\ndef solution():\n    # Define variables name and value\n    risk_free_rate = 0.03\n    beta = 1.1\n    market_risk_premium = 0.05\n    dividend_year_1 = 1.13\n    dividend_year_2 = 1.22\n    long_term_growth_rate = 0.05\n\n    # Do math calculation to get the answer\n    cost_of_equity = risk_free_rate + beta * market_risk_premium\n    dividend_year_3 = dividend_year_2 * (1 + long_term_growth_rate)\n\n    terminal_value_year_2 = dividend_year_3 / (\n        cost_of_equity - long_term_growth_rate\n    )\n\n    present_value_dividend_year_1 = dividend_year_1 / (1 + cost_of_equity)\n    present_value_dividend_year_2 = dividend_year_2 / (1 + cost_of_equity) ** 2\n    present_value_terminal_value = terminal_value_year_2 / (1 + cost_of_equity) ** 2\n\n    answer = (\n        present_value_dividend_year_1\n        + present_value_dividend_year_2\n        + present_value_terminal_value\n    )\n\n    # return answer\n    return round(answer, 3)\n```",
+        "usage": {
+          "prompt_tokens": 5585,
+          "completion_tokens": 390,
+          "total_tokens": 5975,
+          "prompt_tokens_details": {
+            "cached_tokens": 4352
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 116
+          }
+        },
+        "model_returned": "gpt-5.6-sol",
+        "system_fingerprint": null,
+        "request_model": "gpt-5.6-sol",
+        "cached": false
+      }
+    },
+    "judge_protocol": "candidate-ids-v2",
+    "answer_output_contract": {
+      "percentage_literal_allowed": false,
+      "source": "explicit unit request in the original question"
+    },
+    "candidates": [
+      {
+        "function_id": "article-1755",
+        "score": 1.9995474815368652,
+        "reference_id": "C01"
+      },
+      {
+        "function_id": "article-2796",
+        "score": 1.8740869760513306,
+        "reference_id": "C02"
+      },
+      {
+        "function_id": "article-1758",
+        "score": 1.8694589138031006,
+        "reference_id": "C03"
+      },
+      {
+        "function_id": "article-1151",
+        "score": 1.857973337173462,
+        "reference_id": "C04"
+      },
+      {
+        "function_id": "article-198",
+        "score": 1.856589913368225,
+        "reference_id": "C05"
+      },
+      {
+        "function_id": "article-191",
+        "score": 1.8151777982711792,
+        "reference_id": "C06"
+      },
+      {
+        "function_id": "article-1511",
+        "score": 1.7992907762527466,
+        "reference_id": "C07"
+      },
+      {
+        "function_id": "article-2835",
+        "score": 1.7683520317077637,
+        "reference_id": "C08"
+      },
+      {
+        "function_id": "article-1592",
+        "score": 1.767770767211914,
+        "reference_id": "C09"
+      },
+      {
+        "function_id": "article-1512",
+        "score": 1.763567566871643,
+        "reference_id": "C10"
+      },
+      {
+        "function_id": "article-197",
+        "score": 1.7487914562225342,
+        "reference_id": "C11"
+      },
+      {
+        "function_id": "article-519",
+        "score": 1.7339658737182617,
+        "reference_id": "C12"
+      },
+      {
+        "function_id": "article-866",
+        "score": 1.728952169418335,
+        "reference_id": "C13"
+      },
+      {
+        "function_id": "article-714",
+        "score": 1.714578628540039,
+        "reference_id": "C14"
+      },
+      {
+        "function_id": "article-43",
+        "score": 1.6998202800750732,
+        "reference_id": "C15"
+      },
+      {
+        "function_id": "article-874",
+        "score": 1.6956713199615479,
+        "reference_id": "C16"
+      },
+      {
+        "function_id": "article-2943",
+        "score": 1.682621717453003,
+        "reference_id": "C17"
+      },
+      {
+        "function_id": "article-2212",
+        "score": 1.6759124994277954,
+        "reference_id": "C18"
+      },
+      {
+        "function_id": "article-2475",
+        "score": 1.674569845199585,
+        "reference_id": "C19"
+      },
+      {
+        "function_id": "article-2560",
+        "score": 1.6692724227905273,
+        "reference_id": "C20"
+      },
+      {
+        "function_id": "article-272",
+        "score": 1.6431782245635986,
+        "reference_id": "C21"
+      },
+      {
+        "function_id": "article-2797",
+        "score": 1.6395037174224854,
+        "reference_id": "C22"
+      },
+      {
+        "function_id": "article-1520",
+        "score": 1.6268606185913086,
+        "reference_id": "C23"
+      },
+      {
+        "function_id": "article-613",
+        "score": 1.6255719661712646,
+        "reference_id": "C24"
+      },
+      {
+        "function_id": "article-589",
+        "score": 1.6073429584503174,
+        "reference_id": "C25"
+      },
+      {
+        "function_id": "article-463",
+        "score": 1.6062157154083252,
+        "reference_id": "C26"
+      },
+      {
+        "function_id": "article-2193",
+        "score": 1.5984339714050293,
+        "reference_id": "C27"
+      },
+      {
+        "function_id": "article-250",
+        "score": 1.5977071523666382,
+        "reference_id": "C28"
+      },
+      {
+        "function_id": "article-2302",
+        "score": 1.5800495147705078,
+        "reference_id": "C29"
+      },
+      {
+        "function_id": "article-2794",
+        "score": 1.5688128471374512,
+        "reference_id": "C30"
+      }
+    ],
+    "selected_ids": [
+      "article-1755",
+      "article-1758",
+      "article-874"
+    ],
+    "status": "ok",
+    "answer": 33.168,
+    "code": "def solution():\n    # Define variables name and value\n    risk_free_rate = 0.03\n    beta = 1.1\n    market_risk_premium = 0.05\n    dividend_year_1 = 1.13\n    dividend_year_2 = 1.22\n    long_term_growth_rate = 0.05\n\n    # Do math calculation to get the answer\n    cost_of_equity = risk_free_rate + beta * market_risk_premium\n    dividend_year_3 = dividend_year_2 * (1 + long_term_growth_rate)\n\n    terminal_value_year_2 = dividend_year_3 / (\n        cost_of_equity - long_term_growth_rate\n    )\n\n    present_value_dividend_year_1 = dividend_year_1 / (1 + cost_of_equity)\n    present_value_dividend_year_2 = dividend_year_2 / (1 + cost_of_equity) ** 2\n    present_value_terminal_value = terminal_value_year_2 / (1 + cost_of_equity) ** 2\n\n    answer = (\n        present_value_dividend_year_1\n        + present_value_dividend_year_2\n        + present_value_terminal_value\n    )\n\n    # return answer\n    return round(answer, 3)\n"
+  },
+  "digest": "e596da5be5cea80437695722224d77b7989f1ce20c18f5c4b12bea90715146eb"
+}
