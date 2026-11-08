@@ -70,38 +70,73 @@ TAT-QA F1为82.8609%。ConvFinQA沿用作者代码实际dev划分，论文Test�
 
 **运行与验证：** README均提供安装、生成与离线核验入口；发布结果保留，不为贴近论文分数调参。
 
+## FinanceReasoning
+
+**范围与状态：** Hard 238题主方法实验完成。
+
+| 数据集 | 样本 | 正确 | 本次准确率 | 论文表5 |
+| --- | ---: | ---: | ---: | ---: |
+| FinanceReasoning Hard | 238 | 217 | 91.18% | 91.60% |
+
+本次底座为 `gpt-5.6-sol`，论文底座为 `gpt-4o-2024-11-20`；未运行同骨干无增强对照，不能据此验证知识增强增益。
+
+**方法与适配：** 见[完整说明](reproductions/finance-reasoning/README.md)，保留作者核心流程，披露替代骨干、评分口径及必要适配。
+
+**代码、实验和日志：** [模型README](reproductions/finance-reasoning/README.md) · [数据集](reproductions/finance-reasoning/data/) · [实验结果与证据](reproductions/finance-reasoning/runs/aiwanwu-gpt56sol-executor-v3/)。
+
+**运行与验证：** 模型README提供安装、运行与离线检查入口；历史记录与最新结果分别保存，已准备资产不代表已运行实验。
+
+## GBFR
+
+**范围与状态：** 全量暂停，最新完成R25 FinQA新10题验证。
+
+| 数据集与版本 | 样本 | 固定两位准确率 | 参考显示精度准确率 |
+| --- | ---: | ---: | ---: |
+| FinQA R25，预冻结评分 | 10 | 50% | 60% |
+| 同一预测，运行后单位解析修正诊断 | 10 | 60% | 70% |
+
+| R25拒答指标 | 本次结果 |
+| --- | ---: |
+| 拒答召回 | 1/2（50%） |
+| 误拒 | 0/8 |
+| 技术错误 | 0 |
+
+全量实验仍暂停，以上仅为10题验证，不与论文全量结果直接比较。运行后诊断只修正评分单位解析，未重新生成预测，原评分保留；TAT-QA本轮未重跑，尚不能宣布达到论文指标。
+
+**方法与适配：** 见[完整说明](reproductions/gbfr/README.md)，保留作者核心流程，披露替代骨干、评分口径及必要适配。
+
+**代码、实验和日志：** [模型README](reproductions/gbfr/README.md) · [数据集](reproductions/gbfr/data/) · [实验结果与证据](reproductions/gbfr/runs/)。
+
+**运行与验证：** 模型README提供安装、运行与离线检查入口；历史记录与最新结果分别保存，已准备资产不代表已运行实验。
+
+## VeriFin
+
+**范围与状态：** FinanceBench 67题完成，覆盖率尚未达标。
+
+| 数据集 | 样本 | 评分口径 | 接受精度 | 决策准确率 | 覆盖率 |
+| --- | ---: | --- | ---: | ---: | ---: |
+| FinanceBench | 67 | 本地主舍入 | 100% | 100% | 67.16% |
+| FinanceBench | 67 | 旧严格显示精度 | 80% | 81.82% | 67.16% |
+| 论文参考 | — | 论文GPT-5.5 | 100% | 86.7% | 70.1% |
+
+本次底座为 `gpt-5.6-sol`，本地主舍入规则并非作者公布的官方数值阈值。1条正确性未决不计入常规准确率分母，按错误计入时决策准确率为97.78%。覆盖率未达到论文70.1%，不能判为全部达标。
+
+**方法与适配：** 见[完整说明](reproductions/verifin/README.md)，保留作者核心流程，披露替代骨干、评分口径及必要适配。
+
+**代码、实验和日志：** [模型README](reproductions/verifin/README.md) · [数据集](reproductions/verifin/data/) · [实验结果与证据](reproductions/verifin/runs/financebench-full-post35-v1/)。
+
+**运行与验证：** 模型README提供安装、运行与离线检查入口；历史记录与最新结果分别保存，已准备资产不代表已运行实验。
+
 ## 仓库结构与发布检查
 
 - `docs/logic-lm/`、`docs/react/`：两模型完整说明；其代码保留在根scripts及upstream。
 - `reproductions/pot/`、`reproductions/self-refine/`：独立代码、环境与结果。
+- `reproductions/finance-reasoning/`、`reproductions/gbfr/`、`reproductions/verifin/`：新增三模型代码、数据、日志及结果。
 - `experiments/`、`reports/`：Logic-LM/ReAct冻结实验与日志。
 - [配置说明](configs/README.md)、[文献说明](references/README.md)。
 - [三轮整理检查](docs/release-audit-20261104/README.md)。
 
 第三方子模块README保留作者原文；项目自有说明使用统一完成范围与指标口径。已有实验的逐题内容和冻结指标不因目录整理而更改。
 
-## FinanceReasoning
 
-**范围与状态：** Hard 238题，217题正确，91.18%；论文表5为91.60%。替代骨干 gpt-5.6-sol，未运行同骨干无增强对照。
-
-**代码、数据、日志与结果：** [完整复现说明](reproductions/finance-reasoning/README.md) · [数据集](reproductions/finance-reasoning/data/) · [实验记录](reproductions/finance-reasoning/runs/aiwanwu-gpt56sol-executor-v3/)。
-
-使用服务商声明的 `gpt-5.6-sol` 替代骨干；历史实验和最新结果分别保存，不能将准备好的资产视为已运行实验。
-
-## GBFR
-
-**范围与状态：** 全量暂停；最新R25为FinQA新10题，预冻结两位/显示精度评分50%/60%，运行后单位解析修正诊断60%/70%；未重新生成预测，尚未达到论文指标。
-
-**代码、数据、日志与结果：** [完整复现说明](reproductions/gbfr/README.md) · [数据集](reproductions/gbfr/data/) · [实验记录](reproductions/gbfr/runs/)。
-
-使用服务商声明的 `gpt-5.6-sol` 替代骨干；历史实验和最新结果分别保存，不能将准备好的资产视为已运行实验。
-
-## VeriFin
-
-**范围与状态：** FinanceBench 67题；本地主舍入接受精度100%、决策准确率100%、覆盖率67.16%。1条未决排除在常规准确率分母外，按错误计97.78%；严格口径80%/81.82%/67.16%。覆盖率未达70.1%，本地舍入规则非作者官方阈值。
-
-**代码、数据、日志与结果：** [完整复现说明](reproductions/verifin/README.md) · [数据集](reproductions/verifin/data/) · [实验记录](reproductions/verifin/runs/financebench-full-post35-v1/)。
-
-使用服务商声明的 `gpt-5.6-sol` 替代骨干；历史实验和最新结果分别保存，不能将准备好的资产视为已运行实验。
-
-新增资料的收录范围、校验清单与上传后两轮核查见[发布审计](docs/release-audit-20261108/README.md)。
+新增资料收录范围与两轮上传后核查见[发布审计](docs/release-audit-20261108/README.md)。
