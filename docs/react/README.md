@@ -37,7 +37,7 @@ GPT-3 对应论文附录 Table 5 的 text-davinci-002；PaLM-540B 对应正文 T
 
 ## 5. 代码、实验和日志
 
-`experiments/react/hotpotqa/`包含：500题合并预测和完整轨迹、原34题记录、4个分片的API原响应/适配输出/环境日志、配置、恢复事件和运行日志。重复prompt采用标准gzip压缩，Python gzip或gzip -dc可读。paths已脱敏，API密钥和.env不上传。
+`experiments/react/hotpotqa/`包含：500题合并预测和完整轨迹、原34题记录、4个分片的API原响应/适配输出/环境日志、配置、恢复事件和运行日志。重复prompt采用标准gzip压缩，Python gzip或gzip -dc可读。
 
 `summary.json`是唯一主结果；初始和分片 summary 分别记录各自局部结果。44次作者格式重试，1690条已保存API记录含中断尝试；手工中止时少量在途响应可能没落盘，计数范围为已保存的响应。
 
@@ -47,7 +47,3 @@ GPT-3 对应论文附录 Table 5 的 text-davinci-002；PaLM-540B 对应正文 T
 第二轮：从暂存区建立不含.env的干净副本，重新检出固定作者子模块，再跑相同验证与测试。
 
 返回[项目总览](../../README.md)。
-
-## 2026-11-08 仓库扩展
-
-仓库现收录七个模型，新增 FinanceReasoning、GBFR、VeriFin。此目录原有结果与范围保持原记录；最新模型范围、结果限制及导航见[仓库总览](../../README.md)。

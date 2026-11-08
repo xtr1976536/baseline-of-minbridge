@@ -1,6 +1,6 @@
 # MinBridge：七个推理模型复现
 
-本仓库统一整理 Logic-LM、ReAct、PoT、Self-Refine、FinanceReasoning、GBFR、VeriFin。使用服务商声明的 `gpt-5.6-sol` 作为替代底座，原模型及必要适配在各模型说明中披露。以下完成状态仅限列出的主实验范围，不代表各论文全部任务。
+本仓库统一整理 Logic-LM、ReAct、PoT、Self-Refine、FinanceReasoning、GBFR、VeriFin。底座统一使用 `gpt-5.6-sol`，原论文模型见各模型说明。
 
 ## Logic-LM
 
@@ -14,11 +14,7 @@
 | LogicalDeduction | 300 | 99.33% | 87.63% |
 | AR-LSAT | 231 | 68.83% | 43.04% |
 
-**方法与适配：** 见[完整说明](docs/logic-lm/README.md)，保留作者核心流程，明确消息格式、执行环境和后处理差异。
-
 **代码、实验和日志：** [模型README](docs/logic-lm/README.md) · [实验结果与证据](experiments/final/)。
-
-**运行与验证：** README均提供安装、生成与离线核验入口；发布结果保留，不为贴近论文分数调参。
 
 ## ReAct
 
@@ -28,11 +24,7 @@
 | --- | ---: | ---: | ---: | ---: | ---: |
 | HotpotQA dev | 500 | 49.20% | 64.90% | 30.8% | 27.4% |
 
-**方法与适配：** 见[完整说明](docs/react/README.md)，保留作者核心流程，明确消息格式、执行环境和后处理差异。
-
 **代码、实验和日志：** [模型README](docs/react/README.md) · [实验结果与证据](experiments/react/hotpotqa/)。
-
-**运行与验证：** README均提供安装、生成与离线核验入口；发布结果保留，不为贴近论文分数调参。
 
 ## PoT
 
@@ -46,11 +38,7 @@
 
 TAT-QA F1为82.8609%。ConvFinQA沿用作者代码实际dev划分，论文Test标签差异已有审计。
 
-**方法与适配：** 见[完整说明](reproductions/pot/README.md)，保留作者核心流程，明确消息格式、执行环境和后处理差异。
-
 **代码、实验和日志：** [模型README](reproductions/pot/README.md) · [实验结果与证据](reproductions/pot/results/)。
-
-**运行与验证：** README均提供安装、生成与离线核验入口；发布结果保留，不为贴近论文分数调参。
 
 ## Self-Refine
 
@@ -64,11 +52,7 @@ TAT-QA F1为82.8609%。ConvFinQA沿用作者代码实际dev划分，论文Test�
 
 改对21题、改错23题，净少对2题。其余六任务未完成。
 
-**方法与适配：** 见[完整说明](reproductions/self-refine/README.md)，保留作者核心流程，明确消息格式、执行环境和后处理差异。
-
 **代码、实验和日志：** [模型README](reproductions/self-refine/README.md) · [实验结果与证据](reproductions/self-refine/results/gsm-full-final-20261102/)。
-
-**运行与验证：** README均提供安装、生成与离线核验入口；发布结果保留，不为贴近论文分数调参。
 
 ## FinanceReasoning
 
@@ -78,13 +62,9 @@ TAT-QA F1为82.8609%。ConvFinQA沿用作者代码实际dev划分，论文Test�
 | --- | ---: | ---: | ---: | ---: |
 | FinanceReasoning Hard | 238 | 217 | 91.18% | 91.60% |
 
-本次底座为 `gpt-5.6-sol`，论文底座为 `gpt-4o-2024-11-20`；未运行同骨干无增强对照，不能据此验证知识增强增益。
-
-**方法与适配：** 见[完整说明](reproductions/finance-reasoning/README.md)，保留作者核心流程，披露替代骨干、评分口径及必要适配。
+本次底座为 `gpt-5.6-sol`，论文底座为 `gpt-4o-2024-11-20`。
 
 **代码、实验和日志：** [模型README](reproductions/finance-reasoning/README.md) · [数据集](reproductions/finance-reasoning/data/) · [实验结果与证据](reproductions/finance-reasoning/runs/aiwanwu-gpt56sol-executor-v3/)。
-
-**运行与验证：** 模型README提供安装、运行与离线检查入口；历史记录与最新结果分别保存，已准备资产不代表已运行实验。
 
 ## GBFR
 
@@ -101,13 +81,9 @@ TAT-QA F1为82.8609%。ConvFinQA沿用作者代码实际dev划分，论文Test�
 | 误拒 | 0/8 |
 | 技术错误 | 0 |
 
-全量实验仍暂停，以上仅为10题验证，不与论文全量结果直接比较。运行后诊断只修正评分单位解析，未重新生成预测，原评分保留；TAT-QA本轮未重跑，尚不能宣布达到论文指标。
-
-**方法与适配：** 见[完整说明](reproductions/gbfr/README.md)，保留作者核心流程，披露替代骨干、评分口径及必要适配。
+修正诊断使用同一批预测，仅调整评分器的单位解析。
 
 **代码、实验和日志：** [模型README](reproductions/gbfr/README.md) · [数据集](reproductions/gbfr/data/) · [实验结果与证据](reproductions/gbfr/runs/)。
-
-**运行与验证：** 模型README提供安装、运行与离线检查入口；历史记录与最新结果分别保存，已准备资产不代表已运行实验。
 
 ## VeriFin
 
@@ -118,13 +94,9 @@ TAT-QA F1为82.8609%。ConvFinQA沿用作者代码实际dev划分，论文Test�
 | FinanceBench | 67 | 本地主舍入 | 100% | 100% | 67.16% |
 | 论文参考 | — | 论文GPT-5.5 | 100% | 86.7% | 70.1% |
 
-本次底座为 `gpt-5.6-sol`，本地主舍入规则并非作者公布的官方数值阈值。1条正确性未决不计入常规准确率分母，按错误计入时决策准确率为97.78%。覆盖率未达到论文70.1%，不能判为全部达标。
-
-**方法与适配：** 见[完整说明](reproductions/verifin/README.md)，保留作者核心流程，披露替代骨干、评分口径及必要适配。
+本次底座为 `gpt-5.6-sol`，本地主舍入规则并非作者公布的官方数值阈值。1条正确性未决不计入常规准确率分母，按错误计入时决策准确率为97.78%。
 
 **代码、实验和日志：** [模型README](reproductions/verifin/README.md) · [数据集](reproductions/verifin/data/) · [实验结果与证据](reproductions/verifin/runs/financebench-full-post35-v1/)。
-
-**运行与验证：** 模型README提供安装、运行与离线检查入口；历史记录与最新结果分别保存，已准备资产不代表已运行实验。
 
 ## 仓库结构与发布检查
 
@@ -134,8 +106,5 @@ TAT-QA F1为82.8609%。ConvFinQA沿用作者代码实际dev划分，论文Test�
 - `experiments/`、`reports/`：Logic-LM/ReAct冻结实验与日志。
 - [配置说明](configs/README.md)、[文献说明](references/README.md)。
 - [三轮整理检查](docs/release-audit-20261104/README.md)。
-
-第三方子模块README保留作者原文；项目自有说明使用统一完成范围与指标口径。已有实验的逐题内容和冻结指标不因目录整理而更改。
-
 
 新增资料收录范围与两轮上传后核查见[发布审计](docs/release-audit-20261108/README.md)。

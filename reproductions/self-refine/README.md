@@ -1,12 +1,10 @@
-> **GSM8K全量已完成：1319题，初始96.2851%，最终96.1334%，累计曾正确97.9530%；改对21、改错23。22题接口失败阶段已补齐，最终0运行错误。详见[结果报告](results/gsm-full-final-20261102/结果报告.md)。其余六任务未完成。**
-
 # Self-Refine复现
 
 ## 1. 复现范围与状态
 
-当前阶段：GSM8K数学推理主实验全量已完成并完成两轮发布检查；其余六任务的材料/评测依赖尚未全部验收。范围审计见[主实验范围](docs/主实验范围审计.md)。
+GSM8K 1319题主实验完成，其余六任务未完成。
 
-[官方论文](https://arxiv.org/abs/2303.17651)；[官方代码](https://github.com/madaan/self-refine)，vendor固定commit9a206d41e5d2d0c241bb441f41eeadb945afaa55。与PoT/Logic-LM环境与结果隔离。
+[官方论文](https://arxiv.org/abs/2303.17651)；[官方代码](https://github.com/madaan/self-refine)，vendor固定commit9a206d41e5d2d0c241bb441f41eeadb945afaa55。
 
 ## 2. 复现结果
 
@@ -48,8 +46,6 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/run_gsm.py --full --workers 8
 
 根仓库.env/环境变量提供OPENAI_API_KEY和OPENAI_BASE_URL；不得提交密钥。results保存原提示、响应、程序、每轮评分及配置。官方loop打印prompt的本地log被Git忽略；发布JSON保留调用证据。
 
-早期gsm-smoke为本接入NameError的离线失败（未发API）；gsm-smoke-v2原prompt未适配Chat导致自然语言及parse失败；gsm-smoke-v3为显式格式适配验收，保留各版本而不混合计分。官方upstream README不改写。
-
 ## 5. 代码、实验和日志
 
 最终结果以 `results/gsm-full-final-20261102/` 为准：`predictions.jsonl.gz`包含1319题的模型请求/响应、反馈历史、原始程序、执行返回与评分；`scores.jsonl`供快速分析；`transport_failure_records.jsonl.gz`保留22题最初失败；配置、验证、SHA256及报告随附。
@@ -63,14 +59,6 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/summarize_gsm.py --output gsm
 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/validate_release.py
 ```
 
-两轮发布检查见docs/release-checks/。不重复上传本机samples/traces、虚拟环境和终端日志：重要调用已汇入压缩轨迹。其余六任务未完成；最终准确率96.1334%，不能以累计97.9530%替代。
-
 ## 6. 离线验证
 
-[2026-11-03审计](docs/最终代码一致性审计.md)通过：全部1319题/6014次保存调用经作者原loop离线重建，user提示、历史、解析、停止轮数完全吻合。结论为核心方法与GSM8K主实验的替代底座复现成功；接口与执行环境适配仍按报告披露。检查脚本为scripts/audit_saved_loop.py，不调用API。
-
-发布清单说明：`publication_manifest.json`核对当前Self-Refine文件（不含清单自身所在的检查目录，避免自引用）；`publication_manifest_56aa1ee_historical.json`保留当时发布版本，已去重文件仅在该历史清单中出现。
-
-## 2026-11-08 仓库扩展
-
-仓库现收录七个模型，新增 FinanceReasoning、GBFR、VeriFin。此目录原有结果与范围保持原记录；最新模型范围、结果限制及导航见[仓库总览](../../README.md)。
+[2026-11-03审计](docs/最终代码一致性审计.md)通过：全部1319题/6014次保存调用经作者原loop离线重建，user提示、历史、解析、停止轮数完全吻合。检查脚本为scripts/audit_saved_loop.py，不调用API。

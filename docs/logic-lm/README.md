@@ -2,7 +2,7 @@
 
 ## 1. 复现范围与状态
 
-五个数据集的全量主实验及 LogicalDeduction 独立 CoT 全量实验已完成。底座为服务商声明的 `gpt-5.6-sol`，参考论文为 Logic-LM（GPT-4、Table 2，无 self-refinement）。**作者原求解器与评分器保持不变；数据集格式约束和 LogicalDeduction 的小兼容处理均公开记录。**
+五个数据集的全量主实验及 LogicalDeduction 独立 CoT 全量实验已完成。底座为服务商声明的 `gpt-5.6-sol`，参考论文为 Logic-LM（GPT-4、Table 2，无 self-refinement）。
 
 ## 2. 复现结果
 
@@ -25,13 +25,13 @@ AR-LSAT作者附录/README写230，而公开评测文件实际231条，本项目
 ## 3. 方法与适配
 
 - 原提示词逐字保留，前置约束分别适配通用逻辑程序、CSP、Z3 DSL；原求解器源码未修改。
-- FOLIO只配置Prover9路径；AR-LSAT子进程屏蔽会混入答案的Z3弃用UserWarning，不修改Z3推理逻辑。
+- FOLIO只配置Prover9路径；AR-LSAT子进程屏蔽会混入答案的Z3弃用UserWarning，
 - 供应商usage不是独立分词测量；异常保留原文并记录。本次部分AR-LSAT回答经独立诊断分词也超过请求1024，上限实际执行无法认证；原始输出和请求参数均保存在日志中。
 - 中途网络/额度故障和恢复记录随最终实验保存；没有将失败请求当成模型答错。ProofWriter一次初期拒收响应丢失原文的审计缺口也在日志中披露。
 
 来源：[Logic-LM论文](https://aclanthology.org/2023.findings-emnlp.248/)；[作者代码](https://github.com/teacherpeterpan/Logic-LLM)；[ReAct](https://github.com/ysymyth/ReAct)。
 
-返回[四模型总览](../../README.md)。
+返回[仓库总览](../../README.md)。
 ## 4. 安装与运行
 
 ```bash
@@ -74,15 +74,13 @@ cp .env.example .env
 - `scripts/run_logic_experiment.py`：五数据集新主实验，程序＋配套CoT，各自记录，4并发，原子断点。
 - `scripts/evaluate_logic_experiment.py`：作者求解器、回退、作者评分器；原始/适配分数都保留。
 - `scripts/run_ld_cot_full.py`：仅LogicalDeduction独立300条CoT，不生成程序。
-- `scripts/logical_deduction_compat.py`：只整理段落标题布局和 `(A)`→`A)`；不改语句、数值和顺序；不从多个程序中挑一个。
+- `scripts/logical_deduction_compat.py`：只整理段落标题布局和 `(A)`→`A)`。
 - `scripts/logical_deduction_cot.py`：仅该数据集的明确选项提取；多个候选、越界或无显式选项时弃权，绝不读取gold推断答案。
 - `configs/prompts/`：三个数据集类别的额外格式约束；作者正文/示例不改。
 - **`experiments/final/`**：五个主实验及LD独立CoT的原始输出、压缩请求/响应、运行配置、日志、逐题预测、冻结指标和当前代码重评。`index.json` 指定唯一最终版本。
 - `reports/`：汇总表、3970条请求完整性核验、SHA256清单及两轮验收日志。
 - `docs/`：最终方法差异、结果解释和发布检查。
 - `upstream/`、`patches/`：固定作者子模块及可复现运行时补丁。
-
-旧调参脚本、旧Logic-LM缓存重放成绩和过时说明已从当前版本移除；Git历史仍可追溯。本机保留旧实验原始数据，各项目的代码与结果分别存放。
 
 ## 6. 离线验证
 
@@ -98,7 +96,3 @@ cp .env.example .env
 ```
 
 `*.json.gz`/`*.jsonl.gz`采用标准gzip以减少重复prompt占用空间，Python `gzip`或`gzip -dc`即可读取。依赖安装外的上述检查不发送模型请求。`summary.json`是发布成绩，`recorded-summary.json`是原运行冻结成绩，`current-policy-summary.json`是最新代码的离线复验。请求日志没有Authorization headers；本机路径已脱敏，响应内容和提示词不改。
-
-## 2026-11-08 仓库扩展
-
-仓库现收录七个模型，新增 FinanceReasoning、GBFR、VeriFin。此目录原有结果与范围保持原记录；最新模型范围、结果限制及导航见[仓库总览](../../README.md)。
